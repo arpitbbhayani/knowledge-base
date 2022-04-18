@@ -9,7 +9,11 @@ How do WhatsApp, Facebook, Signal actually do it? Answer: The Signal Protocol
 
 We do it with a very simple Public Key Cryptography and a Digital Signature.
 
+Watch the video 👇‍
+
 [![End-to-end Message Encryption](https://i.ytimg.com/vi/m_7xSIhxZL8/mqdefault.jpg)](https://www.youtube.com/watch?v=m_7xSIhxZL8)
+
+If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
 
 
 

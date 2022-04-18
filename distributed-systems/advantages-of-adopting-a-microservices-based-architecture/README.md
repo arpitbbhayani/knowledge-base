@@ -39,10 +39,14 @@ Outline:
  - 01:53 Key advantages of adopting a microservices-based architecture
  - 09:48 How to fence a microservice?
 
+Watch the video 👇‍
+
 [![Advantages of adopting a microservices-based architecture](https://i.ytimg.com/vi/JPj6mhVLQN0/mqdefault.jpg)](https://www.youtube.com/watch?v=JPj6mhVLQN0)
 
+If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
 
-# Notes
+
+## Notes
 
 The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/1lK2e3me09VNz51DWDunI5xDmlgLnOvfC/view).
 

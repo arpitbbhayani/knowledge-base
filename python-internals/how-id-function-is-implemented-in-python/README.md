@@ -13,7 +13,11 @@ How Python implements super-long integers: https://arpitbhayani.me/blogs/super-l
 
 The Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.
 
+Watch the video 👇‍
+
 [![How id() function is implemented in python?](https://i.ytimg.com/vi/IGLnxdmJu2c/mqdefault.jpg)](https://www.youtube.com/watch?v=IGLnxdmJu2c)
+
+If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
 
 
 

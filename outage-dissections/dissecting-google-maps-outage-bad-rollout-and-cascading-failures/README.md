@@ -40,10 +40,14 @@ Outline:
 
 Incident Report: https://issuetracker.google.com/issues/225361510
 
+Watch the video 👇‍
+
 [![Dissecting Google Maps Outage: Bad Rollout and Cascading Failures](https://i.ytimg.com/vi/6oJaZbQKnJE/mqdefault.jpg)](https://www.youtube.com/watch?v=6oJaZbQKnJE)
 
+If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
 
-# Notes
+
+## Notes
 
 The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/10yi5K2xluTA9d7RNrorDDKU_-Mi3uHKZ/view).
 

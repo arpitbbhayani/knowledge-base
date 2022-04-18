@@ -26,7 +26,11 @@ https://arpitbhayani.me/blogs/super-long-integers
 
 The Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.
 
+Watch the video 👇‍
+
 [![How python optimizes integers?](https://i.ytimg.com/vi/6mhXGEXRXG0/mqdefault.jpg)](https://www.youtube.com/watch?v=6mhXGEXRXG0)
+
+If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
 
 
 

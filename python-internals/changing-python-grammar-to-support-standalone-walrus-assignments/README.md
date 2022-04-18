@@ -21,7 +21,11 @@ Link to the article: https://arpitbhayani.me/blogs/the-weird-walrus
 
 The Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.
 
+Watch the video 👇‍
+
 [![Changing python grammar to support standalone walrus assignments](https://i.ytimg.com/vi/rWb7VYz1q1U/mqdefault.jpg)](https://www.youtube.com/watch?v=rWb7VYz1q1U)
+
+If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
 
 
 

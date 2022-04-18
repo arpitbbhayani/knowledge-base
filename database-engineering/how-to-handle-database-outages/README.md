@@ -34,10 +34,14 @@ Outline:
  - 09:46 Short-term solutions to get your DB up
  - 17:33 Long-term solutions to fix the database
 
+Watch the video 👇‍
+
 [![How to handle database outages?](https://i.ytimg.com/vi/UT_TVldzA64/mqdefault.jpg)](https://www.youtube.com/watch?v=UT_TVldzA64)
 
+If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
 
-# Notes
+
+## Notes
 
 The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/1Q6YokLBvmfW1Tw1mpndOfx-I2NyRGVG0/view).
 

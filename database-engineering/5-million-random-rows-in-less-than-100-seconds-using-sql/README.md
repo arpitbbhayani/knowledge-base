@@ -8,7 +8,11 @@ In this video, we generate 5 million + random rows in less than 100 seconds usin
 
 Link to the gist: https://gist.github.com/arpitbbhayani/96a42c28d134871ebc11faad272b5349
 
+Watch the video 👇‍
+
 [![5 million + random rows in less than 100 seconds using SQL](https://i.ytimg.com/vi/x1XmcuosZNk/mqdefault.jpg)](https://www.youtube.com/watch?v=x1XmcuosZNk)
+
+If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
 
 
 

@@ -49,10 +49,14 @@ Outline:
  - 19:55 No inconsistent data - Atomicity
  - 24:14 Code walkthrough
 
+Watch the video 👇‍
+
 [![Implementing Distributed Transactions using Two Phase Commit Protocol](https://i.ytimg.com/vi/oMhESvU87jM/mqdefault.jpg)](https://www.youtube.com/watch?v=oMhESvU87jM)
 
+If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
 
-# Notes
+
+## Notes
 
 The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/18q2ELr9n6GCemKbJ0aS7q7NyF7wX1kL9/view).
 

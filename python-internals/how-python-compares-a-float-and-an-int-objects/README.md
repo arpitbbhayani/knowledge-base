@@ -21,7 +21,11 @@ Chapters:
 
 The Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.
 
+Watch the video 👇‍
+
 [![How python compares a float and an int objects?](https://i.ytimg.com/vi/u4tfIy--4GM/mqdefault.jpg)](https://www.youtube.com/watch?v=u4tfIy--4GM)
+
+If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
 
 
 

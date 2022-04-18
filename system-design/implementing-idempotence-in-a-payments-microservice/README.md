@@ -45,10 +45,14 @@ Outline:
  - 07:18 Implementation Approach 1: Do not retry
  - 09:45 Implementation Approach 1: Check and Update
 
+Watch the video 👇‍
+
 [![Implementing Idempotence in a Payments Microservice](https://i.ytimg.com/vi/m6DtqSb1BDM/mqdefault.jpg)](https://www.youtube.com/watch?v=m6DtqSb1BDM)
 
+If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
 
-# Notes
+
+## Notes
 
 The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/1Zyt8qN11IiAZJKrdan4wi1c5J6n_eAyU/view).
 

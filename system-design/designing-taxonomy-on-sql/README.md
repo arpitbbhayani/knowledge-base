@@ -21,7 +21,11 @@ Chapters:
  - 31:52 Fun exercise to explore SQL
  - 33:55 What next in System Design
 
+Watch the video 👇‍
+
 [![Designing Taxonomy on SQL](https://i.ytimg.com/vi/4_jlmX_oB94/mqdefault.jpg)](https://www.youtube.com/watch?v=4_jlmX_oB94)
+
+If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
 
 
 

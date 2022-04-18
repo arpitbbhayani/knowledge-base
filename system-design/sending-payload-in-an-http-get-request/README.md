@@ -35,10 +35,14 @@ Outline:
  - 07:18 ElasticSearch using request payload for search
  - 10:40 When to use HTTP request payload in a GET request
 
+Watch the video 👇‍
+
 [![Sending payload in an HTTP GET request](https://i.ytimg.com/vi/8S4k7k_f9Sk/mqdefault.jpg)](https://www.youtube.com/watch?v=8S4k7k_f9Sk)
 
+If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
 
-# Notes
+
+## Notes
 
 The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/1JwVEh9EG0ZGts-VePXNlIE1e8kivdHbM/view).
 

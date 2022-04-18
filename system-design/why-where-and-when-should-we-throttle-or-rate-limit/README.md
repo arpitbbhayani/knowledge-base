@@ -16,7 +16,11 @@ Outline:
  - 15:42 Usecase 4: Not overusing an expensive vendor
  - 16:48 Usecase 5: Streamlining deletes to protect an unprotected database
 
+Watch the video 👇‍
+
 [![Why, where, and when should we throttle or rate limit?](https://i.ytimg.com/vi/CW4gVlU0xtU/mqdefault.jpg)](https://www.youtube.com/watch?v=CW4gVlU0xtU)
+
+If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
 
 
 

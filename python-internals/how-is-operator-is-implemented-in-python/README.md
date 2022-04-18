@@ -16,7 +16,11 @@ short circuit evaluations in python: https://www.youtube.com/watch?v=zz2Lu5ht_jA
 
 The Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.
 
+Watch the video 👇‍
+
 [![How "is" operator is implemented in python?](https://i.ytimg.com/vi/Q8luYnxiFFE/mqdefault.jpg)](https://www.youtube.com/watch?v=Q8luYnxiFFE)
+
+If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
 
 
 

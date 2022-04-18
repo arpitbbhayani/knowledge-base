@@ -12,7 +12,11 @@ Outline:
  - 07:27 The Incremental MVP Approach to System Design
  - 09:47 Key Pointers to remember during System Design
 
+Watch the video 👇‍
+
 [![How to approach System Design?](https://i.ytimg.com/vi/1r9bPisYaOQ/mqdefault.jpg)](https://www.youtube.com/watch?v=1r9bPisYaOQ)
+
+If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
 
 
 

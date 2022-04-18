@@ -49,10 +49,14 @@ References:
  - https://dev.mysql.com/doc/refman/8.0/en/example-auto-increment.html
  - https://www.linkedin.com/pulse/so-you-hit-2147483647-heath-dutton-/
 
+Watch the video 👇‍
+
 [![Dissecting GitHub Outage: ID column reaching the max value 2147483647](https://i.ytimg.com/vi/ZFRAFTn0cQ0/mqdefault.jpg)](https://www.youtube.com/watch?v=ZFRAFTn0cQ0)
 
+If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
 
-# Notes
+
+## Notes
 
 The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/13rNEWXwIdNkNcP2gSQQvBF8czUBpF47y/view).
 

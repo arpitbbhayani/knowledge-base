@@ -23,7 +23,11 @@ Outline:
 
 Outage Report: https://www.atlassian.com/engineering/april-2022-outage-update
 
+Watch the video 👇‍
+
 [![An engineering deep-dive into Atlassian's Mega Outage of April 2022](https://i.ytimg.com/vi/xa-hMF8gku0/mqdefault.jpg)](https://www.youtube.com/watch?v=xa-hMF8gku0)
+
+If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
 
 
 

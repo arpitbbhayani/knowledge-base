@@ -42,10 +42,14 @@ Outline:
 Related Videos:
 How indexes make a database read faster: https://www.youtube.com/watch?v=3G293is403I
 
+Watch the video 👇‍
+
 [![How does the database guarantee reliability using write-ahead logging?](https://i.ytimg.com/vi/wI4hKwl1Cn4/mqdefault.jpg)](https://www.youtube.com/watch?v=wI4hKwl1Cn4)
 
+If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
 
-# Notes
+
+## Notes
 
 The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/1VC77CEEYLvlFaXpKsb3Q_e0JvbbryyU0/view).
 

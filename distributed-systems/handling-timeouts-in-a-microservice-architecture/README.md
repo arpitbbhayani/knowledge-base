@@ -35,10 +35,14 @@ Outline:
  - 16:36 Approach 4: Retry only when needed
  - 20:06 Approach 5: Rearchitect and remove synchronous dependency
 
+Watch the video 👇‍
+
 [![Handling timeouts in a microservice architecture](https://i.ytimg.com/vi/Hxja4crycBg/mqdefault.jpg)](https://www.youtube.com/watch?v=Hxja4crycBg)
 
+If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
 
-# Notes
+
+## Notes
 
 The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/1GjObZ3xpLFxDEOO3EGRCj0Pq8bWLixjU/view).
 

@@ -37,10 +37,14 @@ Outline:
  - 10:00 Basics of Database Indexes
  - 13:24 Evaluating a simple query with index
 
+Watch the video 👇‍
+
 [![How do indexes make databases read faster?](https://i.ytimg.com/vi/3G293is403I/mqdefault.jpg)](https://www.youtube.com/watch?v=3G293is403I)
 
+If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
 
-# Notes
+
+## Notes
 
 The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/1wDDOc3rdsZIdZEEe50E_61wi-1iMHu2G/view).
 

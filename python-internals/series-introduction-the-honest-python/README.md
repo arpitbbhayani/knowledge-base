@@ -14,7 +14,11 @@ We will find answers to questions like
 
 If this sounds exciting, hop along with me on this journey and give a subscription to this channel.
 
+Watch the video 👇‍
+
 [![Series Introduction: The Honest Python](https://i.ytimg.com/vi/E-3J8X5DulY/mqdefault.jpg)](https://www.youtube.com/watch?v=E-3J8X5DulY)
+
+If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
 
 
 

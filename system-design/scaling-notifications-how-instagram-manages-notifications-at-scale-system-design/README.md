@@ -5,7 +5,11 @@ Scaling Notifications | How Instagram manages notifications at scale? | System D
 
 This video is a snippet from my System Design Masterclass and in it, we are discussing How Instagram Scales its notification systems. The primary challenge of such a system is doing a real fast fanout and we discuss how to do this very efficiently.
 
+Watch the video 👇‍
+
 [![Scaling Notifications | How Instagram manages notifications at scale? | System Design](https://i.ytimg.com/vi/kIP8L-CSl2Y/mqdefault.jpg)](https://www.youtube.com/watch?v=kIP8L-CSl2Y)
+
+If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
 
 
 

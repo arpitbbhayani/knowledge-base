@@ -8,7 +8,11 @@ In this video, we set up CPython, build our binary, and make our first "Hello, W
 CPython Github Repository: https://github.com/python/cpython/
 CPython Setup Guide: https://devguide.python.org/setup/
 
+Watch the video 👇‍
+
 [![Setting up cpython locally and making your first change](https://i.ytimg.com/vi/k5isLG6vqss/mqdefault.jpg)](https://www.youtube.com/watch?v=k5isLG6vqss)
+
+If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
 
 
 

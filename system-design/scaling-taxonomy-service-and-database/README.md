@@ -15,7 +15,11 @@ Outline:
  - 7:20 Join my System Design Course
  - 7:57 Like, Share, and Subscribe
 
+Watch the video 👇‍
+
 [![Scaling Taxonomy Service and Database](https://i.ytimg.com/vi/dTPh3KcKPYo/mqdefault.jpg)](https://www.youtube.com/watch?v=dTPh3KcKPYo)
+
+If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
 
 
 

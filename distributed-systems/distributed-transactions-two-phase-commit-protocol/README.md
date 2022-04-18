@@ -42,10 +42,14 @@ Outline:
  - 06:47 Two-Phase Commit Protocol for Distributed Transactions
  - 18:29 Advantages and Disadvantages of Two-Phase Commit
 
+Watch the video 👇‍
+
 [![Distributed Transactions: Two-Phase Commit Protocol](https://i.ytimg.com/vi/7FgU1D4EnpQ/mqdefault.jpg)](https://www.youtube.com/watch?v=7FgU1D4EnpQ)
 
+If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
 
-# Notes
+
+## Notes
 
 The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/18WDFAstffIe_vGbtTz_CS117XhvDcBx3/view).
 

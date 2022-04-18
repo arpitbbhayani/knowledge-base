@@ -36,10 +36,14 @@ Outline:
  - 06:35 Popular Embedded Databases
  - 10:39 Applications of Embedded Databases
 
+Watch the video 👇‍
+
 [![What are Embedded Databases?](https://i.ytimg.com/vi/xELqRiovEcI/mqdefault.jpg)](https://www.youtube.com/watch?v=xELqRiovEcI)
 
+If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
 
-# Notes
+
+## Notes
 
 The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/1_iXh0rCmGVZJj5CLWP7gJ4YzAP-yIiGb/view).
 
