@@ -6,11 +6,11 @@ How to approach System Design?
 System Design is tricky but it does not have to be difficult - be it a technical discussion at your workplace or your next big interview. In this video, I share the two approaches that I have been using to design scalable systems in the last 10 years of my career. I will also share the 3 key pointers to remember while designing any system that would help you keep your discussion crisp and focused.
 
 Outline:
-00:00 Introduction
-02:41 What is System Design?
-06:02 The Spiral Approach to System Design
-07:27 The Incremental MVP Approach to System Design
-09:47 Key Pointers to remember during System Design
+ - 00:00 Introduction
+ - 02:41 What is System Design?
+ - 06:02 The Spiral Approach to System Design
+ - 07:27 The Incremental MVP Approach to System Design
+ - 09:47 Key Pointers to remember during System Design
 
 [![How to approach System Design?](https://i.ytimg.com/vi/1r9bPisYaOQ/mqdefault.jpg)](https://www.youtube.com/watch?v=1r9bPisYaOQ)
 

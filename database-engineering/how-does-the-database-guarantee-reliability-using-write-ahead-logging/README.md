@@ -35,11 +35,11 @@ Any persistent database needs to guarantee reliability. No matter how big or sma
 In this video, we talk about write-ahead logging, how it ensures reliability, a few solid advantages of using it, one of them being a massive database performance boost, and how the log files are structured on the disk.
 
 Outline:
-00:00 What happens on Commit
-05:57 Write-ahead Logging
-08:44 Advantages of having a Write-ahead Logging
-14:29 Data Integrity in WAL files
-16:40 Write-ahead Logging Internals
+ - 00:00 What happens on Commit
+ - 05:57 Write-ahead Logging
+ - 08:44 Advantages of having a Write-ahead Logging
+ - 14:29 Data Integrity in WAL files
+ - 16:40 Write-ahead Logging Internals
 
 Related Videos:
 How indexes make a database read faster: https://www.youtube.com/watch?v=3G293is403I

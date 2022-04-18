@@ -37,12 +37,12 @@ GitHub experience an outage on 5th May 2020 on a few of their internal services 
 
 Outline:
 
-00:00 Outage walkthrough
-02:48 Mimicking the situation locally
-10:13 MySQL AUTO_INCREMENT behavior
-12:37 Preventive measures
-14:25 Approach 1 for mitigating the issue
-18:40 Approach 2 for mitigating the issue
+ - 00:00 Outage walkthrough
+ - 02:48 Mimicking the situation locally
+ - 10:13 MySQL AUTO_INCREMENT behavior
+ - 12:37 Preventive measures
+ - 14:25 Approach 1 for mitigating the issue
+ - 18:40 Approach 2 for mitigating the issue
 
 References:
  - https://github.com/arpitbbhayani/mysql-maxint

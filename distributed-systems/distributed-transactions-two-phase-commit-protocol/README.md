@@ -39,10 +39,10 @@ In this video, we discuss and take a detailed look into Distributed Transactions
 
 Outline:
 
-00:00 Why Distributed Transactions
-03:44 Atomicity in Distributed Transactions
-06:47 Two-Phase Commit Protocol for Distributed Transactions
-18:29 Advantages and Disadvantages of Two-Phase Commit
+ - 00:00 Why Distributed Transactions
+ - 03:44 Atomicity in Distributed Transactions
+ - 06:47 Two-Phase Commit Protocol for Distributed Transactions
+ - 18:29 Advantages and Disadvantages of Two-Phase Commit
 
 [![Distributed Transactions: Two-Phase Commit Protocol](https://i.ytimg.com/vi/7FgU1D4EnpQ/mqdefault.jpg)](https://www.youtube.com/watch?v=7FgU1D4EnpQ)
 

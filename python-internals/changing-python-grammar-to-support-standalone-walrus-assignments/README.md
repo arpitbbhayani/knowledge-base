@@ -8,12 +8,12 @@ In this video, we alter the Python grammar and make an invalid syntax valid. We 
 This video would pave way for budding Python developers to understand CPython internals.
 
 Chapters:
-0:00 What is a walrus operator?
-1:20 Building a toy shell to understand Walrus
-6:27 A non-intuitive behavior
-8:15 Going through the grammar
-14:25 Altering the Walrus behavior
-16:55 Understanding why it worked
+ - 0:00 What is a walrus operator?
+ - 1:20 Building a toy shell to understand Walrus
+ - 6:27 A non-intuitive behavior
+ - 8:15 Going through the grammar
+ - 14:25 Altering the Walrus behavior
+ - 16:55 Understanding why it worked
 
 Link to the article: https://arpitbhayani.me/blogs/the-weird-walrus
 

@@ -41,11 +41,11 @@ This video looks at idempotence, why there is even a need for it, and, more impo
 
 Outline:
 
-00:00 What is Idempotence?
-02:32 Examples where Idempotence is relevant
-04:06 Why do we even need to retry?
-07:18 Implementation Approach 1: Do not retry
-09:45 Implementation Approach 1: Check and Update
+ - 00:00 What is Idempotence?
+ - 02:32 Examples where Idempotence is relevant
+ - 04:06 Why do we even need to retry?
+ - 07:18 Implementation Approach 1: Do not retry
+ - 09:45 Implementation Approach 1: Check and Update
 
 [![Implementing Idempotence in a Payments Microservice](https://i.ytimg.com/vi/m6DtqSb1BDM/mqdefault.jpg)](https://www.youtube.com/watch?v=m6DtqSb1BDM)
 

@@ -34,11 +34,11 @@ In this video, we dissect the Google Maps outage and understand what actually ha
 
 Outline:
 
-00:00 Introducing the outage and impact
-02:07 Root cause
-08:36 Cascading Failures
-12:22 Remediation
-13:45 Preventive measures
+ - 00:00 Introducing the outage and impact
+ - 02:07 Root cause
+ - 08:36 Cascading Failures
+ - 12:22 Remediation
+ - 13:45 Preventive measures
 
 Incident Report: https://issuetracker.google.com/issues/225361510
 

@@ -37,9 +37,9 @@ Microservices are great, and the overall microservices-based architecture has so
 
 Outline:
 
-00:00 What are microservices?
-01:53 Key advantages of adopting a microservices-based architecture
-09:48 How to fence a microservice?
+ - 00:00 What are microservices?
+ - 01:53 Key advantages of adopting a microservices-based architecture
+ - 09:48 How to fence a microservice?
 
 [![Advantages of adopting a microservices-based architecture](https://i.ytimg.com/vi/JPj6mhVLQN0/mqdefault.jpg)](https://www.youtube.com/watch?v=JPj6mhVLQN0)
 

@@ -44,12 +44,12 @@ Previously, we built a theoretical foundation of Distributed Transaction using t
 
 Outline:
 
-00:00 Revising the Two-Phase Commit
-07:35 Designing Database Schema
-11:40 Defining API Endpoints
-12:24 High-Level Architecture and Request Flow
-19:55 No inconsistent data - Atomicity
-24:14 Code walkthrough
+ - 00:00 Revising the Two-Phase Commit
+ - 07:35 Designing Database Schema
+ - 11:40 Defining API Endpoints
+ - 12:24 High-Level Architecture and Request Flow
+ - 19:55 No inconsistent data - Atomicity
+ - 24:14 Code walkthrough
 
 [![Implementing Distributed Transactions using Two Phase Commit Protocol](https://i.ytimg.com/vi/oMhESvU87jM/mqdefault.jpg)](https://www.youtube.com/watch?v=oMhESvU87jM)
 

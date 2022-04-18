@@ -9,12 +9,12 @@ How python internally performs the comparison of a float and an integer value? W
 Comparing a float to an int is a fascinating problem, especially for Python. Comparing numbers involve comparing magnitudes across different types; plus things become even more complex considering Python supports infinitely long number.
 
 Chapters:
-0:00 Introduction to number comparison
+ - 0:00 Introduction to number comparison
 
-1:14 Disassembling the code
-2:00 Understanding COMPARE_OP
-2:54 Exploring RichCompare
-7:16 Understanding the core logic
+ - 1:14 Disassembling the code
+ - 2:00 Understanding COMPARE_OP
+ - 2:54 Exploring RichCompare
+ - 7:16 Understanding the core logic
 
 
 # The Honest Python

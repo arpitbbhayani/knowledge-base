@@ -7,13 +7,13 @@ In this video, we do the high-level design of Udemy's Taxonomy Service and see h
 
 Outline:
 
-0:00 Recap Taxonomy DB Design
-0:57 Bird's eye view
-2:30 Within the Taxonomy Service
-3:50 Scaling the relational database
-5:32 High-Level Architecture
-7:20 Join my System Design Course
-7:57 Like, Share, and Subscribe
+ - 0:00 Recap Taxonomy DB Design
+ - 0:57 Bird's eye view
+ - 2:30 Within the Taxonomy Service
+ - 3:50 Scaling the relational database
+ - 5:32 High-Level Architecture
+ - 7:20 Join my System Design Course
+ - 7:57 Like, Share, and Subscribe
 
 [![Scaling Taxonomy Service and Database](https://i.ytimg.com/vi/dTPh3KcKPYo/mqdefault.jpg)](https://www.youtube.com/watch?v=dTPh3KcKPYo)
 

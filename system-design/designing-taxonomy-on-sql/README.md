@@ -8,18 +8,18 @@ In this video, we design the Taxonomy of Udemy on top of a SQL-based Relational 
 Link to the article: https://arpitbhayani.me/blogs/udemy-sql-taxonomy
 
 Chapters:
-0:00 Udemy's Taxonomy
-1:40 A bad Database Design for Taxonomy
-3:29 Good Database Design for Taxonomy
-7:34 Is Relational DB a good choice to store taxonomy?
-13:04 Deciding Indexes
-15:26 Get topic by ID
-15:56 Get topic path
-23:00 Get child-topics
-25:05 Get Top Taxonomy in Single Query
-31:05 Summarizing Indexes
-31:52 Fun exercise to explore SQL
-33:55 What next in System Design
+ - 0:00 Udemy's Taxonomy
+ - 1:40 A bad Database Design for Taxonomy
+ - 3:29 Good Database Design for Taxonomy
+ - 7:34 Is Relational DB a good choice to store taxonomy?
+ - 13:04 Deciding Indexes
+ - 15:26 Get topic by ID
+ - 15:56 Get topic path
+ - 23:00 Get child-topics
+ - 25:05 Get Top Taxonomy in Single Query
+ - 31:05 Summarizing Indexes
+ - 31:52 Fun exercise to explore SQL
+ - 33:55 What next in System Design
 
 [![Designing Taxonomy on SQL](https://i.ytimg.com/vi/4_jlmX_oB94/mqdefault.jpg)](https://www.youtube.com/watch?v=4_jlmX_oB94)
 

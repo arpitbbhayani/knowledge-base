@@ -11,12 +11,12 @@ Code changes we made in the video: https://github.com/arpitbbhayani/cpython/pull
 
 
 Chapters:
-0:00 What is String Interning?
-4:26 Tracing CPython function that interns strings
-5:36 Going through the PyUnicode_InternInPlace function
-18:45 Interned state stored in strings
-21:10 Interning does not work on all strings
-25:22 The catch with interning
+ - 0:00 What is String Interning?
+ - 4:26 Tracing CPython function that interns strings
+ - 5:36 Going through the PyUnicode_InternInPlace function
+ - 18:45 Interned state stored in strings
+ - 21:10 Interning does not work on all strings
+ - 25:22 The catch with interning
 
 # The Honest Python
 

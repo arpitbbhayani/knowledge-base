@@ -11,15 +11,15 @@ Disclaimer: I do not have any insider information about this and the views are p
 
 Outline:
 
-00:00 Impact of the outage
-03:56 Insight 1: Incremental Backup Strategy
-06:38 Why did the Atlassian outage happen?
-07:30 Insight 2: Progressive Rollout Strategy
-10:57 Insight 3: Soft Deletes vs Hard Deletes
-14:28 Insight 4: Synchronous Replication for High Availability
-17:47 Insight 5: Immutable backups for point-in-time recovery
-21:04 Insight 6: Nearly multi-tenant architecture
-23:30 Why is it taking time for Atlassian to recover the deleted data?
+ - 00:00 Impact of the outage
+ - 03:56 Insight 1: Incremental Backup Strategy
+ - 06:38 Why did the Atlassian outage happen?
+ - 07:30 Insight 2: Progressive Rollout Strategy
+ - 10:57 Insight 3: Soft Deletes vs Hard Deletes
+ - 14:28 Insight 4: Synchronous Replication for High Availability
+ - 17:47 Insight 5: Immutable backups for point-in-time recovery
+ - 21:04 Insight 6: Nearly multi-tenant architecture
+ - 23:30 Why is it taking time for Atlassian to recover the deleted data?
 
 Outage Report: https://www.atlassian.com/engineering/april-2022-outage-update
 

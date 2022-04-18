@@ -7,14 +7,14 @@ In this video, we answer, How python optimizes integers? Does it cache them? We 
 
 
 Chapters:
-0:00 Introduction to integer optimization
-1:59 Going through the CPython code and tracing the function
-2:41 Going through PyLong_FromLong
-3:39 Understanding IS_SMALL_INT
-5:13 Understanding get_small_int
-8:47 How Python initializes the cache of integers?
-12:07 Where all Python is reusing small integers?
-14:45 Why Python caches integers?
+ - 0:00 Introduction to integer optimization
+ - 1:59 Going through the CPython code and tracing the function
+ - 2:41 Going through PyLong_FromLong
+ - 3:39 Understanding IS_SMALL_INT
+ - 5:13 Understanding get_small_int
+ - 8:47 How Python initializes the cache of integers?
+ - 12:07 Where all Python is reusing small integers?
+ - 14:45 Why Python caches integers?
 
 
 Link to essays and articles:

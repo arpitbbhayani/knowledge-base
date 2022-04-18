@@ -32,12 +32,12 @@ In this video, we discuss how indexes make a database operate faster. While disc
 
 Outline:
 
-00:00 How is a table stored on the disk?
-03:14 Reading bytes from the disk
-05:21 Reading the entire table from the disk
-08:33 Evaluating a simple query without an index
-10:00 Basics of Database Indexes
-13:24 Evaluating a simple query with index
+ - 00:00 How is a table stored on the disk?
+ - 03:14 Reading bytes from the disk
+ - 05:21 Reading the entire table from the disk
+ - 08:33 Evaluating a simple query without an index
+ - 10:00 Basics of Database Indexes
+ - 13:24 Evaluating a simple query with index
 
 [![How do indexes make databases read faster?](https://i.ytimg.com/vi/3G293is403I/mqdefault.jpg)](https://www.youtube.com/watch?v=3G293is403I)
 

@@ -31,11 +31,11 @@ In this video, we go through the HTTP 1.1 specification and see what it says abo
 
 Outline:
 
-00:00 HTTP GET Request
-01:53 What does HTTP 1.1 specification say?
-05:38 Request payload in Python Flask
-07:18 ElasticSearch using request payload for search
-10:40 When to use HTTP request payload in a GET request
+ - 00:00 HTTP GET Request
+ - 01:53 What does HTTP 1.1 specification say?
+ - 05:38 Request payload in Python Flask
+ - 07:18 ElasticSearch using request payload for search
+ - 10:40 When to use HTTP request payload in a GET request
 
 [![Sending payload in an HTTP GET request](https://i.ytimg.com/vi/8S4k7k_f9Sk/mqdefault.jpg)](https://www.youtube.com/watch?v=8S4k7k_f9Sk)
 

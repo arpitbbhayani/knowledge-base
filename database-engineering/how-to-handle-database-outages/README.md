@@ -31,10 +31,10 @@ In this video, we talk about why a database goes down, what happens when the dat
 
 Outline:
 
-00:00 Why a database goes down?
-06:10 What happens when a DB is down?
-09:46 Short-term solutions to get your DB up
-17:33 Long-term solutions to fix the database
+ - 00:00 Why a database goes down?
+ - 06:10 What happens when a DB is down?
+ - 09:46 Short-term solutions to get your DB up
+ - 17:33 Long-term solutions to fix the database
 
 [![How to handle database outages?](https://i.ytimg.com/vi/UT_TVldzA64/mqdefault.jpg)](https://www.youtube.com/watch?v=UT_TVldzA64)
 
