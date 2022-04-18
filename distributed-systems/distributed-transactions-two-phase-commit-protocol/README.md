@@ -1,18 +1,6 @@
 Distributed Transactions: Two-Phase Commit Protocol
 ===
 
-Distributed Transactions are tough and intimidating. It is hard to guarantee atomicity across microservices given the network delays, resource contention, and unreliable services.
-
-In this video, we discuss and take a detailed look into Distributed Transactions, understand why they are needed with a real-world example of Zomato's 10-minute food delivery, and build our understanding of the workings of the Two-Phase Commit protocol.
-
-Outline:
-
-00:00 Why Distributed Transactions
-03:44 Atomicity in Distributed Transactions
-06:47 Two-Phase Commit Protocol for Distributed Transactions
-18:29 Advantages and Disadvantages of Two-Phase Commit
-
-[![Distributed Transactions: Two-Phase Commit Protocol](https://i.ytimg.com/vi/7FgU1D4EnpQ/mqdefault.jpg)](https://www.youtube.com/watch?v=7FgU1D4EnpQ)
 
 # Gist
 
@@ -44,9 +32,25 @@ We retry a few times if any of the assignments fail (which could happen only if 
 
 The order is placed only after the food item, and the delivery agent is assigned to the order.
 
+
+Distributed Transactions are tough and intimidating. It is hard to guarantee atomicity across microservices given the network delays, resource contention, and unreliable services.
+
+In this video, we discuss and take a detailed look into Distributed Transactions, understand why they are needed with a real-world example of Zomato's 10-minute food delivery, and build our understanding of the workings of the Two-Phase Commit protocol.
+
+Outline:
+
+00:00 Why Distributed Transactions
+03:44 Atomicity in Distributed Transactions
+06:47 Two-Phase Commit Protocol for Distributed Transactions
+18:29 Advantages and Disadvantages of Two-Phase Commit
+
+[![Distributed Transactions: Two-Phase Commit Protocol](https://i.ytimg.com/vi/7FgU1D4EnpQ/mqdefault.jpg)](https://www.youtube.com/watch?v=7FgU1D4EnpQ)
+
+
 # Notes
 
 The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/18WDFAstffIe_vGbtTz_CS117XhvDcBx3/view).
+
 
 # Arpit's System Design Masterclass
 

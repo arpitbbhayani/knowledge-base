@@ -1,6 +1,8 @@
 How python compares a float and an int objects?
 ===
 
+
+
 How python internally performs the comparison of a float and an integer value? We find this out in this video.
 
 
@@ -21,13 +23,7 @@ The Honest Python is a series in which we dissect certain features, behaviors, a
 
 [![How python compares a float and an int objects?](https://i.ytimg.com/vi/u4tfIy--4GM/mqdefault.jpg)](https://www.youtube.com/watch?v=u4tfIy--4GM)
 
-# Gist
 
-None
-
-# Notes
-
-The notes used in the video is can be found in the current folder and on [Google Drive](None).
 
 # Arpit's System Design Masterclass
 

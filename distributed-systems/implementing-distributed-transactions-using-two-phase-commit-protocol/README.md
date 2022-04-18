@@ -1,18 +1,6 @@
 Implementing Distributed Transactions using Two Phase Commit Protocol
 ===
 
-Previously, we built a theoretical foundation of Distributed Transaction using the Two-Phase Commit protocol. In this video, we implement the Distributed Transaction locally and mimic the food delivery system locally. While implementing we understand how to make the individual operations atomic and the entire distributed transaction atomic. We address resource contention while guaranteeing a consistent user experience.
-
-Outline:
-
-00:00 Revising the Two-Phase Commit
-07:35 Designing Database Schema
-11:40 Defining API Endpoints
-12:24 High-Level Architecture and Request Flow
-19:55 No inconsistent data - Atomicity
-24:14 Code walkthrough
-
-[![Implementing Distributed Transactions using Two Phase Commit Protocol](https://i.ytimg.com/vi/oMhESvU87jM/mqdefault.jpg)](https://www.youtube.com/watch?v=oMhESvU87jM)
 
 # Gist
 
@@ -51,9 +39,25 @@ Negative cases:
 
 Thus, in any case, an end-user will never experience a moment where we say that the order is placed, but it cannot be fulfilled in the backend.
 
+
+Previously, we built a theoretical foundation of Distributed Transaction using the Two-Phase Commit protocol. In this video, we implement the Distributed Transaction locally and mimic the food delivery system locally. While implementing we understand how to make the individual operations atomic and the entire distributed transaction atomic. We address resource contention while guaranteeing a consistent user experience.
+
+Outline:
+
+00:00 Revising the Two-Phase Commit
+07:35 Designing Database Schema
+11:40 Defining API Endpoints
+12:24 High-Level Architecture and Request Flow
+19:55 No inconsistent data - Atomicity
+24:14 Code walkthrough
+
+[![Implementing Distributed Transactions using Two Phase Commit Protocol](https://i.ytimg.com/vi/oMhESvU87jM/mqdefault.jpg)](https://www.youtube.com/watch?v=oMhESvU87jM)
+
+
 # Notes
 
 The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/18q2ELr9n6GCemKbJ0aS7q7NyF7wX1kL9/view).
+
 
 # Arpit's System Design Masterclass
 

@@ -1,6 +1,8 @@
 Series Introduction: The Honest Python
 ===
 
+
+
 The Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.
 
 We will find answers to questions like
@@ -14,13 +16,7 @@ If this sounds exciting, hop along with me on this journey and give a subscripti
 
 [![Series Introduction: The Honest Python](https://i.ytimg.com/vi/E-3J8X5DulY/mqdefault.jpg)](https://www.youtube.com/watch?v=E-3J8X5DulY)
 
-# Gist
 
-None
-
-# Notes
-
-The notes used in the video is can be found in the current folder and on [Google Drive](None).
 
 # Arpit's System Design Masterclass
 

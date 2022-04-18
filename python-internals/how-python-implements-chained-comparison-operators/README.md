@@ -1,6 +1,8 @@
 How python implements chained comparison operators?
 ===
 
+
+
 In this essay, we explore how python evaluates chained comparison operators. We dive deep into the code and answer the following questions
 
 - how Python evaluates chained comparison operators?
@@ -31,13 +33,7 @@ The Honest Python is a series in which we dissect certain features, behaviors, a
 
 [![How python implements chained comparison operators?](https://i.ytimg.com/vi/zz2Lu5ht_jA/mqdefault.jpg)](https://www.youtube.com/watch?v=zz2Lu5ht_jA)
 
-# Gist
 
-None
-
-# Notes
-
-The notes used in the video is can be found in the current folder and on [Google Drive](None).
 
 # Arpit's System Design Masterclass
 

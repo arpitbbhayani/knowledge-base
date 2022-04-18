@@ -1,6 +1,8 @@
 Setting up cpython locally and making your first change
 ===
 
+
+
 In this video, we set up CPython, build our binary, and make our first "Hello, World!" change.
 
 CPython Github Repository: https://github.com/python/cpython/
@@ -8,13 +10,7 @@ CPython Setup Guide: https://devguide.python.org/setup/
 
 [![Setting up cpython locally and making your first change](https://i.ytimg.com/vi/k5isLG6vqss/mqdefault.jpg)](https://www.youtube.com/watch?v=k5isLG6vqss)
 
-# Gist
 
-None
-
-# Notes
-
-The notes used in the video is can be found in the current folder and on [Google Drive](None).
 
 # Arpit's System Design Masterclass
 

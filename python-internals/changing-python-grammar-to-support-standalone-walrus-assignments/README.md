@@ -1,6 +1,8 @@
 Changing python grammar to support standalone walrus assignments
 ===
 
+
+
 In this video, we alter the Python grammar and make an invalid syntax valid. We alter grammar and allow the Walrus operator to be executed as a standalone statement similar to how the usual assignment statement works. 
 
 This video would pave way for budding Python developers to understand CPython internals.
@@ -21,13 +23,7 @@ The Honest Python is a series in which we dissect certain features, behaviors, a
 
 [![Changing python grammar to support standalone walrus assignments](https://i.ytimg.com/vi/rWb7VYz1q1U/mqdefault.jpg)](https://www.youtube.com/watch?v=rWb7VYz1q1U)
 
-# Gist
 
-None
-
-# Notes
-
-The notes used in the video is can be found in the current folder and on [Google Drive](None).
 
 # Arpit's System Design Masterclass
 

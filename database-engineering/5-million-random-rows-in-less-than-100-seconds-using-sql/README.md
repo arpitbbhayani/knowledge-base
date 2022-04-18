@@ -1,6 +1,8 @@
 5 million + random rows in less than 100 seconds using SQL
 ===
 
+
+
 In this video, we generate 5 million + random rows in less than 100 seconds using just SQL. We mock the data for any taxonomy (Udemy's example taken). We use Joins and SQL tricks to amplify the rows and use them to ingest.
 
 
@@ -8,13 +10,7 @@ Link to the gist: https://gist.github.com/arpitbbhayani/96a42c28d134871ebc11faad
 
 [![5 million + random rows in less than 100 seconds using SQL](https://i.ytimg.com/vi/x1XmcuosZNk/mqdefault.jpg)](https://www.youtube.com/watch?v=x1XmcuosZNk)
 
-# Gist
 
-None
-
-# Notes
-
-The notes used in the video is can be found in the current folder and on [Google Drive](None).
 
 # Arpit's System Design Masterclass
 

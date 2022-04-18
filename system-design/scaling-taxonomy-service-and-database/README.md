@@ -1,6 +1,8 @@
 Scaling Taxonomy Service and Database
 ===
 
+
+
 In this video, we do the high-level design of Udemy's Taxonomy Service and see how to scale databases in general.
 
 Outline:
@@ -15,13 +17,7 @@ Outline:
 
 [![Scaling Taxonomy Service and Database](https://i.ytimg.com/vi/dTPh3KcKPYo/mqdefault.jpg)](https://www.youtube.com/watch?v=dTPh3KcKPYo)
 
-# Gist
 
-None
-
-# Notes
-
-The notes used in the video is can be found in the current folder and on [Google Drive](None).
 
 # Arpit's System Design Masterclass
 

@@ -1,15 +1,6 @@
 Advantages of adopting a microservices-based architecture
 ===
 
-Microservices are great, and the overall microservices-based architecture has some key advantages. In this video, we talk about what are microservices, the key advantages of using a microservices-based architecture, and understand how to fence service and define its set of responsibilities.
-
-Outline:
-
-00:00 What are microservices?
-01:53 Key advantages of adopting a microservices-based architecture
-09:48 How to fence a microservice?
-
-[![Advantages of adopting a microservices-based architecture](https://i.ytimg.com/vi/JPj6mhVLQN0/mqdefault.jpg)](https://www.youtube.com/watch?v=JPj6mhVLQN0)
 
 # Gist
 
@@ -41,9 +32,22 @@ If one microservice is down, it may lead to a partial outage of the product affe
 
 So long as a microservice adheres to the API contract, the team that owns it can upgrade the tech stack, architecture, and DB seamlessly.
 
+
+Microservices are great, and the overall microservices-based architecture has some key advantages. In this video, we talk about what are microservices, the key advantages of using a microservices-based architecture, and understand how to fence service and define its set of responsibilities.
+
+Outline:
+
+00:00 What are microservices?
+01:53 Key advantages of adopting a microservices-based architecture
+09:48 How to fence a microservice?
+
+[![Advantages of adopting a microservices-based architecture](https://i.ytimg.com/vi/JPj6mhVLQN0/mqdefault.jpg)](https://www.youtube.com/watch?v=JPj6mhVLQN0)
+
+
 # Notes
 
 The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/1lK2e3me09VNz51DWDunI5xDmlgLnOvfC/view).
+
 
 # Arpit's System Design Masterclass
 

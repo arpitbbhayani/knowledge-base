@@ -1,25 +1,6 @@
 Dissecting GitHub Outage: ID column reaching the max value 2147483647
 ===
 
-GitHub experience an outage on 5th May 2020 on a few of their internal services and it happened because a table had an auto-incrementing integer ID and the column reached its maximum value possible 2147483647. In this video, we dissect what happened, mimic the situation locally and see what could have happened, and look at possible ways to mitigate and prevent a situation like this.
-
-Outline:
-
-00:00 Outage walkthrough
-02:48 Mimicking the situation locally
-10:13 MySQL AUTO_INCREMENT behavior
-12:37 Preventive measures
-14:25 Approach 1 for mitigating the issue
-18:40 Approach 2 for mitigating the issue
-
-References:
- - https://github.com/arpitbbhayani/mysql-maxint
- - https://github.blog/2020-07-08-introducing-the-github-availability-report/
- - https://dev.mysql.com/doc/refman/8.0/en/integer-types.html
- - https://dev.mysql.com/doc/refman/8.0/en/example-auto-increment.html
- - https://www.linkedin.com/pulse/so-you-hit-2147483647-heath-dutton-/
-
-[![Dissecting GitHub Outage: ID column reaching the max value 2147483647](https://i.ytimg.com/vi/ZFRAFTn0cQ0/mqdefault.jpg)](https://www.youtube.com/watch?v=ZFRAFTn0cQ0)
 
 # Gist
 
@@ -51,9 +32,32 @@ The idea here is to create an empty table with the same schema but a larger ID r
 
 Although mitigation is great, it is better to place a monitoring system that raises an alert when the ID reaches 70% of its range. So, write a simple DB monitoring service that periodically checks this by firing a query on the database.
 
+
+GitHub experience an outage on 5th May 2020 on a few of their internal services and it happened because a table had an auto-incrementing integer ID and the column reached its maximum value possible 2147483647. In this video, we dissect what happened, mimic the situation locally and see what could have happened, and look at possible ways to mitigate and prevent a situation like this.
+
+Outline:
+
+00:00 Outage walkthrough
+02:48 Mimicking the situation locally
+10:13 MySQL AUTO_INCREMENT behavior
+12:37 Preventive measures
+14:25 Approach 1 for mitigating the issue
+18:40 Approach 2 for mitigating the issue
+
+References:
+ - https://github.com/arpitbbhayani/mysql-maxint
+ - https://github.blog/2020-07-08-introducing-the-github-availability-report/
+ - https://dev.mysql.com/doc/refman/8.0/en/integer-types.html
+ - https://dev.mysql.com/doc/refman/8.0/en/example-auto-increment.html
+ - https://www.linkedin.com/pulse/so-you-hit-2147483647-heath-dutton-/
+
+[![Dissecting GitHub Outage: ID column reaching the max value 2147483647](https://i.ytimg.com/vi/ZFRAFTn0cQ0/mqdefault.jpg)](https://www.youtube.com/watch?v=ZFRAFTn0cQ0)
+
+
 # Notes
 
 The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/13rNEWXwIdNkNcP2gSQQvBF8czUBpF47y/view).
+
 
 # Arpit's System Design Masterclass
 

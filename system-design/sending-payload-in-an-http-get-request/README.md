@@ -1,19 +1,6 @@
 Sending payload in an HTTP GET request
 ===
 
-Can we send data in an HTTP GET request? Most people think, No. The truth is, we can send the data in the request payload of an HTTP GET request so long as our webserver can understand it.
-
-In this video, we go through the HTTP 1.1 specification and see what it says about the GET requests, write a simple Flask application to see that we can indeed process the payload of a GET request if we want to, and, more importantly, go through a real-world example where it was essential to send data in the request payload.
-
-Outline:
-
-00:00 HTTP GET Request
-01:53 What does HTTP 1.1 specification say?
-05:38 Request payload in Python Flask
-07:18 ElasticSearch using request payload for search
-10:40 When to use HTTP request payload in a GET request
-
-[![Sending payload in an HTTP GET request](https://i.ytimg.com/vi/8S4k7k_f9Sk/mqdefault.jpg)](https://www.youtube.com/watch?v=8S4k7k_f9Sk)
 
 # Gist
 
@@ -37,9 +24,26 @@ Yes. ElasticSearch - one of the most popular search utilities, uses this convent
 
 The search endpoint of ElasticSearch is a GET endpoint where the complex search queries in JSON format are sent in the request payload.
 
+
+Can we send data in an HTTP GET request? Most people think, No. The truth is, we can send the data in the request payload of an HTTP GET request so long as our webserver can understand it.
+
+In this video, we go through the HTTP 1.1 specification and see what it says about the GET requests, write a simple Flask application to see that we can indeed process the payload of a GET request if we want to, and, more importantly, go through a real-world example where it was essential to send data in the request payload.
+
+Outline:
+
+00:00 HTTP GET Request
+01:53 What does HTTP 1.1 specification say?
+05:38 Request payload in Python Flask
+07:18 ElasticSearch using request payload for search
+10:40 When to use HTTP request payload in a GET request
+
+[![Sending payload in an HTTP GET request](https://i.ytimg.com/vi/8S4k7k_f9Sk/mqdefault.jpg)](https://www.youtube.com/watch?v=8S4k7k_f9Sk)
+
+
 # Notes
 
 The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/1JwVEh9EG0ZGts-VePXNlIE1e8kivdHbM/view).
+
 
 # Arpit's System Design Masterclass
 

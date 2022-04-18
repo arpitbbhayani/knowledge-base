@@ -1,21 +1,6 @@
 Dissecting Google Maps Outage: Bad Rollout and Cascading Failures
 ===
 
-Google Maps had a global outage on 18th March 2022, during which the end-users were not able to use Directions, Navigation, or Google Maps in general. The outage happened because of a bad rollout, and it lasted more than 2 hours 30 minutes. During the outage, users complained to have seen Gray tiles implying that the map/direction was neither getting initialized nor working.
-
-In this video, we dissect the Google Maps outage and understand what actually happened, how they mitigated it, and, more importantly, understand ways to prevent such an outage and build a robust way of handling cascading failures.
-
-Outline:
-
-00:00 Introducing the outage and impact
-02:07 Root cause
-08:36 Cascading Failures
-12:22 Remediation
-13:45 Preventive measures
-
-Incident Report: https://issuetracker.google.com/issues/225361510
-
-[![Dissecting Google Maps Outage: Bad Rollout and Cascading Failures](https://i.ytimg.com/vi/6oJaZbQKnJE/mqdefault.jpg)](https://www.youtube.com/watch?v=6oJaZbQKnJE)
 
 # Gist
 
@@ -42,9 +27,28 @@ Rollback as soon as possible.
  - Monitor the server resource consumption and set alerts
  - Add circuit breakers wherever possible.
 
+
+Google Maps had a global outage on 18th March 2022, during which the end-users were not able to use Directions, Navigation, or Google Maps in general. The outage happened because of a bad rollout, and it lasted more than 2 hours 30 minutes. During the outage, users complained to have seen Gray tiles implying that the map/direction was neither getting initialized nor working.
+
+In this video, we dissect the Google Maps outage and understand what actually happened, how they mitigated it, and, more importantly, understand ways to prevent such an outage and build a robust way of handling cascading failures.
+
+Outline:
+
+00:00 Introducing the outage and impact
+02:07 Root cause
+08:36 Cascading Failures
+12:22 Remediation
+13:45 Preventive measures
+
+Incident Report: https://issuetracker.google.com/issues/225361510
+
+[![Dissecting Google Maps Outage: Bad Rollout and Cascading Failures](https://i.ytimg.com/vi/6oJaZbQKnJE/mqdefault.jpg)](https://www.youtube.com/watch?v=6oJaZbQKnJE)
+
+
 # Notes
 
 The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/10yi5K2xluTA9d7RNrorDDKU_-Mi3uHKZ/view).
+
 
 # Arpit's System Design Masterclass
 

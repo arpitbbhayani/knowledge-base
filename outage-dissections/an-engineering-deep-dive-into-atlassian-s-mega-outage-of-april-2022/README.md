@@ -1,6 +1,8 @@
 An engineering deep-dive into Atlassian's Mega Outage of April 2022
 ===
 
+
+
 In April 2022, Atlassian suffered a major outage where they "permanently" deleted the data for 400 of their paying cloud customers, and will take them weeks to recover the data. In this video, we will do an engineering deep dive into this outage trying to understand their engineering systems and practices.
 
 We extract 6 key insights into how their engineering systems are built, their backup and restoration strategies, and most importantly why is it taking them so long to recover the data.
@@ -23,13 +25,7 @@ Outage Report: https://www.atlassian.com/engineering/april-2022-outage-update
 
 [![An engineering deep-dive into Atlassian's Mega Outage of April 2022](https://i.ytimg.com/vi/xa-hMF8gku0/mqdefault.jpg)](https://www.youtube.com/watch?v=xa-hMF8gku0)
 
-# Gist
 
-None
-
-# Notes
-
-The notes used in the video is can be found in the current folder and on [Google Drive](None).
 
 # Arpit's System Design Masterclass
 

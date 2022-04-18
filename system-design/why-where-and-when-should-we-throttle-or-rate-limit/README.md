@@ -1,6 +1,8 @@
 Why, where, and when should we throttle or rate limit?
 ===
 
+
+
 It is a common belief that a rate limiter is always external and is designed to prevent our systems from being abused by the external world, but this is not true. In this video, we understand what throttling is, why we need it in the first place and 5 use cases where external and internal rate limiters are super useful.
 
 Outline:
@@ -16,13 +18,7 @@ Outline:
 
 [![Why, where, and when should we throttle or rate limit?](https://i.ytimg.com/vi/CW4gVlU0xtU/mqdefault.jpg)](https://www.youtube.com/watch?v=CW4gVlU0xtU)
 
-# Gist
 
-None
-
-# Notes
-
-The notes used in the video is can be found in the current folder and on [Google Drive](None).
 
 # Arpit's System Design Masterclass
 

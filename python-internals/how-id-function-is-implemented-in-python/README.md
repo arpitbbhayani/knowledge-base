@@ -1,6 +1,8 @@
 How id() function is implemented in python?
 ===
 
+
+
 How is `id` function implemented in Python?
 
 In this video, we explore the internals of `id` function in Python and find out how it is actually implemented.
@@ -13,13 +15,7 @@ The Honest Python is a series in which we dissect certain features, behaviors, a
 
 [![How id() function is implemented in python?](https://i.ytimg.com/vi/IGLnxdmJu2c/mqdefault.jpg)](https://www.youtube.com/watch?v=IGLnxdmJu2c)
 
-# Gist
 
-None
-
-# Notes
-
-The notes used in the video is can be found in the current folder and on [Google Drive](None).
 
 # Arpit's System Design Masterclass
 

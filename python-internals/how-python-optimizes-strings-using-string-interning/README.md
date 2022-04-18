@@ -1,6 +1,8 @@
 How python optimizes strings using String Interning?
 ===
 
+
+
 In this video, we dive deep into CPython and find out how Python optimizes strings. The optimization we will be going through is called String Interning which is like caching the strings - using the same reference and not creating a new instance every time.
 
 
@@ -22,13 +24,7 @@ The Honest Python is a series in which we dissect certain features, behaviors, a
 
 [![How python optimizes strings using String Interning?](https://i.ytimg.com/vi/QpGK69LzfpY/mqdefault.jpg)](https://www.youtube.com/watch?v=QpGK69LzfpY)
 
-# Gist
 
-None
-
-# Notes
-
-The notes used in the video is can be found in the current folder and on [Google Drive](None).
 
 # Arpit's System Design Masterclass
 

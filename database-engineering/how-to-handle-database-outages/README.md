@@ -1,16 +1,6 @@
 How to handle database outages?
 ===
 
-In this video, we talk about why a database goes down, what happens when the database is down, a few short-term solutions to minimize the downtime, and a few long-term solutions that you should be doing to ensure that your database does not go down again.
-
-Outline:
-
-00:00 Why a database goes down?
-06:10 What happens when a DB is down?
-09:46 Short-term solutions to get your DB up
-17:33 Long-term solutions to fix the database
-
-[![How to handle database outages?](https://i.ytimg.com/vi/UT_TVldzA64/mqdefault.jpg)](https://www.youtube.com/watch?v=UT_TVldzA64)
 
 # Gist
 
@@ -36,9 +26,23 @@ Before jumping to the potential short-term and long-term solutions, ensure you m
 - Upgrade the database version to get the best that DB can offer
 - Evaluate the need for Horizontal scaling using Replicas and Sharding
 
+
+In this video, we talk about why a database goes down, what happens when the database is down, a few short-term solutions to minimize the downtime, and a few long-term solutions that you should be doing to ensure that your database does not go down again.
+
+Outline:
+
+00:00 Why a database goes down?
+06:10 What happens when a DB is down?
+09:46 Short-term solutions to get your DB up
+17:33 Long-term solutions to fix the database
+
+[![How to handle database outages?](https://i.ytimg.com/vi/UT_TVldzA64/mqdefault.jpg)](https://www.youtube.com/watch?v=UT_TVldzA64)
+
+
 # Notes
 
 The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/1Q6YokLBvmfW1Tw1mpndOfx-I2NyRGVG0/view).
+
 
 # Arpit's System Design Masterclass
 

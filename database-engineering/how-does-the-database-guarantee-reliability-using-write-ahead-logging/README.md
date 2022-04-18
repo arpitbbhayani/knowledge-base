@@ -1,21 +1,6 @@
 How does the database guarantee reliability using write-ahead logging?
 ===
 
-Any persistent database needs to guarantee reliability. No matter how big or small the changes are, they should survive any reboots, OS, or hardware crashes once they are committed. All the persistent databases use a write-ahead logging technique to guarantee such reliability while not affecting the performance.
-
-In this video, we talk about write-ahead logging, how it ensures reliability, a few solid advantages of using it, one of them being a massive database performance boost, and how the log files are structured on the disk.
-
-Outline:
-00:00 What happens on Commit
-05:57 Write-ahead Logging
-08:44 Advantages of having a Write-ahead Logging
-14:29 Data Integrity in WAL files
-16:40 Write-ahead Logging Internals
-
-Related Videos:
-How indexes make a database read faster: https://www.youtube.com/watch?v=3G293is403I
-
-[![How does the database guarantee reliability using write-ahead logging?](https://i.ytimg.com/vi/wI4hKwl1Cn4/mqdefault.jpg)](https://www.youtube.com/watch?v=wI4hKwl1Cn4)
 
 # Gist
 
@@ -44,9 +29,28 @@ An operation like Update Query, Delete Query is logged in the commit log and not
 
 WAL also takes care of its data integrity by writing a CRC-32 before logging the operation. This CRC is checked during reading and replicating.
 
+
+Any persistent database needs to guarantee reliability. No matter how big or small the changes are, they should survive any reboots, OS, or hardware crashes once they are committed. All the persistent databases use a write-ahead logging technique to guarantee such reliability while not affecting the performance.
+
+In this video, we talk about write-ahead logging, how it ensures reliability, a few solid advantages of using it, one of them being a massive database performance boost, and how the log files are structured on the disk.
+
+Outline:
+00:00 What happens on Commit
+05:57 Write-ahead Logging
+08:44 Advantages of having a Write-ahead Logging
+14:29 Data Integrity in WAL files
+16:40 Write-ahead Logging Internals
+
+Related Videos:
+How indexes make a database read faster: https://www.youtube.com/watch?v=3G293is403I
+
+[![How does the database guarantee reliability using write-ahead logging?](https://i.ytimg.com/vi/wI4hKwl1Cn4/mqdefault.jpg)](https://www.youtube.com/watch?v=wI4hKwl1Cn4)
+
+
 # Notes
 
 The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/1VC77CEEYLvlFaXpKsb3Q_e0JvbbryyU0/view).
+
 
 # Arpit's System Design Masterclass
 

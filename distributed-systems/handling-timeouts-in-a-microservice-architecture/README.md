@@ -1,19 +1,6 @@
 Handling timeouts in a microservice architecture
 ===
 
-Handling timeout well is extremely critical as it makes your distributed system robust and ensures you provide a consistent user experience by adhering to SLA guarantees. In this video, we discover how a synchronous dependency on a microservice leads to long delays becoming a big problem, understand how timeout addresses the concern, and discuss 5 approaches to handle service timeouts.
-
-Outline:
-00:00 Why is handling timeout critical?
-01:13 Synchronous communication and timeouts
-05:39 A rule of thumb: Timeout
-07:52 Approach 1: Ignore the timeout
-10:28 Approach 2: Configure and use defaults
-11:27 Approach 3: Retry when timeout
-16:36 Approach 4: Retry only when needed
-20:06 Approach 5: Rearchitect and remove synchronous dependency
-
-[![Handling timeouts in a microservice architecture](https://i.ytimg.com/vi/Hxja4crycBg/mqdefault.jpg)](https://www.youtube.com/watch?v=Hxja4crycBg)
 
 # Gist
 
@@ -37,9 +24,26 @@ Approach 3: Retry the request
 Approach 4: Retry only when needed
 Approach 5: Re-architect and make synchronous dependency an async one
 
+
+Handling timeout well is extremely critical as it makes your distributed system robust and ensures you provide a consistent user experience by adhering to SLA guarantees. In this video, we discover how a synchronous dependency on a microservice leads to long delays becoming a big problem, understand how timeout addresses the concern, and discuss 5 approaches to handle service timeouts.
+
+Outline:
+00:00 Why is handling timeout critical?
+01:13 Synchronous communication and timeouts
+05:39 A rule of thumb: Timeout
+07:52 Approach 1: Ignore the timeout
+10:28 Approach 2: Configure and use defaults
+11:27 Approach 3: Retry when timeout
+16:36 Approach 4: Retry only when needed
+20:06 Approach 5: Rearchitect and remove synchronous dependency
+
+[![Handling timeouts in a microservice architecture](https://i.ytimg.com/vi/Hxja4crycBg/mqdefault.jpg)](https://www.youtube.com/watch?v=Hxja4crycBg)
+
+
 # Notes
 
 The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/1GjObZ3xpLFxDEOO3EGRCj0Pq8bWLixjU/view).
+
 
 # Arpit's System Design Masterclass
 

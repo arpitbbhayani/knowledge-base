@@ -1,6 +1,8 @@
 How to approach System Design?
 ===
 
+
+
 System Design is tricky but it does not have to be difficult - be it a technical discussion at your workplace or your next big interview. In this video, I share the two approaches that I have been using to design scalable systems in the last 10 years of my career. I will also share the 3 key pointers to remember while designing any system that would help you keep your discussion crisp and focused.
 
 Outline:
@@ -12,13 +14,7 @@ Outline:
 
 [![How to approach System Design?](https://i.ytimg.com/vi/1r9bPisYaOQ/mqdefault.jpg)](https://www.youtube.com/watch?v=1r9bPisYaOQ)
 
-# Gist
 
-None
-
-# Notes
-
-The notes used in the video is can be found in the current folder and on [Google Drive](None).
 
 # Arpit's System Design Masterclass
 

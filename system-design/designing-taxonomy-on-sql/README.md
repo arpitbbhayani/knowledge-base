@@ -1,6 +1,8 @@
 Designing Taxonomy on SQL
 ===
 
+
+
 In this video, we design the Taxonomy of Udemy on top of a SQL-based Relational DB. We learn how to model any taxonomy on relational DB, why to choose SQL over NoSQL, designing the schema, deciding Indexes, and writing very interesting SQL queries.
 
 Link to the article: https://arpitbhayani.me/blogs/udemy-sql-taxonomy
@@ -21,13 +23,7 @@ Chapters:
 
 [![Designing Taxonomy on SQL](https://i.ytimg.com/vi/4_jlmX_oB94/mqdefault.jpg)](https://www.youtube.com/watch?v=4_jlmX_oB94)
 
-# Gist
 
-None
-
-# Notes
-
-The notes used in the video is can be found in the current folder and on [Google Drive](None).
 
 # Arpit's System Design Masterclass
 

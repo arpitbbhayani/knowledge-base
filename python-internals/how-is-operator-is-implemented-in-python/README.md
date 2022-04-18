@@ -1,6 +1,8 @@
 How "is" operator is implemented in python?
 ===
 
+
+
 In this video, we find out the internals of "is" operator in Python. We go through the CPython source code and answer how it efficiently implements the "is" operator.
 
 
@@ -16,13 +18,7 @@ The Honest Python is a series in which we dissect certain features, behaviors, a
 
 [![How "is" operator is implemented in python?](https://i.ytimg.com/vi/Q8luYnxiFFE/mqdefault.jpg)](https://www.youtube.com/watch?v=Q8luYnxiFFE)
 
-# Gist
 
-None
-
-# Notes
-
-The notes used in the video is can be found in the current folder and on [Google Drive](None).
 
 # Arpit's System Design Masterclass
 

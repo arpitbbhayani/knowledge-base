@@ -1,18 +1,6 @@
 How do indexes make databases read faster?
 ===
 
-In this video, we discuss how indexes make a database operate faster. While discussing that, we dive deep into how the data is read from the disk, how indexes are structured, serialized, and stored on the disk, and finally, how exactly data is quickly read using the right set of indexes.
-
-Outline:
-
-00:00 How is a table stored on the disk?
-03:14 Reading bytes from the disk
-05:21 Reading the entire table from the disk
-08:33 Evaluating a simple query without an index
-10:00 Basics of Database Indexes
-13:24 Evaluating a simple query with index
-
-[![How do indexes make databases read faster?](https://i.ytimg.com/vi/3G293is403I/mqdefault.jpg)](https://www.youtube.com/watch?v=3G293is403I)
 
 # Gist
 
@@ -39,9 +27,25 @@ In our example, it comes out to be 2 + 2 = 4 block reads. So, we get an 8x boost
   
 Note: This is a very crude example of how fetch happens with indexes; there are a lot of optimizations that I have not talked about.  
 
+
+In this video, we discuss how indexes make a database operate faster. While discussing that, we dive deep into how the data is read from the disk, how indexes are structured, serialized, and stored on the disk, and finally, how exactly data is quickly read using the right set of indexes.
+
+Outline:
+
+00:00 How is a table stored on the disk?
+03:14 Reading bytes from the disk
+05:21 Reading the entire table from the disk
+08:33 Evaluating a simple query without an index
+10:00 Basics of Database Indexes
+13:24 Evaluating a simple query with index
+
+[![How do indexes make databases read faster?](https://i.ytimg.com/vi/3G293is403I/mqdefault.jpg)](https://www.youtube.com/watch?v=3G293is403I)
+
+
 # Notes
 
 The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/1wDDOc3rdsZIdZEEe50E_61wi-1iMHu2G/view).
+
 
 # Arpit's System Design Masterclass
 

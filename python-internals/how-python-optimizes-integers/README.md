@@ -1,6 +1,8 @@
 How python optimizes integers?
 ===
 
+
+
 In this video, we answer, How python optimizes integers? Does it cache them? We go through the CPython source code to find out the exact internals of it.
 
 
@@ -26,13 +28,7 @@ The Honest Python is a series in which we dissect certain features, behaviors, a
 
 [![How python optimizes integers?](https://i.ytimg.com/vi/6mhXGEXRXG0/mqdefault.jpg)](https://www.youtube.com/watch?v=6mhXGEXRXG0)
 
-# Gist
 
-None
-
-# Notes
-
-The notes used in the video is can be found in the current folder and on [Google Drive](None).
 
 # Arpit's System Design Masterclass
 
