@@ -2,8 +2,6 @@ What are Embedded Databases?
 ===
 
 
-# Gist
-
 What are Embedded Databases?
 
 Traditional databases like MySQL, Postgres, MongoDB run on their server on a specific port. Anyone who wants to talk to the database can directly connect and talk.

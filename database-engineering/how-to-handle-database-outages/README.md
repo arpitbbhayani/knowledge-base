@@ -2,8 +2,6 @@ How to handle database outages?
 ===
 
 
-# Gist
-
 How to handle database outages?
 
 Why a database goes down?

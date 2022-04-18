@@ -2,8 +2,6 @@ How do indexes make databases read faster?
 ===
 
 
-# Gist
-
 How do indexes make databases read faster?
   
 The database is just a collection of records. These records are serialized and stored on the disk. The way the records are serialized and stored on the disk depends on the database engine.  

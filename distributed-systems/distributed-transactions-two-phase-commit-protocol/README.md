@@ -2,8 +2,6 @@ Distributed Transactions: Two-Phase Commit Protocol
 ===
 
 
-# Gist
-
 Distributed Transactions using Two-phase Commit 🔆
 
 Distributed Transactions are essential to have strong consistency in a distributed setup.

@@ -2,8 +2,6 @@ Dissecting Google Maps Outage: Bad Rollout and Cascading Failures
 ===
 
 
-# Gist
-
 Google Maps Outage Dissection
 
 On the 18th of March, 2022, Google Maps faced a major outage affecting millions of people for a couple of hours. The outage happened due to a bad deployment.

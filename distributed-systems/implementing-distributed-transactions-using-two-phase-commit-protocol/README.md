@@ -2,8 +2,6 @@ Implementing Distributed Transactions using Two Phase Commit Protocol
 ===
 
 
-# Gist
-
 Implementing Distributed Transactions ⚡
 
 Distributed Transactions are not theoretical; they are very well used in many systems. An example of it is 10-min food/grocery delivery.
