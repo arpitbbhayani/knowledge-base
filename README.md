@@ -12,10 +12,30 @@ By the way, if you do not know me, Hey 🙌‍, I am Arpit Bhayani a passionate 
 
 The few topics I like to talk about are
 
+
  - [System Design](https://arpitbhayani.me/system-design)
+
  - [Database Engineering](https://arpitbhayani.me/database-engineering)
- - [Distributed Systems](https://arpitbhayani.me/distributed-systems)
+
  - [Outage Dissections](https://arpitbhayani.me/outage-dissections)
+
+ - [Distributed Systems](https://arpitbhayani.me/distributed-systems)
+
  - [Python Internals](https://arpitbhayani.me/python-internals)
+
+
+5 recent videos I published on [YouTube](https://www.youtube.com/c/ArpitBhayani)
+
+
+ - [Why, where, and when should we throttle or rate limit?](https://youtube.com/watch?v=CW4gVlU0xtU)
+
+ - [An engineering deep-dive into Atlassian's Mega Outage of April 2022](https://youtube.com/watch?v=xa-hMF8gku0)
+
+ - [How to approach System Design?](https://youtube.com/watch?v=1r9bPisYaOQ)
+
+ - [Advantages of adopting a microservices-based architecture](https://youtube.com/watch?v=JPj6mhVLQN0)
+
+ - [Implementing Idempotence in a Payments Microservice](https://youtube.com/watch?v=m6DtqSb1BDM)
+
 
 You can find more about me on my website [arpitbhayani.me](arpitbhayani.me).
