@@ -2,7 +2,7 @@ Advantages of adopting a microservices-based architecture
 ===
 
 
-Why do companies adopt Microservices?🤔 
+Why Microservices?🤔 [ in a gist ]
 
 Microservices are small, autonomous, harmonic subsystems that work together to solve the bigger problem.
 
@@ -48,7 +48,7 @@ If you find this amusing, do like the video and subscribe to my [YT channel](asl
 
 ## Notes
 
-The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/1lK2e3me09VNz51DWDunI5xDmlgLnOvfC/view).
+The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/1lK2e3me09VNz51DWDunI5xDmlgLnOvfC/view?usp=sharing).
 
 
 # Arpit's System Design Masterclass

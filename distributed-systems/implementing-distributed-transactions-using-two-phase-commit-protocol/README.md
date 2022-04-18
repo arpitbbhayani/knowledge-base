@@ -2,7 +2,7 @@ Implementing Distributed Transactions using Two Phase Commit Protocol
 ===
 
 
-Implementing Distributed Transactions ⚡
+Implementing Distributed Transactions ⚡ [in a gist]
 
 Distributed Transactions are not theoretical; they are very well used in many systems. An example of it is 10-min food/grocery delivery.
 
@@ -58,7 +58,7 @@ If you find this amusing, do like the video and subscribe to my [YT channel](asl
 
 ## Notes
 
-The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/18q2ELr9n6GCemKbJ0aS7q7NyF7wX1kL9/view).
+The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/18q2ELr9n6GCemKbJ0aS7q7NyF7wX1kL9/view?usp=sharing).
 
 
 # Arpit's System Design Masterclass

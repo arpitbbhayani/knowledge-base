@@ -2,7 +2,7 @@ Sending payload in an HTTP GET request
 ===
 
 
-Can we send the payload in an HTTP GET request?
+Can we send the payload in an HTTP GET request? [ in a gist ]
 
 It is a common myth that we could not pass the request body in the HTTP GET request. HTTP 1.1 specification neither enforces nor suggests this behavior.
 
@@ -44,7 +44,7 @@ If you find this amusing, do like the video and subscribe to my [YT channel](asl
 
 ## Notes
 
-The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/1JwVEh9EG0ZGts-VePXNlIE1e8kivdHbM/view).
+The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/1JwVEh9EG0ZGts-VePXNlIE1e8kivdHbM/view?usp=sharing).
 
 
 # Arpit's System Design Masterclass

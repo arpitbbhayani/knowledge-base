@@ -1,55 +1,16 @@
-Dissecting Google Maps Outage: Bad Rollout and Cascading Failures
+Designing Notifications Service for Instagram
 ===
 
 
-Google Maps Outage Dissection [ in a gist ]
 
-On the 18th of March, 2022, Google Maps faced a major outage affecting millions of people for a couple of hours. The outage happened due to a bad deployment.
-
-Although a bad deployment does not sound too bad, the situation worsens when there are cascading failures if 3 services have a synchronous dependency, forming a chain-like A -> B -> C.
-
-If A goes down, it will have some impact on B, and if the impact is big enough, we might see B going down as well; and extending it, we might see C going down.
-
-This is exactly what happened in this Google Outage. Some services had a bad deployment, and they started crashing. Tile Rendering service depended on it, and the Tile rendering service went down because of retries.
-
-The Direction SDK, Navigation SDK directly invoked the Tile rendering service for rendering the maps, which didn't work, causing a big outage.
-
-✨ How to remediate a bad deployment?
-
-Rollback as soon as possible.
-
-✨ Preventing cascading outages
-
- - Reject requests when the server is exhausted
- - Tune the performance of the webserver and networking stack of the server
- - Monitor the server resource consumption and set alerts
- - Add circuit breakers wherever possible.
-
-
-Google Maps had a global outage on 18th March 2022, during which the end-users were not able to use Directions, Navigation, or Google Maps in general. The outage happened because of a bad rollout, and it lasted more than 2 hours 30 minutes. During the outage, users complained to have seen Gray tiles implying that the map/direction was neither getting initialized nor working.
-
-In this video, we dissect the Google Maps outage and understand what actually happened, how they mitigated it, and, more importantly, understand ways to prevent such an outage and build a robust way of handling cascading failures.
-
-Outline:
-
- - 00:00 Introducing the outage and impact
- - 02:07 Root cause
- - 08:36 Cascading Failures
- - 12:22 Remediation
- - 13:45 Preventive measures
-
-Incident Report: https://issuetracker.google.com/issues/225361510
+This video is a snippet from my System Design Masterclass and in it, we are discussing How Instagram Scales its notification systems. The primary challenge of such a system is doing a real fast fanout and we discuss how to do this very efficiently.
 
 Watch the video 👇‍
 
-[![Dissecting Google Maps Outage: Bad Rollout and Cascading Failures](https://i.ytimg.com/vi/6oJaZbQKnJE/mqdefault.jpg)](https://www.youtube.com/watch?v=6oJaZbQKnJE)
+[![Designing Notifications Service for Instagram](https://i.ytimg.com/vi/kIP8L-CSl2Y/mqdefault.jpg)](https://www.youtube.com/watch?v=kIP8L-CSl2Y)
 
 If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
 
-
-## Notes
-
-The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/10yi5K2xluTA9d7RNrorDDKU_-Mi3uHKZ/view?usp=sharing).
 
 
 # Arpit's System Design Masterclass

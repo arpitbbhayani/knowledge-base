@@ -1,4 +1,4 @@
-Distributed Transactions using Two-phase Commit 🔆
+Distributed Transactions using Two-phase Commit [in a gist] 🔆
 
 Distributed Transactions are essential to have strong consistency in a distributed setup.
 

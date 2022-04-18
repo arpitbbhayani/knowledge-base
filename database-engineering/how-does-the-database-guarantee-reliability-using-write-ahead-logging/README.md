@@ -2,7 +2,7 @@ How does the database guarantee reliability using write-ahead logging?
 ===
 
 
-How does the database guarantee reliability using write-ahead logging?
+How does the database guarantee reliability using write-ahead logging? [ in a gist ]
 
 Any persistence database needs to guarantee the reliability, implying that any update/delete fired on the database is reliably stored on the disk. The alterations on the data should not be affected by power loss, OS failure, or hardware failure.
 
@@ -51,7 +51,7 @@ If you find this amusing, do like the video and subscribe to my [YT channel](asl
 
 ## Notes
 
-The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/1VC77CEEYLvlFaXpKsb3Q_e0JvbbryyU0/view).
+The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/1VC77CEEYLvlFaXpKsb3Q_e0JvbbryyU0/view?usp=sharing).
 
 
 # Arpit's System Design Masterclass

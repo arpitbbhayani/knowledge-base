@@ -2,7 +2,7 @@ How to handle database outages?
 ===
 
 
-How to handle database outages?
+How to handle database outages? [ in a gist ]
 
 Why a database goes down?
 An unexpected heavy load on your database can lead to a process crash or a massive slowdown.
@@ -43,7 +43,7 @@ If you find this amusing, do like the video and subscribe to my [YT channel](asl
 
 ## Notes
 
-The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/1Q6YokLBvmfW1Tw1mpndOfx-I2NyRGVG0/view).
+The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/1Q6YokLBvmfW1Tw1mpndOfx-I2NyRGVG0/view?usp=sharing).
 
 
 # Arpit's System Design Masterclass

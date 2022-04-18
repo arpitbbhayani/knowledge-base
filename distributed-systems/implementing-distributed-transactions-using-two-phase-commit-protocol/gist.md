@@ -1,4 +1,4 @@
-Implementing Distributed Transactions ⚡
+Implementing Distributed Transactions ⚡ [in a gist]
 
 Distributed Transactions are not theoretical; they are very well used in many systems. An example of it is 10-min food/grocery delivery.
 

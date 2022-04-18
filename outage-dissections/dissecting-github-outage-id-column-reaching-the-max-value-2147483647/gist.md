@@ -1,4 +1,4 @@
-What happens when MySQL auto-incrementing ID hits its limit?
+What happens when MySQL auto-incrementing ID hits its limit? [ in a gist ]
 
 On the 5th of May, 2020, GitHub experienced an outage because of this very reason. One of their shared table having an auto-incrementing ID column hits its max limit. Let's see what could have been done in such a situation.
 

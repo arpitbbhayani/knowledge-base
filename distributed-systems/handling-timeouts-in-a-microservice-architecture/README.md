@@ -44,7 +44,7 @@ If you find this amusing, do like the video and subscribe to my [YT channel](asl
 
 ## Notes
 
-The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/1GjObZ3xpLFxDEOO3EGRCj0Pq8bWLixjU/view).
+The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/1GjObZ3xpLFxDEOO3EGRCj0Pq8bWLixjU/view?usp=sharing).
 
 
 # Arpit's System Design Masterclass

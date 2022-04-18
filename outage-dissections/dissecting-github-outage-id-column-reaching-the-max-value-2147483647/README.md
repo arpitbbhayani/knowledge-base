@@ -2,7 +2,7 @@ Dissecting GitHub Outage: ID column reaching the max value 2147483647
 ===
 
 
-What happens when MySQL auto-incrementing ID hits its limit?
+What happens when MySQL auto-incrementing ID hits its limit? [ in a gist ]
 
 On the 5th of May, 2020, GitHub experienced an outage because of this very reason. One of their shared table having an auto-incrementing ID column hits its max limit. Let's see what could have been done in such a situation.
 
@@ -58,7 +58,7 @@ If you find this amusing, do like the video and subscribe to my [YT channel](asl
 
 ## Notes
 
-The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/13rNEWXwIdNkNcP2gSQQvBF8czUBpF47y/view).
+The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/13rNEWXwIdNkNcP2gSQQvBF8czUBpF47y/view?usp=sharing).
 
 
 # Arpit's System Design Masterclass

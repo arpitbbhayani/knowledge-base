@@ -1,4 +1,4 @@
-How to handle database outages?
+How to handle database outages? [ in a gist ]
 
 Why a database goes down?
 An unexpected heavy load on your database can lead to a process crash or a massive slowdown.
