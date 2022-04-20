@@ -11,17 +11,17 @@ Scaling Taxonomy Service and Database
 
 [![Scaling Taxonomy Service and Database](https://i.ytimg.com/vi/dTPh3KcKPYo/mqdefault.jpg)](https://www.youtube.com/watch?v=dTPh3KcKPYo)
 
-In this video, we do the high-level design of Udemy's Taxonomy Service and see how to scale databases in general.
-
-Outline:
-
-0:00 Recap Taxonomy DB Design
-0:57 Bird's eye view
-2:30 Within the Taxonomy Service
-3:50 Scaling the relational database
-5:32 High-Level Architecture
-7:20 Join my System Design Course
-7:57 Like, Share, and Subscribe
+<p>In this video, we do the high-level design of Udemy's Taxonomy Service and see how to scale databases in general.</p>
+<p>Outline:</p>
+<ul>
+<li>0:00 Recap Taxonomy DB Design</li>
+<li>0:57 Bird's eye view</li>
+<li>2:30 Within the Taxonomy Service</li>
+<li>3:50 Scaling the relational database</li>
+<li>5:32 High-Level Architecture</li>
+<li>7:20 Join my System Design Course</li>
+<li>7:57 Like, Share, and Subscribe</li>
+</ul>
 
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)

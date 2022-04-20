@@ -6,33 +6,20 @@ Distributed Transactions: Two-Phase Commit Protocol
 </p>
 
 
-Distributed Transactions using Two-phase Commit [in a gist] 🔆
-
-Distributed Transactions are essential to have strong consistency in a distributed setup.
-
-An example could be as simple as a 10-min food/grocery delivery - where to guarantee a 10-min delivery, you can only accept orders when there are goods available in the dark store, and a delivery agent is available to deliver the goods.
-
-This is a classic case of Distributed Transaction where you need a guarantee of atomicity and consistency across two different services. In a distributed setup, we can achieve it using an algorithm called Two-phase Commit.
-
-The core idea of 2PC is: Split the transaction into two phases: Reservation and Assignment.
-
-✨ Phase 1: Reservation
-
-The Order service will first talk to store service to reserve food items and delivery service to reserve a delivery partner. When the food or delivery partner is reserved, they are not notified. By reserving them, we are just making them unavailable for everyone else.
-
-If the order service fails to reserve any of these, we roll back the reservation and abort the transaction informing the user that the order is not placed. Reservation comes with a timer, which means if we cannot assign a reserved food item to order in "n" minutes, we will be releasing the reservation, making them available for other transactions.
-
-We move forward to the Commit phase only when the order service reserves both - a food item and a delivery agent.
-
-✨ Phase 2: Commit
-
-In the Commit phase, the order services reach out to the store service and the delivery service to assign the food and agent to the order. Because the food and the agent were reserved, no other transaction could see it, and hence with a simple assignment, we can get the reserved food and agent assigned to an order.
-
-Upon this assignment, the store and the delivery agent are notified about the order and proceed with their respective duties.
-
-We retry a few times if any of the assignments fail (which could happen only if the service goes down). If we still cannot get the assignment done, we inform the user that the order cannot be placed.
-
-The order is placed only after the food item, and the delivery agent is assigned to the order.
+<p>Distributed Transactions using Two-phase Commit [in a gist] 🔆</p>
+<p>Distributed Transactions are essential to have strong consistency in a distributed setup.</p>
+<p>An example could be as simple as a 10-min food/grocery delivery - where to guarantee a 10-min delivery, you can only accept orders when there are goods available in the dark store, and a delivery agent is available to deliver the goods.</p>
+<p>This is a classic case of Distributed Transaction where you need a guarantee of atomicity and consistency across two different services. In a distributed setup, we can achieve it using an algorithm called Two-phase Commit.</p>
+<p>The core idea of 2PC is: Split the transaction into two phases: Reservation and Assignment.</p>
+<p>✨ Phase 1: Reservation</p>
+<p>The Order service will first talk to store service to reserve food items and delivery service to reserve a delivery partner. When the food or delivery partner is reserved, they are not notified. By reserving them, we are just making them unavailable for everyone else.</p>
+<p>If the order service fails to reserve any of these, we roll back the reservation and abort the transaction informing the user that the order is not placed. Reservation comes with a timer, which means if we cannot assign a reserved food item to order in "n" minutes, we will be releasing the reservation, making them available for other transactions.</p>
+<p>We move forward to the Commit phase only when the order service reserves both - a food item and a delivery agent.</p>
+<p>✨ Phase 2: Commit</p>
+<p>In the Commit phase, the order services reach out to the store service and the delivery service to assign the food and agent to the order. Because the food and the agent were reserved, no other transaction could see it, and hence with a simple assignment, we can get the reserved food and agent assigned to an order.</p>
+<p>Upon this assignment, the store and the delivery agent are notified about the order and proceed with their respective duties.</p>
+<p>We retry a few times if any of the assignments fail (which could happen only if the service goes down). If we still cannot get the assignment done, we inform the user that the order cannot be placed.</p>
+<p>The order is placed only after the food item, and the delivery agent is assigned to the order.</p>
 <hr />
 
 
@@ -40,16 +27,15 @@ The order is placed only after the food item, and the delivery agent is assigned
 
 [![Distributed Transactions: Two-Phase Commit Protocol](https://i.ytimg.com/vi/7FgU1D4EnpQ/mqdefault.jpg)](https://www.youtube.com/watch?v=7FgU1D4EnpQ)
 
-Distributed Transactions are tough and intimidating. It is hard to guarantee atomicity across microservices given the network delays, resource contention, and unreliable services.
-
-In this video, we discuss and take a detailed look into Distributed Transactions, understand why they are needed with a real-world example of Zomato's 10-minute food delivery, and build our understanding of the workings of the Two-Phase Commit protocol.
-
-Outline:
-
-00:00 Why Distributed Transactions
-03:44 Atomicity in Distributed Transactions
-06:47 Two-Phase Commit Protocol for Distributed Transactions
-18:29 Advantages and Disadvantages of Two-Phase Commit
+<p>Distributed Transactions are tough and intimidating. It is hard to guarantee atomicity across microservices given the network delays, resource contention, and unreliable services.</p>
+<p>In this video, we discuss and take a detailed look into Distributed Transactions, understand why they are needed with a real-world example of Zomato's 10-minute food delivery, and build our understanding of the workings of the Two-Phase Commit protocol.</p>
+<p>Outline:</p>
+<ul>
+<li>00:00 Why Distributed Transactions</li>
+<li>03:44 Atomicity in Distributed Transactions</li>
+<li>06:47 Two-Phase Commit Protocol for Distributed Transactions</li>
+<li>18:29 Advantages and Disadvantages of Two-Phase Commit</li>
+</ul>
 
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)

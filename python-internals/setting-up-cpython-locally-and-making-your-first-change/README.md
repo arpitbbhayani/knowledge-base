@@ -11,10 +11,9 @@ Setting up cpython locally and making your first change
 
 [![Setting up cpython locally and making your first change](https://i.ytimg.com/vi/k5isLG6vqss/mqdefault.jpg)](https://www.youtube.com/watch?v=k5isLG6vqss)
 
-In this video, we set up CPython, build our binary, and make our first "Hello, World!" change.
-
-CPython Github Repository: https://github.com/python/cpython/
-CPython Setup Guide: https://devguide.python.org/setup/
+<p>In this video, we set up CPython, build our binary, and make our first "Hello, World!" change.</p>
+<p>CPython Github Repository: https://github.com/python/cpython/
+CPython Setup Guide: https://devguide.python.org/setup/</p>
 
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)

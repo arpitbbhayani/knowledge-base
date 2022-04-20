@@ -6,33 +6,20 @@ Advantages of adopting a microservices-based architecture
 </p>
 
 
-Why Microservices?🤔 [ in a gist ]
-
-Microservices are small, autonomous, harmonic subsystems that work together to solve the bigger problem.
-
-The core idea of microservices is Divide and Conquer. We break the big problem into smaller sub-problems, and solve each of the sub-problem optimally, enabling us to solve the bigger problem well.
-
-Why Microservices?
-
-⚡ Codebase grows over time
-
-The product evolves and new features are added to it and that bloats up the codebase. It becomes difficult for multiple teams to coordinate and collaborate on a humungous codebase. One team breaking one module can take down the entire product.
-
-⚡ Scaling is predictable
-
-With microservices, scalability becomes predictable; you can linearly amplify the infrastructure requirements of individual microservices and be predictable in handling the load.
-
-⚡ Teams become autonomous
-
-With each team responsible for a set of microservices they can take charge of their tech stack and design decisions. These decisions will be best for their problem statement and can ensure that they are solving them the best way possible.
-
-⚡ Fault Tolerance
-
-If one microservice is down, it may lead to a partial outage of the product affecting a small fragment of the systems; while other components remain unaffected and can continue to service the traffic.
-
-⚡ Upgrades are simpler
-
-So long as a microservice adheres to the API contract, the team that owns it can upgrade the tech stack, architecture, and DB seamlessly.
+<p>Why Microservices?🤔 [ in a gist ]</p>
+<p>Microservices are small, autonomous, harmonic subsystems that work together to solve the bigger problem.</p>
+<p>The core idea of microservices is Divide and Conquer. We break the big problem into smaller sub-problems, and solve each of the sub-problem optimally, enabling us to solve the bigger problem well.</p>
+<p>Why Microservices?</p>
+<p>⚡ Codebase grows over time</p>
+<p>The product evolves and new features are added to it and that bloats up the codebase. It becomes difficult for multiple teams to coordinate and collaborate on a humungous codebase. One team breaking one module can take down the entire product.</p>
+<p>⚡ Scaling is predictable</p>
+<p>With microservices, scalability becomes predictable; you can linearly amplify the infrastructure requirements of individual microservices and be predictable in handling the load.</p>
+<p>⚡ Teams become autonomous</p>
+<p>With each team responsible for a set of microservices they can take charge of their tech stack and design decisions. These decisions will be best for their problem statement and can ensure that they are solving them the best way possible.</p>
+<p>⚡ Fault Tolerance</p>
+<p>If one microservice is down, it may lead to a partial outage of the product affecting a small fragment of the systems; while other components remain unaffected and can continue to service the traffic.</p>
+<p>⚡ Upgrades are simpler</p>
+<p>So long as a microservice adheres to the API contract, the team that owns it can upgrade the tech stack, architecture, and DB seamlessly.</p>
 <hr />
 
 
@@ -40,13 +27,13 @@ So long as a microservice adheres to the API contract, the team that owns it can
 
 [![Advantages of adopting a microservices-based architecture](https://i.ytimg.com/vi/JPj6mhVLQN0/mqdefault.jpg)](https://www.youtube.com/watch?v=JPj6mhVLQN0)
 
-Microservices are great, and the overall microservices-based architecture has some key advantages. In this video, we talk about what are microservices, the key advantages of using a microservices-based architecture, and understand how to fence service and define its set of responsibilities.
-
-Outline:
-
-00:00 What are microservices?
-01:53 Key advantages of adopting a microservices-based architecture
-09:48 How to fence a microservice?
+<p>Microservices are great, and the overall microservices-based architecture has some key advantages. In this video, we talk about what are microservices, the key advantages of using a microservices-based architecture, and understand how to fence service and define its set of responsibilities.</p>
+<p>Outline:</p>
+<ul>
+<li>00:00 What are microservices?</li>
+<li>01:53 Key advantages of adopting a microservices-based architecture</li>
+<li>09:48 How to fence a microservice?</li>
+</ul>
 
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)

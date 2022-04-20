@@ -11,18 +11,17 @@ How to scope a microservice?
 
 [![How to scope a microservice?](https://i.ytimg.com/vi/nfkdKHcKxbE/mqdefault.jpg)](https://www.youtube.com/watch?v=nfkdKHcKxbE)
 
-Microservices are extremely tempting and you will always feel like writing a new service for every problem at hand. You might build a service with very fine-grained responsibilities or you can build one that covers a big spectrum. So, what is the best approach? How should you decide?
-
-In this video, we talk about ways to model and scope a microservice such that the architecture remains robust and flexible; and to achieve this we use the two key guiding concepts - Loose Coupling and High Cohesion.
-
-Outline:
-
-00:00 What is the problem with Microservice?
-03:05 Why do we love building microservices?
-04:04 What happens if we do not scope our services well?
-05:52 Two key guiding principles to scope a microservice
-07:19 Loose Coupling
-12:15 High Cohesion
+<p>Microservices are extremely tempting and you will always feel like writing a new service for every problem at hand. You might build a service with very fine-grained responsibilities or you can build one that covers a big spectrum. So, what is the best approach? How should you decide?</p>
+<p>In this video, we talk about ways to model and scope a microservice such that the architecture remains robust and flexible; and to achieve this we use the two key guiding concepts - Loose Coupling and High Cohesion.</p>
+<p>Outline:</p>
+<ul>
+<li>00:00 What is the problem with Microservice?</li>
+<li>03:05 Why do we love building microservices?</li>
+<li>04:04 What happens if we do not scope our services well?</li>
+<li>05:52 Two key guiding principles to scope a microservice</li>
+<li>07:19 Loose Coupling</li>
+<li>12:15 High Cohesion</li>
+</ul>
 
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)

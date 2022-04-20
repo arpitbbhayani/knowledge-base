@@ -11,18 +11,17 @@ Why do programming languages need automatic garbage collection?
 
 [![Why do programming languages need automatic garbage collection?](https://i.ytimg.com/vi/jcMxuLZCcqU/mqdefault.jpg)](https://www.youtube.com/watch?v=jcMxuLZCcqU)
 
-We know how important Garbage Collection is for any programming language. So, today we explore why programming languages need automatic garbage collection in the first place?
-
-In this video, we understand - the basics of memory management, the need to allocate objects on the heap, the constructs of explicit deallocation, what happens when we do not do our garbage collection well, and why we need automatic garbage collection.
-
-Outline:
-
-00:00 Basics of Memory Management
-04:39 Why do we need heap allocations?
-06:59 Explicit Deallocation constructs
-09:26 Memory leak - when we do not delete an allocated object
-11:00 Dangling pointer - when we dereference an already freed object
-15:08 Why we need automatic garbage collection
+<p>We know how important Garbage Collection is for any programming language. So, today we explore why programming languages need automatic garbage collection in the first place?</p>
+<p>In this video, we understand - the basics of memory management, the need to allocate objects on the heap, the constructs of explicit deallocation, what happens when we do not do our garbage collection well, and why we need automatic garbage collection.</p>
+<p>Outline:</p>
+<ul>
+<li>00:00 Basics of Memory Management</li>
+<li>04:39 Why do we need heap allocations?</li>
+<li>06:59 Explicit Deallocation constructs</li>
+<li>09:26 Memory leak - when we do not delete an allocated object</li>
+<li>11:00 Dangling pointer - when we dereference an already freed object</li>
+<li>15:08 Why we need automatic garbage collection</li>
+</ul>
 
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)

@@ -11,18 +11,12 @@ How "is" operator is implemented in python?
 
 [![How "is" operator is implemented in python?](https://i.ytimg.com/vi/Q8luYnxiFFE/mqdefault.jpg)](https://www.youtube.com/watch?v=Q8luYnxiFFE)
 
-In this video, we find out the internals of "is" operator in Python. We go through the CPython source code and answer how it efficiently implements the "is" operator.
-
-
-integer optimizations in python: https://www.youtube.com/watch?v=6mhXGEXRXG0
+<p>In this video, we find out the internals of "is" operator in Python. We go through the CPython source code and answer how it efficiently implements the "is" operator.</p>
+<p>integer optimizations in python: https://www.youtube.com/watch?v=6mhXGEXRXG0
 string optimizations (interning) in python: https://www.youtube.com/watch?v=QpGK69LzfpY
-short circuit evaluations in python: https://www.youtube.com/watch?v=zz2Lu5ht_jA
-
-
-
-# The Honest Python
-
-The Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.
+short circuit evaluations in python: https://www.youtube.com/watch?v=zz2Lu5ht_jA</p>
+<h1>The Honest Python</h1>
+<p>The Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.</p>
 
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)

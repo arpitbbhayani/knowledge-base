@@ -11,25 +11,22 @@ An engineering deep-dive into Atlassian's Mega Outage of April 2022
 
 [![An engineering deep-dive into Atlassian's Mega Outage of April 2022](https://i.ytimg.com/vi/xa-hMF8gku0/mqdefault.jpg)](https://www.youtube.com/watch?v=xa-hMF8gku0)
 
-In April 2022, Atlassian suffered a major outage where they "permanently" deleted the data for 400 of their paying cloud customers, and will take them weeks to recover the data. In this video, we will do an engineering deep dive into this outage trying to understand their engineering systems and practices.
-
-We extract 6 key insights into how their engineering systems are built, their backup and restoration strategies, and most importantly why is it taking them so long to recover the data.
-
-Disclaimer: I do not have any insider information about this and the views are pure speculation.
-
-Outline:
-
-00:00 Impact of the outage
-03:56 Insight 1: Incremental Backup Strategy
-06:38 Why did the Atlassian outage happen?
-07:30 Insight 2: Progressive Rollout Strategy
-10:57 Insight 3: Soft Deletes vs Hard Deletes
-14:28 Insight 4: Synchronous Replication for High Availability
-17:47 Insight 5: Immutable backups for point-in-time recovery
-21:04 Insight 6: Nearly multi-tenant architecture
-23:30 Why is it taking time for Atlassian to recover the deleted data?
-
-Outage Report: https://www.atlassian.com/engineering/april-2022-outage-update
+<p>In April 2022, Atlassian suffered a major outage where they "permanently" deleted the data for 400 of their paying cloud customers, and will take them weeks to recover the data. In this video, we will do an engineering deep dive into this outage trying to understand their engineering systems and practices.</p>
+<p>We extract 6 key insights into how their engineering systems are built, their backup and restoration strategies, and most importantly why is it taking them so long to recover the data.</p>
+<p>Disclaimer: I do not have any insider information about this and the views are pure speculation.</p>
+<p>Outline:</p>
+<ul>
+<li>00:00 Impact of the outage</li>
+<li>03:56 Insight 1: Incremental Backup Strategy</li>
+<li>06:38 Why did the Atlassian outage happen?</li>
+<li>07:30 Insight 2: Progressive Rollout Strategy</li>
+<li>10:57 Insight 3: Soft Deletes vs Hard Deletes</li>
+<li>14:28 Insight 4: Synchronous Replication for High Availability</li>
+<li>17:47 Insight 5: Immutable backups for point-in-time recovery</li>
+<li>21:04 Insight 6: Nearly multi-tenant architecture</li>
+<li>23:30 Why is it taking time for Atlassian to recover the deleted data?</li>
+</ul>
+<p>Outage Report: https://www.atlassian.com/engineering/april-2022-outage-update</p>
 
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)

@@ -11,23 +11,18 @@ How python compares a float and an int objects?
 
 [![How python compares a float and an int objects?](https://i.ytimg.com/vi/u4tfIy--4GM/mqdefault.jpg)](https://www.youtube.com/watch?v=u4tfIy--4GM)
 
-How python internally performs the comparison of a float and an integer value? We find this out in this video.
-
-
-Comparing a float to an int is a fascinating problem, especially for Python. Comparing numbers involve comparing magnitudes across different types; plus things become even more complex considering Python supports infinitely long number.
-
-Chapters:
-0:00 Introduction to number comparison
-
-1:14 Disassembling the code
-2:00 Understanding COMPARE_OP
-2:54 Exploring RichCompare
-7:16 Understanding the core logic
-
-
-# The Honest Python
-
-The Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.
+<p>How python internally performs the comparison of a float and an integer value? We find this out in this video.</p>
+<p>Comparing a float to an int is a fascinating problem, especially for Python. Comparing numbers involve comparing magnitudes across different types; plus things become even more complex considering Python supports infinitely long number.</p>
+<p>Chapters:
+ - 0:00 Introduction to number comparison</p>
+<ul>
+<li>1:14 Disassembling the code</li>
+<li>2:00 Understanding COMPARE_OP</li>
+<li>2:54 Exploring RichCompare</li>
+<li>7:16 Understanding the core logic</li>
+</ul>
+<h1>The Honest Python</h1>
+<p>The Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.</p>
 
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
