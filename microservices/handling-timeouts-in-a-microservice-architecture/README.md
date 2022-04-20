@@ -1,10 +1,6 @@
 Handling timeouts in a microservice architecture
 ===
 
-<p align="center">
-    <img src="https://media.giphy.com/media/3oriO4kSYahYQr6e1a/giphy.gif" width="320px" />
-</p>
-
 
 <p>How to handle timeouts in a microservice architecture? [ in a gist ]</p>
 <p>Microservices give us the flexibility to pick the best tech stack to solve the problem optimally. But one thing that ruins the real thrill is Timeouts.</p>

@@ -1,10 +1,6 @@
 Sending payload in an HTTP GET request
 ===
 
-<p align="center">
-    <img src="https://media.giphy.com/media/xT5LMJlkTxzJx4zJv2/giphy.gif" width="320px" />
-</p>
-
 
 <p>Can we send the payload in an HTTP GET request? [ in a gist ]</p>
 <p>It is a common myth that we could not pass the request body in the HTTP GET request. HTTP 1.1 specification neither enforces nor suggests this behavior.</p>

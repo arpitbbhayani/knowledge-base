@@ -1,10 +1,6 @@
 Series Introduction: The Honest Python
 ===
 
-<p align="center">
-    <img src="https://media.giphy.com/media/H0uLRCd8JIhRS/giphy.gif" width="320px" />
-</p>
-
 
 
 <p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>

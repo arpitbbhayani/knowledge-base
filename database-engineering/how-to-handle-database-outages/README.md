@@ -1,10 +1,6 @@
 How to handle database outages?
 ===
 
-<p align="center">
-    <img src="https://media.giphy.com/media/lVBtp4SRW6rvDHf1b6/giphy.gif" width="320px" />
-</p>
-
 
 <h3>Why a database goes down?</h3>
 <p>An unexpected heavy load on your database can lead to a process crash or a massive slowdown.</p>

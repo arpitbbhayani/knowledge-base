@@ -1,10 +1,6 @@
 How to approach System Design?
 ===
 
-<p align="center">
-    <img src="https://media.giphy.com/media/l49JIAbHS3nqARH7a/giphy.gif" width="320px" />
-</p>
-
 
 
 <p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>

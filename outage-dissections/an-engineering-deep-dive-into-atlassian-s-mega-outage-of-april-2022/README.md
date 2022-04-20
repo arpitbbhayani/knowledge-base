@@ -1,10 +1,6 @@
 An engineering deep-dive into Atlassian's Mega Outage of April 2022
 ===
 
-<p align="center">
-    <img src="https://media.giphy.com/media/1k3jEsS507T20/giphy.gif" width="320px" />
-</p>
-
 
 
 <p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>

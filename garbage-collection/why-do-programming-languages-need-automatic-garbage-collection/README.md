@@ -1,10 +1,6 @@
 Why do programming languages need automatic garbage collection?
 ===
 
-<p align="center">
-    <img src="None" width="320px" />
-</p>
-
 
 
 <p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>

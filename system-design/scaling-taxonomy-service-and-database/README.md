@@ -1,10 +1,6 @@
 Scaling Taxonomy Service and Database
 ===
 
-<p align="center">
-    <img src="https://media.giphy.com/media/YxlUxrYGw2w9y/giphy.gif" width="320px" />
-</p>
-
 
 
 <p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>

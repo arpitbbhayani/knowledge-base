@@ -1,10 +1,6 @@
 Changing python grammar to support standalone walrus assignments
 ===
 
-<p align="center">
-    <img src="https://media.giphy.com/media/HxnMNAEQgHqEHcGKBb/giphy.gif" width="320px" />
-</p>
-
 
 
 <p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>

@@ -1,10 +1,6 @@
 Advantages of adopting a microservices-based architecture
 ===
 
-<p align="center">
-    <img src="https://media.giphy.com/media/giEftvZuPAiZQBphEI/giphy.gif" width="320px" />
-</p>
-
 
 <p>Why Microservices?🤔 [ in a gist ]</p>
 <p>Microservices are small, autonomous, harmonic subsystems that work together to solve the bigger problem.</p>

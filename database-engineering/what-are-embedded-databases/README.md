@@ -1,10 +1,6 @@
 What are Embedded Databases?
 ===
 
-<p align="center">
-    <img src="https://media.giphy.com/media/uk3R91z24SoUZ27WTh/giphy.gif" width="320px" />
-</p>
-
 
 <p>What are Embedded Databases? [ in a gist ]</p>
 <p>Traditional databases like MySQL, Postgres, MongoDB run on their server on a specific port. Anyone who wants to talk to the database can directly connect and talk.</p>

@@ -1,10 +1,6 @@
 Dissecting Spotify's Global Outage - March 8, 2022
 ===
 
-<p align="center">
-    <img src="https://media.giphy.com/media/26FKWlRgIL3JOIkGA/giphy.gif" width="320px" />
-</p>
-
 
 
 <p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>

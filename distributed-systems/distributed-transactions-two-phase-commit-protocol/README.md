@@ -1,10 +1,6 @@
 Distributed Transactions: Two-Phase Commit Protocol
 ===
 
-<p align="center">
-    <img src="https://media.giphy.com/media/orU4txbRZIp6vJheJ9/giphy.gif" width="320px" />
-</p>
-
 
 <p>Distributed Transactions using Two-phase Commit [in a gist] 🔆</p>
 <p>Distributed Transactions are essential to have strong consistency in a distributed setup.</p>

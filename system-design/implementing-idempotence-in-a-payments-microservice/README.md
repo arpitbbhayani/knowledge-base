@@ -1,10 +1,6 @@
 Implementing Idempotence in a Payments Microservice
 ===
 
-<p align="center">
-    <img src="https://media.giphy.com/media/j3x5hjUoXIesM/giphy.gif" width="320px" />
-</p>
-
 
 <p>How can you implement idempotence in a Payments Microservice? [in a gist ]</p>
 <p>Idempotence is executing the same action multiple times, but the result is as if the operation was applied just once.</p>

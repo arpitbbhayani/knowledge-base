@@ -1,10 +1,6 @@
 How do indexes make databases read faster?
 ===
 
-<p align="center">
-    <img src="https://media.giphy.com/media/jBzO4OBN8oIms/giphy.gif" width="320px" />
-</p>
-
 
 <p>The database is just a collection of records. These records are serialized and stored on the disk. The way the records are serialized and stored on the disk depends on the database engine.  </p>
 <h2>How does the database read from the disk?</h2>

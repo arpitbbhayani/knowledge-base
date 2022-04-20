@@ -1,10 +1,6 @@
 How python optimizes integers?
 ===
 
-<p align="center">
-    <img src="https://media.giphy.com/media/sgFDIjII6GtmE/giphy.gif" width="320px" />
-</p>
-
 
 
 <p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>

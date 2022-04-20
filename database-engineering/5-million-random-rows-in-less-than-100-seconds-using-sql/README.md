@@ -1,10 +1,6 @@
 5 million + random rows in less than 100 seconds using SQL
 ===
 
-<p align="center">
-    <img src="https://media.giphy.com/media/Gpu3skdN58ApO/giphy.gif" width="320px" />
-</p>
-
 
 
 <p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>

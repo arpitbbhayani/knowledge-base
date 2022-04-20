@@ -1,10 +1,6 @@
 How id() function is implemented in python?
 ===
 
-<p align="center">
-    <img src="https://media.giphy.com/media/whzQo9wK8OuoiDtAnz/giphy.gif" width="320px" />
-</p>
-
 
 
 <p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
