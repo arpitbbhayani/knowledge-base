@@ -15,7 +15,7 @@ Distributed Systems, Python Internals, and anything that amuses me in tech. To d
 
 I also run a [course on System Design](https://arpitbhayani.me/masterclass) in which I teach the concepts of designing massively scalable systems using the First Principle Thinking. The course has been trusted by prople working in someo of the top companies of the world like Google, Amazon, Facebook, Microsoft, GoJek, and so many more. You can find the details about the course and curriculum at [arpitbhayani.me/masterclass](https://arpitbhayani.me/masterclass).
 
-The few topics I like to talk about are
+Topics I like to talk about are
 
  - [System Design](https://arpitbhayani.me/system-design)
  - [Database Engineering](https://arpitbhayani.me/database-engineering)
