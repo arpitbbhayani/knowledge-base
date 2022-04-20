@@ -1,28 +1,33 @@
 Why, where, and when should we throttle or rate limit?
 ===
 
+<p align="center">
+    <img src="https://media.giphy.com/media/4KFjJdWCyLZ743mWIg/giphy.gif" width="320px" />
+</p>
 
+
+
+<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+
+[![Why, where, and when should we throttle or rate limit?](https://i.ytimg.com/vi/CW4gVlU0xtU/mqdefault.jpg)](https://www.youtube.com/watch?v=CW4gVlU0xtU)
 
 It is a common belief that a rate limiter is always external and is designed to prevent our systems from being abused by the external world, but this is not true. In this video, we understand what throttling is, why we need it in the first place and 5 use cases where external and internal rate limiters are super useful.
 
 Outline:
- - 00:00 Introduction
- - 02:56 What is Throttling?
- - 03:37 What rate limiter does when it gets a surge of requests?
- - 06:39 Why do we need a rate limiter?
- - 10:45 Usecase 1: Preventing catastrophic DDoS Attack
- - 12:20 Usecase 2: Gracefully handling a surge in legitimate users
- - 13:46 Usecase 3: Multi-tiered limits
- - 15:42 Usecase 4: Not overusing an expensive vendor
- - 16:48 Usecase 5: Streamlining deletes to protect an unprotected database
+00:00 Introduction
+02:56 What is Throttling?
+03:37 What rate limiter does when it gets a surge of requests?
+06:39 Why do we need a rate limiter?
+10:45 Usecase 1: Preventing catastrophic DDoS Attack
+12:20 Usecase 2: Gracefully handling a surge in legitimate users
+13:46 Usecase 3: Multi-tiered limits
+15:42 Usecase 4: Not overusing an expensive vendor
+16:48 Usecase 5: Streamlining deletes to protect an unprotected database
 
-Watch the video 👇‍
-
-[![Why, where, and when should we throttle or rate limit?](https://i.ytimg.com/vi/CW4gVlU0xtU/mqdefault.jpg)](https://www.youtube.com/watch?v=CW4gVlU0xtU)
-
-If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
-
-
+You can also
+ - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
+ - [Download the notes]()
+ - Listen to this on the go on [Spotify](https://open.spotify.com/show/7qMoamm2iZQrsPVm6IQLoD)
 
 # Arpit's System Design Masterclass
 

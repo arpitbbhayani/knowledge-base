@@ -1,6 +1,10 @@
 What are Embedded Databases?
 ===
 
+<p align="center">
+    <img src="https://media.giphy.com/media/uk3R91z24SoUZ27WTh/giphy.gif" width="320px" />
+</p>
+
 
 What are Embedded Databases? [ in a gist ]
 
@@ -26,27 +30,25 @@ Every modern browser uses an embedded database called IndexedDB to store browsin
 Every Android phone has support for SQLite database that we can use to store any information like game scores, stats, information locally on the phone.
 
 The core idea: When we need to store and query data that could be confined within a space and does not need to be centralized, we choose to use an Embedded Database.
+<hr />
 
+
+<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+
+[![What are Embedded Databases?](https://i.ytimg.com/vi/xELqRiovEcI/mqdefault.jpg)](https://www.youtube.com/watch?v=xELqRiovEcI)
 
 Embedded databases are coupled with the application they are part of and operate in a confined space. They are designed to solve one problem for their niche very well. In this video, we take an introductory look into this amazing class of databases, understand the core reason why they exist, talk about a few popular ones, and understand a few use cases.
 
 Outline:
- - 00:00 Server-based Databases
- - 02:32 Embedded Databases
- - 06:35 Popular Embedded Databases
- - 10:39 Applications of Embedded Databases
+00:00 Server-based Databases
+02:32 Embedded Databases
+06:35 Popular Embedded Databases
+10:39 Applications of Embedded Databases
 
-Watch the video 👇‍
-
-[![What are Embedded Databases?](https://i.ytimg.com/vi/xELqRiovEcI/mqdefault.jpg)](https://www.youtube.com/watch?v=xELqRiovEcI)
-
-If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
-
-
-## Notes
-
-The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/1_iXh0rCmGVZJj5CLWP7gJ4YzAP-yIiGb/view?usp=sharing).
-
+You can also
+ - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
+ - [Download the notes](https://drive.google.com/file/d/1_iXh0rCmGVZJj5CLWP7gJ4YzAP-yIiGb/view?usp=sharing)
+ - Listen to this on the go on [Spotify](https://open.spotify.com/show/7qMoamm2iZQrsPVm6IQLoD)
 
 # Arpit's System Design Masterclass
 

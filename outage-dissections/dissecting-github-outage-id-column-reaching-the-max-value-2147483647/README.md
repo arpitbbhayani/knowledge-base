@@ -1,6 +1,10 @@
 Dissecting GitHub Outage: ID column reaching the max value 2147483647
 ===
 
+<p align="center">
+    <img src="https://media.giphy.com/media/UDU4oUJIHDJgQ/giphy.gif" width="320px" />
+</p>
+
 
 What happens when MySQL auto-incrementing ID hits its limit? [ in a gist ]
 
@@ -29,18 +33,23 @@ The idea here is to create an empty table with the same schema but a larger ID r
 ✨ Get warned before the storm
 
 Although mitigation is great, it is better to place a monitoring system that raises an alert when the ID reaches 70% of its range. So, write a simple DB monitoring service that periodically checks this by firing a query on the database.
+<hr />
 
+
+<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+
+[![Dissecting GitHub Outage: ID column reaching the max value 2147483647](https://i.ytimg.com/vi/ZFRAFTn0cQ0/mqdefault.jpg)](https://www.youtube.com/watch?v=ZFRAFTn0cQ0)
 
 GitHub experience an outage on 5th May 2020 on a few of their internal services and it happened because a table had an auto-incrementing integer ID and the column reached its maximum value possible 2147483647. In this video, we dissect what happened, mimic the situation locally and see what could have happened, and look at possible ways to mitigate and prevent a situation like this.
 
 Outline:
 
- - 00:00 Outage walkthrough
- - 02:48 Mimicking the situation locally
- - 10:13 MySQL AUTO_INCREMENT behavior
- - 12:37 Preventive measures
- - 14:25 Approach 1 for mitigating the issue
- - 18:40 Approach 2 for mitigating the issue
+00:00 Outage walkthrough
+02:48 Mimicking the situation locally
+10:13 MySQL AUTO_INCREMENT behavior
+12:37 Preventive measures
+14:25 Approach 1 for mitigating the issue
+18:40 Approach 2 for mitigating the issue
 
 References:
  - https://github.com/arpitbbhayani/mysql-maxint
@@ -49,17 +58,10 @@ References:
  - https://dev.mysql.com/doc/refman/8.0/en/example-auto-increment.html
  - https://www.linkedin.com/pulse/so-you-hit-2147483647-heath-dutton-/
 
-Watch the video 👇‍
-
-[![Dissecting GitHub Outage: ID column reaching the max value 2147483647](https://i.ytimg.com/vi/ZFRAFTn0cQ0/mqdefault.jpg)](https://www.youtube.com/watch?v=ZFRAFTn0cQ0)
-
-If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
-
-
-## Notes
-
-The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/13rNEWXwIdNkNcP2gSQQvBF8czUBpF47y/view?usp=sharing).
-
+You can also
+ - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
+ - [Download the notes](https://drive.google.com/file/d/13rNEWXwIdNkNcP2gSQQvBF8czUBpF47y/view?usp=sharing)
+ - Listen to this on the go on [Spotify](https://open.spotify.com/show/7qMoamm2iZQrsPVm6IQLoD)
 
 # Arpit's System Design Masterclass
 

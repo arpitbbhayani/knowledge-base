@@ -1,6 +1,10 @@
 How does the database guarantee reliability using write-ahead logging?
 ===
 
+<p align="center">
+    <img src="https://media.giphy.com/media/S3KhNnHajzZ4voJKYP/giphy.gif" width="320px" />
+</p>
+
 
 How does the database guarantee reliability using write-ahead logging? [ in a gist ]
 
@@ -26,33 +30,31 @@ An operation like Update Query, Delete Query is logged in the commit log and not
 ✨ Data integrity in WAL
 
 WAL also takes care of its data integrity by writing a CRC-32 before logging the operation. This CRC is checked during reading and replicating.
+<hr />
 
+
+<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+
+[![How does the database guarantee reliability using write-ahead logging?](https://i.ytimg.com/vi/wI4hKwl1Cn4/mqdefault.jpg)](https://www.youtube.com/watch?v=wI4hKwl1Cn4)
 
 Any persistent database needs to guarantee reliability. No matter how big or small the changes are, they should survive any reboots, OS, or hardware crashes once they are committed. All the persistent databases use a write-ahead logging technique to guarantee such reliability while not affecting the performance.
 
 In this video, we talk about write-ahead logging, how it ensures reliability, a few solid advantages of using it, one of them being a massive database performance boost, and how the log files are structured on the disk.
 
 Outline:
- - 00:00 What happens on Commit
- - 05:57 Write-ahead Logging
- - 08:44 Advantages of having a Write-ahead Logging
- - 14:29 Data Integrity in WAL files
- - 16:40 Write-ahead Logging Internals
+00:00 What happens on Commit
+05:57 Write-ahead Logging
+08:44 Advantages of having a Write-ahead Logging
+14:29 Data Integrity in WAL files
+16:40 Write-ahead Logging Internals
 
 Related Videos:
 How indexes make a database read faster: https://www.youtube.com/watch?v=3G293is403I
 
-Watch the video 👇‍
-
-[![How does the database guarantee reliability using write-ahead logging?](https://i.ytimg.com/vi/wI4hKwl1Cn4/mqdefault.jpg)](https://www.youtube.com/watch?v=wI4hKwl1Cn4)
-
-If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
-
-
-## Notes
-
-The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/1VC77CEEYLvlFaXpKsb3Q_e0JvbbryyU0/view?usp=sharing).
-
+You can also
+ - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
+ - [Download the notes](https://drive.google.com/file/d/1VC77CEEYLvlFaXpKsb3Q_e0JvbbryyU0/view?usp=sharing)
+ - Listen to this on the go on [Spotify](https://open.spotify.com/show/7qMoamm2iZQrsPVm6IQLoD)
 
 # Arpit's System Design Masterclass
 

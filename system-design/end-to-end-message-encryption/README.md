@@ -1,7 +1,15 @@
 End-to-end Message Encryption
 ===
 
+<p align="center">
+    <img src="https://media.giphy.com/media/pYfYNJbEftHOfIpoBC/giphy.gif" width="320px" />
+</p>
 
+
+
+<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+
+[![End-to-end Message Encryption](https://i.ytimg.com/vi/m_7xSIhxZL8/mqdefault.jpg)](https://www.youtube.com/watch?v=m_7xSIhxZL8)
 
 In this video, we find how to implement a very very simple version of end-to-end WhatsApp-like message encryption. This is not even 1% of how WhatsApp does it but it gives a fair amount of idea on how we could do it.
 
@@ -9,13 +17,10 @@ How do WhatsApp, Facebook, Signal actually do it? Answer: The Signal Protocol
 
 We do it with a very simple Public Key Cryptography and a Digital Signature.
 
-Watch the video 👇‍
-
-[![End-to-end Message Encryption](https://i.ytimg.com/vi/m_7xSIhxZL8/mqdefault.jpg)](https://www.youtube.com/watch?v=m_7xSIhxZL8)
-
-If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
-
-
+You can also
+ - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
+ - [Download the notes]()
+ - Listen to this on the go on [Spotify](https://open.spotify.com/show/7qMoamm2iZQrsPVm6IQLoD)
 
 # Arpit's System Design Masterclass
 

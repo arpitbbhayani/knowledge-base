@@ -1,7 +1,15 @@
 How to scope a microservice?
 ===
 
+<p align="center">
+    <img src="https://media.giphy.com/media/fKvTY11icTAZIPCIQb/giphy.gif" width="320px" />
+</p>
 
+
+
+<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+
+[![How to scope a microservice?](https://i.ytimg.com/vi/nfkdKHcKxbE/mqdefault.jpg)](https://www.youtube.com/watch?v=nfkdKHcKxbE)
 
 Microservices are extremely tempting and you will always feel like writing a new service for every problem at hand. You might build a service with very fine-grained responsibilities or you can build one that covers a big spectrum. So, what is the best approach? How should you decide?
 
@@ -9,24 +17,17 @@ In this video, we talk about ways to model and scope a microservice such that th
 
 Outline:
 
- - 00:00 What is the problem with Microservice?
- - 03:05 Why do we love building microservices?
- - 04:04 What happens if we do not scope our services well?
- - 05:52 Two key guiding principles to scope a microservice
- - 07:19 Loose Coupling
- - 12:15 High Cohesion
+00:00 What is the problem with Microservice?
+03:05 Why do we love building microservices?
+04:04 What happens if we do not scope our services well?
+05:52 Two key guiding principles to scope a microservice
+07:19 Loose Coupling
+12:15 High Cohesion
 
-Watch the video 👇‍
-
-[![How to scope a microservice?](https://i.ytimg.com/vi/nfkdKHcKxbE/mqdefault.jpg)](https://www.youtube.com/watch?v=nfkdKHcKxbE)
-
-If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
-
-
-## Notes
-
-The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/1_P8YVcw7uwr0wfs2V6W-1gpOwnoG2Zdf/view?usp=sharing).
-
+You can also
+ - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
+ - [Download the notes](https://drive.google.com/file/d/1_P8YVcw7uwr0wfs2V6W-1gpOwnoG2Zdf/view?usp=sharing)
+ - Listen to this on the go on [Spotify](https://open.spotify.com/show/7qMoamm2iZQrsPVm6IQLoD)
 
 # Arpit's System Design Masterclass
 

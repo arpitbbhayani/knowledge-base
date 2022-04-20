@@ -1,7 +1,15 @@
 Dissecting Spotify's Global Outage - March 8, 2022
 ===
 
+<p align="center">
+    <img src="https://media.giphy.com/media/26FKWlRgIL3JOIkGA/giphy.gif" width="320px" />
+</p>
 
+
+
+<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+
+[![Dissecting Spotify's Global Outage - March 8, 2022](https://i.ytimg.com/vi/h5hXivWws7k/mqdefault.jpg)](https://www.youtube.com/watch?v=h5hXivWws7k)
 
 Incident Report: Spotify Outage on March 8: https://engineering.atspotify.com/2022/03/incident-report-spotify-outage-on-march-8/
 Google Cloud Traffic Director Outage: https://status.cloud.google.com/incidents/LuGcJVjNTeC5Sb9pSJ9o
@@ -9,13 +17,10 @@ Java gRPC Client Bug: https://github.com/grpc/grpc-java/issues/8950
 
 In this video, we dissect the reasons behind Spotify's Global Outage and try to understand its architecture, and learn from critical things to remember while architecting a system.
 
-Watch the video 👇‍
-
-[![Dissecting Spotify's Global Outage - March 8, 2022](https://i.ytimg.com/vi/h5hXivWws7k/mqdefault.jpg)](https://www.youtube.com/watch?v=h5hXivWws7k)
-
-If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
-
-
+You can also
+ - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
+ - [Download the notes]()
+ - Listen to this on the go on [Spotify](https://open.spotify.com/show/7qMoamm2iZQrsPVm6IQLoD)
 
 # Arpit's System Design Masterclass
 

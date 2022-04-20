@@ -1,20 +1,25 @@
 Setting up cpython locally and making your first change
 ===
 
+<p align="center">
+    <img src="https://media.giphy.com/media/3o6Zt34440romOQWo8/giphy.gif" width="320px" />
+</p>
 
+
+
+<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+
+[![Setting up cpython locally and making your first change](https://i.ytimg.com/vi/k5isLG6vqss/mqdefault.jpg)](https://www.youtube.com/watch?v=k5isLG6vqss)
 
 In this video, we set up CPython, build our binary, and make our first "Hello, World!" change.
 
 CPython Github Repository: https://github.com/python/cpython/
 CPython Setup Guide: https://devguide.python.org/setup/
 
-Watch the video 👇‍
-
-[![Setting up cpython locally and making your first change](https://i.ytimg.com/vi/k5isLG6vqss/mqdefault.jpg)](https://www.youtube.com/watch?v=k5isLG6vqss)
-
-If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
-
-
+You can also
+ - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
+ - [Download the notes]()
+ - Listen to this on the go on [Spotify](https://open.spotify.com/show/7qMoamm2iZQrsPVm6IQLoD)
 
 # Arpit's System Design Masterclass
 

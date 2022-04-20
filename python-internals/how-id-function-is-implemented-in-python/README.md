@@ -1,7 +1,15 @@
 How id() function is implemented in python?
 ===
 
+<p align="center">
+    <img src="https://media.giphy.com/media/whzQo9wK8OuoiDtAnz/giphy.gif" width="320px" />
+</p>
 
+
+
+<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+
+[![How id() function is implemented in python?](https://i.ytimg.com/vi/IGLnxdmJu2c/mqdefault.jpg)](https://www.youtube.com/watch?v=IGLnxdmJu2c)
 
 How is `id` function implemented in Python?
 
@@ -13,13 +21,10 @@ How Python implements super-long integers: https://arpitbhayani.me/blogs/super-l
 
 The Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.
 
-Watch the video 👇‍
-
-[![How id() function is implemented in python?](https://i.ytimg.com/vi/IGLnxdmJu2c/mqdefault.jpg)](https://www.youtube.com/watch?v=IGLnxdmJu2c)
-
-If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
-
-
+You can also
+ - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
+ - [Download the notes]()
+ - Listen to this on the go on [Spotify](https://open.spotify.com/show/7qMoamm2iZQrsPVm6IQLoD)
 
 # Arpit's System Design Masterclass
 

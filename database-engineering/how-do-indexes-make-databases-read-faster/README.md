@@ -1,6 +1,10 @@
 How do indexes make databases read faster?
 ===
 
+<p align="center">
+    <img src="https://media.giphy.com/media/jBzO4OBN8oIms/giphy.gif" width="320px" />
+</p>
+
 
 The database is just a collection of records. These records are serialized and stored on the disk. The way the records are serialized and stored on the disk depends on the database engine.  
   
@@ -22,30 +26,28 @@ When we want to get users with age == 23, we will first read the entire index, t
 In our example, it comes out to be 2 + 2 = 4 block reads. So, we get an 8x boost in performance using indexes.  
   
 Note: This is a very crude example of how fetch happens with indexes; there are a lot of optimizations that I have not talked about.  
+<hr />
 
+
+<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+
+[![How do indexes make databases read faster?](https://i.ytimg.com/vi/3G293is403I/mqdefault.jpg)](https://www.youtube.com/watch?v=3G293is403I)
 
 In this video, we discuss how indexes make a database operate faster. While discussing that, we dive deep into how the data is read from the disk, how indexes are structured, serialized, and stored on the disk, and finally, how exactly data is quickly read using the right set of indexes.
 
 Outline:
 
- - 00:00 How is a table stored on the disk?
- - 03:14 Reading bytes from the disk
- - 05:21 Reading the entire table from the disk
- - 08:33 Evaluating a simple query without an index
- - 10:00 Basics of Database Indexes
- - 13:24 Evaluating a simple query with index
+00:00 How is a table stored on the disk?
+03:14 Reading bytes from the disk
+05:21 Reading the entire table from the disk
+08:33 Evaluating a simple query without an index
+10:00 Basics of Database Indexes
+13:24 Evaluating a simple query with index
 
-Watch the video 👇‍
-
-[![How do indexes make databases read faster?](https://i.ytimg.com/vi/3G293is403I/mqdefault.jpg)](https://www.youtube.com/watch?v=3G293is403I)
-
-If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
-
-
-## Notes
-
-The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/1wDDOc3rdsZIdZEEe50E_61wi-1iMHu2G/view?usp=sharing).
-
+You can also
+ - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
+ - [Download the notes](https://drive.google.com/file/d/1wDDOc3rdsZIdZEEe50E_61wi-1iMHu2G/view?usp=sharing)
+ - Listen to this on the go on [Spotify](https://open.spotify.com/show/7qMoamm2iZQrsPVm6IQLoD)
 
 # Arpit's System Design Masterclass
 

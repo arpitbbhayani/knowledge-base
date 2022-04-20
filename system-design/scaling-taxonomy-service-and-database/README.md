@@ -1,27 +1,32 @@
 Scaling Taxonomy Service and Database
 ===
 
+<p align="center">
+    <img src="https://media.giphy.com/media/YxlUxrYGw2w9y/giphy.gif" width="320px" />
+</p>
 
+
+
+<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+
+[![Scaling Taxonomy Service and Database](https://i.ytimg.com/vi/dTPh3KcKPYo/mqdefault.jpg)](https://www.youtube.com/watch?v=dTPh3KcKPYo)
 
 In this video, we do the high-level design of Udemy's Taxonomy Service and see how to scale databases in general.
 
 Outline:
 
- - 0:00 Recap Taxonomy DB Design
- - 0:57 Bird's eye view
- - 2:30 Within the Taxonomy Service
- - 3:50 Scaling the relational database
- - 5:32 High-Level Architecture
- - 7:20 Join my System Design Course
- - 7:57 Like, Share, and Subscribe
+0:00 Recap Taxonomy DB Design
+0:57 Bird's eye view
+2:30 Within the Taxonomy Service
+3:50 Scaling the relational database
+5:32 High-Level Architecture
+7:20 Join my System Design Course
+7:57 Like, Share, and Subscribe
 
-Watch the video 👇‍
-
-[![Scaling Taxonomy Service and Database](https://i.ytimg.com/vi/dTPh3KcKPYo/mqdefault.jpg)](https://www.youtube.com/watch?v=dTPh3KcKPYo)
-
-If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
-
-
+You can also
+ - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
+ - [Download the notes]()
+ - Listen to this on the go on [Spotify](https://open.spotify.com/show/7qMoamm2iZQrsPVm6IQLoD)
 
 # Arpit's System Design Masterclass
 

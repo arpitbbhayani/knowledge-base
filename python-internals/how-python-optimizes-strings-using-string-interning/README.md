@@ -1,7 +1,15 @@
 How python optimizes strings using String Interning?
 ===
 
+<p align="center">
+    <img src="https://media.giphy.com/media/lPiGDQQyhG9zEoGmuh/giphy.gif" width="320px" />
+</p>
 
+
+
+<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+
+[![How python optimizes strings using String Interning?](https://i.ytimg.com/vi/QpGK69LzfpY/mqdefault.jpg)](https://www.youtube.com/watch?v=QpGK69LzfpY)
 
 In this video, we dive deep into CPython and find out how Python optimizes strings. The optimization we will be going through is called String Interning which is like caching the strings - using the same reference and not creating a new instance every time.
 
@@ -11,24 +19,21 @@ Code changes we made in the video: https://github.com/arpitbbhayani/cpython/pull
 
 
 Chapters:
- - 0:00 What is String Interning?
- - 4:26 Tracing CPython function that interns strings
- - 5:36 Going through the PyUnicode_InternInPlace function
- - 18:45 Interned state stored in strings
- - 21:10 Interning does not work on all strings
- - 25:22 The catch with interning
+0:00 What is String Interning?
+4:26 Tracing CPython function that interns strings
+5:36 Going through the PyUnicode_InternInPlace function
+18:45 Interned state stored in strings
+21:10 Interning does not work on all strings
+25:22 The catch with interning
 
 # The Honest Python
 
 The Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.
 
-Watch the video 👇‍
-
-[![How python optimizes strings using String Interning?](https://i.ytimg.com/vi/QpGK69LzfpY/mqdefault.jpg)](https://www.youtube.com/watch?v=QpGK69LzfpY)
-
-If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
-
-
+You can also
+ - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
+ - [Download the notes]()
+ - Listen to this on the go on [Spotify](https://open.spotify.com/show/7qMoamm2iZQrsPVm6IQLoD)
 
 # Arpit's System Design Masterclass
 

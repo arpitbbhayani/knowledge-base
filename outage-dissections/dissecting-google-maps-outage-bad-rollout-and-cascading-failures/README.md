@@ -1,6 +1,10 @@
 Dissecting Google Maps Outage: Bad Rollout and Cascading Failures
 ===
 
+<p align="center">
+    <img src="https://media.giphy.com/media/xTiTnyogFXV3Khw6Xe/giphy.gif" width="320px" />
+</p>
+
 
 Google Maps Outage Dissection [ in a gist ]
 
@@ -24,7 +28,12 @@ Rollback as soon as possible.
  - Tune the performance of the webserver and networking stack of the server
  - Monitor the server resource consumption and set alerts
  - Add circuit breakers wherever possible.
+<hr />
 
+
+<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+
+[![Dissecting Google Maps Outage: Bad Rollout and Cascading Failures](https://i.ytimg.com/vi/6oJaZbQKnJE/mqdefault.jpg)](https://www.youtube.com/watch?v=6oJaZbQKnJE)
 
 Google Maps had a global outage on 18th March 2022, during which the end-users were not able to use Directions, Navigation, or Google Maps in general. The outage happened because of a bad rollout, and it lasted more than 2 hours 30 minutes. During the outage, users complained to have seen Gray tiles implying that the map/direction was neither getting initialized nor working.
 
@@ -32,25 +41,18 @@ In this video, we dissect the Google Maps outage and understand what actually ha
 
 Outline:
 
- - 00:00 Introducing the outage and impact
- - 02:07 Root cause
- - 08:36 Cascading Failures
- - 12:22 Remediation
- - 13:45 Preventive measures
+00:00 Introducing the outage and impact
+02:07 Root cause
+08:36 Cascading Failures
+12:22 Remediation
+13:45 Preventive measures
 
 Incident Report: https://issuetracker.google.com/issues/225361510
 
-Watch the video 👇‍
-
-[![Dissecting Google Maps Outage: Bad Rollout and Cascading Failures](https://i.ytimg.com/vi/6oJaZbQKnJE/mqdefault.jpg)](https://www.youtube.com/watch?v=6oJaZbQKnJE)
-
-If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
-
-
-## Notes
-
-The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/10yi5K2xluTA9d7RNrorDDKU_-Mi3uHKZ/view?usp=sharing).
-
+You can also
+ - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
+ - [Download the notes](https://drive.google.com/file/d/10yi5K2xluTA9d7RNrorDDKU_-Mi3uHKZ/view?usp=sharing)
+ - Listen to this on the go on [Spotify](https://open.spotify.com/show/7qMoamm2iZQrsPVm6IQLoD)
 
 # Arpit's System Design Masterclass
 

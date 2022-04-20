@@ -1,33 +1,38 @@
 Designing Taxonomy on SQL
 ===
 
+<p align="center">
+    <img src="https://media.giphy.com/media/6XuA2WMKsgqS4/giphy.gif" width="320px" />
+</p>
 
+
+
+<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+
+[![Designing Taxonomy on SQL](https://i.ytimg.com/vi/4_jlmX_oB94/mqdefault.jpg)](https://www.youtube.com/watch?v=4_jlmX_oB94)
 
 In this video, we design the Taxonomy of Udemy on top of a SQL-based Relational DB. We learn how to model any taxonomy on relational DB, why to choose SQL over NoSQL, designing the schema, deciding Indexes, and writing very interesting SQL queries.
 
 Link to the article: https://arpitbhayani.me/blogs/udemy-sql-taxonomy
 
 Chapters:
- - 0:00 Udemy's Taxonomy
- - 1:40 A bad Database Design for Taxonomy
- - 3:29 Good Database Design for Taxonomy
- - 7:34 Is Relational DB a good choice to store taxonomy?
- - 13:04 Deciding Indexes
- - 15:26 Get topic by ID
- - 15:56 Get topic path
- - 23:00 Get child-topics
- - 25:05 Get Top Taxonomy in Single Query
- - 31:05 Summarizing Indexes
- - 31:52 Fun exercise to explore SQL
- - 33:55 What next in System Design
+0:00 Udemy's Taxonomy
+1:40 A bad Database Design for Taxonomy
+3:29 Good Database Design for Taxonomy
+7:34 Is Relational DB a good choice to store taxonomy?
+13:04 Deciding Indexes
+15:26 Get topic by ID
+15:56 Get topic path
+23:00 Get child-topics
+25:05 Get Top Taxonomy in Single Query
+31:05 Summarizing Indexes
+31:52 Fun exercise to explore SQL
+33:55 What next in System Design
 
-Watch the video 👇‍
-
-[![Designing Taxonomy on SQL](https://i.ytimg.com/vi/4_jlmX_oB94/mqdefault.jpg)](https://www.youtube.com/watch?v=4_jlmX_oB94)
-
-If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
-
-
+You can also
+ - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
+ - [Download the notes]()
+ - Listen to this on the go on [Spotify](https://open.spotify.com/show/7qMoamm2iZQrsPVm6IQLoD)
 
 # Arpit's System Design Masterclass
 

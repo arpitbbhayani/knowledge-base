@@ -1,6 +1,10 @@
 Sending payload in an HTTP GET request
 ===
 
+<p align="center">
+    <img src="https://media.giphy.com/media/xT5LMJlkTxzJx4zJv2/giphy.gif" width="320px" />
+</p>
+
 
 Can we send the payload in an HTTP GET request? [ in a gist ]
 
@@ -21,7 +25,12 @@ This is a perfect use case where the complex JSON query can be passed as a reque
 Yes. ElasticSearch - one of the most popular search utilities, uses this convention.
 
 The search endpoint of ElasticSearch is a GET endpoint where the complex search queries in JSON format are sent in the request payload.
+<hr />
 
+
+<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+
+[![Sending payload in an HTTP GET request](https://i.ytimg.com/vi/8S4k7k_f9Sk/mqdefault.jpg)](https://www.youtube.com/watch?v=8S4k7k_f9Sk)
 
 Can we send data in an HTTP GET request? Most people think, No. The truth is, we can send the data in the request payload of an HTTP GET request so long as our webserver can understand it.
 
@@ -29,23 +38,16 @@ In this video, we go through the HTTP 1.1 specification and see what it says abo
 
 Outline:
 
- - 00:00 HTTP GET Request
- - 01:53 What does HTTP 1.1 specification say?
- - 05:38 Request payload in Python Flask
- - 07:18 ElasticSearch using request payload for search
- - 10:40 When to use HTTP request payload in a GET request
+00:00 HTTP GET Request
+01:53 What does HTTP 1.1 specification say?
+05:38 Request payload in Python Flask
+07:18 ElasticSearch using request payload for search
+10:40 When to use HTTP request payload in a GET request
 
-Watch the video 👇‍
-
-[![Sending payload in an HTTP GET request](https://i.ytimg.com/vi/8S4k7k_f9Sk/mqdefault.jpg)](https://www.youtube.com/watch?v=8S4k7k_f9Sk)
-
-If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
-
-
-## Notes
-
-The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/1JwVEh9EG0ZGts-VePXNlIE1e8kivdHbM/view?usp=sharing).
-
+You can also
+ - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
+ - [Download the notes](https://drive.google.com/file/d/1JwVEh9EG0ZGts-VePXNlIE1e8kivdHbM/view?usp=sharing)
+ - Listen to this on the go on [Spotify](https://open.spotify.com/show/7qMoamm2iZQrsPVm6IQLoD)
 
 # Arpit's System Design Masterclass
 

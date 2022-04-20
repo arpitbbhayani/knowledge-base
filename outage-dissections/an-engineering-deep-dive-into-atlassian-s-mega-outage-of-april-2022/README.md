@@ -1,7 +1,15 @@
 An engineering deep-dive into Atlassian's Mega Outage of April 2022
 ===
 
+<p align="center">
+    <img src="https://media.giphy.com/media/1k3jEsS507T20/giphy.gif" width="320px" />
+</p>
 
+
+
+<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+
+[![An engineering deep-dive into Atlassian's Mega Outage of April 2022](https://i.ytimg.com/vi/xa-hMF8gku0/mqdefault.jpg)](https://www.youtube.com/watch?v=xa-hMF8gku0)
 
 In April 2022, Atlassian suffered a major outage where they "permanently" deleted the data for 400 of their paying cloud customers, and will take them weeks to recover the data. In this video, we will do an engineering deep dive into this outage trying to understand their engineering systems and practices.
 
@@ -11,25 +19,22 @@ Disclaimer: I do not have any insider information about this and the views are p
 
 Outline:
 
- - 00:00 Impact of the outage
- - 03:56 Insight 1: Incremental Backup Strategy
- - 06:38 Why did the Atlassian outage happen?
- - 07:30 Insight 2: Progressive Rollout Strategy
- - 10:57 Insight 3: Soft Deletes vs Hard Deletes
- - 14:28 Insight 4: Synchronous Replication for High Availability
- - 17:47 Insight 5: Immutable backups for point-in-time recovery
- - 21:04 Insight 6: Nearly multi-tenant architecture
- - 23:30 Why is it taking time for Atlassian to recover the deleted data?
+00:00 Impact of the outage
+03:56 Insight 1: Incremental Backup Strategy
+06:38 Why did the Atlassian outage happen?
+07:30 Insight 2: Progressive Rollout Strategy
+10:57 Insight 3: Soft Deletes vs Hard Deletes
+14:28 Insight 4: Synchronous Replication for High Availability
+17:47 Insight 5: Immutable backups for point-in-time recovery
+21:04 Insight 6: Nearly multi-tenant architecture
+23:30 Why is it taking time for Atlassian to recover the deleted data?
 
 Outage Report: https://www.atlassian.com/engineering/april-2022-outage-update
 
-Watch the video 👇‍
-
-[![An engineering deep-dive into Atlassian's Mega Outage of April 2022](https://i.ytimg.com/vi/xa-hMF8gku0/mqdefault.jpg)](https://www.youtube.com/watch?v=xa-hMF8gku0)
-
-If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
-
-
+You can also
+ - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
+ - [Download the notes]()
+ - Listen to this on the go on [Spotify](https://open.spotify.com/show/7qMoamm2iZQrsPVm6IQLoD)
 
 # Arpit's System Design Masterclass
 

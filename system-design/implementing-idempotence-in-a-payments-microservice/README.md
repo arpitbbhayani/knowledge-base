@@ -1,6 +1,10 @@
 Implementing Idempotence in a Payments Microservice
 ===
 
+<p align="center">
+    <img src="https://media.giphy.com/media/j3x5hjUoXIesM/giphy.gif" width="320px" />
+</p>
+
 
 How can you implement idempotence in a Payments Microservice? [in a gist ]
 
@@ -31,7 +35,12 @@ The flow is:
  5. Using the payment ID, the payment gateway checks if the transfer was indeed done or not and would transfer only when it was not done
 
 Although we talked about the Payments service here, this approach of implementing idempotence is pretty common across all the use cases. The core idea is to have a single ID (acting as the Idempotence Key) weaving all the involved services and parties together.
+<hr />
 
+
+<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+
+[![Implementing Idempotence in a Payments Microservice](https://i.ytimg.com/vi/m6DtqSb1BDM/mqdefault.jpg)](https://www.youtube.com/watch?v=m6DtqSb1BDM)
 
 Idempotence is an extremely critical property that we must consider while implementing an API or designing a microservice. The situation becomes even more critical when the money is involved - ensuring no matter how many times the user or internal service retries, the amount is transferred just once between the two users in one transaction.
 
@@ -39,23 +48,16 @@ This video looks at idempotence, why there is even a need for it, and, more impo
 
 Outline:
 
- - 00:00 What is Idempotence?
- - 02:32 Examples where Idempotence is relevant
- - 04:06 Why do we even need to retry?
- - 07:18 Implementation Approach 1: Do not retry
- - 09:45 Implementation Approach 1: Check and Update
+00:00 What is Idempotence?
+02:32 Examples where Idempotence is relevant
+04:06 Why do we even need to retry?
+07:18 Implementation Approach 1: Do not retry
+09:45 Implementation Approach 1: Check and Update
 
-Watch the video 👇‍
-
-[![Implementing Idempotence in a Payments Microservice](https://i.ytimg.com/vi/m6DtqSb1BDM/mqdefault.jpg)](https://www.youtube.com/watch?v=m6DtqSb1BDM)
-
-If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
-
-
-## Notes
-
-The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/1Zyt8qN11IiAZJKrdan4wi1c5J6n_eAyU/view?usp=sharing).
-
+You can also
+ - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
+ - [Download the notes](https://drive.google.com/file/d/1Zyt8qN11IiAZJKrdan4wi1c5J6n_eAyU/view?usp=sharing)
+ - Listen to this on the go on [Spotify](https://open.spotify.com/show/7qMoamm2iZQrsPVm6IQLoD)
 
 # Arpit's System Design Masterclass
 

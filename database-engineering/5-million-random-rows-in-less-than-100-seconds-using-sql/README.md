@@ -1,20 +1,25 @@
 5 million + random rows in less than 100 seconds using SQL
 ===
 
+<p align="center">
+    <img src="https://media.giphy.com/media/Gpu3skdN58ApO/giphy.gif" width="320px" />
+</p>
 
+
+
+<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+
+[![5 million + random rows in less than 100 seconds using SQL](https://i.ytimg.com/vi/x1XmcuosZNk/mqdefault.jpg)](https://www.youtube.com/watch?v=x1XmcuosZNk)
 
 In this video, we generate 5 million + random rows in less than 100 seconds using just SQL. We mock the data for any taxonomy (Udemy's example taken). We use Joins and SQL tricks to amplify the rows and use them to ingest.
 
 
 Link to the gist: https://gist.github.com/arpitbbhayani/96a42c28d134871ebc11faad272b5349
 
-Watch the video 👇‍
-
-[![5 million + random rows in less than 100 seconds using SQL](https://i.ytimg.com/vi/x1XmcuosZNk/mqdefault.jpg)](https://www.youtube.com/watch?v=x1XmcuosZNk)
-
-If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
-
-
+You can also
+ - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
+ - [Download the notes]()
+ - Listen to this on the go on [Spotify](https://open.spotify.com/show/7qMoamm2iZQrsPVm6IQLoD)
 
 # Arpit's System Design Masterclass
 

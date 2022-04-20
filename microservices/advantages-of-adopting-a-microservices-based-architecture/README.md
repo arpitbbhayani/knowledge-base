@@ -1,6 +1,10 @@
 Advantages of adopting a microservices-based architecture
 ===
 
+<p align="center">
+    <img src="https://media.giphy.com/media/giEftvZuPAiZQBphEI/giphy.gif" width="320px" />
+</p>
+
 
 Why Microservices?🤔 [ in a gist ]
 
@@ -29,27 +33,25 @@ If one microservice is down, it may lead to a partial outage of the product affe
 ⚡ Upgrades are simpler
 
 So long as a microservice adheres to the API contract, the team that owns it can upgrade the tech stack, architecture, and DB seamlessly.
+<hr />
 
+
+<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+
+[![Advantages of adopting a microservices-based architecture](https://i.ytimg.com/vi/JPj6mhVLQN0/mqdefault.jpg)](https://www.youtube.com/watch?v=JPj6mhVLQN0)
 
 Microservices are great, and the overall microservices-based architecture has some key advantages. In this video, we talk about what are microservices, the key advantages of using a microservices-based architecture, and understand how to fence service and define its set of responsibilities.
 
 Outline:
 
- - 00:00 What are microservices?
- - 01:53 Key advantages of adopting a microservices-based architecture
- - 09:48 How to fence a microservice?
+00:00 What are microservices?
+01:53 Key advantages of adopting a microservices-based architecture
+09:48 How to fence a microservice?
 
-Watch the video 👇‍
-
-[![Advantages of adopting a microservices-based architecture](https://i.ytimg.com/vi/JPj6mhVLQN0/mqdefault.jpg)](https://www.youtube.com/watch?v=JPj6mhVLQN0)
-
-If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
-
-
-## Notes
-
-The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/1lK2e3me09VNz51DWDunI5xDmlgLnOvfC/view?usp=sharing).
-
+You can also
+ - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
+ - [Download the notes](https://drive.google.com/file/d/1lK2e3me09VNz51DWDunI5xDmlgLnOvfC/view?usp=sharing)
+ - Listen to this on the go on [Spotify](https://open.spotify.com/show/7qMoamm2iZQrsPVm6IQLoD)
 
 # Arpit's System Design Masterclass
 

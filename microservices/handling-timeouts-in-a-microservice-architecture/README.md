@@ -1,6 +1,10 @@
 Handling timeouts in a microservice architecture
 ===
 
+<p align="center">
+    <img src="https://media.giphy.com/media/3oriO4kSYahYQr6e1a/giphy.gif" width="320px" />
+</p>
+
 
 How to handle timeouts in a microservice architecture? [ in a gist ]
 
@@ -21,31 +25,29 @@ Approach 2: Use some default value if you timed out
 Approach 3: Retry the request
 Approach 4: Retry only when needed
 Approach 5: Re-architect and make synchronous dependency an async one
+<hr />
 
+
+<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+
+[![Handling timeouts in a microservice architecture](https://i.ytimg.com/vi/Hxja4crycBg/mqdefault.jpg)](https://www.youtube.com/watch?v=Hxja4crycBg)
 
 Handling timeout well is extremely critical as it makes your distributed system robust and ensures you provide a consistent user experience by adhering to SLA guarantees. In this video, we discover how a synchronous dependency on a microservice leads to long delays becoming a big problem, understand how timeout addresses the concern, and discuss 5 approaches to handle service timeouts.
 
 Outline:
- - 00:00 Why is handling timeout critical?
- - 01:13 Synchronous communication and timeouts
- - 05:39 A rule of thumb: Timeout
- - 07:52 Approach 1: Ignore the timeout
- - 10:28 Approach 2: Configure and use defaults
- - 11:27 Approach 3: Retry when timeout
- - 16:36 Approach 4: Retry only when needed
- - 20:06 Approach 5: Rearchitect and remove synchronous dependency
+00:00 Why is handling timeout critical?
+01:13 Synchronous communication and timeouts
+05:39 A rule of thumb: Timeout
+07:52 Approach 1: Ignore the timeout
+10:28 Approach 2: Configure and use defaults
+11:27 Approach 3: Retry when timeout
+16:36 Approach 4: Retry only when needed
+20:06 Approach 5: Rearchitect and remove synchronous dependency
 
-Watch the video 👇‍
-
-[![Handling timeouts in a microservice architecture](https://i.ytimg.com/vi/Hxja4crycBg/mqdefault.jpg)](https://www.youtube.com/watch?v=Hxja4crycBg)
-
-If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
-
-
-## Notes
-
-The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/1GjObZ3xpLFxDEOO3EGRCj0Pq8bWLixjU/view?usp=sharing).
-
+You can also
+ - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
+ - [Download the notes](https://drive.google.com/file/d/1GjObZ3xpLFxDEOO3EGRCj0Pq8bWLixjU/view?usp=sharing)
+ - Listen to this on the go on [Spotify](https://open.spotify.com/show/7qMoamm2iZQrsPVm6IQLoD)
 
 # Arpit's System Design Masterclass
 

@@ -1,20 +1,28 @@
 How python optimizes integers?
 ===
 
+<p align="center">
+    <img src="https://media.giphy.com/media/sgFDIjII6GtmE/giphy.gif" width="320px" />
+</p>
 
+
+
+<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+
+[![How python optimizes integers?](https://i.ytimg.com/vi/6mhXGEXRXG0/mqdefault.jpg)](https://www.youtube.com/watch?v=6mhXGEXRXG0)
 
 In this video, we answer, How python optimizes integers? Does it cache them? We go through the CPython source code to find out the exact internals of it.
 
 
 Chapters:
- - 0:00 Introduction to integer optimization
- - 1:59 Going through the CPython code and tracing the function
- - 2:41 Going through PyLong_FromLong
- - 3:39 Understanding IS_SMALL_INT
- - 5:13 Understanding get_small_int
- - 8:47 How Python initializes the cache of integers?
- - 12:07 Where all Python is reusing small integers?
- - 14:45 Why Python caches integers?
+0:00 Introduction to integer optimization
+1:59 Going through the CPython code and tracing the function
+2:41 Going through PyLong_FromLong
+3:39 Understanding IS_SMALL_INT
+5:13 Understanding get_small_int
+8:47 How Python initializes the cache of integers?
+12:07 Where all Python is reusing small integers?
+14:45 Why Python caches integers?
 
 
 Link to essays and articles:
@@ -26,13 +34,10 @@ https://arpitbhayani.me/blogs/super-long-integers
 
 The Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.
 
-Watch the video 👇‍
-
-[![How python optimizes integers?](https://i.ytimg.com/vi/6mhXGEXRXG0/mqdefault.jpg)](https://www.youtube.com/watch?v=6mhXGEXRXG0)
-
-If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
-
-
+You can also
+ - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
+ - [Download the notes]()
+ - Listen to this on the go on [Spotify](https://open.spotify.com/show/7qMoamm2iZQrsPVm6IQLoD)
 
 # Arpit's System Design Masterclass
 

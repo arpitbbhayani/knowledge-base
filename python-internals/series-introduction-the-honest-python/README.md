@@ -1,7 +1,15 @@
 Series Introduction: The Honest Python
 ===
 
+<p align="center">
+    <img src="https://media.giphy.com/media/H0uLRCd8JIhRS/giphy.gif" width="320px" />
+</p>
 
+
+
+<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+
+[![Series Introduction: The Honest Python](https://i.ytimg.com/vi/E-3J8X5DulY/mqdefault.jpg)](https://www.youtube.com/watch?v=E-3J8X5DulY)
 
 The Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.
 
@@ -14,13 +22,10 @@ We will find answers to questions like
 
 If this sounds exciting, hop along with me on this journey and give a subscription to this channel.
 
-Watch the video 👇‍
-
-[![Series Introduction: The Honest Python](https://i.ytimg.com/vi/E-3J8X5DulY/mqdefault.jpg)](https://www.youtube.com/watch?v=E-3J8X5DulY)
-
-If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
-
-
+You can also
+ - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
+ - [Download the notes]()
+ - Listen to this on the go on [Spotify](https://open.spotify.com/show/7qMoamm2iZQrsPVm6IQLoD)
 
 # Arpit's System Design Masterclass
 

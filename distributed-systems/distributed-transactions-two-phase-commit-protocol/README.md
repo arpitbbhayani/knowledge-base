@@ -1,6 +1,10 @@
 Distributed Transactions: Two-Phase Commit Protocol
 ===
 
+<p align="center">
+    <img src="https://media.giphy.com/media/orU4txbRZIp6vJheJ9/giphy.gif" width="320px" />
+</p>
+
 
 Distributed Transactions using Two-phase Commit [in a gist] 🔆
 
@@ -29,7 +33,12 @@ Upon this assignment, the store and the delivery agent are notified about the or
 We retry a few times if any of the assignments fail (which could happen only if the service goes down). If we still cannot get the assignment done, we inform the user that the order cannot be placed.
 
 The order is placed only after the food item, and the delivery agent is assigned to the order.
+<hr />
 
+
+<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+
+[![Distributed Transactions: Two-Phase Commit Protocol](https://i.ytimg.com/vi/7FgU1D4EnpQ/mqdefault.jpg)](https://www.youtube.com/watch?v=7FgU1D4EnpQ)
 
 Distributed Transactions are tough and intimidating. It is hard to guarantee atomicity across microservices given the network delays, resource contention, and unreliable services.
 
@@ -37,22 +46,15 @@ In this video, we discuss and take a detailed look into Distributed Transactions
 
 Outline:
 
- - 00:00 Why Distributed Transactions
- - 03:44 Atomicity in Distributed Transactions
- - 06:47 Two-Phase Commit Protocol for Distributed Transactions
- - 18:29 Advantages and Disadvantages of Two-Phase Commit
+00:00 Why Distributed Transactions
+03:44 Atomicity in Distributed Transactions
+06:47 Two-Phase Commit Protocol for Distributed Transactions
+18:29 Advantages and Disadvantages of Two-Phase Commit
 
-Watch the video 👇‍
-
-[![Distributed Transactions: Two-Phase Commit Protocol](https://i.ytimg.com/vi/7FgU1D4EnpQ/mqdefault.jpg)](https://www.youtube.com/watch?v=7FgU1D4EnpQ)
-
-If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
-
-
-## Notes
-
-The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/18WDFAstffIe_vGbtTz_CS117XhvDcBx3/view?usp=sharing).
-
+You can also
+ - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
+ - [Download the notes](https://drive.google.com/file/d/18WDFAstffIe_vGbtTz_CS117XhvDcBx3/view?usp=sharing)
+ - Listen to this on the go on [Spotify](https://open.spotify.com/show/7qMoamm2iZQrsPVm6IQLoD)
 
 # Arpit's System Design Masterclass
 

@@ -1,6 +1,10 @@
 How to handle database outages?
 ===
 
+<p align="center">
+    <img src="https://media.giphy.com/media/lVBtp4SRW6rvDHf1b6/giphy.gif" width="320px" />
+</p>
+
 
 ### Why a database goes down?
 An unexpected heavy load on your database can lead to a process crash or a massive slowdown.
@@ -21,28 +25,26 @@ Before jumping to the potential short-term and long-term solutions, ensure you m
 - Check for the notorious N+1 Queries
 - Upgrade the database version to get the best that DB can offer
 - Evaluate the need for Horizontal scaling using Replicas and Sharding
+<hr />
 
+
+<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+
+[![How to handle database outages?](https://i.ytimg.com/vi/UT_TVldzA64/mqdefault.jpg)](https://www.youtube.com/watch?v=UT_TVldzA64)
 
 In this video, we talk about why a database goes down, what happens when the database is down, a few short-term solutions to minimize the downtime, and a few long-term solutions that you should be doing to ensure that your database does not go down again.
 
 Outline:
 
- - 00:00 Why a database goes down?
- - 06:10 What happens when a DB is down?
- - 09:46 Short-term solutions to get your DB up
- - 17:33 Long-term solutions to fix the database
+00:00 Why a database goes down?
+06:10 What happens when a DB is down?
+09:46 Short-term solutions to get your DB up
+17:33 Long-term solutions to fix the database
 
-Watch the video 👇‍
-
-[![How to handle database outages?](https://i.ytimg.com/vi/UT_TVldzA64/mqdefault.jpg)](https://www.youtube.com/watch?v=UT_TVldzA64)
-
-If you find this amusing, do like the video and subscribe to my [YT channel](asliengineering.com). I post 3 in-depth engineering videos every week around System Design, Distributed Systems, Microservices, and all things tech.
-
-
-## Notes
-
-The notes used in the video is can be found in the current folder and on [Google Drive](https://drive.google.com/file/d/1Q6YokLBvmfW1Tw1mpndOfx-I2NyRGVG0/view?usp=sharing).
-
+You can also
+ - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
+ - [Download the notes](https://drive.google.com/file/d/1Q6YokLBvmfW1Tw1mpndOfx-I2NyRGVG0/view?usp=sharing)
+ - Listen to this on the go on [Spotify](https://open.spotify.com/show/7qMoamm2iZQrsPVm6IQLoD)
 
 # Arpit's System Design Masterclass
 
