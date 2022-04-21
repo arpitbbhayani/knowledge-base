@@ -7,10 +7,11 @@ Dissecting Spotify's Global Outage - March 8, 2022
 
 [![Dissecting Spotify's Global Outage - March 8, 2022](https://i.ytimg.com/vi/h5hXivWws7k/mqdefault.jpg)](https://www.youtube.com/watch?v=h5hXivWws7k)
 
-<p>Incident Report: Spotify Outage on March 8: https://engineering.atspotify.com/2022/03/incident-report-spotify-outage-on-march-8/
+Incident Report: Spotify Outage on March 8: https://engineering.atspotify.com/2022/03/incident-report-spotify-outage-on-march-8/
 Google Cloud Traffic Director Outage: https://status.cloud.google.com/incidents/LuGcJVjNTeC5Sb9pSJ9o
-Java gRPC Client Bug: https://github.com/grpc/grpc-java/issues/8950</p>
-<p>In this video, we dissect the reasons behind Spotify's Global Outage and try to understand its architecture, and learn from critical things to remember while architecting a system.</p>
+Java gRPC Client Bug: https://github.com/grpc/grpc-java/issues/8950
+
+In this video, we dissect the reasons behind Spotify's Global Outage and try to understand its architecture, and learn from critical things to remember while architecting a system.
 
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)

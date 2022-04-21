@@ -2,26 +2,63 @@ Why do programming languages need automatic garbage collection?
 ===
 
 
+Our programs need memory, typically in the form of variables and objects, to do their job. The objects are either allocated on Stack or Heap.
+
+## Stack allocated objects
+
+A locally declared variable "int a = 10;" is allocated on the stack i.e. the stack frame of the function call and hence when the function returns the stack frame is popped, making the variable non-existent. Hence variables allocated on Stack do not need to be freed explicitly.
+
+## Heap allocated objects
+
+A variable allocated on the heap is typically done through functions like the "new" or "malloc". The object space allocated for such entities is in RAM and they outlive the function scope and execution, and hence they need to be explicitly freed as we are done with it.
+
+## Why do we need a Heap?
+
+Objects assigned on Heap need to be garbage collected, but why do we need the heap in the first place? There are 3 main reasons:
+
+ - We cannot grow your stack-allocated objects dynamically,
+ - We need dynamically growing objects like Arrays, LinkedList, Trees
+ - We might need objects that could be larger than what Stack can fit in
+ - We might need to share the same object across multiple threads
+ - We do not want our functions to copy and pass bulk objects
+
+## Garbage Collection: Explicit De-allocation
+
+Primitive programming languages like C and C++ do not have their garbage collection instead expect the developer to not only allocate the object but also deallocate it explicitly. Hence we see the functions like "malloc" and "free".
+
+The objects we allocate using "malloc" will continue to exist unless they are reclaimed using "free". The explicit need to "Free-ing" the allocated object is called Explicit Deacclocation.
+
+Although cleaning up the mess we created is a good idea, it is not reliable that we rely on the engineers and developers to always free the objects they allocated. Hence this gives rise to the need for automatic cleanup of unused variables - automatic garbage collection.
+
+The two key side-effects of not cleaning up the unused objects we allocate are
+
+- Memory Leak: Leading to an eventual process crash
+- Dangling Pointer: Program behaving unpredictably
+
+Hence, to reduce human error, and make the process more reliable and performant the runtimes of the programming languages implement their automatic garbage collection.
+<hr />
+
 
 <p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
 
 [![Why do programming languages need automatic garbage collection?](https://i.ytimg.com/vi/jcMxuLZCcqU/mqdefault.jpg)](https://www.youtube.com/watch?v=jcMxuLZCcqU)
 
-<p>We know how important Garbage Collection is for any programming language. So, today we explore why programming languages need automatic garbage collection in the first place?</p>
-<p>In this video, we understand - the basics of memory management, the need to allocate objects on the heap, the constructs of explicit deallocation, what happens when we do not do our garbage collection well, and why we need automatic garbage collection.</p>
-<p>Outline:</p>
-<ul>
-<li>00:00 Basics of Memory Management</li>
-<li>04:39 Why do we need heap allocations?</li>
-<li>06:59 Explicit Deallocation constructs</li>
-<li>09:26 Memory leak - when we do not delete an allocated object</li>
-<li>11:00 Dangling pointer - when we dereference an already freed object</li>
-<li>15:08 Why we need automatic garbage collection</li>
-</ul>
+We know how important Garbage Collection is for any programming language. So, today we explore why programming languages need automatic garbage collection in the first place?
+
+In this video, we understand - the basics of memory management, the need to allocate objects on the heap, the constructs of explicit deallocation, what happens when we do not do our garbage collection well, and why we need automatic garbage collection.
+
+Outline:
+
+00:00 Basics of Memory Management
+04:39 Why do we need heap allocations?
+06:59 Explicit Deallocation constructs
+09:26 Memory leak - when we do not delete an allocated object
+11:00 Dangling pointer - when we dereference an already freed object
+15:08 Why we need automatic garbage collection
 
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
- - [Download the notes]()
+ - [Download the notes](https://drive.google.com/file/d/1vdsTC6j4eDJFzcTOhhIM0JQOR2fW1l61/view?usp=sharing)
  - Listen to this on the go on [Spotify](https://open.spotify.com/show/7qMoamm2iZQrsPVm6IQLoD)
 
 # Arpit's System Design Masterclass

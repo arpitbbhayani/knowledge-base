@@ -7,18 +7,24 @@ How python optimizes strings using String Interning?
 
 [![How python optimizes strings using String Interning?](https://i.ytimg.com/vi/QpGK69LzfpY/mqdefault.jpg)](https://www.youtube.com/watch?v=QpGK69LzfpY)
 
-<p>In this video, we dive deep into CPython and find out how Python optimizes strings. The optimization we will be going through is called String Interning which is like caching the strings - using the same reference and not creating a new instance every time.</p>
-<p>Link to my String Interning article: https://arpitbhayani.me/blogs/string-interning
-Code changes we made in the video: https://github.com/arpitbbhayani/cpython/pull/9</p>
-<p>Chapters:
- - 0:00 What is String Interning?
- - 4:26 Tracing CPython function that interns strings
- - 5:36 Going through the PyUnicode_InternInPlace function
- - 18:45 Interned state stored in strings
- - 21:10 Interning does not work on all strings
- - 25:22 The catch with interning</p>
-<h1>The Honest Python</h1>
-<p>The Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.</p>
+In this video, we dive deep into CPython and find out how Python optimizes strings. The optimization we will be going through is called String Interning which is like caching the strings - using the same reference and not creating a new instance every time.
+
+
+Link to my String Interning article: https://arpitbhayani.me/blogs/string-interning
+Code changes we made in the video: https://github.com/arpitbbhayani/cpython/pull/9
+
+
+Chapters:
+0:00 What is String Interning?
+4:26 Tracing CPython function that interns strings
+5:36 Going through the PyUnicode_InternInPlace function
+18:45 Interned state stored in strings
+21:10 Interning does not work on all strings
+25:22 The catch with interning
+
+# The Honest Python
+
+The Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.
 
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)

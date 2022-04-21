@@ -2,16 +2,25 @@ Sending payload in an HTTP GET request
 ===
 
 
-<p>Can we send the payload in an HTTP GET request? [ in a gist ]</p>
-<p>It is a common myth that we could not pass the request body in the HTTP GET request. HTTP 1.1 specification neither enforces nor suggests this behavior.</p>
-<p>This means it is up to implementing the application web servers - Flask, uWSGI, etc. - to see if it parses the request body in the HTTP GET request. To do this, just check the request object you would be getting in your favorite framework.</p>
-<p>⚡ What can we do with this information?</p>
-<p>Say you are modeling an analytics service like Google Analytics in which you are exposing an endpoint that returns you the data point depending on the requirements. The requirements specified here could be a large, complex JSON.</p>
-<p>Passing this query in the URL of the GET request as a query param is not convenient as it would require you to serialize and escape the JSON string before passing.</p>
-<p>This is a perfect use case where the complex JSON query can be passed as a request body in the HTTP GET request, giving a good user experience.</p>
-<p>⚡ So, does any popular tool uses this convention?</p>
-<p>Yes. ElasticSearch - one of the most popular search utilities, uses this convention.</p>
-<p>The search endpoint of ElasticSearch is a GET endpoint where the complex search queries in JSON format are sent in the request payload.</p>
+Can we send the payload in an HTTP GET request? [ in a gist ]
+
+It is a common myth that we could not pass the request body in the HTTP GET request. HTTP 1.1 specification neither enforces nor suggests this behavior.
+
+This means it is up to implementing the application web servers - Flask, uWSGI, etc. - to see if it parses the request body in the HTTP GET request. To do this, just check the request object you would be getting in your favorite framework.
+
+⚡ What can we do with this information?
+
+Say you are modeling an analytics service like Google Analytics in which you are exposing an endpoint that returns you the data point depending on the requirements. The requirements specified here could be a large, complex JSON.
+
+Passing this query in the URL of the GET request as a query param is not convenient as it would require you to serialize and escape the JSON string before passing.
+
+This is a perfect use case where the complex JSON query can be passed as a request body in the HTTP GET request, giving a good user experience.
+
+⚡ So, does any popular tool uses this convention?
+
+Yes. ElasticSearch - one of the most popular search utilities, uses this convention.
+
+The search endpoint of ElasticSearch is a GET endpoint where the complex search queries in JSON format are sent in the request payload.
 <hr />
 
 
@@ -19,16 +28,17 @@ Sending payload in an HTTP GET request
 
 [![Sending payload in an HTTP GET request](https://i.ytimg.com/vi/8S4k7k_f9Sk/mqdefault.jpg)](https://www.youtube.com/watch?v=8S4k7k_f9Sk)
 
-<p>Can we send data in an HTTP GET request? Most people think, No. The truth is, we can send the data in the request payload of an HTTP GET request so long as our webserver can understand it.</p>
-<p>In this video, we go through the HTTP 1.1 specification and see what it says about the GET requests, write a simple Flask application to see that we can indeed process the payload of a GET request if we want to, and, more importantly, go through a real-world example where it was essential to send data in the request payload.</p>
-<p>Outline:</p>
-<ul>
-<li>00:00 HTTP GET Request</li>
-<li>01:53 What does HTTP 1.1 specification say?</li>
-<li>05:38 Request payload in Python Flask</li>
-<li>07:18 ElasticSearch using request payload for search</li>
-<li>10:40 When to use HTTP request payload in a GET request</li>
-</ul>
+Can we send data in an HTTP GET request? Most people think, No. The truth is, we can send the data in the request payload of an HTTP GET request so long as our webserver can understand it.
+
+In this video, we go through the HTTP 1.1 specification and see what it says about the GET requests, write a simple Flask application to see that we can indeed process the payload of a GET request if we want to, and, more importantly, go through a real-world example where it was essential to send data in the request payload.
+
+Outline:
+
+00:00 HTTP GET Request
+01:53 What does HTTP 1.1 specification say?
+05:38 Request payload in Python Flask
+07:18 ElasticSearch using request payload for search
+10:40 When to use HTTP request payload in a GET request
 
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)

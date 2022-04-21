@@ -2,20 +2,30 @@ What are Embedded Databases?
 ===
 
 
-<p>What are Embedded Databases? [ in a gist ]</p>
-<p>Traditional databases like MySQL, Postgres, MongoDB run on their server on a specific port. Anyone who wants to talk to the database can directly connect and talk.</p>
-<p>Embedded Databases are different from these traditional databases, and they operate in their own confined space within a process. There is no separate process of the database.</p>
-<p>No one can directly connect to this database, unlike how we do it with MySQL and other databases. The role and the use of the embedded database are limited to the process it is confined to.</p>
-<p>✨ Popular embedded databases are</p>
-<p>SQLite: an embedded SQL-like database
+What are Embedded Databases? [ in a gist ]
+
+Traditional databases like MySQL, Postgres, MongoDB run on their server on a specific port. Anyone who wants to talk to the database can directly connect and talk.
+
+Embedded Databases are different from these traditional databases, and they operate in their own confined space within a process. There is no separate process of the database.
+
+No one can directly connect to this database, unlike how we do it with MySQL and other databases. The role and the use of the embedded database are limited to the process it is confined to.
+
+✨ Popular embedded databases are
+
+SQLite: an embedded SQL-like database
 LevelDB: on disk KV store by Google
 RocksDB: on disk KV store optimized for performance
-Berkeley DB: KV store with ACID, Replication, and Locking</p>
-<p>An embedded database is always designed to solve one niche really well.</p>
-<p>✨ Application of Embedded Databases</p>
-<p>Every modern browser uses an embedded database called IndexedDB to store browsing history and other configuration settings locally. The browser is confined to a machine, and the IndexedDB is contained in the browser; there is no separate process to connect to.</p>
-<p>Every Android phone has support for SQLite database that we can use to store any information like game scores, stats, information locally on the phone.</p>
-<p>The core idea: When we need to store and query data that could be confined within a space and does not need to be centralized, we choose to use an Embedded Database.</p>
+Berkeley DB: KV store with ACID, Replication, and Locking
+
+An embedded database is always designed to solve one niche really well.
+
+✨ Application of Embedded Databases
+
+Every modern browser uses an embedded database called IndexedDB to store browsing history and other configuration settings locally. The browser is confined to a machine, and the IndexedDB is contained in the browser; there is no separate process to connect to.
+
+Every Android phone has support for SQLite database that we can use to store any information like game scores, stats, information locally on the phone.
+
+The core idea: When we need to store and query data that could be confined within a space and does not need to be centralized, we choose to use an Embedded Database.
 <hr />
 
 
@@ -23,12 +33,13 @@ Berkeley DB: KV store with ACID, Replication, and Locking</p>
 
 [![What are Embedded Databases?](https://i.ytimg.com/vi/xELqRiovEcI/mqdefault.jpg)](https://www.youtube.com/watch?v=xELqRiovEcI)
 
-<p>Embedded databases are coupled with the application they are part of and operate in a confined space. They are designed to solve one problem for their niche very well. In this video, we take an introductory look into this amazing class of databases, understand the core reason why they exist, talk about a few popular ones, and understand a few use cases.</p>
-<p>Outline:
- - 00:00 Server-based Databases
- - 02:32 Embedded Databases
- - 06:35 Popular Embedded Databases
- - 10:39 Applications of Embedded Databases</p>
+Embedded databases are coupled with the application they are part of and operate in a confined space. They are designed to solve one problem for their niche very well. In this video, we take an introductory look into this amazing class of databases, understand the core reason why they exist, talk about a few popular ones, and understand a few use cases.
+
+Outline:
+00:00 Server-based Databases
+02:32 Embedded Databases
+06:35 Popular Embedded Databases
+10:39 Applications of Embedded Databases
 
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)

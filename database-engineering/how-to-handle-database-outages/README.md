@@ -2,24 +2,25 @@ How to handle database outages?
 ===
 
 
-<h3>Why a database goes down?</h3>
-<p>An unexpected heavy load on your database can lead to a process crash or a massive slowdown.</p>
-<p>Before jumping to the potential short-term and long-term solutions, ensure you monitor the database well. CPU, Memory, Disk, and Connections are being closely monitored.</p>
-<h2>Short term solutions</h2>
-<ul>
-<li>Kill the queries that have been running for a long time</li>
-<li>Quickly scale up your database if you have been seeing a consistent heavy usage</li>
-<li>Check if the recent deployment is the culprit; if so, revert asap</li>
-<li>Reboot the database will calm the storm and buy you some time</li>
-</ul>
-<h2>Long term solutions</h2>
-<ul>
-<li>Ensure the right set of indexes is in place</li>
-<li>Tune your database default parameters to gain optimal performance</li>
-<li>Check for the notorious N+1 Queries</li>
-<li>Upgrade the database version to get the best that DB can offer</li>
-<li>Evaluate the need for Horizontal scaling using Replicas and Sharding</li>
-</ul>
+### Why a database goes down?
+An unexpected heavy load on your database can lead to a process crash or a massive slowdown.
+
+Before jumping to the potential short-term and long-term solutions, ensure you monitor the database well. CPU, Memory, Disk, and Connections are being closely monitored.
+
+## Short term solutions
+
+- Kill the queries that have been running for a long time
+- Quickly scale up your database if you have been seeing a consistent heavy usage
+- Check if the recent deployment is the culprit; if so, revert asap
+- Reboot the database will calm the storm and buy you some time
+
+## Long term solutions
+
+- Ensure the right set of indexes is in place
+- Tune your database default parameters to gain optimal performance
+- Check for the notorious N+1 Queries
+- Upgrade the database version to get the best that DB can offer
+- Evaluate the need for Horizontal scaling using Replicas and Sharding
 <hr />
 
 
@@ -27,14 +28,14 @@ How to handle database outages?
 
 [![How to handle database outages?](https://i.ytimg.com/vi/UT_TVldzA64/mqdefault.jpg)](https://www.youtube.com/watch?v=UT_TVldzA64)
 
-<p>In this video, we talk about why a database goes down, what happens when the database is down, a few short-term solutions to minimize the downtime, and a few long-term solutions that you should be doing to ensure that your database does not go down again.</p>
-<p>Outline:</p>
-<ul>
-<li>00:00 Why a database goes down?</li>
-<li>06:10 What happens when a DB is down?</li>
-<li>09:46 Short-term solutions to get your DB up</li>
-<li>17:33 Long-term solutions to fix the database</li>
-</ul>
+In this video, we talk about why a database goes down, what happens when the database is down, a few short-term solutions to minimize the downtime, and a few long-term solutions that you should be doing to ensure that your database does not go down again.
+
+Outline:
+
+00:00 Why a database goes down?
+06:10 What happens when a DB is down?
+09:46 Short-term solutions to get your DB up
+17:33 Long-term solutions to fix the database
 
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)

@@ -7,21 +7,28 @@ How python optimizes integers?
 
 [![How python optimizes integers?](https://i.ytimg.com/vi/6mhXGEXRXG0/mqdefault.jpg)](https://www.youtube.com/watch?v=6mhXGEXRXG0)
 
-<p>In this video, we answer, How python optimizes integers? Does it cache them? We go through the CPython source code to find out the exact internals of it.</p>
-<p>Chapters:
- - 0:00 Introduction to integer optimization
- - 1:59 Going through the CPython code and tracing the function
- - 2:41 Going through PyLong_FromLong
- - 3:39 Understanding IS_SMALL_INT
- - 5:13 Understanding get_small_int
- - 8:47 How Python initializes the cache of integers?
- - 12:07 Where all Python is reusing small integers?
- - 14:45 Why Python caches integers?</p>
-<p>Link to essays and articles:
+In this video, we answer, How python optimizes integers? Does it cache them? We go through the CPython source code to find out the exact internals of it.
+
+
+Chapters:
+0:00 Introduction to integer optimization
+1:59 Going through the CPython code and tracing the function
+2:41 Going through PyLong_FromLong
+3:39 Understanding IS_SMALL_INT
+5:13 Understanding get_small_int
+8:47 How Python initializes the cache of integers?
+12:07 Where all Python is reusing small integers?
+14:45 Why Python caches integers?
+
+
+Link to essays and articles:
 https://arpitbhayani.me/blogs/python-caches-integers
-https://arpitbhayani.me/blogs/super-long-integers</p>
-<h1>The Honest Python</h1>
-<p>The Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.</p>
+https://arpitbhayani.me/blogs/super-long-integers
+
+
+# The Honest Python
+
+The Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.
 
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)

@@ -2,18 +2,25 @@ Handling timeouts in a microservice architecture
 ===
 
 
-<p>How to handle timeouts in a microservice architecture? [ in a gist ]</p>
-<p>Microservices give us the flexibility to pick the best tech stack to solve the problem optimally. But one thing that ruins the real thrill is Timeouts.</p>
-<p>Say we have a blogging website where a user can search for blogs. The request comes to the Search service, and it finds the most relevant blogs for the query.</p>
-<p>In the response, a field called "total_views" should hold the total number of views the blog received in its lifetime. The search services should talk to the Analytics service synchronously to get the data. This synchronous dependency is the root of all evil.</p>
-<p>The core problem: Delays can be arbitrarily large</p>
-<p>Because the delay from depending on service can be arbitrarily large, we know how long to wait for the response. We for sure cannot wait forever, and hence we introduce Timeout. Every time the Search service invokes the Analytics service, it starts a timer, and if it does not get a response in the stipulated time, it timeout and moves on.</p>
-<p>There are 5 approaches to handling timeouts.</p>
-<p>Approach 1: Ignore the timeout and move on
+How to handle timeouts in a microservice architecture? [ in a gist ]
+
+Microservices give us the flexibility to pick the best tech stack to solve the problem optimally. But one thing that ruins the real thrill is Timeouts.
+
+Say we have a blogging website where a user can search for blogs. The request comes to the Search service, and it finds the most relevant blogs for the query.
+
+In the response, a field called "total_views" should hold the total number of views the blog received in its lifetime. The search services should talk to the Analytics service synchronously to get the data. This synchronous dependency is the root of all evil.
+
+The core problem: Delays can be arbitrarily large
+
+Because the delay from depending on service can be arbitrarily large, we know how long to wait for the response. We for sure cannot wait forever, and hence we introduce Timeout. Every time the Search service invokes the Analytics service, it starts a timer, and if it does not get a response in the stipulated time, it timeout and moves on.
+
+There are 5 approaches to handling timeouts.
+
+Approach 1: Ignore the timeout and move on
 Approach 2: Use some default value if you timed out
 Approach 3: Retry the request
 Approach 4: Retry only when needed
-Approach 5: Re-architect and make synchronous dependency an async one</p>
+Approach 5: Re-architect and make synchronous dependency an async one
 <hr />
 
 
@@ -21,16 +28,17 @@ Approach 5: Re-architect and make synchronous dependency an async one</p>
 
 [![Handling timeouts in a microservice architecture](https://i.ytimg.com/vi/Hxja4crycBg/mqdefault.jpg)](https://www.youtube.com/watch?v=Hxja4crycBg)
 
-<p>Handling timeout well is extremely critical as it makes your distributed system robust and ensures you provide a consistent user experience by adhering to SLA guarantees. In this video, we discover how a synchronous dependency on a microservice leads to long delays becoming a big problem, understand how timeout addresses the concern, and discuss 5 approaches to handle service timeouts.</p>
-<p>Outline:
- - 00:00 Why is handling timeout critical?
- - 01:13 Synchronous communication and timeouts
- - 05:39 A rule of thumb: Timeout
- - 07:52 Approach 1: Ignore the timeout
- - 10:28 Approach 2: Configure and use defaults
- - 11:27 Approach 3: Retry when timeout
- - 16:36 Approach 4: Retry only when needed
- - 20:06 Approach 5: Rearchitect and remove synchronous dependency</p>
+Handling timeout well is extremely critical as it makes your distributed system robust and ensures you provide a consistent user experience by adhering to SLA guarantees. In this video, we discover how a synchronous dependency on a microservice leads to long delays becoming a big problem, understand how timeout addresses the concern, and discuss 5 approaches to handle service timeouts.
+
+Outline:
+00:00 Why is handling timeout critical?
+01:13 Synchronous communication and timeouts
+05:39 A rule of thumb: Timeout
+07:52 Approach 1: Ignore the timeout
+10:28 Approach 2: Configure and use defaults
+11:27 Approach 3: Retry when timeout
+16:36 Approach 4: Retry only when needed
+20:06 Approach 5: Rearchitect and remove synchronous dependency
 
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)

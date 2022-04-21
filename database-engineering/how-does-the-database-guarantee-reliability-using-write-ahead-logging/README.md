@@ -2,20 +2,30 @@ How does the database guarantee reliability using write-ahead logging?
 ===
 
 
-<p>How does the database guarantee reliability using write-ahead logging? [ in a gist ]</p>
-<p>Any persistence database needs to guarantee the reliability, implying that any update/delete fired on the database is reliably stored on the disk. The alterations on the data should not be affected by power loss, OS failure, or hardware failure.</p>
-<p>To update a certain row of the database, the database engine first reads the block in the memory, performs the update, and flushes the block to the disk. The database engine writes the updates on the blocks that represent the table data and the indexes during the flush.</p>
-<p>What if, just before the flush, the database process crashed? The changes that remained in the memory are lost. How do databases prevent this? The answer is super-simple</p>
-<p>✨ Write-ahead Logging ✨</p>
-<p>Write-ahead logging is a standard way to ensure data integrity and reliability. Any changes made on the database are first logged in an append-only file called write-ahead Log or Commit Log. Then the blocks on the disk are updated.</p>
-<p>An operation like Update Query, Delete Query is logged in the commit log and not the actual changes making the write lightning-fast.</p>
-<p>✨ Advantages of using WAL</p>
-<p>- we can skip flushing the data to the disk on every update
+How does the database guarantee reliability using write-ahead logging? [ in a gist ]
+
+Any persistence database needs to guarantee the reliability, implying that any update/delete fired on the database is reliably stored on the disk. The alterations on the data should not be affected by power loss, OS failure, or hardware failure.
+
+To update a certain row of the database, the database engine first reads the block in the memory, performs the update, and flushes the block to the disk. The database engine writes the updates on the blocks that represent the table data and the indexes during the flush.
+
+What if, just before the flush, the database process crashed? The changes that remained in the memory are lost. How do databases prevent this? The answer is super-simple
+
+✨ Write-ahead Logging ✨
+
+Write-ahead logging is a standard way to ensure data integrity and reliability. Any changes made on the database are first logged in an append-only file called write-ahead Log or Commit Log. Then the blocks on the disk are updated.
+
+An operation like Update Query, Delete Query is logged in the commit log and not the actual changes making the write lightning-fast.
+
+✨ Advantages of using WAL
+
+ - we can skip flushing the data to the disk on every update
  - significantly reduce the number of disk writes
  - we can recover the data in case of a data loss
- - we can have point-in-time snapshots</p>
-<p>✨ Data integrity in WAL</p>
-<p>WAL also takes care of its data integrity by writing a CRC-32 before logging the operation. This CRC is checked during reading and replicating.</p>
+ - we can have point-in-time snapshots
+
+✨ Data integrity in WAL
+
+WAL also takes care of its data integrity by writing a CRC-32 before logging the operation. This CRC is checked during reading and replicating.
 <hr />
 
 
@@ -23,16 +33,19 @@ How does the database guarantee reliability using write-ahead logging?
 
 [![How does the database guarantee reliability using write-ahead logging?](https://i.ytimg.com/vi/wI4hKwl1Cn4/mqdefault.jpg)](https://www.youtube.com/watch?v=wI4hKwl1Cn4)
 
-<p>Any persistent database needs to guarantee reliability. No matter how big or small the changes are, they should survive any reboots, OS, or hardware crashes once they are committed. All the persistent databases use a write-ahead logging technique to guarantee such reliability while not affecting the performance.</p>
-<p>In this video, we talk about write-ahead logging, how it ensures reliability, a few solid advantages of using it, one of them being a massive database performance boost, and how the log files are structured on the disk.</p>
-<p>Outline:
- - 00:00 What happens on Commit
- - 05:57 Write-ahead Logging
- - 08:44 Advantages of having a Write-ahead Logging
- - 14:29 Data Integrity in WAL files
- - 16:40 Write-ahead Logging Internals</p>
-<p>Related Videos:
-How indexes make a database read faster: https://www.youtube.com/watch?v=3G293is403I</p>
+Any persistent database needs to guarantee reliability. No matter how big or small the changes are, they should survive any reboots, OS, or hardware crashes once they are committed. All the persistent databases use a write-ahead logging technique to guarantee such reliability while not affecting the performance.
+
+In this video, we talk about write-ahead logging, how it ensures reliability, a few solid advantages of using it, one of them being a massive database performance boost, and how the log files are structured on the disk.
+
+Outline:
+00:00 What happens on Commit
+05:57 Write-ahead Logging
+08:44 Advantages of having a Write-ahead Logging
+14:29 Data Integrity in WAL files
+16:40 Write-ahead Logging Internals
+
+Related Videos:
+How indexes make a database read faster: https://www.youtube.com/watch?v=3G293is403I
 
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)

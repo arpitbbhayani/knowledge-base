@@ -7,18 +7,23 @@ Changing python grammar to support standalone walrus assignments
 
 [![Changing python grammar to support standalone walrus assignments](https://i.ytimg.com/vi/rWb7VYz1q1U/mqdefault.jpg)](https://www.youtube.com/watch?v=rWb7VYz1q1U)
 
-<p>In this video, we alter the Python grammar and make an invalid syntax valid. We alter grammar and allow the Walrus operator to be executed as a standalone statement similar to how the usual assignment statement works. </p>
-<p>This video would pave way for budding Python developers to understand CPython internals.</p>
-<p>Chapters:
- - 0:00 What is a walrus operator?
- - 1:20 Building a toy shell to understand Walrus
- - 6:27 A non-intuitive behavior
- - 8:15 Going through the grammar
- - 14:25 Altering the Walrus behavior
- - 16:55 Understanding why it worked</p>
-<p>Link to the article: https://arpitbhayani.me/blogs/the-weird-walrus</p>
-<h1>The Honest Python</h1>
-<p>The Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.</p>
+In this video, we alter the Python grammar and make an invalid syntax valid. We alter grammar and allow the Walrus operator to be executed as a standalone statement similar to how the usual assignment statement works. 
+
+This video would pave way for budding Python developers to understand CPython internals.
+
+Chapters:
+0:00 What is a walrus operator?
+1:20 Building a toy shell to understand Walrus
+6:27 A non-intuitive behavior
+8:15 Going through the grammar
+14:25 Altering the Walrus behavior
+16:55 Understanding why it worked
+
+Link to the article: https://arpitbhayani.me/blogs/the-weird-walrus
+
+# The Honest Python
+
+The Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.
 
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)

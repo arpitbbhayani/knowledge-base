@@ -7,15 +7,16 @@ Series Introduction: The Honest Python
 
 [![Series Introduction: The Honest Python](https://i.ytimg.com/vi/E-3J8X5DulY/mqdefault.jpg)](https://www.youtube.com/watch?v=E-3J8X5DulY)
 
-<p>The Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.</p>
-<p>We will find answers to questions like</p>
-<ul>
-<li>How python implements super-long integers?</li>
-<li>What kind of algorithms power this language and its operations?</li>
-<li>How Garbage Collection is implemented?</li>
-<li>How are types like Lists, Sets, and Dictionaries are implemented?</li>
-</ul>
-<p>If this sounds exciting, hop along with me on this journey and give a subscription to this channel.</p>
+The Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.
+
+We will find answers to questions like
+
+  - How python implements super-long integers?
+  - What kind of algorithms power this language and its operations?
+  - How Garbage Collection is implemented?
+  - How are types like Lists, Sets, and Dictionaries are implemented?
+
+If this sounds exciting, hop along with me on this journey and give a subscription to this channel.
 
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)

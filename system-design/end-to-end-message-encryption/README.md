@@ -7,9 +7,11 @@ End-to-end Message Encryption
 
 [![End-to-end Message Encryption](https://i.ytimg.com/vi/m_7xSIhxZL8/mqdefault.jpg)](https://www.youtube.com/watch?v=m_7xSIhxZL8)
 
-<p>In this video, we find how to implement a very very simple version of end-to-end WhatsApp-like message encryption. This is not even 1% of how WhatsApp does it but it gives a fair amount of idea on how we could do it.</p>
-<p>How do WhatsApp, Facebook, Signal actually do it? Answer: The Signal Protocol</p>
-<p>We do it with a very simple Public Key Cryptography and a Digital Signature.</p>
+In this video, we find how to implement a very very simple version of end-to-end WhatsApp-like message encryption. This is not even 1% of how WhatsApp does it but it gives a fair amount of idea on how we could do it.
+
+How do WhatsApp, Facebook, Signal actually do it? Answer: The Signal Protocol
+
+We do it with a very simple Public Key Cryptography and a Digital Signature.
 
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
