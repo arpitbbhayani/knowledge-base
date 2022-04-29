@@ -11,7 +11,7 @@ Thank you for visiting my knowledge base. This repository contains everything im
 Hey 🙌‍, I am Arpit Bhayani, a CS Engineer, an Educator, and a Polymath.
 
 I run a YouTube channel by the name [Asli Engineering](asliengineering.com) (translation: Real Engineering) on which I publish in-depth engineering videos on topics ranging from System Design,
-Distributed Systems, Python Internals, and anything that amuses me in tech. To date, I have published **34** videos covering **7** topics.
+Distributed Systems, Python Internals, and anything that amuses me in tech. To date, I have published **36** videos covering **7** topics.
 
 I also run a [course on System Design](https://arpitbhayani.me/masterclass) in which I teach the concepts of designing massively scalable systems using the First Principle Thinking. The course has been trusted by prople working in someo of the top companies of the world like Google, Amazon, Facebook, Microsoft, GoJek, and so many more. You can find the details about the course and curriculum at [arpitbhayani.me/masterclass](https://arpitbhayani.me/masterclass).
 
@@ -27,10 +27,10 @@ Topics I like to talk about are
 
 5 recent videos I published on [YouTube](https://www.youtube.com/c/ArpitBhayani)
 
+ - [Mark and Sweep Garbage Collection Algorithm](https://youtube.com/watch?v=4qLf0FJMyf0)
+ - [Should some microservices share a database?](https://youtube.com/watch?v=tV11trlimLk)
  - [Database Sharding and Partitioning](https://youtube.com/watch?v=wXvljefXyEo)
- - [7 Characteristics and Metrics of a Garbage Collector](https://youtube.com/watch?v=IojMqbegejk)
+ - [How to pick a garbage collector?](https://youtube.com/watch?v=IojMqbegejk)
  - [How to scope a microservice?](https://youtube.com/watch?v=nfkdKHcKxbE)
- - [Why, where, and when should we throttle or rate limit?](https://youtube.com/watch?v=CW4gVlU0xtU)
- - [An engineering deep-dive into Atlassian's Mega Outage of April 2022](https://youtube.com/watch?v=xa-hMF8gku0)
 
 You can find more about me on my website [arpitbhayani.me](arpitbhayani.me).
