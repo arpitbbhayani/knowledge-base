@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1,
+    "uid": "system-design",
+    "name": "System Design",
+    "one_liner": null,
+    "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+  },
+  {
+    "id": 2,
+    "uid": "database-engineering",
+    "name": "Database Engineering",
+    "one_liner": null,
+    "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l"
+  },
+  {
+    "id": 3,
+    "uid": "outage-dissections",
+    "name": "Outage Dissections",
+    "one_liner": null,
+    "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc"
+  },
+  {
+    "id": 4,
+    "uid": "distributed-systems",
+    "name": "Distributed Systems",
+    "one_liner": null,
+    "youtube_playlist_id": "PLsdq-3Z1EPT1wfRQo2xrrst2SGremT_qd"
+  },
+  {
+    "id": 5,
+    "uid": "python-internals",
+    "name": "Python Internals",
+    "one_liner": null,
+    "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+  },
+  {
+    "id": 6,
+    "uid": "garbage-collection",
+    "name": "Garbage Collection",
+    "one_liner": null,
+    "youtube_playlist_id": "PLsdq-3Z1EPT3MvruOP09U1bWmcjxLIMwR"
+  },
+  {
+    "id": 7,
+    "uid": "microservices",
+    "name": "Microservices",
+    "one_liner": null,
+    "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt"
+  }
+]
