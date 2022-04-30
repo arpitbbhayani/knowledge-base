@@ -1,0 +1,200 @@
+[
+  {
+    "id": 120,
+    "topic": {
+      "id": 0,
+      "uid": "python-internals",
+      "name": "Python Internals",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+    },
+    "yt_video_id": "E-3J8X5DulY",
+    "title": "Series Introduction: The Honest Python",
+    "description": "The Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.\n\nWe will find answers to questions like\n\n  - How python implements super-long integers?\n  - What kind of algorithms power this language and its operations?\n  - How Garbage Collection is implemented?\n  - How are types like Lists, Sets, and Dictionaries are implemented?\n\nIf this sounds exciting, hop along with me on this journey and give a subscription to this channel.",
+    "img": "https://i.ytimg.com/vi/E-3J8X5DulY/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/H0uLRCd8JIhRS/giphy.gif",
+    "duration": "40",
+    "view_count": 725,
+    "like_count": 34,
+    "comment_count": 3,
+    "released_at": "2021-04-03",
+    "gist": "",
+    "notes_gd": ""
+  },
+  {
+    "id": 121,
+    "topic": {
+      "id": 0,
+      "uid": "python-internals",
+      "name": "Python Internals",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+    },
+    "yt_video_id": "k5isLG6vqss",
+    "title": "Setting up cpython locally and making your first change",
+    "description": "In this video, we set up CPython, build our binary, and make our first \"Hello, World!\" change.\n\nCPython Github Repository: https://github.com/python/cpython/\nCPython Setup Guide: https://devguide.python.org/setup/",
+    "img": "https://i.ytimg.com/vi/k5isLG6vqss/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/3o6Zt34440romOQWo8/giphy.gif",
+    "duration": "6:32",
+    "view_count": 855,
+    "like_count": 45,
+    "comment_count": 3,
+    "released_at": "2021-04-04",
+    "gist": "",
+    "notes_gd": ""
+  },
+  {
+    "id": 122,
+    "topic": {
+      "id": 0,
+      "uid": "python-internals",
+      "name": "Python Internals",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+    },
+    "yt_video_id": "rWb7VYz1q1U",
+    "title": "Changing python grammar to support standalone walrus assignments",
+    "description": "In this video, we alter the Python grammar and make an invalid syntax valid. We alter grammar and allow the Walrus operator to be executed as a standalone statement similar to how the usual assignment statement works. \n\nThis video would pave way for budding Python developers to understand CPython internals.\n\nChapters:\n0:00 What is a walrus operator?\n1:20 Building a toy shell to understand Walrus\n6:27 A non-intuitive behavior\n8:15 Going through the grammar\n14:25 Altering the Walrus behavior\n16:55 Understanding why it worked\n\nLink to the article: https://arpitbhayani.me/blogs/the-weird-walrus\n\n# The Honest Python\n\nThe Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.",
+    "img": "https://i.ytimg.com/vi/rWb7VYz1q1U/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/HxnMNAEQgHqEHcGKBb/giphy.gif",
+    "duration": "22:22",
+    "view_count": 453,
+    "like_count": 26,
+    "comment_count": 10,
+    "released_at": "2021-04-08",
+    "gist": "",
+    "notes_gd": ""
+  },
+  {
+    "id": 123,
+    "topic": {
+      "id": 0,
+      "uid": "python-internals",
+      "name": "Python Internals",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+    },
+    "yt_video_id": "QpGK69LzfpY",
+    "title": "How python optimizes strings using String Interning?",
+    "description": "In this video, we dive deep into CPython and find out how Python optimizes strings. The optimization we will be going through is called String Interning which is like caching the strings - using the same reference and not creating a new instance every time.\n\n\nLink to my String Interning article: https://arpitbhayani.me/blogs/string-interning\nCode changes we made in the video: https://github.com/arpitbbhayani/cpython/pull/9\n\n\nChapters:\n0:00 What is String Interning?\n4:26 Tracing CPython function that interns strings\n5:36 Going through the PyUnicode_InternInPlace function\n18:45 Interned state stored in strings\n21:10 Interning does not work on all strings\n25:22 The catch with interning\n\n# The Honest Python\n\nThe Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.",
+    "img": "https://i.ytimg.com/vi/QpGK69LzfpY/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/lPiGDQQyhG9zEoGmuh/giphy.gif",
+    "duration": "30:28",
+    "view_count": 431,
+    "like_count": 18,
+    "comment_count": 2,
+    "released_at": "2021-04-13",
+    "gist": "",
+    "notes_gd": ""
+  },
+  {
+    "id": 124,
+    "topic": {
+      "id": 0,
+      "uid": "python-internals",
+      "name": "Python Internals",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+    },
+    "yt_video_id": "zz2Lu5ht_jA",
+    "title": "How python implements chained comparison operators?",
+    "description": "In this essay, we explore how python evaluates chained comparison operators. We dive deep into the code and answer the following questions\n\n- how Python evaluates chained comparison operators?\n- how it differs from C-like evaluation?\n- how Python implements short-circuiting?\n\nIn the process, we also alter the code to make Python evaluate such expressions C-like.\n\nDetailed Essay: https://arpitbhayani.me/blogs/chained-operators-python\n\nChapters:\n0:00 Chained Comparison Operators\n1:32 How Python and C differ in evaluation\n6:34 Disassembling the code\n8:00 Instruction by Instruction walkthrough\n15:42 Short-circuit evaluation\n17:27 Tracing and understanding the CPython code\n17:40 What makes Python-like evaluation the way it is\n24:22 Altering the code to make it a C-like evaluation\n26:19 Disassembling the altered code\n27:13 Instruction by Instruction walkthrough\n28:40 Concluding\n30:18 Like, Share, and Subscribe\n\n# The Honest Python\n\nThe Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.",
+    "img": "https://i.ytimg.com/vi/zz2Lu5ht_jA/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/MFabj1E9mgUsqwVWHu/giphy.gif",
+    "duration": "30:45",
+    "view_count": 194,
+    "like_count": 13,
+    "comment_count": 0,
+    "released_at": "2021-04-28",
+    "gist": "",
+    "notes_gd": ""
+  },
+  {
+    "id": 125,
+    "topic": {
+      "id": 0,
+      "uid": "python-internals",
+      "name": "Python Internals",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+    },
+    "yt_video_id": "6mhXGEXRXG0",
+    "title": "How python optimizes integers?",
+    "description": "In this video, we answer, How python optimizes integers? Does it cache them? We go through the CPython source code to find out the exact internals of it.\n\n\nChapters:\n0:00 Introduction to integer optimization\n1:59 Going through the CPython code and tracing the function\n2:41 Going through PyLong_FromLong\n3:39 Understanding IS_SMALL_INT\n5:13 Understanding get_small_int\n8:47 How Python initializes the cache of integers?\n12:07 Where all Python is reusing small integers?\n14:45 Why Python caches integers?\n\n\nLink to essays and articles:\nhttps://arpitbhayani.me/blogs/python-caches-integers\nhttps://arpitbhayani.me/blogs/super-long-integers\n\n\n# The Honest Python\n\nThe Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.",
+    "img": "https://i.ytimg.com/vi/6mhXGEXRXG0/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/sgFDIjII6GtmE/giphy.gif",
+    "duration": "15:40",
+    "view_count": 234,
+    "like_count": 23,
+    "comment_count": 2,
+    "released_at": "2021-05-06",
+    "gist": "",
+    "notes_gd": ""
+  },
+  {
+    "id": 126,
+    "topic": {
+      "id": 0,
+      "uid": "python-internals",
+      "name": "Python Internals",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+    },
+    "yt_video_id": "u4tfIy--4GM",
+    "title": "How python compares a float and an int objects?",
+    "description": "How python internally performs the comparison of a float and an integer value? We find this out in this video.\n\n\nComparing a float to an int is a fascinating problem, especially for Python. Comparing numbers involve comparing magnitudes across different types; plus things become even more complex considering Python supports infinitely long number.\n\nChapters:\n0:00 Introduction to number comparison\n\n1:14 Disassembling the code\n2:00 Understanding COMPARE_OP\n2:54 Exploring RichCompare\n7:16 Understanding the core logic\n\n\n# The Honest Python\n\nThe Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.",
+    "img": "https://i.ytimg.com/vi/u4tfIy--4GM/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/l0ExiSoCkhCfSm94k/giphy.gif",
+    "duration": "20:34",
+    "view_count": 240,
+    "like_count": 9,
+    "comment_count": 1,
+    "released_at": "2021-05-13",
+    "gist": "",
+    "notes_gd": ""
+  },
+  {
+    "id": 127,
+    "topic": {
+      "id": 0,
+      "uid": "python-internals",
+      "name": "Python Internals",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+    },
+    "yt_video_id": "IGLnxdmJu2c",
+    "title": "How id() function is implemented in python?",
+    "description": "How is `id` function implemented in Python?\n\nIn this video, we explore the internals of `id` function in Python and find out how it is actually implemented.\n\nHow Python implements super-long integers: https://arpitbhayani.me/blogs/super-long-integers\n\n# The Honest Python\n\nThe Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.",
+    "img": "https://i.ytimg.com/vi/IGLnxdmJu2c/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/whzQo9wK8OuoiDtAnz/giphy.gif",
+    "duration": "10:46",
+    "view_count": 267,
+    "like_count": 14,
+    "comment_count": 0,
+    "released_at": "2021-05-24",
+    "gist": "",
+    "notes_gd": ""
+  },
+  {
+    "id": 128,
+    "topic": {
+      "id": 0,
+      "uid": "python-internals",
+      "name": "Python Internals",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+    },
+    "yt_video_id": "Q8luYnxiFFE",
+    "title": "How \"is\" operator is implemented in python?",
+    "description": "In this video, we find out the internals of \"is\" operator in Python. We go through the CPython source code and answer how it efficiently implements the \"is\" operator.\n\n\ninteger optimizations in python: https://www.youtube.com/watch?v=6mhXGEXRXG0\nstring optimizations (interning) in python: https://www.youtube.com/watch?v=QpGK69LzfpY\nshort circuit evaluations in python: https://www.youtube.com/watch?v=zz2Lu5ht_jA\n\n\n\n# The Honest Python\n\nThe Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.",
+    "img": "https://i.ytimg.com/vi/Q8luYnxiFFE/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/l1KXrCk0QZ8WljxqU/giphy.gif",
+    "duration": "19:12",
+    "view_count": 381,
+    "like_count": 25,
+    "comment_count": 6,
+    "released_at": "2021-05-31",
+    "gist": "",
+    "notes_gd": ""
+  }
+]

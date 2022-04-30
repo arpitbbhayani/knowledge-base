@@ -1,0 +1,200 @@
+[
+  {
+    "id": 99,
+    "topic": {
+      "id": 0,
+      "uid": "system-design",
+      "name": "System Design",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+    },
+    "yt_video_id": "kIP8L-CSl2Y",
+    "title": "Designing Notifications Service for Instagram",
+    "description": "This video is a snippet from my System Design Masterclass and in it, we are discussing How Instagram Scales its notification systems. The primary challenge of such a system is doing a real fast fanout and we discuss how to do this very efficiently.",
+    "img": "https://i.ytimg.com/vi/kIP8L-CSl2Y/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/huyZxIJvtqVeRp7QcS/giphy.gif",
+    "duration": "37:18",
+    "view_count": 14126,
+    "like_count": 341,
+    "comment_count": 33,
+    "released_at": "2021-04-01",
+    "gist": "",
+    "notes_gd": ""
+  },
+  {
+    "id": 104,
+    "topic": {
+      "id": 0,
+      "uid": "system-design",
+      "name": "System Design",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+    },
+    "yt_video_id": "m_7xSIhxZL8",
+    "title": "End-to-end Message Encryption",
+    "description": "In this video, we find how to implement a very very simple version of end-to-end WhatsApp-like message encryption. This is not even 1% of how WhatsApp does it but it gives a fair amount of idea on how we could do it.\n\nHow do WhatsApp, Facebook, Signal actually do it? Answer: The Signal Protocol\n\nWe do it with a very simple Public Key Cryptography and a Digital Signature.",
+    "img": "https://i.ytimg.com/vi/m_7xSIhxZL8/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/pYfYNJbEftHOfIpoBC/giphy.gif",
+    "duration": "15:57",
+    "view_count": 3750,
+    "like_count": 175,
+    "comment_count": 11,
+    "released_at": "2021-04-05",
+    "gist": "",
+    "notes_gd": ""
+  },
+  {
+    "id": 100,
+    "topic": {
+      "id": 0,
+      "uid": "system-design",
+      "name": "System Design",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+    },
+    "yt_video_id": "4_jlmX_oB94",
+    "title": "Designing Taxonomy on SQL",
+    "description": "In this video, we design the Taxonomy of Udemy on top of a SQL-based Relational DB. We learn how to model any taxonomy on relational DB, why to choose SQL over NoSQL, designing the schema, deciding Indexes, and writing very interesting SQL queries.\n\nLink to the article: https://arpitbhayani.me/blogs/udemy-sql-taxonomy\n\nChapters:\n0:00 Udemy's Taxonomy\n1:40 A bad Database Design for Taxonomy\n3:29 Good Database Design for Taxonomy\n7:34 Is Relational DB a good choice to store taxonomy?\n13:04 Deciding Indexes\n15:26 Get topic by ID\n15:56 Get topic path\n23:00 Get child-topics\n25:05 Get Top Taxonomy in Single Query\n31:05 Summarizing Indexes\n31:52 Fun exercise to explore SQL\n33:55 What next in System Design",
+    "img": "https://i.ytimg.com/vi/4_jlmX_oB94/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/6XuA2WMKsgqS4/giphy.gif",
+    "duration": "35:15",
+    "view_count": 1621,
+    "like_count": 63,
+    "comment_count": 7,
+    "released_at": "2021-04-19",
+    "gist": "",
+    "notes_gd": ""
+  },
+  {
+    "id": 101,
+    "topic": {
+      "id": 0,
+      "uid": "system-design",
+      "name": "System Design",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+    },
+    "yt_video_id": "dTPh3KcKPYo",
+    "title": "Scaling Taxonomy Service and Database",
+    "description": "In this video, we do the high-level design of Udemy's Taxonomy Service and see how to scale databases in general.\n\nOutline:\n\n0:00 Recap Taxonomy DB Design\n0:57 Bird's eye view\n2:30 Within the Taxonomy Service\n3:50 Scaling the relational database\n5:32 High-Level Architecture\n7:20 Join my System Design Course\n7:57 Like, Share, and Subscribe",
+    "img": "https://i.ytimg.com/vi/dTPh3KcKPYo/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/YxlUxrYGw2w9y/giphy.gif",
+    "duration": "8:38",
+    "view_count": 859,
+    "like_count": 25,
+    "comment_count": 1,
+    "released_at": "2021-05-02",
+    "gist": "",
+    "notes_gd": ""
+  },
+  {
+    "id": 103,
+    "topic": {
+      "id": 0,
+      "uid": "system-design",
+      "name": "System Design",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+    },
+    "yt_video_id": "8S4k7k_f9Sk",
+    "title": "Sending payload in an HTTP GET request",
+    "description": "Can we send data in an HTTP GET request? Most people think, No. The truth is, we can send the data in the request payload of an HTTP GET request so long as our webserver can understand it.\n\nIn this video, we go through the HTTP 1.1 specification and see what it says about the GET requests, write a simple Flask application to see that we can indeed process the payload of a GET request if we want to, and, more importantly, go through a real-world example where it was essential to send data in the request payload.\n\nOutline:\n\n00:00 HTTP GET Request\n01:53 What does HTTP 1.1 specification say?\n05:38 Request payload in Python Flask\n07:18 ElasticSearch using request payload for search\n10:40 When to use HTTP request payload in a GET request",
+    "img": "https://i.ytimg.com/vi/8S4k7k_f9Sk/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/xT5LMJlkTxzJx4zJv2/giphy.gif",
+    "duration": "12:",
+    "view_count": 2575,
+    "like_count": 115,
+    "comment_count": 20,
+    "released_at": "2022-04-04",
+    "gist": "Can we send the payload in an HTTP GET request? [ in a gist ]\n\nIt is a common myth that we could not pass the request body in the HTTP GET request. HTTP 1.1 specification neither enforces nor suggests this behavior.\n\nThis means it is up to implementing the application web servers - Flask, uWSGI, etc. - to see if it parses the request body in the HTTP GET request. To do this, just check the request object you would be getting in your favorite framework.\n\n\u26a1 What can we do with this information?\n\nSay you are modeling an analytics service like Google Analytics in which you are exposing an endpoint that returns you the data point depending on the requirements. The requirements specified here could be a large, complex JSON.\n\nPassing this query in the URL of the GET request as a query param is not convenient as it would require you to serialize and escape the JSON string before passing.\n\nThis is a perfect use case where the complex JSON query can be passed as a request body in the HTTP GET request, giving a good user experience.\n\n\u26a1 So, does any popular tool uses this convention?\n\nYes. ElasticSearch - one of the most popular search utilities, uses this convention.\n\nThe search endpoint of ElasticSearch is a GET endpoint where the complex search queries in JSON format are sent in the request payload.",
+    "notes_gd": "https://drive.google.com/file/d/1JwVEh9EG0ZGts-VePXNlIE1e8kivdHbM/view?usp=sharing"
+  },
+  {
+    "id": 102,
+    "topic": {
+      "id": 0,
+      "uid": "system-design",
+      "name": "System Design",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+    },
+    "yt_video_id": "m6DtqSb1BDM",
+    "title": "Implementing Idempotence in a Payments Microservice",
+    "description": "Idempotence is an extremely critical property that we must consider while implementing an API or designing a microservice. The situation becomes even more critical when the money is involved - ensuring no matter how many times the user or internal service retries, the amount is transferred just once between the two users in one transaction.\n\nThis video looks at idempotence, why there is even a need for it, and, more importantly, one common implementation approach commonly observed in payments services.\n\nOutline:\n\n00:00 What is Idempotence?\n02:32 Examples where Idempotence is relevant\n04:06 Why do we even need to retry?\n07:18 Implementation Approach 1: Do not retry\n09:45 Implementation Approach 1: Check and Update",
+    "img": "https://i.ytimg.com/vi/m6DtqSb1BDM/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/j3x5hjUoXIesM/giphy.gif",
+    "duration": "16:36",
+    "view_count": 1393,
+    "like_count": 99,
+    "comment_count": 19,
+    "released_at": "2022-04-06",
+    "gist": "How can you implement idempotence in a Payments Microservice? [in a gist ]\n\nIdempotence is executing the same action multiple times, but the result is as if the operation was applied just once.\n\nExample: Double tapping a post multiple times on Instagram does not increase the like count. It just increases the first time and by 1.\n\nIdempotence becomes extremely critical when money is involved. If A wants to transfer money to B, the transfer should happen just once. If due for any reason, the payment is implicitly retried, the funds will be deducted twice, which is unacceptable.\n\n\u26a1 Why would a transaction repeat?\n\nBefore we talk about idempotence, it is important to understand why it would repeat in the first place.\n\nConsider a situation where the payments service initiated a payment with a Payment Gateway, the money got deducted, but the payments service did not get the response. This would make the Payments service retry the API call, which would lead to a double deduction.\n\n\u26a1 Implementing idempotence\n\nCheck and Update: Weave everything with a single ID.\n\nThe idea is to retry only after checking if the payment is processed or not. But how do we do this? The implementation is pretty simple - a global payment ID that weaves all the services and parties together.\n\nThe flow is:\n\n\u00a01. Payments service calls the PG and generates a unique Payment ID\n\u00a02. Payments service passes this ID to the end-user and all involved services\n\u00a03. Payments service initiates the payment with Payment Gateway with this ID specifying the transfer between A and B\n\u00a04. If there are any failures, the Payment service retries and in that request specifies the Payment ID\n\u00a05. Using the payment ID, the payment gateway checks if the transfer was indeed done or not and would transfer only when it was not done\n\nAlthough we talked about the Payments service here, this approach of implementing idempotence is pretty common across all the use cases. The core idea is to have a single ID (acting as the Idempotence Key) weaving all the involved services and parties together.",
+    "notes_gd": "https://drive.google.com/file/d/1Zyt8qN11IiAZJKrdan4wi1c5J6n_eAyU/view?usp=sharing"
+  },
+  {
+    "id": 105,
+    "topic": {
+      "id": 0,
+      "uid": "system-design",
+      "name": "System Design",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+    },
+    "yt_video_id": "1r9bPisYaOQ",
+    "title": "How to approach System Design?",
+    "description": "System Design is tricky but it does not have to be difficult - be it a technical discussion at your workplace or your next big interview. In this video, I share the two approaches that I have been using to design scalable systems in the last 10 years of my career. I will also share the 3 key pointers to remember while designing any system that would help you keep your discussion crisp and focused.\n\nOutline:\n00:00 Introduction\n02:41 What is System Design?\n06:02 The Spiral Approach to System Design\n07:27 The Incremental MVP Approach to System Design\n09:47 Key Pointers to remember during System Design",
+    "img": "https://i.ytimg.com/vi/1r9bPisYaOQ/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/l49JIAbHS3nqARH7a/giphy.gif",
+    "duration": "13:55",
+    "view_count": 1407,
+    "like_count": 86,
+    "comment_count": 5,
+    "released_at": "2022-04-13",
+    "gist": "System Design is tricky but it does not have to be difficult - be it a technical discussion at your workplace or your next big interview. Let's talk about how to approach System Design. Something I compiled from 10 years of my career.\n\n## What is System Design?\nSystem Design is all about translating and solving customer needs and business requirements into something tangible. The output system could be an application, a microservice, a library, or even hardware.\n\nThere are a couple of approaches that we can use to design any system out there. Picking one over the other depends on the company you work for and the flexibility it provides.\n\n## The Spiral Approach\n\nThe Spiral Approach pans like a spiral in which you start with some core that you are comfortable with (database, communication protocol, queue. etc) and build your system around it. Every single component you add to the design is something that you are pretty confident about and can proceed with the added complexities.\n\nFor example:\n\u00a0- start with the database\n\u00a0- then add LB and more servers\n\u00a0- then add a queue for async processing\n\u00a0- then other services\n\u00a0- then add synchronous HTTP based communication between them\n\n## The Incremental MVP Approach\n\nIn the Incremental MVP-based approach we with a Day 0 design and then see how each component behaves at scale by dry-running it; after identifying the bottlenecks you fix them and re-iterate. You stop the iteration once you are happy with the final product. This kind of approach is typically seen in startups where they do not want to invest in architecture and quickly roll out features.\n\nFor example:\n\u00a0- start with Day 0 architecture of users, API servers, and DB\n\u00a0- then you add LB and more API servers\n\u00a0- then you add Read Replica on DB to support more reads\n\u00a0- then you split the service into a couple of microservices\n\u00a0- then you partition the DB to handle more scale\n\n## 3 key pointers while designing systems\n\n\u00a0- Every system is infinitely buildable, hence fence it well\n\u00a0- Seek clarifications from your seniors\n\u00a0- Ask critical questions that challenge the design decisions",
+    "notes_gd": "https://drive.google.com/file/d/185a6688TxLDLXlrDfn2l4ODLSR2m1xLL/view?usp=sharing"
+  },
+  {
+    "id": 106,
+    "topic": {
+      "id": 0,
+      "uid": "system-design",
+      "name": "System Design",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+    },
+    "yt_video_id": "CW4gVlU0xtU",
+    "title": "Why, where, and when should we throttle or rate limit?",
+    "description": "It is a common belief that a rate limiter is always external and is designed to prevent our systems from being abused by the external world, but this is not true. In this video, we understand what throttling is, why we need it in the first place and 5 use cases where external and internal rate limiters are super useful.\n\nOutline:\n00:00 Introduction\n02:56 What is Throttling?\n03:37 What rate limiter does when it gets a surge of requests?\n06:39 Why do we need a rate limiter?\n10:45 Usecase 1: Preventing catastrophic DDoS Attack\n12:20 Usecase 2: Gracefully handling a surge in legitimate users\n13:46 Usecase 3: Multi-tiered limits\n15:42 Usecase 4: Not overusing an expensive vendor\n16:48 Usecase 5: Streamlining deletes to protect an unprotected database",
+    "img": "https://i.ytimg.com/vi/CW4gVlU0xtU/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/4KFjJdWCyLZ743mWIg/giphy.gif",
+    "duration": "19:5",
+    "view_count": 949,
+    "like_count": 65,
+    "comment_count": 10,
+    "released_at": "2022-04-18",
+    "gist": "## What is throttling?\n\nThrottling is a technique that ensures that the flow of the data or the requests being sent at the target machine/service/sub-system can be consumed at an acceptable rate.\n\nIt is a defensive measure and 3 possible reactions could be\n\n\u00a0- slowing down the incoming requests\n\u00a0- rejecting the surplus requests\n\u00a0- ignoring the surplus requests\n\n## Why do we need throttling in the first place?\n\n\u00a0- to prevent system abuse\n\u00a0- to allow the amount of traffic we could handle\n\u00a0- control the consumption cost\n\u00a0- prevent cascading failures leading to a massive outage\n\n# Real-world use-cases for throttling\n\n## To prevent catastrophic DDoS attack\n\nWhen your service is under a DDoS attack the rate limiter acts as your first line of defense that could prevent the surplus request from reaching your system. It would only allow the requests to go through at the configured rate.\n\n## To gracefully handle a surge of users\n\nIt is possible that your product goes viral and now you are seeing a genuine surge in users. Upon getting a genuine surge in users, the stateful components like databases and caches crash which takes down the entire site.\n\nRate limiter in this case will help in preventing the entire site from going down; although some users would see some error, like 429 - Too many requests - your product will continue to seamlessly work for the other set of users.\n\n## Multi-tiered limits\n\nSay, you are running a CICD company and offer 3 tiers of pricing - Tier 1 offers 200 minutes of build time, Tier 2 offers 1000 mins while Tier 3 offers unlimited build time. An internal rate limiter can keep track of the build times consumed by a customer and reject the requests once the limit is hit.\n\n## Ensure you are not over-consuming\n\nSay, we are consuming a super expensive third-party API and we want to ensure that we are not using it beyond a certain number otherwise the cost will shoot up. An internal rate limiter can keep a check on this to ensure the surplus request does not go through.\n\n## Not overwhelming an unprotected system\n\nHard deleting from a database is an expensive operation. If we are deleting a huge number of rows from the DB it may severely affect the performance of the DB and hence it is best done in a staggered way. An internal rate limiter can help us streamline the writing by spreading them uniformly across time.",
+    "notes_gd": "https://drive.google.com/file/d/11lTCiIbRk0aRlEaebjSI1mU6g_hTAway/view?usp=sharing"
+  },
+  {
+    "id": 131,
+    "topic": {
+      "id": 0,
+      "uid": "system-design",
+      "name": "System Design",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+    },
+    "yt_video_id": "wXvljefXyEo",
+    "title": "Database Sharding and Partitioning",
+    "description": "Sharding and partitioning come in very handy when we want to scale our systems. These concepts operate on the database and help us improve the overall throughput and availability of the system.\n\nIn this video, we take a detailed look into how a database is scaled and evolved through different stages, what sharding and partitioning are, understand the difference between them, see at which stage should we introduce this complexity, and a few advantages and disadvantages of adopting them.\n\nOutline:\n\n00:00 Introduction and Agenda\n03:05 How a database is progressively scaled?\n08:10 Scaling beyond the limit of vertical scaling\n11:57 Sharding vs Partitioning\n12:43 Example of Data Partitioning\n17:15 Sharding and Partitioning together\n20:20 Advantages and Disadvantages of Sharding and Partitioning",
+    "img": "https://i.ytimg.com/vi/wXvljefXyEo/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/9u8GF7MuhdvS8/giphy.gif",
+    "duration": "23:53",
+    "view_count": 1331,
+    "like_count": 82,
+    "comment_count": 11,
+    "released_at": "2022-04-25",
+    "gist": "Sharding and partitioning come in very handy when we want to scale our systems. Let's talk about these concepts in detail.\n\n# How is the database scaled?\n\nA database server is just a database process (like MySQL, MongoDB) running on a virtual server like EC2. Now when we put our database in production it starts getting from real good traction, say 100 writes per second (WPS).\n\n### Steady user growth\n\nSay, your product started getting some traction, and we find that the database is not able to handle the load, we scale it up by adding more CPU, RAM, and Disk to the server. This way we are now handling 200 WPS.\n\n### More read traffic  \n\nIf we see nor reads then can also choose to add a Read Replica and divert some of the read traffic to this node, while the master node can take in 200 WPS.\n\n### Viral Growth\n\nSay, your product went viral and you now got 5x more load which means now you have to handle 1000 WPS. To achieve this you again scale it up vertically and handle the desired load.\n\n### Insane growth\n\nSay, you now cracked the PMF and are getting some really solid traction and need to handle 1500 WPS, and when you visit the database console you found out that it is not possible to vertically scale your database any further, so how do you handle 1500 WPS?\n\nThis is where the horizontal scaling comes into the picture.\n\n## Scaling the database horizontally\n\nWe know one database server can handle 1000 WPS, but we need to handle 1500 WPS, so we split the data into half and split it across two databases such that each database owns half of the data and all the writes for that data goes to that particular instance.\n\nThis way each server will get 750 WPS, which it can very easily handle, and owns 50% of the data. Thus by adding more database servers we handled 1500 WPS (more than what a single machine could handle)\n\n# Sharding and Partitioning\n\nEach database server in the above architecture is called a Shard while the data is said to be partitioned. Overall, a database is sharded and the data is partitioned.\n\n## Partitioned data on shards\n\nIt is possible to have more partitions and fewer shards and in that case, each shard will own multiple partitions. Say, we have 100GB of data and it is split into 5 partitions and we have 2 shards. One shard will be responsible for 3 partitions while the other for 2.\n\n# Advantages and Disadvantages\n\n### Advantages of Sharding\n\n\u00a0- handle more reads and writes\n\u00a0- increases overall storage capacity\n\u00a0- overall high availability\n\n### Disadvantages of Sharding\n\n\u00a0- sharding is operationally complex\n\u00a0- cross-shard queries are super-expensive",
+    "notes_gd": "https://drive.google.com/file/d/14RqKYjN2pgqYTaVB1DYlH4WjZ0A8XQ02/view?usp=sharing"
+  }
+]
