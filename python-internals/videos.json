@@ -19,7 +19,8 @@
     "comment_count": 3,
     "released_at": "2021-04-03",
     "gist": "",
-    "notes_gd": ""
+    "notes_gd": "",
+    "slug": "series-introduction-the-honest-python"
   },
   {
     "id": 121,
@@ -41,7 +42,8 @@
     "comment_count": 3,
     "released_at": "2021-04-04",
     "gist": "",
-    "notes_gd": ""
+    "notes_gd": "",
+    "slug": "setting-up-cpython-locally-and-making-your-first-change"
   },
   {
     "id": 122,
@@ -63,7 +65,8 @@
     "comment_count": 10,
     "released_at": "2021-04-08",
     "gist": "",
-    "notes_gd": ""
+    "notes_gd": "",
+    "slug": "changing-python-grammar-to-support-standalone-walrus-assignments"
   },
   {
     "id": 123,
@@ -85,7 +88,8 @@
     "comment_count": 2,
     "released_at": "2021-04-13",
     "gist": "",
-    "notes_gd": ""
+    "notes_gd": "",
+    "slug": "how-python-optimizes-strings-using-string-interning"
   },
   {
     "id": 124,
@@ -107,7 +111,8 @@
     "comment_count": 0,
     "released_at": "2021-04-28",
     "gist": "",
-    "notes_gd": ""
+    "notes_gd": "",
+    "slug": "how-python-implements-chained-comparison-operators"
   },
   {
     "id": 125,
@@ -129,7 +134,8 @@
     "comment_count": 2,
     "released_at": "2021-05-06",
     "gist": "",
-    "notes_gd": ""
+    "notes_gd": "",
+    "slug": "how-python-optimizes-integers"
   },
   {
     "id": 126,
@@ -151,7 +157,8 @@
     "comment_count": 1,
     "released_at": "2021-05-13",
     "gist": "",
-    "notes_gd": ""
+    "notes_gd": "",
+    "slug": "how-python-compares-a-float-and-an-int-objects"
   },
   {
     "id": 127,
@@ -173,7 +180,8 @@
     "comment_count": 0,
     "released_at": "2021-05-24",
     "gist": "",
-    "notes_gd": ""
+    "notes_gd": "",
+    "slug": "how-id-function-is-implemented-in-python"
   },
   {
     "id": 128,
@@ -195,6 +203,7 @@
     "comment_count": 6,
     "released_at": "2021-05-31",
     "gist": "",
-    "notes_gd": ""
+    "notes_gd": "",
+    "slug": "how-is-operator-is-implemented-in-python"
   }
 ]
