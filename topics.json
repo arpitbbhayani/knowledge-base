@@ -47,5 +47,12 @@
     "name": "Microservices",
     "one_liner": null,
     "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt"
+  },
+  {
+    "id": 8,
+    "uid": "advanced-algorithms",
+    "name": "Advanced Algorithms",
+    "one_liner": null,
+    "youtube_playlist_id": null
   }
 ]
