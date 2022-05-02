@@ -1,6 +1,6 @@
 [
   {
-    "id": 112,
+    "id": 115,
     "topic": {
       "id": 0,
       "uid": "outage-dissections",
@@ -8,42 +8,19 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc"
     },
-    "yt_video_id": "h5hXivWws7k",
-    "title": "Dissecting Spotify's Global Outage - March 8, 2022",
-    "description": "Incident Report: Spotify Outage on March 8: https://engineering.atspotify.com/2022/03/incident-report-spotify-outage-on-march-8/\nGoogle Cloud Traffic Director Outage: https://status.cloud.google.com/incidents/LuGcJVjNTeC5Sb9pSJ9o\nJava gRPC Client Bug: https://github.com/grpc/grpc-java/issues/8950\n\nIn this video, we dissect the reasons behind Spotify's Global Outage and try to understand its architecture, and learn from critical things to remember while architecting a system.",
-    "img": "https://i.ytimg.com/vi/h5hXivWws7k/mqdefault.jpg",
-    "gif": "https://media.giphy.com/media/26FKWlRgIL3JOIkGA/giphy.gif",
-    "duration": "26:",
-    "view_count": 2626,
-    "like_count": 163,
-    "comment_count": 26,
-    "released_at": "2022-03-12",
-    "gist": "",
-    "notes_gd": "",
-    "slug": "dissecting-spotify-s-global-outage-march-8-2022"
-  },
-  {
-    "id": 113,
-    "topic": {
-      "id": 0,
-      "uid": "outage-dissections",
-      "name": "Outage Dissections",
-      "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc"
-    },
-    "yt_video_id": "ZFRAFTn0cQ0",
-    "title": "Dissecting GitHub Outage: ID column reaching the max value 2147483647",
-    "description": "GitHub experience an outage on 5th May 2020 on a few of their internal services and it happened because a table had an auto-incrementing integer ID and the column reached its maximum value possible 2147483647. In this video, we dissect what happened, mimic the situation locally and see what could have happened, and look at possible ways to mitigate and prevent a situation like this.\n\nOutline:\n\n00:00 Outage walkthrough\n02:48 Mimicking the situation locally\n10:13 MySQL AUTO_INCREMENT behavior\n12:37 Preventive measures\n14:25 Approach 1 for mitigating the issue\n18:40 Approach 2 for mitigating the issue\n\nReferences:\n - https://github.com/arpitbbhayani/mysql-maxint\n - https://github.blog/2020-07-08-introducing-the-github-availability-report/\n - https://dev.mysql.com/doc/refman/8.0/en/integer-types.html\n - https://dev.mysql.com/doc/refman/8.0/en/example-auto-increment.html\n - https://www.linkedin.com/pulse/so-you-hit-2147483647-heath-dutton-/",
-    "img": "https://i.ytimg.com/vi/ZFRAFTn0cQ0/mqdefault.jpg",
-    "gif": "https://media.giphy.com/media/UDU4oUJIHDJgQ/giphy.gif",
-    "duration": "24:34",
-    "view_count": 1523,
-    "like_count": 128,
-    "comment_count": 30,
-    "released_at": "2022-03-23",
-    "gist": "On the 5th of May, 2020, GitHub experienced an outage because of this very reason. One of their shared table having an auto-incrementing ID column hits its max limit. Let's see what could have been done in such a situation.\n\n# What's the next value after MAX int?\n\nGitHub used 4 bytes signed integer as their ID column, which means the value can go from `-2147483648` to `2147483647`. So, now when the ID column hits `2147483647` and tries to get the next value, it gets the same value again, i.e., `2147483647`.\n\nFor MySQL, `2147483647` + `1` = `2147483647`\n\nSo, when it tries to insert the row with ID `2147483647`, it gets the *Duplicate Key Error* given that a row already exists with the same ID.\n\n# How to mitigate the issue?\n\nA situation like this is extremely critical given that the database is not allowing us to insert any row in the table. This typically results in a major downtime of a few hours, and it depends on the amount of data in the table. There are a couple of ways to mitigate the issue.\n\n## Approach 1: Alter the table and increase the width of the column\n\nQuickly fire the `ALTER` table and change the data type of the ID column to `UNSIGNED INT` or `BIGINT`. Depending on the data size, an ALTER query like this will take a few hours to a few days to execute. Hence this approach is suitable only when the table size is small.\n\n## Approach 2: Swap the table\n\nThe idea here is to create an empty table with the same schema but a larger ID range that starts from `2147483648`. Then rename this new table to the old one and start accepting writes. Then slowly migrate the data from the old table to this new one. This approach can be used when you can live without the data for a few days.\n\n## Get warned before the storm\n\nAlthough mitigation is great, it is better to place a monitoring system that raises an alert when the ID reaches 70% of its range. So, write a simple DB monitoring service that periodically checks this by firing a query on the database.",
-    "notes_gd": "https://drive.google.com/file/d/13rNEWXwIdNkNcP2gSQQvBF8czUBpF47y/view?usp=sharing",
-    "slug": "dissecting-github-outage-id-column-reaching-the-max-value-2147483647"
+    "yt_video_id": "xa-hMF8gku0",
+    "title": "An engineering deep-dive into Atlassian's Mega Outage of April 2022",
+    "description": "In April 2022, Atlassian suffered a major outage where they \"permanently\" deleted the data for 400 of their paying cloud customers, and will take them weeks to recover the data. In this video, we will do an engineering deep dive into this outage trying to understand their engineering systems and practices.\n\nWe extract 6 key insights into how their engineering systems are built, their backup and restoration strategies, and most importantly why is it taking them so long to recover the data.\n\nDisclaimer: I do not have any insider information about this and the views are pure speculation.\n\nOutline:\n\n00:00 Impact of the outage\n03:56 Insight 1: Incremental Backup Strategy\n06:38 Why did the Atlassian outage happen?\n07:30 Insight 2: Progressive Rollout Strategy\n10:57 Insight 3: Soft Deletes vs Hard Deletes\n14:28 Insight 4: Synchronous Replication for High Availability\n17:47 Insight 5: Immutable backups for point-in-time recovery\n21:04 Insight 6: Nearly multi-tenant architecture\n23:30 Why is it taking time for Atlassian to recover the deleted data?\n\nOutage Report: https://www.atlassian.com/engineering/april-2022-outage-update",
+    "img": "https://i.ytimg.com/vi/xa-hMF8gku0/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/1k3jEsS507T20/giphy.gif",
+    "duration": "31:24",
+    "view_count": 3792,
+    "like_count": 198,
+    "comment_count": 35,
+    "released_at": "2022-04-15",
+    "gist": "In April 2022, Atlassian suffered a major outage where they \"permanently\" deleted the data for 400 of their paying cloud customers, and will take them weeks to recover the data. Let's dissect the outage and understand its nuances of it.\n\nDisclaimer: I do not have any insider information and the views are pure speculation.\n\n## Insight 1: Data loss up to 5 minutes\n\nBecause some customers reported a data loss of up to 5 minutes before the incident, it shows that the persistent backup incrementally every 5 minutes. The backup typically happens through Change Data Capture which operates right over the database.\n\n## Insight 2: Rolling release of products\n\nAtlassian rolls out features to a subset of the users and then incrementally rolls them to others. This strategy of incremental rollout gives companies and teams a chance to test the waters on a subset and then roll out to the rest.\n\n## Insight 3: Mark vs Permanent Deletion\n\nThe script that Atlassian ran to delete had both the options - Mark of Deletion and Permanent deletion.\n\nMark for deletion: is soft delete i.e. marking is_deleted to true.\nPermanent deletion: hard delete i.e. firing DELETE query\n\nWhy do companies need permanent deletion? for compliance because GDPR gives users a Right to be Forgotten\n\n## Insight 4: Synchronous Replication\n\nTo maintain high availability they have synchronous standby replicas which means that the writes happening needs to succeed on both the databases before it is acknowledged back to the user. This ensures that the data is crash-proof.\n\n## Insight 5: Immutable Backups\n\nThe backup is made immutable and stored on S3 in some serialized format. This immutable backup allows Atlassian to recover data at any point in time while being super cost-efficient at the same time.\n\n## Insight 6: Their architecture is not truly a Multi-tenant Architecture\n\nIn a true multi-tenant architecture, every customer gets its fragment of infra - right from DB, to brokers, to servers. But at Atlassian, multiple customers share the same infra components. Companies typically do this to cut down on their infrastructure cost.\n\n## Why is it taking a long time to restore?\n\nBecause data of multiple customers reside in the same database when the DB was backed up the data (rows and tables) were backed up as is; implying that the backup also had data from multiple customers.\n\nNow to restore the intermingled rows of a customer, the entire backup needs to be loaded into a database and then the rows of specific customers need to be restored. This process is extremely time-consuming.",
+    "notes_gd": "https://drive.google.com/file/d/1Bp4huBCx-wkG6kCQ5raSujdKID4RLU_y/view?usp=sharing",
+    "slug": "an-engineering-deep-dive-into-atlassian-s-mega-outage-of-april-2022"
   },
   {
     "id": 114,
@@ -69,7 +46,7 @@
     "slug": "dissecting-google-maps-outage-bad-rollout-and-cascading-failures"
   },
   {
-    "id": 115,
+    "id": 113,
     "topic": {
       "id": 0,
       "uid": "outage-dissections",
@@ -77,18 +54,41 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc"
     },
-    "yt_video_id": "xa-hMF8gku0",
-    "title": "An engineering deep-dive into Atlassian's Mega Outage of April 2022",
-    "description": "In April 2022, Atlassian suffered a major outage where they \"permanently\" deleted the data for 400 of their paying cloud customers, and will take them weeks to recover the data. In this video, we will do an engineering deep dive into this outage trying to understand their engineering systems and practices.\n\nWe extract 6 key insights into how their engineering systems are built, their backup and restoration strategies, and most importantly why is it taking them so long to recover the data.\n\nDisclaimer: I do not have any insider information about this and the views are pure speculation.\n\nOutline:\n\n00:00 Impact of the outage\n03:56 Insight 1: Incremental Backup Strategy\n06:38 Why did the Atlassian outage happen?\n07:30 Insight 2: Progressive Rollout Strategy\n10:57 Insight 3: Soft Deletes vs Hard Deletes\n14:28 Insight 4: Synchronous Replication for High Availability\n17:47 Insight 5: Immutable backups for point-in-time recovery\n21:04 Insight 6: Nearly multi-tenant architecture\n23:30 Why is it taking time for Atlassian to recover the deleted data?\n\nOutage Report: https://www.atlassian.com/engineering/april-2022-outage-update",
-    "img": "https://i.ytimg.com/vi/xa-hMF8gku0/mqdefault.jpg",
-    "gif": "https://media.giphy.com/media/1k3jEsS507T20/giphy.gif",
-    "duration": "31:24",
-    "view_count": 3792,
-    "like_count": 198,
-    "comment_count": 35,
-    "released_at": "2022-04-15",
-    "gist": "In April 2022, Atlassian suffered a major outage where they \"permanently\" deleted the data for 400 of their paying cloud customers, and will take them weeks to recover the data. Let's dissect the outage and understand its nuances of it.\n\nDisclaimer: I do not have any insider information and the views are pure speculation.\n\n## Insight 1: Data loss up to 5 minutes\n\nBecause some customers reported a data loss of up to 5 minutes before the incident, it shows that the persistent backup incrementally every 5 minutes. The backup typically happens through Change Data Capture which operates right over the database.\n\n## Insight 2: Rolling release of products\n\nAtlassian rolls out features to a subset of the users and then incrementally rolls them to others. This strategy of incremental rollout gives companies and teams a chance to test the waters on a subset and then roll out to the rest.\n\n## Insight 3: Mark vs Permanent Deletion\n\nThe script that Atlassian ran to delete had both the options - Mark of Deletion and Permanent deletion.\n\nMark for deletion: is soft delete i.e. marking is_deleted to true.\nPermanent deletion: hard delete i.e. firing DELETE query\n\nWhy do companies need permanent deletion? for compliance because GDPR gives users a Right to be Forgotten\n\n## Insight 4: Synchronous Replication\n\nTo maintain high availability they have synchronous standby replicas which means that the writes happening needs to succeed on both the databases before it is acknowledged back to the user. This ensures that the data is crash-proof.\n\n## Insight 5: Immutable Backups\n\nThe backup is made immutable and stored on S3 in some serialized format. This immutable backup allows Atlassian to recover data at any point in time while being super cost-efficient at the same time.\n\n## Insight 6: Their architecture is not truly a Multi-tenant Architecture\n\nIn a true multi-tenant architecture, every customer gets its fragment of infra - right from DB, to brokers, to servers. But at Atlassian, multiple customers share the same infra components. Companies typically do this to cut down on their infrastructure cost.\n\n## Why is it taking a long time to restore?\n\nBecause data of multiple customers reside in the same database when the DB was backed up the data (rows and tables) were backed up as is; implying that the backup also had data from multiple customers.\n\nNow to restore the intermingled rows of a customer, the entire backup needs to be loaded into a database and then the rows of specific customers need to be restored. This process is extremely time-consuming.",
-    "notes_gd": "https://drive.google.com/file/d/1Bp4huBCx-wkG6kCQ5raSujdKID4RLU_y/view?usp=sharing",
-    "slug": "an-engineering-deep-dive-into-atlassian-s-mega-outage-of-april-2022"
+    "yt_video_id": "ZFRAFTn0cQ0",
+    "title": "Dissecting GitHub Outage: ID column reaching the max value 2147483647",
+    "description": "GitHub experience an outage on 5th May 2020 on a few of their internal services and it happened because a table had an auto-incrementing integer ID and the column reached its maximum value possible 2147483647. In this video, we dissect what happened, mimic the situation locally and see what could have happened, and look at possible ways to mitigate and prevent a situation like this.\n\nOutline:\n\n00:00 Outage walkthrough\n02:48 Mimicking the situation locally\n10:13 MySQL AUTO_INCREMENT behavior\n12:37 Preventive measures\n14:25 Approach 1 for mitigating the issue\n18:40 Approach 2 for mitigating the issue\n\nReferences:\n - https://github.com/arpitbbhayani/mysql-maxint\n - https://github.blog/2020-07-08-introducing-the-github-availability-report/\n - https://dev.mysql.com/doc/refman/8.0/en/integer-types.html\n - https://dev.mysql.com/doc/refman/8.0/en/example-auto-increment.html\n - https://www.linkedin.com/pulse/so-you-hit-2147483647-heath-dutton-/",
+    "img": "https://i.ytimg.com/vi/ZFRAFTn0cQ0/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/UDU4oUJIHDJgQ/giphy.gif",
+    "duration": "24:34",
+    "view_count": 1523,
+    "like_count": 128,
+    "comment_count": 30,
+    "released_at": "2022-03-23",
+    "gist": "On the 5th of May, 2020, GitHub experienced an outage because of this very reason. One of their shared table having an auto-incrementing ID column hits its max limit. Let's see what could have been done in such a situation.\n\n# What's the next value after MAX int?\n\nGitHub used 4 bytes signed integer as their ID column, which means the value can go from `-2147483648` to `2147483647`. So, now when the ID column hits `2147483647` and tries to get the next value, it gets the same value again, i.e., `2147483647`.\n\nFor MySQL, `2147483647` + `1` = `2147483647`\n\nSo, when it tries to insert the row with ID `2147483647`, it gets the *Duplicate Key Error* given that a row already exists with the same ID.\n\n# How to mitigate the issue?\n\nA situation like this is extremely critical given that the database is not allowing us to insert any row in the table. This typically results in a major downtime of a few hours, and it depends on the amount of data in the table. There are a couple of ways to mitigate the issue.\n\n## Approach 1: Alter the table and increase the width of the column\n\nQuickly fire the `ALTER` table and change the data type of the ID column to `UNSIGNED INT` or `BIGINT`. Depending on the data size, an ALTER query like this will take a few hours to a few days to execute. Hence this approach is suitable only when the table size is small.\n\n## Approach 2: Swap the table\n\nThe idea here is to create an empty table with the same schema but a larger ID range that starts from `2147483648`. Then rename this new table to the old one and start accepting writes. Then slowly migrate the data from the old table to this new one. This approach can be used when you can live without the data for a few days.\n\n## Get warned before the storm\n\nAlthough mitigation is great, it is better to place a monitoring system that raises an alert when the ID reaches 70% of its range. So, write a simple DB monitoring service that periodically checks this by firing a query on the database.",
+    "notes_gd": "https://drive.google.com/file/d/13rNEWXwIdNkNcP2gSQQvBF8czUBpF47y/view?usp=sharing",
+    "slug": "dissecting-github-outage-id-column-reaching-the-max-value-2147483647"
+  },
+  {
+    "id": 112,
+    "topic": {
+      "id": 0,
+      "uid": "outage-dissections",
+      "name": "Outage Dissections",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc"
+    },
+    "yt_video_id": "h5hXivWws7k",
+    "title": "Dissecting Spotify's Global Outage - March 8, 2022",
+    "description": "Incident Report: Spotify Outage on March 8: https://engineering.atspotify.com/2022/03/incident-report-spotify-outage-on-march-8/\nGoogle Cloud Traffic Director Outage: https://status.cloud.google.com/incidents/LuGcJVjNTeC5Sb9pSJ9o\nJava gRPC Client Bug: https://github.com/grpc/grpc-java/issues/8950\n\nIn this video, we dissect the reasons behind Spotify's Global Outage and try to understand its architecture, and learn from critical things to remember while architecting a system.",
+    "img": "https://i.ytimg.com/vi/h5hXivWws7k/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/26FKWlRgIL3JOIkGA/giphy.gif",
+    "duration": "26:",
+    "view_count": 2626,
+    "like_count": 163,
+    "comment_count": 26,
+    "released_at": "2022-03-12",
+    "gist": "",
+    "notes_gd": "",
+    "slug": "dissecting-spotify-s-global-outage-march-8-2022"
   }
 ]

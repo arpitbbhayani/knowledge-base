@@ -1,6 +1,6 @@
 [
   {
-    "id": 118,
+    "id": 133,
     "topic": {
       "id": 0,
       "uid": "microservices",
@@ -8,42 +8,19 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt"
     },
-    "yt_video_id": "Hxja4crycBg",
-    "title": "Handling timeouts in a microservice architecture",
-    "description": "Handling timeout well is extremely critical as it makes your distributed system robust and ensures you provide a consistent user experience by adhering to SLA guarantees. In this video, we discover how a synchronous dependency on a microservice leads to long delays becoming a big problem, understand how timeout addresses the concern, and discuss 5 approaches to handle service timeouts.\n\nOutline:\n00:00 Why is handling timeout critical?\n01:13 Synchronous communication and timeouts\n05:39 A rule of thumb: Timeout\n07:52 Approach 1: Ignore the timeout\n10:28 Approach 2: Configure and use defaults\n11:27 Approach 3: Retry when timeout\n16:36 Approach 4: Retry only when needed\n20:06 Approach 5: Rearchitect and remove synchronous dependency",
-    "img": "https://i.ytimg.com/vi/Hxja4crycBg/mqdefault.jpg",
-    "gif": "https://media.giphy.com/media/3oriO4kSYahYQr6e1a/giphy.gif",
-    "duration": "23:38",
-    "view_count": 1868,
-    "like_count": 130,
-    "comment_count": 18,
-    "released_at": "2022-03-18",
-    "gist": "Microservices give us the flexibility to pick the best tech stack to solve the problem optimally. But one thing that ruins the real thrill is Timeouts.\n\nSay we have a blogging website where a user can search for blogs. The request comes to the Search service, and it finds the most relevant blogs for the query.\n\nIn the response, a field called `total_views` should hold the total number of views the blog received in its lifetime. The search services should talk to the Analytics service synchronously to get the data. This synchronous dependency is the root of all evil.\n\nThe core problem: Delays can be arbitrarily large\n\nBecause the delay depending on service can be arbitrarily large, we know how long to wait for the response. We for sure cannot wait forever, and hence we introduce Timeout. Every time the Search service invokes the Analytics service, it starts a timer, and if it does not get a response in the stipulated time, it timeout and moves on.\n\nThere are 5 approaches to handling timeouts.\n\n - Approach 1: Ignore the timeout and move on\n - Approach 2: Use some default value if you timed out\n - Approach 3: Retry the request\n - Approach 4: Retry only when needed\n - Approach 5: Re-architect and make synchronous dependency an async one",
-    "notes_gd": "https://drive.google.com/file/d/1GjObZ3xpLFxDEOO3EGRCj0Pq8bWLixjU/view?usp=sharing",
-    "slug": "handling-timeouts-in-a-microservice-architecture"
-  },
-  {
-    "id": 119,
-    "topic": {
-      "id": 0,
-      "uid": "microservices",
-      "name": "Microservices",
-      "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt"
-    },
-    "yt_video_id": "JPj6mhVLQN0",
-    "title": "Advantages of adopting a microservices-based architecture",
-    "description": "Microservices are great, and the overall microservices-based architecture has some key advantages. In this video, we talk about what are microservices, the key advantages of using a microservices-based architecture, and understand how to fence service and define its set of responsibilities.\n\nOutline:\n\n00:00 What are microservices?\n01:53 Key advantages of adopting a microservices-based architecture\n09:48 How to fence a microservice?",
-    "img": "https://i.ytimg.com/vi/JPj6mhVLQN0/mqdefault.jpg",
-    "gif": "https://media.giphy.com/media/giEftvZuPAiZQBphEI/giphy.gif",
-    "duration": "14:18",
-    "view_count": 1575,
-    "like_count": 113,
-    "comment_count": 11,
-    "released_at": "2022-04-08",
-    "gist": "Why Microservices?\ud83e\udd14 [ in a gist ]\n\nMicroservices are small, autonomous, harmonic subsystems that work together to solve the bigger problem.\n\nThe core idea of microservices is Divide and Conquer. We break the big problem into smaller sub-problems, and solve each of the sub-problem optimally, enabling us to solve the bigger problem well.\n\nWhy Microservices?\n\n\u26a1 Codebase grows over time\n\nThe product evolves and new features are added to it and that bloats up the codebase. It becomes difficult for multiple teams to coordinate and collaborate on a humungous codebase. One team breaking one module can take down the entire product.\n\n\u26a1 Scaling is predictable\n\nWith microservices, scalability becomes predictable; you can linearly amplify the infrastructure requirements of individual microservices and be predictable in handling the load.\n\n\u26a1 Teams become autonomous\n\nWith each team responsible for a set of microservices they can take charge of their tech stack and design decisions. These decisions will be best for their problem statement and can ensure that they are solving them the best way possible.\n\n\u26a1 Fault Tolerance\n\nIf one microservice is down, it may lead to a partial outage of the product affecting a small fragment of the systems; while other components remain unaffected and can continue to service the traffic.\n\n\u26a1 Upgrades are simpler\n\nSo long as a microservice adheres to the API contract, the team that owns it can upgrade the tech stack, architecture, and DB seamlessly.",
-    "notes_gd": "https://drive.google.com/file/d/1lK2e3me09VNz51DWDunI5xDmlgLnOvfC/view?usp=sharing",
-    "slug": "advantages-of-adopting-a-microservices-based-architecture"
+    "yt_video_id": "tV11trlimLk",
+    "title": "Should some microservices share a database?",
+    "description": "Microservices need to communicate with each other. Communication between them is always about getting or updating data that is owned by the other service. What if a service gets direct access to all the data it wants? This is the simplest way for the microservices to communicate with each other, and this pattern is called Sharing the Database. The core idea here is to let anyone who needs the data from a service or wants to update something, can directly talk to its database - no middlemen needed.\n\nAlthough most people think it is the wrong way of communication, we should not discard it completely. In this video, we talk about what this architecture pattern is, the 4 challenges associated with it, see ways to mitigate them, and understand when and where it could be beneficial for us to share the database rather than going through a middleman.\n\nOutline:\n\n00:00 Agenda\n03:13 Introduction\n04:14 Advantages of a sharing a database\n06:55 Challenge 1: External parties getting internal details\n10:30 Challenge 2: Replicating business logic\n13:31 Challenge 3: Risk of data corruption and deletion\n14:50 Challenge 4: Abusing the shared database\n16:27 Should we share the database then?",
+    "img": "https://i.ytimg.com/vi/tV11trlimLk/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/fxwvlpoM7NwP7i4jFB/giphy.gif",
+    "duration": "21:21",
+    "view_count": 1378,
+    "like_count": 72,
+    "comment_count": 19,
+    "released_at": "2022-04-27",
+    "gist": "Microservices need to communicate with each other, and one such way of doing it is through a shared database.\n\nFor example: While building a multi-user blogging application, say we have a Blogs service that manages all the blogs-related information and we have an Analytics service that takes care of all the analytics like Likes, Shares, Views, etc.\n\nAnalytics service updates the information asynchronously directly in the blog's database; eg: total_views that happened on the blog. This can be easily achieved by sharing the database between Blogs and Analytics, and this pattern is the Shared Database pattern.\n\n### Advantages of sharing the database\n\n\u00a0- the simplest way of integration\n\u00a0- no middleman involved\n\u00a0- no latency overhead\n\u00a0- quick development time\n\n# Challenges with Shared Database\n\nThere are 4 challenges to using this pattern\n\n## External parties know internal details\n\nBy sharing the database across services, an external party (Analytics) would get to know the internal details of the Blogs service; eg: deletion practice, schema, etc.\n\nThis leads to a very tight coupling between the services; which then restrains the maintainability and performance of the system. For example, whenever the Blogs service changes the schema, the Analytics Service would have to be informed about the change.\n\n## Sharing the database is sharing the logic\n\nTo compute some information we need to query a set of tables; and say, this information is required by the Blogs, Analytics, and Recommendation service.\n\nThe business logic to compute the information has to be replicated across all the 3 services. Any change in the logic needs to be made across all the services.\n\n## Risk of data corruption and deletion\n\nThere is a risk that one of the services might corrupt or delete some data given that the database is shared between the services.\n\n## Abusing the shared database\n\nOne service firing expensive queries on the database will affect the performance of other services sharing the same database.\n\n# When to share a database?\n\nA shared database pattern is helpful when you are seeking quick development time. Although it is not the best practice, sharing the database does reduce the development effort by a massive margin.\n\nSharing the database is also seen where it is inconvenient to have a middleman for the communication; for example: sending a notification to a million followers of a person is simple when the Relationship database is shared with the notification fan-out service; instead of iterating the millions of followers through some middleman API.",
+    "notes_gd": "https://drive.google.com/file/d/1ql0chRVpcjgV4Fv_MJTRaXbtIZ3QJwcI/view?usp=sharing",
+    "slug": "should-some-microservices-share-a-database"
   },
   {
     "id": 129,
@@ -69,7 +46,7 @@
     "slug": "how-to-scope-a-microservice"
   },
   {
-    "id": 133,
+    "id": 119,
     "topic": {
       "id": 0,
       "uid": "microservices",
@@ -77,18 +54,41 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt"
     },
-    "yt_video_id": "tV11trlimLk",
-    "title": "Should some microservices share a database?",
-    "description": "Microservices need to communicate with each other. Communication between them is always about getting or updating data that is owned by the other service. What if a service gets direct access to all the data it wants? This is the simplest way for the microservices to communicate with each other, and this pattern is called Sharing the Database. The core idea here is to let anyone who needs the data from a service or wants to update something, can directly talk to its database - no middlemen needed.\n\nAlthough most people think it is the wrong way of communication, we should not discard it completely. In this video, we talk about what this architecture pattern is, the 4 challenges associated with it, see ways to mitigate them, and understand when and where it could be beneficial for us to share the database rather than going through a middleman.\n\nOutline:\n\n00:00 Agenda\n03:13 Introduction\n04:14 Advantages of a sharing a database\n06:55 Challenge 1: External parties getting internal details\n10:30 Challenge 2: Replicating business logic\n13:31 Challenge 3: Risk of data corruption and deletion\n14:50 Challenge 4: Abusing the shared database\n16:27 Should we share the database then?",
-    "img": "https://i.ytimg.com/vi/tV11trlimLk/mqdefault.jpg",
-    "gif": "https://media.giphy.com/media/fxwvlpoM7NwP7i4jFB/giphy.gif",
-    "duration": "21:21",
-    "view_count": 1378,
-    "like_count": 72,
-    "comment_count": 19,
-    "released_at": "2022-04-27",
-    "gist": "Microservices need to communicate with each other, and one such way of doing it is through a shared database.\n\nFor example: While building a multi-user blogging application, say we have a Blogs service that manages all the blogs-related information and we have an Analytics service that takes care of all the analytics like Likes, Shares, Views, etc.\n\nAnalytics service updates the information asynchronously directly in the blog's database; eg: total_views that happened on the blog. This can be easily achieved by sharing the database between Blogs and Analytics, and this pattern is the Shared Database pattern.\n\n### Advantages of sharing the database\n\n\u00a0- the simplest way of integration\n\u00a0- no middleman involved\n\u00a0- no latency overhead\n\u00a0- quick development time\n\n# Challenges with Shared Database\n\nThere are 4 challenges to using this pattern\n\n## External parties know internal details\n\nBy sharing the database across services, an external party (Analytics) would get to know the internal details of the Blogs service; eg: deletion practice, schema, etc.\n\nThis leads to a very tight coupling between the services; which then restrains the maintainability and performance of the system. For example, whenever the Blogs service changes the schema, the Analytics Service would have to be informed about the change.\n\n## Sharing the database is sharing the logic\n\nTo compute some information we need to query a set of tables; and say, this information is required by the Blogs, Analytics, and Recommendation service.\n\nThe business logic to compute the information has to be replicated across all the 3 services. Any change in the logic needs to be made across all the services.\n\n## Risk of data corruption and deletion\n\nThere is a risk that one of the services might corrupt or delete some data given that the database is shared between the services.\n\n## Abusing the shared database\n\nOne service firing expensive queries on the database will affect the performance of other services sharing the same database.\n\n# When to share a database?\n\nA shared database pattern is helpful when you are seeking quick development time. Although it is not the best practice, sharing the database does reduce the development effort by a massive margin.\n\nSharing the database is also seen where it is inconvenient to have a middleman for the communication; for example: sending a notification to a million followers of a person is simple when the Relationship database is shared with the notification fan-out service; instead of iterating the millions of followers through some middleman API.",
-    "notes_gd": "https://drive.google.com/file/d/1ql0chRVpcjgV4Fv_MJTRaXbtIZ3QJwcI/view?usp=sharing",
-    "slug": "should-some-microservices-share-a-database"
+    "yt_video_id": "JPj6mhVLQN0",
+    "title": "Advantages of adopting a microservices-based architecture",
+    "description": "Microservices are great, and the overall microservices-based architecture has some key advantages. In this video, we talk about what are microservices, the key advantages of using a microservices-based architecture, and understand how to fence service and define its set of responsibilities.\n\nOutline:\n\n00:00 What are microservices?\n01:53 Key advantages of adopting a microservices-based architecture\n09:48 How to fence a microservice?",
+    "img": "https://i.ytimg.com/vi/JPj6mhVLQN0/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/giEftvZuPAiZQBphEI/giphy.gif",
+    "duration": "14:18",
+    "view_count": 1575,
+    "like_count": 113,
+    "comment_count": 11,
+    "released_at": "2022-04-08",
+    "gist": "Why Microservices?\ud83e\udd14 [ in a gist ]\n\nMicroservices are small, autonomous, harmonic subsystems that work together to solve the bigger problem.\n\nThe core idea of microservices is Divide and Conquer. We break the big problem into smaller sub-problems, and solve each of the sub-problem optimally, enabling us to solve the bigger problem well.\n\nWhy Microservices?\n\n\u26a1 Codebase grows over time\n\nThe product evolves and new features are added to it and that bloats up the codebase. It becomes difficult for multiple teams to coordinate and collaborate on a humungous codebase. One team breaking one module can take down the entire product.\n\n\u26a1 Scaling is predictable\n\nWith microservices, scalability becomes predictable; you can linearly amplify the infrastructure requirements of individual microservices and be predictable in handling the load.\n\n\u26a1 Teams become autonomous\n\nWith each team responsible for a set of microservices they can take charge of their tech stack and design decisions. These decisions will be best for their problem statement and can ensure that they are solving them the best way possible.\n\n\u26a1 Fault Tolerance\n\nIf one microservice is down, it may lead to a partial outage of the product affecting a small fragment of the systems; while other components remain unaffected and can continue to service the traffic.\n\n\u26a1 Upgrades are simpler\n\nSo long as a microservice adheres to the API contract, the team that owns it can upgrade the tech stack, architecture, and DB seamlessly.",
+    "notes_gd": "https://drive.google.com/file/d/1lK2e3me09VNz51DWDunI5xDmlgLnOvfC/view?usp=sharing",
+    "slug": "advantages-of-adopting-a-microservices-based-architecture"
+  },
+  {
+    "id": 118,
+    "topic": {
+      "id": 0,
+      "uid": "microservices",
+      "name": "Microservices",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt"
+    },
+    "yt_video_id": "Hxja4crycBg",
+    "title": "Handling timeouts in a microservice architecture",
+    "description": "Handling timeout well is extremely critical as it makes your distributed system robust and ensures you provide a consistent user experience by adhering to SLA guarantees. In this video, we discover how a synchronous dependency on a microservice leads to long delays becoming a big problem, understand how timeout addresses the concern, and discuss 5 approaches to handle service timeouts.\n\nOutline:\n00:00 Why is handling timeout critical?\n01:13 Synchronous communication and timeouts\n05:39 A rule of thumb: Timeout\n07:52 Approach 1: Ignore the timeout\n10:28 Approach 2: Configure and use defaults\n11:27 Approach 3: Retry when timeout\n16:36 Approach 4: Retry only when needed\n20:06 Approach 5: Rearchitect and remove synchronous dependency",
+    "img": "https://i.ytimg.com/vi/Hxja4crycBg/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/3oriO4kSYahYQr6e1a/giphy.gif",
+    "duration": "23:38",
+    "view_count": 1868,
+    "like_count": 130,
+    "comment_count": 18,
+    "released_at": "2022-03-18",
+    "gist": "Microservices give us the flexibility to pick the best tech stack to solve the problem optimally. But one thing that ruins the real thrill is Timeouts.\n\nSay we have a blogging website where a user can search for blogs. The request comes to the Search service, and it finds the most relevant blogs for the query.\n\nIn the response, a field called `total_views` should hold the total number of views the blog received in its lifetime. The search services should talk to the Analytics service synchronously to get the data. This synchronous dependency is the root of all evil.\n\nThe core problem: Delays can be arbitrarily large\n\nBecause the delay depending on service can be arbitrarily large, we know how long to wait for the response. We for sure cannot wait forever, and hence we introduce Timeout. Every time the Search service invokes the Analytics service, it starts a timer, and if it does not get a response in the stipulated time, it timeout and moves on.\n\nThere are 5 approaches to handling timeouts.\n\n - Approach 1: Ignore the timeout and move on\n - Approach 2: Use some default value if you timed out\n - Approach 3: Retry the request\n - Approach 4: Retry only when needed\n - Approach 5: Re-architect and make synchronous dependency an async one",
+    "notes_gd": "https://drive.google.com/file/d/1GjObZ3xpLFxDEOO3EGRCj0Pq8bWLixjU/view?usp=sharing",
+    "slug": "handling-timeouts-in-a-microservice-architecture"
   }
 ]

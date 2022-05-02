@@ -1,6 +1,6 @@
 [
   {
-    "id": 111,
+    "id": 107,
     "topic": {
       "id": 0,
       "uid": "database-engineering",
@@ -8,65 +8,19 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l"
     },
-    "yt_video_id": "x1XmcuosZNk",
-    "title": "5 million + random rows in less than 100 seconds using SQL",
-    "description": "In this video, we generate 5 million + random rows in less than 100 seconds using just SQL. We mock the data for any taxonomy (Udemy's example taken). We use Joins and SQL tricks to amplify the rows and use them to ingest.\n\n\nLink to the gist: https://gist.github.com/arpitbbhayani/96a42c28d134871ebc11faad272b5349",
-    "img": "https://i.ytimg.com/vi/x1XmcuosZNk/mqdefault.jpg",
-    "gif": "https://media.giphy.com/media/Gpu3skdN58ApO/giphy.gif",
-    "duration": "26:3",
-    "view_count": 1866,
-    "like_count": 54,
-    "comment_count": 19,
-    "released_at": "2021-04-10",
-    "gist": "",
-    "notes_gd": "",
-    "slug": "5-million-random-rows-in-less-than-100-seconds-using-sql"
-  },
-  {
-    "id": 110,
-    "topic": {
-      "id": 0,
-      "uid": "database-engineering",
-      "name": "Database Engineering",
-      "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l"
-    },
-    "yt_video_id": "UT_TVldzA64",
-    "title": "How to handle database outages?",
-    "description": "In this video, we talk about why a database goes down, what happens when the database is down, a few short-term solutions to minimize the downtime, and a few long-term solutions that you should be doing to ensure that your database does not go down again.\n\nOutline:\n\n00:00 Why a database goes down?\n06:10 What happens when a DB is down?\n09:46 Short-term solutions to get your DB up\n17:33 Long-term solutions to fix the database",
-    "img": "https://i.ytimg.com/vi/UT_TVldzA64/mqdefault.jpg",
-    "gif": "https://media.giphy.com/media/lVBtp4SRW6rvDHf1b6/giphy.gif",
-    "duration": "30:38",
-    "view_count": 1646,
-    "like_count": 123,
+    "yt_video_id": "xELqRiovEcI",
+    "title": "What are Embedded Databases?",
+    "description": "Embedded databases are coupled with the application they are part of and operate in a confined space. They are designed to solve one problem for their niche very well. In this video, we take an introductory look into this amazing class of databases, understand the core reason why they exist, talk about a few popular ones, and understand a few use cases.\n\nOutline:\n00:00 Server-based Databases\n02:32 Embedded Databases\n06:35 Popular Embedded Databases\n10:39 Applications of Embedded Databases",
+    "img": "https://i.ytimg.com/vi/xELqRiovEcI/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/uk3R91z24SoUZ27WTh/giphy.gif",
+    "duration": "15:57",
+    "view_count": 1513,
+    "like_count": 71,
     "comment_count": 17,
-    "released_at": "2022-03-14",
-    "gist": "### Why a database goes down?\nAn unexpected heavy load on your database can lead to a process crash or a massive slowdown.\n\nBefore jumping to the potential short-term and long-term solutions, ensure you monitor the database well. CPU, Memory, Disk, and Connections are being closely monitored.\n\n## Short term solutions\n\n- Kill the queries that have been running for a long time\n- Quickly scale up your database if you have been seeing a consistent heavy usage\n- Check if the recent deployment is the culprit; if so, revert asap\n- Reboot the database will calm the storm and buy you some time\n\n## Long term solutions\n\n- Ensure the right set of indexes is in place\n- Tune your database default parameters to gain optimal performance\n- Check for the notorious N+1 Queries\n- Upgrade the database version to get the best that DB can offer\n- Evaluate the need for Horizontal scaling using Replicas and Sharding",
-    "notes_gd": "https://drive.google.com/file/d/1Q6YokLBvmfW1Tw1mpndOfx-I2NyRGVG0/view?usp=sharing",
-    "slug": "how-to-handle-database-outages"
-  },
-  {
-    "id": 109,
-    "topic": {
-      "id": 0,
-      "uid": "database-engineering",
-      "name": "Database Engineering",
-      "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l"
-    },
-    "yt_video_id": "3G293is403I",
-    "title": "How do indexes make databases read faster?",
-    "description": "In this video, we discuss how indexes make a database operate faster. While discussing that, we dive deep into how the data is read from the disk, how indexes are structured, serialized, and stored on the disk, and finally, how exactly data is quickly read using the right set of indexes.\n\nOutline:\n\n00:00 How is a table stored on the disk?\n03:14 Reading bytes from the disk\n05:21 Reading the entire table from the disk\n08:33 Evaluating a simple query without an index\n10:00 Basics of Database Indexes\n13:24 Evaluating a simple query with index",
-    "img": "https://i.ytimg.com/vi/3G293is403I/mqdefault.jpg",
-    "gif": "https://media.giphy.com/media/WoWm8YzFQJg5i/giphy.gif",
-    "duration": "23:25",
-    "view_count": 2351,
-    "like_count": 188,
-    "comment_count": 28,
-    "released_at": "2022-03-16",
-    "gist": "The database is just a collection of records. These records are serialized and stored on the disk. The way the records are serialized and stored on the disk depends on the database engine.  \n  \n## How does the database read from the disk?  \nA disk is always read in Blocks, and a block is typically 8kb big. When any disk IO happens, even requesting one byte, the entire block is read in memory, and the byte is returned from it.  \n  \nSay we have a \"users\" table with 100 rows, with each row being 200B long. If the block size is 600B, we can read 600/200 = 3 rows in one disk read.  \n  \nTo find all users with age = 23, we will have to read the entire table row by row and filter out the relevant documents; we will have to read the entire table. In one shot, we read 3 rows so that it would take 100/3 = 34 disk/block reads to answer the query.  \n  \n## Let's see how indexes make this faster.  \n  \nAn index is a small referential table with two columns: the indexed value and the row ID. So an index on the age column will have two columns age (4 bytes) and row ID (4 bytes).  \n  \nEach entry in the index is 8 bytes long, and the total size of the index will be 100 * 8 = 800 bytes. When stored on the disk, the index will require 2 disk blocks.  \n  \nWhen we want to get users with age == 23, we will first read the entire index, taking 2 disk IOs and filtering out relevant row IDs. Then make disk reads for the relevant rows from the main table. Thus we read 2 blocks to load the index and only relevant blocks have the actual data.  \n  \nIn our example, it comes out to be 2 + 2 = 4 block reads. So, we get an 8x boost in performance using indexes.  \n  \nNote: This is a very crude example of how fetch happens with indexes; there are a lot of optimizations that I have not talked about.  ",
-    "notes_gd": "https://drive.google.com/file/d/1wDDOc3rdsZIdZEEe50E_61wi-1iMHu2G/view?usp=sharing",
-    "slug": "how-do-indexes-make-databases-read-faster"
+    "released_at": "2022-03-25",
+    "gist": "Traditional databases like MySQL, Postgres, MongoDB run on their server on a specific port. Anyone who wants to talk to the database can directly connect and talk.\n\nEmbedded Databases are different from these traditional databases, and they operate in their own confined space within a process. There is no separate process for the database.\n\nNo one can directly connect to this database, unlike how we do it with MySQL and other databases. The role and the use of the embedded database are limited to the process it is confined to.\n\n## Popular embedded databases are\n\n - SQLite: an embedded SQL-like database\n - LevelDB: on disk KV store by Google\n - RocksDB: on disk KV store optimized for performance\n - Berkeley DB: KV store with ACID, Replication, and Locking\n\nAn embedded database is always designed to solve one niche really well.\n\n## Application of Embedded Databases\n\nEvery modern browser uses an embedded database called IndexedDB to store browsing history and other configuration settings locally. The browser is confined to a machine, and the IndexedDB is contained in the browser; there is no separate process to connect to.\n\nEvery Android phone has support for SQLite database that we can use to store any information like game scores, stats, and information locally on the phone.\n\nThe core idea: When we need to store and query data that could be confined within a space and does not need to be centralized, we choose to use an Embedded Database.",
+    "notes_gd": "https://drive.google.com/file/d/1_iXh0rCmGVZJj5CLWP7gJ4YzAP-yIiGb/view?usp=sharing",
+    "slug": "what-are-embedded-databases"
   },
   {
     "id": 108,
@@ -92,7 +46,7 @@
     "slug": "how-does-the-database-guarantee-reliability-using-write-ahead-logging"
   },
   {
-    "id": 107,
+    "id": 109,
     "topic": {
       "id": 0,
       "uid": "database-engineering",
@@ -100,18 +54,64 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l"
     },
-    "yt_video_id": "xELqRiovEcI",
-    "title": "What are Embedded Databases?",
-    "description": "Embedded databases are coupled with the application they are part of and operate in a confined space. They are designed to solve one problem for their niche very well. In this video, we take an introductory look into this amazing class of databases, understand the core reason why they exist, talk about a few popular ones, and understand a few use cases.\n\nOutline:\n00:00 Server-based Databases\n02:32 Embedded Databases\n06:35 Popular Embedded Databases\n10:39 Applications of Embedded Databases",
-    "img": "https://i.ytimg.com/vi/xELqRiovEcI/mqdefault.jpg",
-    "gif": "https://media.giphy.com/media/uk3R91z24SoUZ27WTh/giphy.gif",
-    "duration": "15:57",
-    "view_count": 1513,
-    "like_count": 71,
+    "yt_video_id": "3G293is403I",
+    "title": "How do indexes make databases read faster?",
+    "description": "In this video, we discuss how indexes make a database operate faster. While discussing that, we dive deep into how the data is read from the disk, how indexes are structured, serialized, and stored on the disk, and finally, how exactly data is quickly read using the right set of indexes.\n\nOutline:\n\n00:00 How is a table stored on the disk?\n03:14 Reading bytes from the disk\n05:21 Reading the entire table from the disk\n08:33 Evaluating a simple query without an index\n10:00 Basics of Database Indexes\n13:24 Evaluating a simple query with index",
+    "img": "https://i.ytimg.com/vi/3G293is403I/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/WoWm8YzFQJg5i/giphy.gif",
+    "duration": "23:25",
+    "view_count": 2351,
+    "like_count": 188,
+    "comment_count": 28,
+    "released_at": "2022-03-16",
+    "gist": "The database is just a collection of records. These records are serialized and stored on the disk. The way the records are serialized and stored on the disk depends on the database engine.  \n  \n## How does the database read from the disk?  \nA disk is always read in Blocks, and a block is typically 8kb big. When any disk IO happens, even requesting one byte, the entire block is read in memory, and the byte is returned from it.  \n  \nSay we have a \"users\" table with 100 rows, with each row being 200B long. If the block size is 600B, we can read 600/200 = 3 rows in one disk read.  \n  \nTo find all users with age = 23, we will have to read the entire table row by row and filter out the relevant documents; we will have to read the entire table. In one shot, we read 3 rows so that it would take 100/3 = 34 disk/block reads to answer the query.  \n  \n## Let's see how indexes make this faster.  \n  \nAn index is a small referential table with two columns: the indexed value and the row ID. So an index on the age column will have two columns age (4 bytes) and row ID (4 bytes).  \n  \nEach entry in the index is 8 bytes long, and the total size of the index will be 100 * 8 = 800 bytes. When stored on the disk, the index will require 2 disk blocks.  \n  \nWhen we want to get users with age == 23, we will first read the entire index, taking 2 disk IOs and filtering out relevant row IDs. Then make disk reads for the relevant rows from the main table. Thus we read 2 blocks to load the index and only relevant blocks have the actual data.  \n  \nIn our example, it comes out to be 2 + 2 = 4 block reads. So, we get an 8x boost in performance using indexes.  \n  \nNote: This is a very crude example of how fetch happens with indexes; there are a lot of optimizations that I have not talked about.  ",
+    "notes_gd": "https://drive.google.com/file/d/1wDDOc3rdsZIdZEEe50E_61wi-1iMHu2G/view?usp=sharing",
+    "slug": "how-do-indexes-make-databases-read-faster"
+  },
+  {
+    "id": 110,
+    "topic": {
+      "id": 0,
+      "uid": "database-engineering",
+      "name": "Database Engineering",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l"
+    },
+    "yt_video_id": "UT_TVldzA64",
+    "title": "How to handle database outages?",
+    "description": "In this video, we talk about why a database goes down, what happens when the database is down, a few short-term solutions to minimize the downtime, and a few long-term solutions that you should be doing to ensure that your database does not go down again.\n\nOutline:\n\n00:00 Why a database goes down?\n06:10 What happens when a DB is down?\n09:46 Short-term solutions to get your DB up\n17:33 Long-term solutions to fix the database",
+    "img": "https://i.ytimg.com/vi/UT_TVldzA64/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/lVBtp4SRW6rvDHf1b6/giphy.gif",
+    "duration": "30:38",
+    "view_count": 1646,
+    "like_count": 123,
     "comment_count": 17,
-    "released_at": "2022-03-25",
-    "gist": "Traditional databases like MySQL, Postgres, MongoDB run on their server on a specific port. Anyone who wants to talk to the database can directly connect and talk.\n\nEmbedded Databases are different from these traditional databases, and they operate in their own confined space within a process. There is no separate process for the database.\n\nNo one can directly connect to this database, unlike how we do it with MySQL and other databases. The role and the use of the embedded database are limited to the process it is confined to.\n\n## Popular embedded databases are\n\n - SQLite: an embedded SQL-like database\n - LevelDB: on disk KV store by Google\n - RocksDB: on disk KV store optimized for performance\n - Berkeley DB: KV store with ACID, Replication, and Locking\n\nAn embedded database is always designed to solve one niche really well.\n\n## Application of Embedded Databases\n\nEvery modern browser uses an embedded database called IndexedDB to store browsing history and other configuration settings locally. The browser is confined to a machine, and the IndexedDB is contained in the browser; there is no separate process to connect to.\n\nEvery Android phone has support for SQLite database that we can use to store any information like game scores, stats, and information locally on the phone.\n\nThe core idea: When we need to store and query data that could be confined within a space and does not need to be centralized, we choose to use an Embedded Database.",
-    "notes_gd": "https://drive.google.com/file/d/1_iXh0rCmGVZJj5CLWP7gJ4YzAP-yIiGb/view?usp=sharing",
-    "slug": "what-are-embedded-databases"
+    "released_at": "2022-03-14",
+    "gist": "### Why a database goes down?\nAn unexpected heavy load on your database can lead to a process crash or a massive slowdown.\n\nBefore jumping to the potential short-term and long-term solutions, ensure you monitor the database well. CPU, Memory, Disk, and Connections are being closely monitored.\n\n## Short term solutions\n\n- Kill the queries that have been running for a long time\n- Quickly scale up your database if you have been seeing a consistent heavy usage\n- Check if the recent deployment is the culprit; if so, revert asap\n- Reboot the database will calm the storm and buy you some time\n\n## Long term solutions\n\n- Ensure the right set of indexes is in place\n- Tune your database default parameters to gain optimal performance\n- Check for the notorious N+1 Queries\n- Upgrade the database version to get the best that DB can offer\n- Evaluate the need for Horizontal scaling using Replicas and Sharding",
+    "notes_gd": "https://drive.google.com/file/d/1Q6YokLBvmfW1Tw1mpndOfx-I2NyRGVG0/view?usp=sharing",
+    "slug": "how-to-handle-database-outages"
+  },
+  {
+    "id": 111,
+    "topic": {
+      "id": 0,
+      "uid": "database-engineering",
+      "name": "Database Engineering",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l"
+    },
+    "yt_video_id": "x1XmcuosZNk",
+    "title": "5 million + random rows in less than 100 seconds using SQL",
+    "description": "In this video, we generate 5 million + random rows in less than 100 seconds using just SQL. We mock the data for any taxonomy (Udemy's example taken). We use Joins and SQL tricks to amplify the rows and use them to ingest.\n\n\nLink to the gist: https://gist.github.com/arpitbbhayani/96a42c28d134871ebc11faad272b5349",
+    "img": "https://i.ytimg.com/vi/x1XmcuosZNk/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/Gpu3skdN58ApO/giphy.gif",
+    "duration": "26:3",
+    "view_count": 1866,
+    "like_count": 54,
+    "comment_count": 19,
+    "released_at": "2021-04-10",
+    "gist": "",
+    "notes_gd": "",
+    "slug": "5-million-random-rows-in-less-than-100-seconds-using-sql"
   }
 ]
