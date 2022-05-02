@@ -6,9 +6,9 @@ The traditional way to host APIs is by spinning up a server with some RAM, and C
 
 So, what if there was an Infrastructure that
 
- - scales up and down as per the traffic
- - is billed per execution
- - is self-managed maintained and fault-tolerant
+- scales up and down as per the traffic
+- is billed per execution
+- is self-managed maintained and fault-tolerant
 
 These requirements gave rise to Serverless Computing.
 
