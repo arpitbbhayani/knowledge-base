@@ -16,11 +16,11 @@ A variable allocated on the heap is typically done through functions like the "n
 
 Objects assigned on Heap need to be garbage collected, but why do we need the heap in the first place? There are 3 main reasons:
 
- - We cannot grow your stack-allocated objects dynamically,
- - We need dynamically growing objects like Arrays, LinkedList, Trees
- - We might need objects that could be larger than what Stack can fit in
- - We might need to share the same object across multiple threads
- - We do not want our functions to copy and pass bulk objects
+- We cannot grow your stack-allocated objects dynamically,
+- We need dynamically growing objects like Arrays, LinkedList, Trees
+- We might need objects that could be larger than what Stack can fit in
+- We might need to share the same object across multiple threads
+- We do not want our functions to copy and pass bulk objects
 
 ## Garbage Collection: Explicit De-allocation
 

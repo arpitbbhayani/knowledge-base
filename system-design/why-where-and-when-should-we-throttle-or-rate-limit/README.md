@@ -8,16 +8,16 @@ Throttling is a technique that ensures that the flow of the data or the requests
 
 It is a defensive measure and 3 possible reactions could be
 
- - slowing down the incoming requests
- - rejecting the surplus requests
- - ignoring the surplus requests
+- slowing down the incoming requests
+- rejecting the surplus requests
+- ignoring the surplus requests
 
 ## Why do we need throttling in the first place?
 
- - to prevent system abuse
- - to allow the amount of traffic we could handle
- - control the consumption cost
- - prevent cascading failures leading to a massive outage
+- to prevent system abuse
+- to allow the amount of traffic we could handle
+- control the consumption cost
+- prevent cascading failures leading to a massive outage
 
 # Real-world use-cases for throttling
 
