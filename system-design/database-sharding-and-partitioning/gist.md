@@ -40,11 +40,11 @@ It is possible to have more partitions and fewer shards and in that case, each s
 
 ### Advantages of Sharding
 
- - handle more reads and writes
- - increases overall storage capacity
- - overall high availability
+- handle more reads and writes
+- increases overall storage capacity
+- overall high availability
 
 ### Disadvantages of Sharding
 
- - sharding is operationally complex
- - cross-shard queries are super-expensive
+- sharding is operationally complex
+- cross-shard queries are super-expensive
