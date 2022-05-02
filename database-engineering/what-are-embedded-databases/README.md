@@ -34,7 +34,6 @@ The core idea: When we need to store and query data that could be confined withi
 Embedded databases are coupled with the application they are part of and operate in a confined space. They are designed to solve one problem for their niche very well. In this video, we take an introductory look into this amazing class of databases, understand the core reason why they exist, talk about a few popular ones, and understand a few use cases.
 
 Outline:
-
 00:00 Server-based Databases
 02:32 Embedded Databases
 06:35 Popular Embedded Databases
