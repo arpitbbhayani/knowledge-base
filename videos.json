@@ -1,150 +1,853 @@
 [
   {
     "id": 135,
-    "title": "Introduction to Serverless Computing and Architecture"
+    "topic": {
+      "id": 0,
+      "uid": "system-design",
+      "name": "System Design",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+    },
+    "yt_video_id": "oiZH5U_a0pg",
+    "title": "Introduction to Serverless Computing and Architecture",
+    "description": "Serverless Computing is one of the hottest topics of discussion today, but the term \"serverless\" is slightly misleading and it does not mean that your code will not need a server to run. We have to be extremely cautious while deciding on adopting serverless for our use case, but it is not something that fits all the use cases.\n\nIn this video, we talk about what serverless computing is, see why it was built in the first place, learn about 5 real-world use-cases that become super-efficient with serverless architecture, understand the advantages and more importantly, the disadvantages of adopting it, and conclude with acknowledging when to use and when not to use this computation pattern.\n\nOutline:\n\n00:00 Agenda\n03:01 Need and the idea of the Serverless Computing\n11:16 Usecase 1: Chatbots\n13:57 Usecase 2: Online Judge\n16:27 Usecase 3: Vending Machines\n18:00 Usecase 4: CRON Jobs\n19:54 Usecase 5: Batch and Stream Processing\n22:16 Advantages of Serverless Computing and Architecture\n26:21 Disadvantages of Serverless Computing and Architecture\n31:37 When NOT to use Serverless\n34:00 When to use Serverless",
+    "img": "https://i.ytimg.com/vi/oiZH5U_a0pg/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/5k1VkABjw5wQq0PNEU/giphy.gif",
+    "duration": "36:23",
+    "view_count": 21,
+    "like_count": 6,
+    "comment_count": 0,
+    "released_at": "2022-05-02",
+    "gist": "Serverless is a cost-efficient way to host your APIs and it forms the crux of systems like Chatbots and Online Judge.\n\nServerless does not mean that your code will not run on the server; it means that you do not manage, maintain, access, or scale the server your code is running on.\n\nThe traditional way to host APIs is by spinning up a server with some RAM, and CPU. Say the resources make your server handle 1000 RPS, but you are getting 1000 RPS only 1% of the time which means for the other 99% you are overprovisioned.\n\nSo, what if there was an Infrastructure that\n\n\u00a0- scales up and down as per the traffic\n\u00a0- is billed per execution\n\u00a0- is self-managed maintained and fault-tolerant\n\nThese requirements gave rise to Serverless Computing.\n\n# Real-world applications\n\n## Chatbot\n\nSay, we build a Slack chatbot that responds with the Holiday list when someone messages `holidays` . The traffic for this utility is going to be insignificant, and keeping a server running the whole time is a waste. This is best modeled on Serverless which is invoked on receiving a message.\n\n## Online Judge\n\nEvery submission can be evaluated on a serverless function and results can be updated in a database. Serverless gives you isolation out of the box and keeps the cost to a bare minimum. It would also seamlessly handle the surge in submissions.\n\n## Vending Machine\n\nUpon purchase, the Vending machine would need to update the main database, and the APIs for that could be hosted on Serverless. Given the traffic is low and bursty, Serverless would help us keep the cost down.\n\n## Scheduled DB Backups\n\nSchedule daily DB backups on the Serverless function instead of running a separate crontab server just to trigger the backup.\n\n## Batch and Stream Processing\n\nUse serverless and invoke the function every time a message is pushed on the broker making the system reactive instead of poll-based.\n\n# Advantages\n\n\u00a0- No need to manage and scale the infra\n\u00a0- The cost is 0 when you do not get any traffic\n\u00a0- Scale is out of the box; so no capacity planning is needed\n\n# Disadvantages\n\n\u00a0- Takes time to serve the first request as the underlying infra might boot up\n\u00a0- The execution has a max timeout, so your job should complete within the limit\n\u00a0- Debugging is a challenge\n\u00a0- You are locked in on the vendor you chose\n\n# When NOT to use Serverless\n\n\u00a0- Load, usage, and traffic pattern is consistent\n\u00a0- Execution will go beyond the max timeout\n\u00a0- You need multi-tenancy\n\n# When to use Serverless\n\n\u00a0- Quick build, prototype, and deploy the changes\n\u00a0- Usecase is lightweight\n\u00a0- Traffic is bursty",
+    "notes_gd": "https://drive.google.com/file/d/1sZShE0r41XcFa2gEPW1RS_YTaR3tC-zH/view?usp=sharing",
+    "slug": "introduction-to-serverless-computing-and-architecture"
   },
   {
     "id": 134,
-    "title": "Mark and Sweep Garbage Collection Algorithm"
+    "topic": {
+      "id": 0,
+      "uid": "garbage-collection",
+      "name": "Garbage Collection",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT3MvruOP09U1bWmcjxLIMwR"
+    },
+    "yt_video_id": "4qLf0FJMyf0",
+    "title": "Mark and Sweep Garbage Collection Algorithm",
+    "description": "Garbage Collection has to be one of the most interesting topics of discussion out there. In the previous videos, we took a look at why programming languages need an automatic garbage collection and what are the key metrics and characteristics we look at while picking one.\n\nIn this video, we take a detailed look into one of the most common GC algorithms out there called Mark-and-Sweep. We will talk about the two key phases of the algorithms, also dive into the important details and nuances of it, and take a look at two super-interesting optimizations that would algorithm a massive boost to the performance.\n\nOutline:\n\n00:00 Agenda\n02:57 Introduction to the Mark and Sweep Algorithm\n06:12 Mutator Threads, Collector Threads, and assumptions\n09:30 When is Garbage Collector invoked?\n13:11 Phase 1: Prepare the root list\n14:35 Phase 2: Mark roots, proceed, and a super optimization\n17:19 Phase 3: Mark and DFS Traversal\n19:22 Phase 4: Sweep and a super optimization",
+    "img": "https://i.ytimg.com/vi/4qLf0FJMyf0/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/NV4cSrRYXXwfUcYnua/giphy.gif",
+    "duration": "23:43",
+    "view_count": 479,
+    "like_count": 33,
+    "comment_count": 7,
+    "released_at": "2022-04-29",
+    "gist": "The Mark-and-Sweep garbage collection algorithm is one of the most common and widely adopted garbage collection algorithms out there. It leverages the power of Graph data structure along with DFS to power the cleanup.\n\nAlmost all programming languages support allocating objects in heap and referring them via pointers to another object. This reference creates a small graph of all the references linked to the one root node.\n\nThe root node could be a global variable (object) or something allocated on the thread stack, and anything and everything referenced from that becomes the child nodes and the process continues.\n\n### Indirect Collection Algorithm\n\nThe mark-and-Sweep garbage collection algorithm is an indirect collection algorithm, which means it does not have any direct information about the garbage, instead, it identifies the garbage by eliminating everything LIVE.\n\n# When is the GC triggered?\n\nThe garbage collection is triggered when the runtime environment is unable to allocate any new object on the heap. When the language tries to fire `new` and it is unable to allocate space, it first triggers a quick garbage collection and then tries to re-allocate; if not successful again it throws an OutOfMemory exception, and in most cases, it is a fatal error.\n\n# Mark-and-Sweep Algorithm\n\nAlthough the algorithm is primarily split into two phases Mark and Sweep; to build a better understanding we split it into 4.\n\n## Prepare the root list\n\nThe first step of this algorithm is to extract and prepare the root list, and the roots could be global variables or variables referenced in the thread stack. These become the seed objects on which we then trigger a DFS.\n\n## Mark the roots and proceed\n\nOnce we identified all the roots, we mark all the roots as `LIVE` and proceed with the Mark phase. A super optimization that some implementations apply is to invoke the Mark phase for every root as it would help us keep the stack smaller.\n\n## Mark\n\nThe mark phase is just a Depth First Search traversal on one root node and the idea is to mark every node as `LIVE` that is reachable from the root node. Once all the nodes are marked, we can conclude that the nodes that remain unmarked are garbage; and the ones to be cleaned up.\n\n## Sweep\n\nThe nodes left unmarked are the garbage and hence in the sweep phase, the GC iterates through all the objects and frees the unmarked objects, and resets the marked object to prepare them for the next cycle.",
+    "notes_gd": "https://drive.google.com/file/d/1_sCJpp4EQlk0GoAzsJEp06JYWEboAnom/view?usp=sharing",
+    "slug": "mark-and-sweep-garbage-collection-algorithm"
   },
   {
     "id": 133,
-    "title": "Should some microservices share a database?"
+    "topic": {
+      "id": 0,
+      "uid": "microservices",
+      "name": "Microservices",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt"
+    },
+    "yt_video_id": "tV11trlimLk",
+    "title": "Should some microservices share a database?",
+    "description": "Microservices need to communicate with each other. Communication between them is always about getting or updating data that is owned by the other service. What if a service gets direct access to all the data it wants? This is the simplest way for the microservices to communicate with each other, and this pattern is called Sharing the Database. The core idea here is to let anyone who needs the data from a service or wants to update something, can directly talk to its database - no middlemen needed.\n\nAlthough most people think it is the wrong way of communication, we should not discard it completely. In this video, we talk about what this architecture pattern is, the 4 challenges associated with it, see ways to mitigate them, and understand when and where it could be beneficial for us to share the database rather than going through a middleman.\n\nOutline:\n\n00:00 Agenda\n03:13 Introduction\n04:14 Advantages of a sharing a database\n06:55 Challenge 1: External parties getting internal details\n10:30 Challenge 2: Replicating business logic\n13:31 Challenge 3: Risk of data corruption and deletion\n14:50 Challenge 4: Abusing the shared database\n16:27 Should we share the database then?",
+    "img": "https://i.ytimg.com/vi/tV11trlimLk/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/fxwvlpoM7NwP7i4jFB/giphy.gif",
+    "duration": "21:21",
+    "view_count": 1378,
+    "like_count": 72,
+    "comment_count": 19,
+    "released_at": "2022-04-27",
+    "gist": "Microservices need to communicate with each other, and one such way of doing it is through a shared database.\n\nFor example: While building a multi-user blogging application, say we have a Blogs service that manages all the blogs-related information and we have an Analytics service that takes care of all the analytics like Likes, Shares, Views, etc.\n\nAnalytics service updates the information asynchronously directly in the blog's database; eg: total_views that happened on the blog. This can be easily achieved by sharing the database between Blogs and Analytics, and this pattern is the Shared Database pattern.\n\n### Advantages of sharing the database\n\n\u00a0- the simplest way of integration\n\u00a0- no middleman involved\n\u00a0- no latency overhead\n\u00a0- quick development time\n\n# Challenges with Shared Database\n\nThere are 4 challenges to using this pattern\n\n## External parties know internal details\n\nBy sharing the database across services, an external party (Analytics) would get to know the internal details of the Blogs service; eg: deletion practice, schema, etc.\n\nThis leads to a very tight coupling between the services; which then restrains the maintainability and performance of the system. For example, whenever the Blogs service changes the schema, the Analytics Service would have to be informed about the change.\n\n## Sharing the database is sharing the logic\n\nTo compute some information we need to query a set of tables; and say, this information is required by the Blogs, Analytics, and Recommendation service.\n\nThe business logic to compute the information has to be replicated across all the 3 services. Any change in the logic needs to be made across all the services.\n\n## Risk of data corruption and deletion\n\nThere is a risk that one of the services might corrupt or delete some data given that the database is shared between the services.\n\n## Abusing the shared database\n\nOne service firing expensive queries on the database will affect the performance of other services sharing the same database.\n\n# When to share a database?\n\nA shared database pattern is helpful when you are seeking quick development time. Although it is not the best practice, sharing the database does reduce the development effort by a massive margin.\n\nSharing the database is also seen where it is inconvenient to have a middleman for the communication; for example: sending a notification to a million followers of a person is simple when the Relationship database is shared with the notification fan-out service; instead of iterating the millions of followers through some middleman API.",
+    "notes_gd": "https://drive.google.com/file/d/1ql0chRVpcjgV4Fv_MJTRaXbtIZ3QJwcI/view?usp=sharing",
+    "slug": "should-some-microservices-share-a-database"
   },
   {
     "id": 131,
-    "title": "Database Sharding and Partitioning"
+    "topic": {
+      "id": 0,
+      "uid": "system-design",
+      "name": "System Design",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+    },
+    "yt_video_id": "wXvljefXyEo",
+    "title": "Database Sharding and Partitioning",
+    "description": "Sharding and partitioning come in very handy when we want to scale our systems. These concepts operate on the database and help us improve the overall throughput and availability of the system.\n\nIn this video, we take a detailed look into how a database is scaled and evolved through different stages, what sharding and partitioning are, understand the difference between them, see at which stage should we introduce this complexity, and a few advantages and disadvantages of adopting them.\n\nOutline:\n\n00:00 Introduction and Agenda\n03:05 How a database is progressively scaled?\n08:10 Scaling beyond the limit of vertical scaling\n11:57 Sharding vs Partitioning\n12:43 Example of Data Partitioning\n17:15 Sharding and Partitioning together\n20:20 Advantages and Disadvantages of Sharding and Partitioning",
+    "img": "https://i.ytimg.com/vi/wXvljefXyEo/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/9u8GF7MuhdvS8/giphy.gif",
+    "duration": "23:53",
+    "view_count": 1563,
+    "like_count": 97,
+    "comment_count": 11,
+    "released_at": "2022-04-25",
+    "gist": "Sharding and partitioning come in very handy when we want to scale our systems. Let's talk about these concepts in detail.\n\n# How is the database scaled?\n\nA database server is just a database process (like MySQL, MongoDB) running on a virtual server like EC2. Now when we put our database in production it starts getting from real good traction, say 100 writes per second (WPS).\n\n### Steady user growth\n\nSay, your product started getting some traction, and we find that the database is not able to handle the load, we scale it up by adding more CPU, RAM, and Disk to the server. This way we are now handling 200 WPS.\n\n### More read traffic  \n\nIf we see nor reads then can also choose to add a Read Replica and divert some of the read traffic to this node, while the master node can take in 200 WPS.\n\n### Viral Growth\n\nSay, your product went viral and you now got 5x more load which means now you have to handle 1000 WPS. To achieve this you again scale it up vertically and handle the desired load.\n\n### Insane growth\n\nSay, you now cracked the PMF and are getting some really solid traction and need to handle 1500 WPS, and when you visit the database console you found out that it is not possible to vertically scale your database any further, so how do you handle 1500 WPS?\n\nThis is where the horizontal scaling comes into the picture.\n\n## Scaling the database horizontally\n\nWe know one database server can handle 1000 WPS, but we need to handle 1500 WPS, so we split the data into half and split it across two databases such that each database owns half of the data and all the writes for that data goes to that particular instance.\n\nThis way each server will get 750 WPS, which it can very easily handle, and owns 50% of the data. Thus by adding more database servers we handled 1500 WPS (more than what a single machine could handle)\n\n# Sharding and Partitioning\n\nEach database server in the above architecture is called a Shard while the data is said to be partitioned. Overall, a database is sharded and the data is partitioned.\n\n## Partitioned data on shards\n\nIt is possible to have more partitions and fewer shards and in that case, each shard will own multiple partitions. Say, we have 100GB of data and it is split into 5 partitions and we have 2 shards. One shard will be responsible for 3 partitions while the other for 2.\n\n# Advantages and Disadvantages\n\n### Advantages of Sharding\n\n\u00a0- handle more reads and writes\n\u00a0- increases overall storage capacity\n\u00a0- overall high availability\n\n### Disadvantages of Sharding\n\n\u00a0- sharding is operationally complex\n\u00a0- cross-shard queries are super-expensive",
+    "notes_gd": "https://drive.google.com/file/d/14RqKYjN2pgqYTaVB1DYlH4WjZ0A8XQ02/view?usp=sharing",
+    "slug": "database-sharding-and-partitioning"
   },
   {
     "id": 132,
-    "title": "How to pick a garbage collector?"
+    "topic": {
+      "id": 0,
+      "uid": "garbage-collection",
+      "name": "Garbage Collection",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT3MvruOP09U1bWmcjxLIMwR"
+    },
+    "yt_video_id": "IojMqbegejk",
+    "title": "How to pick a garbage collector?",
+    "description": "\"Best\" Garbage Collector is a myth.\n\nIf you are building your Garbage Collector or trying to pick the best for your use case, 7 parameters would help you objectively make the decision. These parameters define a Garbage Collector and determine its performance.\n\nIn the previous video we talked about why languages need an automatic garbage collection - primarily because engineers are unreliable, and in this one, we talk about the 7 key metrics and characteristics of a Garbage Collector that can help us compare and judge which one is better than the other for a specific workload;\n \nSomething all senior engineers spend their time on to get the performance out of their systems.\n\nOutline:\n\n00:00 Introduction\n03:13 7 Characteristics and Metrics of a Garbage Collector\n06:53 Safety\n08:21 Throughput\n11:12 Completeness\n12:52 Pause Time\n17:44 Space Overhead\n19:58 Language-Specific Optimizations\n22:27 Scalability",
+    "img": "https://i.ytimg.com/vi/IojMqbegejk/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/Za7ZWOU0su5BC/giphy.gif",
+    "duration": "26:37",
+    "view_count": 531,
+    "like_count": 31,
+    "comment_count": 0,
+    "released_at": "2022-04-22",
+    "gist": "\"Best\" Garbage Collector is a myth.\n\nIf you are ever writing your Garbage Collector or trying to pick one for your workload, there are 7 metrics that you should be evaluating a GC algorithm on.\n\nNo one garbage collector can be the best across all 7 properties and it was found that any GC algorithm is at least 15% better than other algorithms on at least one of the characteristics. Hence it all boils down to the needs of your specific workload to pick one over the other. The key characteristics are\n\n# Safety\n\nA garbage collector is safe when it never reclaims the space of a LIVE object and always cleans up only the dead objects.\n\nAlthough this looks like an obvious requirement, some GC algorithms claim space of LIVE objects just to gain that extra ounce of performance.\n\n# Throughput\n\nA garbage collector should be as little time cleaning up the garbage as possible; this way it would ensure that the CPU is spent on doing actual work and not just cleaning up the mess.\n\nMost garbage collectors hence run small cycles frequently and a major cycle does deep cleaning once a while. This way they maximize the overall throughput and ensure we spend more time doing actual work.\n\n# Completeness\n\nA garbage collector is said to be complete when it eventually reclaims all the garbage from the heap.\n\nIt is not desirable to do a complete clean-up every time the GC is executed, but eventually, a GC should guarantee that the garbage is cleaned up ensuring zero memory leaks.\n\n# Pause Time\n\nSome garbage collectors pause the program execution during the cleanup and this induces a \"pause\". Long pauses affect the throughput of the system and may lead to unpredictable outcomes; so a GC is designed and tuned to minimize the pause time.\n\nThe garbage collector needs to pause the execution because it needs to either run defragmentation where the heap objects are shuffled freeing up larger contiguous memory segments.\n\n# Space overhead\n\nGarbage collectors require auxiliary data structures to track objects efficiently and the memory required to do so is pure overhead. An efficient GC should have this space overhead as low as possible allowing sufficient memory for the program execution.\n\n# Language Specific Optimizations\n\nMost GC algorithms are generic but when bundled with the programing language the GC can exploit the language patterns and object allocation nuances. So, it is important to pick the GC that can leverage these details and make its execution as efficient as possible.\n\nFor example, in some programming languages, GC runs in constant time by exploiting how objects are allocated on the heap.\n\n# Scalability\n\nMost GC are efficient in cleaning up a small chunk of memory, but a scalable GC would run efficiently even on a server with large RAM. Similarly, a GC should be able to leverage multiple CPU cores, if available, to speed up the execution.",
+    "notes_gd": "https://drive.google.com/file/d/1eHwPYsx-k61JoLCz4FudN4DFZMAe-_3j/view?usp=sharing",
+    "slug": "how-to-pick-a-garbage-collector"
   },
   {
     "id": 129,
-    "title": "How to scope a microservice?"
+    "topic": {
+      "id": 0,
+      "uid": "microservices",
+      "name": "Microservices",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt"
+    },
+    "yt_video_id": "nfkdKHcKxbE",
+    "title": "How to scope a microservice?",
+    "description": "Microservices are extremely tempting and you will always feel like writing a new service for every problem at hand. You might build a service with very fine-grained responsibilities or you can build one that covers a big spectrum. So, what is the best approach? How should you decide?\n\nIn this video, we talk about ways to model and scope a microservice such that the architecture remains robust and flexible; and to achieve this we use the two key guiding concepts - Loose Coupling and High Cohesion.\n\nOutline:\n\n00:00 What is the problem with Microservice?\n03:05 Why do we love building microservices?\n04:04 What happens if we do not scope our services well?\n05:52 Two key guiding principles to scope a microservice\n07:19 Loose Coupling\n12:15 High Cohesion",
+    "img": "https://i.ytimg.com/vi/nfkdKHcKxbE/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/fKvTY11icTAZIPCIQb/giphy.gif",
+    "duration": "19:3",
+    "view_count": 826,
+    "like_count": 47,
+    "comment_count": 4,
+    "released_at": "2022-04-20",
+    "gist": "It is always exciting to create new microservices as it gives us so many things to look forward to - a fresh codebase, a new tech stack, or even maybe a clean CICD setup. But does this mean we should create as many microservices as possible?\n\nWhenever we decide to create a new microservice, it is very important to understand its scope of it. If you create a new service for every utility then you are effectively creating a mesh of network calls that is prone to a cascading failure. If your scope is too big, it would lead to the classic problem of a monolithic codebase.\n\nThere are a couple of guiding principles that would help us with scoping of microservice.\n\n# Loose Coupling\n\nServices are loosely coupled if changes made in one service do not require a change in other. This is the core ideology behind microservices as well, but while designing a system we tend to forget it.\n\nSay, we have an Orders service and a Logistics service. These services are loosely coupled when they do not share anything in common and are communicating with each other via API contracts.\n\nTo achieve loose coupling, make your microservices expose as little information as possible. The other service should just know how to consume the data and that is it. No internals, no extra details.\n\n# High Cohesion\n\nThe principle of High Cohesion says that the related behavior should sit together as part of one service while the unrelated ones should be separate. This would encourage services to be operating independently.\n\nIf the Orders service also owns the customer data then when the changes are deployed in one might affect the other module. So the scope of testing before taking things to production increases.\n\nIf there is a very strong coupling between the services then it may also happen that the changes in one lead to deploy a few other services - all at the same time. Deploying multiple services at the same time is very risky; because one glitch and the almost entire product is down.\n\nHence it is not favorable for heterogeneous components to be part of the same service. Keep it crisp and short; and while designing try to keep services loosely coupled and split it to a level where the unrelated components are split up.",
+    "notes_gd": "https://drive.google.com/file/d/1_P8YVcw7uwr0wfs2V6W-1gpOwnoG2Zdf/view?usp=sharing",
+    "slug": "how-to-scope-a-microservice"
   },
   {
     "id": 106,
-    "title": "Why, where, and when should we throttle or rate limit?"
+    "topic": {
+      "id": 0,
+      "uid": "system-design",
+      "name": "System Design",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+    },
+    "yt_video_id": "CW4gVlU0xtU",
+    "title": "Why, where, and when should we throttle or rate limit?",
+    "description": "It is a common belief that a rate limiter is always external and is designed to prevent our systems from being abused by the external world, but this is not true. In this video, we understand what throttling is, why we need it in the first place and 5 use cases where external and internal rate limiters are super useful.\n\nOutline:\n00:00 Introduction\n02:56 What is Throttling?\n03:37 What rate limiter does when it gets a surge of requests?\n06:39 Why do we need a rate limiter?\n10:45 Usecase 1: Preventing catastrophic DDoS Attack\n12:20 Usecase 2: Gracefully handling a surge in legitimate users\n13:46 Usecase 3: Multi-tiered limits\n15:42 Usecase 4: Not overusing an expensive vendor\n16:48 Usecase 5: Streamlining deletes to protect an unprotected database",
+    "img": "https://i.ytimg.com/vi/CW4gVlU0xtU/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/4KFjJdWCyLZ743mWIg/giphy.gif",
+    "duration": "19:5",
+    "view_count": 974,
+    "like_count": 67,
+    "comment_count": 10,
+    "released_at": "2022-04-18",
+    "gist": "## What is throttling?\n\nThrottling is a technique that ensures that the flow of the data or the requests being sent at the target machine/service/sub-system can be consumed at an acceptable rate.\n\nIt is a defensive measure and 3 possible reactions could be\n\n\u00a0- slowing down the incoming requests\n\u00a0- rejecting the surplus requests\n\u00a0- ignoring the surplus requests\n\n## Why do we need throttling in the first place?\n\n\u00a0- to prevent system abuse\n\u00a0- to allow the amount of traffic we could handle\n\u00a0- control the consumption cost\n\u00a0- prevent cascading failures leading to a massive outage\n\n# Real-world use-cases for throttling\n\n## To prevent catastrophic DDoS attack\n\nWhen your service is under a DDoS attack the rate limiter acts as your first line of defense that could prevent the surplus request from reaching your system. It would only allow the requests to go through at the configured rate.\n\n## To gracefully handle a surge of users\n\nIt is possible that your product goes viral and now you are seeing a genuine surge in users. Upon getting a genuine surge in users, the stateful components like databases and caches crash which takes down the entire site.\n\nRate limiter in this case will help in preventing the entire site from going down; although some users would see some error, like 429 - Too many requests - your product will continue to seamlessly work for the other set of users.\n\n## Multi-tiered limits\n\nSay, you are running a CICD company and offer 3 tiers of pricing - Tier 1 offers 200 minutes of build time, Tier 2 offers 1000 mins while Tier 3 offers unlimited build time. An internal rate limiter can keep track of the build times consumed by a customer and reject the requests once the limit is hit.\n\n## Ensure you are not over-consuming\n\nSay, we are consuming a super expensive third-party API and we want to ensure that we are not using it beyond a certain number otherwise the cost will shoot up. An internal rate limiter can keep a check on this to ensure the surplus request does not go through.\n\n## Not overwhelming an unprotected system\n\nHard deleting from a database is an expensive operation. If we are deleting a huge number of rows from the DB it may severely affect the performance of the DB and hence it is best done in a staggered way. An internal rate limiter can help us streamline the writing by spreading them uniformly across time.",
+    "notes_gd": "https://drive.google.com/file/d/11lTCiIbRk0aRlEaebjSI1mU6g_hTAway/view?usp=sharing",
+    "slug": "why-where-and-when-should-we-throttle-or-rate-limit"
   },
   {
     "id": 115,
-    "title": "An engineering deep-dive into Atlassian's Mega Outage of April 2022"
+    "topic": {
+      "id": 0,
+      "uid": "outage-dissections",
+      "name": "Outage Dissections",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc"
+    },
+    "yt_video_id": "xa-hMF8gku0",
+    "title": "An engineering deep-dive into Atlassian's Mega Outage of April 2022",
+    "description": "In April 2022, Atlassian suffered a major outage where they \"permanently\" deleted the data for 400 of their paying cloud customers, and will take them weeks to recover the data. In this video, we will do an engineering deep dive into this outage trying to understand their engineering systems and practices.\n\nWe extract 6 key insights into how their engineering systems are built, their backup and restoration strategies, and most importantly why is it taking them so long to recover the data.\n\nDisclaimer: I do not have any insider information about this and the views are pure speculation.\n\nOutline:\n\n00:00 Impact of the outage\n03:56 Insight 1: Incremental Backup Strategy\n06:38 Why did the Atlassian outage happen?\n07:30 Insight 2: Progressive Rollout Strategy\n10:57 Insight 3: Soft Deletes vs Hard Deletes\n14:28 Insight 4: Synchronous Replication for High Availability\n17:47 Insight 5: Immutable backups for point-in-time recovery\n21:04 Insight 6: Nearly multi-tenant architecture\n23:30 Why is it taking time for Atlassian to recover the deleted data?\n\nOutage Report: https://www.atlassian.com/engineering/april-2022-outage-update",
+    "img": "https://i.ytimg.com/vi/xa-hMF8gku0/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/1k3jEsS507T20/giphy.gif",
+    "duration": "31:24",
+    "view_count": 3792,
+    "like_count": 198,
+    "comment_count": 35,
+    "released_at": "2022-04-15",
+    "gist": "In April 2022, Atlassian suffered a major outage where they \"permanently\" deleted the data for 400 of their paying cloud customers, and will take them weeks to recover the data. Let's dissect the outage and understand its nuances of it.\n\nDisclaimer: I do not have any insider information and the views are pure speculation.\n\n## Insight 1: Data loss up to 5 minutes\n\nBecause some customers reported a data loss of up to 5 minutes before the incident, it shows that the persistent backup incrementally every 5 minutes. The backup typically happens through Change Data Capture which operates right over the database.\n\n## Insight 2: Rolling release of products\n\nAtlassian rolls out features to a subset of the users and then incrementally rolls them to others. This strategy of incremental rollout gives companies and teams a chance to test the waters on a subset and then roll out to the rest.\n\n## Insight 3: Mark vs Permanent Deletion\n\nThe script that Atlassian ran to delete had both the options - Mark of Deletion and Permanent deletion.\n\nMark for deletion: is soft delete i.e. marking is_deleted to true.\nPermanent deletion: hard delete i.e. firing DELETE query\n\nWhy do companies need permanent deletion? for compliance because GDPR gives users a Right to be Forgotten\n\n## Insight 4: Synchronous Replication\n\nTo maintain high availability they have synchronous standby replicas which means that the writes happening needs to succeed on both the databases before it is acknowledged back to the user. This ensures that the data is crash-proof.\n\n## Insight 5: Immutable Backups\n\nThe backup is made immutable and stored on S3 in some serialized format. This immutable backup allows Atlassian to recover data at any point in time while being super cost-efficient at the same time.\n\n## Insight 6: Their architecture is not truly a Multi-tenant Architecture\n\nIn a true multi-tenant architecture, every customer gets its fragment of infra - right from DB, to brokers, to servers. But at Atlassian, multiple customers share the same infra components. Companies typically do this to cut down on their infrastructure cost.\n\n## Why is it taking a long time to restore?\n\nBecause data of multiple customers reside in the same database when the DB was backed up the data (rows and tables) were backed up as is; implying that the backup also had data from multiple customers.\n\nNow to restore the intermingled rows of a customer, the entire backup needs to be loaded into a database and then the rows of specific customers need to be restored. This process is extremely time-consuming.",
+    "notes_gd": "https://drive.google.com/file/d/1Bp4huBCx-wkG6kCQ5raSujdKID4RLU_y/view?usp=sharing",
+    "slug": "an-engineering-deep-dive-into-atlassian-s-mega-outage-of-april-2022"
   },
   {
     "id": 105,
-    "title": "How to approach System Design?"
+    "topic": {
+      "id": 0,
+      "uid": "system-design",
+      "name": "System Design",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+    },
+    "yt_video_id": "1r9bPisYaOQ",
+    "title": "How to approach System Design?",
+    "description": "System Design is tricky but it does not have to be difficult - be it a technical discussion at your workplace or your next big interview. In this video, I share the two approaches that I have been using to design scalable systems in the last 10 years of my career. I will also share the 3 key pointers to remember while designing any system that would help you keep your discussion crisp and focused.\n\nOutline:\n00:00 Introduction\n02:41 What is System Design?\n06:02 The Spiral Approach to System Design\n07:27 The Incremental MVP Approach to System Design\n09:47 Key Pointers to remember during System Design",
+    "img": "https://i.ytimg.com/vi/1r9bPisYaOQ/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/l49JIAbHS3nqARH7a/giphy.gif",
+    "duration": "13:55",
+    "view_count": 1475,
+    "like_count": 88,
+    "comment_count": 5,
+    "released_at": "2022-04-13",
+    "gist": "System Design is tricky but it does not have to be difficult - be it a technical discussion at your workplace or your next big interview. Let's talk about how to approach System Design. Something I compiled from 10 years of my career.\n\n## What is System Design?\nSystem Design is all about translating and solving customer needs and business requirements into something tangible. The output system could be an application, a microservice, a library, or even hardware.\n\nThere are a couple of approaches that we can use to design any system out there. Picking one over the other depends on the company you work for and the flexibility it provides.\n\n## The Spiral Approach\n\nThe Spiral Approach pans like a spiral in which you start with some core that you are comfortable with (database, communication protocol, queue. etc) and build your system around it. Every single component you add to the design is something that you are pretty confident about and can proceed with the added complexities.\n\nFor example:\n\u00a0- start with the database\n\u00a0- then add LB and more servers\n\u00a0- then add a queue for async processing\n\u00a0- then other services\n\u00a0- then add synchronous HTTP based communication between them\n\n## The Incremental MVP Approach\n\nIn the Incremental MVP-based approach we with a Day 0 design and then see how each component behaves at scale by dry-running it; after identifying the bottlenecks you fix them and re-iterate. You stop the iteration once you are happy with the final product. This kind of approach is typically seen in startups where they do not want to invest in architecture and quickly roll out features.\n\nFor example:\n\u00a0- start with Day 0 architecture of users, API servers, and DB\n\u00a0- then you add LB and more API servers\n\u00a0- then you add Read Replica on DB to support more reads\n\u00a0- then you split the service into a couple of microservices\n\u00a0- then you partition the DB to handle more scale\n\n## 3 key pointers while designing systems\n\n\u00a0- Every system is infinitely buildable, hence fence it well\n\u00a0- Seek clarifications from your seniors\n\u00a0- Ask critical questions that challenge the design decisions",
+    "notes_gd": "https://drive.google.com/file/d/185a6688TxLDLXlrDfn2l4ODLSR2m1xLL/view?usp=sharing",
+    "slug": "how-to-approach-system-design"
   },
   {
     "id": 130,
-    "title": "Why do programming languages need automatic garbage collection?"
+    "topic": {
+      "id": 0,
+      "uid": "garbage-collection",
+      "name": "Garbage Collection",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT3MvruOP09U1bWmcjxLIMwR"
+    },
+    "yt_video_id": "jcMxuLZCcqU",
+    "title": "Why do programming languages need automatic garbage collection?",
+    "description": "We know how important Garbage Collection is for any programming language. So, today we explore why programming languages need automatic garbage collection in the first place?\n\nIn this video, we understand - the basics of memory management, the need to allocate objects on the heap, the constructs of explicit deallocation, what happens when we do not do our garbage collection well, and why we need automatic garbage collection.\n\nOutline:\n\n00:00 Basics of Memory Management\n04:39 Why do we need heap allocations?\n06:59 Explicit Deallocation constructs\n09:26 Memory leak - when we do not delete an allocated object\n11:00 Dangling pointer - when we dereference an already freed object\n15:08 Why we need automatic garbage collection",
+    "img": "https://i.ytimg.com/vi/jcMxuLZCcqU/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/yRNSxsl1rJEwU/giphy.gif",
+    "duration": "16:55",
+    "view_count": 987,
+    "like_count": 70,
+    "comment_count": 7,
+    "released_at": "2022-04-11",
+    "gist": "Our programs need memory, typically in the form of variables and objects, to do their job. The objects are either allocated on Stack or Heap.\n\n## Stack allocated objects\n\nA locally declared variable \"int a = 10;\" is allocated on the stack i.e. the stack frame of the function call and hence when the function returns the stack frame is popped, making the variable non-existent. Hence variables allocated on Stack do not need to be freed explicitly.\n\n## Heap allocated objects\n\nA variable allocated on the heap is typically done through functions like the \"new\" or \"malloc\". The object space allocated for such entities is in RAM and they outlive the function scope and execution, and hence they need to be explicitly freed as we are done with it.\n\n## Why do we need a Heap?\n\nObjects assigned on Heap need to be garbage collected, but why do we need the heap in the first place? There are 3 main reasons:\n\n\u00a0- We cannot grow your stack-allocated objects dynamically,\n\u00a0- We need dynamically growing objects like Arrays, LinkedList, Trees\n\u00a0- We might need objects that could be larger than what Stack can fit in\n\u00a0- We might need to share the same object across multiple threads\n\u00a0- We do not want our functions to copy and pass bulk objects\n\n## Garbage Collection: Explicit De-allocation\n\nPrimitive programming languages like C and C++ do not have their garbage collection instead expect the developer to not only allocate the object but also deallocate it explicitly. Hence we see the functions like \"malloc\" and \"free\".\n\nThe objects we allocate using \"malloc\" will continue to exist unless they are reclaimed using \"free\". The explicit need to \"Free-ing\" the allocated object is called Explicit Deacclocation.\n\nAlthough cleaning up the mess we created is a good idea, it is not reliable that we rely on the engineers and developers to always free the objects they allocated. Hence this gives rise to the need for automatic cleanup of unused variables - automatic garbage collection.\n\nThe two key side-effects of not cleaning up the unused objects we allocate are\n\n- Memory Leak: Leading to an eventual process crash\n- Dangling Pointer: Program behaving unpredictably\n\nHence, to reduce human error, and make the process more reliable and performant the runtimes of the programming languages implement their automatic garbage collection.",
+    "notes_gd": "https://drive.google.com/file/d/1vdsTC6j4eDJFzcTOhhIM0JQOR2fW1l61/view?usp=sharing",
+    "slug": "why-do-programming-languages-need-automatic-garbage-collection"
   },
   {
     "id": 119,
-    "title": "Advantages of adopting a microservices-based architecture"
+    "topic": {
+      "id": 0,
+      "uid": "microservices",
+      "name": "Microservices",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt"
+    },
+    "yt_video_id": "JPj6mhVLQN0",
+    "title": "Advantages of adopting a microservices-based architecture",
+    "description": "Microservices are great, and the overall microservices-based architecture has some key advantages. In this video, we talk about what are microservices, the key advantages of using a microservices-based architecture, and understand how to fence service and define its set of responsibilities.\n\nOutline:\n\n00:00 What are microservices?\n01:53 Key advantages of adopting a microservices-based architecture\n09:48 How to fence a microservice?",
+    "img": "https://i.ytimg.com/vi/JPj6mhVLQN0/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/giEftvZuPAiZQBphEI/giphy.gif",
+    "duration": "14:18",
+    "view_count": 1575,
+    "like_count": 113,
+    "comment_count": 11,
+    "released_at": "2022-04-08",
+    "gist": "Why Microservices?\ud83e\udd14 [ in a gist ]\n\nMicroservices are small, autonomous, harmonic subsystems that work together to solve the bigger problem.\n\nThe core idea of microservices is Divide and Conquer. We break the big problem into smaller sub-problems, and solve each of the sub-problem optimally, enabling us to solve the bigger problem well.\n\nWhy Microservices?\n\n\u26a1 Codebase grows over time\n\nThe product evolves and new features are added to it and that bloats up the codebase. It becomes difficult for multiple teams to coordinate and collaborate on a humungous codebase. One team breaking one module can take down the entire product.\n\n\u26a1 Scaling is predictable\n\nWith microservices, scalability becomes predictable; you can linearly amplify the infrastructure requirements of individual microservices and be predictable in handling the load.\n\n\u26a1 Teams become autonomous\n\nWith each team responsible for a set of microservices they can take charge of their tech stack and design decisions. These decisions will be best for their problem statement and can ensure that they are solving them the best way possible.\n\n\u26a1 Fault Tolerance\n\nIf one microservice is down, it may lead to a partial outage of the product affecting a small fragment of the systems; while other components remain unaffected and can continue to service the traffic.\n\n\u26a1 Upgrades are simpler\n\nSo long as a microservice adheres to the API contract, the team that owns it can upgrade the tech stack, architecture, and DB seamlessly.",
+    "notes_gd": "https://drive.google.com/file/d/1lK2e3me09VNz51DWDunI5xDmlgLnOvfC/view?usp=sharing",
+    "slug": "advantages-of-adopting-a-microservices-based-architecture"
   },
   {
     "id": 102,
-    "title": "Implementing Idempotence in a Payments Microservice"
+    "topic": {
+      "id": 0,
+      "uid": "system-design",
+      "name": "System Design",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+    },
+    "yt_video_id": "m6DtqSb1BDM",
+    "title": "Implementing Idempotence in a Payments Microservice",
+    "description": "Idempotence is an extremely critical property that we must consider while implementing an API or designing a microservice. The situation becomes even more critical when the money is involved - ensuring no matter how many times the user or internal service retries, the amount is transferred just once between the two users in one transaction.\n\nThis video looks at idempotence, why there is even a need for it, and, more importantly, one common implementation approach commonly observed in payments services.\n\nOutline:\n\n00:00 What is Idempotence?\n02:32 Examples where Idempotence is relevant\n04:06 Why do we even need to retry?\n07:18 Implementation Approach 1: Do not retry\n09:45 Implementation Approach 1: Check and Update",
+    "img": "https://i.ytimg.com/vi/m6DtqSb1BDM/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/j3x5hjUoXIesM/giphy.gif",
+    "duration": "16:36",
+    "view_count": 1429,
+    "like_count": 100,
+    "comment_count": 19,
+    "released_at": "2022-04-06",
+    "gist": "How can you implement idempotence in a Payments Microservice? [in a gist ]\n\nIdempotence is executing the same action multiple times, but the result is as if the operation was applied just once.\n\nExample: Double tapping a post multiple times on Instagram does not increase the like count. It just increases the first time and by 1.\n\nIdempotence becomes extremely critical when money is involved. If A wants to transfer money to B, the transfer should happen just once. If due for any reason, the payment is implicitly retried, the funds will be deducted twice, which is unacceptable.\n\n\u26a1 Why would a transaction repeat?\n\nBefore we talk about idempotence, it is important to understand why it would repeat in the first place.\n\nConsider a situation where the payments service initiated a payment with a Payment Gateway, the money got deducted, but the payments service did not get the response. This would make the Payments service retry the API call, which would lead to a double deduction.\n\n\u26a1 Implementing idempotence\n\nCheck and Update: Weave everything with a single ID.\n\nThe idea is to retry only after checking if the payment is processed or not. But how do we do this? The implementation is pretty simple - a global payment ID that weaves all the services and parties together.\n\nThe flow is:\n\n\u00a01. Payments service calls the PG and generates a unique Payment ID\n\u00a02. Payments service passes this ID to the end-user and all involved services\n\u00a03. Payments service initiates the payment with Payment Gateway with this ID specifying the transfer between A and B\n\u00a04. If there are any failures, the Payment service retries and in that request specifies the Payment ID\n\u00a05. Using the payment ID, the payment gateway checks if the transfer was indeed done or not and would transfer only when it was not done\n\nAlthough we talked about the Payments service here, this approach of implementing idempotence is pretty common across all the use cases. The core idea is to have a single ID (acting as the Idempotence Key) weaving all the involved services and parties together.",
+    "notes_gd": "https://drive.google.com/file/d/1Zyt8qN11IiAZJKrdan4wi1c5J6n_eAyU/view?usp=sharing",
+    "slug": "implementing-idempotence-in-a-payments-microservice"
   },
   {
     "id": 103,
-    "title": "Sending payload in an HTTP GET request"
+    "topic": {
+      "id": 0,
+      "uid": "system-design",
+      "name": "System Design",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+    },
+    "yt_video_id": "8S4k7k_f9Sk",
+    "title": "Sending payload in an HTTP GET request",
+    "description": "Can we send data in an HTTP GET request? Most people think, No. The truth is, we can send the data in the request payload of an HTTP GET request so long as our webserver can understand it.\n\nIn this video, we go through the HTTP 1.1 specification and see what it says about the GET requests, write a simple Flask application to see that we can indeed process the payload of a GET request if we want to, and, more importantly, go through a real-world example where it was essential to send data in the request payload.\n\nOutline:\n\n00:00 HTTP GET Request\n01:53 What does HTTP 1.1 specification say?\n05:38 Request payload in Python Flask\n07:18 ElasticSearch using request payload for search\n10:40 When to use HTTP request payload in a GET request",
+    "img": "https://i.ytimg.com/vi/8S4k7k_f9Sk/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/xT5LMJlkTxzJx4zJv2/giphy.gif",
+    "duration": "12:",
+    "view_count": 2607,
+    "like_count": 119,
+    "comment_count": 23,
+    "released_at": "2022-04-04",
+    "gist": "Can we send the payload in an HTTP GET request? [ in a gist ]\n\nIt is a common myth that we could not pass the request body in the HTTP GET request. HTTP 1.1 specification neither enforces nor suggests this behavior.\n\nThis means it is up to implementing the application web servers - Flask, uWSGI, etc. - to see if it parses the request body in the HTTP GET request. To do this, just check the request object you would be getting in your favorite framework.\n\n\u26a1 What can we do with this information?\n\nSay you are modeling an analytics service like Google Analytics in which you are exposing an endpoint that returns you the data point depending on the requirements. The requirements specified here could be a large, complex JSON.\n\nPassing this query in the URL of the GET request as a query param is not convenient as it would require you to serialize and escape the JSON string before passing.\n\nThis is a perfect use case where the complex JSON query can be passed as a request body in the HTTP GET request, giving a good user experience.\n\n\u26a1 So, does any popular tool uses this convention?\n\nYes. ElasticSearch - one of the most popular search utilities, uses this convention.\n\nThe search endpoint of ElasticSearch is a GET endpoint where the complex search queries in JSON format are sent in the request payload.",
+    "notes_gd": "https://drive.google.com/file/d/1JwVEh9EG0ZGts-VePXNlIE1e8kivdHbM/view?usp=sharing",
+    "slug": "sending-payload-in-an-http-get-request"
   },
   {
     "id": 114,
-    "title": "Dissecting Google Maps Outage: Bad Rollout and Cascading Failures"
+    "topic": {
+      "id": 0,
+      "uid": "outage-dissections",
+      "name": "Outage Dissections",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc"
+    },
+    "yt_video_id": "6oJaZbQKnJE",
+    "title": "Dissecting Google Maps Outage: Bad Rollout and Cascading Failures",
+    "description": "Google Maps had a global outage on 18th March 2022, during which the end-users were not able to use Directions, Navigation, or Google Maps in general. The outage happened because of a bad rollout, and it lasted more than 2 hours 30 minutes. During the outage, users complained to have seen Gray tiles implying that the map/direction was neither getting initialized nor working.\n\nIn this video, we dissect the Google Maps outage and understand what actually happened, how they mitigated it, and, more importantly, understand ways to prevent such an outage and build a robust way of handling cascading failures.\n\nOutline:\n\n00:00 Introducing the outage and impact\n02:07 Root cause\n08:36 Cascading Failures\n12:22 Remediation\n13:45 Preventive measures\n\nIncident Report: https://issuetracker.google.com/issues/225361510",
+    "img": "https://i.ytimg.com/vi/6oJaZbQKnJE/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/xTiTnyogFXV3Khw6Xe/giphy.gif",
+    "duration": "20:17",
+    "view_count": 908,
+    "like_count": 57,
+    "comment_count": 7,
+    "released_at": "2022-04-01",
+    "gist": "Google Maps Outage Dissection [ in a gist ]\n\nOn the 18th of March, 2022, Google Maps faced a major outage affecting millions of people for a couple of hours. The outage happened due to a bad deployment.\n\nAlthough a bad deployment does not sound too bad, the situation worsens when there are cascading failures if 3 services have a synchronous dependency, forming a chain-like A -> B -> C.\n\nIf A goes down, it will have some impact on B, and if the impact is big enough, we might see B going down as well; and extending it, we might see C going down.\n\nThis is exactly what happened in this Google Outage. Some services had a bad deployment, and they started crashing. Tile Rendering service depended on it, and the Tile rendering service went down because of retries.\n\nThe Direction SDK, Navigation SDK directly invoked the Tile rendering service for rendering the maps, which didn't work, causing a big outage.\n\n\u2728 How to remediate a bad deployment?\n\nRollback as soon as possible.\n\n\u2728 Preventing cascading outages\n\n\u00a0- Reject requests when the server is exhausted\n\u00a0- Tune the performance of the webserver and networking stack of the server\n\u00a0- Monitor the server resource consumption and set alerts\n\u00a0- Add circuit breakers wherever possible.",
+    "notes_gd": "https://drive.google.com/file/d/10yi5K2xluTA9d7RNrorDDKU_-Mi3uHKZ/view?usp=sharing",
+    "slug": "dissecting-google-maps-outage-bad-rollout-and-cascading-failures"
   },
   {
     "id": 116,
-    "title": "Implementing Distributed Transactions using Two Phase Commit Protocol"
+    "topic": {
+      "id": 0,
+      "uid": "distributed-systems",
+      "name": "Distributed Systems",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT1wfRQo2xrrst2SGremT_qd"
+    },
+    "yt_video_id": "oMhESvU87jM",
+    "title": "Implementing Distributed Transactions using Two Phase Commit Protocol",
+    "description": "Previously, we built a theoretical foundation of Distributed Transaction using the Two-Phase Commit protocol. In this video, we implement the Distributed Transaction locally and mimic the food delivery system locally. While implementing we understand how to make the individual operations atomic and the entire distributed transaction atomic. We address resource contention while guaranteeing a consistent user experience.\n\nOutline:\n\n00:00 Revising the Two-Phase Commit\n07:35 Designing Database Schema\n11:40 Defining API Endpoints\n12:24 High-Level Architecture and Request Flow\n19:55 No inconsistent data - Atomicity\n24:14 Code walkthrough",
+    "img": "https://i.ytimg.com/vi/oMhESvU87jM/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/cjFDWrOHaYs8LMbmbm/giphy.gif",
+    "duration": "39:24",
+    "view_count": 1130,
+    "like_count": 65,
+    "comment_count": 13,
+    "released_at": "2022-03-30",
+    "gist": "Implementing Distributed Transactions \u26a1 [in a gist]\n\nDistributed Transactions are not theoretical; they are very well used in many systems. An example of it is 10-min food/grocery delivery.\n\nPreviously we went through the theoretical foundation for the Two-phase commit protocol; in this one let's spend some time going through the implementation detail and a few things to remember while implementing a distributed transaction.\n\n\u2728 The UX we want is: Users should see orders placed only when we have one food item and a delivery agent available to deliver.\n\nA key feature we want from our databases (storage layer) is atomicity. Our storage layer can choose to provide it through atomic operations or full-fledged transactions.\n\nWe will have 3 microservices: Order, Store, and Delivery.\n\nAn important design decision: The store services have food, and every food has packets that can be purchased and assigned. Hence, instead of just playing with the count, we will play with the granular food packets while ordering.\n\n\u2728 Phase 1: Reservation\n\nOrder service calls the reservation API exposed on the store and the delivery services. The individual services reserve the food packet (of the ordered food) and a delivery agent atomically (exclusive lock or atomic operation).\n\nUpon reservation, the food packet and the agent become unavailable for any other transaction.\n\n\u2728 Phase 2:\n\nOrder service then calls the store and delivery services to atomically assign the reserved food packet and the delivery agent to the order. Upon success assigning both to the order, the order is marked as successful, and the order service returns a 200 OK to the user.\n\nThe end-user will only see \"Order Placed\" when the food packet is assigned, and the delivery agent is assigned to the order. So, all 4 API calls should succeed for the order to be successfully placed.\n\nNegative cases:\n\n- If any reservation fails, the user will see \"Order Not Placed\"\n- If the reservation is made but assigning fails, the user will see \"Order Not Placed\"\n- If there is any transient issue in any service during the assignment phase, APIs will be retried by the order service to complete the order.\n- To not have a perpetual reservation, every reserved packet and delivery agent will have an expiration timer that will be large enough to cover transient outages.\n\nThus, in any case, an end-user will never experience a moment where we say that the order is placed, but it cannot be fulfilled in the backend.",
+    "notes_gd": "https://drive.google.com/file/d/18q2ELr9n6GCemKbJ0aS7q7NyF7wX1kL9/view?usp=sharing",
+    "slug": "implementing-distributed-transactions-using-two-phase-commit-protocol"
   },
   {
     "id": 117,
-    "title": "Distributed Transactions: Two-Phase Commit Protocol"
+    "topic": {
+      "id": 0,
+      "uid": "distributed-systems",
+      "name": "Distributed Systems",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT1wfRQo2xrrst2SGremT_qd"
+    },
+    "yt_video_id": "7FgU1D4EnpQ",
+    "title": "Distributed Transactions: Two-Phase Commit Protocol",
+    "description": "Distributed Transactions are tough and intimidating. It is hard to guarantee atomicity across microservices given the network delays, resource contention, and unreliable services.\n\nIn this video, we discuss and take a detailed look into Distributed Transactions, understand why they are needed with a real-world example of Zomato's 10-minute food delivery, and build our understanding of the workings of the Two-Phase Commit protocol.\n\nOutline:\n\n00:00 Why Distributed Transactions\n03:44 Atomicity in Distributed Transactions\n06:47 Two-Phase Commit Protocol for Distributed Transactions\n18:29 Advantages and Disadvantages of Two-Phase Commit",
+    "img": "https://i.ytimg.com/vi/7FgU1D4EnpQ/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/orU4txbRZIp6vJheJ9/giphy.gif",
+    "duration": "21:21",
+    "view_count": 3158,
+    "like_count": 136,
+    "comment_count": 26,
+    "released_at": "2022-03-28",
+    "gist": "Distributed Transactions using Two-phase Commit [in a gist] \ud83d\udd06\n\nDistributed Transactions are essential to have strong consistency in a distributed setup.\n\nAn example could be as simple as a 10-min food/grocery delivery - where to guarantee a 10-min delivery, you can only accept orders when there are goods available in the dark store, and a delivery agent is available to deliver the goods.\n\nThis is a classic case of Distributed Transaction where you need a guarantee of atomicity and consistency across two different services. In a distributed setup, we can achieve it using an algorithm called Two-phase Commit.\n\nThe core idea of 2PC is: Split the transaction into two phases: Reservation and Assignment.\n\n\u2728 Phase 1: Reservation\n\nThe Order service will first talk to store service to reserve food items and delivery service to reserve a delivery partner. When the food or delivery partner is reserved, they are not notified. By reserving them, we are just making them unavailable for everyone else.\n\nIf the order service fails to reserve any of these, we roll back the reservation and abort the transaction informing the user that the order is not placed. Reservation comes with a timer, which means if we cannot assign a reserved food item to order in \"n\" minutes, we will be releasing the reservation, making them available for other transactions.\n\nWe move forward to the Commit phase only when the order service reserves both - a food item and a delivery agent.\n\n\u2728 Phase 2: Commit\n\nIn the Commit phase, the order services reach out to the store service and the delivery service to assign the food and agent to the order. Because the food and the agent were reserved, no other transaction could see it, and hence with a simple assignment, we can get the reserved food and agent assigned to an order.\n\nUpon this assignment, the store and the delivery agent are notified about the order and proceed with their respective duties.\n\nWe retry a few times if any of the assignments fail (which could happen only if the service goes down). If we still cannot get the assignment done, we inform the user that the order cannot be placed.\n\nThe order is placed only after the food item, and the delivery agent is assigned to the order.",
+    "notes_gd": "https://drive.google.com/file/d/18WDFAstffIe_vGbtTz_CS117XhvDcBx3/view?usp=sharing",
+    "slug": "distributed-transactions-two-phase-commit-protocol"
   },
   {
     "id": 107,
-    "title": "What are Embedded Databases?"
+    "topic": {
+      "id": 0,
+      "uid": "database-engineering",
+      "name": "Database Engineering",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l"
+    },
+    "yt_video_id": "xELqRiovEcI",
+    "title": "What are Embedded Databases?",
+    "description": "Embedded databases are coupled with the application they are part of and operate in a confined space. They are designed to solve one problem for their niche very well. In this video, we take an introductory look into this amazing class of databases, understand the core reason why they exist, talk about a few popular ones, and understand a few use cases.\n\nOutline:\n00:00 Server-based Databases\n02:32 Embedded Databases\n06:35 Popular Embedded Databases\n10:39 Applications of Embedded Databases",
+    "img": "https://i.ytimg.com/vi/xELqRiovEcI/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/uk3R91z24SoUZ27WTh/giphy.gif",
+    "duration": "15:57",
+    "view_count": 1513,
+    "like_count": 71,
+    "comment_count": 17,
+    "released_at": "2022-03-25",
+    "gist": "Traditional databases like MySQL, Postgres, MongoDB run on their server on a specific port. Anyone who wants to talk to the database can directly connect and talk.\n\nEmbedded Databases are different from these traditional databases, and they operate in their own confined space within a process. There is no separate process for the database.\n\nNo one can directly connect to this database, unlike how we do it with MySQL and other databases. The role and the use of the embedded database are limited to the process it is confined to.\n\n## Popular embedded databases are\n\n - SQLite: an embedded SQL-like database\n - LevelDB: on disk KV store by Google\n - RocksDB: on disk KV store optimized for performance\n - Berkeley DB: KV store with ACID, Replication, and Locking\n\nAn embedded database is always designed to solve one niche really well.\n\n## Application of Embedded Databases\n\nEvery modern browser uses an embedded database called IndexedDB to store browsing history and other configuration settings locally. The browser is confined to a machine, and the IndexedDB is contained in the browser; there is no separate process to connect to.\n\nEvery Android phone has support for SQLite database that we can use to store any information like game scores, stats, and information locally on the phone.\n\nThe core idea: When we need to store and query data that could be confined within a space and does not need to be centralized, we choose to use an Embedded Database.",
+    "notes_gd": "https://drive.google.com/file/d/1_iXh0rCmGVZJj5CLWP7gJ4YzAP-yIiGb/view?usp=sharing",
+    "slug": "what-are-embedded-databases"
   },
   {
     "id": 113,
-    "title": "Dissecting GitHub Outage: ID column reaching the max value 2147483647"
+    "topic": {
+      "id": 0,
+      "uid": "outage-dissections",
+      "name": "Outage Dissections",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc"
+    },
+    "yt_video_id": "ZFRAFTn0cQ0",
+    "title": "Dissecting GitHub Outage: ID column reaching the max value 2147483647",
+    "description": "GitHub experience an outage on 5th May 2020 on a few of their internal services and it happened because a table had an auto-incrementing integer ID and the column reached its maximum value possible 2147483647. In this video, we dissect what happened, mimic the situation locally and see what could have happened, and look at possible ways to mitigate and prevent a situation like this.\n\nOutline:\n\n00:00 Outage walkthrough\n02:48 Mimicking the situation locally\n10:13 MySQL AUTO_INCREMENT behavior\n12:37 Preventive measures\n14:25 Approach 1 for mitigating the issue\n18:40 Approach 2 for mitigating the issue\n\nReferences:\n - https://github.com/arpitbbhayani/mysql-maxint\n - https://github.blog/2020-07-08-introducing-the-github-availability-report/\n - https://dev.mysql.com/doc/refman/8.0/en/integer-types.html\n - https://dev.mysql.com/doc/refman/8.0/en/example-auto-increment.html\n - https://www.linkedin.com/pulse/so-you-hit-2147483647-heath-dutton-/",
+    "img": "https://i.ytimg.com/vi/ZFRAFTn0cQ0/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/UDU4oUJIHDJgQ/giphy.gif",
+    "duration": "24:34",
+    "view_count": 1523,
+    "like_count": 128,
+    "comment_count": 30,
+    "released_at": "2022-03-23",
+    "gist": "On the 5th of May, 2020, GitHub experienced an outage because of this very reason. One of their shared table having an auto-incrementing ID column hits its max limit. Let's see what could have been done in such a situation.\n\n# What's the next value after MAX int?\n\nGitHub used 4 bytes signed integer as their ID column, which means the value can go from `-2147483648` to `2147483647`. So, now when the ID column hits `2147483647` and tries to get the next value, it gets the same value again, i.e., `2147483647`.\n\nFor MySQL, `2147483647` + `1` = `2147483647`\n\nSo, when it tries to insert the row with ID `2147483647`, it gets the *Duplicate Key Error* given that a row already exists with the same ID.\n\n# How to mitigate the issue?\n\nA situation like this is extremely critical given that the database is not allowing us to insert any row in the table. This typically results in a major downtime of a few hours, and it depends on the amount of data in the table. There are a couple of ways to mitigate the issue.\n\n## Approach 1: Alter the table and increase the width of the column\n\nQuickly fire the `ALTER` table and change the data type of the ID column to `UNSIGNED INT` or `BIGINT`. Depending on the data size, an ALTER query like this will take a few hours to a few days to execute. Hence this approach is suitable only when the table size is small.\n\n## Approach 2: Swap the table\n\nThe idea here is to create an empty table with the same schema but a larger ID range that starts from `2147483648`. Then rename this new table to the old one and start accepting writes. Then slowly migrate the data from the old table to this new one. This approach can be used when you can live without the data for a few days.\n\n## Get warned before the storm\n\nAlthough mitigation is great, it is better to place a monitoring system that raises an alert when the ID reaches 70% of its range. So, write a simple DB monitoring service that periodically checks this by firing a query on the database.",
+    "notes_gd": "https://drive.google.com/file/d/13rNEWXwIdNkNcP2gSQQvBF8czUBpF47y/view?usp=sharing",
+    "slug": "dissecting-github-outage-id-column-reaching-the-max-value-2147483647"
   },
   {
     "id": 108,
-    "title": "How does the database guarantee reliability using write-ahead logging?"
+    "topic": {
+      "id": 0,
+      "uid": "database-engineering",
+      "name": "Database Engineering",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l"
+    },
+    "yt_video_id": "wI4hKwl1Cn4",
+    "title": "How does the database guarantee reliability using write-ahead logging?",
+    "description": "Any persistent database needs to guarantee reliability. No matter how big or small the changes are, they should survive any reboots, OS, or hardware crashes once they are committed. All the persistent databases use a write-ahead logging technique to guarantee such reliability while not affecting the performance.\n\nIn this video, we talk about write-ahead logging, how it ensures reliability, a few solid advantages of using it, one of them being a massive database performance boost, and how the log files are structured on the disk.\n\nOutline:\n00:00 What happens on Commit\n05:57 Write-ahead Logging\n08:44 Advantages of having a Write-ahead Logging\n14:29 Data Integrity in WAL files\n16:40 Write-ahead Logging Internals\n\nRelated Videos:\nHow indexes make a database read faster: https://www.youtube.com/watch?v=3G293is403I",
+    "img": "https://i.ytimg.com/vi/wI4hKwl1Cn4/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/l4pTqyJ8XMhLZ3ScE/giphy.gif",
+    "duration": "22:6",
+    "view_count": 1362,
+    "like_count": 83,
+    "comment_count": 5,
+    "released_at": "2022-03-21",
+    "gist": "Any persistent database needs to guarantee the reliability, implying that any update/delete fired on the database is reliably stored on the disk. The alterations on the data should not be affected by power loss, OS failure, or hardware failure.\n\nThe changes to the data once committed should do to non-volatile storage like Disk making them outlive any outage or crash. Although the flows seem simple enough to say that - hey let's just flush the changes to the disk; it is a little more complicated than that.\n\n## Disk writes are complicated\n\nWhen we perform the disk write, the changes are not directly written to the disk sectors, instead, it goes through a variety of buffers like RAM, OS Cache, Disk Cache, and then finally to the Disk sectors. So, if the changes are in any of these intermediate caches and the process crashes, our changes are lost.\n\nSo, while guaranteeing reliability we have to skip all of these caches and flush our changes as quickly as possible on the disk sectors. But if we do that, we are impacting the throughput of the system given how expensive disk writes are.\n\n# Write-ahead Logging\n\nWrite-ahead logging is a standard way to ensure data integrity and reliability. Any changes made on the database are first logged in an append-only file called write-ahead Log or Commit Log. Then the actual blocks having the data (row, document) on the disk are updated.\n\nIf we update any row or a document of a database, updating the data on disk is a much slower process because it would require on-disk data structures to rebalance, indexes to be updated, and so much more. So, if we skip the OS cache, and other buffers, and directly update the rows to the disk every time; it will hamper the overall throughput and performance of the database.\n\nHence, instead of synchronously flushing the row updates to the disk, we synchronously just flush the operation (PUT, DEL) in a write-ahead log file leading to just one extra disk write. The step will guarantee reliability and durability as although we do not have the row changes not flushed but at least the operation is flushed. This way if we need to replay the changes, in case of a crash, we can simply iterate through this simple file of operations and recover the database.\n\nOnce the operation is logged, the database can do its routine work and make the changes to the actual row or document data through the OS cache and other buffers. This way we guarantee reliability and durability in as minimal of a time as possible while not affecting the throughput much.\n\n## Advantages of using WAL\n\nThe advantages of using WAL are\n\n - we can skip flushing the data to the disk on every update\n - significantly reduce the number of disk writes\n - we can recover the data in case of a data loss\n - we can have point-in-time snapshots\n\n## Data integrity in WAL\n\nWAL also needs to ensure that any operation flushed in the log is not corrupted and hence it maintains its integrity using a CRC-32 and flushes it on the disk with every entry. This CRC is checked during reading the entry from the disk, if it does not match the DB throws an error.",
+    "notes_gd": "https://drive.google.com/file/d/1VC77CEEYLvlFaXpKsb3Q_e0JvbbryyU0/view?usp=sharing",
+    "slug": "how-does-the-database-guarantee-reliability-using-write-ahead-logging"
   },
   {
     "id": 118,
-    "title": "Handling timeouts in a microservice architecture"
+    "topic": {
+      "id": 0,
+      "uid": "microservices",
+      "name": "Microservices",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt"
+    },
+    "yt_video_id": "Hxja4crycBg",
+    "title": "Handling timeouts in a microservice architecture",
+    "description": "Handling timeout well is extremely critical as it makes your distributed system robust and ensures you provide a consistent user experience by adhering to SLA guarantees. In this video, we discover how a synchronous dependency on a microservice leads to long delays becoming a big problem, understand how timeout addresses the concern, and discuss 5 approaches to handle service timeouts.\n\nOutline:\n00:00 Why is handling timeout critical?\n01:13 Synchronous communication and timeouts\n05:39 A rule of thumb: Timeout\n07:52 Approach 1: Ignore the timeout\n10:28 Approach 2: Configure and use defaults\n11:27 Approach 3: Retry when timeout\n16:36 Approach 4: Retry only when needed\n20:06 Approach 5: Rearchitect and remove synchronous dependency",
+    "img": "https://i.ytimg.com/vi/Hxja4crycBg/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/3oriO4kSYahYQr6e1a/giphy.gif",
+    "duration": "23:38",
+    "view_count": 1868,
+    "like_count": 130,
+    "comment_count": 18,
+    "released_at": "2022-03-18",
+    "gist": "Microservices give us the flexibility to pick the best tech stack to solve the problem optimally. But one thing that ruins the real thrill is Timeouts.\n\nSay we have a blogging website where a user can search for blogs. The request comes to the Search service, and it finds the most relevant blogs for the query.\n\nIn the response, a field called `total_views` should hold the total number of views the blog received in its lifetime. The search services should talk to the Analytics service synchronously to get the data. This synchronous dependency is the root of all evil.\n\nThe core problem: Delays can be arbitrarily large\n\nBecause the delay depending on service can be arbitrarily large, we know how long to wait for the response. We for sure cannot wait forever, and hence we introduce Timeout. Every time the Search service invokes the Analytics service, it starts a timer, and if it does not get a response in the stipulated time, it timeout and moves on.\n\nThere are 5 approaches to handling timeouts.\n\n - Approach 1: Ignore the timeout and move on\n - Approach 2: Use some default value if you timed out\n - Approach 3: Retry the request\n - Approach 4: Retry only when needed\n - Approach 5: Re-architect and make synchronous dependency an async one",
+    "notes_gd": "https://drive.google.com/file/d/1GjObZ3xpLFxDEOO3EGRCj0Pq8bWLixjU/view?usp=sharing",
+    "slug": "handling-timeouts-in-a-microservice-architecture"
   },
   {
     "id": 109,
-    "title": "How do indexes make databases read faster?"
+    "topic": {
+      "id": 0,
+      "uid": "database-engineering",
+      "name": "Database Engineering",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l"
+    },
+    "yt_video_id": "3G293is403I",
+    "title": "How do indexes make databases read faster?",
+    "description": "In this video, we discuss how indexes make a database operate faster. While discussing that, we dive deep into how the data is read from the disk, how indexes are structured, serialized, and stored on the disk, and finally, how exactly data is quickly read using the right set of indexes.\n\nOutline:\n\n00:00 How is a table stored on the disk?\n03:14 Reading bytes from the disk\n05:21 Reading the entire table from the disk\n08:33 Evaluating a simple query without an index\n10:00 Basics of Database Indexes\n13:24 Evaluating a simple query with index",
+    "img": "https://i.ytimg.com/vi/3G293is403I/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/WoWm8YzFQJg5i/giphy.gif",
+    "duration": "23:25",
+    "view_count": 2351,
+    "like_count": 188,
+    "comment_count": 28,
+    "released_at": "2022-03-16",
+    "gist": "The database is just a collection of records. These records are serialized and stored on the disk. The way the records are serialized and stored on the disk depends on the database engine.  \n  \n## How does the database read from the disk?  \nA disk is always read in Blocks, and a block is typically 8kb big. When any disk IO happens, even requesting one byte, the entire block is read in memory, and the byte is returned from it.  \n  \nSay we have a \"users\" table with 100 rows, with each row being 200B long. If the block size is 600B, we can read 600/200 = 3 rows in one disk read.  \n  \nTo find all users with age = 23, we will have to read the entire table row by row and filter out the relevant documents; we will have to read the entire table. In one shot, we read 3 rows so that it would take 100/3 = 34 disk/block reads to answer the query.  \n  \n## Let's see how indexes make this faster.  \n  \nAn index is a small referential table with two columns: the indexed value and the row ID. So an index on the age column will have two columns age (4 bytes) and row ID (4 bytes).  \n  \nEach entry in the index is 8 bytes long, and the total size of the index will be 100 * 8 = 800 bytes. When stored on the disk, the index will require 2 disk blocks.  \n  \nWhen we want to get users with age == 23, we will first read the entire index, taking 2 disk IOs and filtering out relevant row IDs. Then make disk reads for the relevant rows from the main table. Thus we read 2 blocks to load the index and only relevant blocks have the actual data.  \n  \nIn our example, it comes out to be 2 + 2 = 4 block reads. So, we get an 8x boost in performance using indexes.  \n  \nNote: This is a very crude example of how fetch happens with indexes; there are a lot of optimizations that I have not talked about.  ",
+    "notes_gd": "https://drive.google.com/file/d/1wDDOc3rdsZIdZEEe50E_61wi-1iMHu2G/view?usp=sharing",
+    "slug": "how-do-indexes-make-databases-read-faster"
   },
   {
     "id": 110,
-    "title": "How to handle database outages?"
+    "topic": {
+      "id": 0,
+      "uid": "database-engineering",
+      "name": "Database Engineering",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l"
+    },
+    "yt_video_id": "UT_TVldzA64",
+    "title": "How to handle database outages?",
+    "description": "In this video, we talk about why a database goes down, what happens when the database is down, a few short-term solutions to minimize the downtime, and a few long-term solutions that you should be doing to ensure that your database does not go down again.\n\nOutline:\n\n00:00 Why a database goes down?\n06:10 What happens when a DB is down?\n09:46 Short-term solutions to get your DB up\n17:33 Long-term solutions to fix the database",
+    "img": "https://i.ytimg.com/vi/UT_TVldzA64/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/lVBtp4SRW6rvDHf1b6/giphy.gif",
+    "duration": "30:38",
+    "view_count": 1646,
+    "like_count": 123,
+    "comment_count": 17,
+    "released_at": "2022-03-14",
+    "gist": "### Why a database goes down?\nAn unexpected heavy load on your database can lead to a process crash or a massive slowdown.\n\nBefore jumping to the potential short-term and long-term solutions, ensure you monitor the database well. CPU, Memory, Disk, and Connections are being closely monitored.\n\n## Short term solutions\n\n- Kill the queries that have been running for a long time\n- Quickly scale up your database if you have been seeing a consistent heavy usage\n- Check if the recent deployment is the culprit; if so, revert asap\n- Reboot the database will calm the storm and buy you some time\n\n## Long term solutions\n\n- Ensure the right set of indexes is in place\n- Tune your database default parameters to gain optimal performance\n- Check for the notorious N+1 Queries\n- Upgrade the database version to get the best that DB can offer\n- Evaluate the need for Horizontal scaling using Replicas and Sharding",
+    "notes_gd": "https://drive.google.com/file/d/1Q6YokLBvmfW1Tw1mpndOfx-I2NyRGVG0/view?usp=sharing",
+    "slug": "how-to-handle-database-outages"
   },
   {
     "id": 112,
-    "title": "Dissecting Spotify's Global Outage - March 8, 2022"
+    "topic": {
+      "id": 0,
+      "uid": "outage-dissections",
+      "name": "Outage Dissections",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc"
+    },
+    "yt_video_id": "h5hXivWws7k",
+    "title": "Dissecting Spotify's Global Outage - March 8, 2022",
+    "description": "Incident Report: Spotify Outage on March 8: https://engineering.atspotify.com/2022/03/incident-report-spotify-outage-on-march-8/\nGoogle Cloud Traffic Director Outage: https://status.cloud.google.com/incidents/LuGcJVjNTeC5Sb9pSJ9o\nJava gRPC Client Bug: https://github.com/grpc/grpc-java/issues/8950\n\nIn this video, we dissect the reasons behind Spotify's Global Outage and try to understand its architecture, and learn from critical things to remember while architecting a system.",
+    "img": "https://i.ytimg.com/vi/h5hXivWws7k/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/26FKWlRgIL3JOIkGA/giphy.gif",
+    "duration": "26:",
+    "view_count": 2626,
+    "like_count": 163,
+    "comment_count": 26,
+    "released_at": "2022-03-12",
+    "gist": "",
+    "notes_gd": "",
+    "slug": "dissecting-spotify-s-global-outage-march-8-2022"
   },
   {
     "id": 128,
-    "title": "How \"is\" operator is implemented in python?"
+    "topic": {
+      "id": 0,
+      "uid": "python-internals",
+      "name": "Python Internals",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+    },
+    "yt_video_id": "Q8luYnxiFFE",
+    "title": "How \"is\" operator is implemented in python?",
+    "description": "In this video, we find out the internals of \"is\" operator in Python. We go through the CPython source code and answer how it efficiently implements the \"is\" operator.\n\n\ninteger optimizations in python: https://www.youtube.com/watch?v=6mhXGEXRXG0\nstring optimizations (interning) in python: https://www.youtube.com/watch?v=QpGK69LzfpY\nshort circuit evaluations in python: https://www.youtube.com/watch?v=zz2Lu5ht_jA\n\n\n\n# The Honest Python\n\nThe Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.",
+    "img": "https://i.ytimg.com/vi/Q8luYnxiFFE/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/l1KXrCk0QZ8WljxqU/giphy.gif",
+    "duration": "19:12",
+    "view_count": 388,
+    "like_count": 25,
+    "comment_count": 6,
+    "released_at": "2021-05-31",
+    "gist": "",
+    "notes_gd": "",
+    "slug": "how-is-operator-is-implemented-in-python"
   },
   {
     "id": 127,
-    "title": "How id() function is implemented in python?"
+    "topic": {
+      "id": 0,
+      "uid": "python-internals",
+      "name": "Python Internals",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+    },
+    "yt_video_id": "IGLnxdmJu2c",
+    "title": "How id() function is implemented in python?",
+    "description": "How is `id` function implemented in Python?\n\nIn this video, we explore the internals of `id` function in Python and find out how it is actually implemented.\n\nHow Python implements super-long integers: https://arpitbhayani.me/blogs/super-long-integers\n\n# The Honest Python\n\nThe Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.",
+    "img": "https://i.ytimg.com/vi/IGLnxdmJu2c/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/whzQo9wK8OuoiDtAnz/giphy.gif",
+    "duration": "10:46",
+    "view_count": 268,
+    "like_count": 14,
+    "comment_count": 0,
+    "released_at": "2021-05-24",
+    "gist": "",
+    "notes_gd": "",
+    "slug": "how-id-function-is-implemented-in-python"
   },
   {
     "id": 126,
-    "title": "How python compares a float and an int objects?"
+    "topic": {
+      "id": 0,
+      "uid": "python-internals",
+      "name": "Python Internals",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+    },
+    "yt_video_id": "u4tfIy--4GM",
+    "title": "How python compares a float and an int objects?",
+    "description": "How python internally performs the comparison of a float and an integer value? We find this out in this video.\n\n\nComparing a float to an int is a fascinating problem, especially for Python. Comparing numbers involve comparing magnitudes across different types; plus things become even more complex considering Python supports infinitely long number.\n\nChapters:\n0:00 Introduction to number comparison\n\n1:14 Disassembling the code\n2:00 Understanding COMPARE_OP\n2:54 Exploring RichCompare\n7:16 Understanding the core logic\n\n\n# The Honest Python\n\nThe Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.",
+    "img": "https://i.ytimg.com/vi/u4tfIy--4GM/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/l0ExiSoCkhCfSm94k/giphy.gif",
+    "duration": "20:34",
+    "view_count": 243,
+    "like_count": 9,
+    "comment_count": 1,
+    "released_at": "2021-05-13",
+    "gist": "",
+    "notes_gd": "",
+    "slug": "how-python-compares-a-float-and-an-int-objects"
   },
   {
     "id": 125,
-    "title": "How python optimizes integers?"
+    "topic": {
+      "id": 0,
+      "uid": "python-internals",
+      "name": "Python Internals",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+    },
+    "yt_video_id": "6mhXGEXRXG0",
+    "title": "How python optimizes integers?",
+    "description": "In this video, we answer, How python optimizes integers? Does it cache them? We go through the CPython source code to find out the exact internals of it.\n\n\nChapters:\n0:00 Introduction to integer optimization\n1:59 Going through the CPython code and tracing the function\n2:41 Going through PyLong_FromLong\n3:39 Understanding IS_SMALL_INT\n5:13 Understanding get_small_int\n8:47 How Python initializes the cache of integers?\n12:07 Where all Python is reusing small integers?\n14:45 Why Python caches integers?\n\n\nLink to essays and articles:\nhttps://arpitbhayani.me/blogs/python-caches-integers\nhttps://arpitbhayani.me/blogs/super-long-integers\n\n\n# The Honest Python\n\nThe Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.",
+    "img": "https://i.ytimg.com/vi/6mhXGEXRXG0/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/sgFDIjII6GtmE/giphy.gif",
+    "duration": "15:40",
+    "view_count": 235,
+    "like_count": 23,
+    "comment_count": 2,
+    "released_at": "2021-05-06",
+    "gist": "",
+    "notes_gd": "",
+    "slug": "how-python-optimizes-integers"
   },
   {
     "id": 101,
-    "title": "Scaling Taxonomy Service and Database"
+    "topic": {
+      "id": 0,
+      "uid": "system-design",
+      "name": "System Design",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+    },
+    "yt_video_id": "dTPh3KcKPYo",
+    "title": "Scaling Taxonomy Service and Database",
+    "description": "In this video, we do the high-level design of Udemy's Taxonomy Service and see how to scale databases in general.\n\nOutline:\n\n0:00 Recap Taxonomy DB Design\n0:57 Bird's eye view\n2:30 Within the Taxonomy Service\n3:50 Scaling the relational database\n5:32 High-Level Architecture\n7:20 Join my System Design Course\n7:57 Like, Share, and Subscribe",
+    "img": "https://i.ytimg.com/vi/dTPh3KcKPYo/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/YxlUxrYGw2w9y/giphy.gif",
+    "duration": "8:38",
+    "view_count": 863,
+    "like_count": 26,
+    "comment_count": 1,
+    "released_at": "2021-05-02",
+    "gist": "",
+    "notes_gd": "",
+    "slug": "scaling-taxonomy-service-and-database"
   },
   {
     "id": 124,
-    "title": "How python implements chained comparison operators?"
+    "topic": {
+      "id": 0,
+      "uid": "python-internals",
+      "name": "Python Internals",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+    },
+    "yt_video_id": "zz2Lu5ht_jA",
+    "title": "How python implements chained comparison operators?",
+    "description": "In this essay, we explore how python evaluates chained comparison operators. We dive deep into the code and answer the following questions\n\n- how Python evaluates chained comparison operators?\n- how it differs from C-like evaluation?\n- how Python implements short-circuiting?\n\nIn the process, we also alter the code to make Python evaluate such expressions C-like.\n\nDetailed Essay: https://arpitbhayani.me/blogs/chained-operators-python\n\nChapters:\n0:00 Chained Comparison Operators\n1:32 How Python and C differ in evaluation\n6:34 Disassembling the code\n8:00 Instruction by Instruction walkthrough\n15:42 Short-circuit evaluation\n17:27 Tracing and understanding the CPython code\n17:40 What makes Python-like evaluation the way it is\n24:22 Altering the code to make it a C-like evaluation\n26:19 Disassembling the altered code\n27:13 Instruction by Instruction walkthrough\n28:40 Concluding\n30:18 Like, Share, and Subscribe\n\n# The Honest Python\n\nThe Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.",
+    "img": "https://i.ytimg.com/vi/zz2Lu5ht_jA/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/MFabj1E9mgUsqwVWHu/giphy.gif",
+    "duration": "30:45",
+    "view_count": 194,
+    "like_count": 13,
+    "comment_count": 0,
+    "released_at": "2021-04-28",
+    "gist": "",
+    "notes_gd": "",
+    "slug": "how-python-implements-chained-comparison-operators"
   },
   {
     "id": 100,
-    "title": "Designing Taxonomy on SQL"
+    "topic": {
+      "id": 0,
+      "uid": "system-design",
+      "name": "System Design",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+    },
+    "yt_video_id": "4_jlmX_oB94",
+    "title": "Designing Taxonomy on SQL",
+    "description": "In this video, we design the Taxonomy of Udemy on top of a SQL-based Relational DB. We learn how to model any taxonomy on relational DB, why to choose SQL over NoSQL, designing the schema, deciding Indexes, and writing very interesting SQL queries.\n\nLink to the article: https://arpitbhayani.me/blogs/udemy-sql-taxonomy\n\nChapters:\n0:00 Udemy's Taxonomy\n1:40 A bad Database Design for Taxonomy\n3:29 Good Database Design for Taxonomy\n7:34 Is Relational DB a good choice to store taxonomy?\n13:04 Deciding Indexes\n15:26 Get topic by ID\n15:56 Get topic path\n23:00 Get child-topics\n25:05 Get Top Taxonomy in Single Query\n31:05 Summarizing Indexes\n31:52 Fun exercise to explore SQL\n33:55 What next in System Design",
+    "img": "https://i.ytimg.com/vi/4_jlmX_oB94/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/6XuA2WMKsgqS4/giphy.gif",
+    "duration": "35:15",
+    "view_count": 1633,
+    "like_count": 63,
+    "comment_count": 7,
+    "released_at": "2021-04-19",
+    "gist": "",
+    "notes_gd": "",
+    "slug": "designing-taxonomy-on-sql"
   },
   {
     "id": 123,
-    "title": "How python optimizes strings using String Interning?"
+    "topic": {
+      "id": 0,
+      "uid": "python-internals",
+      "name": "Python Internals",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+    },
+    "yt_video_id": "QpGK69LzfpY",
+    "title": "How python optimizes strings using String Interning?",
+    "description": "In this video, we dive deep into CPython and find out how Python optimizes strings. The optimization we will be going through is called String Interning which is like caching the strings - using the same reference and not creating a new instance every time.\n\n\nLink to my String Interning article: https://arpitbhayani.me/blogs/string-interning\nCode changes we made in the video: https://github.com/arpitbbhayani/cpython/pull/9\n\n\nChapters:\n0:00 What is String Interning?\n4:26 Tracing CPython function that interns strings\n5:36 Going through the PyUnicode_InternInPlace function\n18:45 Interned state stored in strings\n21:10 Interning does not work on all strings\n25:22 The catch with interning\n\n# The Honest Python\n\nThe Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.",
+    "img": "https://i.ytimg.com/vi/QpGK69LzfpY/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/lPiGDQQyhG9zEoGmuh/giphy.gif",
+    "duration": "30:28",
+    "view_count": 436,
+    "like_count": 18,
+    "comment_count": 2,
+    "released_at": "2021-04-13",
+    "gist": "",
+    "notes_gd": "",
+    "slug": "how-python-optimizes-strings-using-string-interning"
   },
   {
     "id": 111,
-    "title": "5 million + random rows in less than 100 seconds using SQL"
+    "topic": {
+      "id": 0,
+      "uid": "database-engineering",
+      "name": "Database Engineering",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l"
+    },
+    "yt_video_id": "x1XmcuosZNk",
+    "title": "5 million + random rows in less than 100 seconds using SQL",
+    "description": "In this video, we generate 5 million + random rows in less than 100 seconds using just SQL. We mock the data for any taxonomy (Udemy's example taken). We use Joins and SQL tricks to amplify the rows and use them to ingest.\n\n\nLink to the gist: https://gist.github.com/arpitbbhayani/96a42c28d134871ebc11faad272b5349",
+    "img": "https://i.ytimg.com/vi/x1XmcuosZNk/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/Gpu3skdN58ApO/giphy.gif",
+    "duration": "26:3",
+    "view_count": 1866,
+    "like_count": 54,
+    "comment_count": 19,
+    "released_at": "2021-04-10",
+    "gist": "",
+    "notes_gd": "",
+    "slug": "5-million-random-rows-in-less-than-100-seconds-using-sql"
   },
   {
     "id": 122,
-    "title": "Changing python grammar to support standalone walrus assignments"
+    "topic": {
+      "id": 0,
+      "uid": "python-internals",
+      "name": "Python Internals",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+    },
+    "yt_video_id": "rWb7VYz1q1U",
+    "title": "Changing python grammar to support standalone walrus assignments",
+    "description": "In this video, we alter the Python grammar and make an invalid syntax valid. We alter grammar and allow the Walrus operator to be executed as a standalone statement similar to how the usual assignment statement works. \n\nThis video would pave way for budding Python developers to understand CPython internals.\n\nChapters:\n0:00 What is a walrus operator?\n1:20 Building a toy shell to understand Walrus\n6:27 A non-intuitive behavior\n8:15 Going through the grammar\n14:25 Altering the Walrus behavior\n16:55 Understanding why it worked\n\nLink to the article: https://arpitbhayani.me/blogs/the-weird-walrus\n\n# The Honest Python\n\nThe Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.",
+    "img": "https://i.ytimg.com/vi/rWb7VYz1q1U/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/HxnMNAEQgHqEHcGKBb/giphy.gif",
+    "duration": "22:22",
+    "view_count": 454,
+    "like_count": 26,
+    "comment_count": 10,
+    "released_at": "2021-04-08",
+    "gist": "",
+    "notes_gd": "",
+    "slug": "changing-python-grammar-to-support-standalone-walrus-assignments"
   },
   {
     "id": 104,
-    "title": "End-to-end Message Encryption"
+    "topic": {
+      "id": 0,
+      "uid": "system-design",
+      "name": "System Design",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+    },
+    "yt_video_id": "m_7xSIhxZL8",
+    "title": "End-to-end Message Encryption",
+    "description": "In this video, we find how to implement a very very simple version of end-to-end WhatsApp-like message encryption. This is not even 1% of how WhatsApp does it but it gives a fair amount of idea on how we could do it.\n\nHow do WhatsApp, Facebook, Signal actually do it? Answer: The Signal Protocol\n\nWe do it with a very simple Public Key Cryptography and a Digital Signature.",
+    "img": "https://i.ytimg.com/vi/m_7xSIhxZL8/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/pYfYNJbEftHOfIpoBC/giphy.gif",
+    "duration": "15:57",
+    "view_count": 3804,
+    "like_count": 178,
+    "comment_count": 11,
+    "released_at": "2021-04-05",
+    "gist": "",
+    "notes_gd": "",
+    "slug": "end-to-end-message-encryption"
   },
   {
     "id": 121,
-    "title": "Setting up cpython locally and making your first change"
+    "topic": {
+      "id": 0,
+      "uid": "python-internals",
+      "name": "Python Internals",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+    },
+    "yt_video_id": "k5isLG6vqss",
+    "title": "Setting up cpython locally and making your first change",
+    "description": "In this video, we set up CPython, build our binary, and make our first \"Hello, World!\" change.\n\nCPython Github Repository: https://github.com/python/cpython/\nCPython Setup Guide: https://devguide.python.org/setup/",
+    "img": "https://i.ytimg.com/vi/k5isLG6vqss/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/3o6Zt34440romOQWo8/giphy.gif",
+    "duration": "6:32",
+    "view_count": 859,
+    "like_count": 45,
+    "comment_count": 3,
+    "released_at": "2021-04-04",
+    "gist": "",
+    "notes_gd": "",
+    "slug": "setting-up-cpython-locally-and-making-your-first-change"
   },
   {
     "id": 120,
-    "title": "Series Introduction: The Honest Python"
+    "topic": {
+      "id": 0,
+      "uid": "python-internals",
+      "name": "Python Internals",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+    },
+    "yt_video_id": "E-3J8X5DulY",
+    "title": "Series Introduction: The Honest Python",
+    "description": "The Honest Python is a series in which we dissect certain features, behaviors, and not-so-obvious outputs by diving deeper into the CPython source code and if possible altering it to get a much clearer understanding.\n\nWe will find answers to questions like\n\n  - How python implements super-long integers?\n  - What kind of algorithms power this language and its operations?\n  - How Garbage Collection is implemented?\n  - How are types like Lists, Sets, and Dictionaries are implemented?\n\nIf this sounds exciting, hop along with me on this journey and give a subscription to this channel.",
+    "img": "https://i.ytimg.com/vi/E-3J8X5DulY/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/H0uLRCd8JIhRS/giphy.gif",
+    "duration": "40",
+    "view_count": 731,
+    "like_count": 34,
+    "comment_count": 3,
+    "released_at": "2021-04-03",
+    "gist": "",
+    "notes_gd": "",
+    "slug": "series-introduction-the-honest-python"
   },
   {
     "id": 99,
-    "title": "Designing Notifications Service for Instagram"
+    "topic": {
+      "id": 0,
+      "uid": "system-design",
+      "name": "System Design",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+    },
+    "yt_video_id": "kIP8L-CSl2Y",
+    "title": "Designing Notifications Service for Instagram",
+    "description": "This video is a snippet from my System Design Masterclass and in it, we are discussing How Instagram Scales its notification systems. The primary challenge of such a system is doing a real fast fanout and we discuss how to do this very efficiently.",
+    "img": "https://i.ytimg.com/vi/kIP8L-CSl2Y/mqdefault.jpg",
+    "gif": "https://media.giphy.com/media/huyZxIJvtqVeRp7QcS/giphy.gif",
+    "duration": "37:18",
+    "view_count": 14324,
+    "like_count": 344,
+    "comment_count": 33,
+    "released_at": "2021-04-01",
+    "gist": "",
+    "notes_gd": "",
+    "slug": "designing-notifications-service-for-instagram"
   }
 ]
