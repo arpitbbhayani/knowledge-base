@@ -24,7 +24,7 @@ Primitive programming languages like C and C++ do not have their garbage collect
 
 The objects we allocate using "malloc" will continue to exist unless they are reclaimed using "free". The explicit need to "Free-ing" the allocated object is called Explicit Deacclocation.
 
-Although cleaning up the mess we created is a good idea, it is not reliable that we rely on the engineers and developers to always free the objects they allocated. Hence this gives rise to the need for automatic cleanup of unused variables - automatic garbage collection.
+Although cleaning up the mess we created is a good idea, it is not reliable that we rely on the engineers and developers to always free the objects they allocated. Hence this gives rise to the need for automatic cleanup of unused variables- automatic garbage collection.
 
 The two key side-effects of not cleaning up the unused objects we allocate are
 

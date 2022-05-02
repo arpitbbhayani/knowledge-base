@@ -10,10 +10,10 @@ No one can directly connect to this database, unlike how we do it with MySQL and
 
 ## Popular embedded databases are
 
- - SQLite: an embedded SQL-like database
- - LevelDB: on disk KV store by Google
- - RocksDB: on disk KV store optimized for performance
- - Berkeley DB: KV store with ACID, Replication, and Locking
+- SQLite: an embedded SQL-like database
+- LevelDB: on disk KV store by Google
+- RocksDB: on disk KV store optimized for performance
+- Berkeley DB: KV store with ACID, Replication, and Locking
 
 An embedded database is always designed to solve one niche really well.
 

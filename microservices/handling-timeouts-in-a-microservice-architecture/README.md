@@ -14,11 +14,11 @@ Because the delay depending on service can be arbitrarily large, we know how lon
 
 There are 5 approaches to handling timeouts.
 
- - Approach 1: Ignore the timeout and move on
- - Approach 2: Use some default value if you timed out
- - Approach 3: Retry the request
- - Approach 4: Retry only when needed
- - Approach 5: Re-architect and make synchronous dependency an async one
+- Approach 1: Ignore the timeout and move on
+- Approach 2: Use some default value if you timed out
+- Approach 3: Retry the request
+- Approach 4: Retry only when needed
+- Approach 5: Re-architect and make synchronous dependency an async one
 <hr />
 
 

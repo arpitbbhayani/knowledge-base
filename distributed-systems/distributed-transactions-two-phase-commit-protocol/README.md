@@ -6,7 +6,7 @@ Distributed Transactions using Two-phase Commit [in a gist] 🔆
 
 Distributed Transactions are essential to have strong consistency in a distributed setup.
 
-An example could be as simple as a 10-min food/grocery delivery - where to guarantee a 10-min delivery, you can only accept orders when there are goods available in the dark store, and a delivery agent is available to deliver the goods.
+An example could be as simple as a 10-min food/grocery delivery- where to guarantee a 10-min delivery, you can only accept orders when there are goods available in the dark store, and a delivery agent is available to deliver the goods.
 
 This is a classic case of Distributed Transaction where you need a guarantee of atomicity and consistency across two different services. In a distributed setup, we can achieve it using an algorithm called Two-phase Commit.
 
@@ -18,7 +18,7 @@ The Order service will first talk to store service to reserve food items and del
 
 If the order service fails to reserve any of these, we roll back the reservation and abort the transaction informing the user that the order is not placed. Reservation comes with a timer, which means if we cannot assign a reserved food item to order in "n" minutes, we will be releasing the reservation, making them available for other transactions.
 
-We move forward to the Commit phase only when the order service reserves both - a food item and a delivery agent.
+We move forward to the Commit phase only when the order service reserves both- a food item and a delivery agent.
 
 ✨ Phase 2: Commit
 

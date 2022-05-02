@@ -16,7 +16,7 @@ Atlassian rolls out features to a subset of the users and then incrementally rol
 
 ## Insight 3: Mark vs Permanent Deletion
 
-The script that Atlassian ran to delete had both the options - Mark of Deletion and Permanent deletion.
+The script that Atlassian ran to delete had both the options- Mark of Deletion and Permanent deletion.
 
 Mark for deletion: is soft delete i.e. marking is_deleted to true.
 Permanent deletion: hard delete i.e. firing DELETE query
@@ -33,7 +33,7 @@ The backup is made immutable and stored on S3 in some serialized format. This im
 
 ## Insight 6: Their architecture is not truly a Multi-tenant Architecture
 
-In a true multi-tenant architecture, every customer gets its fragment of infra - right from DB, to brokers, to servers. But at Atlassian, multiple customers share the same infra components. Companies typically do this to cut down on their infrastructure cost.
+In a true multi-tenant architecture, every customer gets its fragment of infra- right from DB, to brokers, to servers. But at Atlassian, multiple customers share the same infra components. Companies typically do this to cut down on their infrastructure cost.
 
 ## Why is it taking a long time to restore?
 

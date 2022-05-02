@@ -4,7 +4,7 @@ How does the database guarantee reliability using write-ahead logging?
 
 Any persistent database needs to guarantee the reliability, implying that any update/delete fired on the database is reliably stored on the disk. The alterations on the data should not be affected by power loss, OS failure, or hardware failure.
 
-The changes to the data once committed should do to non-volatile storage like Disk making them outlive any outage or crash. Although the flows seem simple enough to say that - hey let's just flush the changes to the disk; it is a little more complicated than that.
+The changes to the data once committed should do to non-volatile storage like Disk making them outlive any outage or crash. Although the flows seem simple enough to say that- hey let's just flush the changes to the disk; it is a little more complicated than that.
 
 ## Disk writes are complicated
 
@@ -26,10 +26,10 @@ Once the operation is logged, the database can do its routine work and make the 
 
 The advantages of using WAL are
 
- - we can skip flushing the data to the disk on every update
- - significantly reduce the number of disk writes
- - we can recover the data in case of a data loss
- - we can have point-in-time snapshots
+- we can skip flushing the data to the disk on every update
+- significantly reduce the number of disk writes
+- we can recover the data in case of a data loss
+- we can have point-in-time snapshots
 
 ## Data integrity in WAL
 

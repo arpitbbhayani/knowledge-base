@@ -6,10 +6,10 @@ Analytics service updates the information asynchronously directly in the blog's 
 
 ### Advantages of sharing the database
 
- - the simplest way of integration
- - no middleman involved
- - no latency overhead
- - quick development time
+- the simplest way of integration
+- no middleman involved
+- no latency overhead
+- quick development time
 
 # Challenges with Shared Database
 

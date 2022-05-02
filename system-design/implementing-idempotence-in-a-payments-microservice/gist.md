@@ -16,7 +16,7 @@ Consider a situation where the payments service initiated a payment with a Payme
 
 Check and Update: Weave everything with a single ID.
 
-The idea is to retry only after checking if the payment is processed or not. But how do we do this? The implementation is pretty simple - a global payment ID that weaves all the services and parties together.
+The idea is to retry only after checking if the payment is processed or not. But how do we do this? The implementation is pretty simple- a global payment ID that weaves all the services and parties together.
 
 The flow is:
 

@@ -2,7 +2,7 @@ How to scope a microservice?
 ===
 
 
-It is always exciting to create new microservices as it gives us so many things to look forward to - a fresh codebase, a new tech stack, or even maybe a clean CICD setup. But does this mean we should create as many microservices as possible?
+It is always exciting to create new microservices as it gives us so many things to look forward to- a fresh codebase, a new tech stack, or even maybe a clean CICD setup. But does this mean we should create as many microservices as possible?
 
 Whenever we decide to create a new microservice, it is very important to understand its scope of it. If you create a new service for every utility then you are effectively creating a mesh of network calls that is prone to a cascading failure. If your scope is too big, it would lead to the classic problem of a monolithic codebase.
 
@@ -22,7 +22,7 @@ The principle of High Cohesion says that the related behavior should sit togethe
 
 If the Orders service also owns the customer data then when the changes are deployed in one might affect the other module. So the scope of testing before taking things to production increases.
 
-If there is a very strong coupling between the services then it may also happen that the changes in one lead to deploy a few other services - all at the same time. Deploying multiple services at the same time is very risky; because one glitch and the almost entire product is down.
+If there is a very strong coupling between the services then it may also happen that the changes in one lead to deploy a few other services- all at the same time. Deploying multiple services at the same time is very risky; because one glitch and the almost entire product is down.
 
 Hence it is not favorable for heterogeneous components to be part of the same service. Keep it crisp and short; and while designing try to keep services loosely coupled and split it to a level where the unrelated components are split up.
 <hr />

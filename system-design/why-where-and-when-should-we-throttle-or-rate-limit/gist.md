@@ -25,11 +25,11 @@ When your service is under a DDoS attack the rate limiter acts as your first lin
 
 It is possible that your product goes viral and now you are seeing a genuine surge in users. Upon getting a genuine surge in users, the stateful components like databases and caches crash which takes down the entire site.
 
-Rate limiter in this case will help in preventing the entire site from going down; although some users would see some error, like 429 - Too many requests - your product will continue to seamlessly work for the other set of users.
+Rate limiter in this case will help in preventing the entire site from going down; although some users would see some error, like 429- Too many requests- your product will continue to seamlessly work for the other set of users.
 
 ## Multi-tiered limits
 
-Say, you are running a CICD company and offer 3 tiers of pricing - Tier 1 offers 200 minutes of build time, Tier 2 offers 1000 mins while Tier 3 offers unlimited build time. An internal rate limiter can keep track of the build times consumed by a customer and reject the requests once the limit is hit.
+Say, you are running a CICD company and offer 3 tiers of pricing- Tier 1 offers 200 minutes of build time, Tier 2 offers 1000 mins while Tier 3 offers unlimited build time. An internal rate limiter can keep track of the build times consumed by a customer and reject the requests once the limit is hit.
 
 ## Ensure you are not over-consuming
 

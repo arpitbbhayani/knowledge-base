@@ -36,25 +36,25 @@ Use serverless and invoke the function every time a message is pushed on the bro
 
 # Advantages
 
- - No need to manage and scale the infra
- - The cost is 0 when you do not get any traffic
- - Scale is out of the box; so no capacity planning is needed
+- No need to manage and scale the infra
+- The cost is 0 when you do not get any traffic
+- Scale is out of the box; so no capacity planning is needed
 
 # Disadvantages
 
- - Takes time to serve the first request as the underlying infra might boot up
- - The execution has a max timeout, so your job should complete within the limit
- - Debugging is a challenge
- - You are locked in on the vendor you chose
+- Takes time to serve the first request as the underlying infra might boot up
+- The execution has a max timeout, so your job should complete within the limit
+- Debugging is a challenge
+- You are locked in on the vendor you chose
 
 # When NOT to use Serverless
 
- - Load, usage, and traffic pattern is consistent
- - Execution will go beyond the max timeout
- - You need multi-tenancy
+- Load, usage, and traffic pattern is consistent
+- Execution will go beyond the max timeout
+- You need multi-tenancy
 
 # When to use Serverless
 
- - Quick build, prototype, and deploy the changes
- - Usecase is lightweight
- - Traffic is bursty
+- Quick build, prototype, and deploy the changes
+- Usecase is lightweight
+- Traffic is bursty

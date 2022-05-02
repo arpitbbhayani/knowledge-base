@@ -2,7 +2,7 @@ Can we send the payload in an HTTP GET request? [ in a gist ]
 
 It is a common myth that we could not pass the request body in the HTTP GET request. HTTP 1.1 specification neither enforces nor suggests this behavior.
 
-This means it is up to implementing the application web servers - Flask, uWSGI, etc. - to see if it parses the request body in the HTTP GET request. To do this, just check the request object you would be getting in your favorite framework.
+This means it is up to implementing the application web servers- Flask, uWSGI, etc.- to see if it parses the request body in the HTTP GET request. To do this, just check the request object you would be getting in your favorite framework.
 
 ⚡ What can we do with this information?
 
@@ -14,6 +14,6 @@ This is a perfect use case where the complex JSON query can be passed as a reque
 
 ⚡ So, does any popular tool uses this convention?
 
-Yes. ElasticSearch - one of the most popular search utilities, uses this convention.
+Yes. ElasticSearch- one of the most popular search utilities, uses this convention.
 
 The search endpoint of ElasticSearch is a GET endpoint where the complex search queries in JSON format are sent in the request payload.
