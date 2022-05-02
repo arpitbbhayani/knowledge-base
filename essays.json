@@ -1506,78 +1506,6 @@
     ]
   },
   {
-    "id": 66,
-    "topic": {
-      "id": 0,
-      "uid": "database-engineering",
-      "name": "Database Engineering",
-      "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l"
-    },
-    "uid": "fast-and-efficient-pagination-in-mongodb",
-    "title": "Fast and Efficient Pagination in MongoDB",
-    "description": "MongoDB is a document based data store and hence pagination is one of the most common use case of it. Find out how you can paginate the results ...",
-    "gif": "https://media.giphy.com/media/lRnUWhmllPI9a/giphy.gif",
-    "image": "https://user-images.githubusercontent.com/4745789/63153080-1336dc80-c02b-11e9-931f-0c7552a63ebc.png",
-    "released_at": "2017-06-06",
-    "total_views": 3898,
-    "body": "[MongoDB](https://www.mongodb.com/) is a document based data store and hence pagination is one of the most common use case of it. So when do you paginate the response? The answer is pretty neat; you paginate whenever you want to process result in chunks. Some common scenarios are\n\n- Batch processing\n- Showing huge set of results on user interface\n\nPaginating on client and server side are both really very expensive and should not be considered. Hence pagination is generally handled at database level and databases are optimized for such needs too.\n\nBelow I shall explain you the 2 approaches through which you can easily paginate your MongoDB responses.\nSample Document\n\n```json\n    {\n        \"_id\" : ObjectId(\"5936d17263623919cd5165bd\"),\n        \"name\" : \"Lisa Rogers\",\n        \"marks\" : 34\n    }\n```\n\n## Approach 1: Using `cursor.skip` and `cursor.limit`\n\nMongoDB cursor has two methods that makes paging easy; they are\n\n- `cursor.skip()`\n- `cursor.limit()`\n\n`skip(n)` will skip `n` documents from the cursor while `limit(n)` will cap the number of documents to be returned from the cursor. Thus combination of two naturally paginates the response.\n\nIn Mongo Shell your pagination code looks something like this\n\n```js\n    // Page 1\n    db.students.find().limit(5)\n\n    // Page 2\n    db.students.find().skip(5).limit(5)\n\n    // Page 3\n    db.students.find().skip(5).limit(5)\n```\n\n`.find()` will return a cursor pointing to all documents of the collection and then for each page we skip some and consume some. Through continuous skip and limit we get pagination in MongoDB.\n\nI am fond of Python and hence here is a small trivial function to implement pagination:\n\n```python\n    def skiplimit(page_size, page_num):\n        \"\"\"returns a set of documents belonging to page number `page_num`\n        where size of each page is `page_size`.\n        \"\"\"\n        # Calculate number of documents to skip\n        skips = page_size * (page_num - 1)\n\n        # Skip and limit\n        cursor = db['students'].find().skip(skips).limit(page_size)\n\n        # Return documents\n        return [x for x in cursor]\n```\n\n## Approach 2: Using `_id` and `limit`\n\nThis approach will make effective use of default index on `_id` and nature of `ObjectId`.\nI bet you didn\u2019t know that a [Mongodb ObjectId](https://docs.mongodb.com/manual/reference/bson-types/#objectid) is a 12 byte structure containing\n\n- a 4-byte value representing the seconds since the Unix epoch,\n- a 3-byte machine identifier,\n- a 2-byte process id, and\n- a 3-byte counter, starting with a random value.\n\nEven I didn\u2019t until I read the [documentation](https://docs.mongodb.com/manual/reference/bson-types/#objectid). Apart from its structure there is one very interesting property of ObjectId; which is - *ObjectId has natural ordering*\n\nWhat does it mean? It simplifies that we can apply all the *less-than-s* and all the *greater-than-s you* want to it. If you don\u2019t believe me, open Mongo shell and execute following set of commands\n\n```javascript\n    > ObjectId(\"5936d49863623919cd56f52d\") > ObjectId(\"5936d49863623919cd56f52e\")\n    false\n    > ObjectId(\"5936d49863623919cd56f52d\") > ObjectId(\"5936d49863623919cd56f52a\")\n    true\n```\n\nUsing this property of ObjectId and also taking into consideration the fact that `_id` is always indexed, we can devise following approach for pagination:\n\n1. Fetch a page of documents from database\n2. Get the document id of the last document of the page\n3. Retrieve documents greater than that id\n\nIn Mongo Shell your pagination code looks something like this\n\n```javascript\n    // Page 1\n    db.students.find().limit(10)\n\n    // Page 2\n    last_id = ...  # logic to get last_id\n    db.students.find({'_id': {'$gt': last_id}}).limit(10)\n\n    // Page 3\n    last_id = ... # logic to get last_id\n    db.students.find({'_id': {'$gt': last_id}}).limit(10)\n```\n\nAgain, I am fond of Python and here is the Python implementation of this approach.\n\n```python\n    def idlimit(page_size, last_id=None):\n        \"\"\"Function returns `page_size` number of documents after last_id\n        and the new last_id.\n        \"\"\"\n        if last_id is None:\n            # When it is first page\n            cursor = db['students'].find().limit(page_size)\n        else:\n            cursor = db['students'].find({'_id': {'$gt': last_id}}).limit(page_size)\n\n        # Get the data\n        data = [x for x in cursor]\n\n        if not data:\n            # No documents left\n            return None, None\n\n        # Since documents are naturally ordered with _id, last document will\n        # have max id.\n        last_id = data[-1]['_id']\n\n        # Return data and last_id\n        return data, last_id\n```\n\n> If you are using a field other than `_id` for offset, make sure the field is indexed and properly ordered else the performance will suffer.\n\n## Closing Remarks\n\nBoth of the above approaches are valid and correct. But as we know, in field of Computer Science, whenever there are multiple options to achieve something, one always outperforms the other. Same is the situation here as well.\n\nTurns out, there is a severe problem with skip function. I have tried to jot it down in [this blog post](/blogs/mongodb-cursor-skip-is-slow). Because of which second approach has advantage over first. But that is not it; I wrote a simple [python code](https://github.com/arpitbbhayani/mongo-pagination-benchmark) to benchmark the two approaches for various combinations and it turns out `skip` performs better in some case. The results are compiled into [this blog post](/blogs/benchmark-and-compare-pagination-approach-in-mongodb).\n",
-    "similar": [
-      "efficient-way-to-stop-an-iterating-loop",
-      "morris-counter",
-      "jaccard-minhash",
-      "bayesian-average"
-    ]
-  },
-  {
-    "id": 67,
-    "topic": {
-      "id": 0,
-      "uid": "database-engineering",
-      "name": "Database Engineering",
-      "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l"
-    },
-    "uid": "benchmark-and-compare-pagination-approach-in-mongodb",
-    "title": "Benchmark Pagination Strategies in MongoDB",
-    "description": "Benchmark results for two pagination approaches for MongoDB.",
-    "gif": "https://media.giphy.com/media/c5eqVJN7oNLTq/giphy.gif",
-    "image": "https://user-images.githubusercontent.com/4745789/63220759-d514f680-c1ab-11e9-8a38-7b1828946b74.png",
-    "released_at": "2017-06-02",
-    "total_views": 3538,
-    "body": "[MongoDB](https://www.mongodb.com/) is a document based data store and hence pagination is one of the most common use case of it. So when do you paginate the response? The answer is pretty neat; you paginate whenever you want to process result in chunks. Some common scenarios are\n\n- Batch processing\n- Showing huge set of results on user interface\n\nThere are multiple approaches through which you can [paginate your result set in MongoDB](/blogs/fast-and-efficient-pagination-in-mongodb). This blog post is dedicated for results of benchmark of two approaches and its analysis, so here we go ...\n\nBenchmark has been done over a non-indexed collection. Each document of the collection looks something like this\n```js\n    {\n        \"_id\" : ObjectId(\"5936d17263623919cd5165bd\"),\n        \"name\" : \"Lisa Rogers\",\n        \"marks\" : 34\n    }\n```\n\nAll records of a collection are fetched page-wise. Size of each page is fixed during fetch of the collection. Each page is fetched _3_ times and average of, time to fetch one \u201cpage\u201d, 3 is recorded.\n\nFollowing image shows the how two approach fares against each other.\n\n![MongoDB Pagination Benchmark Results](https://user-images.githubusercontent.com/4745789/63220692-cb3ec380-c1aa-11e9-9882-27bf52cbaa84.png)\n\nA key observation to note is that, till 500-600 count, both the approaches are comparable, but once it crosses that threshold, there is sudden rise in response time for `skip` and `limit` approach than other. The approach using `_id` and `limit` almost gives constant performance and is independent of size of the result set.\n\nI tried running this test on different machines with different disks but results were similar. I think diving deep in MongoDB's database drivier will yield better information about this behavior. You could see some spikes in the response times, that are because of Disk Contention.\n\nIn short:\n - For huge result set, paginating using `_id` and `limit` is far better than using `skip` and `limit`.\n - For smaller result set, it does not matter, but prefer skip and limit.\n\nAn interesting thing I observed is that after page size crosses 100, the gap between the two approach reduces to some extent. I am yet to perform detailed benchmark on that as such use-case (where page-size is more than 100) is pretty rare in practical applications.\n\nYou can find the Python code used for this benchmark [here](https://github.com/arpitbbhayani/mongo-pagination-benchmark). If you have any suggestion or improvement, do let me know.\n",
-    "similar": [
-      "udemy-sql-taxonomy",
-      "multiple-mysql-on-same-server-using-docker",
-      "better-programmer",
-      "sliding-window-ratelimiter"
-    ]
-  },
-  {
-    "id": 68,
-    "topic": {
-      "id": 0,
-      "uid": "database-engineering",
-      "name": "Database Engineering",
-      "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l"
-    },
-    "uid": "mongodb-cursor-skip-is-slow",
-    "title": "Why MongoDB's cursor.skip() is Slow?",
-    "description": "MongoDB's cursor.skip() is very inefficient, why is that? Even though it is slow and inefficient,  team MongoDB wants to continue keeping it. Find out why ...",
-    "gif": "https://media.giphy.com/media/nqIuAIxYebIt2/giphy.gif",
-    "image": "https://user-images.githubusercontent.com/4745789/63220620-4d2ded00-c1a9-11e9-8eea-11766291e06f.png",
-    "released_at": "2017-06-04",
-    "total_views": 2088,
-    "body": "MongoDB\u2019s cursor object has a method called `skip`, which as per [documentation and definition](https://docs.mongodb.com/manual/reference/method/cursor.skip/#definition), controls where MongoDB begins returning results. Thus in combination with function [limit](https://docs.mongodb.com/manual/reference/method/cursor.limit/), one can easily have paginated results.\n\nI have written a blog post on [how you can have Fast and Efficient Pagination in MongoDB](/blogs/fast-and-efficient-pagination-in-mongodb).\n\nBut while going through the documentation of skip, there is something interesting to notice. There is a small warning in [MongoDB documentation](https://docs.mongodb.com/manual/reference/method/cursor.skip/#behavior), that states\n\n  > The `cursor.skip()` method is often expensive because it requires the server to walk from the beginning of the collection or index to get the offset or skip position before beginning to return results. As the offset (e.g. `pageNumber` above) increases, `cursor.skip()` will become slower and more CPU intensive. With larger collections, `cursor.skip()` may become IO bound.\n\nIn short, MongoDB has to iterate over documents to skip them. Thus when collection or result set is huge and you need to skip documents for pagination, the call to `cursor.skip` will be expensive. While going through the source code of `skip` I found out that it does not use any index and hence gets slower when result set increases in size.\n\nThis also implies that if you use `skip`  then the \u201cskipping speed\u201d will not improve even if you index the field.\n\nBut what if the size of result set is small? is calling `skip` still a terrible idea?\nIf skip was so terrible, then MongoDB team and community must had taken that decision long back. But they haven\u2019t \u2026 why?\n\nBecause it is very efficient and fast for smaller result set. I have taken this opportunity to [benchmark and compare](/blogs/benchmark-and-compare-pagination-approach-in-mongodb) the [two approach for pagination](/blogs/fast-and-efficient-pagination-in-mongodb) and there I found out skip and limit based pagination works well for smaller result sets.\n\nIn conclusion, skip is not as bad one might think. But you must understand your use case well so as to make an informed decision.\n",
-    "similar": [
-      "inheritance-c",
-      "fork-bomb",
-      "idf",
-      "copy-on-write"
-    ]
-  },
-  {
     "id": 69,
     "topic": {
       "id": 0,
@@ -1617,6 +1545,78 @@
       "how-sleepsort-helped-me-understand-concurrency-in-golang",
       "benchmark-and-compare-pagination-approach-in-mongodb",
       "setting-up-graphite-grafana-using-nginx-on-ubuntu"
+    ]
+  },
+  {
+    "id": 66,
+    "topic": {
+      "id": 0,
+      "uid": "database-engineering",
+      "name": "Database Engineering",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l"
+    },
+    "uid": "fast-and-efficient-pagination-in-mongodb",
+    "title": "Fast and Efficient Pagination in MongoDB",
+    "description": "MongoDB is a document based data store and hence pagination is one of the most common use case of it. Find out how you can paginate the results ...",
+    "gif": "https://media.giphy.com/media/lRnUWhmllPI9a/giphy.gif",
+    "image": "https://user-images.githubusercontent.com/4745789/63153080-1336dc80-c02b-11e9-931f-0c7552a63ebc.png",
+    "released_at": "2017-06-06",
+    "total_views": 3898,
+    "body": "[MongoDB](https://www.mongodb.com/) is a document based data store and hence pagination is one of the most common use case of it. So when do you paginate the response? The answer is pretty neat; you paginate whenever you want to process result in chunks. Some common scenarios are\n\n- Batch processing\n- Showing huge set of results on user interface\n\nPaginating on client and server side are both really very expensive and should not be considered. Hence pagination is generally handled at database level and databases are optimized for such needs too.\n\nBelow I shall explain you the 2 approaches through which you can easily paginate your MongoDB responses.\nSample Document\n\n```json\n    {\n        \"_id\" : ObjectId(\"5936d17263623919cd5165bd\"),\n        \"name\" : \"Lisa Rogers\",\n        \"marks\" : 34\n    }\n```\n\n## Approach 1: Using `cursor.skip` and `cursor.limit`\n\nMongoDB cursor has two methods that makes paging easy; they are\n\n- `cursor.skip()`\n- `cursor.limit()`\n\n`skip(n)` will skip `n` documents from the cursor while `limit(n)` will cap the number of documents to be returned from the cursor. Thus combination of two naturally paginates the response.\n\nIn Mongo Shell your pagination code looks something like this\n\n```js\n    // Page 1\n    db.students.find().limit(5)\n\n    // Page 2\n    db.students.find().skip(5).limit(5)\n\n    // Page 3\n    db.students.find().skip(5).limit(5)\n```\n\n`.find()` will return a cursor pointing to all documents of the collection and then for each page we skip some and consume some. Through continuous skip and limit we get pagination in MongoDB.\n\nI am fond of Python and hence here is a small trivial function to implement pagination:\n\n```python\n    def skiplimit(page_size, page_num):\n        \"\"\"returns a set of documents belonging to page number `page_num`\n        where size of each page is `page_size`.\n        \"\"\"\n        # Calculate number of documents to skip\n        skips = page_size * (page_num - 1)\n\n        # Skip and limit\n        cursor = db['students'].find().skip(skips).limit(page_size)\n\n        # Return documents\n        return [x for x in cursor]\n```\n\n## Approach 2: Using `_id` and `limit`\n\nThis approach will make effective use of default index on `_id` and nature of `ObjectId`.\nI bet you didn\u2019t know that a [Mongodb ObjectId](https://docs.mongodb.com/manual/reference/bson-types/#objectid) is a 12 byte structure containing\n\n- a 4-byte value representing the seconds since the Unix epoch,\n- a 3-byte machine identifier,\n- a 2-byte process id, and\n- a 3-byte counter, starting with a random value.\n\nEven I didn\u2019t until I read the [documentation](https://docs.mongodb.com/manual/reference/bson-types/#objectid). Apart from its structure there is one very interesting property of ObjectId; which is - *ObjectId has natural ordering*\n\nWhat does it mean? It simplifies that we can apply all the *less-than-s* and all the *greater-than-s you* want to it. If you don\u2019t believe me, open Mongo shell and execute following set of commands\n\n```javascript\n    > ObjectId(\"5936d49863623919cd56f52d\") > ObjectId(\"5936d49863623919cd56f52e\")\n    false\n    > ObjectId(\"5936d49863623919cd56f52d\") > ObjectId(\"5936d49863623919cd56f52a\")\n    true\n```\n\nUsing this property of ObjectId and also taking into consideration the fact that `_id` is always indexed, we can devise following approach for pagination:\n\n1. Fetch a page of documents from database\n2. Get the document id of the last document of the page\n3. Retrieve documents greater than that id\n\nIn Mongo Shell your pagination code looks something like this\n\n```javascript\n    // Page 1\n    db.students.find().limit(10)\n\n    // Page 2\n    last_id = ...  # logic to get last_id\n    db.students.find({'_id': {'$gt': last_id}}).limit(10)\n\n    // Page 3\n    last_id = ... # logic to get last_id\n    db.students.find({'_id': {'$gt': last_id}}).limit(10)\n```\n\nAgain, I am fond of Python and here is the Python implementation of this approach.\n\n```python\n    def idlimit(page_size, last_id=None):\n        \"\"\"Function returns `page_size` number of documents after last_id\n        and the new last_id.\n        \"\"\"\n        if last_id is None:\n            # When it is first page\n            cursor = db['students'].find().limit(page_size)\n        else:\n            cursor = db['students'].find({'_id': {'$gt': last_id}}).limit(page_size)\n\n        # Get the data\n        data = [x for x in cursor]\n\n        if not data:\n            # No documents left\n            return None, None\n\n        # Since documents are naturally ordered with _id, last document will\n        # have max id.\n        last_id = data[-1]['_id']\n\n        # Return data and last_id\n        return data, last_id\n```\n\n> If you are using a field other than `_id` for offset, make sure the field is indexed and properly ordered else the performance will suffer.\n\n## Closing Remarks\n\nBoth of the above approaches are valid and correct. But as we know, in field of Computer Science, whenever there are multiple options to achieve something, one always outperforms the other. Same is the situation here as well.\n\nTurns out, there is a severe problem with skip function. I have tried to jot it down in [this blog post](/blogs/mongodb-cursor-skip-is-slow). Because of which second approach has advantage over first. But that is not it; I wrote a simple [python code](https://github.com/arpitbbhayani/mongo-pagination-benchmark) to benchmark the two approaches for various combinations and it turns out `skip` performs better in some case. The results are compiled into [this blog post](/blogs/benchmark-and-compare-pagination-approach-in-mongodb).\n",
+    "similar": [
+      "efficient-way-to-stop-an-iterating-loop",
+      "morris-counter",
+      "jaccard-minhash",
+      "bayesian-average"
+    ]
+  },
+  {
+    "id": 68,
+    "topic": {
+      "id": 0,
+      "uid": "database-engineering",
+      "name": "Database Engineering",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l"
+    },
+    "uid": "mongodb-cursor-skip-is-slow",
+    "title": "Why MongoDB's cursor.skip() is Slow?",
+    "description": "MongoDB's cursor.skip() is very inefficient, why is that? Even though it is slow and inefficient,  team MongoDB wants to continue keeping it. Find out why ...",
+    "gif": "https://media.giphy.com/media/nqIuAIxYebIt2/giphy.gif",
+    "image": "https://user-images.githubusercontent.com/4745789/63220620-4d2ded00-c1a9-11e9-8eea-11766291e06f.png",
+    "released_at": "2017-06-04",
+    "total_views": 2088,
+    "body": "MongoDB\u2019s cursor object has a method called `skip`, which as per [documentation and definition](https://docs.mongodb.com/manual/reference/method/cursor.skip/#definition), controls where MongoDB begins returning results. Thus in combination with function [limit](https://docs.mongodb.com/manual/reference/method/cursor.limit/), one can easily have paginated results.\n\nI have written a blog post on [how you can have Fast and Efficient Pagination in MongoDB](/blogs/fast-and-efficient-pagination-in-mongodb).\n\nBut while going through the documentation of skip, there is something interesting to notice. There is a small warning in [MongoDB documentation](https://docs.mongodb.com/manual/reference/method/cursor.skip/#behavior), that states\n\n  > The `cursor.skip()` method is often expensive because it requires the server to walk from the beginning of the collection or index to get the offset or skip position before beginning to return results. As the offset (e.g. `pageNumber` above) increases, `cursor.skip()` will become slower and more CPU intensive. With larger collections, `cursor.skip()` may become IO bound.\n\nIn short, MongoDB has to iterate over documents to skip them. Thus when collection or result set is huge and you need to skip documents for pagination, the call to `cursor.skip` will be expensive. While going through the source code of `skip` I found out that it does not use any index and hence gets slower when result set increases in size.\n\nThis also implies that if you use `skip`  then the \u201cskipping speed\u201d will not improve even if you index the field.\n\nBut what if the size of result set is small? is calling `skip` still a terrible idea?\nIf skip was so terrible, then MongoDB team and community must had taken that decision long back. But they haven\u2019t \u2026 why?\n\nBecause it is very efficient and fast for smaller result set. I have taken this opportunity to [benchmark and compare](/blogs/benchmark-and-compare-pagination-approach-in-mongodb) the [two approach for pagination](/blogs/fast-and-efficient-pagination-in-mongodb) and there I found out skip and limit based pagination works well for smaller result sets.\n\nIn conclusion, skip is not as bad one might think. But you must understand your use case well so as to make an informed decision.\n",
+    "similar": [
+      "inheritance-c",
+      "fork-bomb",
+      "idf",
+      "copy-on-write"
+    ]
+  },
+  {
+    "id": 67,
+    "topic": {
+      "id": 0,
+      "uid": "database-engineering",
+      "name": "Database Engineering",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l"
+    },
+    "uid": "benchmark-and-compare-pagination-approach-in-mongodb",
+    "title": "Benchmark Pagination Strategies in MongoDB",
+    "description": "Benchmark results for two pagination approaches for MongoDB.",
+    "gif": "https://media.giphy.com/media/c5eqVJN7oNLTq/giphy.gif",
+    "image": "https://user-images.githubusercontent.com/4745789/63220759-d514f680-c1ab-11e9-8a38-7b1828946b74.png",
+    "released_at": "2017-06-02",
+    "total_views": 3538,
+    "body": "[MongoDB](https://www.mongodb.com/) is a document based data store and hence pagination is one of the most common use case of it. So when do you paginate the response? The answer is pretty neat; you paginate whenever you want to process result in chunks. Some common scenarios are\n\n- Batch processing\n- Showing huge set of results on user interface\n\nThere are multiple approaches through which you can [paginate your result set in MongoDB](/blogs/fast-and-efficient-pagination-in-mongodb). This blog post is dedicated for results of benchmark of two approaches and its analysis, so here we go ...\n\nBenchmark has been done over a non-indexed collection. Each document of the collection looks something like this\n```js\n    {\n        \"_id\" : ObjectId(\"5936d17263623919cd5165bd\"),\n        \"name\" : \"Lisa Rogers\",\n        \"marks\" : 34\n    }\n```\n\nAll records of a collection are fetched page-wise. Size of each page is fixed during fetch of the collection. Each page is fetched _3_ times and average of, time to fetch one \u201cpage\u201d, 3 is recorded.\n\nFollowing image shows the how two approach fares against each other.\n\n![MongoDB Pagination Benchmark Results](https://user-images.githubusercontent.com/4745789/63220692-cb3ec380-c1aa-11e9-9882-27bf52cbaa84.png)\n\nA key observation to note is that, till 500-600 count, both the approaches are comparable, but once it crosses that threshold, there is sudden rise in response time for `skip` and `limit` approach than other. The approach using `_id` and `limit` almost gives constant performance and is independent of size of the result set.\n\nI tried running this test on different machines with different disks but results were similar. I think diving deep in MongoDB's database drivier will yield better information about this behavior. You could see some spikes in the response times, that are because of Disk Contention.\n\nIn short:\n - For huge result set, paginating using `_id` and `limit` is far better than using `skip` and `limit`.\n - For smaller result set, it does not matter, but prefer skip and limit.\n\nAn interesting thing I observed is that after page size crosses 100, the gap between the two approach reduces to some extent. I am yet to perform detailed benchmark on that as such use-case (where page-size is more than 100) is pretty rare in practical applications.\n\nYou can find the Python code used for this benchmark [here](https://github.com/arpitbbhayani/mongo-pagination-benchmark). If you have any suggestion or improvement, do let me know.\n",
+    "similar": [
+      "udemy-sql-taxonomy",
+      "multiple-mysql-on-same-server-using-docker",
+      "better-programmer",
+      "sliding-window-ratelimiter"
     ]
   },
   {
