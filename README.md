@@ -17,7 +17,7 @@ I also run a [course on System Design](https://arpitbhayani.me/masterclass) in w
 
 Topics I like to talk about are
 
- - [System Design](https://arpitbhayani.me/system-design)
+ - [Backend System Design](https://arpitbhayani.me/system-design)
  - [Database Engineering](https://arpitbhayani.me/database-engineering)
  - [Outage Dissections](https://arpitbhayani.me/outage-dissections)
  - [Distributed Systems](https://arpitbhayani.me/distributed-systems)
