@@ -4,15 +4,17 @@
     "topic": {
       "id": 0,
       "uid": "microservices",
-      "name": "Microservices",
+      "name": "Designing \u03bc-services",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt"
+      "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt",
+      "bgcolor": "#FFFAE6",
+      "themecolor": "#CAA200"
     },
     "yt_video_id": "ewUw0sUxHI4",
     "title": "Synchronous and Asynchronous Communication between Microservices",
     "description": "How should two microservices talk to each other? Picking the right communication pattern is super-important as a good decision will ensure a great user experience and scalability while a bad one will ruin the party.\n\nThere are overall two categories of communication: Synchronous and Asynchronous; In this video, we in-depth discuss what synchronous communication is and how it is done, what asynchronous communication is and how it is done, the advantages and disadvantages of both of them, and most importantly understand how to decide which one to opt for with some real-world examples.\n\nOutline:\n\n00:00 Agenda\n03:08 Need for Communication between Microservices\n05:10 Synchronous Communication\n08:17 Advantages of Synchronous Communication\n09:07 Disadvantages of Synchronous Communication\n15:58 When to use Synchronous Communication\n18:40 Asynchronous Communication\n23:01 Advantages of Asynchronous Communication\n31:41 Disadvantages of Asynchronous Communication\n34:39 When to use Asynchronous Communication",
     "img": "https://i.ytimg.com/vi/ewUw0sUxHI4/mqdefault.jpg",
-    "gif": null,
+    "gif": "https://media.giphy.com/media/3orif4qbRS6WjGJ2zC/giphy.gif",
     "duration": "40:10",
     "view_count": 214,
     "like_count": 23,
@@ -27,9 +29,11 @@
     "topic": {
       "id": 0,
       "uid": "microservices",
-      "name": "Microservices",
+      "name": "Designing \u03bc-services",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt"
+      "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt",
+      "bgcolor": "#FFFAE6",
+      "themecolor": "#CAA200"
     },
     "yt_video_id": "tV11trlimLk",
     "title": "Should some microservices share a database?",
@@ -50,9 +54,11 @@
     "topic": {
       "id": 0,
       "uid": "microservices",
-      "name": "Microservices",
+      "name": "Designing \u03bc-services",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt"
+      "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt",
+      "bgcolor": "#FFFAE6",
+      "themecolor": "#CAA200"
     },
     "yt_video_id": "nfkdKHcKxbE",
     "title": "How to scope a microservice?",
@@ -73,9 +79,11 @@
     "topic": {
       "id": 0,
       "uid": "microservices",
-      "name": "Microservices",
+      "name": "Designing \u03bc-services",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt"
+      "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt",
+      "bgcolor": "#FFFAE6",
+      "themecolor": "#CAA200"
     },
     "yt_video_id": "JPj6mhVLQN0",
     "title": "Advantages of adopting a microservices-based architecture",
@@ -96,9 +104,11 @@
     "topic": {
       "id": 0,
       "uid": "microservices",
-      "name": "Microservices",
+      "name": "Designing \u03bc-services",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt"
+      "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt",
+      "bgcolor": "#FFFAE6",
+      "themecolor": "#CAA200"
     },
     "yt_video_id": "Hxja4crycBg",
     "title": "Handling timeouts in a microservice architecture",

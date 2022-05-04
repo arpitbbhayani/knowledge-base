@@ -6,7 +6,9 @@
       "uid": "distributed-systems",
       "name": "Distributed Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT1wfRQo2xrrst2SGremT_qd"
+      "youtube_playlist_id": "PLsdq-3Z1EPT1wfRQo2xrrst2SGremT_qd",
+      "bgcolor": "#DDF0FF",
+      "themecolor": "#1798FF"
     },
     "yt_video_id": "oMhESvU87jM",
     "title": "Implementing Distributed Transactions using Two Phase Commit Protocol",
@@ -29,7 +31,9 @@
       "uid": "distributed-systems",
       "name": "Distributed Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT1wfRQo2xrrst2SGremT_qd"
+      "youtube_playlist_id": "PLsdq-3Z1EPT1wfRQo2xrrst2SGremT_qd",
+      "bgcolor": "#DDF0FF",
+      "themecolor": "#1798FF"
     },
     "yt_video_id": "7FgU1D4EnpQ",
     "title": "Distributed Transactions: Two-Phase Commit Protocol",

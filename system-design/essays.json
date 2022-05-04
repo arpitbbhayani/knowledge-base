@@ -4,9 +4,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "indexing-on-partitioned-data",
     "title": "Indexing on Partitioned Data",
@@ -28,9 +30,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "data-partitioning-strategies",
     "title": "Data Partitioning Strategies",
@@ -52,9 +56,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "data-partitioning",
     "title": "Data Partitioning",
@@ -76,9 +82,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "leaderless-replication",
     "title": "Leaderless Replication",
@@ -100,9 +108,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "conflict-resolution",
     "title": "Conflict Resolution",
@@ -124,9 +134,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "conflict-detection",
     "title": "Conflict Detection",
@@ -148,9 +160,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "multi-master-replication",
     "title": "Multi-Master Replication",
@@ -172,9 +186,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "monotonic-reads",
     "title": "Monotonic Reads",
@@ -196,9 +212,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "read-your-write-consistency",
     "title": "Read-your-write Consistency",
@@ -220,9 +238,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "handling-outages-master-replica",
     "title": "Handling outages in a Master-Replica setup",
@@ -244,9 +264,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "new-replica",
     "title": "The New Replica",
@@ -268,9 +290,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "replication-formats",
     "title": "Replication Formats",
@@ -292,9 +316,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "replication-strategies",
     "title": "Replication Strategies",
@@ -316,9 +342,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "master-replica-replication",
     "title": "Master-Replica Replication",
@@ -340,9 +368,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "durability",
     "title": "\"D\" in ACID - Durability",
@@ -364,9 +394,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "isolation",
     "title": "\"I\" in ACID - Isolation",
@@ -388,9 +420,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "consistency",
     "title": "\"C\" in ACID - Consistency",
@@ -412,9 +446,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "atomicity",
     "title": "\"A\" in ACID - Atomicity",
@@ -436,9 +472,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "architectures-in-distributed-systems",
     "title": "Architectures in Distributed Systems",
@@ -460,9 +498,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "mistaken-beliefs-of-distributed-systems",
     "title": "Mistaken Beliefs of Distributed Systems",
@@ -484,9 +524,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "rum",
     "title": "The RUM Conjecture",
@@ -508,9 +550,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "sliding-window-ratelimiter",
     "title": "Sliding Window based Rate Limiter",

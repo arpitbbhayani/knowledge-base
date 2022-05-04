@@ -4,15 +4,17 @@
     "topic": {
       "id": 0,
       "uid": "microservices",
-      "name": "Microservices",
+      "name": "Designing \u03bc-services",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt"
+      "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt",
+      "bgcolor": "#FFFAE6",
+      "themecolor": "#CAA200"
     },
     "yt_video_id": "ewUw0sUxHI4",
     "title": "Synchronous and Asynchronous Communication between Microservices",
     "description": "How should two microservices talk to each other? Picking the right communication pattern is super-important as a good decision will ensure a great user experience and scalability while a bad one will ruin the party.\n\nThere are overall two categories of communication: Synchronous and Asynchronous; In this video, we in-depth discuss what synchronous communication is and how it is done, what asynchronous communication is and how it is done, the advantages and disadvantages of both of them, and most importantly understand how to decide which one to opt for with some real-world examples.\n\nOutline:\n\n00:00 Agenda\n03:08 Need for Communication between Microservices\n05:10 Synchronous Communication\n08:17 Advantages of Synchronous Communication\n09:07 Disadvantages of Synchronous Communication\n15:58 When to use Synchronous Communication\n18:40 Asynchronous Communication\n23:01 Advantages of Asynchronous Communication\n31:41 Disadvantages of Asynchronous Communication\n34:39 When to use Asynchronous Communication",
     "img": "https://i.ytimg.com/vi/ewUw0sUxHI4/mqdefault.jpg",
-    "gif": null,
+    "gif": "https://media.giphy.com/media/3orif4qbRS6WjGJ2zC/giphy.gif",
     "duration": "40:10",
     "view_count": 214,
     "like_count": 23,
@@ -27,9 +29,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "yt_video_id": "oiZH5U_a0pg",
     "title": "Introduction to Serverless Computing and Architecture",
@@ -52,7 +56,9 @@
       "uid": "garbage-collection",
       "name": "Garbage Collection",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT3MvruOP09U1bWmcjxLIMwR"
+      "youtube_playlist_id": "PLsdq-3Z1EPT3MvruOP09U1bWmcjxLIMwR",
+      "bgcolor": "#F0E6FF",
+      "themecolor": "#A66AFF"
     },
     "yt_video_id": "4qLf0FJMyf0",
     "title": "Mark and Sweep Garbage Collection Algorithm",
@@ -73,9 +79,11 @@
     "topic": {
       "id": 0,
       "uid": "microservices",
-      "name": "Microservices",
+      "name": "Designing \u03bc-services",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt"
+      "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt",
+      "bgcolor": "#FFFAE6",
+      "themecolor": "#CAA200"
     },
     "yt_video_id": "tV11trlimLk",
     "title": "Should some microservices share a database?",
@@ -96,9 +104,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "yt_video_id": "wXvljefXyEo",
     "title": "Database Sharding and Partitioning",
@@ -121,7 +131,9 @@
       "uid": "garbage-collection",
       "name": "Garbage Collection",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT3MvruOP09U1bWmcjxLIMwR"
+      "youtube_playlist_id": "PLsdq-3Z1EPT3MvruOP09U1bWmcjxLIMwR",
+      "bgcolor": "#F0E6FF",
+      "themecolor": "#A66AFF"
     },
     "yt_video_id": "IojMqbegejk",
     "title": "How to pick a garbage collector?",
@@ -142,9 +154,11 @@
     "topic": {
       "id": 0,
       "uid": "microservices",
-      "name": "Microservices",
+      "name": "Designing \u03bc-services",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt"
+      "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt",
+      "bgcolor": "#FFFAE6",
+      "themecolor": "#CAA200"
     },
     "yt_video_id": "nfkdKHcKxbE",
     "title": "How to scope a microservice?",
@@ -165,9 +179,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "yt_video_id": "CW4gVlU0xtU",
     "title": "Why, where, and when should we throttle or rate limit?",
@@ -190,7 +206,9 @@
       "uid": "outage-dissections",
       "name": "Outage Dissections",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc"
+      "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc",
+      "bgcolor": "#FFF1E7",
+      "themecolor": "#FF8229"
     },
     "yt_video_id": "xa-hMF8gku0",
     "title": "An engineering deep-dive into Atlassian's Mega Outage of April 2022",
@@ -211,9 +229,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "yt_video_id": "1r9bPisYaOQ",
     "title": "How to approach System Design?",
@@ -236,7 +256,9 @@
       "uid": "garbage-collection",
       "name": "Garbage Collection",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT3MvruOP09U1bWmcjxLIMwR"
+      "youtube_playlist_id": "PLsdq-3Z1EPT3MvruOP09U1bWmcjxLIMwR",
+      "bgcolor": "#F0E6FF",
+      "themecolor": "#A66AFF"
     },
     "yt_video_id": "jcMxuLZCcqU",
     "title": "Why do programming languages need automatic garbage collection?",
@@ -257,9 +279,11 @@
     "topic": {
       "id": 0,
       "uid": "microservices",
-      "name": "Microservices",
+      "name": "Designing \u03bc-services",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt"
+      "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt",
+      "bgcolor": "#FFFAE6",
+      "themecolor": "#CAA200"
     },
     "yt_video_id": "JPj6mhVLQN0",
     "title": "Advantages of adopting a microservices-based architecture",
@@ -280,9 +304,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "yt_video_id": "m6DtqSb1BDM",
     "title": "Implementing Idempotence in a Payments Microservice",
@@ -303,9 +329,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "yt_video_id": "8S4k7k_f9Sk",
     "title": "Sending payload in an HTTP GET request",
@@ -328,7 +356,9 @@
       "uid": "outage-dissections",
       "name": "Outage Dissections",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc"
+      "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc",
+      "bgcolor": "#FFF1E7",
+      "themecolor": "#FF8229"
     },
     "yt_video_id": "6oJaZbQKnJE",
     "title": "Dissecting Google Maps Outage: Bad Rollout and Cascading Failures",
@@ -351,7 +381,9 @@
       "uid": "distributed-systems",
       "name": "Distributed Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT1wfRQo2xrrst2SGremT_qd"
+      "youtube_playlist_id": "PLsdq-3Z1EPT1wfRQo2xrrst2SGremT_qd",
+      "bgcolor": "#DDF0FF",
+      "themecolor": "#1798FF"
     },
     "yt_video_id": "oMhESvU87jM",
     "title": "Implementing Distributed Transactions using Two Phase Commit Protocol",
@@ -374,7 +406,9 @@
       "uid": "distributed-systems",
       "name": "Distributed Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT1wfRQo2xrrst2SGremT_qd"
+      "youtube_playlist_id": "PLsdq-3Z1EPT1wfRQo2xrrst2SGremT_qd",
+      "bgcolor": "#DDF0FF",
+      "themecolor": "#1798FF"
     },
     "yt_video_id": "7FgU1D4EnpQ",
     "title": "Distributed Transactions: Two-Phase Commit Protocol",
@@ -397,7 +431,9 @@
       "uid": "database-engineering",
       "name": "Database Engineering",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l"
+      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l",
+      "bgcolor": "#E7ECFF",
+      "themecolor": "#5677f5"
     },
     "yt_video_id": "xELqRiovEcI",
     "title": "What are Embedded Databases?",
@@ -420,7 +456,9 @@
       "uid": "outage-dissections",
       "name": "Outage Dissections",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc"
+      "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc",
+      "bgcolor": "#FFF1E7",
+      "themecolor": "#FF8229"
     },
     "yt_video_id": "ZFRAFTn0cQ0",
     "title": "Dissecting GitHub Outage: ID column reaching the max value 2147483647",
@@ -443,7 +481,9 @@
       "uid": "database-engineering",
       "name": "Database Engineering",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l"
+      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l",
+      "bgcolor": "#E7ECFF",
+      "themecolor": "#5677f5"
     },
     "yt_video_id": "wI4hKwl1Cn4",
     "title": "How does the database guarantee reliability using write-ahead logging?",
@@ -464,9 +504,11 @@
     "topic": {
       "id": 0,
       "uid": "microservices",
-      "name": "Microservices",
+      "name": "Designing \u03bc-services",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt"
+      "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt",
+      "bgcolor": "#FFFAE6",
+      "themecolor": "#CAA200"
     },
     "yt_video_id": "Hxja4crycBg",
     "title": "Handling timeouts in a microservice architecture",
@@ -489,7 +531,9 @@
       "uid": "database-engineering",
       "name": "Database Engineering",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l"
+      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l",
+      "bgcolor": "#E7ECFF",
+      "themecolor": "#5677f5"
     },
     "yt_video_id": "3G293is403I",
     "title": "How do indexes make databases read faster?",
@@ -512,7 +556,9 @@
       "uid": "database-engineering",
       "name": "Database Engineering",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l"
+      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l",
+      "bgcolor": "#E7ECFF",
+      "themecolor": "#5677f5"
     },
     "yt_video_id": "UT_TVldzA64",
     "title": "How to handle database outages?",
@@ -535,7 +581,9 @@
       "uid": "outage-dissections",
       "name": "Outage Dissections",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc"
+      "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc",
+      "bgcolor": "#FFF1E7",
+      "themecolor": "#FF8229"
     },
     "yt_video_id": "h5hXivWws7k",
     "title": "Dissecting Spotify's Global Outage - March 8, 2022",
@@ -558,7 +606,9 @@
       "uid": "python-internals",
       "name": "Python Internals",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
+      "bgcolor": "#DDFFF1",
+      "themecolor": "#00A662"
     },
     "yt_video_id": "Q8luYnxiFFE",
     "title": "How \"is\" operator is implemented in python?",
@@ -581,7 +631,9 @@
       "uid": "python-internals",
       "name": "Python Internals",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
+      "bgcolor": "#DDFFF1",
+      "themecolor": "#00A662"
     },
     "yt_video_id": "IGLnxdmJu2c",
     "title": "How id() function is implemented in python?",
@@ -604,7 +656,9 @@
       "uid": "python-internals",
       "name": "Python Internals",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
+      "bgcolor": "#DDFFF1",
+      "themecolor": "#00A662"
     },
     "yt_video_id": "u4tfIy--4GM",
     "title": "How python compares a float and an int objects?",
@@ -627,7 +681,9 @@
       "uid": "python-internals",
       "name": "Python Internals",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
+      "bgcolor": "#DDFFF1",
+      "themecolor": "#00A662"
     },
     "yt_video_id": "6mhXGEXRXG0",
     "title": "How python optimizes integers?",
@@ -648,9 +704,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "yt_video_id": "dTPh3KcKPYo",
     "title": "Scaling Taxonomy Service and Database",
@@ -673,7 +731,9 @@
       "uid": "python-internals",
       "name": "Python Internals",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
+      "bgcolor": "#DDFFF1",
+      "themecolor": "#00A662"
     },
     "yt_video_id": "zz2Lu5ht_jA",
     "title": "How python implements chained comparison operators?",
@@ -694,9 +754,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "yt_video_id": "4_jlmX_oB94",
     "title": "Designing Taxonomy on SQL",
@@ -719,7 +781,9 @@
       "uid": "python-internals",
       "name": "Python Internals",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
+      "bgcolor": "#DDFFF1",
+      "themecolor": "#00A662"
     },
     "yt_video_id": "QpGK69LzfpY",
     "title": "How python optimizes strings using String Interning?",
@@ -742,7 +806,9 @@
       "uid": "database-engineering",
       "name": "Database Engineering",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l"
+      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l",
+      "bgcolor": "#E7ECFF",
+      "themecolor": "#5677f5"
     },
     "yt_video_id": "x1XmcuosZNk",
     "title": "5 million + random rows in less than 100 seconds using SQL",
@@ -765,7 +831,9 @@
       "uid": "python-internals",
       "name": "Python Internals",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
+      "bgcolor": "#DDFFF1",
+      "themecolor": "#00A662"
     },
     "yt_video_id": "rWb7VYz1q1U",
     "title": "Changing python grammar to support standalone walrus assignments",
@@ -786,9 +854,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "yt_video_id": "m_7xSIhxZL8",
     "title": "End-to-end Message Encryption",
@@ -811,7 +881,9 @@
       "uid": "python-internals",
       "name": "Python Internals",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
+      "bgcolor": "#DDFFF1",
+      "themecolor": "#00A662"
     },
     "yt_video_id": "k5isLG6vqss",
     "title": "Setting up cpython locally and making your first change",
@@ -834,7 +906,9 @@
       "uid": "python-internals",
       "name": "Python Internals",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
+      "bgcolor": "#DDFFF1",
+      "themecolor": "#00A662"
     },
     "yt_video_id": "E-3J8X5DulY",
     "title": "Series Introduction: The Honest Python",
@@ -855,9 +929,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "yt_video_id": "kIP8L-CSl2Y",
     "title": "Designing Notifications Service for Instagram",

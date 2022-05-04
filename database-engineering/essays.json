@@ -6,7 +6,9 @@
       "uid": "database-engineering",
       "name": "Database Engineering",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l"
+      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l",
+      "bgcolor": "#E7ECFF",
+      "themecolor": "#5677f5"
     },
     "uid": "udemy-sql-taxonomy",
     "title": "Designing Taxonomy on a Relational DB",
@@ -30,7 +32,9 @@
       "uid": "database-engineering",
       "name": "Database Engineering",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l"
+      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l",
+      "bgcolor": "#E7ECFF",
+      "themecolor": "#5677f5"
     },
     "uid": "bitcask",
     "title": "Bitcask - A Log-Structured Fast KV Store",
@@ -54,7 +58,9 @@
       "uid": "database-engineering",
       "name": "Database Engineering",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l"
+      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l",
+      "bgcolor": "#E7ECFF",
+      "themecolor": "#5677f5"
     },
     "uid": "mysql-cache",
     "title": "Midpoint Insertion Strategy in MySQL LRU Cache",
@@ -78,7 +84,9 @@
       "uid": "database-engineering",
       "name": "Database Engineering",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l"
+      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l",
+      "bgcolor": "#E7ECFF",
+      "themecolor": "#5677f5"
     },
     "uid": "fast-and-efficient-pagination-in-mongodb",
     "title": "Fast and Efficient Pagination in MongoDB",
@@ -102,7 +110,9 @@
       "uid": "database-engineering",
       "name": "Database Engineering",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l"
+      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l",
+      "bgcolor": "#E7ECFF",
+      "themecolor": "#5677f5"
     },
     "uid": "mongodb-cursor-skip-is-slow",
     "title": "Why MongoDB's cursor.skip() is Slow?",
@@ -126,7 +136,9 @@
       "uid": "database-engineering",
       "name": "Database Engineering",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l"
+      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l",
+      "bgcolor": "#E7ECFF",
+      "themecolor": "#5677f5"
     },
     "uid": "benchmark-and-compare-pagination-approach-in-mongodb",
     "title": "Benchmark Pagination Strategies in MongoDB",

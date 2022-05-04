@@ -6,7 +6,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "genetic-knapsack",
     "title": "Genetic Algorithm to solve the Knapsack Problem",
@@ -30,7 +32,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "lfsr",
     "title": "Pseudorandom Number Generation using LFSR",
@@ -52,9 +56,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "indexing-on-partitioned-data",
     "title": "Indexing on Partitioned Data",
@@ -76,9 +82,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "data-partitioning-strategies",
     "title": "Data Partitioning Strategies",
@@ -100,9 +108,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "data-partitioning",
     "title": "Data Partitioning",
@@ -124,9 +134,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "leaderless-replication",
     "title": "Leaderless Replication",
@@ -148,9 +160,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "conflict-resolution",
     "title": "Conflict Resolution",
@@ -172,9 +186,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "conflict-detection",
     "title": "Conflict Detection",
@@ -196,9 +212,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "multi-master-replication",
     "title": "Multi-Master Replication",
@@ -220,9 +238,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "monotonic-reads",
     "title": "Monotonic Reads",
@@ -244,9 +264,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "read-your-write-consistency",
     "title": "Read-your-write Consistency",
@@ -268,9 +290,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "handling-outages-master-replica",
     "title": "Handling outages in a Master-Replica setup",
@@ -292,9 +316,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "new-replica",
     "title": "The New Replica",
@@ -316,9 +342,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "replication-formats",
     "title": "Replication Formats",
@@ -340,9 +368,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "replication-strategies",
     "title": "Replication Strategies",
@@ -364,9 +394,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "master-replica-replication",
     "title": "Master-Replica Replication",
@@ -388,9 +420,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "durability",
     "title": "\"D\" in ACID - Durability",
@@ -412,9 +446,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "isolation",
     "title": "\"I\" in ACID - Isolation",
@@ -436,9 +472,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "consistency",
     "title": "\"C\" in ACID - Consistency",
@@ -460,9 +498,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "atomicity",
     "title": "\"A\" in ACID - Atomicity",
@@ -484,9 +524,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "architectures-in-distributed-systems",
     "title": "Architectures in Distributed Systems",
@@ -508,9 +550,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "mistaken-beliefs-of-distributed-systems",
     "title": "Mistaken Beliefs of Distributed Systems",
@@ -534,7 +578,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "fork-bomb",
     "title": "Fork Bomb",
@@ -558,7 +604,9 @@
       "uid": "python-internals",
       "name": "Python Internals",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
+      "bgcolor": "#DDFFF1",
+      "themecolor": "#00A662"
     },
     "uid": "chained-operators-python",
     "title": "Chained Comparison Operators in Python",
@@ -582,7 +630,9 @@
       "uid": "database-engineering",
       "name": "Database Engineering",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l"
+      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l",
+      "bgcolor": "#E7ECFF",
+      "themecolor": "#5677f5"
     },
     "uid": "udemy-sql-taxonomy",
     "title": "Designing Taxonomy on a Relational DB",
@@ -606,7 +656,9 @@
       "uid": "python-internals",
       "name": "Python Internals",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
+      "bgcolor": "#DDFFF1",
+      "themecolor": "#00A662"
     },
     "uid": "the-weird-walrus",
     "title": "The Weird Walrus",
@@ -630,7 +682,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "fully-persistent-arrays",
     "title": "Fully Persistent Arrays",
@@ -654,7 +708,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "persistent-data-structures-introduction",
     "title": "Persistent Data Structures - An Introduction",
@@ -678,7 +734,9 @@
       "uid": "python-internals",
       "name": "Python Internals",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
+      "bgcolor": "#DDFFF1",
+      "themecolor": "#00A662"
     },
     "uid": "constant-folding-python",
     "title": "Constant Folding in Python",
@@ -702,7 +760,9 @@
       "uid": "python-internals",
       "name": "Python Internals",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
+      "bgcolor": "#DDFFF1",
+      "themecolor": "#00A662"
     },
     "uid": "string-interning",
     "title": "String Interning in Python",
@@ -744,7 +804,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "flajolet-martin",
     "title": "Approximate Count-Distinct using Flajolet Martin Algorithm",
@@ -768,7 +830,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "2q-cache",
     "title": "2Q Cache Management Algorithm",
@@ -792,7 +856,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "israeli-queues",
     "title": "Israeli Queues",
@@ -816,7 +882,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "1d-terrain",
     "title": "1D Procedural Terrain Generation",
@@ -840,7 +908,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "jaccard-minhash",
     "title": "Set Similarity using Jaccard Similarity Coefficient and MinHash",
@@ -864,7 +934,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "ts-smoothing",
     "title": "Time Series Smoothing - Making Aberrations Stand Out",
@@ -888,7 +960,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "lfu",
     "title": "Constant Time LFU",
@@ -912,7 +986,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "morris-counter",
     "title": "Morris's Algorithm for Approximate Counting",
@@ -936,7 +1012,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "slowsort",
     "title": "Slowsort - A Pessimal Sorting Algorithm",
@@ -960,7 +1038,9 @@
       "uid": "database-engineering",
       "name": "Database Engineering",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l"
+      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l",
+      "bgcolor": "#E7ECFF",
+      "themecolor": "#5677f5"
     },
     "uid": "bitcask",
     "title": "Bitcask - A Log-Structured Fast KV Store",
@@ -984,7 +1064,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "phi-accrual",
     "title": "Phi \u03c6 Accrual Failure Detection",
@@ -1044,7 +1126,9 @@
       "uid": "python-internals",
       "name": "Python Internals",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
+      "bgcolor": "#DDFFF1",
+      "themecolor": "#00A662"
     },
     "uid": "python-iterable-integers",
     "title": "Making Python Integers Iterable",
@@ -1084,9 +1168,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "rum",
     "title": "The RUM Conjecture",
@@ -1110,7 +1196,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "consistent-hashing",
     "title": "Consistent Hashing",
@@ -1134,7 +1222,9 @@
       "uid": "python-internals",
       "name": "Python Internals",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
+      "bgcolor": "#DDFFF1",
+      "themecolor": "#00A662"
     },
     "uid": "python-caches-integers",
     "title": "Integer Caching in Python",
@@ -1158,7 +1248,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "fractional-cascading",
     "title": "Fractional Cascading - Speeding up Binary Searches",
@@ -1200,7 +1292,9 @@
       "uid": "database-engineering",
       "name": "Database Engineering",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l"
+      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l",
+      "bgcolor": "#E7ECFF",
+      "themecolor": "#5677f5"
     },
     "uid": "mysql-cache",
     "title": "Midpoint Insertion Strategy in MySQL LRU Cache",
@@ -1224,7 +1318,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "fsm",
     "title": "Building Finite State Machines with Python Coroutines",
@@ -1248,7 +1344,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "bayesian-average",
     "title": "Better Ranking using Bayesian Average",
@@ -1270,9 +1368,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "uid": "sliding-window-ratelimiter",
     "title": "Sliding Window based Rate Limiter",
@@ -1296,7 +1396,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "idf",
     "title": "Inverse Document Frequency",
@@ -1356,7 +1458,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "rule-30",
     "title": "Pseudorandom Number Generation using Cellular Automata - Rule 30",
@@ -1380,7 +1484,9 @@
       "uid": "python-internals",
       "name": "Python Internals",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
+      "bgcolor": "#DDFFF1",
+      "themecolor": "#00A662"
     },
     "uid": "function-overloading",
     "title": "Function Overloading in Python",
@@ -1404,7 +1510,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "isolation-forest",
     "title": "Isolation Forest Algorithm for Anomaly Detection",
@@ -1446,7 +1554,9 @@
       "uid": "python-internals",
       "name": "Python Internals",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
+      "bgcolor": "#DDFFF1",
+      "themecolor": "#00A662"
     },
     "uid": "super-long-integers",
     "title": "Super Long Integers in Python",
@@ -1470,7 +1580,9 @@
       "uid": "python-internals",
       "name": "Python Internals",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
+      "bgcolor": "#DDFFF1",
+      "themecolor": "#00A662"
     },
     "uid": "i-changed-my-python",
     "title": "Changing Python",
@@ -1512,7 +1624,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "how-sleepsort-helped-me-understand-concurrency-in-golang",
     "title": "Sleepsort and Concurrency in Golang",
@@ -1554,7 +1668,9 @@
       "uid": "database-engineering",
       "name": "Database Engineering",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l"
+      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l",
+      "bgcolor": "#E7ECFF",
+      "themecolor": "#5677f5"
     },
     "uid": "fast-and-efficient-pagination-in-mongodb",
     "title": "Fast and Efficient Pagination in MongoDB",
@@ -1578,7 +1694,9 @@
       "uid": "database-engineering",
       "name": "Database Engineering",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l"
+      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l",
+      "bgcolor": "#E7ECFF",
+      "themecolor": "#5677f5"
     },
     "uid": "mongodb-cursor-skip-is-slow",
     "title": "Why MongoDB's cursor.skip() is Slow?",
@@ -1602,7 +1720,9 @@
       "uid": "database-engineering",
       "name": "Database Engineering",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l"
+      "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l",
+      "bgcolor": "#E7ECFF",
+      "themecolor": "#5677f5"
     },
     "uid": "benchmark-and-compare-pagination-approach-in-mongodb",
     "title": "Benchmark Pagination Strategies in MongoDB",

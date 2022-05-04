@@ -6,7 +6,9 @@
       "uid": "outage-dissections",
       "name": "Outage Dissections",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc"
+      "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc",
+      "bgcolor": "#FFF1E7",
+      "themecolor": "#FF8229"
     },
     "yt_video_id": "xa-hMF8gku0",
     "title": "An engineering deep-dive into Atlassian's Mega Outage of April 2022",
@@ -29,7 +31,9 @@
       "uid": "outage-dissections",
       "name": "Outage Dissections",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc"
+      "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc",
+      "bgcolor": "#FFF1E7",
+      "themecolor": "#FF8229"
     },
     "yt_video_id": "6oJaZbQKnJE",
     "title": "Dissecting Google Maps Outage: Bad Rollout and Cascading Failures",
@@ -52,7 +56,9 @@
       "uid": "outage-dissections",
       "name": "Outage Dissections",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc"
+      "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc",
+      "bgcolor": "#FFF1E7",
+      "themecolor": "#FF8229"
     },
     "yt_video_id": "ZFRAFTn0cQ0",
     "title": "Dissecting GitHub Outage: ID column reaching the max value 2147483647",
@@ -75,7 +81,9 @@
       "uid": "outage-dissections",
       "name": "Outage Dissections",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc"
+      "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc",
+      "bgcolor": "#FFF1E7",
+      "themecolor": "#FF8229"
     },
     "yt_video_id": "h5hXivWws7k",
     "title": "Dissecting Spotify's Global Outage - March 8, 2022",

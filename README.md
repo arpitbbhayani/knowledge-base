@@ -17,13 +17,13 @@ I also run a [course on System Design](https://arpitbhayani.me/masterclass) in w
 
 Topics I like to talk about are
 
- - [System Design](https://arpitbhayani.me/system-design)
+ - [Designing Systems](https://arpitbhayani.me/system-design)
  - [Database Engineering](https://arpitbhayani.me/database-engineering)
  - [Outage Dissections](https://arpitbhayani.me/outage-dissections)
  - [Distributed Systems](https://arpitbhayani.me/distributed-systems)
  - [Python Internals](https://arpitbhayani.me/python-internals)
  - [Garbage Collection](https://arpitbhayani.me/garbage-collection)
- - [Microservices](https://arpitbhayani.me/microservices)
+ - [Designing μ-services](https://arpitbhayani.me/microservices)
  - [Advanced Algorithms](https://arpitbhayani.me/advanced-algorithms)
 
 5 recent videos I published on [YouTube](https://www.youtube.com/c/ArpitBhayani)

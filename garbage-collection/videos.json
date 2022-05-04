@@ -6,7 +6,9 @@
       "uid": "garbage-collection",
       "name": "Garbage Collection",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT3MvruOP09U1bWmcjxLIMwR"
+      "youtube_playlist_id": "PLsdq-3Z1EPT3MvruOP09U1bWmcjxLIMwR",
+      "bgcolor": "#F0E6FF",
+      "themecolor": "#A66AFF"
     },
     "yt_video_id": "4qLf0FJMyf0",
     "title": "Mark and Sweep Garbage Collection Algorithm",
@@ -29,7 +31,9 @@
       "uid": "garbage-collection",
       "name": "Garbage Collection",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT3MvruOP09U1bWmcjxLIMwR"
+      "youtube_playlist_id": "PLsdq-3Z1EPT3MvruOP09U1bWmcjxLIMwR",
+      "bgcolor": "#F0E6FF",
+      "themecolor": "#A66AFF"
     },
     "yt_video_id": "IojMqbegejk",
     "title": "How to pick a garbage collector?",
@@ -52,7 +56,9 @@
       "uid": "garbage-collection",
       "name": "Garbage Collection",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT3MvruOP09U1bWmcjxLIMwR"
+      "youtube_playlist_id": "PLsdq-3Z1EPT3MvruOP09U1bWmcjxLIMwR",
+      "bgcolor": "#F0E6FF",
+      "themecolor": "#A66AFF"
     },
     "yt_video_id": "jcMxuLZCcqU",
     "title": "Why do programming languages need automatic garbage collection?",

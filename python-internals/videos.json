@@ -6,7 +6,9 @@
       "uid": "python-internals",
       "name": "Python Internals",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
+      "bgcolor": "#DDFFF1",
+      "themecolor": "#00A662"
     },
     "yt_video_id": "Q8luYnxiFFE",
     "title": "How \"is\" operator is implemented in python?",
@@ -29,7 +31,9 @@
       "uid": "python-internals",
       "name": "Python Internals",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
+      "bgcolor": "#DDFFF1",
+      "themecolor": "#00A662"
     },
     "yt_video_id": "IGLnxdmJu2c",
     "title": "How id() function is implemented in python?",
@@ -52,7 +56,9 @@
       "uid": "python-internals",
       "name": "Python Internals",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
+      "bgcolor": "#DDFFF1",
+      "themecolor": "#00A662"
     },
     "yt_video_id": "u4tfIy--4GM",
     "title": "How python compares a float and an int objects?",
@@ -75,7 +81,9 @@
       "uid": "python-internals",
       "name": "Python Internals",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
+      "bgcolor": "#DDFFF1",
+      "themecolor": "#00A662"
     },
     "yt_video_id": "6mhXGEXRXG0",
     "title": "How python optimizes integers?",
@@ -98,7 +106,9 @@
       "uid": "python-internals",
       "name": "Python Internals",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
+      "bgcolor": "#DDFFF1",
+      "themecolor": "#00A662"
     },
     "yt_video_id": "zz2Lu5ht_jA",
     "title": "How python implements chained comparison operators?",
@@ -121,7 +131,9 @@
       "uid": "python-internals",
       "name": "Python Internals",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
+      "bgcolor": "#DDFFF1",
+      "themecolor": "#00A662"
     },
     "yt_video_id": "QpGK69LzfpY",
     "title": "How python optimizes strings using String Interning?",
@@ -144,7 +156,9 @@
       "uid": "python-internals",
       "name": "Python Internals",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
+      "bgcolor": "#DDFFF1",
+      "themecolor": "#00A662"
     },
     "yt_video_id": "rWb7VYz1q1U",
     "title": "Changing python grammar to support standalone walrus assignments",
@@ -167,7 +181,9 @@
       "uid": "python-internals",
       "name": "Python Internals",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
+      "bgcolor": "#DDFFF1",
+      "themecolor": "#00A662"
     },
     "yt_video_id": "k5isLG6vqss",
     "title": "Setting up cpython locally and making your first change",
@@ -190,7 +206,9 @@
       "uid": "python-internals",
       "name": "Python Internals",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU"
+      "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
+      "bgcolor": "#DDFFF1",
+      "themecolor": "#00A662"
     },
     "yt_video_id": "E-3J8X5DulY",
     "title": "Series Introduction: The Honest Python",

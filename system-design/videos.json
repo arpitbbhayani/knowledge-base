@@ -4,9 +4,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "yt_video_id": "oiZH5U_a0pg",
     "title": "Introduction to Serverless Computing and Architecture",
@@ -27,9 +29,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "yt_video_id": "wXvljefXyEo",
     "title": "Database Sharding and Partitioning",
@@ -50,9 +54,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "yt_video_id": "CW4gVlU0xtU",
     "title": "Why, where, and when should we throttle or rate limit?",
@@ -73,9 +79,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "yt_video_id": "1r9bPisYaOQ",
     "title": "How to approach System Design?",
@@ -96,9 +104,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "yt_video_id": "m6DtqSb1BDM",
     "title": "Implementing Idempotence in a Payments Microservice",
@@ -119,9 +129,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "yt_video_id": "8S4k7k_f9Sk",
     "title": "Sending payload in an HTTP GET request",
@@ -142,9 +154,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "yt_video_id": "dTPh3KcKPYo",
     "title": "Scaling Taxonomy Service and Database",
@@ -165,9 +179,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "yt_video_id": "4_jlmX_oB94",
     "title": "Designing Taxonomy on SQL",
@@ -188,9 +204,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "yt_video_id": "m_7xSIhxZL8",
     "title": "End-to-end Message Encryption",
@@ -211,9 +229,11 @@
     "topic": {
       "id": 0,
       "uid": "system-design",
-      "name": "System Design",
+      "name": "Designing Systems",
       "one_liner": null,
-      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO"
+      "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
+      "bgcolor": "#FFE7E7",
+      "themecolor": "#f00"
     },
     "yt_video_id": "kIP8L-CSl2Y",
     "title": "Designing Notifications Service for Instagram",

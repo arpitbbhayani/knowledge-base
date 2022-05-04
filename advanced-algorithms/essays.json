@@ -6,7 +6,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "genetic-knapsack",
     "title": "Genetic Algorithm to solve the Knapsack Problem",
@@ -30,7 +32,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "lfsr",
     "title": "Pseudorandom Number Generation using LFSR",
@@ -54,7 +58,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "fork-bomb",
     "title": "Fork Bomb",
@@ -78,7 +84,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "fully-persistent-arrays",
     "title": "Fully Persistent Arrays",
@@ -102,7 +110,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "persistent-data-structures-introduction",
     "title": "Persistent Data Structures - An Introduction",
@@ -126,7 +136,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "flajolet-martin",
     "title": "Approximate Count-Distinct using Flajolet Martin Algorithm",
@@ -150,7 +162,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "2q-cache",
     "title": "2Q Cache Management Algorithm",
@@ -174,7 +188,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "israeli-queues",
     "title": "Israeli Queues",
@@ -198,7 +214,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "1d-terrain",
     "title": "1D Procedural Terrain Generation",
@@ -222,7 +240,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "jaccard-minhash",
     "title": "Set Similarity using Jaccard Similarity Coefficient and MinHash",
@@ -246,7 +266,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "ts-smoothing",
     "title": "Time Series Smoothing - Making Aberrations Stand Out",
@@ -270,7 +292,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "lfu",
     "title": "Constant Time LFU",
@@ -294,7 +318,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "morris-counter",
     "title": "Morris's Algorithm for Approximate Counting",
@@ -318,7 +344,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "slowsort",
     "title": "Slowsort - A Pessimal Sorting Algorithm",
@@ -342,7 +370,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "phi-accrual",
     "title": "Phi \u03c6 Accrual Failure Detection",
@@ -366,7 +396,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "consistent-hashing",
     "title": "Consistent Hashing",
@@ -390,7 +422,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "fractional-cascading",
     "title": "Fractional Cascading - Speeding up Binary Searches",
@@ -414,7 +448,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "fsm",
     "title": "Building Finite State Machines with Python Coroutines",
@@ -438,7 +474,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "bayesian-average",
     "title": "Better Ranking using Bayesian Average",
@@ -462,7 +500,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "idf",
     "title": "Inverse Document Frequency",
@@ -486,7 +526,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "rule-30",
     "title": "Pseudorandom Number Generation using Cellular Automata - Rule 30",
@@ -510,7 +552,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "isolation-forest",
     "title": "Isolation Forest Algorithm for Anomaly Detection",
@@ -534,7 +578,9 @@
       "uid": "advanced-algorithms",
       "name": "Advanced Algorithms",
       "one_liner": null,
-      "youtube_playlist_id": null
+      "youtube_playlist_id": null,
+      "bgcolor": "#FFE7F3",
+      "themecolor": "#ff007f"
     },
     "uid": "how-sleepsort-helped-me-understand-concurrency-in-golang",
     "title": "Sleepsort and Concurrency in Golang",
