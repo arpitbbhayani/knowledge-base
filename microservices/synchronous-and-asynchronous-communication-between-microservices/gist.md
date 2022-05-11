@@ -1,14 +1,14 @@
 Say, we are building a Social Network and anytime someone reacts to your post, you need to be notified. So, how should the Reaction service talk to the Notification service to send out a notification?
 
-The communication would be much simpler and reliable, just a function call, if it was a monolith; but things become tricky as we go distributed.
+The communication would be much simpler and reliable, just a function call if it was a monolith; but things become tricky as we go distributed.
 
 Microservices need to talk to each other to exchange information and get things done; and there are two categories of communication patterns - Synchronous and Asynchronous.
 
 # Synchronous Communication
 
-The communication is synchronous when the one services sends a request to other service and waits for the response before proceeding further.
+Communication is synchronous when one service sends a request to another service and waits for the response before proceeding further.
 
- Most common implementation of Sync communication is over HTTP using protocols like REST, GraphQL and gRPC.
+The most common implementation of Sync communication is over HTTP using protocols like REST, GraphQL, and gRPC.
 
 ## Advantages of Synchronous Communication
 
@@ -30,7 +30,7 @@ The communication is synchronous when the one services sends a request to other 
 
 # Asynchronous Communication
 
-The communication is asynchronous when the one services sends a request to other service and does NOT waits for the response; instead it continues with its own execution.
+The communication is asynchronous when the one service sends a request to another service and does NOT wait for the response; instead, it continues with its own execution.
 
 Async communication is most commonly implemented using a message broker like RabbitMQ, SQS, Kafka, Kinesis, etc.
 
