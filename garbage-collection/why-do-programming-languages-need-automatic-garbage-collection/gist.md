@@ -22,7 +22,7 @@ Objects assigned on Heap need to be garbage collected, but why do we need the he
 
 Primitive programming languages like C and C++ do not have their garbage collection instead expect the developer to not only allocate the object but also deallocate it explicitly. Hence we see the functions like "malloc" and "free".
 
-The objects we allocate using "malloc" will continue to exist unless they are reclaimed using "free". The explicit need to "Free-ing" the allocated object is called Explicit Deacclocation.
+The objects we allocate using "malloc" will continue to exist unless they are reclaimed using "free". The explicit need to "Free-ing" the allocated object is called Explicit Deallocation.
 
 Although cleaning up the mess we created is a good idea, it is not reliable that we rely on the engineers and developers to always free the objects they allocated. Hence this gives rise to the need for automatic cleanup of unused variables- automatic garbage collection.
 
