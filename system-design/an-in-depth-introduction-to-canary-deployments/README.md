@@ -36,16 +36,6 @@ Say you own the Auth service that is written in Java and you chose to re-write i
 This is where canary is super-helpful when we a fraction of servers serving requests from Golang server while others from the existing setup. We now forward 5% traffic to the new ones and observe how it reacts.
 
 Once we have enough confidence in the newer setup, we increase the roll-out fraction to 15%, 50%, 75%, and eventually 100%. Canary setup thus gives us a seamless transition from our old server to a newer one.
-
----
-
-This topic is extensively covered in my YT video; check it out 👇‍
-
-https://youtu.be/nnseeKxovaM
-
-I also teach a course on System Design, so if you want to learn it using the First Principles do check it out. The link is in the comments.
-
-If you find this amusing, follow me and subscribe to my YT channel. I post 3 in-depth engineering videos every week.
 <hr />
 
 
