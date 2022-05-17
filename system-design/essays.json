@@ -375,7 +375,7 @@
       "themecolor": "#f00"
     },
     "uid": "durability",
-    "title": "\"D\" in ACID - Durability",
+    "title": "ACID - Durability",
     "description": "Durability seems to be a taken-for-granted requirement, but to be honest, it is the most important one. Let's deep dive and find why it is so important? How do databases achieve durability in the midst of thousands of concurrent transactions? And how to achieve durability in a distributed setting?",
     "gif": "https://media.giphy.com/media/iB4PoTVka0Xnul7UaC/giphy.gif",
     "image": "https://user-images.githubusercontent.com/4745789/126130275-10c1c4cf-483a-42d7-bd78-2f0ff4da4947.png",
@@ -401,7 +401,7 @@
       "themecolor": "#f00"
     },
     "uid": "isolation",
-    "title": "\"I\" in ACID - Isolation",
+    "title": "ACID - Isolation",
     "description": "Isolation is the ability of the database to concurrently process multiple transactions in a way that changes made in one do not another.",
     "gif": "https://media.giphy.com/media/iB4PoTVka0Xnul7UaC/giphy.gif",
     "image": "https://user-images.githubusercontent.com/4745789/124763085-36d1db80-df51-11eb-985e-1d98e9b78cba.png",
@@ -427,7 +427,7 @@
       "themecolor": "#f00"
     },
     "uid": "consistency",
-    "title": "\"C\" in ACID - Consistency",
+    "title": "ACID - Consistency",
     "description": "In the context of databases, Consistency is Correctness, which means that under no circumstance will the data lose its correctness.",
     "gif": "https://media.giphy.com/media/iB4PoTVka0Xnul7UaC/giphy.gif",
     "image": "https://user-images.githubusercontent.com/4745789/124225698-86657100-db25-11eb-8284-9771f5a0b545.png",
@@ -453,7 +453,7 @@
       "themecolor": "#f00"
     },
     "uid": "atomicity",
-    "title": "\"A\" in ACID - Atomicity",
+    "title": "ACID - Atomicity",
     "description": "A single database transaction often contains multiple statements to be executed on the database. In Relational Databases, these are usually multiple SQL statements, while in the case of non-Relational Databases, these could be multiple database commands.",
     "gif": "https://media.giphy.com/media/iB4PoTVka0Xnul7UaC/giphy.gif",
     "image": "https://user-images.githubusercontent.com/4745789/124224260-ef97b500-db22-11eb-8d0f-cc808093eb00.png",
