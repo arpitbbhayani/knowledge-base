@@ -8,7 +8,7 @@ When we perform the disk write, the changes are not directly written to the disk
 
 So, while guaranteeing reliability we have to skip all of these caches and flush our changes as quickly as possible on the disk sectors. But if we do that, we are impacting the throughput of the system given how expensive disk writes are.
 
-# Write-ahead Logging
+## Write-ahead Logging
 
 Write-ahead logging is a standard way to ensure data integrity and reliability. Any changes made on the database are first logged in an append-only file called write-ahead Log or Commit Log. Then the actual blocks having the data (row, document) on the disk are updated.
 
@@ -18,7 +18,7 @@ Hence, instead of synchronously flushing the row updates to the disk, we synchro
 
 Once the operation is logged, the database can do its routine work and make the changes to the actual row or document data through the OS cache and other buffers. This way we guarantee reliability and durability in as minimal of a time as possible while not affecting the throughput much.
 
-## Advantages of using WAL
+### Advantages of using WAL
 
 The advantages of using WAL are
 
@@ -27,6 +27,6 @@ The advantages of using WAL are
 - we can recover the data in case of a data loss
 - we can have point-in-time snapshots
 
-## Data integrity in WAL
+### Data integrity in WAL
 
 WAL also needs to ensure that any operation flushed in the log is not corrupted and hence it maintains its integrity using a CRC-32 and flushes it on the disk with every entry. This CRC is checked during reading the entry from the disk, if it does not match the DB throws an error.

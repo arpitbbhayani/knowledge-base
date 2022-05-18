@@ -10,7 +10,7 @@ This is a classic case of Distributed Transaction where you need a guarantee of 
 
 The core idea of 2PC is: Split the transaction into two phases: Reservation and Assignment.
 
-# Phase 1: Reservation
+## Phase 1: Reservation
 
 The Order service will first talk to store service to reserve food items and delivery service to reserve a delivery partner. When the food or delivery partner is reserved, they are not notified. By reserving them, we are just making them unavailable for everyone else.
 
@@ -18,7 +18,7 @@ If the order service fails to reserve any of these, we roll back the reservation
 
 We move forward to the Commit phase only when the order service reserves both- a food item and a delivery agent.
 
-# Phase 2: Commit
+## Phase 2: Commit
 
 In the Commit phase, the order services reach out to the store service and the delivery service to assign the food and agent to the order. Because the food and the agent were reserved, no other transaction could see it, and hence with a simple assignment, we can get the reserved food and agent assigned to an order.
 

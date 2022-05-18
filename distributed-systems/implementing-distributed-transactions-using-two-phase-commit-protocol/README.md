@@ -14,13 +14,13 @@ We will have 3 microservices: Order, Store, and Delivery.
 
 An important design decision: The store services have food, and every food has packets that can be purchased and assigned. Hence, instead of just playing with the count, we will play with the granular food packets while ordering.
 
-# Phase 1: Reservation
+## Phase 1: Reservation
 
 Order service calls the reservation API exposed on the store and the delivery services. The individual services reserve the food packet (of the ordered food) and a delivery agent atomically (exclusive lock or atomic operation).
 
 Upon reservation, the food packet and the agent become unavailable for any other transaction.
 
-# Phase 2: Assignment
+## Phase 2: Assignment
 
 Order service then calls the store and delivery services to atomically assign the reserved food packet and the delivery agent to the order. Upon success assigning both to the order, the order is marked as successful, and the order service returns a 200 OK to the user.
 

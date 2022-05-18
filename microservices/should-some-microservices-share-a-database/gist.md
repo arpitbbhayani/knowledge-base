@@ -11,31 +11,31 @@ Analytics service updates the information asynchronously directly in the blog's 
 - no latency overhead
 - quick development time
 
-# Challenges with Shared Database
+## Challenges with Shared Database
 
 There are 4 challenges to using this pattern
 
-## External parties know internal details
+### External parties know internal details
 
 By sharing the database across services, an external party (Analytics) would get to know the internal details of the Blogs service; eg: deletion practice, schema, etc.
 
 This leads to a very tight coupling between the services; which then restrains the maintainability and performance of the system. For example, whenever the Blogs service changes the schema, the Analytics Service would have to be informed about the change.
 
-## Sharing the database is sharing the logic
+### Sharing the database is sharing the logic
 
 To compute some information we need to query a set of tables; and say, this information is required by the Blogs, Analytics, and Recommendation service.
 
 The business logic to compute the information has to be replicated across all the 3 services. Any change in the logic needs to be made across all the services.
 
-## Risk of data corruption and deletion
+### Risk of data corruption and deletion
 
 There is a risk that one of the services might corrupt or delete some data given that the database is shared between the services.
 
-## Abusing the shared database
+### Abusing the shared database
 
 One service firing expensive queries on the database will affect the performance of other services sharing the same database.
 
-# When to share a database?
+## When to share a database?
 
 A shared database pattern is helpful when you are seeking quick development time. Although it is not the best practice, sharing the database does reduce the development effort by a massive margin.
 

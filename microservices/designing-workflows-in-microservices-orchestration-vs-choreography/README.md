@@ -9,7 +9,7 @@ Two high-level architecture patterns help us achieve this
 - Orchestration
 - Choreography
 
-# Orchestration
+## Orchestration
 
 Orchestration is the simplest way to model workflows. The core idea of the Orchestration pattern is to keep the decision logic centralized and have a single brain in the system.
 
@@ -17,7 +17,7 @@ In our example, the Orders service can be that brain, and when the order is plac
 
 The workflow as part of our example is a one-level simple workflow but in the real world, these workflows could become extremely complex and the Orders service would be needing to handle the coordination.
 
-# Choreography
+## Choreography
 
 The core idea of the Choreography pattern is to keep the decision logic distributed and let each service decide when needs to be done upon an event. It thus laid the foundation for Event Driven Architecture.
 
@@ -25,7 +25,7 @@ In our example, when the order is placed the Orders service will simply emit an 
 
 All the 4 involved services are thus totally decoupled and independent; making this a truly distributed and decentralized architecture
 
-# Orchestration vs Choreography
+## Orchestration vs Choreography
 
 Most model systems are inclined towards Choreography as it gives some amazing benefits
 

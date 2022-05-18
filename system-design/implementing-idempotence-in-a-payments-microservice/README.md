@@ -14,7 +14,7 @@ Before we talk about idempotence, it is important to understand why it would rep
 
 Consider a situation where the payments service initiated a payment with a Payment Gateway, the money got deducted, but the payments service did not get the response. This would make the Payments service retry the API call, which would lead to a double deduction.
 
-# Implementing idempotence
+## Implementing idempotence
 
 Check and Update: Weave everything with a single ID.
 

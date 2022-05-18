@@ -1,6 +1,6 @@
 Sharding and partitioning come in very handy when we want to scale our systems. Let's talk about these concepts in detail.
 
-# How is the database scaled?
+## How is the database scaled?
 
 A database server is just a database process (like MySQL, MongoDB) running on a virtual server like EC2. Now when we put our database in production it starts getting from real good traction, say 100 writes per second (WPS).
 
@@ -28,15 +28,15 @@ We know one database server can handle 1000 WPS, but we need to handle 1500 WPS,
 
 This way each server will get 750 WPS, which it can very easily handle, and owns 50% of the data. Thus by adding more database servers we handled 1500 WPS (more than what a single machine could handle)
 
-# Sharding and Partitioning
+## Sharding and Partitioning
 
 Each database server in the above architecture is called a Shard while the data is said to be partitioned. Overall, a database is sharded and the data is partitioned.
 
-## Partitioned data on shards
+### Partitioned data on shards
 
 It is possible to have more partitions and fewer shards and in that case, each shard will own multiple partitions. Say, we have 100GB of data and it is split into 5 partitions and we have 2 shards. One shard will be responsible for 3 partitions while the other for 2.
 
-# Advantages and Disadvantages
+## Advantages and Disadvantages
 
 ### Advantages of Sharding
 

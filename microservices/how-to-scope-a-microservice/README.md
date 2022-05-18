@@ -8,7 +8,7 @@ Whenever we decide to create a new microservice, it is very important to underst
 
 There are a couple of guiding principles that would help us with scoping of microservice.
 
-# Loose Coupling
+## Loose Coupling
 
 Services are loosely coupled if changes made in one service do not require a change in other. This is the core ideology behind microservices as well, but while designing a system we tend to forget it.
 
@@ -16,7 +16,7 @@ Say, we have an Orders service and a Logistics service. These services are loose
 
 To achieve loose coupling, make your microservices expose as little information as possible. The other service should just know how to consume the data and that is it. No internals, no extra details.
 
-# High Cohesion
+## High Cohesion
 
 The principle of High Cohesion says that the related behavior should sit together as part of one service while the unrelated ones should be separate. This would encourage services to be operating independently.
 

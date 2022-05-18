@@ -18,4 +18,3 @@ Rollback as soon as possible.
 - Tune the performance of the webserver and networking stack of the server
 - Monitor the server resource consumption and set alerts
 - Add circuit breakers wherever possible.
-

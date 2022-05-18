@@ -23,7 +23,6 @@ Rollback as soon as possible.
 - Monitor the server resource consumption and set alerts
 - Add circuit breakers wherever possible.
 
-
 <hr />
 
 

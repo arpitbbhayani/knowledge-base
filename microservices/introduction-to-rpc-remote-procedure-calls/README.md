@@ -10,13 +10,13 @@ With this approach, every service needs to write logic to make HTTP call to the 
 
 RPCs were conceptualized to solve this problem.
 
-# Remote Procedure Calls
+## Remote Procedure Calls
 
 RPCs are designed to make remote network calls look and feel like local procedures. They abstract out all the complexities of remote invocations like Marshalling, Unmarshalling, Compressions, Retries, Security, etc.
 
 RPCs achieve this level of coherence using Stubs that sit in between the two services and convert incoming and outgoing packets into native objects.
 
-# Stubs
+## Stubs
 
 Stubs are the common piece of auto-generated code that defines the interface, in a given language, exposed by the server, and used by the client to consume the data.
 
@@ -24,11 +24,11 @@ The interface is defined in a common language like Protobuf and holds the inform
 
 For example, if the Auth service is written in Golang, the generator would generate a working code with the interface along with the transport details. This way, we can solely focus on writing the business logic and not worry about the network or other repetitive things.
 
-# Communication RPC
+## Communication RPC
 
 RPC can use any transport protocol for communication - Raw TCP, UDP, HTTP 1.1, or even HTTP 2. The transport is just a way through which the marshaled information will be sent across systems; and depending on the features an RPC runtime plans to support, an appropriate protocol will be chosen.
 
-# Advantages of using RPC
+## Advantages of using RPC
 
 - easy to use
 - strong API contract
@@ -39,7 +39,7 @@ RPC can use any transport protocol for communication - Raw TCP, UDP, HTTP 1.1, o
 - security is just a plug
 - no need to write client libraries, they can be auto-generated
 
-# Concerns while adopting RPC
+## Concerns while adopting RPC
 
 - stubs need to be re-generated whenever the signature changes
 - testing RPC is n trivial for beginners
