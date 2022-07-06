@@ -1,0 +1,9 @@
+Google maps outage: Handling Cascaded Failures
+
+Google Maps Outage : Dissection 18th Bad Rollout & March 2022 : Cascading Failure 2 hours 31 minutes ! ! → Google Maps JS API Google Maps Platform API ^5 " ↳ Maps static API I t, I ↳ gaming Navigation Maps SDK Directions API Android iOS Impact of the outage 65% error rate Maps JS API average on - - Directions API p99 hit 8500ms - 37 % error rate in Navigation gray tiles failed map initialization - , failed routing , crashes / Map not loading . Users seeing gray tiles !! The outage was global
+
+Root cause In a some service → = New Feature Rollout memory t. / exhausted its allocated resources - disk i. I \ The services crashed ☐B CPU The crash this resulted in of service A " ^" " some service < Tile Rendering Service @ Timeout with retries t. Started throwing errors because of retries 1 Because of retries internal reached , memory queues capacity f. ! CRASHED ! ! Server ran out of Memory H, increased latency , new req rejected with 503
+
+Failures Cascade Retries @ some service < Timeouts Tile Rendering Service 7 p @ @ Maps SDK Navigation SDK Because external clients were retrying , @ ¥ @¥ ¥ . @ ¥ ✗ ¥ ¥ 10x the normal traffic , ← side effect of retries Denial service of Remediation : Rollback the downtime → Minimizing is important 1 But cascaded failure continued for some time + Tile API recovered Slowly
+
+Prevention : - Reject request when server is at full capacity [ graceful degradation ] 0 ¥ Of service ^ ¥ TCP Tuning , Optimize bounds → celeb server Tuning of server Queues - t. In - mem proc butter tuning Exhaustive significant jump - monitoring : Notify when Block internal traffic serve customers Circuit Breaking , - 0 ! Internal Svc 1 * o X ¥ Service ¥ ✗ Internal Svc 2 ¥

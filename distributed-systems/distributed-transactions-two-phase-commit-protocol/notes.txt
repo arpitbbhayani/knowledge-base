@@ -1,0 +1,9 @@
+Distributed Transactions Two Phase Commit
+
+Distributed Transactions : 2 Phase Commit Distributed Transaction : A transaction that span over multiple physical systems, machines or computers . Scenario tomato : 10min food delivery by ☐☐ ☐ 20 Mato > ☐ ☐☐ ☐ ☐ ☐☐ > ¥ ¥ ¥ ¥ ¥ ¥ ☐ ☐ ☐☐ Keeps food ready Delivery workers Restaurants in their store are on standby To guarantee that the food is delivered under 10 mins tomato should accept 1 . Food is available in the store order only when 2 . Delivery partner is available to deliver update store store place - order ¥ orders assign Delivery delivery partner place order only when there available in the store is food and delivery partner is assigned
+
+In transaction steps happen Atomicity : a . either all or none Orders store Delivery store got the order ✓ I il t Delivery agent not booked ✗ Orders Store Delivery booked ✓ Delivery agent I t 1 ' store did not the order ✗ get ✗ If either of them fails , we revert the other ↳ Poor Ux to delivery partner ↳ loss because store spent time heating 4 packing This classic Distributed Transactions is a case of and cue now implement with 2 PC
+
+Orders Two Phase Commit : store Delivery | ① "" " " " " "" split the entire flow in 2 phases Reserve agent > "M " 1. Prepare - Reserve g. commit - ☐ ooh ☐ on, food , Book Agent > 2 place order Reservation : if both fails , transaction fails . we abort if only one succeeds , we cancel the reservation 2 abort T or the timer will auto cancel if both succeds , we move forward to commit phase commit : if both succeeds , order is placed if any one fails we cancel the , reservation and abort timer cancels the reservation if order service fails ,
+
+Orders Store Delivery | Reserve Food , @ Timer "" " " " " > "m " Book Food > Book Agent > ☐ place order Advantages : - guarantees ATOMIC transactions guarantees Isolation - Disadvantages : - slow prone to deadlock -

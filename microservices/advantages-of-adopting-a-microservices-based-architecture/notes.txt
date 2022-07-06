@@ -1,0 +1,7 @@
+Why microservices?
+
+Why Microservices ? What are microservices ? . Auth small , autonomous , harmonic core idea : Divide and Conquer Search Payments Break into manageable a product sub problems and tackle each order Delivery - one of them separately . Each sub problem solved separately and * is optimally - why micro services ? Idea MVP > Product prototype > > More - codebase overtime features grows f. - difficult to co-ordinate module by one team break others change in one can - - reduces product development velocity
+
+Scaling becomes predictable - ↳ Each service scales independently search be 10 instances might on while Auth on 20 & payments on 3 - Autonomous 2 isolation - your own tech stack , networking interface protocols . service A service B MySQL Gola ng Java MongoDB - pure client - server relationship contract service A service B you change your own code deploy when you ceeant - , services - Fault Tolerance " "^ " 't service A down if one service is . 4 you might still have a partially Functional operational system
+
+- Upgrades are simpler Belter language r YOU can evolve your service to → Better DB ↳ intra transparently Better Java > golang 6 Seamless so long as API contracts are intact How to Micro services ? fence " " We know it needs to have small set of responsibilities , ? but how small Too big is a problem → same as monolith Too small inter team interservice problem dependency → is a , live Feature cerise streaming Delivery - Authentication Payments Notification Note : Each microservice have may sub - components / processes
