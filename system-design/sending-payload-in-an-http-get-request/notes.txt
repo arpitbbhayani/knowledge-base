@@ -1,0 +1,7 @@
+Can we send data in HTTP GET payload?
+
+Data in HTTP GET request payload HTTP GET ¥ > < API RESP client GET / users / 1729 → Fetches information about the requested user we have been told that we cannot send data in GET ↳ should not Recent HTTP 1.1 specifications , does not mention anything about it ! ! RFC 7231 66 be Message body - should ignored Earlier specifications used " to have a comment cuhile handling requests £ NOW deleted
+
+£ Payload HTTP GET ☐m ¥ > < API RESP client so , it is upto our webserver to interpret and process or ignore so tools it ? , any popular libraries , doing YES , earlier version of ElasticSearch We used to the JSON based search send complex query in HTTP GET body This discouraged but practice is now , you can read body in HTTP GET 2 process Recommended to not update while handling GET req and just keep it idempotent so , can we do it ? YES
+
+So Where can use it ? , you If you are modelling an endpoint that fetches some data but specifying the requirements is complex 4 t User input maybe a big JSON eg : Analytics - Google Analytics , Mix Panel , JSON in Serializing query param is a pain ! ! instead make people pass it in request payload

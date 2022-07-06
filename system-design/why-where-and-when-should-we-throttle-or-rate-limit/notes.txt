@@ -1,0 +1,9 @@
+Throttling and Rate Limitting
+
+Throttling and Rate limiting what ? is throttling technique that ; Throttling is a ensures : " ; ; ; : : : i ÷ that data being sent the flow of at the target machine / service / sub system - : " acceptable rate can be digested at an . Throttling is more of a defensive measure . Throttling could be slowing - could be - Throttling rejecting Thro Hing could be ignoring - the ? why do we need throttling in first place To abuse 1. prevent system 2. To only allow traffic that could be handled 3- Control consumption cost 4. To prevent cascading failures Use - cases of throttling . . -
+
+Use cases of Throttling - I. Prevents catastrophic DDoS attack acceptable requests • ^ ' - go through t . . . ' . ' Your system . ' :: - - Rate limiter : : : : : : ::: : < . ' - . . ^ - - - i - < - - - - - - - : :: : . - - - - - - . - - - . . . . . - - - ' ÷ : i ← requests dropped 2- gracefully handle a surge of users if your website / product went viral eg : ¥ ¥ ¥ Rate limiter . . ¥ . . . . . . . . . ¥ . . . . . . . . . . . . . . g. DB 0 ¥ Your infra is not overwhelmed & continues to be up 2 serving a fraction of your users
+
+3. Multi - tiered limits eg : say you are a CKD company who offers multi - tiered pricing Tier 1 Tier 2 Tier 3 200min 1000 mins @ mins Build Time Build Time Build Time per customer build utilization Ei is allowed ? R L - . . ¥ 0 ¥ API ¥ Builders You not third 4. overusing a - party system eg You : are consuming an expensive third - party API and their pricing is aggressive
+
+Will make call to an R.L. external vendor only after limits verifying it is under acceptable Expensive Vendor Workers 5- Not overwhelming your own unprotected systems eg : Hand deleting from DB should be uniformly distributed ^ " " ' ' [ unprotected ] . . . . . . - - - - . . . . . . " - - DB - - - - - - . Deleting a million rows in one go , can take down your DB , and hence should streamline the deletions you and spread it uniformly

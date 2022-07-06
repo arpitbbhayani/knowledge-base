@@ -1,0 +1,11 @@
+Implementing Idempotence in Payments Service
+
+Idem potence in Payments Service execute same operation multiple times , result is same as if Operation Chas applied just ONCE / post / 123 / like ¥ > API > User Database how No matter many times user likes one post . the like count •Bgf& 729 > •Bqf& 730 should just increase by 1 The situation becomes even more serious when $ is involved /pay / B / 20000 ¥ > API > User Database Say A wants to transfer $20,000 to B and if due to reason the API call any is retried . We would not want A to transfer twice the amount to B . We need idem potence
+
+Other places where this is relevant - user to not tweet the same tweet again not the order twice Amazon placing same on - not the same sending message again - why would the transaction repeat ? user or service 7 You retry when something goes wrong payment service payment gateway A $ / REQ → B 20000 s . - Deducted credited Payment From A → To B Service crashed is processed - - or transient issue RES ✗c Payment service retries after recovery
+
+payment service payment gateway A $20000 I REQ → B s - - Deducted Credited Payment From A → To B Service crashed is processed - - RES But service doesn't know your ✗I !! hence it retries SAME REQ s Payment Retry only when is processed you are sure ! again RES ( implement idempoknce : let's see how can we
+
+Implementing Idem potence Approach 1 : You won't need idem potence if we Do not retry Depending on your product / use case ✗ best ¥ } API > this might be the thing If operation failed propagate , the error End user retries if and show it to the end user / he she wants to let the user retry Approach 2 : check and update Idea : get the status of payment 3 process only when not already processed Implementation Your API server can use 1 this to get check 2 , create a unique payment - id update if needed f. and weave API calls with it your
+
+Idempotent Flow Payments Payments Service talks to gateway 1. Payments service 2 Generale ±☐ Payment gateway generates a Payment ID 1729 p 2- Payment service initiates the payment this ID f through "" "" • " " " " P/ °° 729 > • • service retries 3 . If payment , it first checks the status * of payment on ID if the status is COMPLETED A→ B. then does not retry $20000 Mag the else retry through same ID Already < complete

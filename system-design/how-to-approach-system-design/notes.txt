@@ -1,0 +1,9 @@
+How to approach System Design
+
+How to approach System Design ! ! Approaching System Design is simple but that before . . . What ? is system Design Customer Needs Product and > > System Business ¥¥¥¥¥¥¥ Requirements The could be system - an application - End - to - end feature solution - a micro service - pure engineering a library library support - common - - a hardware - embedded when it could be one someone says design a system , or all of a high level architecture design - Macro , Bird 's eye view a logical design - Business logic . Algorithm . Data structures , etc a physical design - storage , I 0/ , Hardware , capacity Estimation . Data Pipeline Backup 2 Restore ,
+
+HOW to ? approach system Design The are two approaches that I have used last 10 career in years of my I. Spiral You decide the core and start building around it @ . then Queues eg : start with storage , then API , , Use this when you are pretty confident on the decisions you are making 0 ± El O API ¥ MySQL o MySQL ± load Balancer 0 Payments ☒ ¥ Payments ☒ DB DB Retry p . Gateway - Et P . gateway - Et o
+
+2. Incremental MVP You start with a simple and basic Day 0 architecture and then evolve it • . SQL DB one API server & a user ego. , Over time scale each component to handle the scale at the next level 0 0 I ± IT O API API DB o MySQL ¥ load Balancer O El ± Replica 0 API • € O o • • or • a 0 MySQL ¥ 0 0 Broker
+
+Key pointers : Every system build able I. is infinitely 00 • . . . Fence it Restrict the scope 2. Seek clarifications from senior or interviewer Ask critical that 3. question challenges the design decisions One thing that always works Divide and conquer start small , build on top
