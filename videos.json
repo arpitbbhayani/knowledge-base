@@ -14,14 +14,14 @@
     "title": "Dissecting GitHub Outage and things to do after that",
     "description": "Outages happen and in such a tense situation, the main priority is to get the system back up, but is that it? Is everything done when the service is up and running?\n\nSo today let's spend some time talking about the aftermath of an outage. There are many things to take care of once the outage is mitigated and in this video, we dissect a GitHub outage, understand what happened, and look at a set of common practices that we follow to ensure closure.\n\nOutline:\n\n00:00 Agenda\n02:31 The outage and mitigation\n07:23 Solve data inconsistency\n09:51 Invalidate the cache\n11:03 Setup alerting\n13:53 Take preventive measures",
     "img": "https://i.ytimg.com/vi/LeT_s-UFw-U/mqdefault.jpg",
-    "gif": null,
+    "gif": "https://media.giphy.com/media/3o6MbhbYBsqTrbP2qQ/giphy.gif",
     "duration": "16:24",
     "view_count": 184,
     "like_count": 11,
     "comment_count": 1,
     "released_at": "2022-07-08",
     "gist": "",
-    "notes_gd": "",
+    "notes_gd": "https://drive.google.com/file/d/1pDHYlKlQsTB_oDvqG9mpsvfKkHWDnkRG/view?usp=sharing",
     "slug": "dissecting-github-outage-and-things-to-do-after-that"
   },
   {
