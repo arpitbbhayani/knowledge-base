@@ -34,4 +34,4 @@ Topics I like to talk about are
  - [Dissecting GitHub Outage - Multiple Leaders in Zookeeper Cluster](https://youtube.com/watch?v=bycFzB6yrK0)
  - [GitHub Outage  - How databases are managed in production](https://youtube.com/watch?v=4mVJQJbw6Vw)
 
-You can find more about me on my website [arpitbhayani.me](arpitbhayani.me).
+You can find more about me on my website [arpitbhayani.me](https://arpitbhayani.me).
