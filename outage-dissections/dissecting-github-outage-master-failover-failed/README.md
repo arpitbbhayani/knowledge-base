@@ -69,6 +69,8 @@ Outline:
 13:54 Remediating Data Divergence
 18:23 Read Replica taking time to spin up
 
+Check out the free course covering all GitHub outages →  https://courses.arpitbhayani.me/github-outage-dissections/
+
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
  - [Download the notes](https://drive.google.com/file/d/1uzicMXBufPqkPTzrxyQOS6zn1x6WURwi/view?usp=sharing)

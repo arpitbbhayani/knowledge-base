@@ -62,6 +62,8 @@ Outline:
 08:51 A fictional example of an edge case taking down DB
 17:18 How to avoid edge cases on SQL queries
 
+Check out the free course covering all GitHub outages →  https://courses.arpitbhayani.me/github-outage-dissections/
+
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
  - [Download the notes](https://drive.google.com/file/d/1PI302Cvutu8LJKmZu7fiIVOAqRhiSMek/view?usp=sharing)

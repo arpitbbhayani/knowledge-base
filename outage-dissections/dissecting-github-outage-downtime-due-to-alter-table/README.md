@@ -68,7 +68,7 @@ Outline:
 18:13 Mitigation Strategy
 29:28 Lont-term Fix
 
-Outage report: https://github.blog/2021-12-01-github-availability-report-november-2021/
+Check out the free course covering all GitHub outages →  https://courses.arpitbhayani.me/github-outage-dissections/
 
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)

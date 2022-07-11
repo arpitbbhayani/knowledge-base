@@ -61,6 +61,8 @@ Outline:
 08:50 Master failover did not happen
 13:40 Long-term fixes and Localizing failures
 
+Check out the free course covering all GitHub outages →  https://courses.arpitbhayani.me/github-outage-dissections/
+
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
  - [Download the notes](https://drive.google.com/file/d/1V_nuSi4KDsuTD_p0beIWoBDmRN9T5d5V/view?usp=sharing)

@@ -55,6 +55,8 @@ Outline:
 09:15 What lead to an outage?
 17:26 Outage mitigation
 
+Check out the free course covering all GitHub outages →  https://courses.arpitbhayani.me/github-outage-dissections/
+
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
  - [Download the notes](https://drive.google.com/file/d/1KtNWAH5YHC9-qVxvbxLTXF3u5yGV7l-t/view?usp=sharing)

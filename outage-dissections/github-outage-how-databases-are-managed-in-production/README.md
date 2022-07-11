@@ -63,6 +63,8 @@ Outline:
 18:10 Root cause and mitigation
 19:46 Key takeaways
 
+Check out the free course covering all GitHub outages →  https://courses.arpitbhayani.me/github-outage-dissections/
+
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
  - [Download the notes](https://drive.google.com/file/d/1Fqad5kpmlvrNMFXSojlOvBwOAOu7c2nd/view?usp=sharing)

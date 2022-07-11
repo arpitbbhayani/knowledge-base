@@ -49,6 +49,8 @@ Outline:
 11:03 Setup alerting
 13:53 Take preventive measures
 
+Check out the free course covering all GitHub outages →  https://courses.arpitbhayani.me/github-outage-dissections/
+
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
  - [Download the notes](https://drive.google.com/file/d/1pDHYlKlQsTB_oDvqG9mpsvfKkHWDnkRG/view?usp=sharing)

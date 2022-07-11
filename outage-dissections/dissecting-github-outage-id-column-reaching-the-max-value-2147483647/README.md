@@ -52,6 +52,8 @@ References:
  - https://dev.mysql.com/doc/refman/8.0/en/example-auto-increment.html
  - https://www.linkedin.com/pulse/so-you-hit-2147483647-heath-dutton-/
 
+Check out the free course covering all GitHub outages →  https://courses.arpitbhayani.me/github-outage-dissections/
+
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
  - [Download the notes](https://drive.google.com/file/d/13rNEWXwIdNkNcP2gSQQvBF8czUBpF47y/view?usp=sharing)

@@ -64,6 +64,8 @@ Outline:
 15:55 Dead Letter Queue and Fallback Strategy
 18:07 Key Learnings
 
+Check out the free course covering all GitHub outages →  https://courses.arpitbhayani.me/github-outage-dissections/
+
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
  - [Download the notes](https://drive.google.com/file/d/1ut8trVZ5IF4hB6amfKpZSzPJl_8eRiCk/view?usp=sharing)

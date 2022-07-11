@@ -63,6 +63,8 @@ Outline:
 14:52 Cascading Failures
 17:16 Mitigation and Key Takeaways
 
+Check out the free course covering all GitHub outages →  https://courses.arpitbhayani.me/github-outage-dissections/
+
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
  - [Download the notes](https://drive.google.com/file/d/1JrtyE2wt9ikic3iOTy36NYKxEPESMt4a/view?usp=sharing)
