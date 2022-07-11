@@ -1,5 +1,30 @@
 [
   {
+    "id": 165,
+    "topic": {
+      "id": 0,
+      "uid": "hash-table-internals",
+      "name": "Hash Table Internals",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT2UnueESBLReaVSLIo_BuAc",
+      "bgcolor": "#FBE0E0",
+      "themecolor": "#FF4B42"
+    },
+    "yt_video_id": "jjW8w8ED3Ns",
+    "title": "Internal Structure of a Hash Table",
+    "description": "One of the most common data structures that we all use every single day is Hash Table. Every language has its own implementation and nomenclature for it. Python calls it dictionary, while Java calls it Hash Map. But the core idea remains the same: it holds pairs of keys and values and supports insertions, updation, and lookups in constant time.\n\nBut how are they implemented? What is its internal structure? In this video, we talk about what are hash tables, how are they structured internally, and lay a foundation to understand their constant-time implementation.\n\nOutline:\n\n00:00 Agenda\n02:38 Introduction and Applications of Hash Tables\n05:12 Core ideas to construct Hash Tables\n07:07 Step 1: Application keys to Integer Hash Keys\n09:38 Naive Implementation of Hash Table using Array\n13:38 Step 2: Integer Hash Keys to a smaller range\n17:43 Adding more keys on the fly\n19:07 Do we really need the Keys to Hash Key step?",
+    "img": "https://i.ytimg.com/vi/jjW8w8ED3Ns/mqdefault.jpg",
+    "gif": null,
+    "duration": "23:12",
+    "view_count": 1033,
+    "like_count": 54,
+    "comment_count": 8,
+    "released_at": "2022-07-11",
+    "gist": "",
+    "notes_gd": "",
+    "slug": "internal-structure-of-a-hash-table"
+  },
+  {
     "id": 164,
     "topic": {
       "id": 0,
@@ -516,7 +541,7 @@
     "img": "https://i.ytimg.com/vi/iqapVyfoFqc/mqdefault.jpg",
     "gif": "https://media.giphy.com/media/243UHkbIOZJGj7FZ84/giphy.gif",
     "duration": "21:32",
-    "view_count": 1145,
+    "view_count": 1146,
     "like_count": 56,
     "comment_count": 12,
     "released_at": "2022-05-23",
@@ -1141,7 +1166,7 @@
     "img": "https://i.ytimg.com/vi/xELqRiovEcI/mqdefault.jpg",
     "gif": "https://media.giphy.com/media/uk3R91z24SoUZ27WTh/giphy.gif",
     "duration": "15:57",
-    "view_count": 2109,
+    "view_count": 2110,
     "like_count": 94,
     "comment_count": 18,
     "released_at": "2022-03-25",

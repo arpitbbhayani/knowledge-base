@@ -70,5 +70,14 @@
     "youtube_playlist_id": null,
     "bgcolor": "#FFE7F3",
     "themecolor": "#ff007f"
+  },
+  {
+    "id": 9,
+    "uid": "hash-table-internals",
+    "name": "Hash Table Internals",
+    "one_liner": null,
+    "youtube_playlist_id": "PLsdq-3Z1EPT2UnueESBLReaVSLIo_BuAc",
+    "bgcolor": "#FBE0E0",
+    "themecolor": "#FF4B42"
   }
 ]
