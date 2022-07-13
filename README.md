@@ -35,4 +35,4 @@ Topics I like to talk about are
  - [Dissecting GitHub Outage - Why should we localize failures?](https://youtube.com/watch?v=Of3FS2qDM28)
  - [Backend for Frontend Pattern in Microservices](https://youtube.com/watch?v=GCx0aouuEkU)
 
-You can find more about me on my website [arpitbhayani.me](arpitbhayani.me).
+You can find more about me on my website [arpitbhayani.me](https://arpitbhayani.me).
