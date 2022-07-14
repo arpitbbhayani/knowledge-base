@@ -1,0 +1,11 @@
+Chaining in Hash Tables
+
+Resolving conflicts through chaining conflicts are inevitable ! key , f h , key , f hi - Multiple keys can produce same hash key upon hashing so , how can we store multiple Core idea slot ? keys the : in same The two classical Form a chain of keys that ways of achieving this hash to the same slot 1 . Chaining 2. Open addressing chaining we put colliding keys in a data structure that hold them well . Most common implementation linked list
+
+linked lists Chaining with The core set of operations we need are / 1. add a new key to the linked list v the list 2. check if the key is present in 3. remove a key from the list - Simplest implementation : singly linked list 0 I 2 3 Array of linked list { contains the Each slot of the array pointer to the head struct slot { of the linked list > struct node * head ; } Each node of the list contains I. pointer to the actual key 2. pointer to the next node the list of struct node { void * key ; < struct node * next ; < }
+
+Hash Table Operations 1. Adding a key 0 I 2 3 PUT LK , , 0, ) array PUT ( Kz V2 ) , kz Vz K, Y PUT ( K } I , 03 ) 1<3 V3 Given a key and a value , we the key through the hash and get index i 1. pass function 2- Create a new linked list node with Kev 3. add it to the chain present at index i Possible implementations fast head 1. insertion can always happen at the " 2 insertion can happen always at the tail sort order 3. insertion can happen as per the linear iteration eg : am> ant apple atom
+
+key 3 2 2. Delete a I array DELETE K2 , ki , k3 kz V2 1914 Delete operation is simple 1<3%3 I. reach the slot in 0111 1 2 . iterate through the list and * Enure pointers are ki handled and adjusted find node key = = 3. while iterating keep track of preu node 4. adjust the pointers 5. delete the intended node 3. Lookup a key 0 I 2 3 array GET K, , K2 , 1<3 kz Vz K, Y similar to delete lookups are 1<3%3 I. reach the slot in 011 ) 1- the list until 2. linearly iterate through K, we find node key = =
+
+Other data structures for chaining Instead of linked list we can . use trees to store self balancing binary " t a - collided kill pairs . L v v Insertions are not 047 01h7 but lookups are we can use search trees for chaining when we are expecting large number of collisions
