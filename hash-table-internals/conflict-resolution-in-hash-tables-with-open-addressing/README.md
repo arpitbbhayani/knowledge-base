@@ -2,6 +2,53 @@ Conflict Resolution in Hash Tables with Open Addressing
 ===
 
 
+Open Addressing is common yet an interesting way of handling collisions in Hash Tables and instead of using an auxiliary data structure, it leverages empty slots of the hash table to store the collided keys, making the entire approach space efficient.
+
+While inserting a key in the hash table, we pass it through the hash function to get the slot, and if the slot is already occupied, we find the next available slot through probing.
+
+## Probing
+
+Probing is the process through which we deterministically find the next available slot in the hash table. The approach and algorithm could vary but formally it is a function of the key and the attempt, that spits out an index where we can place the key.
+
+```
+j = p(k, i)
+```
+
+The probing function uses the key `k` and an attempt `i` to spitout an index `j`. The attempt `i` and the index `j` are in range `[0, m-1]`, where `m` is the size of the hash table.
+
+### Good probing function
+
+A good probing function would generate the permutation of numbers `[0, m - 1]` in some order specific to the key `k`, so that we eventually check cover the entire hash table for an available slot.
+
+For example: for some key `k1`, the probing function might generate: 5, 7, 2, 1, 0, 6, 4, and 3. Which means we first try to put the key in index `5`, if that is occupied we check `7`, and so on.
+
+## Hash Table Operations
+
+### Adding a key
+
+Until we find a free slot in the hash table we keep invoking the probing function with attempts `0`, `1`, `2,`, etc. Once we find an empty slot, we stop and place the key in that slot.
+
+### Key Lookups
+
+For looking up a key, we invoke probing function with attempt `0` and check the slot. If the slot holds the key we need, we stop and return the value. If not, we continue to probe with attempt `1`, `2`, etc and continue to hunt.
+
+We stop the iteration when
+
+- we find the key,
+- we stumble upon an empty slot during iteration
+- we have checked the complete hash table
+
+### Deleting a key
+
+With open addressing, deleting a key from the table has to be a soft delete, because we need a way to differentiate between an empty slot and a deleted key.
+
+If during deletion we empty the slot, then we would be unable to look and reach to a key that had a collision and was placed after the key we deleted.
+
+## Limitation of Open addressing
+
+Since we are not having any auxiliary data structure, a major limitation of Open Addressing is that the maximum number of keys we can hold are same as the number of slots in the hash table.
+<hr />
+
 
 <p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
 
