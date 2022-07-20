@@ -14,14 +14,14 @@
     "title": "Quadratic Probing for Conflict Resolution in Hash Tables",
     "description": "In the previous video, we looked at Linear Probing as a way to handle Hash Table collisions, but is that the only way? or Can we do better? In this video, we take a look at Quadratic Probing as an alternative to Linear Probing.\n\nWe spend time understanding what Quadratic Probing is, and how it is better than the Linear counterpart.\n\nOutline:\n\n00:00 Agenda\n02:22 Introduction\n03:52 Challenges with Linear Probing\n05:44 Quadratic Probing\n07:56 How Quadratic is better than Linear\n08:56 Properties of Quadratic Probing",
     "img": "https://i.ytimg.com/vi/F-8pWiJv8ik/mqdefault.jpg",
-    "gif": null,
+    "gif": "https://media.giphy.com/media/xUNd9ETOt1cwz90hva/giphy.gif",
     "duration": "14:35",
     "view_count": 3,
     "like_count": 0,
     "comment_count": 0,
     "released_at": "2022-07-20",
     "gist": "",
-    "notes_gd": "",
+    "notes_gd": "https://drive.google.com/file/d/1UAB8YOoRQwygQwILlpTTR7Wfgns_tHke/view?usp=sharing",
     "slug": "quadratic-probing-for-conflict-resolution-in-hash-tables"
   },
   {

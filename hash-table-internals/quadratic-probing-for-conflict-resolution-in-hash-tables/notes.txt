@@ -1,0 +1,7 @@
+Quadratic Probing in Hash Tables
+
+Conflict Resolution With Quadratic Probing Conflicts are inevitable ! With Open Addressing , we use a to the slot probing function find where the key should be placed One such method is Quadratic Probing Probing Function key attempt index Probing plk i )=j Function is defined as , to we use the probing function find the first available slot the same function is used during lookups challenges with linear Probing linear probing suffers from cascading collisions "' K2 if K . hashes to 2 7 , K2 hashes to 2 Ki K2 ks ' 2 3 4 5 6 7 k 3 hashes to 3 kz
+
+Quadratic Probing 56 Instead the collided key ' 2 3 4 7 of placing in the slot quadratic probing neighbouring , successive value arbitrary adds of an quadratic polynomial . 2 plk.it = hlkl + i plk , i) = hlk ) -1 Csi + czi linear Probing Quadratic Probing sample sequence : hlk) hlklt 12 hlkl -122 hlklt 32 , - . . , , , How it better than linear ? is probing It reduces clustering and cascaded collisions as collided keys are placed further away from each other ' i s -
+
+Properties of Quadratic Probing It reduces clustered 1 . collisions by distributing it quadratically * It is not immune to it , but still it reduces it to extent a good It has 2 . a good locality of reference ale] a /3 ] but not linear as great as probing an ] 915 ) 910 ] * leverages CPU cache well Two slots Unless there are large collisions are already cached on CPU on same key , at least a hlkl = 2 hlk) -112=3 hlk ) -122=6 couple of subsequent slots , , will be in CPU cache .
