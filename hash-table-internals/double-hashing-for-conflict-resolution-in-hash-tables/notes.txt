@@ -1,0 +1,7 @@
+Double Hashing in Hash Tables
+
+Using Double Conflict Resolution Hashing Conflicts are inevitable ! With Open Addressing , we use a to the slot probing function find where the key should be placed One such method is Double Hashing Probing Function key attempt index Probing plk i )=j Function is defined as , to we use the probing function find the first available slot the same function is used during lookups linear and Quadratic Probing I 2 3 4 5 6 7 I 2 3 4 5 6 7 ' hlk) + i plk.it hlk ) it Czi plk.it = = -1C , linear Quadratic
+
+Double Hashing 2 hash Double Hashing techniques functions to find the slot First hash function gives primary slot and upon collision . it uses second hash function as offset times attempt until an empty slot is reached plk , it = ( t.lk ) -1 i * hzlk ) ) mod me given that we are using another hash function to offset . we are minimizing repeated collisions and effects of clustering Follows no specific pattern and gives near uniform yet random offset from - the index ( slot ) primary sequence : h IKI , , h , IKI th . hzlk) , h il kl th h 21k ) , hick) + 3 hzlk) h , IKI + 4 hzlk) , - . _. ,
+
+Choosing the second hash function is It should never return 0 . pck.it = h , Ck) + i * hzlk ) It should entire table 2 . cycle through in ( order does not matter) Fast to and to random number compute generator 3. ~ a Advantages of Double Hashing 1. Uniform spread upon collision 2. follows no specific offset pattern the key purely depends on 3. least prone to clustering problem offset from primary slot is uniformly distributed

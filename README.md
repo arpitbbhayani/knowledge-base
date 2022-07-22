@@ -11,7 +11,7 @@ Thank you for visiting my knowledge base. This repository contains everything im
 Hey 🙌‍, I am Arpit Bhayani, a CS Engineer, an Educator, and a Polymath.
 
 I run a YouTube channel by the name [Asli Engineering](asliengineering.com) (translation: Real Engineering) on which I publish in-depth engineering videos on topics ranging from System Design,
-Distributed Systems, Python Internals, and anything that amuses me in tech. To date, I have published **71** videos covering **9** topics.
+Distributed Systems, Python Internals, and anything that amuses me in tech. To date, I have published **72** videos covering **9** topics.
 
 I also run a [course on System Design](https://arpitbhayani.me/masterclass) in which I teach the concepts of designing massively scalable systems using the First Principle Thinking. The course has been trusted by prople working in someo of the top companies of the world like Google, Amazon, Facebook, Microsoft, GoJek, and so many more. You can find the details about the course and curriculum at [arpitbhayani.me/masterclass](https://arpitbhayani.me/masterclass).
 
@@ -29,10 +29,10 @@ Topics I like to talk about are
 
 5 recent videos I published on [YouTube](https://www.youtube.com/c/ArpitBhayani)
 
+ - [Double Hashing for Conflict Resolution in Hash Tables](https://youtube.com/watch?v=wV4K6fo0T58)
  - [Quadratic Probing for Conflict Resolution in Hash Tables](https://youtube.com/watch?v=F-8pWiJv8ik)
  - [Linear Probing for Conflict Resolution in Hash Tables](https://youtube.com/watch?v=5QKAXG25hig)
  - [Conflict Resolution in Hash Tables with Open Addressing](https://youtube.com/watch?v=6_yFb7icd_c)
  - [Conflict Resolution in Hash Tables with Chaining](https://youtube.com/watch?v=9rb8oILi4lU)
- - [Internal Structure of a Hash Table](https://youtube.com/watch?v=jjW8w8ED3Ns)
 
 You can find more about me on my website [arpitbhayani.me](arpitbhayani.me).
