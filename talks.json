@@ -3,35 +3,35 @@
     "id": 5,
     "title": "Scaling Microservices",
     "event": "Sandbox by Cohesive - July 2022",
-    "img": null,
+    "img": "",
     "url": "https://youtu.be/SDuBGgFx4yQ?t=6777"
   },
   {
     "id": 4,
     "title": "Scalability and Fault Tolerance in real world",
     "event": "The Geek Narrator",
-    "img": null,
+    "img": "",
     "url": "https://www.youtube.com/watch?v=IGPBWljXjLI"
   },
   {
     "id": 3,
     "title": "DSA in real world and how to learn High Level Design",
     "event": "Nishant Chahar",
-    "img": null,
+    "img": "",
     "url": "https://www.youtube.com/watch?v=Y1VbQkFgVLY"
   },
   {
     "id": 2,
-    "title": "Advice to Budding Engineers",
+    "title": "Advice to budding engineers",
     "event": "SREWala",
-    "img": null,
+    "img": "",
     "url": "https://www.youtube.com/watch?v=hVtJSxXRaJ4"
   },
   {
     "id": 1,
     "title": "Career Journery",
     "event": "Nishant Chahar",
-    "img": "/static/img/talks/talk-1.png",
+    "img": "",
     "url": "https://www.youtube.com/watch?v=odKnXsiyrok"
   }
 ]
