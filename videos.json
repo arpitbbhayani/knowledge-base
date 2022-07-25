@@ -14,14 +14,14 @@
     "title": "Understanding the performance of a Hash Table",
     "description": "In the previous 6 videos, we talked about the internals of Hash Table, ways to implement them, and how to gracefully handle collisions.\n\nIn this video, we put our focus on performance and would look at how to quantify the load on the hash table, the impact of chaining and open addressing on perf, understanding the performance gains and losses for each strategy, and conclude with very interesting performance optimization.\n\nOutline:\n\n00:00 Agenda\n02:28 Load Factor\n03:36 Load Factor for resolution strategies\n09:22 The best strategy for a Hash Table\n14:29 Lookup time vs Load Factor\n20:03 Making chained hashing cache-friendly",
     "img": "https://i.ytimg.com/vi/oD2yaTtu69w/mqdefault.jpg",
-    "gif": null,
+    "gif": "https://media.giphy.com/media/3o7qE4opCd6f1NJeuY/giphy.gif",
     "duration": "25:8",
     "view_count": 15,
     "like_count": 1,
     "comment_count": 0,
     "released_at": "2022-07-25",
     "gist": "",
-    "notes_gd": "",
+    "notes_gd": "https://drive.google.com/file/d/1maLTNs7gFIu6zCQvX-v-_BKQy_F5Tgqv/view?usp=sharing",
     "slug": "understanding-the-performance-of-a-hash-table"
   },
   {
