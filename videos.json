@@ -14,14 +14,14 @@
     "title": "Resizing a Hash Table and why are they always doubled?",
     "description": "Why are the underlying arrays of the hash tables always a power of 2? When we trigger a resize why are Hash Tables always doubled? like 2, 4, 8, 16, 32? What is the reason behind it?\n\nIn this 8th video of the Hash Table Internals series, we answer some super-cool questions and go in-depth on Hash Table resizing. We understand why we do it, how we do it, why hash tables are always doubled upon resize, why they are always sized as a power of 2, and conclude with an understanding of how and when we shrink them.\n\nOutline:\n\n00:00 Agenda\n02:35 Why resize a Hash Table?\n03:19 When to resize a Hash Table?\n04:20 How to resize a Hash Table?\n07:40 Why are Hash Tables always doubled upon resize?\n17:27 Why are Hash Tables slots always a power of 2?\n23:30 Shrinking a Hash Table",
     "img": "https://i.ytimg.com/vi/zt1E0akArqQ/mqdefault.jpg",
-    "gif": null,
+    "gif": "https://media.giphy.com/media/4oeRWjN70cg8MV6HZC/giphy.gif",
     "duration": "29:46",
     "view_count": 123,
     "like_count": 7,
     "comment_count": 0,
     "released_at": "2022-07-27",
     "gist": "",
-    "notes_gd": "",
+    "notes_gd": "https://drive.google.com/file/d/1aHWaOIGT7-zB88T83In05pHIdpuJTSk7/view?usp=sharing",
     "slug": "resizing-a-hash-table-and-why-are-they-always-doubled"
   },
   {
