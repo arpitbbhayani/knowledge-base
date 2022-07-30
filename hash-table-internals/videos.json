@@ -14,14 +14,14 @@
     "title": "Implementing Resize of a Hash Table",
     "description": "So, the Hash Table needs to be resized in order to maintain consistent performance, but how exactly?\n\nIn this 9th Video of the Hash Table Internals series, we go into the implementation details of resize operation and talk about, where and when in the code should we trigger resize, 2 ways to implement resize while using Chained Hashing, and things to remember while resizing a Hash Table that uses open addressing.\n\nOutline:\n\n00:00 Agenda\n02:28 Introduction to Resize\n03:18 Implementing Resize on Chained Hash Tables\n08:55 Implementing Resize on Hash Tables with Open Addressing",
     "img": "https://i.ytimg.com/vi/mmPwVBm-8n0/mqdefault.jpg",
-    "gif": null,
+    "gif": "https://media.giphy.com/media/BpGWitbFZflfSUYuZ9/giphy.gif",
     "duration": "16:40",
     "view_count": 60,
     "like_count": 6,
     "comment_count": 0,
     "released_at": "2022-07-29",
     "gist": "",
-    "notes_gd": "",
+    "notes_gd": "https://drive.google.com/file/d/1wJWnXlQS4SKJBdmCg799gwb2dL7JSaPv/view?usp=sharing",
     "slug": "implementing-resize-of-a-hash-table"
   },
   {
