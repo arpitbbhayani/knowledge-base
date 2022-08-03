@@ -1,14 +1,14 @@
-To maintain consistent performance, the hash table has to be resized - be it growing or shrinking. The trigger to resize depends on the load factor which is defined as the ratio of the number of keys that the hash table holds to the total number of slots.
+To maintain consistent performance, the hash table has to be resized - be it growing or shrinking. The trigger to resize depends on the load factor, which is defined as the ratio of the number of keys that the hash table holds to the total number of slots.
 
 ## When should we resize?
 
-Hash Table is resized when the load factor hits a certain threshold. If we get too aggressive or too lenient, we would not be able to get the optimal efficiency. Hence we have to find a sweet spot.
+The Hash Table is resized when the load factor hits a certain threshold. If we get too aggressive or too lenient, we would not be able to get the optimal efficiency. Hence, we have to find a sweet spot.
 
 We typically grow the hash table when the load factor hits 0.5 and shrink when we hit 0.125.
 
 ## Why do we always double?
 
-We have heard and seen so many times, that when a Hash Table is required to grow, we always double the underlying array; but why? can we not just increase it by 1 every time we are trying to insert?
+We have heard and seen so many times, that when a Hash Table is required to grow, we always double the underlying array; but why? Can we not just increase it by 1 every time we are trying to insert?
 
 ### Resizing by 1 every time
 
@@ -18,15 +18,15 @@ Inserting the 1st element is: allocating an array of size 1, and inserting 1 ele
 
 Inserting the 2nd element is: allocating an array of size 2, copying 1 element from the old array, and then inserting the 2nd element; so in all O(2) operations.
 
-Hence inserting the nth element is: allocating an array of size n, copying n-1 elements from the old array, and then inserting the nth element; so in all O(n) operations.
+Hence, inserting the nth element is: allocating an array of size n, copying n-1 elements from the old array, and then inserting the nth element; so in all O(n) operations.
 
-Total operations to to insert `n` elements = 1 + 2 + ... + n = (n(n-1))/2 which is O(n^2).
+Total operations to insert `n` elements = 1 + 2 + ... + n = (n(n-1))/2 which is O(n^2).
 
 ### Doubling every time
 
-If we double every time, inserting `n` elements requires O(n) time, as are spacing out an expensive resize operation. We would be inserting n/2 elements before resizing the array to 2n.
+If we double every time, inserting `n` elements requires O(n) time, as it is spacing out an expensive resize operation. We would be inserting n/2 elements before resizing the array to 2n.
 
-Note: For a detailed amortized analysis, please refer to the video attached here where I have explained the reasoning in depth.
+Note: For a detailed amortized analysis, please refer to the video attached here, where I have explained the reasoning in depth.
 
 ## Why is a hash table array always a power of 2?
 
@@ -40,7 +40,7 @@ This is why the length of the underlying array is always a power of 2, making ou
 
 ## Shrinking the Hash Table
 
-To ensure we are not wasting space, we trigger the shrink when we do not utilize the underlying array enough. While triggering a shrink we also need to ensure that we are not aggressive enough that we have to grow immediately after the shrink.
+To ensure we are not wasting space, we trigger the shrink when we do not utilize the underlying array enough. While triggering a shrink, we also need to ensure that we are not aggressive enough that we have to grow immediately after the shrink.
 
 Hence, we shrink the hash table when the load factor hits 1/8 i.e. in a table of length 64 if we are only holding 8 keys, we trigger a shrink and that reduces the length to 32.
 

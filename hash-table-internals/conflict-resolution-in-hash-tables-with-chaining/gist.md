@@ -1,8 +1,8 @@
-Collisions are inevitable in Hash Tables, and a common way of handling them is through Chaining using Linked List. But can we use some other data structure?
+Collisions are inevitable in Hash Tables, and a common way of handling them is through chaining using Linked List. But can we use some other data structure?
 
-Collisions are inevitable in Hash Tables as we are mapping a large range of application keys on a smaller range of array slots. So, there are chances that the hash function spits out the same value for two different application keys.
+Collisions are inevitable in Hash Tables, as we are mapping a large range of application keys to a smaller range of array slots. So, there are chances that the hash function spits out the same value for two different application keys.
 
-Because Hash Tables cannot be lossy, we need a way to handle these collisions and allow storing of multiple keys that are hashed to the same slot. A way to achieve this is Chaining and it is very commonly implemented through a Linked List.
+Because Hash Tables cannot be lossy, we need a way to handle these collisions and allow storing of multiple keys that are hashed to the same slot. A way to achieve this is chaining, and it is very commonly implemented through a Linked List.
 
 ## Data Structures
 
@@ -30,8 +30,8 @@ Key lookups are similar to delete operations. We first pass the key through the 
 
 ## Other Data structures for chaining
 
-Linked List is not the only data structure that we have to use to chain the collided keys. Depending on the use case, access pattern, and constraint we can pick a data structure that suits us.
+Linked List is not the only data structure that we have to use to chain the collided keys. Depending on the use case, access pattern, and constraint, we can pick a data structure that suits us.
 
-For example, if our array is small and we cannot resize it then we may end up having a large number of collisions. If we are trying to read, then iterating over this list will reduce the throughput as it is a linear scan.
+For example, if our array is small, and we cannot resize it, then we may end up having many collisions. If we are trying to read, then iterating over this list will reduce the throughput as it is a linear scan.
 
 To optimally perform a key lookup, when the collisions are high, we can use a self-balancing search tree, like BST or Red-Black. This way, we get an optimal lookup performance on keys hashed to the same slot.

@@ -6,7 +6,7 @@ Linear probing is a popular way to handle Hash Table collisions, but is that the
 
 ## Challenges with linear Probing
 
-Linear Probing suffers from one significant challenge and that is clustered collision. With poor hash function, it is very much possible that some slots are preferred more over others, and upon collision, they are placed next to each other.
+Linear Probing suffers from one significant challenge, and that is clustered collision. With a poor hash function, it is very much possible that some slots are preferred more over others, and upon collision, they are placed next to each other.
 
 Hence, we would see clusters of collided keys forming across the entire hash table, and this is called Clustered Collision. Linear Probing suffers from this the most.
 
@@ -31,7 +31,7 @@ h(k) + 16
 .
 ```
 
-where `h(k)` is the primary slot we got by passing the key through the hash function and 1, 4, 9, and 16 are the quadratic offsets.
+Where `h(k)` is the primary slot we got by passing the key through the hash function and 1, 4, 9, and 16 are the quadratic offsets.
 
 ## Properties of Quadratic Probing
 
@@ -41,9 +41,9 @@ Quadratic Probing reduces the clustered collisions by distributing collided slot
 
 ### Good Locality of Reference
 
-Quadratic Probing has a good locality of reference. When we access a particular slot of the hash table we are also bringing in neighboring slots to the CPU cache. Upon collisions when we access a few next quadratic slots we need not fetch it from the RAM.
+Quadratic Probing has a good locality of reference. When we access a particular slot of the hash table, we are also bringing in neighboring slots to the CPU cache. Upon collisions, when we access a few next quadratic slots, we need not fetch it from the RAM.
 
-The locality of reference is not as high as Linear Probing but it is decent enough when we observe fewer collisions per slot.
+The locality of reference is not as high as Linear Probing, but it is decent enough when we observe fewer collisions per slot.
 <hr />
 
 

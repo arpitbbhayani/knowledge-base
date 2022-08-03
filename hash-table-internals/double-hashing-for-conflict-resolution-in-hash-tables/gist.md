@@ -1,10 +1,10 @@
 Linear and Quadratic probing do a great job at handling collisions in a Hash Table, but they both suffer from Clustered Collision, which degrades performance. So, can we do better?
 
-Double Hashing is a technique that minimizes the problem of clustered collisions by using a secondary hash function to find the next available slot.
+Double hashing is a technique that minimizes the problem of clustered collisions by using a secondary hash function to find the next available slot.
 
 ## Double Hashing
 
-Double Hashing is an Open Addressing technique to address collisions in a hash table; hence instead of using an auxiliary data structure to hold the collided keys, it leverages the already available free slots.
+Double hashing is an Open Addressing technique to address collisions in a hash table; hence, instead of using an auxiliary data structure to hold the collided keys, it leverages the already available free slots.
 
 The probing function for Double Hashing is defined as
 
@@ -23,7 +23,7 @@ Linear probing and quadratic traversals take a predictable leap to hunt for an e
 
 ## Choosing a second hash function
 
-The second hash function is super-critical as it is aimed at resolving collisions effectively while ensuring minimal clustering. The second hash function should
+The second hash function is super-critical, as it is aimed at resolving collisions effectively while ensuring minimal clustering. The second hash function should
 
 1. never return 0
 2. cycle through the entire table (with no particular order)
@@ -32,9 +32,9 @@ The second hash function is super-critical as it is aimed at resolving collision
 ## Advantages of Double Hashing
 
 1. Uniform spread upon collision
-2. follows no specific offset pattern the key purely depends on
+2. follows no specific offset pattern, the key purely depends on
 3. least prone to the clustering problem
 
 ## Disadvantage of Double Hashing
 
-Double Hashing is not cache-friendly as it requires us to hop across the hash table to hunt an empty slot. We may be at one extreme of the table and then move to the other one.
+Double hashing is not cache-friendly, as it requires us to hop across the hash table to hunt an empty slot. We may be at one extreme of the table and then move to the other one.

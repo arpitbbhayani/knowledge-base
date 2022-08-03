@@ -8,7 +8,7 @@ While inserting a key in the hash table, we pass it through the hash function to
 
 ## Probing
 
-Probing is the process through which we deterministically find the next available slot in the hash table. The approach and algorithm could vary but formally it is a function of the key to be placed and the attempt, that spits out a slot.
+Probing is the process through which we deterministically find the next available slot in the hash table. The approach and algorithm could vary, but formally it is a function of the key to be placed and the attempt, that spits out a slot.
 
 ```
 j = p(k, i)
@@ -26,11 +26,11 @@ For example: for some key `k1`, on a hash table of size 8, the probing function 
 
 ### Adding a key
 
-Until we find a free slot in the hash table we keep invoking the probing function with attempts `0`, `1`, `2,`, etc. Once we find an empty slot, we stop and place the key in that slot.
+Until we find a free slot in the hash table, we keep invoking the probing function with attempts `0`, `1`, `2,`, etc. Once we find an empty slot, we stop and place the key in that slot.
 
 ### Key Lookups
 
-For looking up a key, we invoke the probing function with attempt `0` and check the slot. If the slot holds the key we need, we stop and return the value. If not, we continue to probe with attempts `1`, `2`, etc, and continue to hunt.
+For looking up a key, we invoke the probing function with attempt `0` and check the slot. If the slot holds the key we need, we stop and return the value. If not, we continue to probe with attempts `1`, `2`, etc., and continue to hunt.
 
 We stop the iteration when
 
@@ -46,7 +46,7 @@ If during deletion we empty the slot, then we would be unable to look and reach 
 
 ## Limitation of Open addressing
 
-Since we are not having any auxiliary data structure, a major limitation of Open Addressing is that the maximum number of keys we can hold are same as the number of slots in the hash table.
+Since we are not having any auxiliary data structure, a major limitation of Open Addressing is that the maximum number of keys we can hold are the same as the number of slots in the hash table.
 <hr />
 
 
