@@ -56,6 +56,8 @@ Outline:
 17:43 Adding more keys on the fly
 19:07 Do we really need the Keys to Hash Key step?
 
+Learn Hash Tables Internals in a structured way at https://courses.arpitbhayani.me/hash-table-internals
+
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
  - [Download the notes](https://drive.google.com/file/d/1IKYDzO-mZEHDQYEsyoksFkF3DVyTCy6l/view?usp=sharing)

@@ -61,6 +61,8 @@ Outline:
 15:47 Lookup a key in the Hash Table
 17:15 Chaining with Binary Search Trees
 
+Learn Hash Tables Internals in a structured way at https://courses.arpitbhayani.me/hash-table-internals
+
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
  - [Download the notes](https://drive.google.com/file/d/1so447uSDzZZuJXAyMB_jGqHCM0RX3hbL/view?usp=sharing)

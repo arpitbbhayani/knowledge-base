@@ -82,6 +82,8 @@ Outline:
 09:01 Implementing Sets with Chained Hash Tables
 11:03 Implementing Sets with Hash Tables with Open Addressing
 
+Learn Hash Tables Internals in a structured way at https://courses.arpitbhayani.me/hash-table-internals
+
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
  - [Download the notes](https://drive.google.com/file/d/1mkT3gt19e6LrG6CJzYaodbbjsLBZVlLY/view?usp=sharing)

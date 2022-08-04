@@ -61,6 +61,8 @@ Outline:
 10:17 Choosing the second hash function
 13:37 Advantages of Double Hashing
 
+Learn Hash Tables Internals in a structured way at https://courses.arpitbhayani.me/hash-table-internals
+
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
  - [Download the notes](https://drive.google.com/file/d/1EbFM7ZleP4Gwsq14moI7kbQMXJSEdj5D/view?usp=sharing)

@@ -64,6 +64,8 @@ Outline:
 14:29 Lookup time vs Load Factor
 20:03 Making chained hashing cache-friendly
 
+Learn Hash Tables Internals in a structured way at https://courses.arpitbhayani.me/hash-table-internals
+
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
  - [Download the notes](https://drive.google.com/file/d/1maLTNs7gFIu6zCQvX-v-_BKQy_F5Tgqv/view?usp=sharing)

@@ -64,6 +64,8 @@ Outline:
 07:56 How Quadratic is better than Linear
 08:56 Properties of Quadratic Probing
 
+Learn Hash Tables Internals in a structured way at https://courses.arpitbhayani.me/hash-table-internals
+
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
  - [Download the notes](https://drive.google.com/file/d/1UAB8YOoRQwygQwILlpTTR7Wfgns_tHke/view?usp=sharing)

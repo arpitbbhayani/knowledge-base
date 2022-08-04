@@ -70,6 +70,8 @@ Outline:
 17:27 Why are Hash Tables slots always a power of 2?
 23:30 Shrinking a Hash Table
 
+Learn Hash Tables Internals in a structured way at https://courses.arpitbhayani.me/hash-table-internals
+
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
  - [Download the notes](https://drive.google.com/file/d/1aHWaOIGT7-zB88T83In05pHIdpuJTSk7/view?usp=sharing)

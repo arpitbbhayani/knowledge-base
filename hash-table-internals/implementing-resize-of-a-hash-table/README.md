@@ -84,6 +84,8 @@ Outline:
 03:18 Implementing Resize on Chained Hash Tables
 08:55 Implementing Resize on Hash Tables with Open Addressing
 
+Learn Hash Tables Internals in a structured way at https://courses.arpitbhayani.me/hash-table-internals
+
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
  - [Download the notes](https://drive.google.com/file/d/1wJWnXlQS4SKJBdmCg799gwb2dL7JSaPv/view?usp=sharing)

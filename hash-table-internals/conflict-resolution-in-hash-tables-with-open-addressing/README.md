@@ -66,6 +66,8 @@ Outline:
 04:15 Probing Functions
 08:45 Hash Table Operations
 
+Learn Hash Tables Internals in a structured way at https://courses.arpitbhayani.me/hash-table-internals
+
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
  - [Download the notes](https://drive.google.com/file/d/1bvdtGMKVou-bfuOHzX3izdx2FHfQTpYS/view?usp=sharing)

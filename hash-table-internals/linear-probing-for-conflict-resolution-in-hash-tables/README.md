@@ -72,6 +72,8 @@ Outline:
 09:34 Why is Linear Probing fast and efficient?
 03:47 Challenges with Linear Probing
 
+Learn Hash Tables Internals in a structured way at https://courses.arpitbhayani.me/hash-table-internals
+
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
  - [Download the notes](https://drive.google.com/file/d/1hqt-b4fQEXwFEgiEUVIUe5qoynpYXDb0/view?usp=sharing)

@@ -88,6 +88,8 @@ Outline:
 07:12 Implementing with Hash Tables having Chaining
 12:52 Implementing with Hash Tables having Open Addressing
 
+Learn Hash Tables Internals in a structured way at https://courses.arpitbhayani.me/hash-table-internals
+
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
  - [Download the notes](https://drive.google.com/file/d/1aIOet8RVov3l96RiKk3xN02p4ZQe-M3_/view?usp=sharing)
