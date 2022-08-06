@@ -49,7 +49,7 @@ Each slot of the hash table has the following structure
 struct node {
     int32 hash_key;
     void *key;
-    void *key;
+    void *value;
     bool is_empty;
     bool is_deleted;
 }

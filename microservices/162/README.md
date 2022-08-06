@@ -2,19 +2,19 @@ BFF - Backend for Frontend - Pattern in Microservices
 ===
 
 
-Say, we are launching an e-commerce website that people can use from their desktop and place orders. We want to render the product details that include - name, description, sellers, variants, reviews, and faqs. The site did well and now we decide to launch a mobile app.
+Say, we are launching an e-commerce website that people can use from their desktop and place orders. We want to render the product details that include - name, description, sellers, variants, reviews, and FAQs. The site did well, and now we decide to launch a mobile app.
 
-Given that the mobile has limited real estate, it is very hard to render the same information that we do on the Web. Hence, we choose not to render Reviews and FAQs. Thus even if we receive the reviews and faqs in the response, while rendering we choose not to render them.
+Given that the mobile has limited real estate, it is very hard to render the same information that we do on the Web. Hence, we choose not to render Reviews and FAQs. Thus, even if we receive the reviews and FAQs in the response, while rendering we choose not to render them.
 
 This is a waste of user bandwidth, data, and processing power. Ideally, we should not be sending unnecessary fields from the backend. So, how do we implement this?
 
 ## Backend for Frontend
 
-BFF is a layer that sits between the clients and the backend. Every type of client has a dedicated BFF; for exampDesktop Web has its own BFF while Mobile has its own.
+BFF is a layer that sits between the clients and the backend. Every type of client has a dedicated BFF; for example, Desktop Web has its own BFF, while Mobile has its own.
 
 Depending on the request, the BFF then talks to the backend, grabs the data, filters out the unnecessary fields, and responds. It can also optionally transform the data in a client-specific format.
 
-This way, we keep the backend simple and apply all presentation-level hacks and tweaks on BFF.
+This way, we keep the backend simple and apply all presentation-level hacks and tweaks to BFF.
 
 ## BFF and Microservices
 
@@ -42,7 +42,7 @@ For example, Given compatibility and constraints, a Desktop BFF can talk to Orde
 We should adopt BFF when
 
 - the interface between different clients varies significantly
-- the communication format/protocol is different from what your backend supports (eg: legacy integration might need XML while your backend serves JSON)
+- the communication format/protocol is different from what your backend supports (e.g.: legacy integration might need XML while your backend serves JSON)
 <hr />
 
 
