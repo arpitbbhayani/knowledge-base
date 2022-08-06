@@ -79,5 +79,14 @@
     "youtube_playlist_id": "PLsdq-3Z1EPT2UnueESBLReaVSLIo_BuAc",
     "bgcolor": "#FBE0E0",
     "themecolor": "#FF4B42"
+  },
+  {
+    "id": 10,
+    "uid": "bittorrent-internals",
+    "name": "BitTorrent Internals",
+    "one_liner": null,
+    "youtube_playlist_id": "PLsdq-3Z1EPT1rNeq2GXpnivaWINnOaCd0",
+    "bgcolor": "#AAA",
+    "themecolor": "#222"
   }
 ]
