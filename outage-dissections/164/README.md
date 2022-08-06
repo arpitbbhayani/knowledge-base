@@ -1,4 +1,4 @@
-Dissecting GitHub Outage and things to do after that
+So, the outage is mitigated, now what?
 ===
 
 
@@ -34,7 +34,7 @@ For example, re-auditing all the INT32 columns and moving them to INT64 to ensur
 
 <p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
 
-[![Dissecting GitHub Outage and things to do after that](https://i.ytimg.com/vi/LeT_s-UFw-U/mqdefault.jpg)](https://www.youtube.com/watch?v=LeT_s-UFw-U)
+[![So, the outage is mitigated, now what?](https://i.ytimg.com/vi/LeT_s-UFw-U/mqdefault.jpg)](https://www.youtube.com/watch?v=LeT_s-UFw-U)
 
 Outages happen and in such a tense situation, the main priority is to get the system back up, but is that it? Is everything done when the service is up and running?
 

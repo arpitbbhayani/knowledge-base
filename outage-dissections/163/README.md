@@ -1,4 +1,4 @@
-Dissecting GitHub Outage - Why should we localize failures?
+Control an outage by localizing the failures
 ===
 
 
@@ -46,7 +46,7 @@ A common approach to getting this loose coupling is by powering inter-service co
 
 <p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
 
-[![Dissecting GitHub Outage - Why should we localize failures?](https://i.ytimg.com/vi/Of3FS2qDM28/mqdefault.jpg)](https://www.youtube.com/watch?v=Of3FS2qDM28)
+[![Control an outage by localizing the failures](https://i.ytimg.com/vi/Of3FS2qDM28/mqdefault.jpg)](https://www.youtube.com/watch?v=Of3FS2qDM28)
 
 Outages are inevitable; but we should design our architecture such that if a component is down, it should not lead to a complete outage. It is easy to say this, but hard to implement.
 

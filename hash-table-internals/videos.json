@@ -16,7 +16,7 @@
     "img": "https://i.ytimg.com/vi/VCMO2X6EoK0/mqdefault.jpg",
     "gif": "https://media.giphy.com/media/LHZyixOnHwDDy/giphy.gif",
     "duration": "17:56",
-    "view_count": 334,
+    "view_count": 335,
     "like_count": 15,
     "comment_count": 6,
     "released_at": "2022-08-03",
@@ -86,7 +86,7 @@
       "themecolor": "#FF4B42"
     },
     "yt_video_id": "zt1E0akArqQ",
-    "title": "Resizing a Hash Table and why are they always doubled?",
+    "title": "Why are Hash Tables always doubled?",
     "description": "Why are the underlying arrays of the hash tables always a power of 2? When we trigger a resize why are Hash Tables always doubled? like 2, 4, 8, 16, 32? What is the reason behind it?\n\nIn this 8th video of the Hash Table Internals series, we answer some super-cool questions and go in-depth on Hash Table resizing. We understand why we do it, how we do it, why hash tables are always doubled upon resize, why they are always sized as a power of 2, and conclude with an understanding of how and when we shrink them.\n\nOutline:\n\n00:00 Agenda\n02:35 Why resize a Hash Table?\n03:19 When to resize a Hash Table?\n04:20 How to resize a Hash Table?\n07:40 Why are Hash Tables always doubled upon resize?\n17:27 Why are Hash Tables slots always a power of 2?\n23:30 Shrinking a Hash Table\n\nLearn Hash Tables Internals in a structured way at https://courses.arpitbhayani.me/hash-table-internals",
     "img": "https://i.ytimg.com/vi/zt1E0akArqQ/mqdefault.jpg",
     "gif": "https://media.giphy.com/media/4oeRWjN70cg8MV6HZC/giphy.gif",
@@ -97,7 +97,7 @@
     "released_at": "2022-07-27",
     "gist": "To maintain consistent performance, the hash table has to be resized - be it growing or shrinking. The trigger to resize depends on the load factor, which is defined as the ratio of the number of keys that the hash table holds to the total number of slots.\n\n## When should we resize?\n\nThe Hash Table is resized when the load factor hits a certain threshold. If we get too aggressive or too lenient, we would not be able to get the optimal efficiency. Hence, we have to find a sweet spot.\n\nWe typically grow the hash table when the load factor hits 0.5 and shrink when we hit 0.125.\n\n## Why do we always double?\n\nWe have heard and seen so many times, that when a Hash Table is required to grow, we always double the underlying array; but why? Can we not just increase it by 1 every time we are trying to insert?\n\n### Resizing by 1 every time\n\nLet's take an example: say, we grow the array by 1 every time we insert an element in the Hash Table. Let's compute the time it requires to fill `n` elements.\n\nInserting the 1st element is: allocating an array of size 1, and inserting 1 element; so in all O(1) operations.\n\nInserting the 2nd element is: allocating an array of size 2, copying 1 element from the old array, and then inserting the 2nd element; so in all O(2) operations.\n\nHence, inserting the nth element is: allocating an array of size n, copying n-1 elements from the old array, and then inserting the nth element; so in all O(n) operations.\n\nTotal operations to insert `n` elements = 1 + 2 + ... + n = (n(n-1))/2 which is O(n^2).\n\n### Doubling every time\n\nIf we double every time, inserting `n` elements requires O(n) time, as it is spacing out an expensive resize operation. We would be inserting n/2 elements before resizing the array to 2n.\n\nNote: For a detailed amortized analysis, please refer to the video attached here, where I have explained the reasoning in depth.\n\n## Why is a hash table array always a power of 2?\n\nFor a power of 2, the MOD and the bitwise AND spit out the same result and given that the bitwise AND is a magnitude faster than the MOD, we get the best performance out of our Hash Tables when we use AND\n\n```\n(i % 2^k) == (i & (2^k) - 1)\n```\n\nThis is why the length of the underlying array is always a power of 2, making our most-frequent operation efficient.\n\n## Shrinking the Hash Table\n\nTo ensure we are not wasting space, we trigger the shrink when we do not utilize the underlying array enough. While triggering a shrink, we also need to ensure that we are not aggressive enough that we have to grow immediately after the shrink.\n\nHence, we shrink the hash table when the load factor hits 1/8 i.e. in a table of length 64 if we are only holding 8 keys, we trigger a shrink and that reduces the length to 32.\n\nNote: To understand why we do it at load factor = 1/8, please refer to the video.",
     "notes_gd": "https://drive.google.com/file/d/1aHWaOIGT7-zB88T83In05pHIdpuJTSk7/view?usp=sharing",
-    "slug": "resizing-a-hash-table-and-why-are-they-always-doubled"
+    "slug": "why-are-hash-tables-always-doubled"
   },
   {
     "id": 171,
@@ -111,7 +111,7 @@
       "themecolor": "#FF4B42"
     },
     "yt_video_id": "oD2yaTtu69w",
-    "title": "Understanding the performance of a Hash Table",
+    "title": "Getting the best performance from the Hash Table",
     "description": "In the previous 6 videos, we talked about the internals of Hash Table, ways to implement them, and how to gracefully handle collisions.\n\nIn this video, we put our focus on performance and would look at how to quantify the load on the hash table, the impact of chaining and open addressing on perf, understanding the performance gains and losses for each strategy, and conclude with very interesting performance optimization.\n\nOutline:\n\n00:00 Agenda\n02:28 Load Factor\n03:36 Load Factor for resolution strategies\n09:22 The best strategy for a Hash Table\n14:29 Lookup time vs Load Factor\n20:03 Making chained hashing cache-friendly\n\nLearn Hash Tables Internals in a structured way at https://courses.arpitbhayani.me/hash-table-internals",
     "img": "https://i.ytimg.com/vi/oD2yaTtu69w/mqdefault.jpg",
     "gif": "https://media.giphy.com/media/3o7qE4opCd6f1NJeuY/giphy.gif",
@@ -122,7 +122,7 @@
     "released_at": "2022-07-25",
     "gist": "Hash Tables are designed to give a constant time performance and to do this, it needs to have many slots available. Since we cannot allocate a huge chunk of memory at first, we need Hash Tables are great because they are performant.\n\nWhich factors make them performant?\n\n## Load Factor\n\nLoad Factor is a quantification that makes it simple for us to tell how loaded the Hash Table is, and it is just a simple division of the number of keys and the number of slots in the hash table.\n\nAs the load factor increases, the performance of the Hash Table decreases. It happens purely because it takes longer for us to do a slot lookup and find an empty slot to place the key.\n\n## The Best Strategy\n\nEvery probing strategy or collision resolution strategy has its merit and demerit, and they all perform the best in a certain condition and the worse in others. Let's take a detailed look.\n\n### Chained Hashing\n\nChained Hashing is costly, as it requires us to do a linear traversal of the linked list to find the key we are looking for. As the collisions increase, the lookup time shoots up, degrading the performance.\n\nChained Hashing is not cache-friendly, as it requires us to do random lookups in the memory while hopping from one linked list node to another.\n\n### Double Hashing\n\nEvaluating two hash functions requires extra CPU cycles that could get taxing. Double hashing is also not cache-friendly, as it requires us to chump across the Hash Table to hunt an empty slot.\n\nThe optimal strategy is contextual. If the performance of the Hash Table is critical, then we need to experiment, tune, and evaluate the best that fits us.\n\n## Lookup Time vs Load Factor\n\nLookup Time is the most critical metric in evaluating the performance of the Hash Table; when we benchmark Lookup Time vs Load Factor, we would see\n\n- perf of Open Addressing degrades as the load factor increases\n- perf of Chained Hashing degrades gracefully with load factor\n- Linear Probing would be slower than Double Hashing\n- Probes required for Double Hashing would be shorter\n\n## Making Chained Hashing cache efficient\n\nChained Hashing is known for being cache-inefficient, as it requires us to traverse through linked list nodes that may be present across the heap. Can we somehow make it cache efficient?\n\nTo make Chained Hashing cache-friendly, we have to ensure that the nodes of the linked list are allocated contiguously instead of randomly. Hence, instead of allocating one node at a time, we allocate the space for 5 nodes (like an array) at a time and then form the linked list out of them.\n\nThis would make the linked list leverage the CPU cache well and ensure our iterations are efficient as the next nodes will be available in the CPU cache, not requiring us to fetch them from the main memory.",
     "notes_gd": "https://drive.google.com/file/d/1maLTNs7gFIu6zCQvX-v-_BKQy_F5Tgqv/view?usp=sharing",
-    "slug": "understanding-the-performance-of-a-hash-table"
+    "slug": "getting-the-best-performance-from-the-hash-table"
   },
   {
     "id": 170,
@@ -191,7 +191,7 @@
     "img": "https://i.ytimg.com/vi/5QKAXG25hig/mqdefault.jpg",
     "gif": "https://media.giphy.com/media/LrQlr8NQig48u8utK6/giphy.gif",
     "duration": "19:23",
-    "view_count": 350,
+    "view_count": 351,
     "like_count": 19,
     "comment_count": 0,
     "released_at": "2022-07-18",

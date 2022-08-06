@@ -11,7 +11,7 @@
       "themecolor": "#FF8229"
     },
     "yt_video_id": "LeT_s-UFw-U",
-    "title": "Dissecting GitHub Outage and things to do after that",
+    "title": "So, the outage is mitigated, now what?",
     "description": "Outages happen and in such a tense situation, the main priority is to get the system back up, but is that it? Is everything done when the service is up and running?\n\nSo today let's spend some time talking about the aftermath of an outage. There are many things to take care of once the outage is mitigated and in this video, we dissect a GitHub outage, understand what happened, and look at a set of common practices that we follow to ensure closure.\n\nOutline:\n\n00:00 Agenda\n02:31 The outage and mitigation\n07:23 Solve data inconsistency\n09:51 Invalidate the cache\n11:03 Setup alerting\n13:53 Take preventive measures\n\nCheck out the free course covering all GitHub outages \u2192  https://courses.arpitbhayani.me/github-outage-dissections/",
     "img": "https://i.ytimg.com/vi/LeT_s-UFw-U/mqdefault.jpg",
     "gif": "https://media.giphy.com/media/3o6MbhbYBsqTrbP2qQ/giphy.gif",
@@ -22,7 +22,7 @@
     "released_at": "2022-07-08",
     "gist": "Getting the service up is P0 during the outage, but that is not all. There are a few other things that we need to take care of once the issue is mitigated.\n\n## Resolve Inconcistencies\n\nDuring the outage, the business logic or database must have crashed while handling in-flight requests; hence there is a very high chance of the data becoming inconsistent.\n\nFor example: if the process crashed while transferring money from one account to another; it is possible that money got deducted from one account but did not credit to another.\n\nHence once the outage is mitigated, the first thing to be done is to ensure that the data does not remain in an inconsistent state. Achieving this depends on the usecase at hand and the tech stack involved.\n\n## Invalidate the Cache\n\nAnother place that needs attention is cache invalidation. If the outage sustains for a long time, there is a chance that some of the entries in the cache are not valid anymore.\n\nHence, depending on the usecase, it is advised to go through the cache entries and delete the invalid once ensuring the end-user sees a globally consistent view of the data.\n\n## Audit alerting and monitoring\n\nOnce the outage is mitigated and the inconsistencies are resolved, it is better if we take a look into existing alerting and monitoring practices so that we ensure that we get alerted at the right time.\n\nIn most cases, you would find that a few things could always be improved when it comes to monitoring the right things, and hence an outage is an opportunity to get alerting and monitoring improvements prioritized.\n\n## Take preventive measures\n\nEvery outage has a root cause, and it is super-important to fix the root cause to ensure that the over never happens again for the same reason. This requires us to go in-depth and take preventive measures to ensure complete closure.\n\nFor example, re-auditing all the INT32 columns and moving them to INT64 to ensure that we never repeat the outage due to integer overflow.",
     "notes_gd": "https://drive.google.com/file/d/1pDHYlKlQsTB_oDvqG9mpsvfKkHWDnkRG/view?usp=sharing",
-    "slug": "dissecting-github-outage-and-things-to-do-after-that"
+    "slug": "so-the-outage-is-mitigated-now-what"
   },
   {
     "id": 163,
@@ -36,7 +36,7 @@
       "themecolor": "#FF8229"
     },
     "yt_video_id": "Of3FS2qDM28",
-    "title": "Dissecting GitHub Outage - Why should we localize failures?",
+    "title": "Control an outage by localizing the failures",
     "description": "Outages are inevitable; but we should design our architecture such that if a component is down, it should not lead to a complete outage. It is easy to say this, but hard to implement.\n\nIn this video, we dissect yet another GitHub outage, gather a few interesting insights about their Microservices architecture, and spend some time discussing and understanding the importance of having a smaller blast radius and a fool-proof way of achieving that.\n\nOutline:\n\n00:00 Agenda\n02:36 What happened\n04:30 Root Cause\n05:14 Insights about their architecture\n08:50 Master failover did not happen\n13:40 Long-term fixes and Localizing failures\n\nCheck out the free course covering all GitHub outages \u2192  https://courses.arpitbhayani.me/github-outage-dissections/",
     "img": "https://i.ytimg.com/vi/Of3FS2qDM28/mqdefault.jpg",
     "gif": "https://media.giphy.com/media/3oEduUNILoKY1sciqI/giphy.gif",
@@ -47,7 +47,7 @@
     "released_at": "2022-07-06",
     "gist": "Outages are inevitable; but we should design our architecture and ensure that if a component is down, it should not lead to a complete outage.\n\n## What happened with GitHub?\n\nGitHub saw a lot of failures with their Actions service and this led to delays in queued jobs from being processed. The root cause was some infrastructure error in the SQL layer.\n\n## Insights about their architecture\n\nA couple of insights about their architecture\n\n### Synchronous dependency\n\nAlthough GitHub Actions look like a single feature, internally it consists of multiple microservices. Some of these, have a synchronous dependency on the database. Because of this, when the DB had a hiccup, the entire Actions feature was hindered.\n\n### Zero trust communication\n\nThe service that was most affected in this outage handled communication; why would services need authentication? they are all internal the infrastructure?\n\nMicroservices talk. The communication needs to be protected with auth so that any engineer/service gone rogue cannot abuse the system in any capacity. Only authenticated and authorized services are allowed to take action.\n\n## What about automatic failover?\n\nGiven that the outage happened on the database layer, why did the database did not auto-recover? it is a standard procedure and configuration that would have just promoted a replica to be the new master.\n\nAlthough it is a common config, during this outage the metrics did not show any issue with the database, and hence the auto-failover was never triggered. It took a long time to even understand the root cause and then start mitigation.\n\n## Long-Term Fixes\n\n### Update the automation scripts\n\nThe automation that reads the telemetry and decides to do a failover needs to be updated so that such failures are detected and action is taken.\n\n### Localizing failures\n\nAn important long-term change that needs to be driven is to localize the failure. In this outage, we learned how a hiccup in one database/service causes downtime of all dependent Microservices. This shouldn't have happened as the Microservices are supposed to solve this very problem.\n\nA good way to ensure that the blast radius of the outage is minima; is by ensuring the failures are localized, implying, that when a service is down, only the service is affected while everything else is functioning perfectly fine.\n\nA common approach to getting this loose coupling is by powering inter-service communication through the asynchronous medium instead of synchronous API calls. Thus, if something breaks, we could fix it and continue to process the messages.",
     "notes_gd": "https://drive.google.com/file/d/1V_nuSi4KDsuTD_p0beIWoBDmRN9T5d5V/view?usp=sharing",
-    "slug": "dissecting-github-outage-why-should-we-localize-failures"
+    "slug": "control-an-outage-by-localizing-the-failures"
   },
   {
     "id": 161,
@@ -66,7 +66,7 @@
     "img": "https://i.ytimg.com/vi/bycFzB6yrK0/mqdefault.jpg",
     "gif": "https://media.giphy.com/media/l4pTi9xLGNINzfyXm/giphy.gif",
     "duration": "21:9",
-    "view_count": 1001,
+    "view_count": 1003,
     "like_count": 53,
     "comment_count": 13,
     "released_at": "2022-07-01",
@@ -266,7 +266,7 @@
     "img": "https://i.ytimg.com/vi/82Xywy74kfE/mqdefault.jpg",
     "gif": "https://media.giphy.com/media/nrXif9YExO9EI/giphy.gif",
     "duration": "36:44",
-    "view_count": 1950,
+    "view_count": 1951,
     "like_count": 101,
     "comment_count": 24,
     "released_at": "2022-05-09",
@@ -366,7 +366,7 @@
     "img": "https://i.ytimg.com/vi/h5hXivWws7k/mqdefault.jpg",
     "gif": "https://media.giphy.com/media/26FKWlRgIL3JOIkGA/giphy.gif",
     "duration": "26:",
-    "view_count": 3270,
+    "view_count": 3271,
     "like_count": 192,
     "comment_count": 32,
     "released_at": "2022-03-12",

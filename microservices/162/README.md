@@ -1,4 +1,4 @@
-Backend for Frontend Pattern in Microservices
+BFF - Backend for Frontend - Pattern in Microservices
 ===
 
 
@@ -48,7 +48,7 @@ We should adopt BFF when
 
 <p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
 
-[![Backend for Frontend Pattern in Microservices](https://i.ytimg.com/vi/GCx0aouuEkU/mqdefault.jpg)](https://www.youtube.com/watch?v=GCx0aouuEkU)
+[![BFF - Backend for Frontend - Pattern in Microservices](https://i.ytimg.com/vi/GCx0aouuEkU/mqdefault.jpg)](https://www.youtube.com/watch?v=GCx0aouuEkU)
 
 As your application evolves, supporting multiple types of clients like Desktop, Mobile apps, etc becomes tricky. The backend becomes complicated, and you start applying a  lot of hacks to serve them properly.
 

@@ -1,4 +1,4 @@
-Understanding the performance of a Hash Table
+Getting the best performance from the Hash Table
 ===
 
 
@@ -49,7 +49,7 @@ This would make the linked list leverage the CPU cache well and ensure our itera
 
 <p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
 
-[![Understanding the performance of a Hash Table](https://i.ytimg.com/vi/oD2yaTtu69w/mqdefault.jpg)](https://www.youtube.com/watch?v=oD2yaTtu69w)
+[![Getting the best performance from the Hash Table](https://i.ytimg.com/vi/oD2yaTtu69w/mqdefault.jpg)](https://www.youtube.com/watch?v=oD2yaTtu69w)
 
 In the previous 6 videos, we talked about the internals of Hash Table, ways to implement them, and how to gracefully handle collisions.
 

@@ -1,4 +1,4 @@
-Resizing a Hash Table and why are they always doubled?
+Why are Hash Tables always doubled?
 ===
 
 
@@ -54,7 +54,7 @@ Note: To understand why we do it at load factor = 1/8, please refer to the video
 
 <p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
 
-[![Resizing a Hash Table and why are they always doubled?](https://i.ytimg.com/vi/zt1E0akArqQ/mqdefault.jpg)](https://www.youtube.com/watch?v=zt1E0akArqQ)
+[![Why are Hash Tables always doubled?](https://i.ytimg.com/vi/zt1E0akArqQ/mqdefault.jpg)](https://www.youtube.com/watch?v=zt1E0akArqQ)
 
 Why are the underlying arrays of the hash tables always a power of 2? When we trigger a resize why are Hash Tables always doubled? like 2, 4, 8, 16, 32? What is the reason behind it?
 

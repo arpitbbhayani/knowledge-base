@@ -34,6 +34,6 @@ Topics I like to talk about are
  - [Implementing Hash Maps with Hash Tables](https://youtube.com/watch?v=VCMO2X6EoK0)
  - [Implementing Hash Sets with Hash Tables](https://youtube.com/watch?v=CcoMvgIdrD8)
  - [Implementing Resize of a Hash Table](https://youtube.com/watch?v=mmPwVBm-8n0)
- - [Resizing a Hash Table and why are they always doubled?](https://youtube.com/watch?v=zt1E0akArqQ)
+ - [Why are Hash Tables always doubled?](https://youtube.com/watch?v=zt1E0akArqQ)
 
 You can find more about me on my website [arpitbhayani.me](arpitbhayani.me).
