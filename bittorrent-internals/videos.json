@@ -14,7 +14,7 @@
     "title": "Introduction to BitTorrent and the problem it beautifully solves",
     "description": "BitTorrent is super popular when it comes to sharing and distributing large files over the network. But what is the engineering behind it? In this series, we will dive deep into BitTorrent, and understand various algorithms that power it. Along the way, we would also try to write our own torrent client to get a deeper understanding.\n\nIn this 1st video of this series, we take a look at what are peer-to-peer networks, what is bit torrent, the core idea behind it, and how it makes downloads super-fast, and conclude with some terminologies that would acquaint us to do a deep dive later.\n\nOutline:\n\n00:00 Agenda\n02:43 Classic Download Flow\n04:50 P2P Networks\n07:19 Core Idea of BitTorrent\n11:15 Nomenclature and Terminologies\n16:03 BitTorrent is popular-friendly\n16:56 Applications of BitTorrent\n\nGitHub Repository: https://github.com/relogX/retorrent",
     "img": "https://i.ytimg.com/vi/v7cR0ZolaUA/mqdefault.jpg",
-    "gif": null,
+    "gif": "https://media.giphy.com/media/l3vR71WRpZKNIwEMw/giphy.gif",
     "duration": "19:24",
     "view_count": 609,
     "like_count": 44,
