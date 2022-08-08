@@ -14,14 +14,14 @@
     "title": "Understanding the Torrent File Format and Bencoding",
     "description": "To download or upload any file from the Torrent network, we need a .torrent file. But what exactly is this file?\n\nIn this 2nd video of the BitTorrent Internals series, we take a detailed look into the .torrent file and understand its lifecycle, what information it holds, and the encoding it uses to structure the data.\n\nOutline:\n\n00:00 Agenda\n02:27 Torrent File and its Lifecycle\n04:33 What is in the .torrent file?\n13:33 Bencoding\n\nGitHub Repository: https://github.com/relogX/retorrent",
     "img": "https://i.ytimg.com/vi/tHT94dSMwKw/mqdefault.jpg",
-    "gif": null,
+    "gif": "https://media.giphy.com/media/69jvP3VXUYhr3YUYu9/giphy.gif",
     "duration": "20:40",
     "view_count": 101,
     "like_count": 9,
     "comment_count": 1,
     "released_at": "2022-08-08",
     "gist": "",
-    "notes_gd": "",
+    "notes_gd": "https://drive.google.com/file/d/13TaIK98n1SpWTLfPVfmygYVMUCyMncbr/view?usp=sharing",
     "slug": "understanding-the-torrent-file-format-and-bencoding"
   },
   {

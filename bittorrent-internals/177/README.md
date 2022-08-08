@@ -22,7 +22,7 @@ GitHub Repository: https://github.com/relogX/retorrent
 
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
- - [Download the notes]()
+ - [Download the notes](https://drive.google.com/file/d/13TaIK98n1SpWTLfPVfmygYVMUCyMncbr/view?usp=sharing)
  - Listen to this on the go on [Spotify](https://open.spotify.com/show/7qMoamm2iZQrsPVm6IQLoD)
 
 # Arpit's System Design Masterclass
