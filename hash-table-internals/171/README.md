@@ -2,9 +2,7 @@ Getting the best performance from the Hash Table
 ===
 
 
-Hash Tables are designed to give a constant time performance and to do this, it needs to have many slots available. Since we cannot allocate a huge chunk of memory at first, we need Hash Tables are great because they are performant.
-
-Which factors make them performant?
+Hash Tables are designed to give a constant time performance and to do this, it needs to have a large number of slots available. So, which factors decide its performance?
 
 ## Load Factor
 
@@ -24,7 +22,7 @@ Chained Hashing is not cache-friendly, as it requires us to do random lookups in
 
 ### Double Hashing
 
-Evaluating two hash functions requires extra CPU cycles that could get taxing. Double hashing is also not cache-friendly, as it requires us to chump across the Hash Table to hunt an empty slot.
+Evaluating two hash functions requires extra CPU cycles that could get taxing. Double hashing is also not cache-friendly, as it requires us to jump across the Hash Table to hunt an empty slot.
 
 The optimal strategy is contextual. If the performance of the Hash Table is critical, then we need to experiment, tune, and evaluate the best that fits us.
 

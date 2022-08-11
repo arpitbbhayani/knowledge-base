@@ -1,5 +1,13 @@
 [
   {
+    "id": 11,
+    "title": "Kademlia - a Peer-to-peer Information System based on XOR Metric",
+    "highlights": null,
+    "link": "",
+    "status": "DONE",
+    "annotated_pdf": "https://drive.google.com/file/d/1EREYP8U1jkxsbsLJvjKhSsz7Scc4xo2c/view?usp=sharing"
+  },
+  {
     "id": 9,
     "title": "Peer-to-peer networking with BitTorrent",
     "highlights": null,
