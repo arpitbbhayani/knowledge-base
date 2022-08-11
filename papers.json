@@ -1,5 +1,37 @@
 [
   {
+    "id": 15,
+    "title": "Understanding BitTorrent - An Experimental Perspective",
+    "highlights": null,
+    "link": "",
+    "status": "DONE",
+    "annotated_pdf": "https://drive.google.com/file/d/17lvNCfgI2xwMA65VDBcKSPhq0iJqHXVU/view?usp=sharing"
+  },
+  {
+    "id": 14,
+    "title": "Exploiting BitTorrent For Fun (But Not Profit)",
+    "highlights": null,
+    "link": "",
+    "status": "DONE",
+    "annotated_pdf": "https://drive.google.com/file/d/13qLIQFaytcTUD0pQEhP_7eeqN_Ryv3bh/view?usp=sharing"
+  },
+  {
+    "id": 13,
+    "title": "Rarest First and Choke Algorithms Are Enough",
+    "highlights": null,
+    "link": "",
+    "status": "DONE",
+    "annotated_pdf": "https://drive.google.com/file/d/1GqnGoiQbrbxdn1oVPLVd3z8q-XLaoaIh/view?usp=sharing"
+  },
+  {
+    "id": 12,
+    "title": "Implementation of a BitTorrent client - B. Sc. Thesis",
+    "highlights": null,
+    "link": "",
+    "status": "DONE",
+    "annotated_pdf": "https://drive.google.com/file/d/1mCgITghlVle3rFmJzd3Um7B5Wu_k3shb/view?usp=sharing"
+  },
+  {
     "id": 11,
     "title": "Kademlia - a Peer-to-peer Information System based on XOR Metric",
     "highlights": null,
@@ -20,7 +52,7 @@
     "title": "Free Riding in BitTorrent is Cheap",
     "highlights": null,
     "link": "",
-    "status": "TODO",
+    "status": "DONE",
     "annotated_pdf": "https://drive.google.com/file/d/1JEu085WKpy0I-X_enknDs08TH6bnVc0T/view?usp=sharing"
   },
   {
