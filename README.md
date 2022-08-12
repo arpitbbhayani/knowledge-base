@@ -11,7 +11,7 @@ Thank you for visiting my knowledge base. This repository contains everything im
 Hey 🙌‍, I am Arpit Bhayani, a CS Engineer, an Educator, and a Polymath.
 
 I run a YouTube channel by the name [Asli Engineering](asliengineering.com) (translation: Real Engineering) on which I publish in-depth engineering videos on topics ranging from System Design,
-Distributed Systems, Python Internals, and anything that amuses me in tech. To date, I have published **80** videos covering **10** topics.
+Distributed Systems, Python Internals, and anything that amuses me in tech. To date, I have published **81** videos covering **10** topics.
 
 I also run a [course on System Design](https://arpitbhayani.me/masterclass) in which I teach the concepts of designing massively scalable systems using the First Principle Thinking. The course has been trusted by prople working in someo of the top companies of the world like Google, Amazon, Facebook, Microsoft, GoJek, and so many more. You can find the details about the course and curriculum at [arpitbhayani.me/masterclass](https://arpitbhayani.me/masterclass).
 
@@ -30,10 +30,10 @@ Topics I like to talk about are
 
 5 recent videos I published on [YouTube](https://www.youtube.com/c/ArpitBhayani)
 
+ - [The Choke Algorithm that powers BitTorrent](https://youtube.com/watch?v=iognYJRzCE8)
  - [Overview of the BitTorrent architecture](https://youtube.com/watch?v=shVvFVFiZcs)
  - [Understanding the Torrent File Format and Bencoding](https://youtube.com/watch?v=tHT94dSMwKw)
  - [Introduction to BitTorrent and the problem it beautifully solves](https://youtube.com/watch?v=v7cR0ZolaUA)
  - [Implementing Hash Maps with Hash Tables](https://youtube.com/watch?v=VCMO2X6EoK0)
- - [Implementing Hash Sets with Hash Tables](https://youtube.com/watch?v=CcoMvgIdrD8)
 
 You can find more about me on my website [arpitbhayani.me](arpitbhayani.me).
