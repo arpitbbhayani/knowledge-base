@@ -8,7 +8,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "genetic-knapsack",
     "title": "Genetic Algorithm to solve the Knapsack Problem",
@@ -34,7 +35,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "lfsr",
     "title": "Pseudorandom Number Generation using LFSR",
@@ -60,7 +62,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "indexing-on-partitioned-data",
     "title": "Indexing on Partitioned Data",
@@ -86,7 +89,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "data-partitioning-strategies",
     "title": "Data Partitioning Strategies",
@@ -112,7 +116,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "data-partitioning",
     "title": "Data Partitioning",
@@ -138,7 +143,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "leaderless-replication",
     "title": "Leaderless Replication",
@@ -164,7 +170,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "conflict-resolution",
     "title": "Conflict Resolution",
@@ -190,7 +197,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "conflict-detection",
     "title": "Conflict Detection",
@@ -216,7 +224,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "multi-master-replication",
     "title": "Multi-Master Replication",
@@ -242,7 +251,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "monotonic-reads",
     "title": "Monotonic Reads",
@@ -268,7 +278,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "read-your-write-consistency",
     "title": "Read-your-write Consistency",
@@ -294,7 +305,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "handling-outages-master-replica",
     "title": "Handling outages in a Master-Replica setup",
@@ -320,7 +332,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "new-replica",
     "title": "The New Replica",
@@ -346,7 +359,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "replication-formats",
     "title": "Replication Formats",
@@ -372,7 +386,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "replication-strategies",
     "title": "Replication Strategies",
@@ -398,7 +413,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "master-replica-replication",
     "title": "Master-Replica Replication",
@@ -424,7 +440,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "durability",
     "title": "ACID - Durability",
@@ -450,7 +467,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "isolation",
     "title": "ACID - Isolation",
@@ -476,7 +494,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "consistency",
     "title": "ACID - Consistency",
@@ -502,7 +521,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "atomicity",
     "title": "ACID - Atomicity",
@@ -528,7 +548,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "architectures-in-distributed-systems",
     "title": "Architectures in Distributed Systems",
@@ -554,7 +575,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "mistaken-beliefs-of-distributed-systems",
     "title": "Mistaken Beliefs of Distributed Systems",
@@ -580,7 +602,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "fork-bomb",
     "title": "Fork Bomb",
@@ -606,7 +629,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
       "bgcolor": "#DDFFF1",
-      "themecolor": "#00A662"
+      "themecolor": "#00A662",
+      "course_url": null
     },
     "uid": "chained-operators-python",
     "title": "Chained Comparison Operators in Python",
@@ -632,7 +656,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l",
       "bgcolor": "#E7ECFF",
-      "themecolor": "#5677f5"
+      "themecolor": "#5677f5",
+      "course_url": null
     },
     "uid": "udemy-sql-taxonomy",
     "title": "Designing Taxonomy on a Relational DB",
@@ -658,7 +683,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
       "bgcolor": "#DDFFF1",
-      "themecolor": "#00A662"
+      "themecolor": "#00A662",
+      "course_url": null
     },
     "uid": "the-weird-walrus",
     "title": "The Weird Walrus",
@@ -684,7 +710,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "fully-persistent-arrays",
     "title": "Fully Persistent Arrays",
@@ -710,7 +737,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "persistent-data-structures-introduction",
     "title": "Persistent Data Structures - An Introduction",
@@ -736,7 +764,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
       "bgcolor": "#DDFFF1",
-      "themecolor": "#00A662"
+      "themecolor": "#00A662",
+      "course_url": null
     },
     "uid": "constant-folding-python",
     "title": "Constant Folding in Python",
@@ -762,7 +791,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
       "bgcolor": "#DDFFF1",
-      "themecolor": "#00A662"
+      "themecolor": "#00A662",
+      "course_url": null
     },
     "uid": "string-interning",
     "title": "String Interning in Python",
@@ -806,7 +836,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "flajolet-martin",
     "title": "Approximate Count-Distinct using Flajolet Martin Algorithm",
@@ -832,7 +863,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "2q-cache",
     "title": "2Q Cache Management Algorithm",
@@ -858,7 +890,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "israeli-queues",
     "title": "Israeli Queues",
@@ -884,7 +917,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "1d-terrain",
     "title": "1D Procedural Terrain Generation",
@@ -910,7 +944,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "jaccard-minhash",
     "title": "Set Similarity using Jaccard Similarity Coefficient and MinHash",
@@ -936,7 +971,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "ts-smoothing",
     "title": "Time Series Smoothing - Making Aberrations Stand Out",
@@ -962,7 +998,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "lfu",
     "title": "Constant Time LFU",
@@ -988,7 +1025,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "morris-counter",
     "title": "Morris's Algorithm for Approximate Counting",
@@ -1014,7 +1052,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "slowsort",
     "title": "Slowsort - A Pessimal Sorting Algorithm",
@@ -1040,7 +1079,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l",
       "bgcolor": "#E7ECFF",
-      "themecolor": "#5677f5"
+      "themecolor": "#5677f5",
+      "course_url": null
     },
     "uid": "bitcask",
     "title": "Bitcask - A Log-Structured Fast KV Store",
@@ -1066,7 +1106,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "phi-accrual",
     "title": "Phi \u03c6 Accrual Failure Detection",
@@ -1128,7 +1169,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
       "bgcolor": "#DDFFF1",
-      "themecolor": "#00A662"
+      "themecolor": "#00A662",
+      "course_url": null
     },
     "uid": "python-iterable-integers",
     "title": "Making Python Integers Iterable",
@@ -1172,7 +1214,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "rum",
     "title": "The RUM Conjecture",
@@ -1198,7 +1241,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "consistent-hashing",
     "title": "Consistent Hashing",
@@ -1224,7 +1268,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
       "bgcolor": "#DDFFF1",
-      "themecolor": "#00A662"
+      "themecolor": "#00A662",
+      "course_url": null
     },
     "uid": "python-caches-integers",
     "title": "Integer Caching in Python",
@@ -1250,7 +1295,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "fractional-cascading",
     "title": "Fractional Cascading - Speeding up Binary Searches",
@@ -1294,7 +1340,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l",
       "bgcolor": "#E7ECFF",
-      "themecolor": "#5677f5"
+      "themecolor": "#5677f5",
+      "course_url": null
     },
     "uid": "mysql-cache",
     "title": "Midpoint Insertion Strategy in MySQL LRU Cache",
@@ -1320,7 +1367,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "fsm",
     "title": "Building Finite State Machines with Python Coroutines",
@@ -1346,7 +1394,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "bayesian-average",
     "title": "Better Ranking using Bayesian Average",
@@ -1372,7 +1421,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "sliding-window-ratelimiter",
     "title": "Sliding Window based Rate Limiter",
@@ -1398,7 +1448,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "idf",
     "title": "Inverse Document Frequency",
@@ -1460,7 +1511,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "rule-30",
     "title": "Pseudorandom Number Generation using Cellular Automata - Rule 30",
@@ -1486,7 +1538,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
       "bgcolor": "#DDFFF1",
-      "themecolor": "#00A662"
+      "themecolor": "#00A662",
+      "course_url": null
     },
     "uid": "function-overloading",
     "title": "Function Overloading in Python",
@@ -1512,7 +1565,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "isolation-forest",
     "title": "Isolation Forest Algorithm for Anomaly Detection",
@@ -1556,7 +1610,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
       "bgcolor": "#DDFFF1",
-      "themecolor": "#00A662"
+      "themecolor": "#00A662",
+      "course_url": null
     },
     "uid": "super-long-integers",
     "title": "Super Long Integers in Python",
@@ -1582,7 +1637,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
       "bgcolor": "#DDFFF1",
-      "themecolor": "#00A662"
+      "themecolor": "#00A662",
+      "course_url": null
     },
     "uid": "i-changed-my-python",
     "title": "Changing Python",
@@ -1626,7 +1682,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "how-sleepsort-helped-me-understand-concurrency-in-golang",
     "title": "Sleepsort and Concurrency in Golang",
@@ -1670,7 +1727,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l",
       "bgcolor": "#E7ECFF",
-      "themecolor": "#5677f5"
+      "themecolor": "#5677f5",
+      "course_url": null
     },
     "uid": "fast-and-efficient-pagination-in-mongodb",
     "title": "Fast and Efficient Pagination in MongoDB",
@@ -1696,7 +1754,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l",
       "bgcolor": "#E7ECFF",
-      "themecolor": "#5677f5"
+      "themecolor": "#5677f5",
+      "course_url": null
     },
     "uid": "mongodb-cursor-skip-is-slow",
     "title": "Why MongoDB's cursor.skip() is Slow?",
@@ -1722,7 +1781,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l",
       "bgcolor": "#E7ECFF",
-      "themecolor": "#5677f5"
+      "themecolor": "#5677f5",
+      "course_url": null
     },
     "uid": "benchmark-and-compare-pagination-approach-in-mongodb",
     "title": "Benchmark Pagination Strategies in MongoDB",

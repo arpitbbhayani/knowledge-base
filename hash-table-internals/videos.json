@@ -8,7 +8,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2UnueESBLReaVSLIo_BuAc",
       "bgcolor": "#FBE0E0",
-      "themecolor": "#FF4B42"
+      "themecolor": "#FF4B42",
+      "course_url": "https://courses.arpitbhayani.me/hash-table-internals/"
     },
     "yt_video_id": "VCMO2X6EoK0",
     "title": "Implementing Hash Maps with Hash Tables",
@@ -33,7 +34,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2UnueESBLReaVSLIo_BuAc",
       "bgcolor": "#FBE0E0",
-      "themecolor": "#FF4B42"
+      "themecolor": "#FF4B42",
+      "course_url": "https://courses.arpitbhayani.me/hash-table-internals/"
     },
     "yt_video_id": "CcoMvgIdrD8",
     "title": "Implementing Hash Sets with Hash Tables",
@@ -58,7 +60,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2UnueESBLReaVSLIo_BuAc",
       "bgcolor": "#FBE0E0",
-      "themecolor": "#FF4B42"
+      "themecolor": "#FF4B42",
+      "course_url": "https://courses.arpitbhayani.me/hash-table-internals/"
     },
     "yt_video_id": "mmPwVBm-8n0",
     "title": "Implementing Resize of a Hash Table",
@@ -83,7 +86,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2UnueESBLReaVSLIo_BuAc",
       "bgcolor": "#FBE0E0",
-      "themecolor": "#FF4B42"
+      "themecolor": "#FF4B42",
+      "course_url": "https://courses.arpitbhayani.me/hash-table-internals/"
     },
     "yt_video_id": "zt1E0akArqQ",
     "title": "Why are Hash Tables always doubled?",
@@ -108,7 +112,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2UnueESBLReaVSLIo_BuAc",
       "bgcolor": "#FBE0E0",
-      "themecolor": "#FF4B42"
+      "themecolor": "#FF4B42",
+      "course_url": "https://courses.arpitbhayani.me/hash-table-internals/"
     },
     "yt_video_id": "oD2yaTtu69w",
     "title": "Getting the best performance from the Hash Table",
@@ -133,7 +138,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2UnueESBLReaVSLIo_BuAc",
       "bgcolor": "#FBE0E0",
-      "themecolor": "#FF4B42"
+      "themecolor": "#FF4B42",
+      "course_url": "https://courses.arpitbhayani.me/hash-table-internals/"
     },
     "yt_video_id": "wV4K6fo0T58",
     "title": "Double Hashing for Conflict Resolution in Hash Tables",
@@ -158,7 +164,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2UnueESBLReaVSLIo_BuAc",
       "bgcolor": "#FBE0E0",
-      "themecolor": "#FF4B42"
+      "themecolor": "#FF4B42",
+      "course_url": "https://courses.arpitbhayani.me/hash-table-internals/"
     },
     "yt_video_id": "F-8pWiJv8ik",
     "title": "Quadratic Probing for Conflict Resolution in Hash Tables",
@@ -183,7 +190,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2UnueESBLReaVSLIo_BuAc",
       "bgcolor": "#FBE0E0",
-      "themecolor": "#FF4B42"
+      "themecolor": "#FF4B42",
+      "course_url": "https://courses.arpitbhayani.me/hash-table-internals/"
     },
     "yt_video_id": "5QKAXG25hig",
     "title": "Linear Probing for Conflict Resolution in Hash Tables",
@@ -208,7 +216,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2UnueESBLReaVSLIo_BuAc",
       "bgcolor": "#FBE0E0",
-      "themecolor": "#FF4B42"
+      "themecolor": "#FF4B42",
+      "course_url": "https://courses.arpitbhayani.me/hash-table-internals/"
     },
     "yt_video_id": "6_yFb7icd_c",
     "title": "Conflict Resolution in Hash Tables with Open Addressing",
@@ -233,7 +242,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2UnueESBLReaVSLIo_BuAc",
       "bgcolor": "#FBE0E0",
-      "themecolor": "#FF4B42"
+      "themecolor": "#FF4B42",
+      "course_url": "https://courses.arpitbhayani.me/hash-table-internals/"
     },
     "yt_video_id": "9rb8oILi4lU",
     "title": "Conflict Resolution in Hash Tables with Chaining",
@@ -258,7 +268,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2UnueESBLReaVSLIo_BuAc",
       "bgcolor": "#FBE0E0",
-      "themecolor": "#FF4B42"
+      "themecolor": "#FF4B42",
+      "course_url": "https://courses.arpitbhayani.me/hash-table-internals/"
     },
     "yt_video_id": "jjW8w8ED3Ns",
     "title": "Internal Structure of a Hash Table",

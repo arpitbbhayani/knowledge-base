@@ -8,7 +8,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "indexing-on-partitioned-data",
     "title": "Indexing on Partitioned Data",
@@ -34,7 +35,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "data-partitioning-strategies",
     "title": "Data Partitioning Strategies",
@@ -60,7 +62,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "data-partitioning",
     "title": "Data Partitioning",
@@ -86,7 +89,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "leaderless-replication",
     "title": "Leaderless Replication",
@@ -112,7 +116,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "conflict-resolution",
     "title": "Conflict Resolution",
@@ -138,7 +143,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "conflict-detection",
     "title": "Conflict Detection",
@@ -164,7 +170,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "multi-master-replication",
     "title": "Multi-Master Replication",
@@ -190,7 +197,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "monotonic-reads",
     "title": "Monotonic Reads",
@@ -216,7 +224,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "read-your-write-consistency",
     "title": "Read-your-write Consistency",
@@ -242,7 +251,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "handling-outages-master-replica",
     "title": "Handling outages in a Master-Replica setup",
@@ -268,7 +278,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "new-replica",
     "title": "The New Replica",
@@ -294,7 +305,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "replication-formats",
     "title": "Replication Formats",
@@ -320,7 +332,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "replication-strategies",
     "title": "Replication Strategies",
@@ -346,7 +359,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "master-replica-replication",
     "title": "Master-Replica Replication",
@@ -372,7 +386,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "durability",
     "title": "ACID - Durability",
@@ -398,7 +413,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "isolation",
     "title": "ACID - Isolation",
@@ -424,7 +440,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "consistency",
     "title": "ACID - Consistency",
@@ -450,7 +467,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "atomicity",
     "title": "ACID - Atomicity",
@@ -476,7 +494,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "architectures-in-distributed-systems",
     "title": "Architectures in Distributed Systems",
@@ -502,7 +521,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "mistaken-beliefs-of-distributed-systems",
     "title": "Mistaken Beliefs of Distributed Systems",
@@ -528,7 +548,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "rum",
     "title": "The RUM Conjecture",
@@ -554,7 +575,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "uid": "sliding-window-ratelimiter",
     "title": "Sliding Window based Rate Limiter",

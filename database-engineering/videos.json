@@ -8,7 +8,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l",
       "bgcolor": "#E7ECFF",
-      "themecolor": "#5677f5"
+      "themecolor": "#5677f5",
+      "course_url": null
     },
     "yt_video_id": "xELqRiovEcI",
     "title": "What are Embedded Databases?",
@@ -33,7 +34,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l",
       "bgcolor": "#E7ECFF",
-      "themecolor": "#5677f5"
+      "themecolor": "#5677f5",
+      "course_url": null
     },
     "yt_video_id": "wI4hKwl1Cn4",
     "title": "How does the database guarantee reliability using write-ahead logging?",
@@ -58,7 +60,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l",
       "bgcolor": "#E7ECFF",
-      "themecolor": "#5677f5"
+      "themecolor": "#5677f5",
+      "course_url": null
     },
     "yt_video_id": "3G293is403I",
     "title": "How do indexes make databases read faster?",
@@ -83,7 +86,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l",
       "bgcolor": "#E7ECFF",
-      "themecolor": "#5677f5"
+      "themecolor": "#5677f5",
+      "course_url": null
     },
     "yt_video_id": "UT_TVldzA64",
     "title": "How to handle database outages?",
@@ -108,7 +112,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l",
       "bgcolor": "#E7ECFF",
-      "themecolor": "#5677f5"
+      "themecolor": "#5677f5",
+      "course_url": null
     },
     "yt_video_id": "x1XmcuosZNk",
     "title": "5 million + random rows in less than 100 seconds using SQL",

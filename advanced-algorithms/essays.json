@@ -8,7 +8,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "genetic-knapsack",
     "title": "Genetic Algorithm to solve the Knapsack Problem",
@@ -34,7 +35,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "lfsr",
     "title": "Pseudorandom Number Generation using LFSR",
@@ -60,7 +62,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "fork-bomb",
     "title": "Fork Bomb",
@@ -86,7 +89,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "fully-persistent-arrays",
     "title": "Fully Persistent Arrays",
@@ -112,7 +116,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "persistent-data-structures-introduction",
     "title": "Persistent Data Structures - An Introduction",
@@ -138,7 +143,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "flajolet-martin",
     "title": "Approximate Count-Distinct using Flajolet Martin Algorithm",
@@ -164,7 +170,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "2q-cache",
     "title": "2Q Cache Management Algorithm",
@@ -190,7 +197,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "israeli-queues",
     "title": "Israeli Queues",
@@ -216,7 +224,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "1d-terrain",
     "title": "1D Procedural Terrain Generation",
@@ -242,7 +251,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "jaccard-minhash",
     "title": "Set Similarity using Jaccard Similarity Coefficient and MinHash",
@@ -268,7 +278,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "ts-smoothing",
     "title": "Time Series Smoothing - Making Aberrations Stand Out",
@@ -294,7 +305,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "lfu",
     "title": "Constant Time LFU",
@@ -320,7 +332,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "morris-counter",
     "title": "Morris's Algorithm for Approximate Counting",
@@ -346,7 +359,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "slowsort",
     "title": "Slowsort - A Pessimal Sorting Algorithm",
@@ -372,7 +386,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "phi-accrual",
     "title": "Phi \u03c6 Accrual Failure Detection",
@@ -398,7 +413,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "consistent-hashing",
     "title": "Consistent Hashing",
@@ -424,7 +440,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "fractional-cascading",
     "title": "Fractional Cascading - Speeding up Binary Searches",
@@ -450,7 +467,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "fsm",
     "title": "Building Finite State Machines with Python Coroutines",
@@ -476,7 +494,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "bayesian-average",
     "title": "Better Ranking using Bayesian Average",
@@ -502,7 +521,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "idf",
     "title": "Inverse Document Frequency",
@@ -528,7 +548,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "rule-30",
     "title": "Pseudorandom Number Generation using Cellular Automata - Rule 30",
@@ -554,7 +575,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "isolation-forest",
     "title": "Isolation Forest Algorithm for Anomaly Detection",
@@ -580,7 +602,8 @@
       "one_liner": null,
       "youtube_playlist_id": null,
       "bgcolor": "#FFE7F3",
-      "themecolor": "#ff007f"
+      "themecolor": "#ff007f",
+      "course_url": null
     },
     "uid": "how-sleepsort-helped-me-understand-concurrency-in-golang",
     "title": "Sleepsort and Concurrency in Golang",

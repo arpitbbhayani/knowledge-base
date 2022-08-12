@@ -8,7 +8,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
       "bgcolor": "#DDFFF1",
-      "themecolor": "#00A662"
+      "themecolor": "#00A662",
+      "course_url": null
     },
     "uid": "chained-operators-python",
     "title": "Chained Comparison Operators in Python",
@@ -34,7 +35,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
       "bgcolor": "#DDFFF1",
-      "themecolor": "#00A662"
+      "themecolor": "#00A662",
+      "course_url": null
     },
     "uid": "the-weird-walrus",
     "title": "The Weird Walrus",
@@ -60,7 +62,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
       "bgcolor": "#DDFFF1",
-      "themecolor": "#00A662"
+      "themecolor": "#00A662",
+      "course_url": null
     },
     "uid": "constant-folding-python",
     "title": "Constant Folding in Python",
@@ -86,7 +89,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
       "bgcolor": "#DDFFF1",
-      "themecolor": "#00A662"
+      "themecolor": "#00A662",
+      "course_url": null
     },
     "uid": "string-interning",
     "title": "String Interning in Python",
@@ -112,7 +116,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
       "bgcolor": "#DDFFF1",
-      "themecolor": "#00A662"
+      "themecolor": "#00A662",
+      "course_url": null
     },
     "uid": "python-iterable-integers",
     "title": "Making Python Integers Iterable",
@@ -138,7 +143,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
       "bgcolor": "#DDFFF1",
-      "themecolor": "#00A662"
+      "themecolor": "#00A662",
+      "course_url": null
     },
     "uid": "python-caches-integers",
     "title": "Integer Caching in Python",
@@ -164,7 +170,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
       "bgcolor": "#DDFFF1",
-      "themecolor": "#00A662"
+      "themecolor": "#00A662",
+      "course_url": null
     },
     "uid": "function-overloading",
     "title": "Function Overloading in Python",
@@ -190,7 +197,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
       "bgcolor": "#DDFFF1",
-      "themecolor": "#00A662"
+      "themecolor": "#00A662",
+      "course_url": null
     },
     "uid": "super-long-integers",
     "title": "Super Long Integers in Python",
@@ -216,7 +224,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
       "bgcolor": "#DDFFF1",
-      "themecolor": "#00A662"
+      "themecolor": "#00A662",
+      "course_url": null
     },
     "uid": "i-changed-my-python",
     "title": "Changing Python",

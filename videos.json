@@ -8,7 +8,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT1rNeq2GXpnivaWINnOaCd0",
       "bgcolor": "#FFF1DB",
-      "themecolor": "#E1A547"
+      "themecolor": "#E1A547",
+      "course_url": "https://courses.arpitbhayani.me/bittorrent-internals/"
     },
     "yt_video_id": "iognYJRzCE8",
     "title": "The Choke Algorithm that powers BitTorrent",
@@ -33,7 +34,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT1rNeq2GXpnivaWINnOaCd0",
       "bgcolor": "#FFF1DB",
-      "themecolor": "#E1A547"
+      "themecolor": "#E1A547",
+      "course_url": "https://courses.arpitbhayani.me/bittorrent-internals/"
     },
     "yt_video_id": "shVvFVFiZcs",
     "title": "Overview of the BitTorrent architecture",
@@ -58,7 +60,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT1rNeq2GXpnivaWINnOaCd0",
       "bgcolor": "#FFF1DB",
-      "themecolor": "#E1A547"
+      "themecolor": "#E1A547",
+      "course_url": "https://courses.arpitbhayani.me/bittorrent-internals/"
     },
     "yt_video_id": "tHT94dSMwKw",
     "title": "Understanding the Torrent File Format and Bencoding",
@@ -83,7 +86,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT1rNeq2GXpnivaWINnOaCd0",
       "bgcolor": "#FFF1DB",
-      "themecolor": "#E1A547"
+      "themecolor": "#E1A547",
+      "course_url": "https://courses.arpitbhayani.me/bittorrent-internals/"
     },
     "yt_video_id": "v7cR0ZolaUA",
     "title": "Introduction to BitTorrent and the problem it beautifully solves",
@@ -108,7 +112,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2UnueESBLReaVSLIo_BuAc",
       "bgcolor": "#FBE0E0",
-      "themecolor": "#FF4B42"
+      "themecolor": "#FF4B42",
+      "course_url": "https://courses.arpitbhayani.me/hash-table-internals/"
     },
     "yt_video_id": "VCMO2X6EoK0",
     "title": "Implementing Hash Maps with Hash Tables",
@@ -133,7 +138,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2UnueESBLReaVSLIo_BuAc",
       "bgcolor": "#FBE0E0",
-      "themecolor": "#FF4B42"
+      "themecolor": "#FF4B42",
+      "course_url": "https://courses.arpitbhayani.me/hash-table-internals/"
     },
     "yt_video_id": "CcoMvgIdrD8",
     "title": "Implementing Hash Sets with Hash Tables",
@@ -158,7 +164,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2UnueESBLReaVSLIo_BuAc",
       "bgcolor": "#FBE0E0",
-      "themecolor": "#FF4B42"
+      "themecolor": "#FF4B42",
+      "course_url": "https://courses.arpitbhayani.me/hash-table-internals/"
     },
     "yt_video_id": "mmPwVBm-8n0",
     "title": "Implementing Resize of a Hash Table",
@@ -183,7 +190,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2UnueESBLReaVSLIo_BuAc",
       "bgcolor": "#FBE0E0",
-      "themecolor": "#FF4B42"
+      "themecolor": "#FF4B42",
+      "course_url": "https://courses.arpitbhayani.me/hash-table-internals/"
     },
     "yt_video_id": "zt1E0akArqQ",
     "title": "Why are Hash Tables always doubled?",
@@ -208,7 +216,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2UnueESBLReaVSLIo_BuAc",
       "bgcolor": "#FBE0E0",
-      "themecolor": "#FF4B42"
+      "themecolor": "#FF4B42",
+      "course_url": "https://courses.arpitbhayani.me/hash-table-internals/"
     },
     "yt_video_id": "oD2yaTtu69w",
     "title": "Getting the best performance from the Hash Table",
@@ -233,7 +242,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2UnueESBLReaVSLIo_BuAc",
       "bgcolor": "#FBE0E0",
-      "themecolor": "#FF4B42"
+      "themecolor": "#FF4B42",
+      "course_url": "https://courses.arpitbhayani.me/hash-table-internals/"
     },
     "yt_video_id": "wV4K6fo0T58",
     "title": "Double Hashing for Conflict Resolution in Hash Tables",
@@ -258,7 +268,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2UnueESBLReaVSLIo_BuAc",
       "bgcolor": "#FBE0E0",
-      "themecolor": "#FF4B42"
+      "themecolor": "#FF4B42",
+      "course_url": "https://courses.arpitbhayani.me/hash-table-internals/"
     },
     "yt_video_id": "F-8pWiJv8ik",
     "title": "Quadratic Probing for Conflict Resolution in Hash Tables",
@@ -283,7 +294,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2UnueESBLReaVSLIo_BuAc",
       "bgcolor": "#FBE0E0",
-      "themecolor": "#FF4B42"
+      "themecolor": "#FF4B42",
+      "course_url": "https://courses.arpitbhayani.me/hash-table-internals/"
     },
     "yt_video_id": "5QKAXG25hig",
     "title": "Linear Probing for Conflict Resolution in Hash Tables",
@@ -308,7 +320,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2UnueESBLReaVSLIo_BuAc",
       "bgcolor": "#FBE0E0",
-      "themecolor": "#FF4B42"
+      "themecolor": "#FF4B42",
+      "course_url": "https://courses.arpitbhayani.me/hash-table-internals/"
     },
     "yt_video_id": "6_yFb7icd_c",
     "title": "Conflict Resolution in Hash Tables with Open Addressing",
@@ -333,7 +346,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2UnueESBLReaVSLIo_BuAc",
       "bgcolor": "#FBE0E0",
-      "themecolor": "#FF4B42"
+      "themecolor": "#FF4B42",
+      "course_url": "https://courses.arpitbhayani.me/hash-table-internals/"
     },
     "yt_video_id": "9rb8oILi4lU",
     "title": "Conflict Resolution in Hash Tables with Chaining",
@@ -358,7 +372,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2UnueESBLReaVSLIo_BuAc",
       "bgcolor": "#FBE0E0",
-      "themecolor": "#FF4B42"
+      "themecolor": "#FF4B42",
+      "course_url": "https://courses.arpitbhayani.me/hash-table-internals/"
     },
     "yt_video_id": "jjW8w8ED3Ns",
     "title": "Internal Structure of a Hash Table",
@@ -383,7 +398,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc",
       "bgcolor": "#FFF1E7",
-      "themecolor": "#FF8229"
+      "themecolor": "#FF8229",
+      "course_url": null
     },
     "yt_video_id": "LeT_s-UFw-U",
     "title": "So, the outage is mitigated, now what?",
@@ -408,7 +424,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc",
       "bgcolor": "#FFF1E7",
-      "themecolor": "#FF8229"
+      "themecolor": "#FF8229",
+      "course_url": null
     },
     "yt_video_id": "Of3FS2qDM28",
     "title": "Control an outage by localizing the failures",
@@ -433,7 +450,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt",
       "bgcolor": "#FFFAE6",
-      "themecolor": "#CAA200"
+      "themecolor": "#CAA200",
+      "course_url": "https://courses.arpitbhayani.me/designing-microservices/"
     },
     "yt_video_id": "GCx0aouuEkU",
     "title": "BFF - Backend for Frontend - Pattern in Microservices",
@@ -458,7 +476,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc",
       "bgcolor": "#FFF1E7",
-      "themecolor": "#FF8229"
+      "themecolor": "#FF8229",
+      "course_url": null
     },
     "yt_video_id": "bycFzB6yrK0",
     "title": "Dissecting GitHub Outage - Multiple Leaders in Zookeeper Cluster",
@@ -483,7 +502,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc",
       "bgcolor": "#FFF1E7",
-      "themecolor": "#FF8229"
+      "themecolor": "#FF8229",
+      "course_url": null
     },
     "yt_video_id": "4mVJQJbw6Vw",
     "title": "GitHub Outage  - How databases are managed in production",
@@ -508,7 +528,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt",
       "bgcolor": "#FFFAE6",
-      "themecolor": "#CAA200"
+      "themecolor": "#CAA200",
+      "course_url": "https://courses.arpitbhayani.me/designing-microservices/"
     },
     "yt_video_id": "Wby0d9Li5Hw",
     "title": "Best practices that make microservices integration easy",
@@ -533,7 +554,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc",
       "bgcolor": "#FFF1E7",
-      "themecolor": "#FF8229"
+      "themecolor": "#FF8229",
+      "course_url": null
     },
     "yt_video_id": "VPZo8cO1HbI",
     "title": "Dissecting GitHub Outage - Downtime due to Rate Limiter",
@@ -558,7 +580,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc",
       "bgcolor": "#FFF1E7",
-      "themecolor": "#FF8229"
+      "themecolor": "#FF8229",
+      "course_url": null
     },
     "yt_video_id": "ZirBDq1JwpY",
     "title": "Dissecting GitHub Outage - Master failover failed",
@@ -583,7 +606,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt",
       "bgcolor": "#FFFAE6",
-      "themecolor": "#CAA200"
+      "themecolor": "#CAA200",
+      "course_url": "https://courses.arpitbhayani.me/designing-microservices/"
     },
     "yt_video_id": "xbtE9IF4yRc",
     "title": "Things to remember while building Microservices",
@@ -608,7 +632,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt",
       "bgcolor": "#FFFAE6",
-      "themecolor": "#CAA200"
+      "themecolor": "#CAA200",
+      "course_url": "https://courses.arpitbhayani.me/designing-microservices/"
     },
     "yt_video_id": "0q61wIUmVDY",
     "title": "Why should we have a standard way of building Microservices?",
@@ -633,7 +658,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt",
       "bgcolor": "#FFFAE6",
-      "themecolor": "#CAA200"
+      "themecolor": "#CAA200",
+      "course_url": "https://courses.arpitbhayani.me/designing-microservices/"
     },
     "yt_video_id": "yTSq6hJFmUg",
     "title": "10 Challenges in Adopting and Implementing Microservices",
@@ -658,7 +684,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt",
       "bgcolor": "#FFFAE6",
-      "themecolor": "#CAA200"
+      "themecolor": "#CAA200",
+      "course_url": "https://courses.arpitbhayani.me/designing-microservices/"
     },
     "yt_video_id": "qoAox0FGzRQ",
     "title": "What are Microservices?",
@@ -683,7 +710,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc",
       "bgcolor": "#FFF1E7",
-      "themecolor": "#FF8229"
+      "themecolor": "#FF8229",
+      "course_url": null
     },
     "yt_video_id": "9GHh_U-ud9U",
     "title": "Dissecting GitHub Outage - Downtime they thought was avoided",
@@ -708,7 +736,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt",
       "bgcolor": "#FFFAE6",
-      "themecolor": "#CAA200"
+      "themecolor": "#CAA200",
+      "course_url": "https://courses.arpitbhayani.me/designing-microservices/"
     },
     "yt_video_id": "5pYLlYsy6fQ",
     "title": "API Composition Pattern in Microservices",
@@ -733,7 +762,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc",
       "bgcolor": "#FFF1E7",
-      "themecolor": "#FF8229"
+      "themecolor": "#FF8229",
+      "course_url": null
     },
     "yt_video_id": "df2QgLW0QC4",
     "title": "Dissecting GitHub Outage Downtime due to creating an Index",
@@ -758,7 +788,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc",
       "bgcolor": "#FFF1E7",
-      "themecolor": "#FF8229"
+      "themecolor": "#FF8229",
+      "course_url": null
     },
     "yt_video_id": "48YZzGi7QMk",
     "title": "Dissecting GitHub Outage - Repository Creation Failed",
@@ -783,7 +814,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt",
       "bgcolor": "#FFFAE6",
-      "themecolor": "#CAA200"
+      "themecolor": "#CAA200",
+      "course_url": "https://courses.arpitbhayani.me/designing-microservices/"
     },
     "yt_video_id": "la2q1vFA5q0",
     "title": "Database per Service Pattern in Microservices",
@@ -808,7 +840,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt",
       "bgcolor": "#FFFAE6",
-      "themecolor": "#CAA200"
+      "themecolor": "#CAA200",
+      "course_url": "https://courses.arpitbhayani.me/designing-microservices/"
     },
     "yt_video_id": "uFGJVQvR59A",
     "title": "Everything you need to know about REST",
@@ -833,7 +866,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "yt_video_id": "9kjUG_yvVqM",
     "title": "An in-depth introduction to Rolling Deployments",
@@ -858,7 +892,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "yt_video_id": "9iAJjtvBwyI",
     "title": "Implementing Vertical Sharding",
@@ -883,7 +918,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc",
       "bgcolor": "#FFF1E7",
-      "themecolor": "#FF8229"
+      "themecolor": "#FF8229",
+      "course_url": null
     },
     "yt_video_id": "iqapVyfoFqc",
     "title": "Dissecting GitHub Outage: Downtime due to an Edge Case",
@@ -908,7 +944,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT3MvruOP09U1bWmcjxLIMwR",
       "bgcolor": "#F0E6FF",
-      "themecolor": "#A66AFF"
+      "themecolor": "#A66AFF",
+      "course_url": null
     },
     "yt_video_id": "LkympMbgmCo",
     "title": "Why caching would not speed up Mark-and-Sweep GC?",
@@ -933,7 +970,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "yt_video_id": "W6HANd8c9t4",
     "title": "An in-depth introduction to Blue Green Deployments",
@@ -958,7 +996,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "yt_video_id": "nnseeKxovaM",
     "title": "An in-depth introduction to Canary Deployments",
@@ -983,7 +1022,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt",
       "bgcolor": "#FFFAE6",
-      "themecolor": "#CAA200"
+      "themecolor": "#CAA200",
+      "course_url": "https://courses.arpitbhayani.me/designing-microservices/"
     },
     "yt_video_id": "eRndYq8iTio",
     "title": "Introduction to RPC - Remote Procedure Calls",
@@ -1008,7 +1048,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt",
       "bgcolor": "#FFFAE6",
-      "themecolor": "#CAA200"
+      "themecolor": "#CAA200",
+      "course_url": "https://courses.arpitbhayani.me/designing-microservices/"
     },
     "yt_video_id": "HiwOx-W1TIA",
     "title": "Designing Workflows in Microservices - Orchestration vs Choreography",
@@ -1033,7 +1074,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc",
       "bgcolor": "#FFF1E7",
-      "themecolor": "#FF8229"
+      "themecolor": "#FF8229",
+      "course_url": null
     },
     "yt_video_id": "82Xywy74kfE",
     "title": "Dissecting GitHub Outage - Downtime due to ALTER TABLE",
@@ -1058,7 +1100,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT3MvruOP09U1bWmcjxLIMwR",
       "bgcolor": "#F0E6FF",
-      "themecolor": "#A66AFF"
+      "themecolor": "#A66AFF",
+      "course_url": null
     },
     "yt_video_id": "lhrRwjVPXPo",
     "title": "Tricolor Abstraction to build concurrent Garbage Collectors",
@@ -1083,7 +1126,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt",
       "bgcolor": "#FFFAE6",
-      "themecolor": "#CAA200"
+      "themecolor": "#CAA200",
+      "course_url": "https://courses.arpitbhayani.me/designing-microservices/"
     },
     "yt_video_id": "ewUw0sUxHI4",
     "title": "Synchronous and Asynchronous Communication between Microservices",
@@ -1108,7 +1152,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "yt_video_id": "oiZH5U_a0pg",
     "title": "Introduction to Serverless Computing and Architecture",
@@ -1133,7 +1178,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT3MvruOP09U1bWmcjxLIMwR",
       "bgcolor": "#F0E6FF",
-      "themecolor": "#A66AFF"
+      "themecolor": "#A66AFF",
+      "course_url": null
     },
     "yt_video_id": "4qLf0FJMyf0",
     "title": "Mark and Sweep Garbage Collection Algorithm",
@@ -1158,7 +1204,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt",
       "bgcolor": "#FFFAE6",
-      "themecolor": "#CAA200"
+      "themecolor": "#CAA200",
+      "course_url": "https://courses.arpitbhayani.me/designing-microservices/"
     },
     "yt_video_id": "tV11trlimLk",
     "title": "Shared Database Pattern in Microservices",
@@ -1183,7 +1230,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "yt_video_id": "wXvljefXyEo",
     "title": "Database Sharding and Partitioning",
@@ -1208,7 +1256,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT3MvruOP09U1bWmcjxLIMwR",
       "bgcolor": "#F0E6FF",
-      "themecolor": "#A66AFF"
+      "themecolor": "#A66AFF",
+      "course_url": null
     },
     "yt_video_id": "IojMqbegejk",
     "title": "How to pick a garbage collector?",
@@ -1233,7 +1282,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt",
       "bgcolor": "#FFFAE6",
-      "themecolor": "#CAA200"
+      "themecolor": "#CAA200",
+      "course_url": "https://courses.arpitbhayani.me/designing-microservices/"
     },
     "yt_video_id": "nfkdKHcKxbE",
     "title": "How to scope a microservice?",
@@ -1258,7 +1308,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "yt_video_id": "CW4gVlU0xtU",
     "title": "Why, where, and when should we throttle or rate limit?",
@@ -1283,7 +1334,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc",
       "bgcolor": "#FFF1E7",
-      "themecolor": "#FF8229"
+      "themecolor": "#FF8229",
+      "course_url": null
     },
     "yt_video_id": "xa-hMF8gku0",
     "title": "An engineering deep-dive into Atlassian's Mega Outage of April 2022",
@@ -1308,7 +1360,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "yt_video_id": "1r9bPisYaOQ",
     "title": "How to approach System Design?",
@@ -1333,7 +1386,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT3MvruOP09U1bWmcjxLIMwR",
       "bgcolor": "#F0E6FF",
-      "themecolor": "#A66AFF"
+      "themecolor": "#A66AFF",
+      "course_url": null
     },
     "yt_video_id": "jcMxuLZCcqU",
     "title": "Why do programming languages need automatic garbage collection?",
@@ -1358,7 +1412,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt",
       "bgcolor": "#FFFAE6",
-      "themecolor": "#CAA200"
+      "themecolor": "#CAA200",
+      "course_url": "https://courses.arpitbhayani.me/designing-microservices/"
     },
     "yt_video_id": "JPj6mhVLQN0",
     "title": "Advantages of adopting a microservices-based architecture",
@@ -1383,7 +1438,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "yt_video_id": "m6DtqSb1BDM",
     "title": "Implementing Idempotence in a Payments Microservice",
@@ -1408,7 +1464,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "yt_video_id": "8S4k7k_f9Sk",
     "title": "Sending payload in an HTTP GET request",
@@ -1433,7 +1490,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc",
       "bgcolor": "#FFF1E7",
-      "themecolor": "#FF8229"
+      "themecolor": "#FF8229",
+      "course_url": null
     },
     "yt_video_id": "6oJaZbQKnJE",
     "title": "Dissecting Google Maps Outage: Bad Rollout and Cascading Failures",
@@ -1458,7 +1516,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT1wfRQo2xrrst2SGremT_qd",
       "bgcolor": "#DDF0FF",
-      "themecolor": "#1798FF"
+      "themecolor": "#1798FF",
+      "course_url": null
     },
     "yt_video_id": "oMhESvU87jM",
     "title": "Implementing Distributed Transactions using Two Phase Commit Protocol",
@@ -1483,7 +1542,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT1wfRQo2xrrst2SGremT_qd",
       "bgcolor": "#DDF0FF",
-      "themecolor": "#1798FF"
+      "themecolor": "#1798FF",
+      "course_url": null
     },
     "yt_video_id": "7FgU1D4EnpQ",
     "title": "Distributed Transactions: Two-Phase Commit Protocol",
@@ -1508,7 +1568,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l",
       "bgcolor": "#E7ECFF",
-      "themecolor": "#5677f5"
+      "themecolor": "#5677f5",
+      "course_url": null
     },
     "yt_video_id": "xELqRiovEcI",
     "title": "What are Embedded Databases?",
@@ -1533,7 +1594,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc",
       "bgcolor": "#FFF1E7",
-      "themecolor": "#FF8229"
+      "themecolor": "#FF8229",
+      "course_url": null
     },
     "yt_video_id": "ZFRAFTn0cQ0",
     "title": "Dissecting GitHub Outage: ID column reaching the max value 2147483647",
@@ -1558,7 +1620,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l",
       "bgcolor": "#E7ECFF",
-      "themecolor": "#5677f5"
+      "themecolor": "#5677f5",
+      "course_url": null
     },
     "yt_video_id": "wI4hKwl1Cn4",
     "title": "How does the database guarantee reliability using write-ahead logging?",
@@ -1583,7 +1646,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt",
       "bgcolor": "#FFFAE6",
-      "themecolor": "#CAA200"
+      "themecolor": "#CAA200",
+      "course_url": "https://courses.arpitbhayani.me/designing-microservices/"
     },
     "yt_video_id": "Hxja4crycBg",
     "title": "Handling timeouts in a microservice architecture",
@@ -1608,7 +1672,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l",
       "bgcolor": "#E7ECFF",
-      "themecolor": "#5677f5"
+      "themecolor": "#5677f5",
+      "course_url": null
     },
     "yt_video_id": "3G293is403I",
     "title": "How do indexes make databases read faster?",
@@ -1633,7 +1698,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l",
       "bgcolor": "#E7ECFF",
-      "themecolor": "#5677f5"
+      "themecolor": "#5677f5",
+      "course_url": null
     },
     "yt_video_id": "UT_TVldzA64",
     "title": "How to handle database outages?",
@@ -1658,7 +1724,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc",
       "bgcolor": "#FFF1E7",
-      "themecolor": "#FF8229"
+      "themecolor": "#FF8229",
+      "course_url": null
     },
     "yt_video_id": "h5hXivWws7k",
     "title": "Dissecting Spotify's Global Outage - March 8, 2022",
@@ -1683,7 +1750,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
       "bgcolor": "#DDFFF1",
-      "themecolor": "#00A662"
+      "themecolor": "#00A662",
+      "course_url": null
     },
     "yt_video_id": "Q8luYnxiFFE",
     "title": "How \"is\" operator is implemented in python?",
@@ -1708,7 +1776,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
       "bgcolor": "#DDFFF1",
-      "themecolor": "#00A662"
+      "themecolor": "#00A662",
+      "course_url": null
     },
     "yt_video_id": "IGLnxdmJu2c",
     "title": "How id() function is implemented in python?",
@@ -1733,7 +1802,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
       "bgcolor": "#DDFFF1",
-      "themecolor": "#00A662"
+      "themecolor": "#00A662",
+      "course_url": null
     },
     "yt_video_id": "u4tfIy--4GM",
     "title": "How python compares a float and an int objects?",
@@ -1758,7 +1828,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
       "bgcolor": "#DDFFF1",
-      "themecolor": "#00A662"
+      "themecolor": "#00A662",
+      "course_url": null
     },
     "yt_video_id": "6mhXGEXRXG0",
     "title": "How python optimizes integers?",
@@ -1783,7 +1854,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "yt_video_id": "dTPh3KcKPYo",
     "title": "Scaling Taxonomy Service and Database",
@@ -1808,7 +1880,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
       "bgcolor": "#DDFFF1",
-      "themecolor": "#00A662"
+      "themecolor": "#00A662",
+      "course_url": null
     },
     "yt_video_id": "zz2Lu5ht_jA",
     "title": "How python implements chained comparison operators?",
@@ -1833,7 +1906,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "yt_video_id": "4_jlmX_oB94",
     "title": "Designing Taxonomy on SQL",
@@ -1858,7 +1932,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
       "bgcolor": "#DDFFF1",
-      "themecolor": "#00A662"
+      "themecolor": "#00A662",
+      "course_url": null
     },
     "yt_video_id": "QpGK69LzfpY",
     "title": "How python optimizes strings using String Interning?",
@@ -1883,7 +1958,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l",
       "bgcolor": "#E7ECFF",
-      "themecolor": "#5677f5"
+      "themecolor": "#5677f5",
+      "course_url": null
     },
     "yt_video_id": "x1XmcuosZNk",
     "title": "5 million + random rows in less than 100 seconds using SQL",
@@ -1908,7 +1984,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
       "bgcolor": "#DDFFF1",
-      "themecolor": "#00A662"
+      "themecolor": "#00A662",
+      "course_url": null
     },
     "yt_video_id": "rWb7VYz1q1U",
     "title": "Changing python grammar to support standalone walrus assignments",
@@ -1933,7 +2010,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "yt_video_id": "m_7xSIhxZL8",
     "title": "End-to-end Message Encryption",
@@ -1958,7 +2036,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
       "bgcolor": "#DDFFF1",
-      "themecolor": "#00A662"
+      "themecolor": "#00A662",
+      "course_url": null
     },
     "yt_video_id": "k5isLG6vqss",
     "title": "Setting up cpython locally and making your first change",
@@ -1983,7 +2062,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
       "bgcolor": "#DDFFF1",
-      "themecolor": "#00A662"
+      "themecolor": "#00A662",
+      "course_url": null
     },
     "yt_video_id": "E-3J8X5DulY",
     "title": "Series Introduction: The Honest Python",
@@ -2008,7 +2088,8 @@
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT24ynKXkPQwxl9gyVLLGsBO",
       "bgcolor": "#FFE7E7",
-      "themecolor": "#f00"
+      "themecolor": "#f00",
+      "course_url": null
     },
     "yt_video_id": "kIP8L-CSl2Y",
     "title": "Designing Notifications Service for Instagram",
