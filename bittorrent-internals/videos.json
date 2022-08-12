@@ -7,8 +7,8 @@
       "name": "BitTorrent Internals",
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT1rNeq2GXpnivaWINnOaCd0",
-      "bgcolor": "#AAA",
-      "themecolor": "#222"
+      "bgcolor": "#FFF1DB",
+      "themecolor": "#E1A547"
     },
     "yt_video_id": "iognYJRzCE8",
     "title": "The Choke Algorithm that powers BitTorrent",
@@ -32,8 +32,8 @@
       "name": "BitTorrent Internals",
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT1rNeq2GXpnivaWINnOaCd0",
-      "bgcolor": "#AAA",
-      "themecolor": "#222"
+      "bgcolor": "#FFF1DB",
+      "themecolor": "#E1A547"
     },
     "yt_video_id": "shVvFVFiZcs",
     "title": "Overview of the BitTorrent architecture",
@@ -57,8 +57,8 @@
       "name": "BitTorrent Internals",
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT1rNeq2GXpnivaWINnOaCd0",
-      "bgcolor": "#AAA",
-      "themecolor": "#222"
+      "bgcolor": "#FFF1DB",
+      "themecolor": "#E1A547"
     },
     "yt_video_id": "tHT94dSMwKw",
     "title": "Understanding the Torrent File Format and Bencoding",
@@ -82,8 +82,8 @@
       "name": "BitTorrent Internals",
       "one_liner": null,
       "youtube_playlist_id": "PLsdq-3Z1EPT1rNeq2GXpnivaWINnOaCd0",
-      "bgcolor": "#AAA",
-      "themecolor": "#222"
+      "bgcolor": "#FFF1DB",
+      "themecolor": "#E1A547"
     },
     "yt_video_id": "v7cR0ZolaUA",
     "title": "Introduction to BitTorrent and the problem it beautifully solves",
