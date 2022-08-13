@@ -15,14 +15,14 @@
     "title": "The Choke Algorithm that powers BitTorrent",
     "description": "One of the most important algorithm that powers BitTorrent is The Choke Algorithm\n\nIn this 4th video of the BitTorrent Internals series, we go deep and understand what the choke algorithm is, how it works, and most importantly how, without having a central authority, it ensures that no one abuses the P2P network.\n\nOutline:\n\n00:00 Agenda\n02:24 Core idea of peer selection\n04:53 Choking and Interested\n08:02 Finding peers to unchoke\n13:15 Choke algorithm for Leecher\n26:12 Choke algorithm for Seeder",
     "img": "https://i.ytimg.com/vi/iognYJRzCE8/mqdefault.jpg",
-    "gif": null,
+    "gif": "https://media.giphy.com/media/1wmOyZYoGzz003R03Y/giphy.gif",
     "duration": "34:4",
     "view_count": 65,
     "like_count": 2,
     "comment_count": 1,
     "released_at": "2022-08-12",
     "gist": "",
-    "notes_gd": "",
+    "notes_gd": "https://drive.google.com/file/d/1VQXEeC8MBgKAzkEJ5HwOjBV5-H3br-Ey/view?usp=sharing",
     "slug": "the-choke-algorithm-that-powers-bittorrent"
   },
   {
