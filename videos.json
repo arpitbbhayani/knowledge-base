@@ -67,14 +67,14 @@
     "title": "Overview of the BitTorrent architecture",
     "description": "BitTorrent is superb, but what does its architecture look like?\n\nIn this 3rd video of the BitTorrent internals series, we take an in-depth look into its architecture and understand different components in it like - Tracker, Seeders, and Leechers, and learn how they work together to be this amazing file distribution network.\n\nOutline:\n\n00:00 Agenda\n02:22 Pieces\n04:50 Torrent File\n06:53 Tracker\n15:42 Architecture Overview\n18:12 Seeders and Leechers",
     "img": "https://i.ytimg.com/vi/shVvFVFiZcs/mqdefault.jpg",
-    "gif": null,
+    "gif": "https://media.giphy.com/media/PPTiAIBXyIs2f62b1m/giphy.gif",
     "duration": "20:37",
     "view_count": 665,
     "like_count": 36,
     "comment_count": 9,
     "released_at": "2022-08-10",
     "gist": "",
-    "notes_gd": "",
+    "notes_gd": "https://drive.google.com/file/d/12NIH6eE6SlXSPkMdQP8jTKlu1Hz7-qMH/view?usp=sharing",
     "slug": "overview-of-the-bittorrent-architecture"
   },
   {
