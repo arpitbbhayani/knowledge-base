@@ -1,5 +1,13 @@
 [
   {
+    "id": 16,
+    "title": "A Distributed Algorithm for Minimum-Weight Spanning Trees",
+    "highlights": null,
+    "link": "",
+    "status": "DONE",
+    "annotated_pdf": "https://drive.google.com/file/d/1PtdSEaaqoWagPLd-JWIysN5AGzgkpAgc/view?usp=sharing"
+  },
+  {
     "id": 15,
     "title": "Understanding BitTorrent - An Experimental Perspective",
     "highlights": null,
