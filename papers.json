@@ -1,5 +1,13 @@
 [
   {
+    "id": 17,
+    "title": "Some Constraints and Trade-offs in the Design of Network Communications",
+    "highlights": null,
+    "link": "",
+    "status": "DONE",
+    "annotated_pdf": "https://drive.google.com/file/d/1HDh5Ygw5BaLoq9U6qBi6C3xVCoiqJHlq/view?usp=sharing"
+  },
+  {
     "id": 16,
     "title": "A Distributed Algorithm for Minimum-Weight Spanning Trees",
     "highlights": null,
