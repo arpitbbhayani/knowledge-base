@@ -1,8 +1,8 @@
-A torrent file is an independent session of transfer. To distribute a file, say Ubuntu, image we would create a torrent holding the meta information about it while the actual content is split into pieces and distributed in the network.
+A torrent file is an independent session of transfer. To distribute a file, say an Ubuntu image, we would create a torrent holding the meta information about it while the actual content is split into pieces and distributed in the network.
 
 ## Lifecycle of a Torrent
 
-Torrent is alive so long as there is at least a seeder, seeding the pieces in the network. Once all the nodes who can share the pieces have left the network, the download of the network stops and the torrent ends until a new seeder pops up.
+Torrent is alive so long as there is at least a seeder, seeding the pieces in the network. Once all the nodes who can share the pieces have left the network, the download of the network stops, and the torrent ends until a new seeder pops up.
 
 ## What torrent file holds
 
@@ -26,7 +26,7 @@ This information is used in identifying and fetching pieces from the network.
 
 ## Bencoding
 
-Torrent files are encoded with a custom encoding called Bencoding. It supports data types such as Strings, Integers, List, and Dictionaries (can only hold string keys).
+Torrent files are encoded with a custom encoding called Bencoding. It supports data types such as Strings, Integers, List, and Dictionaries (which can only hold string keys).
 
 Strings are encoded as `<length>:<string>`. Hence, a string `arpit` will be encoded as `5:arpit`.
 

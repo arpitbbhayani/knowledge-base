@@ -119,7 +119,7 @@
     "title": "HS algorithm for Leader Election in Distributed Systems",
     "description": "Leader Election is important in every single distributed system out there as it enables us to auto recover from the failures.\n\nIn this video, we take a detailed look at a synchronous ring-based algorithm called the HS algorithm and see how it works on a bidirectional network in O(N logN) complexity.\n\nOutline:\n\n00:00 Agenda\n02:22 Introduction to HS Algorithm\n05:07 The HS Algorithm\n14:37 Halting the HS algorithm\n16:18 Key implementation detail of HS algorithm",
     "img": "https://i.ytimg.com/vi/inzQQm-kXCo/mqdefault.jpg",
-    "gif": "https://media.giphy.com/media/STThOmSL9X8jpaEqfE/giphy.gif",
+    "gif": "https://media.giphy.com/media/fveKCnZRN7aOrtWNfj/giphy.gif",
     "duration": "18:55",
     "view_count": 432,
     "like_count": 24,
