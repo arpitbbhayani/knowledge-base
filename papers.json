@@ -1,5 +1,13 @@
 [
   {
+    "id": 19,
+    "title": "Gorilla - A Fast, Scalable, In Memory Time Series Database",
+    "highlights": null,
+    "link": "",
+    "status": "TODO",
+    "annotated_pdf": "https://drive.google.com/file/d/13jFQkD2OmydymjPFLnsvsQUwMwhmynIh/view?usp=sharing"
+  },
+  {
     "id": 18,
     "title": "Shifting Gears - Changing Algorithms on the Fly To Expedite Byzantine Agreement",
     "highlights": null,
@@ -93,7 +101,7 @@
     "highlights": null,
     "link": "",
     "status": "TODO",
-    "annotated_pdf": "https://drive.google.com/file/d/1l8yzQodUU6RCeZ--C1sl-NOWmKyOZbP4/view?usp=sharing"
+    "annotated_pdf": "https://drive.google.com/file/d/1R0B4ZD67-W4fPmd0EphOXxqWvujZAzHt/view?usp=sharing"
   },
   {
     "id": 5,
