@@ -1,0 +1,9 @@
+How Swiggy Designed and Scaled their chatbots?
+
+Chatbot at Sueiggy Chatbot are critical in every food would like a you delivery businesses . They bring in refund ? efficiency at scale YES chatbot are triggered when NO customer reaches out to support build chat bot ? why your own seamless UX You 1. can buy a solution 2. deep product integration when you are starting up, 3. customizations But at scale need more , you 4. exhaustive tracking control and customizations what are chat bots ? Automatically simulate interactions with customers based on a set of pre - defined events and conditions . * They would not replace humans just , minimizing the intervention
+
+Desiging Chatbot Flow Flow chatbot be modelled of a can using a simple Decision Tree Nodes have children connected via conditional statements At each step , we show the customer a list of valid child nodes as an option to move forward Building decision tree for order cancellation using historical data / common sense find reasons for cancellation and a sample flow could be I. ask reason for cancellation last time show 2. one predicted delivery time shove cancellation 3. fee 4. confirmation details 5- show refund
+
+Key decision be web view : should reusing the interface on app and on web . With web views iterations are much faster Just a webpage loading in the app Pms > Decision Tree [ state mgmt ] > Chatbot < 0 ^ I { key exchange of information customer > customer support , : Payments Fraud < > { n orders El Notification Fraud process { ^
+
+Business Continuity Plan Third party chat if in house - chat is down . they switch to key metric to chase Bot efficacy # req served by bots # served by agents req
