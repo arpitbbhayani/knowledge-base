@@ -15,14 +15,14 @@
     "title": "How Razorpay scaled their notification system",
     "description": "Notifications are extremely crucial for Fintech companies as it is a way to notify a user about an incoming transaction. Hence it becomes extremely important for companies like Razorpay to ensure that notification is delivered to a user within a certain amount of time.\n\nIn this video, we take a detailed look into how Razorpay scaled their notifications systems, and look at their high-level architecture and key design decisions they made along the way to ensure they always meet the SLA.\n\nOutline:\n\n00:00 Agenda\n02:37 Existing notification system\n08:54 Re-architecting notification system",
     "img": "https://i.ytimg.com/vi/DQwlmTvs6xA/mqdefault.jpg",
-    "gif": null,
+    "gif": "https://media.giphy.com/media/MCQYzMKw8xOsKDprkZ/giphy.gif",
     "duration": "17:32",
     "view_count": 1764,
     "like_count": 131,
     "comment_count": 31,
     "released_at": "2022-09-30",
-    "gist": "",
-    "notes_gd": "",
+    "gist": "Delivery of notifications is critical for a FinTech company like Razorpay because it is a way to notify customers about their transactions and connect with external systems through Webhooks.\n\nSo, how did they design their notification system? let's find out\n\n## Key requirement\n\n1. maintaining an SLA is very important\n2. guaranteed delivery via SMS, Email, Push, and Webhooks\n\n## Existing Setup\n\nUpon every transaction, an event/message was sent to SQS (message broker) which was consumed by a worker that then fanned out the notification through different channels.\n\nBecause we want to guarantee delivery, a state was maintained in the database that tells if the notification was successfully sent or not (esp via Webhook).\n\nHence, there is a component called Scheduler that pulls the unsent notifications from this database and re-queues it in SQS; thus guaranteeing the delivery.\n\n### Challenges at scale\n\n1. huge load on this database\n2. scaling workers were limited by the IPOS on the database\n3. surges, during festive seasons, affected transactional notifications\n\n## New architecture\n\n1. Prioritising incoming load\n\nIn order to ensure that one type of notification does not affect others, every notification type is classified with some priority and depending on which they are pushed to the corresponding SQS queue.\n\nThis ensures that a huge marketing campaign does not affect transactional messages.\n\n2. Rate Limiting\n\nTo ensure mass notification from one customer does not affect others, we add Rate Limiter that would limit the notifications per customer and per type ensuring that critical notifications always meet the SLA.\n\n3. Reducing DB bottleneck\n\nWe could not scale workers because of high DB load, and hence instead of doing a sync write to the database, the notifications that are unsent and need to be retried are pushed in a sync way to the database.\n\nBecause of this async write, we ensure that we write to the database in a staggered way and not put unnecessary load on it.\n\n### Observability\n\nTo ensure we are maintaining our SLA, we have to exhaustively monitor the entire infra for any anomaly; the metrics like - health of the infra, success rate of delivery, and SLA.",
+    "notes_gd": "https://drive.google.com/file/d/1423Wn1CrO0goeiYuQo8DpUhrWbfR6KDs/view?usp=sharing",
     "slug": "how-razorpay-scaled-their-notification-system"
   },
   {
