@@ -17,7 +17,7 @@ For a given prefix, say "sh", we should rank the query suggestions - "shoes", "s
 
 ## Personalizing the suggestions
 
-A naive way of doing this would be to create cohorts of the users and show all of them the same suggestions for the given prefix. But we wanted to show the suggestions that are relevant as per the recently fired queries.
+A naive way of doing this would be to create cohorts of the users and show all of them the same suggestions for the given prefix. But we wanted to show suggestions that are relevant as per the recently fired queries.
 
 For example: if a user searched - shoes, red shoes, Nike shoes and then typed "a" - we should be showing "Adidas shoes" and not "apple iPhone".
 
@@ -39,7 +39,7 @@ We need to determine the probability that the current search term/prefix is bein
 
 For example: "shoes", "red shoes", "n..." -> "Nike Shoes"
 
-## Traning the model
+## Training the model
 
 A machine learning model needs to be trained on all viewed items on suggestions, all clicked suggestions, and all unclicked suggestions.
 
