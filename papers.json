@@ -1,5 +1,13 @@
 [
   {
+    "id": 20,
+    "title": "Space-Time Trade-offs in Hash Coding with Allowable Errors",
+    "highlights": null,
+    "link": "",
+    "status": "DONE",
+    "annotated_pdf": "https://drive.google.com/file/d/1tWyRo5ofJgMmZpXrSMO6FjfGI0_NFS54/view?usp=share_link"
+  },
+  {
     "id": 19,
     "title": "Gorilla - A Fast, Scalable, In Memory Time Series Database",
     "highlights": null,
