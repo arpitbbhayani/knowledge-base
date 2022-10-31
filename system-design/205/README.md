@@ -13,7 +13,7 @@ In this video, we talk about how these hyper-local companies work with telecom o
 
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
- - [Download the notes]()
+ - [Download the notes](https://drive.google.com/file/d/1c5p7d7rT9Fi2qoedmtZx9zo0dqCPvbBc/view?usp=share_link)
  - Listen to this on the go on [Spotify](https://open.spotify.com/show/7qMoamm2iZQrsPVm6IQLoD)
 
 # Arpit's System Design Masterclass
