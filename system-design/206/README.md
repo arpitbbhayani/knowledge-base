@@ -10,7 +10,7 @@ here's a thread about its architecture and key design decisions... 🧵👇
 
 ## What is authorization?
 
-It is all about managing fine-grained control over different entities, example:
+It is all about managing fine-grained control over different entities, for example:
 
 - can user A edit comment C?
 - can user B access hotels in region R?
@@ -79,7 +79,7 @@ LISTING:
       - # WRITE
 ```
 
-The above configuration imples,
+The above configuration implies,
 
 1. WRITE relation is a union of WRITE and OWNER
 2. READ relation is a union of READ and WRITE
