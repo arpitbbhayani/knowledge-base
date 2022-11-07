@@ -148,7 +148,7 @@ In this video, we dive deep into how Airbnb achieves this through its in-house s
 
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
- - [Download the notes](https://drive.google.com/file/d/1qK0P95w7RxSnyKfh0tpf-oXiPXUf7wVM/view?usp=share_link)
+ - [Download the notes](https://drive.google.com/file/d/1zouO57YG9nc1ORJY0uhG-1IPr5yUTBB8/view?usp=share_link)
  - Listen to this on the go on [Spotify](https://open.spotify.com/show/7qMoamm2iZQrsPVm6IQLoD)
 
 # Arpit's System Design Masterclass
