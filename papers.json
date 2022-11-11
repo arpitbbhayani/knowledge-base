@@ -1,5 +1,13 @@
 [
   {
+    "id": 22,
+    "title": "The Deletable Bloom Filter",
+    "highlights": null,
+    "link": "",
+    "status": "DONE",
+    "annotated_pdf": "https://drive.google.com/file/d/1f-LFOroH5WihpfSENXCQJGyM4EWOAgc8/view?usp=share_link"
+  },
+  {
     "id": 21,
     "title": "Zanzibar - Google's Consistent, Global Authorization System",
     "highlights": null,
