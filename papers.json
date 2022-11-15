@@ -1,5 +1,13 @@
 [
   {
+    "id": 23,
+    "title": "The Bloom Paradox: When not to Use a Bloom Filter",
+    "highlights": null,
+    "link": "",
+    "status": "DONE",
+    "annotated_pdf": "https://drive.google.com/file/d/1luxcdZBCxo-ty9sgmEQ1rDs5AF4334-3/view"
+  },
+  {
     "id": 22,
     "title": "The Deletable Bloom Filter",
     "highlights": null,
