@@ -1,5 +1,33 @@
 [
   {
+    "id": 11,
+    "title": "Pragmatic Thinking and Learning",
+    "highlights": null,
+    "url": "https://amzn.to/3XgsRC6",
+    "status": "TODO"
+  },
+  {
+    "id": 10,
+    "title": "The Pragmatic Programmer",
+    "highlights": null,
+    "url": "https://amzn.to/3Xku1fW",
+    "status": "DONE"
+  },
+  {
+    "id": 9,
+    "title": "Go Programming Language",
+    "highlights": null,
+    "url": "https://amzn.to/3tJkv8j",
+    "status": "DONE"
+  },
+  {
+    "id": 8,
+    "title": "Programming Pearls",
+    "highlights": null,
+    "url": "https://amzn.to/3EMGGRn",
+    "status": "READING"
+  },
+  {
     "id": 7,
     "title": "Operating System Concepts",
     "highlights": null,
