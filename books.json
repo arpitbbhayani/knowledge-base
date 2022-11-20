@@ -1,0 +1,51 @@
+[
+  {
+    "id": 7,
+    "title": "Operating System Concepts",
+    "highlights": null,
+    "url": "https://amzn.to/3XcnEeB",
+    "status": "DONE"
+  },
+  {
+    "id": 6,
+    "title": "Building Microservices Designing Fine-Grained Systems",
+    "highlights": null,
+    "url": "https://amzn.to/3UQQ5NF",
+    "status": "DONE"
+  },
+  {
+    "id": 5,
+    "title": "Introduction To Information Retrieval",
+    "highlights": null,
+    "url": "https://amzn.to/3AvL2dc",
+    "status": "DONE"
+  },
+  {
+    "id": 4,
+    "title": "Database Systems",
+    "highlights": null,
+    "url": "https://amzn.to/3AuPSay",
+    "status": "DONE"
+  },
+  {
+    "id": 3,
+    "title": "The Joys of Hashing",
+    "highlights": null,
+    "url": "https://amzn.to/3ErD3Ps",
+    "status": "DONE"
+  },
+  {
+    "id": 2,
+    "title": "Database Internals",
+    "highlights": null,
+    "url": "https://amzn.to/3V36Btw",
+    "status": "DONE"
+  },
+  {
+    "id": 1,
+    "title": "Designing Data-Intensive Applications",
+    "highlights": null,
+    "url": "https://amzn.to/3gq2WXR",
+    "status": "DONE"
+  }
+]
