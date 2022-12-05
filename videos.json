@@ -15,14 +15,14 @@
     "title": "Designing Uber's highly available Emergency SOS Service",
     "description": "An emergency button in a ride-hailing app like Uber can be life-saving but what happens when you click it? What kind of information does it capture? how does it notify the nearest police station?\n\nIn this video, we dive deep into the architecture of Uber's emergency SOS service and look at key design decisions that make it so reliable and highly available.",
     "img": "https://i.ytimg.com/vi/gpzGpPiRoCo/mqdefault.jpg",
-    "gif": null,
+    "gif": "https://media.giphy.com/media/xT5LMJDD7nQeWkhvva/giphy.gif",
     "duration": "20:27",
     "view_count": 1870,
     "like_count": 83,
     "comment_count": 6,
     "released_at": "2022-11-28",
     "gist": "",
-    "notes_gd": "",
+    "notes_gd": "https://drive.google.com/file/d/1RMjNyqQoDK0z3OmzhICOg7WHRhAEIMG1/view?usp=share_link",
     "slug": "designing-uber-s-highly-available-emergency-sos-service"
   },
   {
@@ -41,14 +41,14 @@
     "title": "How Booking com designed and scaled their highly available and performant User Review System",
     "description": "Designing a highly available and performant service is really difficult but booking.com does it really well. The rating and review service is one of the most critical services for Booking and in this video, we dive deep into how they designed and scaled it to ensure they seamlessly handle peak traffic of more than 10,000 requests per second.",
     "img": "https://i.ytimg.com/vi/BFyWl9MNDjY/mqdefault.jpg",
-    "gif": null,
+    "gif": "https://media.giphy.com/media/3o6Mb480rSmySjt7AA/giphy.gif",
     "duration": "21:46",
     "view_count": 4011,
     "like_count": 178,
     "comment_count": 28,
     "released_at": "2022-11-21",
     "gist": "",
-    "notes_gd": "",
+    "notes_gd": "https://drive.google.com/file/d/1oxo-BsAUbqCGnfCjYTqw82kpLU1OZ_Cw/view?usp=share_link",
     "slug": "how-booking-com-designed-and-scaled-their-highly-available-and-performant-user-review-system"
   },
   {

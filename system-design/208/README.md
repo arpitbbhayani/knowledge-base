@@ -11,7 +11,7 @@ Designing a highly available and performant service is really difficult but book
 
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
- - [Download the notes]()
+ - [Download the notes](https://drive.google.com/file/d/1oxo-BsAUbqCGnfCjYTqw82kpLU1OZ_Cw/view?usp=share_link)
  - Listen to this on the go on [Spotify](https://open.spotify.com/show/7qMoamm2iZQrsPVm6IQLoD)
 
 # Arpit's System Design Masterclass
