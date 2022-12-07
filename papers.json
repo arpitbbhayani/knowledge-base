@@ -1,13 +1,5 @@
 [
   {
-    "id": 24,
-    "title": "Query Processing Techniques for Solid State Drives",
-    "highlights": null,
-    "link": "",
-    "status": "DONE",
-    "annotated_pdf": "https://drive.google.com/file/d/12bIW3b_r31vQh5AAEzSdxBTIXPOnQ9Md/view?usp=share_link"
-  },
-  {
     "id": 23,
     "title": "The Bloom Paradox: When not to Use a Bloom Filter",
     "highlights": null,
