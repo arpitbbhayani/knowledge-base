@@ -11,7 +11,7 @@ Thank you for visiting my knowledge base. This repository contains everything im
 Hey 🙌‍, I am Arpit Bhayani, a CS Engineer, an Educator, and a Polymath.
 
 I run a YouTube channel by the name [Asli Engineering](asliengineering.com) (translation: Real Engineering) on which I publish in-depth engineering videos on topics ranging from System Design,
-Distributed Systems, Python Internals, and anything that amuses me in tech. To date, I have published **112** videos covering **10** topics.
+Distributed Systems, Python Internals, and anything that amuses me in tech. To date, I have published **116** videos covering **10** topics.
 
 I also run a [course on System Design](https://arpitbhayani.me/masterclass) in which I teach the concepts of designing massively scalable systems using the First Principle Thinking. The course has been trusted by prople working in someo of the top companies of the world like Google, Amazon, Facebook, Microsoft, GoJek, and so many more. You can find the details about the course and curriculum at [arpitbhayani.me/masterclass](https://arpitbhayani.me/masterclass).
 
@@ -30,10 +30,10 @@ Topics I like to talk about are
 
 5 recent videos I published on [YouTube](https://www.youtube.com/c/ArpitBhayani)
 
+ - [How Slack efficiently classifies emails at scale with an eventually consistent system](https://youtube.com/watch?v=BwxU9EnCFXA)
+ - [How @ShopifyEngineering avoids hot shards by moving data across databases without any downtime](https://youtube.com/watch?v=7v-wrJjcg4k)
+ - [The architecture of Grab's data layer that serves millions of orders every day](https://youtube.com/watch?v=KeV4erIm47o)
+ - [How @twitter keeps its Search systems up and stable at scale](https://youtube.com/watch?v=dOyCq_mMtdI)
  - [How Zomato improved its search by identifying intent through NLP](https://youtube.com/watch?v=JL9x9N6YSUc)
- - [Designing Uber's highly available Emergency SOS Service](https://youtube.com/watch?v=gpzGpPiRoCo)
- - [How Booking com designed and scaled their highly available and performant User Review System](https://youtube.com/watch?v=BFyWl9MNDjY)
- - [Overview of Discord's data platform that daily processes petabytes of data and trillion points](https://youtube.com/watch?v=yGpEzO32lU4)
- - [How Airbnb designed and scaled its central authorization system - Himeji](https://youtube.com/watch?v=5FIPtC3xJSQ)
 
 You can find more about me on my website [arpitbhayani.me](arpitbhayani.me).
