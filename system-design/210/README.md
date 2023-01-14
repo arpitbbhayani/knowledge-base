@@ -15,7 +15,7 @@ In this video, we dive deep into how Zomato identifies the intent of the search 
 
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
- - [Download the notes]()
+ - [Download the notes](https://drive.google.com/file/d/1n688D9Wa6JgwbqmeRuxTAOOyyxAyYZo1/view?usp=share_link)
  - Listen to this on the go on [Spotify](https://open.spotify.com/show/7qMoamm2iZQrsPVm6IQLoD)
 
 # Arpit's System Design Masterclass
