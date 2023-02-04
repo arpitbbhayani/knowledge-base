@@ -1,23 +1,19 @@
-How Slack efficiently classifies emails at scale with an eventually consistent system
+Thundering Herd Problem and How not to do API retries
 ===
 
 
 
 <p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
 
-[![How Slack efficiently classifies emails at scale with an eventually consistent system](https://i.ytimg.com/vi/BwxU9EnCFXA/mqdefault.jpg)](https://www.youtube.com/watch?v=BwxU9EnCFXA)
+[![Thundering Herd Problem and How not to do API retries](https://i.ytimg.com/vi/8sTuCPh3s0s/mqdefault.jpg)](https://www.youtube.com/watch?v=8sTuCPh3s0s)
 
-https://www.youtube.com/channel/UC_b1GUJv_2QiMP4BxC9-Dxg/join
+When the network is unreliable the clients retry the APIs to ensure completion. This approach works when there are fewer clients; but what happens when there are millions of them?
 
-Learn System Design: https://arpitbhayani.me/masterclass
-
-Almost all engineers start working on a feature thinking it is a simple and a no-brainer but when we start thinking of the implementation details we realize how complicated things actually are.
-
-In this video, we go deep into Email Classification Service at Slack whose sole job is to classify an email as internal or external. The feature seems a cakewalk but when we start jotting down the implementation specifics, things turn out a little more complicated than what we anticipated.
+They all will keep on bombarding the server with their requests and this problem is called the Thundering Herd problem and in this video, we understand what this problem is, why it occurs, and how to solve it.
 
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
- - [Download the notes](https://drive.google.com/file/d/1Mbz40vZdj5Cet-qFwOBlLQUnSnqfRGGX/view?usp=share_link)
+ - [Download the notes]()
  - Listen to this on the go on [Spotify](https://open.spotify.com/show/7qMoamm2iZQrsPVm6IQLoD)
 
 # Arpit's System Design Masterclass

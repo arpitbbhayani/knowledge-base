@@ -1,5 +1,13 @@
 [
   {
+    "id": 27,
+    "title": "Dynamo Amazon\u2019s Highly Available Key-value Store",
+    "highlights": null,
+    "link": "",
+    "status": "DONE",
+    "annotated_pdf": "https://drive.google.com/file/d/1dIX26Vyiva_qxO_5syfMa85ynFpVPIDO/view?usp=share_link"
+  },
+  {
     "id": 26,
     "title": "The Google File System",
     "highlights": null,

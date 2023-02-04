@@ -1,23 +1,23 @@
-How Slack efficiently classifies emails at scale with an eventually consistent system
+Designing Idempotent API Endpoints for Payments at Stripe
 ===
 
 
 
 <p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
 
-[![How Slack efficiently classifies emails at scale with an eventually consistent system](https://i.ytimg.com/vi/BwxU9EnCFXA/mqdefault.jpg)](https://www.youtube.com/watch?v=BwxU9EnCFXA)
+[![Designing Idempotent API Endpoints for Payments at Stripe](https://i.ytimg.com/vi/J2IcD9FZvZU/mqdefault.jpg)](https://www.youtube.com/watch?v=J2IcD9FZvZU)
 
 https://www.youtube.com/channel/UC_b1GUJv_2QiMP4BxC9-Dxg/join
 
 Learn System Design: https://arpitbhayani.me/masterclass
 
-Almost all engineers start working on a feature thinking it is a simple and a no-brainer but when we start thinking of the implementation details we realize how complicated things actually are.
+Say, you are writing a payment service and you wrote an API that transfers money from one account to another. Because of a network glitch, the client retried the API call, and this led to the deduction of money twice. To handle this situation we need our APIs to be Idempotent.
 
-In this video, we go deep into Email Classification Service at Slack whose sole job is to classify an email as internal or external. The feature seems a cakewalk but when we start jotting down the implementation specifics, things turn out a little more complicated than what we anticipated.
+In this video, we take a look at what idempotent APIs are, how to write them, and how they form the heart and crux of any payment service.
 
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
- - [Download the notes](https://drive.google.com/file/d/1Mbz40vZdj5Cet-qFwOBlLQUnSnqfRGGX/view?usp=share_link)
+ - [Download the notes]()
  - Listen to this on the go on [Spotify](https://open.spotify.com/show/7qMoamm2iZQrsPVm6IQLoD)
 
 # Arpit's System Design Masterclass
