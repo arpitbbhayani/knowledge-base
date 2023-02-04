@@ -1,5 +1,13 @@
 [
   {
+    "id": 28,
+    "title": "Amazon DynamoDB A Scalable, Predictably Performant, and Fully Managed NoSQL Database Service",
+    "highlights": null,
+    "link": "",
+    "status": "DONE",
+    "annotated_pdf": "https://drive.google.com/file/d/1nA7iL9b_WLlQKhuzAV9RlgsrSrWKDsG4/view?usp=share_link"
+  },
+  {
     "id": 27,
     "title": "Dynamo Amazon\u2019s Highly Available Key-value Store",
     "highlights": null,
