@@ -1,5 +1,29 @@
 [
   {
+    "id": 31,
+    "title": "Improving Language Understanding by Generative Pre-Training",
+    "highlights": null,
+    "link": "",
+    "status": "READING",
+    "annotated_pdf": "https://drive.google.com/file/d/1yDyKWk4RhC40jbY2evevDnuuxKpIkAxi/view?usp=share_link"
+  },
+  {
+    "id": 30,
+    "title": "Language Models are Few-Shot Learners",
+    "highlights": null,
+    "link": "",
+    "status": "READING",
+    "annotated_pdf": "https://drive.google.com/file/d/1ICUPRGbARL1L_JgMrKfrYQ6xKzh46pjT/view?usp=share_link"
+  },
+  {
+    "id": 29,
+    "title": "Attention Is All You Need",
+    "highlights": null,
+    "link": "",
+    "status": "READING",
+    "annotated_pdf": "https://drive.google.com/file/d/1NI4fHNYauNvH3ynRuhi11Ey5s1-BOpmE/view?usp=share_link"
+  },
+  {
     "id": 28,
     "title": "Amazon DynamoDB A Scalable, Predictably Performant, and Fully Managed NoSQL Database Service",
     "highlights": null,
