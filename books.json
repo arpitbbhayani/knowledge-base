@@ -4,6 +4,7 @@
     "title": "Pragmatic Thinking and Learning",
     "highlights": null,
     "url": "https://amzn.to/3XgsRC6",
+    "topic": "Others",
     "status": "TODO"
   },
   {
@@ -11,6 +12,7 @@
     "title": "The Pragmatic Programmer",
     "highlights": null,
     "url": "https://amzn.to/3Xku1fW",
+    "topic": "Programming and Implementation",
     "status": "DONE"
   },
   {
@@ -18,6 +20,7 @@
     "title": "Go Programming Language",
     "highlights": null,
     "url": "https://amzn.to/3tJkv8j",
+    "topic": "Programming and Implementation",
     "status": "DONE"
   },
   {
@@ -25,6 +28,7 @@
     "title": "Programming Pearls",
     "highlights": null,
     "url": "https://amzn.to/3EMGGRn",
+    "topic": "Programming and Implementation",
     "status": "READING"
   },
   {
@@ -32,6 +36,7 @@
     "title": "Operating System Concepts",
     "highlights": null,
     "url": "https://amzn.to/3XcnEeB",
+    "topic": "Others",
     "status": "DONE"
   },
   {
@@ -39,6 +44,7 @@
     "title": "Building Microservices Designing Fine-Grained Systems",
     "highlights": null,
     "url": "https://amzn.to/3UQQ5NF",
+    "topic": "System Design and Architecture",
     "status": "DONE"
   },
   {
@@ -46,6 +52,7 @@
     "title": "Introduction To Information Retrieval",
     "highlights": null,
     "url": "https://amzn.to/3AvL2dc",
+    "topic": "Others",
     "status": "DONE"
   },
   {
@@ -53,6 +60,7 @@
     "title": "Database Systems",
     "highlights": null,
     "url": "https://amzn.to/3AuPSay",
+    "topic": "Database Design",
     "status": "DONE"
   },
   {
@@ -60,6 +68,7 @@
     "title": "The Joys of Hashing",
     "highlights": null,
     "url": "https://amzn.to/3ErD3Ps",
+    "topic": "Programming and Implementation",
     "status": "DONE"
   },
   {
@@ -67,6 +76,7 @@
     "title": "Database Internals",
     "highlights": null,
     "url": "https://amzn.to/3V36Btw",
+    "topic": "Database Design",
     "status": "DONE"
   },
   {
@@ -74,6 +84,7 @@
     "title": "Designing Data-Intensive Applications",
     "highlights": null,
     "url": "https://amzn.to/3gq2WXR",
+    "topic": "System Design and Architecture",
     "status": "DONE"
   }
 ]
