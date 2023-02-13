@@ -36,4 +36,4 @@ Topics I like to talk about are
  - [How @ShopifyEngineering avoids hot shards by moving data across databases without any downtime](https://youtube.com/watch?v=7v-wrJjcg4k)
  - [The architecture of Grab's data layer that serves millions of orders every day](https://youtube.com/watch?v=KeV4erIm47o)
 
-You can find more about me on my website [arpitbhayani.me](arpitbhayani.me).
+You can find more about me on my website [arpitbhayani.me](https://arpitbhayani.me/).
