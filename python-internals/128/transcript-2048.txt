@@ -1,0 +1,88 @@
+so in this video i'd like to talk about internals of is operator in python.
+as per its official documentation, python says that is operator test for object identity.
+with respect to c python implementation, it would check if the two objects, that the two operands- in our expression they- point to the same object in memory or not.
+uh, while exploring the internals of eds operator, we would stumble upon some really interesting, uh, some really interesting parts that c python took in order to implement it.
+uh, let's start diving deep and just find out how it actually implements.
+so here, what i have is: uh, i have the latest pull of c python, basically python version 3.10.
+if you are following along, i would highly encourage you to pull the latest version of master and basically follow along.
+let's first see, uh, the is operator in action.
+uh, i have already made a video about python caching integers, on how python optimizes integer operation for smaller integers, because of which here we can see that even though i have declared two variables, a and b, since the value is same, it it, it internally points to the same object in memory.
+but you get the gist on how, uh, basically what the significance of is operator.
+let's just quickly take another example where i'd say a, uh is equal to our path and i do.
+true, this is not doing object, this is not doing value equivalence, but it is rather doing object equivalence, right?
+but basically this is what is operator does.
+so is operator simply checks for the if two operands point to the same object or not.
+i'll use import disk, i'll do this dot disk and i'll pass in a is b, right, what it spits out?
+it spits out series of instructions that my python runtime engine would execute in order to evaluate the sentence asb.
+and then it did a return value, right, which makes sense because, uh, it has nothing else to do but just compare a and b with an is operator.
+so here, uh, this means that the entire logic, uh about how is operator is evaluated, is how python would have handled the instruction azo.
+so what we would do is we would open the file c, eval, dot c, which holds all the code, uh about all the instructions that we see over here.
+so if i take this thing a little down and i look for is up here, at line number three, six, one, one, somewhere around you would see how is up is implemented.
+so once i have once the load name uh on a happened, load name on b happened, which means that it added the right uh.
+so, which means b gets out, which becomes your right operand, then it accesses the top of the stack.
+and then it basically said: this is some optimization that c python have done.
+but uh, it basically accessed the top two elements of the stack and stored it in right and the left operand.
+and then this is what the entire logic is: it just did left equal to equal to right.
+so the two elements popped from the stack are nothing but python objects, which is a and b, and is just checking if a is equal to b or not, right?
+we know that two pointers they give you true, when you are doing, let's say, if a and b are pointers or something you do, a equal to equal to b, it would give out if both, if the, if the address that the both are pointing to is same or not, right?
+it is doing left equal to equal to right while handling is up and storing it in res.
+there is something very interesting here: it is doing an xor operation with op arg right.
+let's come to it later, because what we definitely know that, when using is operator, it's more than enough to just do left equal to equal to right.
+so, according to us, in order to implement is operator, it would have been very straightforward to do left equal to equal to right, store it in res and if res is one, we return pi, true, if it is not written pi f, uh, we, we, we basically uh, use pi false and basically set it on top of the uh stack, right.
+it basically saw that if it is one, so if they are equal.
+it does a pie true, otherwise it does a pie false and it stores it in b- uh, it increases the reference of b, which means uh, basically this is for garbage collection.
+setup implies now the top of my stack would be set to this b right.
+so instead of, instead of popping the second value and adding another value to the stack, what c python is doing is: c python is accessing the top and then, with the evaluated result, it is setting the top right.
+so this is some optimization that c python did internally.
+that top of the stack will be set to either true or false, depending on what the value of rest is.
+then it did a pi decrement reference of left and right, because they are, they are not needed.
+we will just keep it things simple with just focusing on his operator here.
+so, left equal to equal to right, we return true, otherwise false.
+let's see what xor would do.
+so if i have, uh, if my left equal to equal to right could be the one or zero, so if my a is actually b, then this expression left equal to ground will evaluate to one, then it is xor with oparg.
+so if oparg is actually 1, right, so then, and left equal equal to right, so it would be 1 xor 1, which is 0.
+and if my opirg is zero, then left equal to right is one and operg is zeros and one xor zero is one right.
+this oparg is nothing but doing a, not of the operation right.
+so if my left equal to equal to right, x or one.
+so if let's say oprg is one, then one xor one is zero and zero xor one is 1 right, and similarly, if my operg is actually 0, then 1 x or 0 is 1, 0 x or 0 is 0.
+so i have no effect on my evaluation of left equal to right.
+this implies that oparg is doing nothing, but my is handling, my is and is not right.
+basically this is how i actually dissected this thing out and just try to understand what oparg would be doing here.
+so here in the console, uh, at the bottom of the screen, let me quickly do a disassemble of import disk, this dot.
+so if my left equal to right is true, which is 1, 1 x or 0 is 1 right, and if left equal to right is false and oprg is 0, which is in case of, is off, when i'm doing a is b, then 0 xor 0 is 0 right.
+it generates the same set of instructions with is op, and then the argument is one right.
+so here what it does is: let's say my a is actually equal to, so my left equal equal to right is true and my opa rg is 1, so true is 1, 1 x or 1 is 0.
+so when my left equal equal to right is 1, xor 1 is 0.
+when my left equal to equal to right is 0, which means it is not equal, xor 1 is 1 right.
+when my opirg is one right- and this is exactly how c python implements, is and is not using this very elegant way- right.
+why did c python developers not chose that and chose this very seemingly complicated way to implement this, the whole secret lies behind the actual machine level instructions which are created out of it.
+so whenever you add branching to your code, the actual machine level instructions that are generated- there are too many instructions which are generated versus doing a mathematical operation.
+so doing this operation of xor, it's very cheap on the cpu because your cpu instruction set has a native support of implementing xors and all the and all the bit manipulative operations: add, subtract, uh, doing x or not, and all of those things.
+so c python developers are actually leveraging that and making things a little complex for a normal same developer like us to like, basically understand.
+but this is such an basically, this is such an interesting implementation of a seemingly simple thing, right, so they opt.
+so, uh, this is where we should appreciate how the actual developers of languages think about, like, every single cpu instruction that is being generated to make their language like as fast as possible.
+right now, uh, that, basically, now that we understood the importance of operg, left, equal to right and how is an izop are implemented, what do we do next?
+we trace the path from the grammar to this point, right?
+p is not a and in the line just below it it passes is right.
+so we understand that it is basically invoking the same function and either passing is not or is, depending on what it got, while, uh, actually passing the language.
+basically, compilec is the file where all the logics, where all the logic about generating instruction set is being done right.
+this is nothing but the instruction that we saw when we run disassemble, right?
+it is also passing is off, which we actually saw while, uh, during a disassembly, and what we also saw.
+if it is is not, i'm passing in 1, right?
+so this is where the code, the instruction code that we saw during disassemble, is being generated over here.
+but we would have seen like this is doing like normal comparison, right.
+so why are they not doing a compare op, which we already saw in the previous video, how they use basically comparably to compare less than equal to, greater than equal to and all of those things.
+so for a general comparison, like equal to, not equal to less than less than equal to another, these are doing just uh, setting cmp to that particular integer value.
+so whenever you do that- a greater than equal to b, you would see that argument to be set as 5.
+let's check that.
+this dot is a greater than equal to b and if i do this, what we saw, that pi g e, what it should do, as per our logic, it should uh, add an instruction.
+so it would come here: uh, greater than equal to, is what you are doing.
+we should set cmp to be equal to phi and then it would do break.
+it took in compare op, which is right here, and with the argument oppar gas phi.
+what kind of operator are we passing?
+so this is exactly how python actually generates the code for whenever you are giving any comparison operators, and this is exactly what happens behind the scenes- to generate a code for like greater than equal to, less than equal to or not.
+so primarily in this one, we explored how, uh, the internals of is operator and is not even is implemented.
+we explored how arguments are passed over here.
+uh, one thing that i would leave for you guys to explore is what exactly add op underscore i does right, and while doing this, you would also stumble upon how to pass non-integer argument.
+and, yeah, we saw how is operator is implemented and is not.
+also, and uh, basically, that is it for this video.

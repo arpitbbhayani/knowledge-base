@@ -1,0 +1,67 @@
+the communication is always about getting or updating a data that is owned by the other service.
+this is the simplest way for the micro services to communicate with each other, and the pattern is called sharing the database pattern.
+the core idea here is to let anyone who needs the data from a service or wants to operate something into the service can directly talk to his database, rather than going through a middleman api server, although most people think it is the wrong way of communication, instead of discarding it completely.
+in this video, we talk about how microservices can communicate using a shared database, the four challenges associated with it, see ways to mitigate them and understand where it could be actually beneficial for us to share the database rather than going through a middleman api server.
+right, i have also attached a video, verbatim as is from my first quote, where we designed and scaled instagram notifications.
+analytic service is the one that understands likes views happening on the block and it wants to update it in the database.
+now there are two ways to do it: analytic service can talk to the block service and block service can update its database.
+second approach is that analytics service has the access to the blocksdb and it can directly update the database.
+the second approach that i just mentioned is the one that talks about the sharing the database pattern, where the database, which is the blocksdb, is shared between the block service and the analytics service.
+no complex things required, like directly two services talking to a database and you are done right.
+so now there is no need for an analytic service to talk to block service and block service updating the database.
+hop, your analytic service, as soon as it got data, can directly update it in the database.
+because analytics can directly write to the database, like they are working independently.
+then simpler operations, like if your analytics service was talking to the block service and let's say the communication is happening, or persistent tcp connections, then someone had to manage the tcp connection pool.
+instead your analytics service is directly talking to the database.
+operations are pretty simple: both services talking to the same database and done right.
+analytic service is directly updating the database, block services directly reading from the database, so overall performance looks super solid.
+it may not be suitable across all use cases, but even for a minor use case, if you are adopting this pattern where two services will be sharing the same database, both of them having the read and write access to it, then what four things you should be thinking about.
+so here what is happening is because, like, the database is owned by the blocks team, but analytics team wants to update a total likes into the database.
+so analytics team needs to understand the schema, needs to understand how the data is stored, needs to understand the intricate details of it, of this particular db, so that it can correctly place the information in the right table at the right spot.
+otherwise it would be a massive mismatch onto users and because block service is expecting it to bit some place but analytic service is putting it into a different place, so major complications might happen.
+so, by sharing a database with an external party, here analytics is an external party, like it needs to get the internal schema and other implementation details like, for example, implement details like: are they using soft deletes or heart deletes, is the database normalized or not, is the data redundant or not, right so those kind of details analytics team would be able to deduce out of this database, which might not be the best thing, because why should they be caring about this part, right?
+so it's always better to have as safe distance as possible from all the interfacing teams and not let them know the internal details of the things, right?
+what if the block service thinks of changing the schema?
+now, if you, as a blog stream, want to change the schema now, analytics team needs to change their query, need to change their code base to adhere to the new schema, and to do that the biggest problem here would be that analytics team would need to change its logic, uh, and the block stream needs to ensure that the changes are always backward compatible so that the transition is smooth now, unnecessarily.
+what is happening is because a service like analytic service was dependent on the same database, the block service.
+who, the blocks team, who owns the database, is not able to quickly make those alterations into it that might give them better performance or better maintainability, and but they would have to wait on the analytics service to make those sentences, keep them in the loop and get those things done.
+and just one key point before we move to the second challenge is what if your blocks team today, like we know that hey, relational database works well till the certain stage, but now that, let's say, we are getting millions of- hypothetically, let's say, we are getting millions of articles, one database is not able to support it.
+so, given that blocks team independently cannot make the decision because analytics queries might get impacted, so there is no clear autonomy of how- uh, of how- block service can operate.
+they are always dependent on the analytic service to like, before making any changes, they would have to take a nod from them.
+so it it's not truly an autonomous system, like there is a very strong coupling between the blogs and the analytics, so not really a good design or not really a good high level pattern that we talk about.
+right, and this information is needed by all the three services: blogs, analytics and, let's say, a recommendation service.
+so when this happens, your analytics service and your recommendation service would need to change that business logic at their end and redeploy their services unnecessarily like.
+but now, because they are all sharing the database, if anything changes or any business logic changes, these folks needs to update their logic and deploy their changes.
+here these three components seem very separate, like three very different use cases, but still, because they are sharing the same database, there is very, there is very thing that the services needs to be: knowing the business logic and and changing the business logic according to change happening on one of the servers or the team that owns the service.
+so, in order to like in the previous video, we talked about how to scope a micro service, and the two things we talked about is loose coupling and high cohesion.
+the first challenge is actually breaking on loose coupling, because you are having very tight coupling because they are sharing the database, and the second one: you are losing high cohesion because three services that seem to be tightly coupled are not and business logic needs to be changed but you cannot keep them at the same place.
+so here what would happen is because every service blocks analytics and recommendation.
+now, when that happens, it affects not only the block service but end user directly.
+so here, when you, when you are sharing the database across multiple services, you have to unnecessarily additionally take care of database level access control list to ck hey, and because analytic service needs to update only rows in this particular table, analytic service should get access.
+the user through which analytics services talking to the blocksdb should have access only to that table.
+now recommendation service might not need to update something into the database.
+let recommendation service only have read user like.
+those sort of complications come in as soon as you start sharing the database, just so to prevent data corruption and data deletion right.
+so when that is there, when analytics team fire that particular query, your blog's db starts to choke up.
+because your blocksdb starts to choke up, what would happen is it would reduce or it would impact the performance on the main block service and the recommendation service.
+so analytic service is putting additional pressure into your blog's database, which is shared across three services.
+like you are directly connecting to the database, rate limiter would have come into the picture, or rationing would have come into the picture when all the things, all the requests, would have gone through a central service.
+let's say, if analytics talks to blogs and blogs talks to the database and recommendation talks to blogs and blog stocks to database, we can apply rate limiting over here, ensuring that no service is abusing the shared database.
+but when the three services are given privileges to talk to the database directly, any one service of you can like, because of a buggy script, because of a bug, because of what not, can actually abuse the entire system and can let the entire system get affected?
+given that these are the four challenges, does this mean that we should not be using shared database pattern?
+right, so what are the possible places where you can actually use sharing a database pattern?
+so if you're having, if you're operating on a small and lean team, never think of optimizing it on the micro services part, inter service communication and whatnot.
+often, like most of the situations that we talked about in the challenges, it was more about changing the schema, right?
+it is so simple to share the database and get those things up and running in a very short time, rather than thinking about, hey, pure microservice communication and other sort of complications.
+one of the challenges that we talked about there was one system abusing the other database when that is the use case or wherever.
+what you can actually do is, instead of not adopting a shared database pattern, what you can actually do is you can actually fork out a read replica out of your main blocks db and let the analytics query fire on the read replica, although there would be some lag.
+so this way, your block service can still operate in isolation, right, without getting this affected.
+an analytic service with some basic lag can continue querying on the read replica.
+this way, your analytics service is happy, your blog service is happy and you are getting very nice development time, quick turnaround time, no team coordination required and whatnot- like, obviously, given that your schema is not changing often- right.
+this way you reduce the dependency and you're still basically getting the benefits out of sharing the database rather than losing on most of the stuff.
+so, yeah, that is it: four challenges, uh of uh, sharing the database pattern and ways to mitigate them, and when can you and, more importantly, when can you actually use this pattern?
+and this is not something which is just theoretical, like most systems or most microservices evolve this way, where they first start with sharing the database.
+they do share the database in which they do not see massive changes happening or the system is stable enough and the system is not abusing.
+they put some basic checks in place and let uh multiple services access the common database.
+so keep all of those things in mind next time when you are designing a system- that no pattern is black or white, no pattern is right or wrong.
+i hope you, i hope i gave you- a different perspective to look at uh microservices communication pattern, especially sharing a database, where not to look at it as a wrong pattern per se, but just use it what floats your portal, right?

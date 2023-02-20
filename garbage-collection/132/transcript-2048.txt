@@ -1,0 +1,59 @@
+if you are trying to build your own garbage collector or trying to pick a garbage character for your specific use case, there are seven parameters that would objectively help you decide which one to go for.
+these parameters define a garbage collector and it determines its performance on your specific workload.
+in the previous video, we talked about why programming languages need an automatic garbage collection- primarily because engineers are unreliable- and in this one, we talk about the seven key metrics and characteristics of a garbage collector that can help us compare and judge which one is better than the other for a specific workload.
+so the seven key metrics of a garbage collector are posting, safety, language, specific optimizations, completeness, throughput, space over it and scalability.
+there would be some gcs who are great at throughput, great at pause time, great, uh, great- at safety, but they would be suffering from scalability, they would be very hap, they would have very high space overhead and they might not do a lot of language specific optimization, right.
+so when you like, when you're doing this comparative analysis between gc, try to plot this two dimensional web plot across all of the gcs on all the parameters that you can think of and see which one fits your needs.
+again, best garbage collector is a myth, right, there is always one which is better than other in some particular use case.
+that each one, each one of the garbage collector is superior than the others in at least one use case by 15 percent.
+this clearly indicates that, hey, there is no one calculator that is best across all, but every garbage collector will be better than all other in at least one use case.
+so, which means that if that is that one use case that you that you direly need, you would have to go for that garbage collector right and most garbage colors now to get the performance.
+when you see, knobs like these are all sort of tunable parameters which would help you tune the performance of your garbage collector for the load that you are handling.
+some examples like these are java specific examples, but any language you pick, every language or every garbage collector that you pick in every language.
+but it's when you are picking a gc, when you're tuning the gc to the best performance, you need to know: hey, these are all the parameters that i can do, this is my workload- run the test and see how it is, how it is behaving and, to be really honest, after a certain scale, you, after a certain scale and after a certain stage of your career, you will be spending more time tuning these parameters than coding.
+right now, what we'll do is we'll go through the seven characteristics and understand each one of them and the kind of impact it has.
+what safety says is that a collector must never reclaim the storage of live objects.
+basically, it simply means that if what like, it should not be deleting an object which is already in use.
+so if two objects are referring to a particular place in memory, which means it's live, so your automatic garbage collection cannot delete this or cannot reclaim this space, right?
+you say that the garbage caller is safe when it does not delete an object which is life, but, like i said, that on safety it might rank low or in safety it might rank high.
+there might be, like there are some garbage collectors to get to do better on other parameters.
+it might also reclaim the space which is always in use, not that frequently, but it can do right.
+so everyone wants our program and garbage collection to execute in as little of a time as possible.
+so what happens is you're like if i would want to plot a very simple box, plot on if this is the hundred percent of your time, how much time goes into program execution, how much time goes into garbage collection.
+when your gc is running, like in most cases, it would be the stop the world gc, which means that when gc is running, your program cannot execute.
+for example, if you are running a payment service having a lot of transactions and if your gc kicks in, program execution is affected.
+they have short bursts of like, they have short cycles, or sorry, they have cycles of short garbage collection and then a long one, right?
+your gc would try to run a quick garbage collection in a very short time, right?
+a short burst of gcs, then a long pass, and that is how most diseases would operate: just to improve or just to make your overall throughput of your program, of your business logic, as high as possible.
+that, hey, a garbage collector is complete, where you want to eventually delete all the garbage that is there, or you would want to collect all the garbage that is there in the heap, right, so eventually.
+that objects gets reclaimed, right, but that needs to happen.
+there should not be any object that is deleted or that is not reference, but it's still lying there, right, so eventually it needs to be cleaned up.
+pause time is most, or more often than not, when a garbage collector runs it pauses the program execution.
+these threads are stopped and only garbage collection threads run right, and when this happens, your business throughput or your program throughput is zero, which is why it's called stop the world.
+and this metric is one of the worst like: basically, this is high, it is directly impacting the throughput of your business logic and everything would go for a toss right.
+any infra component, pick any, like specifically java service- you would see this more often- that there are so many stop-loss going high, your program execution stopped, your transaction needs to be restarted and so many things.
+so if it needs to be continuous and if it does not have that big of a memory chuck, that big of a continuous memory chunk available, then it will not be able to allocate object right, which is where, once a while, your garbage collection does a defragmentation or a compaction in which, once these objects are deleted, it would reshuffle the objects such that it would leave a large chunk of continuous memory available for allocation.
+so these object wanted objects to moved over here so that all of the objects are closely packed and when this happens, you get a very nice large free chunk of space available over here.
+so now what happens is when this object movement is happening right, when these objects are being shuffled, the your program execute, because when objects are being shuffled, it's the actual memory address being changed from one to other, and when that happens, what your program like- if at the same time your program is also executing- what would happen is your program will point to some other location which does not exist, and all of those complications would kick in.
+and this is what causes the stop the world, or it basically causes the pause type of gc, right?
+so what garbage collector does is it tries to, it tries its best to reduce the cost time to as low as possible.
+but when it tries to reduce the pause time now it has its own set of challenges because you know the side effect of this is you might not have a large chunk of continuous memory available, your gc might not be complete, and all that is where it's just a combination of short cycles and long pauses that happen.
+but you would always try to optimize your workload like such that your program does not impact very high.
+gc is obviously, when it needs to identify which objects to delete, which objects do not, it has to maintain a lot of auxiliary data structures to track which objects are being referenced, how are being referenced, which one to delete, why to delete, when to delete.
+so a good gc to like, again, space-time trade-off.
+if you have a large amount of space available to allocate, or if you're using a sophisticated data structure, you would find which objects to delete in a very short time.
+so what is the overall space overhead of my garbage collector?
+so then you would want to go for a gc that is lowered space over it, right?
+now, which means that if you know, or if your garbage collector knows, that this is the language on which it is running, so it can run that extra optimizations where it can exploit the features of the language, where each of the languages, in how objects are allocated in memory, how are they mapped into memory, or what kind of access pattern do objects we have like if, if a language only has persistent data structures, then every time you make any modification it will create a new copy of the data.
+then a way through which you know that if a particular languages store the allocated objects in a particular order in memory, you can leverage that.
+for example, there is there are a few gcs that run in constant time because of how objects are laid out in the memory manager.
+they are allocated in a particular way in the memory of the language and if you know that this is how the objects will always be allocated, you can quickly find out okay how to do my gc in constant time, because that's the way the objects are allocated in the memory and depending on other ways of allocation, other ways how objects are created, objects are deleted, objects are referenced, you can make a lot of optimizations on a garbage collector.
+they are language specific garbage collectors because they exploit how that language is built.
+the garbage collectors were being built from like last 20, 30, 30, 35 years.
+so here, even with garbage collector, scalability is extremely important, because a gc or a garbage collector written 30 years back might not be performant enough, like might be good for few mbs of cleanup, but not for a few hundred gbs of cleanup, right.
+now let's say, if your gc was a stop the world gc, like every time it runs it stops the world.
+so going through that few hundred gb of heap every time, and if it is every time stopping the world, then your program execution is suffering so much, which is where your gc needs to know, or it needs to evolve itself such that if, even if the memory is high, it is still not doing, it is not always stopping the world for its garbage collection, and it is to do the memory management in the most efficient way possible, because there is a massive space to iterate and go through.
+like, just iterating few gbs of ram, of memory itself takes a long time to do so.
+right so, there are now to handle large amount of servers and to handle this large load, but there are some gc's, uh, that are pause free, because when they operate on few hundred gb of ram they cannot do always stop the world.
+so, picking a gc, like if you are, if your workload is very heavy on ram and your servers are always in few hundred gbs, if not terabytes, then you would have to go for a gc that is pause free, which other r is very efficient in leveraging the hardware.
+so, yeah, these are seven gc characteristics that are there that would help you pick the next best dc for your next use case right in the.

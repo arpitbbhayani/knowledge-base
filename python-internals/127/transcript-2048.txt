@@ -1,0 +1,109 @@
+hey guys.
+so in this video i'd like to talk about internals of id function of python.
+uh, let's go through the official documentation of it.
+it says that id function returns the identity of an object.
+this is an integer which is guaranteed to be unique and constant for this object during its lifetime.
+this is a very critical statement.
+but a really interesting statement pops up which says that two objects with non-overlapping lifetimes may have the same id value.
+c python implementation detail.
+this is the address of the object in memory, right.
+so we went through a lot of text.
+now let's start making sense out of it.
+so now what it says: that, uh, with respect to c python implementation of it, this is an address of the object in memory, right?
+so when, so whenever you are invoking the id on any object, the value that you get as a return of- basically as a return value from this function, it is nothing but the address of that object in memory, right?
+you'll get an integer value, and, but this integer value would be the position or would be the address of that particular object in in the rank right.
+and, uh, the, this value is guaranteed to be unique and constant for its object during lifetime, which makes sense for an id function but the the interesting clauses during its lifetime.
+so once the object is deleted, the same id will be, or can be, allocated to any other random object out there.
+right, but why so?
+because since id function gives you with respect to c python- i'm talking since the id function returns the, since id function returns the memory address of the object.
+let's say, if someone deleted that object explicitly, which is garbage collected, your, your, uh, your runtime would identify that that slot is weakened and whenever you're trying to do malloc again, that same address could be assigned to a different, to to as an output to a different malloc operation.
+right, so any other python object can reuse, or is allowed to reuse, the same memory address, which means that the id value is not unique for so same id value can be reused by two object having non overlapping lifetimes.
+right, so one got deleted, other got malloc.
+both might have same id, but within the same life or within the lifetime object of the.
+this is going to be constant, right?
+this makes sense.
+so now what we'll do is, although it says in the documentation, but let's, let's go through the source code and find out that does c python really implement it using this particular way.
+so does it really return the address of the object, right?
+so obviously, let's not just depend upon the documentation, but let's use this opportunity to type deep into source code and see how all of these things are defined, right?
+so id is a global function.
+you don't really have to import anything to use id.
+so all of these things are built in a module called built-ins.
+right, it's called built-ins, built ins.
+here it's written: so it raises an auditing event.
+let's keep on auditing.
+event is, but it is.
+it returns like: uh, it raises built-ins dot id.
+so built-ins is the default module which gets loaded when your python runtime starts up.
+so this function would be defined in built-ins model in the source code.
+uh, let's open c python thing setup that i have set up.
+so now, uh, what python follows is: if something, if a function, if a function, pqr is defined in a module abc, the function most probably would be named as abc underscore pqr, right?
+so, ah, built-ins module may.
+if id function is defined, it has to be defined as built-ins underscore id, right?
+that is one way to trace a function in this, in this humongous code base.
+another way to do it is find a c file where built-ins module is defined.
+so, like sys module is defined in sys dot, insist module dot c, right, so if you are importing sys, syspath or do you do something like that, it will be invoked or it will be defined here.
+right, so all of those functions will be defined here.
+uh, import, says you do, says dot, exit.
+that would be defined in cis module, similar to that when we are talking about, when you are talking about built-ins, it would be defining built-ins, model, built-ins.
+but if you see, there is nothing called as built-ins.
+what they have done is to keep the name short.
+they have used the term bltins, b l t, i n, built in modules, right, they have not used b?
+is not really sure why they did it, but it took me some time to figure this thing out.
+so if i open built in module, dot c, i get this file and, as we said that the name of the function would be built in underscore id b, oil tin, underscore id, here it is.
+so we traced to that very function that gets invoked.
+now, since this is uh, this function is part of a module.
+it has this particular signature where the first argument is the pi module definition, which is self, and you have the pi object which is then being passed as an argument.
+now what it does is it does a pi long from white ptr and it passes in v to that.
+v is nothing but the argument that it received and this returned a pi object, which has to be a pylon object and it's stored in id and it is returning this id, right.
+so let's dive deep into pylon and from void point of what it does.
+so pylon, from void ptr accepts a white pointer, so typically you can pass in any pointer to this, and what it would do it is: it uses p and just type defs it to u in ptr, which is nothing but a macro that is unsigned long, and then explicitly invoking unsigned long here, right?
+so it is basically converting my void pointer p, into an unsigned long and then eventually converting it into a pylon object and returning it.
+so as part of return value of any function, it has to be a python object.
+so that's where it is just using unsigned uh long from p and converting it into pi along and returning it.
+right, very straight forward.
+now what happens when i've passed in?
+so i've, i'm basically type, casting p into an unsigned log.
+so what exactly happens?
+so p is nothing but a pointer to an object.
+so in c language, when you, what happens?
+so basically, when you define a pointer, it basically defines a very small integer value and it it it basically holds the memory address of the object that it is pointing, right.
+so if you are doing an n star x, so x would store the address of the of an integer object right of the integer object that it actually, that it is actually pointing to.
+similar to this.
+here, when i'm passing in any object, i'm passing it this, it's pointer to it.
+so the value that p will hold will be nothing but the address of the object, right?
+so how can we print this value?
+i can just do a printf: percentage p would give me the hex value of this pointer, and i can do a percentage ld, which would give me an unsigned long value.
+in both case i'll just pass in p.
+this might throw in some errors here or there, or not errors, but are there some warnings here or there?
+but we would get the gist right.
+so now what we'll do is, uh, i'll just remake this part.
+so until this make is happening, here we can see that this unsigned long is being passed.
+i'll just quickly open this function pi along from unsigned.
+it does this pylon from uint using unsigned long as a type and just type casting it.
+and yeah, here it is just doing this.
+it just it just basically storing, uh, the unsigned long value in the pylon object.
+these are internals about python long integers.
+i've written a blog around this.
+uh, you might find it on my website.
+i'll just i'll just put the link in the description.
+but very soon i'll be making a video about internals of how python implements super long integers, what kind of structures it uses to implement.
+so so you can stay tuned for that.
+but i'll anyway attach the link to the blog in the description which you can go through right now.
+you'll see that it has already started printing something.
+now when i start my python console, uh, p y t h o n, i'd say something printed.
+and uh, if i do a equal to 10 and i do uh id of a, right, when i do id of a, it would print.
+so just focus on the third line.
+what it did is it printed as a return of id of eight?
+printed one, four, zero, two, three, one, something, something, something which is nothing, but this value: one, four, zero, two, three, one, five, five, two, five, six, three, something, right?
+uh, these two areas are exactly same and this is nothing but the hex hex representation of it.
+while studying c language, we all have learned on how we could print the address, or how we could print the address, or how we could print the address that a pointer points to.
+we do that with with percentage p, when we are just using percentage ld to implicitly typecast it into a long integer and print it right, just to be assured that what we are ins, what we are actually getting, is nothing but an unsigned long value of the object which is being printed here.
+so that's why this two values are very.
+so that's why this two values are very.
+these two values are same and this is the hex representation of it, right?
+so we just dive deep into the python source code and found out on how exactly python is doing this.
+it is exactly doing what it's written in the documentation, but it is.
+but it is fun to go through the source code and find it ourselves, right, because while doing so, we explore a lot of unexplored territories, which would make us much more comfortable with the code base to make some bigger changes to it, right?
+so, in case you like this video, give this video a thumbs up.
+if you like the content, give this channel a sub and i'll see in the next one.
+thanks,
