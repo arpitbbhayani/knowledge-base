@@ -1,0 +1,70 @@
+so every persistent database needs to be reliable, which means any updates you file into the database needs to be reliably stored onto the disk, no matter if the crash happens, anything goes bad, uh, all of your committed transactions, everything that you have committed to a user to have saved onto the disk, needs to be there, right?
+so in this video, we'll go through what right head logging actually is, uh, how it is implemented, advantages of it.
+we will go through a few very solid advantages of writer headlocking- one which includes gaining an amazing performance out of your database, and we'll also take a look at a few internals of right ed logging, helping us understand how this is structured, what kind of other things affect it.
+in most, in most cases, databases guarantee persistence, which means if you are performing any transaction, any update onto the database and if your database says, hey, this changes are persisted, no matter if your process crashes, your machinery starts, anything, anything boots up again.
+upon commit, like, you have made some changes onto your database, you actually fired a query and then you committed the transaction.
+so the changes you made, let's say you updated a particular row, the changes you made, are flushed onto the disk disk as in any non-volatile storage.
+but for example, when you say that, hey, i've saved your changes, it needs to go into a non-volatile storage, something that is not prone to power loss, os failure and hardware failure.
+so whenever you are committing something right, whenever you are committing something, you have to ensure that, no matter what happens, no matter if there is a power loss or operating system failure or hardware failure, as in your machine crashes, so long as the disk is intact, right, so long as a non-volatile storage is intact, you would be able to see those changes that you have committed.
+right, that's what should happen on commit, because that's what is what your database is guaranteeing you.
+as soon as the transaction is committed, the corresponding blocks on the disk are changed.
+if i'm talking about relational database, there are some changes that are made onto the b plus 3 structure, onto the disk where the table data is stored, and if there are any supporting index for that particular table, those index are altered.
+we, every time some commit is happening, it is translating into multiple disk ios, kind of okay, which is what you are guaranteeing.
+so let's say the way you are writing something onto the disk, it is first done, it is first added to an in memory flush buffer which is there in your ram.
+so the mode, the mode could be a regular read-only mode, a regular write-only mode, but there is an uh, an additional option that you can pass in, which is that, hey, i want to open this file in the sync mode.
+which means that step, if you open a file in a sync mode, it would bypass all caches and would ensure that whenever you drum, whenever you write something onto the file, it immediately gets synced or it immediately gets flushed onto the disk, ensuring that there is no data loss.
+so now, coming to write ahead logging on what this technique actually does.
+any place where you want to ensure reliability, you will use right ahead logging to solve the problem.
+so the core idea, the core idea of right head logging, is, before you make the changes to actual data files, your tables, your indexes, what we saw in the first one, like, before you make changes here, write those changes, log those changes in a separate file which is open in a sync mode, as as we just discussed.
+this, this change, should be logged in a file before you make the update.
+yeah, before you flush the updates onto the desktop as part of your commit, it should be run first on the lock file and then the changes should be made onto the table or the index.
+the usual flow that would happen is, whenever you update a trigger, you log the entry.
+you may not log what exactly just needs to be like what exact changes were meant, but at least just dump the sql query or any query that you have fired with.
+hey, at least, because, let's say, you are updating a million rows, you are not waiting for those million rows update to be flushed onto the disk.
+you are just writing that, hey, update that the right, so that entire update statement is flushed onto the disk in the lock file, and then you take your own time to write those status onto the disk.
+this operation is lightning fast because the file is open in sync mode and it's just a simple append only file in which you are appending all the logs one after another, and then you take your own sweet time to update the changes onto the disk, the actual disk clock.
+and then, once that is done, you then trigger an update onto your data files and onto your indexes, because it will take its own suite time to do it right, okay.
+so what are the advantages of right ahead logging?
+first of all, on every commit, like if on commit, you were flushing the entire data changes that happen, entire data alterations that happen, onto the disk.
+you can now avoid that and this is one of the key reasons why right ahead logging gives you immense performance out of your database, because now there is no need to flush the data changes on every commit because you are already logging the updates in a separate log file.
+you can keep them in an in-memory buffer where those where those, where all of the changes are buffered, you can just write those things and then asynchronously, slowly and steadily, once a while, dump those changes onto the disk, right?
+you can keep them in buffer that any time the change, like the, the changes are requested, it can directly be served from the memory rather than hitting the disk.
+so in case of a crash where the changes are there in the log but not yet flushed onto the disk, you can replay those changes and build and just ensure that your disk and your- uh, your memory buffers are all in sync.
+so you get crash recoverability even if the changes are made onto a memory but not written, but not yet return on to the disk, right?
+it's like just an extension to the first statement where we say that, hey, not every uh commit requires you to flush all the changes onto the disk.
+this is very similar to that where by not really requiring us to flush every single change onto the disk, we reduce- we significantly reduce- the number of disk rights that happen onto the disk by just manipulating memory buffers while logging a statement in a lock file.
+every database gives you this option on altering the flush frequency of it, which means that, hey, i want to flush all of my commits every one second, but every few seconds.
+that is exactly doing this uh, where it is ensuring that, hey, i do not want every commit to be synchronously flushed onto the disk.
+you can buffer those changes in memory and, let's say, every one second flush it onto the disk.
+so that's why you just make an entry into your lock file that, hey, this changes are done, and then everyone and you make all the changes in your in-memory buffer and then slowly flush your changes onto the disk, right?
+so typically, by reducing a lot of disk rights, you are gaining an immense set of performance out there.
+one very important, another one very important uh, advantage of using a log or right ahead log is you get a point in time recovery.
+imagine you have a sequence of queries that are fired onto the database arranged by time, right?
+let's say you fired query one, query two, query three, query for query five, and let's say you want a point in time snapshot of your database until just the third query.
+you can spin up a raw database, a blank database, and start applying these logs till the point you wanted, like one, two, three, three queries followed to the database.
+so this is a very amazing way to like write edit logging helps you create that point in time so you can actually time travel on your database and see: hey, at this point in time, how did my database look like at this point in time, how did my database look like?
+so, right ahead logging gives you a way to create a point in time snapshot.
+right, i'm just logging an entry, but it's not that simple.
+so when you write something onto the disk, right, it needs to be protected.
+by protection i mean that while, let's say, you are writing a line onto the disk, if your process crashes, you need to ensure that the thing that you have written onto the disk is proper.
+because, assuming as if you were writing a 100 character long line, you wrote like, you wrote the changes to 512 bytes, and then your machine crashed.
+so this way it ensures that if, while reading or while recovering from the crash, it will tell you: hey, the record that you are trying to write is is is corrupted, right, it will give you that error.
+it ensures that, hey, the changes that are written onto your log file, they are proper, they are intact, they are not meddled by anyone while transit, while flushing anywhere, right?
+so, right ahead, logging is by default enabled by all persistent databases out there.
+so whenever you are writing something like right ahead log is a very simple append only file, which means you can open the file only in append only mode.
+so a write ahead log is not just one file they write a headlock typically contains multiple set of files, each file called as a segment, and each segment is roughly 16 mb big.
+like each segment, like right ahead log is contains multiple segments, each segment is one file, each file, and each file is at max 16 mb big.
+in the previous video we talked about how disk reads happen in terms of blocks.
+it would help you, uh, it would help you build a very solid understanding on how disk io actually happens with help of blocks.
+so there, as soon as you write something into your uh right ahead log, it gives that entry an identifier.
+it's the sequence number of that entry in the log file.
+the entry is actually the byte offset in the log file, which is that: hey, within this file, this line starts at this, like this entry starts at this offset: zero, zero, zero, one, two.
+so this is, these are the actual byte offset of that entry in the log file.
+let's say you have a log file right in which you you have read the particular entry.
+so this the point at which you have read your log file.
+you have applied your log file onto the disk.
+it's stored in a separate table which says that, hey, i've read my log file to this point.
+so a way to identify till which point have i read this is that in this right ahead log on this segment file for this lsn number, or basically the byte offset till which i have completed my red, my read and my flush onto the disk.
+instead, it can just write that sql query that you fired onto the database and then, while replaying it, it can just send it whether it want to replay and it will just replace this particular update onto the database, right?
+so, yeah, that's how this right ahead logging is typically structured.
+it optimizes the database performance by not needing to flush all the commits onto the disk immediately.

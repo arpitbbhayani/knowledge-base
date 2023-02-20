@@ -1,0 +1,80 @@
+in this video, i'll walk you through on the two approaches that i have been using to build massively scalable systems over last 10 years of my career.
+right, we'll start with what is system design, then we'll take a look at the two approaches and then i'll share the three key pointers that you should remember while you're designing any system out there.
+instead, it will be a collaborative environment where every single person who is part of the cohort will can pitch in his or her ideas and we will evolve our system around that.
+right, every single problem statement comes with a brainstorming session where we all together brainstorm and evolve our system.
+instead of just saying, hey, we'll use a particular queue, we'll have the justification why we use only that queue, why we use that particular database, why sequel, why not no sql?
+right, people from all top companies have taken this course and the outline is very intriguing.
+we start with the core foundation of the course where we design online offline indicator.
+then the third week is all about going distributed, where we design our load balancer.
+i'll walk you through the actual code of a toy load balancer and understand how tcp connections are managed and how simple it is to build load balancer.
+week five is all about building your own storage.
+indians, like we'll build that intuition on, if you were to ever design your storage agent, how would you do that right?
+then week six is about building high throughput system.
+seven is about building uh ir systems, basically information retrieval systems, and add-on designs, where we design our own message brokers like sqs, where we design distributed task scheduler.
+right, i have also attached a video verbatim, as is from my first code where we designed and scaled instagram notifications.
+i will highly encourage you to check this video out, right.
+system design, to be put it in a very simple terms, it's when your customer has some requirement.
+when, hey, let's say, your customer says i need a live class solution, hey, i need real time interaction, hey, i need to upload my data into a particular location, right.
+so there is some customer need which is then translated into some product and business requirement.
+then your product manager or your business uh team sends a requirement to the product- even product team designs that part- and then it comes to you, right, and that's what translates into that system.
+so everything boils down to the business or the product problem statement and then you have to solve it right.
+it is not your end user, but some other team which is sitting right next to you.
+it's a pure engineering solution that you are trying to build.
+for example, building your own web, basically building your own web framework, could be just a library that you are building it to make your overall http request response very smooth, right.
+or it could be an actual physical hardware that you are shipping, where you were given a product requirement and the only thing that you could do is actually ship that hardware, that embedded system, to your users or to your customers.
+right now, when someone says, design a system, it could be one or all of these three things: first, a high level architecture diagram where you get to see a macro bird's eye view of that system, where your design, we are supposed to design a macro bird's eye view of that system, where, hey, these would be the micro services that talk to each other, and then you are, and then, and then this is how the interaction would happen, this, how this, basically, this is how the persistence would happen, and all on a high level architecture side.
+right, then it could also be a logical design in which they ask you to do like you are required to do: business logic algorithms, core data structures, right, core storage techniques that you would be using, core persistent algorithms, that you would be using that part.
+so it's basically not just the high level, but you are scratching the surface and going a level deep into identifying, hey, what exactly would i use over here?
+and then the third design, or, or basically, then the third aspect could be a physical design where you are supposed to design the storage part of it, the actual i o, the actual hardware, which instance type, which gpu, which processor that you are using, what would be the overall capacity of it, how would the backup and restore would happen, how would you structure the data pipelines?
+like now, depending on what you are discussing or what you are designing, where you are designing, what is the state there, you would be required to design one or all three, be it your work, your- then you are definitely supposed to design all three.
+if you are in the interview, then i would highly encourage you to limit the scope of your discussion and pick one and then solve it really nicely right now, talking about how to approach system design, the two approaches that i've used in my career, the first one is what i call a spiral approach.
+the spiral approach is where you decide the core of your system design and then you start building around it.
+right now, for example, you start with storage.
+hey, i want to use this particular database.
+you have, now that i have database, i want i'd want a bunch of api servers to to basically support it, right.
+and then you evolve to the next part where, hey, you said, now i have this service, now i need another service, right, for example, this is the first step that you started with a simple database.
+they do say that, hey, i need a couple of services to interact with, each service having its own database, let's say, payment and a payment gateway.
+now, when would you use a spiral based evolution where you are pretty confident on the decisions you are making?
+that's a key thing- when you are experienced enough, or when you know the problem statement is simple enough that that the decision that you are making is very crisp, is very optimal and this is exactly how it should be done.
+you are very confident on that spiral way of designing systems works the best, right?
+these systems are pretty predictable on how they should be designed and you are just evolving them very quickly.
+the second approach is an incremental mvp approach, where you see a bunch where you start small and then you add more and more features to it just to handle larger, larger, larger scale of it.
+these is how i represented this is through non-concentric circles, because you know, you started here, then you added, then you added some part to add more skills, but then you added some more, and then this oval which is, which is very obscured in its stay, in its shape, because you thought your system is evolving in a certain direction, but because of change, because of scale, it evolved into some other.
+so here the idea is, you start with a very simple, extremely basic day zero architecture, extremely simple.
+and then you think, hey, now this is my desire architecture.
+for example, you started with a single user, a single api server and a single database.
+so if you got multiple users, one api server might not be able to handle it.
+so you add a load balancer, right, then what you do?
+hey, this system was working fine, but now, when i got even more users, my system started to choke up.
+then you thought, hey, some workers or some things are happening synchronously which could very well happen asynchronously, so you add a you, then you add an asynchronous, uh, uh.
+so basically, then you add a message broker to it to introduce an asynchronous workflow into a system design.
+so tackling one scale or one level at a time is how you go for an incremental mvp approach where incrementally, you are trying to evolve your system to just be able to sustain the next scale right.
+and this is how these are two very similar yet yet different approaches of system design that i would highly encourage you to pick your problem with like.
+basically, given a solution, pick one over other in which you are very confident.
+hey, i know the like.
+for example, if you know the the solution very well, go for a spiral based approach.
+if you don't know the solution, variable, start with the day 0 architecture and then scale individual component out right, and then break it into other services and all right.
+so key pointers to think about when you are approaching a system design is, first of all, every single system out there is infinitely buildable.
+you can add as many features as you want into this, but depending on the time you have for you to deliver your project or for you to crack that interview, in either case, it's very important to fence your particular system.
+you have to restrict the scope, right, that in the stipulated time of, let's say, while you are at work, you know that this is what, like, you have two weeks to actually implement it.
+you cannot spend more than two weeks to ship this particular thing out.
+so you would be restricting the scope of your design according to that.
+and hey, this is only i'd be committing to ship- and this is something that you are predicting- that you will be very easily be able to ship it, right?
+hey, restrain the scope so that you design that one thing really well, right?
+second key pointer is: see clarifications from your seniors or your interviewer, right, because every single system design problem is actually ambiguous.
+hey, is this the only requirement?
+if, if a breaks like, seek, seek those clarifications on, are we okay to take a down time of five minutes?
+it would help you design a very optimal system.
+third, and the most important key pointer is: ask those critical questions.
+ask us critical questions that challenge design decisions.
+ask those critical questions that actually challenges your design decision.
+then suddenly your entire architecture changes like: why do, why does this need to be real time?
+then suddenly your entire design would change.
+you are valuing the problem statement, you are thinking the problem statement of your own and then devising the best possible solution out there, because independent thinkers are the most critical assets that every single org is looking for and every single org is proud to retain right.
+so one thing in general that you would always see working out for any problem in general, and especially in the world of system design, is divide and conquer.
+so even when you think about either spiral based approach or an incremental mvp approach, we always broke that problem into small component.
+so, in spiral approach, we saw that code and then we built a new service and then we added a users and then we added the next one.
+in incremental based approach, what we did is we took a day zero solution and then we we basically operated at a very small level and then we increased the scale to handle it to the next level, and then the next level and the next level.
+so this is very important: whenever you are approaching any system design, try to break it into manageable sub problems and solve each of those problem very optimally.
+so divide and conquer is a strategy that works amazingly well in system reason and i would, and i would highly encourage you to look for it, right, okay, yeah, so that's it for this video.
+this is something that i personally used throughout my career and, and even today, when someone gives me a system to design, this is exactly how i approach, right?

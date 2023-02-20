@@ -1,0 +1,65 @@
+so in april 2022, atlassian experienced a major, major, major outage where the permanently deleted the data of 400 of their paying cloud customers, and it will take them weeks to recover it.
+in this video, we will do an engineering deep dive of this outage, trying to extract key insights about their systems and practices.
+we will talk about six key engineering designs and insights on how similar systems are built and, most importantly, understand why is it taking so long for them to recover the data?
+on monday, 4th of april, approximately 400 atlassian cloud customers experienced the full outage across our classroom products like jira, confluence, status page and whatnot, and they are in process of restoring websites- uh, restoring the sites, 45 percent of impacted users and the full recovery of for all the impacted customers will happen in next two weeks.
+but one key insight before we move forward is, additionally, the majority of restored customers have no data loss, while some have reported a data loss for up to five minutes prior to the incident.
+because when the incident happened, they deleted- they permanently deleted- the the data of the customers, right.
+why the report says that few customers reported a data loss for up to five minutes prior to the incident?
+where what do they do is whenever, let's say, someone, like any right hub, that happens on the database is then backed up at a frequency of five minutes into their backup db, right?
+so five minutes prior to the incident, so when the incident happened, basically when the script ran and it actually permanently deleted the, the data that would have been the data that would have only been present in their main database and was not backed up, was not fully backed up, for example.
+so, which is why, when they accidentally deleted the, the data, it was not available in the backup db, right?
+then it could lead to a permanent data loss, which is what happened in case of some customers, and one thing to note, that this only happened for a few of their customers.
+so majority of restored customer have no data loss, while some have reported, some have reported it's still not confirmed, but in general, if you have a backup or a restore, or if you have a backup strategy like an incremental backup strategy, in which you run at a particular frequency, then this can have an impact around permanent data loss in case of a permanent delete happening on your primary db, right?
+but how did the permanently delete the data of 400 of the cloud customers?
+right, and because of this, we needed to deactivate the standalone legacy app on the customer sites that had it installed.
+right, but before we move into what exactly happened, let's talk about this deactivating the standalone legacy app.
+then what you do is your three customers like c1, c3, c4, might be using the legacy app while you roll out your new version to a subset of users, let's say c2 and c5, and then, once you are sure on that, you would want to roll it out to more users.
+what does this mean is, when atlassian tried to do it, they had to deactivate the legacy up, basically remove the connections of legacy app from this customer sites, which requires them to physically alter the data or transform the data or delete it up for some reason.
+right so, and to do this, to move from one version to another, the user existing scripts to deactivate the legacy version.
+it's up to them, right, but what it look like is deactivating legacy version required them to delete some data, or basically mark for deletion or something around that.
+being marked for deactivation, the team provided the ids of the entire cloud site, which means they, instead of giving them the app id, they give them the customer id.
+so the script that we used provided both mark for deletion, which is the capability that they use in the day-to-day operations, and permanently delete capability that is required to permanently remove the data.
+so now when you physically delete the row, it is not possible to recover it, right?
+gdpr gives us, or gives users, as in we, as an end consumer, the power like or the right to be forgotten, which means you can reach out to any gdpr compliant website and say: i want to delete all of my data from your website and i have the right to be forgotten, so delete the existence of mine from your system.
+they would have to permanently delete, uh, your data from their system, be it any subsystem, main database, transactional database, analytics database, whatever.
+and these are the key compliance reasons why people would have to physically hard delete the, the data and the script was executed with the wrong execution mode and the wrong id list, which means that, instead of doing soft delete, they did permanent delete.
+instead of doing it on the individual app, they did it on the customer website, so they permanently deleted the entire customer site, which led to this outage.
+so what happens is- this is the fourth inside that we get- like, how do companies in general give you high availability, right?
+so high availability implies that if your database goes down, there has to be a copy of your data, which is a point in time, like, literally, if you crash a particular database, you would have zero data loss and you would be able to recover or restore the entire site in a gif.
+so you typically have, like you, whenever user talks to an api server, api server writes to the database, the write would be successful in a singleness standby replication.
+once the main database gets an update from the standby key, the right is completed there.
+so this way you will always have two copies of your data: one in the main db, one in the standby replica db, right?
+and so this is how, in general, if you want to ensure very high availability of your critical systems- like, let's say, payments- extremely critical systems, because it is very expensive to do- you would want to have a synchronous standby replica for that right, and this is a very, very, very common practice for any mission critical subsystems of your uh, of your architecture.
+so if the database goes down, there is still no data loss because there is a permanent uh, sorry, because there is a synchronous standby replica which has zero replication lag and can take the place of the main database.
+we also maintain immutable backups that are designed to be resilient against data corruption events which enable recovery to a previous point in time.
+they have the strategy where you do a synchronous replication of rights into the synchronous, into your standby replica and from there periodically, let's say after every day, you take the dump of last days worth of data and put it into a cheap storage like s3, like here.
+so from the standby replica periodically, like, let's say, your it's zero replication lag, from main db to replica.
+using these backups, we regularly roll back individual customers or small set of customers who accidentally delete their own data.
+they can just take that dump and restore it into a database and, done so, the data is very easily restored right.
+and if they have accidentally deleted, the entire data is restored right.
+so what you would want to have in a truly multi-tenant architecture, every customer is isolated and has its own setup of their api, servers, load balancers, databases- everything runs in its own isolated space.
+so now, purely talking from the data's perspective, let's say each customer has its own set of database and then each one of this database has its own the backup policies that we just saw- standby replica and then moving it on to s3 for that immutable backups.
+so what most companies do- and purely my speculation, what most companies do- is they have few large databases on which multiple customers share the data, right?
+in second database they have data for customer c, for c8, and in some they might have c5, c6, e7.
+so it becomes very cost effective for companies to do this, and most companies actually multiplex multiple customers data onto the same database, rather into the same table itself, right.
+right and now what is happening is: why is it taking so much time for them to recover the data?
+let's say the script they got id for customer c2, c4, c7 and it permanently deleted the data for c2, c4, c7.
+so now what is happening is when they would want to restore the data they can restore, they can have a point in time recovery of that entire data in one shot.
+so like, for example, if this data store one is backed up and they would want to restore it back at a particular time, instant, what would happen is they can just go to that backup and then they would load that back up into a new db and start pointing it to this one.
+so the data or the entire data store moves back in time to that particular instant right.
+but here what happened is because, from this entire data store, only a subset of rows were deleted of those particular customers.
+restoring them becomes a very painful process because now, hypothetically, let's say, we have a table- this is the table id- having rows and each row having some sort of customer id and what we know, that data from the data store.
+so what would have happened is the row 125, 1096 and 2709 would have been deleted, right, but when you are restoring the data from the backup, right.
+what would happen is it would restore the data for c2.
+so the new data for this customers kept kept on adding to the database.
+so now, when atlassian would try to restore the data from the backup, they would.
+this would mean that the unaffected customer would see a data loss because, let's say, when the c2's data was deleted, after which c1 and c3 received some updates.
+if you restore the data to a point in time in before the new updates that happened are lost.
+so now what restoration policy that they would want to employ here is they would be restoring the backup of these users onto a different database and they would have to manually iterate through the rows for their customers and then put it back into the main table.
+and this is extremely lengthy process because the the backups that we're talking about is in is in few hundred of gbs, because the amount of data atlassian has for customers it's it's insanely high.
+when they are iterating through those rows manually, they would have to extract the rows for the customers that have been deleted, take that, ingest it into their primary database and then that site is restored.
+because they have to physically load the data, store into a database, extract the rows like, understand which rows needs to be restored first, which needs to be restored second, and then apply it onto their main db, and which is why their recovery process is taking weeks for them to happen.
+right, but when this at this scale, this happened for the large subset of users- like 400 customers, massive amount of data and some of them might be very large customers as well- it would take time for them to recover the data because they are doing that explicitly, going through row by row and trying to apply that right.
+when the site is restored again, which table to load first is, and while restoring, there is no data loss.
+so this is what exactly happened, like my speculation of what, what could have happened during this outage and some key insights about it.
+restore customer data extracted from backups, including users, permissions, etc.

@@ -1,0 +1,59 @@
+um, what are quick, short-term solutions to get your database up again- which means get your applications up once again very quickly by minimizing the downtime- and, more importantly, what should be the long term fixes that we should be doing in order to ensure that a database does not go down again for the exact same reason.
+so a very typical, so a very typical structure over here, like a very typical high level diagram that we all have seen multiple times, is that you have your set of users sitting over here.
+let's say, if we talk about a very simple sql database, so api server will create a sql query, will fire on the database, will get the response and send it to the load balancer on load balancer will send it to the users, right?
+like, for example, if today, like, let's say today we have two users and if we only had one api server, then that would have worked fine.
+but if the number of users increase, we would want to horizontally scale our api servers, which means more users.
+so to do that, we have load balancers, auto scaling groups in aws and what not to take care of that, which means we have horizontally scaled our api servers.
+okay, if you, anytime, if you suddenly see a spike in your traffic which means, let's say, someone very famous tweeted about you or your product, it will garner a lot of attention to it.
+so, if, even if, large number of users flock into your website, the api servers will scale it up so your api servers can handle the request, the incoming request that comes to it.
+right, all of this, every request that comes to our api server will translate into at least one, at least one sql query that is going to hit your database.
+so getting your database up again is your number one priority at that moment, and you have to do it as soon as possible because every minute of downtime costing you business, right?
+if a lot of request comes in at that same time, it might take your database to run, or to it might take time for your database to execute, to complete the execution of the queries so like, let's say, two queries your database can handle very well.
+so database in like it will take time for your database, your threads on the database to you know uh, evaluate and compute the results and then send it to the user.
+second, your api servers are not able to create new connections.
+so that's what that also could happen, that you have large number of api servers and eps servers are not able to even create new connections on your database.
+this typically happens when the disk is getting full, that your database is booting up but there is no place to store the data.
+right, so there is some: either some sort of file file corruption or basically some sort of file file system corruption, or it is because of low, like, very low, disk space that database is not able to write anything onto the disk, right?
+so in order to now, if we jump, like basic, before we jump into short-term solutions and long-term solutions, one very key point that i would want to highlight is you need to have a very exhaustive monitoring on your database.
+like, like in order to get your database up again, you first need to know what happened.
+like, if you do not know what exactly happened, what, what would you fix?
+so that's where you need to know he, what is what, what is wrong with my database on the first place, like, what is the root cause of it, and then solve it right.
+so one possible reason of your database going down is because the connections have maxed out, which means that, because of the hardware that your database has, it can only accept a certain number of connections, a certain.
+so when that happens, it means that your api servers will not be able to create new connections onto your database.
+right, when api is not able to create new connections onto a database, so how, like, even though you have accepted the request from your users, it is not getting executed on your database.
+so, yeah, like, your user will see 5x6, some error or worst time out, after like let's say, a minute- they would say timeout key- it could not get anything out of your database, or or this part of your response.
+the first thing that you should be doing is to go and check e, which are the queries that are running on my database from a very long time.
+like, even if a normal user are not able to do so, root user will be able to connect to the database to solve this exact same problem.
+so through root user login to your, let's say, if you're using mysql, log into the mysql through mysql console, login to your database and then find out which queries are running from a very long time.
+there are few others, but show process list is typically the one that you should be going for to find out, hey, which are the queries that are running for a very long time, which means those are the queries that, because they are very long-running queries, they have hogged up those cpu, they have hooked up those uh tcp connections, so you have to kill them.
+as soon as you kill them, a lot of short, short sql queries will come and solve like, will come and execute themselves and basically get the response and go away.
+but if you have persistently seen this, like connections maxed out, one, like any way, your database is not operational, it's down, like it might be partially operational, but in that case one other way, like if the traffic is genuine and you want to handle that traffic.
+one very quick thing, although it requires a downtime, is to quickly scale up your database.
+so let's say, if you're using a managed service, let's say by aws, like aws rds, you can quickly go and scale up your database to and basically make it 2x of the size if you're using 4gb of ram, make it 8gb of ram.
+double it when you do that, although it requires a database reboot, but you are sure that you will be able to handle those number of connections.
+so if it's genuine traffic, scaling up your database might not be a bad option because you want to handle it.
+few possible reasons to solve that problem like this.
+so when you know that cpu is constantly under 100, which means that even though your database can accept large number of connections but there is no cpu cycles to execute it, because it, because the wait time is very high, because there are far too many queries that have come in and you're able to handle the connections but you're not able to execute the query, so that's where your cpu is operating at 100, and few fixes for that is, first of all, killing the queries that are running for the long time.
+when you kill a, when you kill a query that is running for a very long time, what would happen?
+so when you require cpu cycles to solve that particular, so to execute that particular query, what would happen?
+if a query is running for a long time, and if there are such such queries that have either taken log on a database or are basically constantly hooked up and are very cpu intensive, kill them.
+like check, if any recent deployment was done that led to that, led to a push of a very inefficient query, uh, which is getting executed onto a database, maybe a few joints here and there which were not needed, maybe maybe very poor indexing that might have done on your database, like you might have written a query that, or someone else might have written a query which is literally scanning the entire table every time it is executed.
+and if you see a consistent usage of, let's say, your cpu was always around eighty percent and now it has hit hundred percent, where you are not able to execute it, that's where, now that, since you have seen consistent usage of cpu, that's why you decide, hey, now it's time to scale the database up right.
+okay, now that we have seen short-term solutions, let's move into long-term fixes for that.
+you would want to immediately start working on the long term solution for that to ensure that your database does not go down again for the same.
+so let's say, first of all, what we should be doing is ensure that the right set of indexes are in place.
+this is the most common reason that i have seen your database operating at 100 cpu, like if you do not have the right set of indexes on your table that you are querying.
+so that's where ensure that you have the right set of indexes in place, because if you have, if you had an index on user id for the table, the query execution would have taken milliseconds, if not microseconds to do it.
+that's where you need to monitor the, the queries that are taking a long time on your database to execute, and see if it needs indexing of some sort, and do that.
+there are settings like zero, one and two, but what it says is that if you want to synchronously commit the, if you would want to synchronously flush the commit log that has made uh, uh, that was just done- onto your database, onto the disk, right?
+if you do so, then every commit that happens onto the database requires a disk, right, right, because it is immediately flashing there.
+so that is where if you do not want to have that sort of guarantee- immediately flushing it- and you are okay losing out on some data, right, in most cases it might not be possible, but if your database is not going down that often, you can still do that.
+so to handle large number of traffic you might want to evaluate: hey, should i have, like, what should be my flush request?
+so lock my timeout is an important one where you say that how long should my transaction be waiting on a lock right, which is like on on a lock of on a particular set of rows?
+uh, you should definitely enable logging onto your database to check if you suffer from n plus one query.
+right now, let's say you are rendering, uh, 10 blogs like, and when you are reading 10 books, you want to fetch the details of the 10 authors of those block.
+so this is a problem of n plus one query, so n like one five.
+so a solid example, like as a long-term fix, let's say you are using, like obviously it should not be always database upgrade, but and- and it's not that easy to upgrade either- it's a very long term thing and it's a very big project- a database upgrade, a database version upgrade.
+right, like you might just have one database uh in your system, but if you have seen a spike, evaluate if you would want to have read replicas for your database and move a bunch of read loads on to read replicas versus only master handling all the thing.
+but if, let's say, you have large write load and you know you already had rate replicas to serve read but to support more rights, it's not possible to go beyond a certain hardware size of your master.
+so that's where you might want to partition or shard your database and create a mutually exclusive set of shards to handle it, to support more right load, such that every request for a particular set of user always goes to a particular shard right.

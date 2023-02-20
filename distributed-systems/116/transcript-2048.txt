@@ -1,0 +1,70 @@
+in this one, let's implement a two-phase commit protocol locally, right, the idea, or we, we basically continue our same example of zometro's 10-minute food delivery, and what we'll do is we'll go through the different components that we would need or the different low-level details that we would need, understand the database schema, understand how two phase commit protocol helps us ensure atomicity, like how it guarantees atomic transactions.
+the core idea here is, like, with respect to zomatos principle, what it says, that it will bulk, purchase the food from restaurant, keep it in the store and have a fleet of delivery agents who are there to delivery, to to basically deliver the food within 10 minutes, because the food is pre-purchased, it just needs to be heat, it just needs to be heated up and assigned it to a delivery agent to be delivered.
+but now, to guarantee a delivery under 10 minutes, what zometo would have to ensure is that the food is available, like when it shows to the user that the order is placed.
+when it shows to the user that the order is placed, the food has to be available in the store and the delivery partner has to be available to deliver the food.
+so here the core part that we have to guarantee is: unless both of them are there- which means unless the food is available- and delivery partner server, then only you will tell user that the order is placed.
+right, so order placing api should fail if either of the two conditions is not matched.
+here we are trying to solve that one order is assigned to one agent and so basically, one order has one agent and one food item.
+so let's say, if there is one delivery agent, agent one and that particular delivery agent- like that should not happen- that two orders are assigned.
+the same delivery agent or the same food item is not assigned to two orders, right?
+so the end goal here is our end user should never see order placed if we were not able to get one food and one delivery agent assigned to it, right?
+what it would do is, let's say, you have three services: order, store and delivery, as we discussed in the previous video.
+so order service will talk to store service and say, hey, reserve food.
+order service will talk to delivery service and say, hey, reserve an agent.
+this is not about assigning an agent to an order, it's just about reserving that particular person for delivery, who anyone can use it, anyone like.
+then, now that the preparation, now that the preparation phase is done, there will be a phase of assignment or there will be a phase of commit when, because you have kept aside, you have reserved a food and an agent.
+now the only thing that you have to do is just assign that food to an order and assign an agent to an order.
+so by splitting this into two separate phases, we have we will achieve atomic transactions and you'll say: hey, but if i reserved something and but i did not, but, but the assignment failed due to some reason.
+obviously, this being a critical service, you would not want to let it go down for a very long time, but in any case, your reservation will not span hours.
+right, you would have a timer set which say that, hey, after this much time, my resources would be free, like the food packet that you reserved for a particular order will be free, will be now available for some other order to be picked.
+so we'll start with delivery service to understand what my core database schema would look like.
+so, uh, let's say i have a table called agents in my delivery service.
+so order id is the currently like the, the order which the agent is currently serving is what this order id column will define, right?
+so once the order delivery happens, the, the rows would be reset, as it is reserved will be false and order id would again become done.
+so you'll have few set of servers for delivery service, each one of them making a call to uh mysqldb to basically to basically manipulate this table right and it basically gets request from orders service.
+so zomato purchased it from the restaurant and placed it into the store and every single one of that packet is barcoded or it's or it has an id, basically right.
+which means that when i am assigning a, basically when i'm assigning a food packet or a food to an order, it's more like.
+slash book, which would assign the delivery agent to an order.
+first, ap endpoint is to slash store slash food slash reserve, which would reserve a packet for a particular food in the store, and slash store slash food slash book, which means it would assign that packet to a particular order.
+so the flow of the request or the flow of the communication between services goes like this: so user makes a call to order service saying: hey, place this order with for this food and whatnot.
+the call will go to store service and it would reserve the first available packet for that particular food.
+again, similar to food, we are reserving a delivery agent for some order.
+right, if any of this is unsuccessful- as if i'm not able to reserve food because, let's say, packets are over, if you're not able to reserve an agent, let's say because everyone's they're out on the delivery- we would return saying order is not placed.
+it would get order not placed or food item not available or delivery agent not available, something, something.
+in any case, the flow is, if any of this reservation fails, we are returning order not placed, and which means that in actual two-phase commit protocol, i done a reservation but i am not booking it, which means the items can be perpetually reserved but because of the timer, the item would be made re-available after some time.
+but if we would do it, the item would be made re-available for some other order to be to be reserving it, right.
+to just assign that food to an order id because it was already reserved.
+let's say your store service went down or your delivery service went down, right.
+but but if you would want to make it very strict, that's what what i would propose for a 10 minute food delivery is to not, uh, this thing, uh well, when, when we're getting a very strict uh uh distributed transaction.
+which means only when all of these four are okay, then only will tell to the user that, hey, order is placed.
+obviously, actual implementation might vary because as business you would want to accept as many orders as you can and then figure out a deliver, then then figure out the delivery agent to to deliver the food.
+it's just a job of a cleanup, job to to to basically revive them and with assigned food, one more possibility is that that, hey, my assigned food happened but my agent service was down.
+right, so food was assigned to an order but my agent service was down.
+so when i say assign put, which means the store was given a command to start heating up the food and preparing it for the agent to be basically preparing it for the delivery.
+but here, if you think your end user experience is not hampered at all because your end user- for your end user experience, the user saw what user saw- order is not placed because you ran out of food or you or no, no delivery agenda right, your end user experience is not hampered.
+you might have some business impact because you accepted a like you assigned a food to an order which is not ready, which cannot be delivered because there is no delivery agent assigned to it.
+so here, because we are not implementing timer or expiration or auto free up, once food packet or agent is reserved, they will remain perpetually blocked, right, but having an expiry solves this problem, okay.
+so all of these four transactions, all of these four updates that we are making across two different services, they are all individually done atomically, which means once a food packet is reserved, it cannot be us, it cannot be made reserved again, right?
+when we are locating a food packet, we will always locate the first unreserved package, so, which means we have reserved the capacity for that and similarly for assigning the.
+if once you are very sure that you have food and you have delivery agent ready, then only you are saying to the user that hey, i'm there, like i'm, i'm basically be able to serve you or deliver the food to you in 10 minutes.
+i could directly assign a food to an order and, um, just wait for the delivery agent to be there or basically sign up food and deliberate to do that.
+it first finds the first agent that is not reserved and not serving any order.
+right, which is not reserved and not serving any order is what it would find.
+so we are reserving it to ensure that no two can update it at the same time, so ensuring the capacity before we commit it to our end user, right?
+very similar: start a transaction, it would find the first that is reserved but not serving any order.
+so, similar to how we add book agent, we are doing a book food over here where it says select start for packets where is reserved is to use.
+so finding the first packet that is reserved, belonging to a particular food and which is not assigned to any order, and then we are updating it over here- is reserved is false and order right is equal to something.
+right, i'm just running the store service and the delivery service over here now.
+i'm not making it an http based service, but a very simple way on which i'm just concurrently- assuming that i am the order service, so i'll be concurrently placing orders for a particular food item.
+so, let's say, i'm placing 10 concurrent orders for a particular food item and this means that at the end of my transaction there should be 10 delivery agent assigned to 10 uh and 10 and 10 foot packets assigned to one assigned to 10 orders.
+so i'm placing an order for a particular food id, i'm getting an order or an error.
+i'm returning an error saying that food is not available for me to do in well, for me to place an order.
+so here i have agents- agent not assigned to any order- and then i have packets.
+you would see like there were 15 packets, uh, out of which 10 got placed, after which 10 got assigned to a particular order, right.
+because my delivery agent- because my delivery agent- is already assigned to a particular order, it should give end user order not placed, right?
+if i now run it again, it would give me order not placed for all of them because deliveries are not available, not available, not available, not available, right.
+first it was able to reserve the food because there were 15 food but not but delivery agent was not there.
+there were 10 delivery agent, but if i see through my packet, you would see all of these five are now reserved right, which means that they are now exclusively there for in.
+error, right, because food is actually not available because it is reserved.
+uh, it would assign that packet and that agent to that order, right?
+the only thing that would remain is, like this assignment part, but by ensuring that we have this reservation phase, we are definitely guaranteeing- definitely guarantee- that if there is a transient error in your delivery service or if there is a transient error in your store service, it is not having major impact on your system.

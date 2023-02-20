@@ -1,0 +1,84 @@
+it says: handle with care, and one such and basically one such thing that you need to definitely handle with care is timeouts, right?
+so in this video let's talk about what exactly is the problem with timeout, or what exactly is the problem with communication that requires us to have basically timeouts in place, and discuss five approaches that would help you handle timeouts better and build a very robust micro services based architecture.
+when two services talk to each other, we need to handle timeouts like let's.
+let's say we are building a search service.
+search is, let's say, blogs, right, and what happens?
+so we cannot directly send this response to the user because there is one attribute that needs to be filled, and this attribute is the total number of views that the blog got to date, right?
+now, in order to get this one attribute, what search service would have to do is would have to talk to analytics service, which has this information right now.
+here this communication becomes a synchronous communication because user is firing a search query, request comes to search service.
+then it immediately fires a query, a request to analytics service, which says that: hey, these are the blog ids, give me basic analytics information of all of these blogs.
+so here the problem, because this is a synchronous dependency- the problem comes up when your analytic service is not responding fast enough, right, or not responding at all.
+right, then, how long should your search service wait for a response from the analytic service?
+and then, if it did not get response in that time, what action should search service take?
+but you need to be aware, hey, what if the timeout happens?
+so, first thing that could go wrong is when there is this, my inter service communication is where, let's say, somehow the request made by the search service never reached the analytics service.
+so it thought that it made a request and it is waiting for the response and all but your.
+let's say you are making an http call to analytic service to get that information.
+this is not possible in that case because your once, if you are unable to create your tcp connection, then you would definitely know about it, right, as part of your exception or something.
+but due to network congestion, due to an asynchronous communication, this could happen where you think that you fired a request and waiting for response, but this request never reached analytic service for some reason.
+second is, although your request reached the analytics service, analytics service performed a computation but when it send a response, the response never reached you due to network congestion, broken connection and whatnot.
+third possible case would be your search service made a request on analytic service.
+like there are so many things that can go wrong when you are having a synchronous dependency on a different microservice.
+that is where the first thing that we always need to take- although, like, no matter what, we always have to take care of that, whenever you are making a network call, add a timeout to it, always, always, use timeouts.
+whenever you are making a synchronous call to a service, you do not or you cannot, and you should not wait forever for the response to, for the response to reach you.
+like it should be like: hey, i'll wait at max for, let's say, one second, two seconds, five second, ten second, depending on your domain, and then, if you don't get a response, then you say: hey, now it's a timeout, now i'll do whatever i want.
+right, so let's, and the the timeout is not something which is very it just, it is very prescriptive.
+it depends on the use case that you have, that how long should be the timeout.
+let's say, in a service like search, although i wrote 10 seconds, but in a service like search you could, you don't want your end user to wait for even more than a second.
+so it might be in like 200 milliseconds, 300 millisecond, 500 milliseconds, but there has to be this timeout that other service agrees or hey, i'll be, no matter what, i'll be serving the response in, let's say, 100 millisecond, so you can keep your sla for 200 millisecond or something right, but timeout contract should definitely be there.
+you are ignoring where you made the call, where your search service made a call to analytic service and it and it resulted into and it basically waited for something.
+so, whatever the partial response that it had, it just sent it to the user rather than waiting.
+so just ignoring the, the, the no show of that other service that he, let me move forward with it.
+so here, one thing is that we either assume that the operations- like in some cases where we may assume that the operation is succeeded, where we did not get a response, like not in search and analytics use case but some other use case- let's say you want to asynchronously store something in the database and you put the message.
+but in reality it might have happened that message is not stored in rebatemq for other to consume, right, so it depends.
+hey, timeout happened, waited for the response.
+so there is a like: anytime you make a call to the service, you know what kind of exceptions to expect.
+so let's say, in case of search and analytic survey, this, this fits in very well.
+so let's say, with respect to configure and use default, let's say you have search service, an analytic service.
+your search service waited for less than 200 milliseconds for it to get response.
+the only data it was relying on analytic service to get response was the total number of blocks.
+what if, when, when the timeout happened- which means for, let's say, it waited for 200 milliseconds but it did not get any response- so what you can do, you can use the default value.
+right, you were waiting for a response, but you didn't get it.
+so this is another way of handling timeouts where, in some cases, it might be possible for you to use a default value.
+when it is read request, like in search and analytics use case, it's very easy for you to retry.
+so your natural response to that is: hey, let me retry that, right, so you will retry the you'll.
+you'll basically fire the same thing again on your analytic service, waiting for the response, expecting that now it would return you in in, let's say, 50 milliseconds.
+but they become very tricky when your request is non idempotent, like what is hard important, which means that same operation fire twice will not have any repercussions on to it, so other services is handling it well.
+if you do retry, let's say you fired a query that does transfer from that transfers money from account a to account b, but you didn't.
+but but when you fired that query and you waited for that response, it resulted in a timeout.
+now, if you retry this operation- so let's say a wanted to transfer 10 rupees to sorry account a, the overall money of basically 10 rupees needs to be transferred from accounted to account b and it failed because of time out and you retried it right.
+so you need to know that if the communication that you are doing between two services, if that other service request is item potent or not.
+if it is not item potent, then you definitely don't want to retry right.
+let's say there is a very heavy real-time analytics query that you are firing, that is, computing a lot of things in real time, which is which is very heavy on analytics, but that is you are doing it synchronously for some reason.
+one of the use case would be maybe a very heavy deep learning based gpu base, some query or some request that you are firing not really synchronously or something, but it's very heavy to compute.
+so the idea, the the situation is, let's say, your search service was depending on your analytic service and you fired a request analytics.
+you didn't get a response and there was a timeout, so you said, hey, let me retry.
+so your retries is making the situation worse for analytic service.
+so that's where you need to know when you should be retrying, like in this case, when your other service is already overloaded and you are firing that query again and again, and again and again, then the load will never decrease on that service, so that service will never get time to recover, right?
+this is where you typically see exponential backups kicking in which says that hey, you first make a retry in one second.
+and other thing that you definitely should think about is where, like if you're dependent or your if- sorry, if your depending service is idempotent or not.
+so anytime you design a service, try to make it as item potent as you can like.
+approach number four: retry only if needed.
+but approach number four says you can retry but only when it is needed, which says that somehow you have this option to check that.
+uh, service a when, when made that operation didn't get a response, it led to timeout.
+i will go through an example on what exactly happens, like how, how it can be seen in real world, but if it has a way to find if that is success or not, right, you can leverage that, that you will choose to do retry only if the your past operation was not a success and you have a way to check it.
+an example is, let's say, a user tweeting the same post twice accidentally within a particular time range.
+let's say twitter added a check saying that, hey, a user if post the same server, the same tweet twice within one minute, it might be like user, when clicking on tweet button might have accidentally clicked it twice.
+so to prevent the situation, what twitter might do is like, let's say, the, the javascript client of user is is doing that retry.
+so when user fired two queries back to back, right.
+now, because that retry was done very quickly, your twitter might just check in the cache to see: hey, does this user like: did this user just made that same tweet?
+if the user did, then your twitter repair might send an error saying: hey, i think you just made a tweet you might want to like.
+so this is one solid use case when you are retrying only when it is needed.
+one thing to always think about is: why do you need a synchronous dependency in the first place?
+so for a search and analytics service.
+where request comes to search service, from search service, it goes to analytic service synchronously.
+what if analytics data is ingested in your elastic search so it removes your dependency on analytic service altogether?
+so always think about something like: have a, have a micro service silo if anyone wants to communicate to this.
+so few good approaches this, like going for an event-driven architecture or ingesting the required data from the other service into this service so that this service, like your search service, works independently without having a synchronous dependency.
+so try to think in that way, right?
+whenever you are doing communication, synchronous communication with any service, have timeouts.
+you cannot wait forever, right?
+picking a timeout value is very tricky, like if it's too short, then you'll have a lot of false positives.
+so in most cases you you would have a response but you would still be seeing timeouts.
+try to design your service in the in like with item potency in mind.
+so, yeah, basically that's all what i wanted to cover with respect to handling timeouts in a micro services based setup.

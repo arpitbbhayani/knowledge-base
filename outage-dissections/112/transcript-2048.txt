@@ -1,0 +1,73 @@
+the first set of speculations that came was: maybe their authentication service is done or some of the related component is down, but because we are not able to log in, we can't use their services.
+what are different infra components that need to talk to each other to ensure that everything works well, right, okay, so let's jump into this.
+uh, okay, so they say that on march 8, they experienced a global outage triggered by issue in a cloud hosted service discovery system used at spotify.
+so this service discovery is the keyword over here, because what this implies is: spotify has a lot of micro services and for one micro service to discover other micro services, they're using something to discover the services, right?
+so basically, there are a few few, few very solid solutions out there, but this shows that at scale, when company operates, they are using something for service discovery.
+so this one word here is very critical: like any time you are architecting anything, always ensure that you have a fallback plan on what happens if that component goes down.
+however, some of our services use xds, so xds is an open protocol on how service discovery needs to happen.
+so all popular service discovery solutions out there they adhere to this particular set of specifications which makes them agnostic.
+they use xds based traffic control plane discovery system called traffic director.
+so traffic director is a managed offering, uh, which is provided by gcp, basically google cloud platform.
+so spotify uses traffic director as their control plane.
+now let's spend some time into understanding what these things are, right, so i've just created a few basic set of nodes helping us to understand what.
+what basically could have happened, okay, so, uh, what happened with spotify global outage on eighth of march?
+so now what exactly happens with service discovery is, let's say, you have four services, uh, let's say we're talking about spotify here.
+so for each service to talk to each other, right, obviously, like when a request comes in, only that service might not have all the relevant information to basically give out to, to be basically given out as a response, so that service would be dependent on other peripheral services in order to, in order to basically fulfill the request coming in from the user.
+so a popular way to do it is: let's say, you expose an http endpoint, like every services expose their http endpoints and they directly talk to them, like, for example, um, so this is a very standard way of doing it.
+like, every service has a specific url, let's say searchspotifycom, or basically authspotifycom or something like that, and every service has a load balancer behind that.
+there is a multiple set of servers whom they can connect to, and all so here, one way to do it is to have these url endpoints configured on all of these services, right, and they know whom to talk to, how to reach out to them- mostly rest based access, what you might want to define over here.
+so what is a service mesh is, service mesh is a way through which multiple services can talk to each other, such that the services only need to focus on the business logic side of things, while all the heavy lifting around- for example, tracing, load balancing, scaling, security, retry, circuit breaking- is all offloaded to a side car.
+instead, what it will do, authentication service will talk to the side car running very close to itself, like, for example, if this is one machine, you'll have one process that runs your authentication business logic.
+so authentication service will talk to the sidecar and will say: hey, sidecar, i want to talk to streaming service.
+so sitecar will talk to the sidecar of the streaming service and then this sidecar would then forward a request to the process that handles the streaming part of it.
+a very simple reason that justifies this thing is that every service needs to take care of: hey, if i'm talking to other service, what if that other service does not give me a response in one in, in, let's say, five seconds?
+let's say, if my service is internal, open to all, what if i don't want?
+like, as a service, let's say i am the owner of a search service and i don't want anyone from the streaming service to directly talk to me, like these sort of security things i want to handle like.
+so, apart from business logic that that service needs to handle, it would also need to handle uh, uh, tracing, load balancing, scaling, security, retry, circuit breaking and whatnot, right?
+so that is where what this new sort of new sort of architecture pattern suggests is to have a side car which offloads, which basically takes the burden of your micro service, and all of this common things is is handled over here, right.
+they basically take care of all the peripheral things so that authentication service can simply take care of authentication.
+so how the communication happens is that the authentication service wants to talk to streaming service.
+authentication service sends, basically makes a request to the sidecar running on that instance.
+so this sidecar will talk to the sidecar of the streaming service and this then talks to uh and then it basically uh forwards the request to the the process on the same machine which handles the streaming part of it.
+so this control plane is the one that holds all configurations, all the configurations that you can imagine, like how much traffic should go there, what's the security practices, what's the timeout, what's return, what's not.
+all of that is handled by this control k, right, and this control plane, like every single service, uh, like for the- uh, basically, nystu and whatnot- everyone comes with its own set of control plan, that that you can leverage out there.
+so control plane will hold all the information, key virtual machines i have, what all processes are there or what sort of micro service or what sort of business logic is being written on that particular instance, so that it knows if there is comes a request, who should i basically forward it to.
+so all of this information is sent to the control plane, right.
+so whenever a new, uh whenever a new service is uh coming up, now when authentication service- let's say authentication service- wants to talk to streaming service for some reason, so what would happen is: uh, how would the sidecar of authentication service know whom to reach out to?
+so control playing card job is that whenever a new- like whenever it gets a new service up on a new service thing, that registers itself.
+whenever we talk about a service mesh architecture: okay.
+so now coming to spotify, now we know what service mesh is.
+uh, we have basic understanding of what dns based routing is, where every service has a specific url and all.
+this, like authentication and streaming, might be some services who would be using a service mesh.
+behind that load balancer, i have multiple instances running right and each of them handling that same payments logic.
+so from your any service who wants to talk to that, they can directly talk to that by hitting that particular url, right?
+so what spotify does is for this handling of this control plane.
+they said, hey, let me start using gcp's traffic director in order to manage the control plane that i have, right?
+gcp's traffic director had an outage, so the outage was not directly on the spotify side.
+we saw the outage on the on the spotify site, but actually the outage happened on gcp's traffic director.
+so they released some configuration which affected users having load balancers talking to this control plane and some hybrid architecture.
+and, apart from that, a very interesting thing was that there was also a bug in java's grpc client library that sent the error which originated as part of name resolver directly to the channel.
+so, like typically, when you send an error or, let's say, when your depending service has some error, you and you and you get that error.
+so you would want to wrap this error and say: keep payment failure as a code, and then you might want to add some message to it which says that, hey, the exception that i'm handling over here and i'm passing forward is generated from the payment service.
+right, java's grpc library for this error didn't do that.
+uh, this is typically a good practice whenever you are writing a proxy sort of layer that, like someone makes a call to you and you make a call to someone else and you and that c get some error, so b needs to handle.
+so this is, in general, a good error uh handling practice which java grpc library did not follow at that time.
+spotify applied something that was suggested by gcp team where gcp team said that try to move your workload out of google traffic director and into something which does not use that.
+they had some of their services that were running on a traffic director, some of the services that were using uh, dns based routing.
+so they started to roll out a configuration which means, basically, they did a redeployment with some configuration chain where they said, hey, instead of using a traffic director or basically, instead of using service mesh, let's immediately like, just to mitigate this issue, let's just switch to dns based routing, because that was working fine, right.
+what exactly was the outage and because there are a few very interesting nuances here on, okay, uh, so we are till here on march 8: uh, google traffic director experienced in outage.
+so people who were using so services, who were using traffic director managed backends, they saw elevated 5x6 due to a recent rollout that happened.
+so as a very quick work around google, uh, basically the gcp team suggested to immediately move the traffic from uh google traffic director, uh managed backend to dns to anything that does not use that.
+okay, so a google traffic director broke, which took down spotify.
+spotify immediately moved the traffic out of gcp's traffic director and started using dns based routing.
+okay, and then it also talked about a bug in uh java's uh- grpc library.
+so someone pointed out, if a watch in excess client fails, xds name resolver will propagate the error directly to the channel without adding context, uh and without setting proper status.
+because of this, the, the, the code that invoked this thing, did not know what went wrong, because if you would have known that only only client failed due to some reason, but everything else was working, you might have, you might have handled that error in a different way.
+like you might just say: hey, this must be a transient issue, let me retry, or this must be an issue which i can ignore, right?
+they added they basically explicitly handled this error.
+there would be a lot of customers at the same time leveraging google cloud, uh, car or traffic director, uh, they all were affected by that.
+as soon as the problem was discovered, a spotify team rolled out a configuration change to revert our affected systems back to use our dns based service discovery and saw it recover gradually and this is what they gave out as a timeline.
+uh, let's say here, in this case, spotify was heavily relying on gcp, which is okay, obviously, there, obviously, the job of gcp is to handle it.
+so spotify used multiple service uh service discovery technologies.
+so just imagine if, if spotify did not have a dns like, if they did not have any services that were using dns based routing, what could have happened?
+it would have taken them far long to meeting at the issue, or they could have just simply sat back and saying, hey, let the gcp folks fix in, but up until then my services weren't working.

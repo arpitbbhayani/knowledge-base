@@ -1,0 +1,76 @@
+so, while designing any system, we need to ensure that a system is not obvious and we do not abuse any peripheral systems.
+we depend on a technique to do this is called throttling and rate limiting, and the component that typically handles this is called as a rate limit.
+it is a very common thing to believe that the rate limiter is always external and it prevents our system from going down, but this is not totally true.
+in this video, we will understand what throttling and rate limiting is, why do we need it in the first place and see five use cases where throttling- both external and internal- is super useful.
+this course is taken by more than 500 engineers to date, spanning nine countries and seven cohorts right.
+then the third week is all about going distributed, where we design our load balancer.
+indians, like we'll build that intuition on, if you were to ever design your storage agent, how would you do that?
+seven is about building uh ir system- basically information retrieval systems, and adobe designs, where we design our own message brokers like sqs, where we design distributed task scheduler.
+right, i have also attached a video, verbatim as is from my first quote, where we designed and scaled instagram notifications.
+throttling is a technique that ensures that the flow of data request or anything that is sent to a target system, is sent at a rate which is acceptable to the target system.
+right, this would ensure that the target system does not go down if there are many users or many subsystems trying to send data to one such target machine.
+we need to ensure that this target machine is not overwhelmed by the number of requests that it gets right, which is where a component called rate limiter kicks in, who ensures that the data is forwarded to the target system at an acceptable rate right.
+throttling is generally perceived as a defensive measure, where you are being defensive of your system not going down, and there are three typical strategies to like when you are, when you know that there are far too numb, like far too many requests coming at your rate limiter, what you like, basically what your throttling mechanism would do, what your rate limiter would do.
+in case of slowing down, what you will do is when the when there are lot of request coming in on to your rate limiter, it would slow down and slowly drip the request to the target machines, which means that your rate limiter is acting as a buffer right.
+a classic example of this is a normal queuing, like a normal message broker, like sqs, revit or something, where a lot of requests that is coming in are buffered there and the consumers are reading it at their own pace, where the pace at which they're comfortable with, so the systems are not overwhelmed and there is a buffer to keep all of those stuff handy.
+so it might be possible, where you are getting a lot of request and if you get requests which are larger than, or or or which is more than a particular number of request, you would want to reject it, where you know that your system is not able to handle, will not be able to handle the load, so you will be rejecting those requests.
+a classic example of this is when you get a lot of request coming on to your api servers.
+so then, if you are, if you know that your eq servers are designed to handle 100 requests per second, but if you are getting 1 million requests per second, what will you do with those others?
+so, which is where, when you get all of this request, your rate limiter can choose to reject the surplus request, will only allow 100 requests per second to drip in, but would reject the surplus request.
+so this ignore is similar to reject, but when rejecting, you typically tell the client that your request is rejected, while in case of ignoring, you say: i'll not even tell the client what, i'll just ignore, right?
+so this is a very popular technique to fool an attacker, where your attacker sees 200 okay, but behind the scenes your load balancer has actually rejected the request.
+instead of sending 429 as an error code, you just send 200 okay to the attacker and he and that person thinks that you have accepted the request and he or she is actually abusing your system.
+instead, you are just ignoring the request from the load balancer while returning a successful response to the attacker.
+so throttling, we know that it is all about streamlining, whatever comes to a target machine, right, but why?
+right, there might be, like you, you have built your system and you love it, but then you see, like, but there are a lot of users who are using your system, and then one user goes rogue and says, okay, i'll just thought, i'll just make as much of api calls as i can to bring your system down.
+you would want to add a rate limiter to ensure that your system is not going down, your system is not overwhelmed.
+all the users coming onto your website, they are all legitimate users, none of them is an attacker.
+right, you would know that you will not be able to handle those many requests.
+you would want to allow the traffic that could be handled so that your website can still continue to function for the existing set of people.
+what you would want to enjoy is if you accept a large number of requests from the user and you are spinning up a lot of infrastructure to process it.
+that would add to a lot of cost right.
+a classic example of this is a very expensive machine learning model which you might be running, so you might have exposed ml as a service and there are a lot of users hitting your system and what would happen is every request that comes in requested to spin up a huge gpu machine to do some sort of processing right.
+you typically want to ensure that you are accepting the request that could be handled within your acceptable limits.
+now this- another use case for this uh control consumption cost- is where if you are accepting a lot of request, then and you are, and you have to process it, and that becomes and it might not be worthy enough for you to execute those process or to run those process on your infra.
+so you might want to, just like you know, and it's okay for me, to drop those requests.
+i don't just don't want to bloat up my infra right there.
+to prevent cascading failures like when it's not just that when a lot of request comes in, only one system is going down.
+so, which is where having a rate limiter at the, at the source point itself, would ensure that the first system is not going down.
+so it will prevent the gas setting failures from happening right.
+so now let's look at use cases of throttling and now in this one we will look at five use cases of throttling: two external rate limiters, three internal rate limiters.
+ddos attack are are there, like when your website grows.
+so which is where what you do is any request that comes in always hits a, always hits a rate limiter first.
+the rate limiter will ensure that it is only forwarding the request which can be handled by your infra, which is a legitimate request, and only those requests go to a system.
+request from an attacker will not go.
+you will be preventing, you will be configuring rules in your rate limiter to safely do not accept any more requests from this user, do not accept any more request from this authentication token.
+and what happens to the surplus request in case of a ddos attack, they are all dropped.
+it's the job of the rate limiter to not buffer it, just drop those requests preventing your system from going down or from getting abused.
+there are a lot of legitimate users coming in.
+if you get a lot of request, your db would go down and it will take everything with it, which is where you need to be very of the fact that if there is a legitimate search in the users, i need to gracefully handle my system handling those requests.
+it is okay for me to send to the user key: hey, my website is slowing down.
+i am expecting too much of traffic, so please come back after some time, rather than saying the website is done like, like, basically, uh, rather than giving them a generic error called 503, service temporarily unavailable.
+so with this rate limiter, what you would still do is there will be requests of some users that would go through.
+request of other users might just drop right.
+third use case: now this use case starts for internal rate limiters.
+then you have tier two, in which you get thousand minutes of build time for, let's say, five dollars a month.
+now here, what you need to do is: this is not something which is external, right?
+any time any request comes in for the user to build something, it comes to our api server.
+api server, before triggering the build, what it would do is it would check with the rate laboratory: hey, has this user crossed the limit?
+your rate limiter will use the database to see how much each customer has consumed and depending on that, it would say true or false, or yes or no to a pay server.
+an api server can then either reject the request or accept the request and continue with the build.
+so this is a case of an internal rate limiter where you are using this to ration the, to ration the compute capacity to customer, depending on the amount of money that that customer has paid you.
+for example, let's say you are consuming an extremely expensive third-party api and they have on-demand pricing.
+for example, you are using a service from a third-party provider which is giving you very deep, very amazing, deep learning capabilities, but every single api call is costing you five dollars.
+if that is the case, what you need to ensure for your cost to not bloat up, for your cost, your infrastructure cost or your bill for that external vendor is not bloating up.
+you would want to have an internal rate limiter.
+they, before making call to this expensive vendor, they call, they invoke or they check with the rate limiter: hey, should i make a call to this vendor or not?
+right, because every single call going to this vendor is five dollars every api call.
+so which is where, because it is very expensive, you need to ensure that, hey, you are operating within the limits, otherwise your infra cost or your bill with the vendor will go up right, which is why- this is another example- your rate limiter is not just external but also internal.
+so now, because your db does not give you rate limiting by default.
+what you would do is you would want to streamline the delete request that are coming in right.
+so let's say you want to delete a million rows in one shot.
+let's say you want to delete a million rows every single day.
+this way, you are not making or you are not bombarding your unprotected system with an expensive call and ensuring that your unpredicted system is not going down again.
+an example of an internal load: internal rate limiter: right.
+so rate limiters- again busting them with.
+rate limiters are not only external, they help you more on the internal cases as well, where you would want to streamline, uh, when you would want to protect your unprotected system, keep your infrastructure cost in check and whatnot.

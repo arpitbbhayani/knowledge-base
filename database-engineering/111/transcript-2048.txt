@@ -1,0 +1,88 @@
+so in order to find out if your sql queries are efficient or not, you would want them to process a lot of data.
+so in this video, we'll be generating 5 million rows worth of random data in less than 100 seconds of processing time using just sql.
+uh, on the udemy side, when you go on the on on the top section, you will see category, sub categories and topics.
+uh, a category is a global topic, say a software or programming of- basically it's art, software, business and whatnot.
+so if you would want to store this kind of structure into a relational database, we would need just one table to hold this up.
+let's call the table topics.
+the type would store if it is a category or a sub category or a topic, right?
+each of the subcategory would have 1000 topics, right?
+in all, it turns out to be five million, five thousand and fifty rows, right, and what we'll be doing is we'll be using just equal to generate this data.
+so i am using mysql8, which is connected to my sql interface, and now what i'm doing is, first, we'll create table which is topics.
+because a parent of a category is nothing, so we would need to handle that case, uh, and then we'd have the fourth column, which is type, small end.
+one, if it is a category, stores value too if it is a sub category.
+and three, if it is a topic, we define a foreign key constraint on parent id that references the same table topics, and we would create an index on type.
+right here what we are doing is we are assuming that we have yet another helping table called counters, and what it has is so counter stable is a very simple one.
+so i chose nine, nine, nine, because the maximum fan out that we require is along the side of topics, where each sub category has 1000 topics, right?
+so now what we'll do it is, if i were to so, we'll start with inserting categories into it.
+we want to insert 50 categories.
+so what we'll do it is what we would do over here is we would want to pipe the insert and the select statement.
+so in insert you can either explicitly specify values that you would want to insert for each row or you can specify that insert from the select.
+so what i'll do is insert into this topic and i'll pass a select query to this and uh, what i'll do is i'll select, uh, i'll select id from.
+when i do this, output of this command is having just 50 rows uh, from 0, 0, 0 to 0, 4, 9, right?
+so we'll be using this to create 50 uh topics now, when i would want this.
+so what i want is i want three columns here: name, parent id and type.
+okay, so we want name, parent id and type over here.
+right, so we know that, since we're inserting just categories, we know that the parent id of category is null.
+we know that type of category, so the, so the value of type, if it is a category, is one, if it is a sub category, then two, if it is topic, than three.
+here, like here, the first row has a c80 hyphen: zero, zero, zero, zero, zero, zero comes from this, this inner query, where we are selecting just fifty, from zero, zero, zero, to zero, four, nine.
+then the second one is null, third, one is one, right, so i'll be using this, this thing, to create a temporary view, that is, of the format that we require it to insert within topics.
+so if i club this insert and select statement into one, so the output of this select would go into this insert, all right, so this way we'd be generating 50 categories, right?
+so now, when i execute this category in, the output says 50 rows affected.
+so now let's open this topics table and see if it is really inserted or not.
+so we have inserted fifty rows into table.
+right now comes to the next part, where we want to, uh, where we want to insert what sub?
+we want to insert sub categories, similar to how we insert categories, we'll be inserting subcategories.
+so what we would want to do, it is we would want to insert into topics name, parent id and type.
+the parent id is something that would be specific to every subcategory, right?
+so we'll start by yeah, so, and the type will be 2, okay, so now, what we now, what remains is we want to uh, handle this id and this parent id.
+so if i take a join without specifying where clause, it literally matches every single row to every other of that other table, right?
+instead of doing this, if i use topics as t1 and counters are c2, right.
+so output of this would be: it would be combining the topic name and id, right?
+so for every single topic out there, for every single topic out there which is inserted right now, it would map it to all the rows of counters.
+we'll be using this very thing in order to generate data for subcategories, because that's exactly what we want.
+for every category, we want 100 sub categories.
+so now, to do so, we'll be using this very thing and what i'll be doing is select id from counters limit 100, because what we want is we want 100 sub categories for that, for every category.
+so i'll be using select id from topics: uh, where type equal to one right and now, basically, i want to have a join of this two.
+so instead of topics, let's call it categories.
+okay, because these are, because, since we're specified by types is one, this becomes categories and this becomes counters.
+so now what over here, while selecting, i can do: my id of my sub category, or rather my name, would need to have mapping of sub categories, topics.
+this is sub category id pro topic.
+i'll put yet another select from this like this: so select categories- dot id, comma counters, dot id.
+okay, so our categories- dot id become cat catagory id and our countersid become [Music] counter id.
+okay, so now my sub category.
+okay, and now i can use this category id as my parent key, right?
+so now, effectively, what i'll have from here is this: two thing would run: first of all, it would take in all the categories out of it and join it with all the counters out of, with all the hundred counters out of it.
+and now it would do a select of, it would do select from this thing and it would say categoriesid as category id and countersids counter id.
+and i will be using this category id and this counter id in order to do a select which in turn goes to insert.
+so now i'll be doing a select of concatenation, subcat, counter id and a category id.
+so this becomes my name of the sub category, parent id becomes category id.
+so whatever the category id comes from the join, that becomes my parent id and type is to because it is subcategory, and this, all of this goes into insert, right?
+so if you see over here, the output is here: category 5: 0, 0, 0, 0, right, and then it has category id is 50 and this has two.
+it would create, it would have an n square join from that and it would generate the value.
+so let's say, we have topics, we have topic and instead of picking categories, we would want to pick sub categories.
+sub categories are the one whose id, whose type is 2, and we want 1 000 from counters.
+right, so we, because we want thousand values from counters.
+so this join would create five thousand sub categories.
+so this output of this join would be five million rows.
+we'll be picking in sub category id from this and we'll be picking subcategories id, as this: we'll be using subcategory id and a counter id.
+so now, when i, this is exactly very similar to uh, how it generated subcategories, right?
+so taking joint amplifying, using joins and then creating a select on top of it and just formatting it with respect to our required format for insert, and the type of this would be 3, the parent of my topic is a subcategory id which comes from here, and i can just run this insert and see this in action.
+so now, when this query is running, it would take close to a minute for it to execute and once we have it, we would see it inserting five million rows into the table.
+so, out after after going through all of this three explicit steps, where first we inserted categories, then subcategories and then topics, we have seen that we can amplify using just one helping table, which is counters, and while doing so we have populated 5 million rows using just sql.
+so this is a very neat trick where we used insert along with select, such that output of select goes into insert, and we have used joins to amplify the reach, because for every one item we need 100 others or 1000 others, right?
+uh, it would just take a minute or so, and then, once this is done, we would see an output and we would open the table topics to just see on how it has actually inserted the value or not.
+but here the assumption that we played around was having a counter table having values from zero, zero, zero to nine, nine, nine, right.
+we have created five million rows affected, or basically created, in just one minute 22 seconds.
+so now, if i refresh topic stable, we would see that it would have all of these rows and i can just apply where clause and see that it it indeed has generated this thing.
+here it is topic six, four, zero, zero, zero, parent id.
+uh, type is three, right.
+so this is how you can generate an entire topology of categories, sub categories and topics having five million rows and under 100, under 100 seconds.
+so just to show that it indeed takes a less than 100 second, let's just drop this entire table, uh, let, instead of topping, let's just truncate the table, uh, truncate topics, and once this structure is done, what i'll do it is i'll run insert statements, that inserts categories, sub categories and topics, and here we'll see the time on how long it takes for us to put five mil to ingest five million uh rows randomly generated with this very special requirement of having a taxonomy structure in less than 100 seconds.
+because counter table determines how your amplification would work, right?
+so how will you put all of these values, or how will you put all of these things into this table?
+so what i've done, it is i've created a table, digits having values like 0, 1, 2, 3, 4, up till 9, and then, in order to insert values into counter, all i have done is i have taken three joints.
+it generates basically one thousand values and, similar to other steps, i've used this select to ingest data using insert and, yeah, that's how we generate counterstable, right, see?
+yeah, just 83 seconds to uh, to populate five million rows with this particular taxonomy that we are looking for and for counters.
+okay, so this would ideally print all the rows of digits table, right.
+yep, so now, if i do join with digits d2 and i say select d1 id, d1 dot id and d2 dot id, what i'll effectively be getting is 100 rows from 0, 0, 0, 1, 0, 2 and so on and so forth.
+similarly, we'll get all the values 0, 9, nine, two, nine, three, nine and nine, nine, right.
