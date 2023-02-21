@@ -1,0 +1,95 @@
+so do hyper local companies like uber, Ola, swiggy, gojek, zomato, Etc. share our phone numbers with the delivery agents or theirs with us?
+hence, they have a system in place that, instead of sharing the actual phone numbers, they share a masked version of it.
+in this video, we talk about how these hyper local companies work with Telecom operators to generate virtual phone numbers and keep our privacy in debt.
+but before we move forward, I'd like to talk to you about a course on system design that I've been running for over a year and a half now.
+instead, a small, focused group of 50 to 60 Engineers will be brainstorming the systems and designing it together.
+ingenious from companies like Google, Microsoft, GitHub, slack, Facebook, Tesla, Yelp, Flipkart, dream11 and many, many, many more have taken this course and have some wonderful things to say.
+in all, we would be covering roughly 28 systems and the detailed curriculum, split week by week, can be found in the course page linked in the description down below.
+so if you are looking to learn system design from the first principles, you will love this course.
+the first one is the live cohort based course and the second one is the recorded offering.
+the Live code base course happens once every two months and will go on for eight weeks, while the recorded course contains the recordings from one of the past cohorts as it's.
+otherwise, the Live code is where you can participate and discuss the systems and its design life with me and the entire cohort.
+I've also put the link of this course page in the description down below and I'm looking forward to see you in my next cohort.
+so phone numbers are extremely critical because it is a personally identifiable information.
+so, for example, just imagine if a phone number gets leaked in public.
+so, which is where the companies with whom you share your contact number- maybe during login, maybe maybe during the transaction or basically getting an order delivered- it's their responsibility to keep them secured right, which is where the idea of virtual phone numbers kick in.
+we have, like we are gojek and, by the way, this entire design is taken from gojex engineering block, which I've Linked In the description down below.
+a phone number is, let's say, one, two, three, four, where Delivery Agent phone number is 6789.
+so this is where virtual phone numbers kick in.
+so here Telecom providers like Airtel, jio, xotel, twilio, like there may be the actual telecom companies or maybe an intermediate company who have a partnership with them, right, but someone to make our life simple issues virtual phone numbers, right, so exerted value, are the biggest providers of that.
+so Telecom provider like Airtel, jio, exotic, twilio, provide virtual numbers.
+they look very similar to actual phone number, but they are functional, right, and they are very transactional.
+so now what happens is, let's say, we call a service like VN settings, which is your virtual number service.
+so these vendors, they have a list of phone numbers.
+they already have a list of virtual phone numbers which they periodically send to us, or rather, we request them and they send to us.
+they have a list of phone numbers, you make a call to them and they would share a bunch of phone numbers with you, right, which are virtual, which you can assign it at your.
+they are your private phone numbers, right?
+you keep a lot of virtual numbers handy with you for in order for you to assign it to your orders, right?
+so now, does every user get a virtual number?
+now, if I, if we ask this particular question, does every user get a virtual number.
+my actual number is one, two, three and I'm assigned a number.
+so let's say, I am my, I am a, my actual number is one, two, three and my virtual number is a.
+it is very easy for anyone to socialize because there is no problem at all, right, because I used to give them call to an actual number.
+but now, if virtual number also Remains the Same, you can give a call to Virtual number also, right?
+which means that you cannot have a one-to-one mapping always like a permanent one-to-one mapping between a user's actual number and a virtual number, right?
+which means that we have to make it temporarily allocated and then after some time it should be assigned to someone else, right?
+but it cannot remain same for the same user, like you cannot just have one number for one user, always like till eternity, right?
+and second reason is if let's say there is a customer that comes, that came onto gojek, and it just assigned, or he or she just made one order and never came back onto the platform- right, never, now.
+if you just assign one number for each user forever, then if you have a million users, you need a Million numbers, even though most of them are not even used- quite possible.
+what do we need, like the constraints that we play with, is we need virtual number.
+assignment should be number one on demand, which means when I request it, I should be able to get it.
+right once that is done, virtual number should be unassigned so that it is assigned to someone else.
+okay, now let's take a look how virtual numbers are assigned.
+so, virtual numbers are assigned to all the involved parties in a transaction.
+so let's say, if I placed an order, an online order, so virtual number will be assigned to me and the driver, right, so here and so it's specific to a transaction.
+a Delivery Agent can be delivering multiple orders, right?
+so for each transaction, The Delivery Agent will be assigned a new virtual number.
+so, for example, if let's say, Delivery Agent is delivering two orders, right so, one with a other with b, and The Delivery Agent is D, so for a eight with derivation D, for a particular transaction, D will be assigned a virtual number and for B and D it will be assigned another virtual number.
+we have a bunch of virtual numbers stored in our database.
+so when an order happens, right, we go to the database, pick two numbers, pick two virtual numbers from them and assign it to a transaction, and rather assign it to the individual prop, individual entities of our transaction, individual parties of a transaction.
+so it looks like something like this, right?
+so here we have our vendor, like twilio xotel idle, they have a bunch of numbers which they exchange with our VN service.
+VN service stores it in the database, right?
+at nine, D's, which is delivery agents, actual number is four, five, six, right?
+let's say d as a Delivery Agent is assigned order to be delivered for a as well and B as well, right?
+we do not want seven, eight, nine of B to be shared with d either, or rather D's number with a and b, right?
+so, first of all, we need to do virtual number assignment.
+so when would we assign the number?
+the number, the virtual number, will be assigned when the order is placed and the driver is alerted, right?
+right, we have our order service.
+when a user, lets say A and B, plays the order on the order service and that order service may like, whenever a driver is assigned or something, anytime the state changes an event- would be sent to a Kafka right from there.
+the consumers would read the driver assigned events and then at that time, once we know that for this order this driver is assigned, we talk to VN service and get two pair.
+like sorry, we get one pair of virtual numbers from the VNS database, right?
+so first of all, hey, give me two virtual numbers, because I have two parties involved, A and D.
+I want to assign virtual number to both of them.
+once we get the pair A and B now, uh, once we get virtual numbers for A and D, which are AAA and DDD, now what we do is we go to order service and update in it in the orders database, because orders database is where ready for this order.
+like this order is placed by a and assigned to driver d, a is virtual number is AAA and D's virtual number is DDD.
+right, that would be stored in the orders table so that we can render it in the app.
+right, because in app, when you see, you need to see these numbers so that you can directly give him or her a call, right, so you need to share it, so that would be part of your orders table right or orders database.
+now how does this transaction look like?
+right, what would happen when a gives a call to the delivery agent right now?
+a has its own number, which is one, two, three, and it calls D Delivery Agent.
+a has its own number, which is one, two, three, and it calls D Delivery Agent.
+a has, D's anonymized number or these virtual number, which is DDD.
+this call would go to a telecom operator, right?
+so maybe through twilio, through X Hotel, bunch of apis to call, like a lot of things could happen along that way.
+but through that telecom operator, like obviously there is a global repository where all of these things are updated.
+now Telecom agent receives the request.
+we, as gojek, have that mapping right.
+we have to validate that if this transaction is even valid or not, because otherwise you have the number you give a call, then that's wrong, right, it has to be an active transaction against urm and that pairing should exist.
+VN service would validate the request and respond: is virtual number and D is actual number.
+so now I'm going to tell you: when you gave a call, Telecom operator gets your virtual number and these actual number.
+so Telecom operator needs these actual number and a is virtual number.
+you say why it needs is virtual number?
+because because if when you get a call from someone you see their number right.
+a is virtual number, the number that it would display on the users when you get a call.
+so which is where you share is virtual number, which is would be used as a source number and these actual number.
+so then Telecom connects with d on 456, these actual number and sets source as AAA.
+the actual number is one, two, three, right, and this is how the bridge is set up between the user and The Delivery Agent, without users or delivery agents number being shared with each other, just ensuring the entire privacy of the transaction.
+once the transaction is done, order is delivered, virtual numbers are set free so that they can be assigned to someone else.
+now here, an important step is this, the validation step, so that, if I like, then, if I do not have that validation, this particular validation step, I can make a call to any virtual number.
+this becomes an extremely important step, if you are actually checking the sanity of the request that has come in, that if a is making a call to a particular number, is there a bridge between the two or not?
+right, and yeah, this is how the system is designed.
+right now, to dive deep into this matter, what you should be doing is go through twilio's documentation on Virtual numbers.
+right, very seamless, very easy to go through a documentation like that.
+virtual numbers placed.

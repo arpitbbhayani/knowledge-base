@@ -1,0 +1,69 @@
+in this video, we in-depth talk about rest, understand the foundations of it, see how and why it gels so well with http, find why everyone is using it and conclude by going through the downsides of using rest over http.
+so rest stands for representational state transfer, and here the key idea around this specification is representation of entities.
+right, so here what you have unrest is everything is a resource, resource, implying that an entity in your system- for example, if you are building your library management system, then student is a resource, or book is a resource.
+rest is actually just a specification on how your client should be asking things from your server and how your server and how your server should responds.
+uh, in while while we are adopting rest, right, so any and every data that we have in our service, in our system, is an exposed resource.
+for example, students in my library management system is a resource which i am exposing through http endpoints, right, so the way we, the way we traditionally do, but the way student is stored in my db is up to me- like rest cannot enforce how i would want to store that information in my database.
+rest is only there to tell us how your client and server should communicate or the way it should communicate.
+so you may choose to store your student information in tables, rows and columns and serve it as a json response.
+the idea is simple: store it however you want, but serve it the way client is asking your data for, or the representation in which client is asking your data to be served, right.
+so this is where what rest gives you the flexibility that your client can ask for a particular representation.
+so you- and obviously it is not mandated as such, but your server should be able to support that sort of representation, but at least there is a way to do it, which is why you see, the http request we make has a content type header that hey, i am sending new content in this type and i'm expecting a content in this type, which is why http is very widely adopted to implement rest.
+so here a a very solid rest representation would have multiple representation of your entities, maybe xml format, json format, but it is not mandated that you have to have all of them.
+may be json text, xml, csv, and your server has to send the response in that particular format, so long as it is supporting it.
+your client would make in like: we know that most common implementation of rest is over http, so i'm just basically carrying forward on that.
+uh, your client makes an http request, let's say slash, customer, slash one, two, three.
+server goes to the database, which is your relational database, gets it from rows and columns and creates this entire json object and sends the information in json to the client.
+so it it purely depends on your server's implementation, or how it wants to send the data, or what all representation would it support, right?
+so here the idea is that any and every operation that comes, or any and every request that comes from the client, that request has to happen over a resource, and this resource is typically specified in the http url that we sent.
+so here you like, when you want to create a resource, update a resource or delete a resource, any sort of thing that you want to do, you can specify it as a verb: hey, that this is the action that i want to take and this is the resource on which i want to take this action.
+so rest is saying that, hey, you can choose to use tcp, you can choose to use http, you can choose any protocol you like that to implement.
+so the most common implementation of rest is with http and it gels so beautifully well that by default, when we now write apis, we write rest apis, right.
+the way we define our urls is how rest recommends us to do that, and both have become very synonymous.
+so here, one thing that made http uh really solid for us to adopt rest is http verbs- verbs as it get put, post, delete, http methods that we have.
+that is a very powerful feature because with http, what you have is you have this verb or you have this http method- get put, post, delete- and you have a path or you have a url on which you are making that request, right?
+so this url is nothing but your resource and your http verb is the action.
+so, because delete is the http verb or http method that is out of the box supported by all web servers out there, you can directly invoke an http delete on slash user, slash one, which is which becomes your resource identification.
+so this fits so beautifully well that your action is specified by http method and your resource is identified by your url.
+and which is why we, when we expose uh http endpoint, we think we are doing rest slight difference, but you basically get digest.
+if i want to update the student detail, i would do a post on this url.
+and this is a very well defined uh specification as part of http specification that, hey, these four methods would be there: get put, post delete or, obviously, options patch and others exist.
+but you basically get this idea that http, because it is so widely adopted, it has already support for http methods which every single client and web server understands.
+which is why we still you and we still expose just normal http endpoint, but we chose to do it in a certain way, like slash student, slash one.
+you could have also done something like this: let's say i want to get details of a particular student.
+that is also an http input, but that is not rest implementation.
+so rest says: use http methods wisely.
+otherwise, i can expose slash update student as a method or as an end point and i can take all the required parameter in the post body and do that action.
+rest is how we are now accustomed to build endpoints: slash, student, slash one is the resource and get put post delete is the action right.
+so that's the key difference between http and rest.
+so how we are using http to implement rest, rest is a specification on how you should be talking to your server, the way you should be specifying the input and the output.
+now let's talk about why http gels like.
+again, one very solid reason why http gels so well with the rest: because of two links.
+so because web is very widely allowed, obviously the internet is widely adopted, and because of the already established tooling that we have for http like, for example, you have clients like curl postman request in python and what not.
+you have the browser, you can directly make post request through form submission and you have your uh and you have your rest specification implemented on your api server.
+second, web caches, like nginx cache, varnish, ha, proxy- so many are there on which you can cash the responses out, which means you can get good sort of performance without changing a lot of things, because nginx and all you would anyway have with the rest, you are just leveraging what you already have.
+third, monitoring tools like distributed request tracing, a packet sniffing, debugging, http request response monitoring, alerting, uh, then basically application performance monitoring.
+everything is very well built for http as a specification, so why would you want to define your other specification and rebuild those things?
+that's why rest over https uh, it gels so well.
+these are just downsides of using rest over http.
+we have to be aware of what would be the potential downsides of using rest over http, just so that we don't make a mistake.
+we are using rest, on the other hand, because it runs on top of http, there is no standardization- standardization with respect to the stub generation or native objects.
+obviously you can use http client to make a call, but when you get the response- you are getting response, say, in json- you have to convert it to a native object and then consume.
+here we got it in json response, but then you have to write those things on your own that i want to.
+obviously it's not easy, but it is repetitive as well, which means anyone and everyone who wants to consume the same uh resource or do that operation on the same resource, you have to write it same stuff again and again, for example serialization, digitalization, logics to and from native objects, failures, timeouts, retries, compression, security and whatnot.
+a company might have an internal standardization, let's say a common way to do it, but in most cases you would have to do that thing again and again.
+the next is some web servers may not support all http works.
+so for a standard server like, let's say, jersey or nginx or your uws gi servers, they support all http works.
+but let's say you made a decision choice of picking a particular http server that only supports get and post, does not support put, delete, patch options.
+you are stuck with that, which means that you are limiting your potential of using rest because by changing the http method you are multiplexing actions on the same resource.
+so slash student, slash one slash, delete something like that which is not really rest like right.
+you then you are not really doing the rest way right.
+so it takes time for your clients or for your server to understand the json, create it or basically, uh, parse it into native object and then consume it.
+so that's where when you have ultra low lit, where you have low latency requirements, you would typically go for something like rpcs that use protobuf to to compress your message in a very, very, very short uh, in a very short payload and then send it right.
+or for ultra low latency requirement you might not want to go- for uh rest over http plus.
+with http what you also get is every time you make a request you have to make a three-way handshake tcp connection, then file the request, then get a response, although you can use http 2, but again you have to be very of the fact that with http version are you using to communicate over rest.
+but if you went for udp, uh, a rest over http won't understand, because http only under works on tcp, so, which is where you might not be able to extract the best performance out of your system, given your workload, right, it might not be like you always want udp, but for use case where you would want to switch protocol, it does not give you that flexibility.
+so using, but obviously going through this downside does not really mean that we should not be using rest over http.
+you go for rpc, you go for rest, it's up to you, but it depends a lot on the sls that you would want to guarantee or the kind of use case that you have at hand, right?
+this was my way of listing on all the downsides that you have to be aware of while using rest over http.
+i hope you now you get an understanding of what rest is and what https and what, and just a small glimpse of what rpcs if you want.

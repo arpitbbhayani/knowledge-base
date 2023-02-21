@@ -1,0 +1,88 @@
+in this third video of the bittorrent internal series, we take an in-depth look into its architecture and understand different components in it, like trackers, seeders and leechers, and learn how they work together to be this amazing file distribution network.
+but before we move forward, i'd like to talk to you about a course on system design that i have been running for over a year now.
+thanks, the bittorrent architecture consists of four key entities: the dot, torrent, file trackers, seeders and leeches.
+so whenever we are sharing a file in the bittorrent network, the file is not entirely shared.
+so whoever wants a file would not download the entire file together.
+it would download a piece of a file.
+it would download all the pieces of the file and then concatenate to form the actual file right.
+so if you have a 3mb file and let's say your p size is 1 mb, so you will create three pieces out of it- p1, p2, p3, for example- and each of this piece would then be passed through a hash function and we would compute a sharpen hash of it, which is a 20 byte long hash.
+all of these hashes are then placed into the dot torrent file.
+your static information would not change, and this is what is being used to download the piece from the peers and then basically joining it, right?
+okay, now the best part of this p2p network is because there is not one place to download the data from.
+so what happens is when you download the piece from, let's say, you have a seeder that has the entire file.
+you joined the network and then you downloaded a piece from the seeder.
+as soon as you download a piece from the seeder, you will inform the, your entire network- hey, network, i have this piece now.
+so if any one of you needs this piece, instead of going to the cedar, you can directly talk to me, and this way, all the peers, as soon as they download any piece, they would start informing everyone else.
+every peer would not have to go to this one server to download the piece.
+they can internally among themselves also exchange the pieces and eventually have the entire file downloaded.
+okay, now let's talk about the dot torrent file.
+in the previous video we saw the detailed structure of dot torrent file and about when coding that it uses to encode the file and what information it holds.
+but in the context of this bittorrent architecture, there are some key elements that are part of this dot torrent file.
+that has the pieces, information, file name, size and other information, but it holds one very critical info.
+you'll go to that url to get the information about the peers, because you, as a peer, you don't know who all are in the network, unless someone tells you that.
+so you first download the dot torrent file from your typical uh google search engine or your or your favorite torrent search.
+again, assume that you have the torrent file and from there you first go to the tracker to see, hey, which all peers are there in my network.
+depending on what it responds, you can then directly talk to the peer to download the piece, to download the pieces that you want, right?
+each torrent file is uniquely identified by something called as an info hash.
+infohash is a shard, is a sharvan hash of the info section of the dot torrent file.
+in case you are not aware, in the previous video we talked about what holds in the info section and some that's the most important section of your dot or in file, but that that has that information.
+but with respect to architecture overview, understand that there is something called as an info hash that would uniquely identify a dot torrent file.
+uh, in the ecosystem, right, okay, that was importance of the dot torrent file.
+announce url and that is what we'll use to talk to tracker, right, okay, now let's talk about tracker.
+so for a particular torrent, it, the dot torrent file- contains a tracker url and that tracker will take every peer in the network connects to this tracker to get the meta information about who all are there in the network.
+first, it keeps track of the peers who hold the file, as in people who are part of this network.
+it is just helping us hold the meta information about the network: that how many peers are there, who all are there, who are downloading, who all are seeders, who all are leeches and what not.
+so anyone who needs any information, this is the source of truth where they go to and there is not just one tracker in the world you can have like.
+basically there are thousands of trackers in the world and you make spin up your own tracker very easily so that anyone having the torrent file with that tracker forms that network, right?
+it's a decentralized network where there could be multiple trackers, but you are connected to one tracker because you are interested in that one dot torrent file that you have to download the content that it possess, right, okay?
+so tracker itself does not download or transfer the file or the data that you are looking for.
+so that is why tracker is very lightweight, right, okay?
+so when you have a dot torrent file, you would first go to tracker to say, hey, i have this dot torrent file.
+or or rather, you would say you would extract some information from the dot org file and you'll go to the tracker and say, hey, i want to be part of your network and your dot and your tracker would send what it would send you information about: 50 peers, roughly 50 peers.
+50 peers were part of this network, right?
+so then, now that you would want to download the file.
+then what you can do is, given that you now have information about 50 peers, you'll talk to each one of them to download the correspond, to download the pieces that you want, and the pieces information will be part of your dot torrent file.
+so, for example, in your network you would have seeders who has the entire file, you would have leechers who are who, like you, also wants to download the file.
+so what you'd, so what you would do, is you'd first go to tracker, get the peers information, then talk to corresponding peer to download, to download the pieces that you want, and then broadcast the information in the network.
+once you have a piece, when you, once you have all the pieces, you will just concatenate them and create your end and you basically create your final file that you wanted to download.
+right, every peer reports its state to the tracker.
+so now what tracker is doing is tracker is not just holding the peer information.
+when i say progress, as in how much has each peer downloaded, or each peer uploaded in the or from the network.
+so every period is the responsibility of every peer to send this information, the state information, to the tracker, for example.
+it would use this to uniformly distribute the load, as in when it sends out the peer information.
+so the tracker is not only sending the information to the user, but it would all other peers in the network also send information to the tracker.
+hey, i've uploaded this much, i've downloaded this much and i'm part of this network and i'm healthy and well and whatnot.
+so if the number of peers in the peer set drops below 20, which means that, let's say, you're downloading a file and that particular file that you are downloading because you would have appears to download it from.
+and let's say, if now you have less than 20 ps because peers leave and like they join and leave the network, right.
+you'd again go to the tracker and say: array, though i was given 50 peers, but out of which 30 have left, i'm only left with 20, so, but i need more peers to download my file quickly.
+so you would reach up to tracker to refresh your peer set, right?
+so you would go to that tracker and download it and and you would basically get the peer list and then you can talk to those peers.
+so whenever you fall below a threshold, you would go to the tracker and say: give me the peer list again, right?
+so at that time, whatever information your tracker has, it would send it out to you so that you can continue your fast download.
+now imagine if you, as a peer in the network, you want to download a file.
+let's say you say that, hey, i would not upload to anyone, i'll only download the file and i'll leave the network.
+this network wants to promote, uh, reciprocity that, hey, you upload and then only you can download.
+so, given that, as a use case, you want a nice blend, you want a very nice blend of having connections to download the content and upload the content, because there is a limitation on the number of connections that your machine can make, right?
+maximum number of connections that your server needs to make for this network are 80, so it can connect.
+this way you'd get a very nice distribution of: hey, you're not just downloading but you also have bandwidth to upload.
+so let's say you are a peer, you have a torrent file and you want to download something, so how would you get this torrent file?
+so the step number one would be: someone first has to upload the original file in the torrent network.
+so this is more of a application side of things, where people are using it to search for torrents and once they download the torrent file, then obviously this is out of picture.
+so first step is to upload the torrent file to this torrent server.
+now you, as a peer who wants to download this torrent, you go to the search engine, you search for the torrent and you get the file.
+now you, as a peer have that file.
+go to the tracker and ask for the peer list.
+you would then talk to each one of them to request for a download and then whoever has this, whoever has a piece of it, can share you that particular piece.
+and once you have this piece, you would trade the piece with other peers in your network.
+that, hey, your broadcast information key, i have this, i have this piece.
+so cedar is a peer in the network that has the entire file.
+so someone having the entire file becomes a seeder.
+cedar is someone who does not need to download anything but it just is benevolent enough to just continue uploading it in the network.
+quickly your file gets distributed in the network.
+leecher is a peer that is downloading the file it.
+so leecher is not just downloading the file but it would also upload the pieces to other peers who wants it, right?
+so seeder is having entire file and it is only uploading.
+leachate is the one who is downloading the file and informing other peers the pieces that it has, and once a leecher has entire file, it becomes a seeder, right?
+it's a very simple architecture, like it's all p2p network.
+so all it has is a huge set of machines to connect to and download pieces and just formulate it out right?
+i hope you understood the bittorrent architecture and the key components in it and some of the design decisions.

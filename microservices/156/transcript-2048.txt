@@ -1,0 +1,70 @@
+to be honest, building micro services is much more than an engineering problem to solve.
+there are many pitfalls to avoid and decisions to be made and, in the process, build a solid, functional, high performing team.
+in this video, we'll look at some engineering and non-engineering things to remember while building microservices, for example, it being a massive, massive, massive opportunity for personal growth.
+everyone should be okay with architectural evolution, importance of periodically addressing technical debt and striking the right balance to keep engineering and business aligned to the same strategy goals.
+instead, a small, focused group of 50- 60 engineers every cohort will be brainstorming systems and designing it together.
+we cover topics ranging from real-time text communication for slack to designing our own toy load balancer, to quick buzzes, live text commentary to doing impressions counting at scale for any advertisement business.
+the first one is the live cohort business, which you see on the left side, and the second one is the recorded course, which you can see on the right side.
+otherwise, the live court is where you can participate and discuss things, live with me and the entire cohort and amplify your learnings.
+thanks, first key thing to remember while building micro services, that it is a huge, huge, huge opportunity for growth, right.
+so when we have micro services based architecture or we are transitioning into microservices based architecture, what it gives us is we are creating a lot of services which are very focused, right, which means there would be lot of engineers, lot of teams, lot of technologies to work, with lot of interactions to happen between services.
+for example, there is a technical problem to solve: how two services should communicate to each other.
+you, as an engineer, can step up and propose that, hey, why can't we use grpc?
+so this is that one place where you can get personal growth, not just with respect to engineering practices, but also with respect to leadership points right, with respect to you owning up those things and leading it into it right.
+apart from all of these non-engineering things that we discussed with respect to engineering side, when we are going from monolith to micro services, what would happen is- the problems are many right: inter-service communication, loosely coupling system, high cohesion that you would want to ensure.
+so, as an engineer, if you are stepping up to this challenge, you would have a very, very, very solid growth trajectory in the organization, right.
+right, you can come out as a subject matter expert for this particular thing.
+okay, when you have a micro services based architecture, each team owning a few set of services and, let's say, those two services needs to interact.
+right, this is where- and you should always remember that there is no one right way to build any system- any and every system can be built in hundreds of different ways, right, and it's just that you have to be good at making that trade-off that, hey, this one is better for this situation, while the other one was better for that other situation.
+right, it's very subjective, but you have to be like, you have to understand that your way is not the only way through which this system can be built.
+he, or basically that senior engineer, would be helping you solve that issue and while doing that, watch and learn.
+the overall team's happiness quotient is much more important than an engineering decision, right, and it's not something that i am promoting, but something sometimes it is okay to do it, not always, but if it is happening too often, bring in your managers, bring in your senior engineers to resolve that part, and this also spans multiple teams.
+for example, if you and engineer from other team are having that conflict, bring it.
+it happens to every single one of us, right, and in most cases, when could there is some cross-team conflict on how to integrate, how to interface, how to build?
+in some cases, let the seniors handle it at their level and then you would be happy implementing it right.
+if you are deciding an architecture for a service and for sure, if you think that you are the best engineer in the room, you are 100 incorrect.
+if you are deciding yourself the architecture and building it on your thinking that, hey, i am the best engineer in the world, it's stupid.
+to be really honest, it's stupid, right, you cannot always design the best architecture ever.
+invert two or three engineers right, so that you, first of all, you get an assertion that the design is good.
+so there is no reason for you to create a conflict because of this, because organization's vision would evolve, so you have to adapt to it, right?
+for example, it's like: hey, i designed this architecture thinking this scale or this feature, for that's why i picked sql database, otherwise i would have gone with no sql.
+your product, your architecture, your business will evolve, right?
+this and basic, giving its own space and architecture evolves, right?
+so say, we decided to use mysql as a primary database, but then, while building it or after some time, your requirements totally changed.
+this happens a lot, right?
+so deviations happen, the decisions or the things that you decided on might not be relevant after two months or after three months, because your market did not accept the product or there was some fancy requirement that was more essential or more critical than your current setup, right?
+so you have to be aware that architecture is going to evolve and you, to the best of your ability, needs to design an architecture.
+your microservices needs to be architected in such a way that any change that would happen or that would come in- any, for any unforeseen, uh, any unforeseen change that comes in, you are able to handle it gracefully, right?
+the way you would be designing needs to be abstract enough so that any changes that might come in does not affect you much, right.
+this is a big decision, right?
+and in some cases, you might also have to prove your seniors that, hey, are we really going to do this?
+that's where you as an engineer, or you as a early leader, needs to step in and say, hey, have we really given a thought on this?
+if you make them aware about these kind of situations, they would be putting in twice the amount of thought and coming up with, hey, yeah, we are definitely doing this, no matter what, and we are okay having this one way: route that from database one to move to database two we have.
+we cannot always build the system the best way possible and it is always that because we engineers- or vs engineering teams- we are always running a race against time, we always have to ship things faster.
+we do not have all the time in the world to design the best architecture possible, so that is why you would always see we cut some corners, some things we leave out, or tk.
+so today you are getting very high velocity, but tomorrow you would be slowing things down because this, when today shipping a feature, let's say, takes you three days and six months later it might take you one month, right, and your manager or your senior manager will come in and say why?
+right, technical debt is a concept which is basically bonging you down because of all the inefficient decisions, or not so best decisions, that you took just to ship things faster at that moment.
+that is technical debt, and this in exist in every single organization out there, typically rebranded as backlog right.
+and this is not just because of inefficient decisions we took or something to ship things faster, but also it might be possible that organization's vision changed in midway, because of which the architecture that you had earlier is not so relevant.
+so these are couple of reasons because of which technical debt exists, but it is very important to solve technical debt periodically right at least without 10 percent of bandwidth every sprint to resolve technical debt, so that, as a team who are owning a bunch of services, you would be moving at a much faster pace in the future.
+and when we say standardization, it implies that, hey, to do inter-service communication you have to use grpc.
+so when we have situations like this, when we are enforcing some some sort of standardization, that, hey, you cannot use mongodb in our infra, you have to use dynamodb- just a small example.
+if you are having these sort of standardizations, these are good because it gives us all necessary best practices that our organization is aware of.
+right, or people know how to manage them, or we, or every engineer in the organization is skilled to work on them.
+so what you can typically do is if you have a set of standards that you want every engineer to follow, every micro service that is spun up to follow, you can create a service template for it, for example, a github repository with a boilerplate code with all necessary extensions or all necessary plugins that it would require.
+for example, you want uh, like in that repository, in that template repository, you would have an uh, you would have a small hello world server that exposes grpc for inter service and http for or rest based endpoints for user basic communication.
+so this would avoid duplicate efforts where every engineer who is spinning up on your microservice needs to add those things separately and every team might have a different folder structure.
+like every leader, every engine should be aware of that.
+hey, if an organization is trying to enforce standardization by saying that, hey, you only have to use java or you only have to use python to build this thing, a lot of engineers might feel strangled.
+right, there should be an open forum where this is, these things are discussed openly.
+so this has to be an open discussion which entire team or entire organization comes in collectively, or they basically come in in a forum and they try to address this particular situation so that no one feels strangled.
+no one feels that, hey, they are thrusted upon by some random standard that some random person in the organization created.
+second way to solve this is when you have a central team trying to enforce a standard to all the teams in the organization.
+so in a microsoft, especially in a microservices based architecture, this is very important- that, hey, it should not be that, hey, one team is enforcing all the things on us.
+and the final thing that i want to talk about, the most, most most important part: business is more important than engineering.
+if business doesn't exist, we are gone right.
+but your machine learning team- just giving an example, no need to be offered at ml engineers, but your ml team is requesting your sre team to provision 50 massive gpu clusters.
+so you can drive massive outcomes only when the things that you pick are aligned to the vision of an organization.
+uh, i know it was not so technical video, but i always wanted to highlight few things, few key aspects to remember when we build micro services, because these are things that are typically that most people overlook, but if an engineer or an early leader spots them, can create massive impact for them.
+early engineers: learn from it and try to drive impact in their organization.
+early leaders: ensure that your teams is not suffering from the pitfalls that i mentioned and, overall, just always align yourself to the business goals rather than running your own side projects.

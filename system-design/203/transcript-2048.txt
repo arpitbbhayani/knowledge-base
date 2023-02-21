@@ -1,0 +1,95 @@
+so Jiffy is the world's most popular gym website and it serves 10 billion media content every single day, and we can totally guess it would be using some kind of CDN to do that.
+in this video, we dive deep into how GP uses different features of CDN to solve different kinds of problems, and while going through it, we will also take a look at a very interesting internal implementation detail of a CDL.
+but before we move forward, I'd like to talk to you about a course on system design that I've been running for over a year and a half now.
+ingenious from companies like Google, Microsoft, GitHub, slack, Facebook, Tesla, Yelp, Flipkart, dream11 and many, many, many more have taken this course and have some wonderful things to say.
+the course is focused on Building Systems, the way they are built in the real world.
+in all, we would be covering roughly 28 systems, and the detailed curriculum, split week by week, can be found in the course page linked in the description down below.
+the first one is the live cohort based course and the second one is the recorded offering.
+the Live code base course happens once every two months and will go on for eight weeks, while the recorded course contains the recordings from one of the past cohorts, as is.
+I've also put the link of this course page in the description down below and I'm looking forward to see you in my next cohort.
+so, Jiffy, you can host, serve and search gifs.
+it serves 10 billion media content every single day and, if you think about it, serving API is a relatively easier job.
+because when you're serving an API given a request, you send the Json response.
+these Json responses are are tiny, hardly one key bit at Max 2 KB, 3 KB, it would go in right.
+so, serving API, scaling it, it's relatively easier because you can guarantee millisecond level of response times from your backend servers.
+but the real challenge comes in for a company like Jiffy is, while they serve images like gifs and videos, the media content that they have.
+so, given that that is where the real challenge lies, and now obviously you can think of it that GP would be using to serve images and videos, some kind of CDs GP uses fastly as a CDN provider.
+so request for those images go to CDN, while the API responses go there go to their classic API servers, right?
+so we typically know what can be cash, static resources, static resources like images, videos, JS bundles and whatnot.
+so the idea here is, while you serve apis, right?
+so instead of giving you, basically, instead of giving the domain name of your API server, you give domain name of CDN and on CDN, configure origin or something else.
+this way you can serve API responses from CDN.
+but obviously you should not do, or you should not serve every single API from that.
+first of all, authentication API, because CDN has a cache in itself, like basic.
+CDL is a casual itself, so you would not want to Cache uh API responses of apis that are dynamic in nature.
+right for authentication API, you should not be serving it from the CDN.
+but what you can definitely serve is search and discover API responses because they very rarely change, like for a particular search query.
+you would very rarely change the responses, like maybe once a day.
+you may very easily capture API responses for trending for, let's say, three hours or five hours until your next job runs, right.
+Jiffy uses CDN to Cache images, videos and some apis around search and Discovery, right, okay, next then, why?
+CDN is not just to Cache things, but what it also does.
+for example, in for a company like Jiffy, where they have users all across the globe, what if their main data or their main images lie in, let's say, India and a user from the US is trying to access it?
+then, all across the world, the request needs to come across and then the response would be created here and then sent back.
+images, videos- they tend to be chunkier like.
+you use CDN, like Jiffy uses CDN to use geographical nearest.
+because CDN has Edge servers and these are called Edge servers.
+so people from the US, their request will go to the nearest Edge server if it has a data itself set.
+if it does not have the data, it comes to the origin, gets the data, caches it and then serves it.
+if H server has the data, good enough, it would serve it back.
+it goes to the origin, gets the data, caches it here and then sends the response to the user.
+right now here one very interesting detail, very, very, very interesting internal detail that comes our way is: hey, if?
+what could happen if there is a Content that is going viral now, obviously for a particular reason?
+there could be hundreds and thousands of AD servers for each region, right?
+so, given that, given that, as a use case, given that you may have thousands of AD servers and now each Edge server would have its own cache.
+each ad server has an independent cache, independent cash.
+if I think of, if a content is going viral from a particular region, a lot of requests will be originating from that particular region.
+now, obviously, because it's a each Edge server has an independent cache, the for that, the content going viral, there would be a lot of cache misses.
+given that there would be lot of cache misses, where would the request go to.
+it would go to the origin- maybe your S3, maybe your search service, maybe your backend API service, wherever right- and then it would put unnecessary load on your origin server.
+so if your content is going viral from a particular region, if that region has, let's say, 5 000 death servers, so request from all 5000 unit servers because there is a cache miss.
+a CDN employs something called as An Origin sheet.
+head servers are something which acts as the point of interface from your client, so user's requests come to that server.
+request for the ad server if it has a retired subset pack, if it does not have the data.
+instead of it's a directly talk to the origin and server makes a request to a shield server.
+this is an origin Shield server, now original Shield server are the ones that make call to origin to get the data and they have their own cache.
+so now what happens is request from that server comes to the shield server.
+now if Shield server has a data, it sends it back.
+this way, let's say, if I have four ad servers and two Shield servers, the number of requests going to origin will not be four for each Edge server, but it will be two for each Shield server.
+this way, CDN helps you prevent, or helps in preventing, making a large number of requests on the origin, be it S3, bit or API server.
+which other feature does Jiffy use?
+obviously, when you are setting or when you are using CDN as a cache, a CDN is a cache, so when you are configuring it you would want to specify that.
+no, it has to be very specific to the resource, which is where almost every single CDN provider gives you a way to specify the cash duration for each URL pattern.
+so, for example, for an API response like slash V1, slash GIF, slash trending, you might want to have a smaller duration, while when you're serving the actual GIF- let's say slash GIF, slash one, two, three, four, five, dot GIF- that would have a longer duration.
+the next feature that Jiffy uses is around response configured cache.
+now, obviously, you may not want to just do route based cash duration.
+so, which is where what you can alternatively do is, in the response coming from the origin, be it S3, beat or API server, you can configure a max age or s hyphen, max age header which your CDN can read and understand, and then cache that particular response for those many seconds, right?
+so this is where response oriented caching also comes that way.
+so what if you have an API that you cached on the CDN and now you want to invalidate it?
+but it's not just that single, so single APN validation is a very simple thing, so, and you can just ask your CDN making an API call that, hey, this is the URL, please invalidate the cache.
+it would invalid the cache right away.
+let's say you want to invalidate the API response, the cached API responses on the CDN that contains a specific GIF.
+so let's say there was a gif that you that got changed due to anything, or that got removed, not just change- that got deleted, right.
+so if that got delay edited, imagine if your API server or, sorry, imagine if that API response is cached on the CDN, right, and the GIF was deleted, so, which means that URL doesn't exist anymore.
+request from the user, request from the client to come in, because CDN has the Epi response.
+it would serve it in the API response.
+you should also be invalidating the cache, but it's not just the GIF URL.
+you will need to delete the 8 because API responses are cached on the CDN.
+you would want to invalidate the API response as that contains that specific chip.
+it's like, in simpleness, it's like tagging a cache key with something that you would want to access it and delete it with right.
+or just a Google search away to find those things out, right?
+so, invalidating cache API responses containing a specific chip- very common use case.
+then invalidating all cash API responses from an API key.
+so here you can make or you can generate your own API keys and use and integrate GP in your applications.
+so what if a client, a customer of Jiffy, wants to invalidate its own cache, like anything that it has ever accessed?
+then the next one is invalidating Cash API responses when the query contains a particular word.
+or you are basically caching search queries- uh, sorry, search API responses on CDN, my bad.
+uh, if you are doing that and let's say you would want to invalidate all the URLs or all the API responses that contains a particular word or that particular search tab, if you'd want to invalidate that- again a very common use case, typically when it comes to search ranking, right.
+when, let's say, you rewrite everything, you want to invalidate it, right.
+so, in case, think about surrogate Keys as tagging.
+you can leverage that, that specific tags, to eradicate or to invalidate the cache entities on the CDA, which is what subjects that is really important for a use case like Jiffy, right?
+so, yeah, such such amazing pieces of functionalities that CDN provides, I would highly, highly, highly encourage you to go through CDN documentation, like Akamai, fastly, cloudflare, and see the kind of features that they provide you.
+so I would again, highly, highly, highly, highly encourage you to explore those and see the beautiful world of cdnc, the kind of things that they provide, right?
+again, I would highly recommend you to check those things out for most more detail but, more importantly, go through serial documentation to understand the features that CDN gives you out of the box.
+just their documentation is good enough for you to understand the features that they offer, right?
+thanks, [Music].
+[Music].

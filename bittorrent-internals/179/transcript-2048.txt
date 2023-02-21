@@ -1,0 +1,69 @@
+in this fourth video of the BitTorrent internal series, we go deep and understand what the choke algorithm is, how it works and, most importantly, how, without having a central Authority, it ensures that no one abuses the P2P network.
+for example, it does not have a place which tells you it does not have a unit that tells you, hey, go and download this from this exact peer, or go and do exactly this, or you stop doing this, right?
+so there is no master, or there is no ring master in your network, given that it becomes very interesting on how, where equal peers that you have in the network, they talk to each other and formulate a way that maximizes the download speed for everyone and, second, that it prevents anyone from abusing the network.
+so it's a very natural tendency for any and every peer to download things as fast as possible.
+so Free Riders are the peers in the network who only download but never upload any content to the network, right?
+you don't want to upload, so that's a free rider, and what network has to do is it has to penalize them.
+otherwise, if there are a lot of Free Riders in the network, it's a very bad thing for the network, because everyone is just downloading from it.
+so a is allowed to download the file from B, but a chokes B, which means a would not send any file to B, right?
+so when we say a particular person is choked to buy another peer, which means that upload is prohibited, but you are allowed to still download the file, right, okay, but joking.
+so TCP congestion is a real thing and you would see this amplifying in a P2P network if there is no choking, right?
+so you would have to explicitly slow down on the rate of consumption across a network, otherwise lot of packet exchange would happen in your TCP would choke out.
+choking and unchoking aren't Perpetual, which means it would not happen forever.
+after a bunch of period, the network or the peers are choked and then unchoked, and then choked again and then installed again.
+an interested peer is someone who wants a piece that you have.
+there has to be something that says: hey, I am like prb, I am unchoking you, so now you can upload.
+now you want a file, I will send it to you, right?
+so what has happened is a first of all a is choked by B, which means a wants a piece.
+I'm unchoking you for some time so you can get the piece that I have and that you wanted, right?
+so how would you find which peers to choke and unchoke?
+a very simple thing that you may think of: hey, let me go with the download rate, so I'll unchoke a person that gives me the best download rate.
+right, that would be the very basic thing, because that's a very static metric that you have and you'll think, hey, because you, as a peer, want to download the fastest, so you will would want to, so you would want to get the file as fast as possible.
+so any peer will upload to the peers who give them the best download rate, correct, otherwise your download would be slow, right?
+I will upload to peers who give me the best downloading so that my file is getting downloaded much faster.
+so what this does is this encourages peers to let others download right, because what would happen is now that if you would want the best download rate, you would have to give data to them, otherwise you'll get slower download.
+so that's why it would encourage you to share your data with others, and it would prohibit Free Riders that never upload, because if you are never uploading, no one is unchoking you, so you'll never get anything to download.
+okay, so jokes algorithm: uh, like we know, that appear in the network, can be a cedar or it can be a leader.
+we'll talk about jokes algorithm when in when a peer is in a leecher state, right, which means when the peer is downloading at that time, how choke algorithm works?
+so when in Leisure State, the choke algorithm is invoked every 10 seconds, 10 seconds is this unit of period, right?
+so, for example, if I have a peer set and if someone leaves it, which means that that peer got disconnected or I got a new peer set or anything happened, if any time a peer leaves appear set, this algorithm is invoked.
+right, because what would happen is because of interested like, if like say I am a, and if someone says I'm interested in you, which means that I have a piece that that person wants, so if I give that person that piece, then that would person would allow me to download something.
+so every time someone is interested in you, which means that you are increasing your chances of having a faster download by unchocking others, right?
+step number one: every 10 seconds, pra orders the interested remote peers by the download rate.
+whoever give me the best download I'll move forward with them, right?
+like they want something from a and then only a can like then only a would unchoke, right, if they are not interested in y.
+so PR a orders the interested remote peers by their download rates to a right and the fastest three are unchoked.
+so three of the fastest PS from which I can download the fastest, I'll unchoke them so long as they're interested in me, right?
+this is called a regular, which is basically unchoking on the basis of the download rate.
+second, for regular unchoke, the peers are ordered by the download rate to the local peers.
+no, it's a download rate, because in a P2P Network the peer can be sitting anywhere in the world.
+so the peers are ordered by the download rate to the local peer and who have sent at least one block in last 30 seconds.
+so for regular unchoke, the peers are ordered by the download rate to the local peer and who have sent at least one block in last 30 seconds.
+if you look at this, all of this, this algorithm is already trying to increase your download speed, right?
+so, every 30 seconds, one additional interested peer is unchoked at random.
+so, for example, IMA, I have a bunch of pieces, a lot of peers are interested in me, right, I am first ordering them by download rate that I'll get.
+I am unblocking three of them, I'm unchocking three of them, right, but every 30 second I'll, from All N minus three peers that are there, I'll unchoke one at random.
+for example, let's say a new peer entered the system and that Beyond has amazing download speed of, let's say, 500 Mbps then, but if no one gives it a chance, how would people leverage that download speed right?
+so that is where, uh, what would happen is you are giving chance to the new peers to evaluate their download capacity so that other people would get the faster downwards right?
+So eventually, after this step, you would exactly unchoke four peers, three having the fastest download.
+so if you unchalk a particular peer and that peer is not interested- for example, you chose up here at random right- and if that peer is not interested in the content that you have, you would still unchoke that person, but you would continue to hunt because what you'd want to promote, you would want to give chances to peers who want something from you, because that would overall increase the file distribution speed in the network.
+so if upload rate is high, more peers would unchock it giving a faster download.
+Free Riders never upload, so they only download, and hence other peers who, uh, who, uh, when they're choosing whom to unchoke a free rider will be the last in the list because of the Sorting criteria, because sorting criteria does what it is: sorting on the basis of the download speed that I am getting: download speed from when I'm trying to pull the data from the peer.
+for if I am, as a peer, unchoked by everyone- I'm sorry, I must appear, who is choked by everyone, but so?
+I can only rely on optimistic unchock that, hey, someone would randomly pick me and unchoke so that I can download the, I can get the file that I want.
+so what would happen is when I'll retaliate and say I'll not upload to anyone who is not giving me anything, what would happen is it would increase the number of optimistic unchokes in the network, because now there would be very few peers, because when this nubbing is happening, when no one is giving anything, the number of random selections would increase.
+very high chance that the net, the peer who is choked by everyone, gets unchoked to buy some.
+but to increase the number of optimistic unchokes, it retaliates and take a lot upload to anyone, increasing the number of optimistic unchokes and thus the algorithm moves forward, maximizing the download speed in the system.
+so with the for a seeder, the choke algorithm is executed every 10 seconds or every time a peer leaves a peer set, similar to the Leisure State, and all right.
+now, first step: the algorithm orders peers according to the time they were last unchoked.
+this way, what would happen is the I because you cannot just give, because you just cannot give, like sorry, why you cannot order it by upload speed.
+a Free Rider with a very fast download speed can come in the network and your Cedar would continuously give it to them.
+problem because you'd want to penalize the Free Rider, right?
+you would not have your sorting criteria based on the download speed of the peer or the upload speed of- or sorry, the download speed of- the peer, but instead you do it on the last unchoked time, because your Free Rider will be not unchoked frequently, so they would move back in the list with respect to the sorted criteria.
+so the algorithm orders the peers according to the time they were last unchoked, just to prevent Free Rider from leveraging it.
+so higher upload rate is a priority, right, but before that you would be ordering it by the last unchoked time, so that Free Riders- last one, took the like- they would be very infrequently unchoked, so they would be always behind or they would be always lagging in the sorted list.
+what you are ensuring is you are giving the most to the network as a seeder, while not getting overwhelmed how Cedar is not unchoking based on the upload rate.
+because what is happening is you are picking three fast or three from the three from the sorted list and one at random, right, and because of this random, you are giving chances to other peers to get stuff from Cedar, because Cedar has the entire file.
+so that is where, with this random peer getting unchoked you are.
+with that one random unchoke that you are doing, you are promoting the fast distribution of pieces in the network and that is brilliant.
+so this is what the choke algorithm is all about: the stroke algorithm, how it- uh, How It penalizes Free Riders, how it boosts your overall download rate, how it works on the principle of reciprocity, and we saw how what algorithm is when your PR is in a cedar State and when the peer is in a Leisure state.

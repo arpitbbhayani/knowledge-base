@@ -1,0 +1,60 @@
+serverless computing is one of the hottest topic of discussions today, but the term serverless is slightly misleading and it definitely does not mean that there is no server executing your code.
+in this video, we talk about what serverless computing is, see why it was built in the first place, learn about five real world use cases that become super efficient with serverless architecture, understand the advantages and, more importantly, the disadvantages of adopting serverless, and conclude with acknowledging when to use and when not to use this computation pattern.
+but before we move forward, i'd want to talk to you about a code based course, or system design, that i have been running since march 2021.
+so in a traditional computation environment, what you have is you typically have a server which has specific ram, specific cpu, specific hard disk that runs your code and when your user, end user, makes an api call, the api hits your server server does that computation and then it returns the response right.
+hypothetically, let's say, we allocated a 4 gb ram and a and a dual core cpu to that machine, and this configuration is enough for us to handle 1000 requests per second.
+so when the server is running, so when you spin up a server that is continuously running, and when that server is continuously running, which means that we have provisioned a server to handle a continuous load of 1000 requests per second, right?
+but you have provisioned your server to be handling, for uh, to be handling 1000 requests per second continuously, by giving it 4 gb ram and 2 core cpu.
+which means that your server, your, your, you have over provisioned your server by a massive margin just to handle that peak load of 1000 requests per second, while for other use cases, like for other times, when you are not even seeing 10 requests or 5 requests or two requests per second, why are you wasting 4 gb of ram on that machine?
+so what if you deploy your code onto- not your server on the serverless architecture, onto some infrastructure, and what that infrastructure does is as you get.
+so, like, depending on the incoming traffic, your infrastructure would automatically scale up and scale down, and you don't have to worry about it.
+and when you suddenly hit that pick, your infrastructure would automatically scale up to handle the peak traffic of 1000 requests per second and then it would drop down accordingly.
+you have just deployed your core business logic onto aws lambda, which is their serverless offering, and it would automatically scale up and scale down depending on the request it comes in.
+you don't even know the rules that they have applied, and what you get build is you get built per execution, which means every time a request comes in, your lambda function runs.
+you are build for the time that which the lambda function runs, which means that when you are seeing five requests per second- hypothetically, let's say it- it cost you one dollar for every request that comes in here.
+so the amount of time for which your your lambda function was executing, you are billed for that, which means when there is no traffic, you are not build even a penny.
+so serverless architecture are typically focused at a better cost optimization, which means that you are not- you are not- over spending on your infrastructure by creating a traditional big server.
+basically, servers does not mean that there is no server on which your code is running like.
+obviously your code needs a server to run, but it implies- the word serverless implies- that you are not managing or scaling the server.
+so, depending what your traffic pattern is- the serverless function or the co, the server on which your serverless code is running- that would automatically scale up, scale down- uh, horizontally scale.
+you put it into serverless environment and you forgot about it because it is running like: if you get traffic, you will get built.
+so all major cloud providers give you serverless offering in some or the other flavor, but the core idea behind serverless still remains the same: on-demand pricing, right and elastic infrastructure.
+azure gives you azure- uh, azure serverless functions right.
+so, depending on which cloud you are using, you can pick any of this up or, like, you can pick the corresponding uh serverless offering of this and see how it uh and and actually adopt it for your use case.
+i'm i'm just taking a very common, very simple use case just to make you understand on, uh, the advantages of using serverless over here.
+so now what would happen is like: do you really expect that this kind of use case would get constant traffic?
+do you really need to keep a server, let's say, 1gb big server- continuously running for this use case?
+as soon as you get this and as soon as a serverless function kicks in, it would run that execution.
+obviously this is an over simplification of the architecture, but you get digest where for an infrequent access or infrequent traffic pattern like this, you don't need a constantly running machine.
+so whenever you would submit, or whenever a user would submit, a code for automatic evaluation, what you can actually do is you can trigger a serverless function with the code submission and the test cases that you have and the serverless would execute the code because it is stateless.
+so, upon every submission, you can trigger a serverless function which then can update the status of each test case in the database and you might have a traditional server api service on which the, the- your user, is conditionally refreshing or seeing the status of how many test case pass and fit you.
+so now, with this in place, you don't really care how many, how many submissions have happened in a minute, because your server list will automatically scale out and handle the traffic that it is getting.
+here the execution of your function would be time bound right, which means that within one minute all the test case should run.
+again, a very perfect use case for your serverless architecture.
+you are remove, like you are devoid of all the complications that come with managing servers, because now you, like your cloud vendor, would guarantee that the server, that your serverless, which is scheduled to be executed at a particular time, will execute at that particular time.
+so it saves you bunch of your servers and obviously, like always, because this serverless function is executing just once every day, you'll be billed only for that small execution, which is, let's say, 100 millisecond of your api call.
+you will only build 400 millisecond every day, rather than a server constantly running for that solid use case for serverless.
+batch and stream processing are perfect use cases for serverless- uh, for for serverless architecture, because you don't have to manage the servers and it is and it all seamlessly works like it just works, right, because- and supposedly, if you get a spike, if you get a spike in the number of messages, your serverless would automatically scale up.
+you cannot even have two servers running that crontab, because then the same function would be executed twice, right?
+you need to have security patches, like if, once a while, you will discover that your servers are having a massive security loophole which you would need to patch by not having an ec2 machine, by not having a server, by using serverless, that entire headache is offloaded to your cloud provider, let's say aws, gcp.
+so most serverless functions, they are built on the amount of time there execute.
+so, whenever a server- uh, whenever a serverless- executes, you can configure, key.
+pricing is extremely cost efficient because if you having a very bursty traffic, you don't need to constantly provision a server that is handled or basically, that is provision for the peak.
+you as human might not be able to configure your scaling policies well, but serverless would be very quickly, like, obviously, machine learning, ai and whatnot.
+uh, this burden is all taken care of, right, and most traditional architectures, most traditional, are getting like, uh, the server full way of computing they are.
+these are more important advantages, like when to not use serverless, or rather overall disadvantages, and then we'll talk about when not to use serverless inventory servers.
+with cold start problem, what happens is, as i said, when there is no traffic, you are not built for that- which means the underlying infrastructure for your serverless function might not even be up- the container on which it is running, it might be sleeping, it might be turned off and when the request comes in, the machine needs to boot up the under, although the boot up happens quickly, but it needs to boot up.
+like every serverless uh function or every service architecture suffers from this cold start problem.
+the second problem is that, or the second disadvantage, is that this serverless architecture is not built for long running process.
+there is a maximum amount of time for which a serverless function would execute and aws it is 15 minutes, which means that you cannot deploy a logic that would take more than 15 minutes to execute.
+so if you are having a workload that requires a long running process, serverless is not for you, right, a traditional server is always a better choice in that.
+uh, the logs that you like, the to principle right on the serverless function goes into the logging which is offered by your cloud, let's say aws lambda function.
+but if you have a very small use case, you don't have a gigantic complex workflow that is very easily debugged and test and put into serverless.
+so if i am running my workload on aws laminar functions, then it will be very hard for me to move only the only the serverless workload onto some other, although it's better, it's more resilient, it's very cost efficient as compared to aws, but i cannot move that and because it- because i have to change a lot of part- it's not a seamless transition, right?
+so if you know that the workload is remaining fairly constant in, let's say, 1000 requests per second, adopting serverless for that will be costlier as compared to a traditional server architecture because you can predict the load, which means that you are provisioning an infrastructure for that specific, constant and predictable load that you are getting.
+you can typically isolate your api servers per customers, but serverless all execute on the same underlying infrastructure given to you by your cloud provider, so all of them will be using the same interest, same underlying infrastructure, which means that you cannot get complete multi-tenancy out there.
+if you, you should not be using serverless because, like when you are adopting it just because it is cool, and this is the biggest mistake that i've seen people make, where they blindly adopt serverless just because it's cool and it's cost efficient, and all without understanding their use case, without understanding what kind of traffic they would be getting.
+now let's talk about when should you use serverless?
+now let's talk about when should you use serverless?
+just as a conclusion, when you want to quickly build and prototype and test and deploy your application, like i am running a lot of my workloads on serverless and, to be really honest, to run my course, it is literally taking me three rupees of monthly infrastructure cost because my entire workload is on serverless and i'm totally on aws.
+like i'm not getting enough traffic on that, right?

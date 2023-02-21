@@ -1,0 +1,69 @@
+in the previous video, we took a look at why programming languages need an automatic garbage collection and what are the key metrics and characteristics we'll look at while picking one.
+in this video, we take a detailed look into one of the most common garbage collection algorithm out there, called mark and sweep.
+instead of just talking about the mark and the sweep phase of it, we will dive into the details and the nuances of the key decisions made by the algorithm and we'll take a look at two super interesting optimizations that would boost the performance of the algorithm by a massive factor.
+but before we move forward, i'd want to talk to you about a code based course on system design that i have been running since march 2021.
+start right: when you create, when you allocate the instances of the structs on the heap, you can link them through this pointer objects and and when you are linking this to this pointer object.
+similarly, for n global variables you might have, just over simplifying things, that you might have n such small graphs, right, and mark and sweep operates on this object reference graph, if you, if you may call it right.
+so the idea here is mark and swift garbage collection is split into two phases: the marking phase and the sweeping phase.
+in the marking phase, it starts iterating through all of these root nodes and sees which all objects are reachable from them.
+and the objects which are reachable from them, it marks them right.
+these objects are live, i don't want to clean them up, right?
+so after the marking phase is done, you will have all the reachable objects marked as life, right?
+in the sweeping phase, we go through all the objects out there and see the objects which are not marked.
+the objects which are not marked are garbage because they are supposedly not reference anywhere, which has unreachable from the root nodes.
+right, and when that is the case, you can your garbage collection can trigger, like in the sweeping phase, it can actually start deallocating the memory that it allocated to those objects before because now they are not referenced.
+like, this is an indirect collection algorithm, which means that the algorithm does not know which nodes are garbage or which objects are garbage.
+instead, what it does is it sees what's life and the objects that are not life become the garbage, which is why it is an indirection collection algorithm, right?
+so there is another algorithm called reference counting, which is a direct collection algorithm which knows: hey, this object is garbage, margins whip.
+on the other hand, it does not know which which object is a garbage, so that's why it has to go through all the nodes, which is okay, these are reachable, so this is not garbage and what is not marked becomes the garbage, right?
+so mutator thread is, yeah, is like your normal user development stuff, where these threads would create objects, would read objects, would write objects.
+normal thread, like when you do malloc, when you're invoking new, when you read an object, when you write.
+so anything related to the program that you are writing is part of mutator thread, whose job is to mutate something in your heap while your, while there is something called as a collector thread, and this collector thread is the one that is running your garbage collection, which is what is called as a collector thread, right?
+so to simplify our understanding of mark and sweep and obviously, as we move forward into this garbage collection series, we will.
+so when we look at any garbage collection in general, what you will find is that any automatic memory management system has three tasks.
+first, one is allocate, as in that memory management system of that programming language needs to allocate space for the new objects that we want.
+like when would you trigger your garbage collection?
+the simplest way to trigger a garbage collection is when you are unable to allocate a new memory to it, or like when your programming language or when your usual business logic stuff is trying to do an allocation of an object but it is failing.
+that's when you can trigger a garbage collection, right?
+if obj is null, which means allocation did not happen, that's when you trigger collect.
+collect is the one that would invoke the garbage collector, right.
+so, depending on the algorithm that you have plugged in, mark and swap reference counting what not, this would trigger the collection of the dead objects, right.
+once it tries to reallocate if it is still unable to allocate, which means that literally there was no garbage available and your program is actually out of memory, right, that's where it might throw an out of memory error, which in most cases is a fatal error.
+but in most cases you would see this as a fatal error where your process crashes because it was not unable to allocate new memory onto the or new object into the heap right.
+but if this failure path didn't happen- which means the allocation was succeeded- then it would return the object right.
+so here this is a very simple and standard way of allocating a new object.
+this, the programming language, would do it like internally, uh, your new function in your java, or whenever you are creating a new object in the heap, internally it would do this.
+if it is not able to allocate the object, then to trigger the garbage collection.
+if, once the garbage is collected, it will try to reallocate it.
+the red ones are the objects which are there in your memory, but they are dead right.
+once it returns null, what it would do is it would trigger garbage collection.
+once it triggers garbage collection, it would delete this and this because these are dead objects, and then try to really get.
+and this is exactly what happens in your memory management of your programming language, right.
+so now we talk about the phases of mark and sweep.
+so in this one, what we definitely want to identify is identify all possible root nodes, right, key, hey, these are all the global variables from which i will start tracing all of my live objects, like objects referenced from this global variable, are live object reference.
+we will talk about this later, uh, in this particular series, but for now, assume that there is a function called get roots which somehow returns the roots, as in all the roots that you have the references to those objects which are the roots, uh, from which you would have to start your mark and sweep right.
+now this is like a work list that you have, in which what you are doing is, once something is marked as life, you add it to the list so that you can visit the, you can visit the, the, the children pointers of this particular reference, of this particular object after some time, right.
+so all the roots are added into this work list after marking right.
+now one very interesting optimization that you can do over here is you can trigger mark as soon as you, as soon as you added, or as soon as you added root into the list, you can invoke the marking phase so, as in, you can immediately start iterating from that root and start marking the root node or the or the child nodes of it.
+what this does is that, for example, as because immediately as you added root into the list, you are immediately invoking the actual marking phase where you would trigger the, your trigger the depth first search algorithm, right, but here we are doing it every time the route is added, because what it would make mean is if, let's say, your, if you are waiting for all the routes to be marked and then you are triggering the marking phase, then your work list might be gigantic, right?
+so whatever is there in the work list, it would trigger the mark base for that and it would then, like you will always have a bare minimum needed work list instead of having a very gigantic list of all possible nodes out there, you are operating at smaller scale.
+this might not be the best choice where you are triggering mark again and again, right?
+but in case you are running a very simplistic mark and save collector, this is a very interesting optimization that would keep the size of this list to a bare minimum right.
+what we are doing is we are actually marking that and then adding the child back into it, right?
+like normal dfs algorithm, for each route we initialize the mark, we we initiate the marking part of it in which we traverse all the objects that are reachable from it, right?
+this way, the loop, this process, this depth versus travis, will continue until every single object that is reachable from the graph is reached or is marked, right.
+so once we do that, after this phase, all the reachable objects are marked and then we can trigger the next set of process, or the next set of uh, or the next phase, which is the sweeping phase.
+right after this step, any object that is not marked becomes the garbage, which is what our indirection collection algorithm was all about, right?
+and when this became the uh, when the nodes which are not marked becomes the garbage, what we have to do is we have to initiate the sweeping phase.
+that would iterate over all objects and would sweep out all the garbage out there, right?
+so that's what triggers the phase four, which is the sweeping phase, in which what we do is we iterate through all the objects out there, all the objects, not the root, all the objects out there.
+so if the object is marked, right, if the object is sorry, if the object is not marked, we are mark or we are freeing that a particular object, because, which means that object is not like, we have to free it.
+because when we initiated the cycle, what we were doing is we were always we assume that all the objects are unmarked and then we start marking it starting from the root node, correct.
+so in the same iteration of the sweeping phase, what we are actually doing is we are not only just freeing the object, but we are resetting the mark bit right, so that we are prepared for the next garbage collection cycle.
+it's all part of the sweeping phase, right?
+so this way we are- i look or we are- uh, the sweep phase is not only cleaning up the garbage but also preparing your memory management system or your object references for the next garbage collection cycle.
+how, like, for example, we can save that particular effort by by, by flipping what the bit means.
+so every even cycle, like let's say you have the first cycle, if the bit is set to one, you say that object is marked and the bit is set to zero, you say object is unmarked, right.
+so this is one super optimization that you can leverage in order to speed up your entire garbage collection process, right, by just flipping uh the meaning of the bit, so that you don't have to reset it every time.
+oh, okay, so yeah, that's the basic idea behind uh the garbage, uh behind the mark and swift garbage collection thing.
+in the future videos we will take a look into other detail stuff around garbage collection, like most probably the next video will be, or the next video will be, about the tri-color abstraction.

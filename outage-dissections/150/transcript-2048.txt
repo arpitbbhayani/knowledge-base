@@ -1,0 +1,77 @@
+so github wanted to optimize their sql query performance and they had to flip a database index.
+this outage gives us a super in-depth insight into mysql and its indexing capabilities.
+so in this video, let's dissect this outage, understand what happened, why github had to flip their index, how things went wrong and affected end users like us, and conclude with three super important key takeaways from this outage.
+engineers from companies like google, microsoft, github, slack, facebook, tesla, yelp, flipkart, dream 11 and many, many, many more have taken this course and have some wonderful things to say.
+the first one is the live cohort discourse which you see on the left side, and the second one is the recorded course which you can see on the right side.
+this is what github team says is: this incident was caused by a database migration to flip the order of an index, which means they had an index like any database that you use, let's say sql database, in order to improve the read performance, you create index on top of it.
+when that index is stored, it is stored in the ascending order of user id, right?
+and github team had to run a database migration to flip the order of an index.
+in a table where you have 10 or 15 columns, the two important columns are user id and date and you have like, whenever you are querying on it, you are always squaring on user id comma, date combination, which means, in order to improve the performance, for that you would create a composite index or you would create an index that involves multiple columns, right?
+so let's say the most common use case for us is for the commits table is to get commits for a repository in the descending order, for uh in the descending order of time.
+so what you will have: you will have an index of the date column which is in the descending order of time, and because you are querying on user id rate combination, you would have an index in which you are storing the combination user id, comma, date order, uh, which is stored in an ascending order, but you are querying or deciding, which is perfectly fine because it would do a reverse index scan.
+let's say, for a change in product record- hypothetical requirement- what we want is get commits ordered by date in descending order and for each day, order by user in ascending order.
+so now what we want is we want to have the same capability of querying the data, but we want date in descending order but user id in ascending order.
+so when we have a use case like this, where you are ordering by something in a particular order and in the reverse, you are making a call for other column, both part of your index, what happens?
+your database engine, when it wants to compute this, it has no other resort but to do a file sort which is very expensive as compared to index with respect to index operations, right?
+so if you would have had the right set of index on those particular column, you would have had a very quick response time, or you or your query would have executed much, much, much faster.
+but now, because indexing the way your index is structured right now, both ascending- there is no way for a database engine to very quickly compute your answer.
+that's why it would resort to something called as file sort, in which it does kind of like a full table scan.
+would not want to go into those details, but very expensive, had to do a lot of disk ios, operate on the actual table data and do a lot of like.
+so key, take away from this two columns you want, one ordered in ascending order, one ordered in descending order.
+but by default both indexes or both the columns are ordered in ascending order in mysql.
+so they had to flip the order so that they could make this query much more efficient, right?
+otherwise it would have incurred a lot of disk ios onto a database, degrading the entire performance, right?
+so now to answer this query, we want a date in descending order, user id in ascending order.
+this is supported by mysql version 8, right, where you can specify that: hey, i want to create an index on the date column in ascendant, in descending order, while user id on ascending order.
+so the way this index would be structured onto your disk would have date and descending and the user id in ascending, which would make your uh, your required query much, much, much faster too when it is executing.
+okay, what they say in the outage is: reversing the index caused a full table scan.
+so they tried to reverse an index, which they had to, and it caused a full table scale, since there was a missed dependency on the changed index by a generated active record query.
+they said that reversing the index caused a full table scan.
+so they were trying to flip the index and it caused a full table scan.
+obviously, when you are creating an index like it would require you to do a full table scan in any case.
+right, so creating because they were creating a new index in a different order, they had to go through all the rows and create a new index so that anywhere requires full tables can.
+what i also say is reversing index caused a full table scan since there was a missed dependency on the changed index.
+this means that index that was being changed there was a dependency by a generated active record query what is active record?
+if your java person use hybrid to query on your database, that is orm.
+so instead of writing raw sequel queries, folks write like normal ruby code using active record that translates into sql query and gets fired onto the database engine.
+so now when you change the order of the index.
+some queries like: obviously you thought that, hey, now my requirement has changed and i want a date in descending order, user id in ascending order.
+who wanted both of them in ascending order could be right.
+but the new query that you are trying to optimize for, like, you didn't even know this query existed, or a query existed that required both of them in ascending order.
+you are trying to optimize this response time, but the other query that you did not know existed is now inefficient because you flip the order.
+this would cause a lot of load on your database, because this is much more frequent than what you are trying to optimize for.
+because of a pure blind spot, you didn't know that query existed or that use case even existed right.
+second case is some queries might not use the new index, like, for example, you flip the order and you created a new index out of it.
+now someone has to use this index right now.
+it is very much possible that when you are firing a query onto your database, your database engine would try to do its best to pick the best index in order to execute your query.
+what if your database is not picking the new index that you created due to some reason, due to you, one of the reason being that, according to your database estimations, it is not efficient to use the new index that you created due to like it did not analyze the table, it did not get time to check the index and what not, but it is not part of your query exec or it is not part of the query execution plan created by your database, then, even though you have created that index, your database is not using it, which means that it would have to do a full table scan, right?
+these are the two possible reasons that i could think of, which would lead to a very inefficient execution of your query, even though you created a new index trying to optimize it, right?
+so when you say that, hey, database did not pick it, or database did not thought, or database did not think that using this index would optimize it, but you as a developer, you as an engineer, you know the database should have used this index.
+so how can you tell your database: hey, stupid database, use this particular index.
+when you do that, you are telling your database: hey, database, you can use this index to execute this query.
+but there is another hint called force index, which would tell a database you have to use this index right.
+so, for example, due to any reason, if your database is not picking the right index to execute your query- which you, as an engineer, are thinking is much better- then you can force your database to use a particular index by using indexings, right.
+is it not using the right set of indexes?
+the performance degradation due to the table scan had a cascading effect, obviously.
+so they had a cascading effect on query response time, which resulted in timeouts for various dependent services.
+as expected, because you are doing a foldtable scan, it is becoming very inefficient to fire that query and obviously it would take a lot of time.
+so because one query was doing a full table scan, it takes time.
+so, putting a load onto the db, it would impact not only the response time of that query but every other query that is executing on the db.
+so here what you'll see: this is a very cascading effect where the database is under load or is doing a lot of work leading to a lot of time service for going into- like your service talking to database going into timeout depending services going into timeout main service going into the timeout api gateway going into a timeout timer, cascading to our end user.
+so, if you are changing a particular index, you need to know what else could be affected.
+right, similar to that with index regression by changing the index that you have or if you are changing a particular index you would want to test.
+second, is they're also creating an inventory of indexes used by generated queries to further ensure that we are compliant on all active record best practices.
+so key takeaway number one: do not blindly trust your orm, orm active record.
+it is not meant to do that like they tried their best, but it cannot cover all possible cases, right?
+second key takeaway is always check the query execution plan.
+so what you should be doing is, whenever you are changing your index or changing, making any change in your database, evaluate the query execution plan.
+you get query execution plan in your output, store it in your dv and then run a simple script to check what changed that.
+what changed in the query execution plan?
+you can just audit what changed and see if it still is an optimal way to execute your query.
+if not, alter your query and make it optimal right.
+so i always check your query execution plan.
+and third is audit the queries and indexes they use.
+is they prepared an inventory of the queries and the indexes they use?
+again, from the query execution plan you can get which indexes are these queries using.
+if you make any alterations in any table that affects that particular index, you can quickly go and test only those queries which might be affected to just quickly test for regressions at scale.
+indeed, it's very fascinating on how optimal your sql query execution can get with the right set of indexes.

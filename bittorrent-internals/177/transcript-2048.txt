@@ -1,0 +1,87 @@
+so to download or upload any file from the torrent network, we need a torrent file, but what exactly is this file?
+in this second video of the bittorrent internal series, we take a detailed look into the dot torrent file and understand its life cycle, what information it holds and the encoding that it uses to structure the data internally.
+the first one is the live cohort discourse which you see on the left side, and the second one is the recorded course which you can see on the right side.
+thanks, so when a user wants to download any file from the torrent network, it needs a dot torrent file.
+dot torrent file holds the information about the file that the user wants to download.
+so, for example, if you'd want to download an ubuntu operating system from the torrent network, that ubuntu operating system iso image would have a torrent file.
+you download the torrent file, which would have the meta information about the particular image, and then you can go to the network and download the file with the usual flow.
+so the life cycle of a torrent file is pretty simple.
+seeders are seeding the data in the network right, and so long as you have at least one seeder in the network who is serving the file, your torrent is alive.
+and what separates this p2p network from a classic blockchain slash cryptocurrency use case is that with p2p, with bittorrent, there is no incentive for anyone to join a torrent and become a seeder, because cedar is the one who is seeding the content.
+and when now the overall flow that it looks like it becomes something like this: user first downloads a torrent file from a website.
+let's say you want to download ubuntu image, you go to ubuntuorg and you can get the dot torrent file from that, and then you use your client.
+let's say you'd use bittorrent client and open the file in the bittorrent and it would start downloading the file from the p2p network of that particular ubuntu image.
+either you can continue your bittorrent client and become a seeder, because now you hold the file, so you can now seed the file to the network if anyone wants to download it.
+otherwise you can just discard the torrent file and just basically kill your process, right?
+once your file is downloaded, you automatically, from leecher, become a seeder and you start seeding the content there.
+right now let's take a look at what is there in the torrent file.
+so torrent file is a static file, so no matter when you download the file, it would have the exact same content.
+it holds the meta information about the file instead of the actual data.
+so in the ubuntu images torrent file, it would have the information about the image and not the data of the image, right?
+there is a central entity called tracker which keeps track of which all peers have what kind of data, right, it holds that information.
+so, given that it holds that information, for a user to download the part and join the network, it needs to know which tracker is every node sending data to.
+whoever wants to join the network needs to talk to the corresponding tracker.
+that it would find in the dot torrent file.
+so if i want to download an ubuntu image, i'll download the torrent file.
+i'll read the announce, i'll get the url and that is the tracker that i'll talk to, right for that particular file.
+so the torrent file that you have is just a dictionary.
+it's just a dictionary of key value pairs where first five keys that i talked about is announce, created by created date, uh, encoding comment.
+info is a dictionary, so it's a dictionary within a dictionary and what it holds is it holds the information about the file itself, which means if i'm downloading the ubuntu image, it would contain the information about the ubuntu image itself.
+so you would have seen that in torrent there are two types of downloads.
+first is a single file download.
+right, because you might want to download a folder from the torrent network so you can also stream a folder content directly instead of just a file.
+that's a single file format that has three fields in the info dictionary.
+files is a list of dictionary which would contain information about each file in the particular directory.
+you have a directory that you would want to put out in the torrent network.
+the name field in the multifile format holds that information right.
+in that directory you would have multiple files that you would want to put out right.
+so for each file you would have a dictionary entry made in this info director, in this info dictionary, and each of that entry would have the length of that particular file, the md5 sum of that file and the path of the file in like, for example, if i have a dictionary that i'm, if i have a directory that i'm serving, in that directory i have a file a dot txt, b dot txt and c dot txt.
+it will start downloading the content, right.
+but one very interesting thing: the weight stores the path of the file.
+for example, if i have path like slash a, slash, b, c dot txt in the torrent file, it would be stored as a list of strings: a, comma, b, comma, c, dot txt.
+how would i know where to download from, like, where are the pieces in the blocks?
+this is where, in the info dictionary itself, there is two very important fields which are like super critical.
+so we need to store somewhere that these file has these pieces.
+this is also part of a torrent file.
+for example, i can have a 1 mb piece of my file.
+so i'll have 1000 entries, 1024 entries, for that right, and each piece length is two, four mb.
+right, it would store that much, uh, that value there as a piece length and then the actual pieces.
+what it would do is for each piece that it has, it stores a 20 byte java hash of it and concatenated across.
+uh, sorry, i have three pieces of my file.
+and what i'll store in the pieces is concatenation of my sha hashes.
+pieces would have 60 bytes of storage where each of the 20 byte in holds information is the sha of the corresponding piece, right, and this is what you, and this is exactly the information that you are storing in your dot torrent file and this is what would help you get.
+now that i have a torrent file, do i have all the pieces with me or not?
+i'll go to the peers and download the corresponding piece and then i'll just concatenate it locally to have my entire file ready.
+right, and this is what your dot torrent file stores: the dot torrent file, the two most critical functions that you source is a piece length and pieces.
+pieces is just a concatenation of 20 bytes of all the pieces of your particular file, but how it actually stores, or what encoding it uses to store, to create that file.
+when i say dictionary, it's not json, it's not json, it's something called as be encoding, right?
+but to download the actual file, what it would do is it would first decode the dot torrent file and understand the information that we just discussed, like what's the announce url, what are the pieces, what is the piece length, who created it in other information, right.
+so it would need, like it would need, to read the dot torrent file to extract this inversion.
+so that is where it would pass it through a small decoder and which would give you the torrent information in the human or into the, into the processable format, right, and this decoder is a b encoding decoder, right?
+it's a very simple encoding and a very fun one to write right.
+so every torrent file is b encoded and it's a dictionary.
+so torrent file is a dictionary of key value pair.
+it supports only four types: strings, list, integer and dictionaries.
+right, a string is formatted something like this: it has a format of length colon string.
+so, for example, if i want to store arpit, a r p i t would be stored or would be b encoded as five colon: a r p i t, so five is the length, because urban has five characters, so five colon ar pid.
+this is what a b encoded string looks like.
+b encoded integers are stored as i, then your actual integer and then e for end.
+so representing 10 in my b encoding would be i 10, e, right then.
+the third type is list list could store any b encoded values, right?
+encoded values could be string in list and dictionary.
+so the format that a list holds is l, then b encoded values and then e as an end of the list.
+so if i want to store a list of string, a, string b and an integer 1, what i would have is i would have l, 1 a, 1 b.
+right, because i have first as a string of, i'm storing a, which is of one character, uh, the, the length is one character, so i have one colon a.
+so a list of string a, string b in t and integer one is encoded like this and then final element, uh, final time, that it supports is dictionary.
+dictionary is d and then b encoded string, then b encoded value and a repetition of it is basically storing the key value pair that you have ending with an e, so d and e, and within that you would be having key value, key value, key value, k value that you are storing and key has to be an integer.
+so, for example, if i'm storing a dictionary of keys where keys i have is string a with value 1, string b with value 2, my dictionary, which is b encoded, would look something like this: d: 1 colon a, i 1 e, 1 colon b, i to e, e, right, so my dictionary ends.
+if one is an integer, so it would be i, one e, then key is b, b is one colon b, and then two is i to e, right?
+so your torrent file is nothing but a dictionary, a dictionary of all the attributes we discussed, like announce, created, ad creation, date, created by uh pieces, piece, info, all of that.
+so it's a b encoded dictionary, so entire torrent file is be encoded.
+so if you write a small parser, a b encoding parser, you can parse your torrent file itself.
+and, to be really honest, it hardly takes 15 minutes to write a b encoding parser, but i would highly encourage you to write one, right?
+you just have to write a small recursive parser to pass the b encoding files and once you do that, you can read your own torrent file and extract the information and then start writing your client.
+like when you get it on and when you get the torrent file, you first need to understand the information of it and then start downloading the file from elsewhere.
+so yeah, and that is how your torrent file is structured, is encoded and serialized in the format that anyone in the world can understand.
+so anyone in the world who can understand b encoding can understand the torrent file and then extract the information out of it and then do whatever it wants to right and the information that it holds- announce pieces, piece length, very critical information.
+using that information, it would start downloading the file, which will talk about it in the next video.

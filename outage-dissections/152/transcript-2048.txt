@@ -1,0 +1,90 @@
+has it ever happened to you that you anticipated that something would go wrong?
+hence you proactively fixed it, but it still went wrong?
+this exact thing happened to get up on march 1st 2021, on a situation for which they were prepared for six long months.
+this is a very amusing incident, as it teaches us a lot about the blind spots that exist in every system out there.
+in this video, we talk about an outage that github faced with their action service.
+take an in-depth look into what happened, why it actually happened, what github did to prepare for this very situation, but it still went wrong.
+but before we move forward, i'd like to talk to you about a course on system design that i have been running for over a year now.
+the course to date is enrolled by 600 plus engineers spanning 9 cohorts and 10 countries, engineers from companies like google, microsoft, github, slack, facebook, tesla, yelp, flipkart, dream 11 and many, many, many more have taken this course and have some wonderful things to say.
+in all we would cover roughly 28 questions and the detailed curriculum- uh split week by week, can be found on the course page, which is linked in the description down below.
+so if you're looking to learn system design from the first principles, you will love this course.
+the first one is the live cohort discourse which you see on the left side, and the second one is the recorded course, which you can see on the right side.
+the live cover based course happens every two months and it will go on for eight weeks, while the recorded course contains the recordings from one of the past cohorts, as is.
+otherwise, the live code is where you can participate and discuss things live with me and the entire cohort and amplify your learnings.
+check out the link in the description down below and i hope to see you in my next cohort.
+thanks.
+what it says is that our service monitors detected a high error rate on creating check suits for workflow runs which affected action service.
+this incident resulted in failures or delays of some cute jobs.
+so what happens is whenever you push something onto a repository, let's say you create a pull request, and then you add commits to it.
+for every pull request or for every commit you add, there are some fixed set of checks that github has to execute in order to ensure that it is okay to be merged.
+you can even write your or you can even add your own checks as part of a commit or as part of your pull request, right?
+so they let's say what happens is you have multiple repositories.
+they all talk to this action service to run these sort of actions and checks on the particular report.
+before any action is run, a checksuit is created, right, and this checksuit contains a bunch of checks that needs to be executed.
+once all of those checks are done, then you are okay to merge that particular repository- uh, sorry, to merge that particular branch- into the parent branch, right?
+now here, one peculiar thing to observe is if it is something, or if a workflow is something that is running on every commit that happens.
+this is a very high frequency event, which means that there is a chance that the id might exhaust, and this is exactly what happened.
+this identifier, obviously, is a row identifier in your relational database, so github very heavily uses mysql, i am assuming, for this data, for this use case also, they are using mysql itself.
+for every execution of this check there is an id in the database.
+so basically, there is an entry in the table, right?
+that, given that this checks run upon every single commit, that happens, there is a lot of entries that happen on the database or in the table, which would make the table explode, right?
+so what happens here is your id is of type integer, which is an auto incrementing id, and integer by default.
+so when what happens is because it is a 32 bit, it has a limit, let's say 2 billion.
+and for a use case which is this frequent, where you are running checks on every single commit and every single execution is having an entry in the database, this becomes very possible that you will run out of your id, right.
+this exact thing happened and, uh, in the past github also experienced an outage because their id or their uh or their id column hit its max limit.
+you can check that out on this very channel and i would highly encourage you to do that, because then i discussed how to mitigate that issue, like, if you ever come into that situation, how to fix that with two or three approaches.
+like github already had those checks in place which could tell them: hey, this tables id range might exhaust, so do something about it.
+it begin is a 64-bit integer, so it gives you a massive, massive range, so that possibly would never uh be exhausted, but it's a gigantic range, right.
+so github already anticipated this and six months back they already fixed it.
+they already ran the migration and they converted the column type from integer to big integer.
+what went wrong if github already was prepared for a situation like this?
+they already did the migration and they were very happy that, hey, this would never happen.
+so, upon further investigation of this incident, we identified this issue was caused by check suit ids exceeding max in 32.
+we had anticipated the checksuit id and checkering id would cross the limit and migrated all the database columns.
+to begin six months back clearly shows a very good preparedness from the github team in order to ensure that outage because of id exhaustion never happens.
+we failed to identify a graphql library we depend on that uses integer 32 when unmarshalling json.
+they migrated their columns from integer to big integer.
+they thought it's hunky dory and uh, their code basis never had an explicit check for uh in 32, which means even a 64 integer, like ruby, go c sharp, all of them supports like big integers.
+so that's not a like big integers, not infinite length of integers.
+so they were happy that that backend does not need to be changed and the database was prepared.
+we failed to identify a graphql library we depend on using in 32 and unmarching json.
+so i'll give you a very visual way to see what exactly happened.
+github uses some graphql library that, suppose in 32 when marshalling, or that expects in 32 and unmarkedly json.
+so when some job needs to be run on a repository, they create a checksuit that we just saw the creation of checksuit worked just fine because the database was already on on integer 64 or a big integer.
+so creation of entry, that, hey, this job needs to be executed, it worked fine.
+but what failed is they made an entry into the database that hey, this needs to run, but someone has to run it right.
+so what typically happens in such cases is: entry in the database was successful.
+there is a service or a process that pulls this rose out of the database and puts it into a queue so that executor can execute it.
+so while we create an entry into the database, just a marker that i want to execute this right, but someone has to take it out from the database and actually execute it.
+so a typical flow that happens is: from db, a process pulls it, puts it into a queue- there are multiple executors who read from this queue- and then executes it job.
+this failed because this is where the library, the graphical library that they were talking about, comes into action.
+don't know the internals of it, how it comes in, but this is where that graphical library comes in, that it pulls or whatever is pulled, or it tries to pull from the database and puts it into the queue.
+this service or this library or this dependency failed, and because it failed, the jobs were not getting queued into the queue for execution.
+so that's where what happened is: because jobs failed to be queued, check suits were left in a pending state, they were not getting completed, like they were just waiting, waiting, waiting, waiting, and this was the outage.
+they immediately pushed the code fix so as to ensure that the tasks that are cured- uh, so the tasks are queued for execution and then they are picked up by executors to finally execute.
+right, so they push the code fix to do that.
+the idea was to put a code fix that ensures that the tasks are queued for execution, because executors didn't have any problem.
+database was working fine.
+the only thing that failed was puller trying to pull from the database and putting it onto the queue.
+this, this particular thing, fit, so mostly it was the outage of the puller that pulls it from the database and puts it into this, like somehow the graphql dependency came into play over here, right?
+when actions identify the job needs to be done on a repo, we first create a task, a checksuit.
+those individual checksuits were created successfully because database could handle values greater than interdup right database.
+they were all prepared for database, but processing those response failed due to external library.
+we were using expecting and in 32 and that's where unmatched link failed.
+jobs failed to be queued.
+something on the company, right, that's fine, we know what they did to fix it.
+obviously you pull the data out from the queue and uh basically whenever the task is getting created.
+so the search service also had an impact because it was uh returning incomplete results, like the workflows or the- yeah, the workflows that had ids greater than integer 32.
+hypothetically, let's say they are using elasticsearch further indexing, right, because the job that had to put it into elasticsearch dependent on that dependency.
+right, that failed.
+right, because it was intended to do the search service itself, like the data was not getting indexed in elasticsearch, so someone has to take the data and put it into elasticsearch.
+it was also the responsibility of that same library that they depended on, which failed, and hence the documents having ids greater than integer 32's limit were not because they were not getting unmarshaled, they were not getting pushed into elasticsearch.
+so they were expect, like users might expect, that these workflows should be reachable from search, but search result never showed that particular workflows because the documents were not even indexed in elasticsearch.
+so this was another peripheral impact of this particular outage, right?
+then we might have blind spot in a system which we might have overlooked and which may cause an outage like this and what they said.
+what we learned from this outage is to help avoid this class of failures, like not just this failure, but this class of failures.
+github team audited and updated usage of all external libraries, so they audited every single external library that they are using and they ensure that they don't run into the same class of failures, for example, failure due to integer 32 exhaustion.
+you need to know on what's happening behind the scenes so that you avoid this sort of outages.
+i loved it because it taught us that, even if you are prepared, it's if things are supposed to go wrong.
+there are always blind spots in the system, especially when you hit a particular scale.
+thanks, saturn.

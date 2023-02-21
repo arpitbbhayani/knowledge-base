@@ -1,0 +1,91 @@
+so only checking for authentication is not enough when we need granular access control that defines who can do what on our platform.
+so let's say I do not want someone else to be able to edit my LinkedIn post, right?
+let's say you are Airbnb and you don't want people to access Wi-Fi information unless they have made a reservation on it, right?
+third, a little more complex example: let's say we are in Google Drive and can user u3 read file present in a folder shared with group G3?
+right, we need a way to design it very robustly, very flexibly on low level side and on High level side.
+you may split, you may still have multiple modules, but this authorization part can be very basically, basically very nicely modeled either as a separate module or you can put this check at the beginning of every function, but it is just a simple function invocation for you to ensure authorization, right?
+so if I want to check if user U1 can edit a particular post or not, it should be very easy for me.
+now what we'll do is we'll go through the architecture and key design decisions of a centralized authorization authorization service at Airbnb named him Aji. this entire thing is taken from airbnbs engineering blog, which I've Linked In the description down below.
+right, for this service, for himeji, an authorization is modeled as a tuple, a tuple that contains three items: first is the entity, second is the relation, third is the principle.
+so, for example, on a particular post with id123 on comment, this is an entity, right, relation could be right.
+so let's say, user ID 123 has the right privileges on post with id123 on command.
+obviously, you can store it in any database that you want, but a simple way to visually see this sort of relation is something like this: entity hash relation at the rate principle.
+so this information is stored in database as a tuple: entity hash relation at direct principle.
+so, for example, if I would want to write it same information, I would write it something like this: post, colon one, two, three, colon, command hash, write at the rate user123, which means that user123 has write privileges on post with id123 on Commit.
+so on post, you might have title description comment like: share something around that, right, so you can Define that that is a part of that entity and this is optional.
+if you just write tuples like this in the database, the problem that would start to creep in is writing one Tuple for every single permission for every entity would make your data explode.
+and because if you're storing just this thing, like, there would be so much of tuples like this that you need to store, for example, here, if I am the author of a post, so I would be able to read the post, I would be able to edit the post, I would be able to read the comments, I would be able to edit the comments, I would be able to like the post, and now creating these many tuples for me is such a big pain, right?
+we typically say that a user is able to or a user has right privileges on a particular post or on a particular entity- implies that a user can read or write to that right.
+so the right relation on a particular entity is a union.
+so anyone who has owner privileges or who has right privileges can write on a particular listing.
+it is: anyone having read privileges or right privileges is or can read the particular listing now with because of this right, right itself is defined as Union of right and owner.
+when we check for read relation on a listing, we check for Union of read and write.
+and write itself is a union of right and owner.
+so by transitivity, owner can also read, write and anyway has the owner privileges on it, right?
+now, so, say, user123, user123 is owner of listing one, the database will have one entry, which is listing colon 1 hash owner at direct123.
+that's it database only has one entry for this because user123 is the owner of listing one.
+now, given that, say, we want to check, can user123 read this particular post?
+now let's see how that gets evaluated, because we are checking if user123 has read privileges on listing one or not.
+how this will get evaluated is we are evaluating listing colon 1 hash read, right.
+so on listing one, does user ID one, two, three, uh- has the read privileges or not?
+now listing colon or listing colon 1 hash read gets evaluated as a union, as a union of read and write.
+first is listing colon 1 hash read at the rate user123.
+because read is Union of read and write right.
+so the first query that would go is listing colon 1 hash read at the reducer one, two, three.
+on, the only entry that exists in the database is listing colon 1 hash owner at direct user123.
+the second that would be fired is listing colon 1 hash right at direct one, two, three.
+write is Union of right and owner, so listing colon 1 hash right at the red user123.
+the third is listing colon 1 hash owner at direct user123.
+now, because a database contains this entry, the check of listing one comma, read comma- user123- evaluates to true right.
+so, whatever the entity hash relation is append at the rate, the user in action or the entity in action or, sorry, the principle in action- you just check for existence of it in the DB.
+right now things get complex because now there are cases where your access to something depends on existence of some other entity.
+for example, if you are Airbnb, you don't want people to access the location of the property until they have made the reservation.
+so once they have made the reservation, then only you wanted them to know the location of the property, for example.
+read is a union of owner relation and existence of this entry.
+so here, what we are defining is either user has owner privileges or this entity exists, or this entry exists in the database.
+this entry is listing colon dollar ID.
+there is a reservation relation to a particular user, right, you would have something like that, but then instead of user ID you would have a reservation ID.
+is you are checking for existence of reservation over there that does this like: is the reservation for this user exist or not?
+so listing dollar ID hash reservation at direct reference reservation, colon dollar rid hash guest.
+first entry is that listing colon 1 hash owner at direct user123, because user123 is the owner of listing one, which is what we have first entering the database.
+second entry in the database is listing colon 1 hash reservation at the rate reference reservation, colon 500.
+reservation ID is linked as a guest to a particular user.
+now, let's say we want to check if user 456 can read listing listing colon 1, colon location.
+this entry does not directly exist in the database.
+as per the rule, read is a union of owner and listing.
+so the first query that would go is listing colon 1 hash owner at direct user, colon 456, because that is a principle in action.
+that would return false, right, because that entry does not exist in the database, right, this one?
+the second is this: now, look, now, look carefully exactly how that is written, which is what is checked in the database for existence.
+so listing colon 1: Hash Hash reservation: hash reservation is what we are checking.
+we are checking for reference of reservation colon dollar rid hash guest.
+now, this would be evaluated as: because the principle in action is user colon 456 because that has the reservation that we are checking for that particular user here.
+we check for reservation colon dollar rid hash guest at the rate user colon 456, which is what gets over here.
+we check for this: reservation colon 500 hash guest at direct user colon 456, and this entry exists, this 500, this 500 C.
+so user ID 456 has guest relation with this reservation ID.
+right now this gets replaced over here as a reference where over here.
+we check for listing colon 1 hash reservation and then a reference of reservation colon 500, because that gets replaced after evaluation of this.
+so here what we are checking is reservation colon rid hash guest direct user colon 456.
+so reservation colon ID, like rid, will be replaced with 500 and this is what we would be checking when we are evaluating it.
+so reference bracket: reservation colon 500 and this: that entry exists in the database.
+so this 500 replaced over here and it would check for that reference to exist, that entry exist.
+it's extremely simple system, but just takes slight more detailed evaluation steps to understand how you write it right.
+first, reservation colon dollar, rid hash guest.
+so, reservation colon dollar, rid hash, guest at the rate 456..
+you would check for reservation colon dollar, rid hash, guest at direct user, direct user, colon 456.
+so it would be replaced with 500 goes over here, which is what we are checking: reference of reservation colon 500.
+because this exists, listing colon 1: hash reservation reference bracket: reservation, colon 500..
+right, okay, now let's jump into the high level architecture for this.
+now, high level architecture for this is again broken into three layers: the first is the orchestration layer, second is the caching layer and third is the data layer.
+now your client can either do or read and basically check for, uh, the existence, or check for the authorization, or it can do rights, where it is updating the system for new relations that are created.
+the right flow is what directly writes to the database.
+you can use MySQL to store this particular information, right.
+the read goes through a cache because you can very clearly see that once your relation is created, it's not going to frequently change.
+otherwise it goes to the database, populates the cache and goes it like classic cache implementation, right, okay, so what orchestration layer does?
+it forwards the request to the cache using consistent hashing.
+so image reads uses consistent hashing to understand which of the cache server should it go to.
+if not, it goes to the database as a fallback and then read the data populate in the cache and responds back to the user, right.
+so image lead need to know the consistent hashing so that it can forward a request to the corresponding cache node.
+then it computes the response as per the config, like the evaluation that we just saw, and it responds back to the user right.
+so they have that sort of consistent hashing based structure over here where you have a set of nodes to take care of the data, right.
+now, user should not be able to do that, which means whenever the data is changed in the source of Truth, we need to invalidate this cache, not the entire cache, but just that entry.
+this way, with some lag- obviously it's not extremely real time, but with some lag- what you would do is you would have a very nice caching validation, which you would definitely need because once any relation changes, you would want to consume that an invalidated disk cache so that the next request comes in does not, because if, let's say, I canceled my reservation and still for one day I'm able to access, uh, all the critical details.

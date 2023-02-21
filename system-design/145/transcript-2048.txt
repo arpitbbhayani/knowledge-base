@@ -1,0 +1,76 @@
+charting is super important to scale, specially when one database server is unable to handle all the incoming load.
+horizontal sharding is when we split the table by rows and keep them on separate servers.
+in vertical sharding, we distribute the table across multiple database servers.
+for example, all the payment related tables goes in one database server.
+all authenticated related table goes in another database server.
+so vertical sharding comes in super handy when we are moving from monolith to micro services where, for example, you are, you are splitting out your.
+in this video, we take an in-depth look, not on the theoretical side of vertical sharding, but on the implementation side of it.
+we'll see exactly how vertical sharding is implemented- that too, with minimal doubting- and what are the exact steps to do it.
+these charts are actual physical database servers.
+for example, if you kept a table t2 in this, or rather, uh, if you have one database which is, let's say, chart2, which handles table t1 and t4, and there is a lot of incoming load coming in for table t1, so what?
+let's say you took the table t1, move from chart2 to sha 3 to reduce the load, or on chart two, right?
+so what we'll do is, in this video we'll talk about how to you know how to actually implement, uh, vertical sharing.
+so, before we directly jump into the moving part of it, what we definitely want to do is we would want to store meta information like, for example, what you'll have is, given that now, after you do vertical sharding, you'll have multiple databases handling multiple tables.
+so now, when your api server, when you get at the end, you'll get some user request coming on to your api server, how would your api server know to which database server should it connect to?
+for example, if your request is coming for authentication, you need to talk to authentication database servers, which has those authentication related tables.
+and this information should be very- it should be stored in a very secure way, not just from a security perspective, but more from the consistency perspective, where every single one of your api servers should get a consistent view of it right.
+so where do we store this meta configuration that, hey, these tables are stored in these databases so that my api server will have this information from this source, or this configuration that, hey, if i want to query on authentication table, let's say authentication users table, which database should i correct?
+it will get from this meta configuration and then it will connect to that particular database server to read the particular information and send it back to the user.
+so we need to store this information somewhere and this has to be a consistent view across all api servers.
+this configuration will have to be changed so in the mapping that we stored that this table is present in this database.
+after we move the table, this configuration needs to be changed, that, hey, now this table is present in another database.
+and once it is changed, what we would want is we would want this information to be reactively sent to all api servers, which means that your your.
+otherwise, what would happen is you have changed the configuration, which means your table has moved from one database to another database, but what if your api server doesn't know about it?
+if api server doesn't know about this movement, it would continue to connect to the old database server, which is wrong.
+so that is where we would want this information to be reactively sent to api servers.
+so that's why we would want a tool that solves these two problems for us really well: first of all, storing a meta information and being reactive in sending out updates on what altered.
+meta information like table t1 is present on database 1, table t2 is present on database 2- right, something around it would hold this information and if anyone changes the configuration on zookeeper, zookeeper will proactively send updates to all the three api servers.
+so zookeeper has something called as watch, so you can watch a particular configuration and if that configuration changes, the watch function on your api servers will be triggered and in that they can fetch and query and get the latest configuration and immediately that gets updated.
+so this way, instead of your api servers proactively polling, hey, is there any configuration change or not, we are making these things reactive.
+api server will have the copy of configuration from the zookeeper.
+api server will know which database server to talk to.
+it will talk to that particular database server, compute the result and send it back to the user.
+any configuration change happened in zookeeper, it would be proactively sent to all the three api servers.
+so zookeeper is not just acting as a configuration meta store, but it is also acting as someone who can proactively broadcast or proactively send updates to every api server which is corrected.
+so this way, whenever we alter any table from one to another, we update the configuration.
+the information will be proactively sent to api servers which can now then connect- now can start connecting to a more relevant database, right.
+now let's talk about how to actually move tables from one mysql server to here.
+i am taking example of mysql server, but the steps remains the same no matter which database you pick.
+both of them are present on database 1, so db1, and what we want to do is move table t2 from db1 to db2.
+step number one: we dump the table first of all, whenever we are moving table from one to another, what we would want to do is we would want to dump this table locally and then upload this table into some another database.
+it's a- it's a official utility that is provided by mysql with which you can literally dump the table into various format, like sql, csv, various format.
+it dumps the table into a simple sql file locally and what you can do is this file would also contain the position of the bin log.
+bin log is your basically commit log, where every single operation that happened onto your database gets logged into this bin log file and it also keeps checking: hey, in one transaction, uh, when, when you are invoking my sequel, dump in one shot.
+it would take the entire dump of the table and mark that: hey, in this bin log i've read till this position.
+and when you have this information there, you need to know that, hey, in my dump i have information till this point so that when you create a new database it can start reading after that position.
+so bin lock position is extremely important to be logged and which is where mysql dump, as a utility, comes in very handy.
+so you, so you basically took the dump of your database into a sql file and which also contains the bin lock position.
+now step number two: you took your dump dot sql file and load it into your db2.
+so in the first step, we dump the entire table along with the bin lock position on your local machine, supposedly on your local machine, and after taking this dump from and and now you're taking this dump and applying it on to db2.
+so when you restore this dump onto another database, this is not entire database getting copied, it's just that one table which is getting copied or one table which is getting created and the row getting inserted on that right.
+so now, after this step, you have db2 with that one table with that entire data up till the time when you took the snapshot, when you dumped it.
+your main database is still accepting the rights, so the new entries would keep on getting added in bin log.
+once we restore the table onto another database, let's say db2- what we have to do is we have to start a replication.
+this way, your db2 had the old data till a particular time from the snapshot that you took, and then all the recent dinners that have happened on the db1 while you were doing this will also get replicated to db2.
+in most cases you will not be able to use the mysql's default replication because there are some extra steps or extra checks that you might want to apply, filter out some things and then apply.
+this way, all the incoming rights that are happening on db1 will then start replicating onto dp2.
+this way, eventually my, the two, the two databases, db1 and db2, for that one table will come in sync.
+so what we do here is we know that if the replication lag between the two databases for that table is very low- let's say it's literal, literally 0.00001, something like that.
+we want to stop the incoming rights onto this database, onto this database for this table.
+but as soon as you update the entry that now table t2 is present on db2, zookeeper, as i said, reactively sends information to all api servers using watch as it sends information to api server.
+api server then any new incoming request coming in for table two, for table t2, because you updated in zookeeper, zookeeper proactively send that information to api server.
+api server will now start connecting to db2 right.
+so for that small duration, for the small time window when you were renaming the table, updating the zookeeper and the updates reactively going to the api server, for that duration you will get table not found errors.
+so the overall flow, or the not really an architecture, but overall flow to do vertical partitioning, would look something like this: you will have your users who is constantly sending you reads and write requests.
+so api server would know where authentication table lies in.
+so table 1, table 2, present in database 1, for example, all the tables are present in database 1 and then api server would know which database to connect to.
+so engineer then fires this thing, uh, moves the table, uh, like doing that mysql dump, restoring it in another place, starting the replication.
+where the two, where the two databases, that one table across two databases getting replicated.
+as soon as you do a cut over, you fire the update on to zookeeper saying that now table t2 is present on db2.
+as soon as the uh, the configuration is updated on zookeeper, the update is sent to all the api servers, the newer requests that come in will go to that corresponding database.
+so newer request for t2 will go to db2 instead of db1 and this is how vertical partitioning is actually implemented.
+right, because when you are updating the zookeeper, or when you are renaming the table in db1, updating the zookeeper and this update is getting sent to episode for that small time we do hardly: 5 millisecond, 10, 5 millisecond, 10 millisecond at max, 15 millisecond, not more than that.
+some right that are there during the downtime, that are gone, but all the rides that happened will eventually propagate with replication like will almost zero.
+the reason why that would be a challenge is because it will take because if a table is huge, it means it is taking large amount of rights.
+if it is taking large amount of rights, your db1 and bb2 for that huge table might never come in sick or the replication lag would always be there because it is taking that many or that much of rights.
+i hope you learned, like you understood, that vertical partitioning is not just theoretical, it actually happens in your world.

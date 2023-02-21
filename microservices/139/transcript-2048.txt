@@ -1,0 +1,83 @@
+in a micro services based architecture, there will always arise a need to design workflows.
+for example, when on an e-commerce website someone places an order, we need to send an email confirmation to the user, notify the seller to keep the shipment ready and also assign a logistic delivery partner so that the package is delivered to the user.
+modeling these workflows is challenging, as it requires multiple micro services to coordinate.
+there are two high level architecture patterns to implement workflows in a micro services based architecture, and they are orchestration and choreography.
+in this video, we take a detailed look into the two patterns, see what they are, how they are implemented and which one to use when.
+but before we move forward, i want to talk to you about a code based course- coastal system design- that i have been running since march 2021.
+right, if you're looking to learn system design from the first principles, this course is for you.
+instead, it will be a collaborative environment where every single person who is part of the cohort will can pitch in his or her ideas, and we will evolve our system around that right.
+this course is taken by more than 500 engineers to date, spanning nine countries and seven cohorts right.
+seven is about building uh ir system- basically information retrieval systems, and adult designs where we design our own message brokers like sqs, where we design distributed tasks scheduler.
+right, i have also attached a video, verbatim as is, from my first code where we designed and scaled instagram notifications.
+how are we going to implement workflows in a pure micro services based architecture?
+so say we are building an e-commerce website and whenever a user purchases something, we have to send an email confirmation to the user, notify the seller to keep the shipment ready and assign a logic delivery partner to ship it.
+whenever order is placed, order service accepts the order and somehow the user needs to be notified, seller needs to be notified, delivery partner needs to be assigned, right?
+so here there are three services which are involved after the order is placed.
+so how will these service get to know what they need to do?
+so the core idea of orchestration is that the decision logic should be centralized, right?
+so a simple example would be: whenever the order service takes the order, it becomes the brain, it becomes a coordinator, and what it would do is it would invoke the api of the notification service to send an email notification to the user.
+i would then contact the logic service to basically assign a logic delivery partner, right?
+so here the order service is acting as that brain who would do that coordination and and ensure that the entire workflow is complete, right.
+so here all the three, and obviously this, this need not be a distributed transaction, not not going into that complexity- understand, oh, basically absorb the overall idea of orchestration as a, as a pattern, right?
+there is only one brain, which is order service.
+right now, the other three services are dump, so order service will tell them exactly what to do and they will just do that.
+so order service would know when to trigger what and it would do the and it would do the overall trigger part and all right.
+okay, hey, now i want to send the notification to this, or now i want to assign a logic delivery partner.
+the coordinator, the order service will tell them, right?
+this is a simplistic example for me, for you folks to understand what orchestration is all about, right?
+so this, uh, the analogy of this orchestration is basically from a gigantic orchestra where you see the coordinator or the conductor of the orchestrator to tell: hey, now you play the guitar, now you play the drums and all of that stuff, right.
+so that's the core idea behind the orchestration pattern, and the workflow we designed was just a one level workflow- key order service and then the three involved service.
+so the workflows can get as complex and you need a coordinator to do that and that is the orchestrator part of it, right?
+decision logic is distributed, right, so the idea here is let every single service have its own brain, and the core concept of choreography is to make it event driven.
+you might have heard this term quite a bit in recent times, but this is the core idea behind event driven architecture.
+so let each service be independent and they need to think what they have to do when something happened, right, so the job of the order service is pretty simple now, so, or whenever order service accepts the order.
+so, basically, when the order is placed, the order service publishes a message somewhere into a pub, sub message broker, wherever it want to go.
+right, this event is subscribed by all the involved services.
+when the event is published, the notification service, seller service and logistics service which have subscribed to the event- let's say event is orders placed- they would take the action depending on the event.
+they are not told what to do, but the notification service, seller service and losses logic logistics service- whenever they get an event, they would take the decision: hey, now the order is placed, what do i need to do?
+law notification service will say: hey, i need to send a notification to the user.
+an order service, once the order is accepted, just published a message and done.
+right so this is the core idea behind event driven architecture, right?
+basically the prince, the architecting complex workflows on a pure asynchronous basis is basically choreography and the foundation for event driven architecture.
+so now, whenever the order is placed and the order service simply publishes an event, simply emits an event into a pub, sub, kafka, whatever you want to use that's, that's not a concern of us, right?
+and the notification service, seller service and losses logistics logistics service- sorry, gets that a particular event and then they decide what to do with it, right?
+now, for example, if tomorrow we have to add the fourth service, that whenever the order is placed, i want to, i want to show it into the orders page of the user, that would be a poor example, but hypothetically, let's say we want to do that, right?
+so then it would just be adding one more service which is subscribe to the same order placed event and then, like your system is very extensible because the services are pretty decoupled, right?
+so that's the idea of choreography, right?
+and the ways to implement this is using message broker, uh, message streams, like kafka and whatnot, right, you can use any of this to implement this drop off sub box.
+but the core idea is publishing an event, subscribing from an event and every service independently taking its own decision now which one to use, when, where and by and how, and all of that right, how, how are we going to decide?
+we just saw how, uh decoupled all the four services were: order service: when it accepted the order, just need to publish an event and done.
+right, it does not have to do that coordination between other services.
+it made the system extensible as well, because we saw adding a fourth service as a consumption of the same order space event was so simple, right.
+it made our services very flexible because now services are independent to take its own change, like, for example, if notification service, earlier only used to send email notification, now also wants to send a mobile notification or an sms notification, can very easily do that because it does not require any sort of complex.
+so if one of the services down, let's say notification services down, it does not affect the other part of it, like the other services which are subscribing to the same event, they are not affected at all, right, so this makes our overall architecture pretty robust.
+so, which is why most modern architecture prefers- they prefer choreography in most cases, right, and.
+but with choreography, what we need to be very aware of is the observability becomes very complex because the entire communication is asynchronous and decoupled.
+what would happen is: how would you know if a message was sent, or or if an event was published?
+then, uh, basically all the three involved services got that event.
+so you need to be very of the fact that you might have to build a very complex observability uh module in order to visualize on what's done and what actually.
+no, i agree that choreography is good, but this does not mean that orchestration is bad.
+right, because orchestration is synchronous.
+we can use it at a lot of places where we need synchronous communication between services, for example, services that needs to be invoked transactionally, basically distributed transaction across services.
+in few few, few weeks back i i created a couple of videos on uh display transaction using two phase commit and exact and actually implemented a two phase commit disabled transaction to mimic a 10-minute grocery delivery thing, right?
+so do, do, do, take a look at on my channel, uh, in order to understand what distributed transactions are and how they're actually implemented.
+but here, when we talk about this, that the sort of communication that we are looking at is, whenever we use orchestration we can, as we can, have distributed transition that ensures that all the three are done.
+so if you would want to model distributed transactions- either all or none- that can very easily be modeled using orchestration, because the communication needs to be synchronous, right.
+that i just emit an event and my notification service will send an otp to the user.
+that is a very wrong way to design this, because if you do it asynchronously, it would add a delay for your user to get an otp.
+let's say, due to any reason, your consumers are down, then your user is not even receiving an otp, right?
+so to ensure that the sms very quickly reaches the user, you need to ensure that the communication happens synchronously.
+so that's where your authentication service will synchronously talk to your will will synchronously be sending otp by invoking the api of your notification service to directly send otp to your user, so that the logging in time is bare minimum, right.
+so orchestration comes in very handy with that right.
+now what you need to do is: but you cannot just send item id store user, right, you need to send item details, hit photo title and what not.
+so what you do is, when you get item ids from your notification or from your- sorry, from your- recommendation service, you would want to enrich it with very rich details, right?
+so with the item details, so from ids, you get the details and then you send this detail to the user.
+this communication between your recommendation service and inventory, this, this thing should be synchronous, right?
+so you have two ways to implement it: your recommendation service, instead of just sending the ids.
+your recommendation service itself can talk to inventory service to get the item details and then send it to the user, so that your, your, your client does not need to do heavy lifting.
+your recommendation service itself is doing that right.
+so you invoke the api of the recommendation service.
+recommendation service has the id which are recommend, has the item ids which are recommended to the user.
+it talks to inventory service to get the item details and it sends this entire details to the user.
+this way you can render nice recommendation list right.
+there are places where orchestration shoots well, right.

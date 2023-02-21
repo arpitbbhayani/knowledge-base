@@ -1,0 +1,82 @@
+this happened with github, where a big chunk of the users saw elevated error rates.
+in this quick incident dissection, let's take a look into high level overview of how github does their abi experiments, how a low level design decision led to this incident for a large chunk of the users, and conclude with some key things that we should all learn from this particular outage.
+but before we move forward, i'd like to talk to you about a course on system design that i have been running for over a year now.
+this way, we build a solid system and learn from each other's experiences.
+the course to date is enrolled by 600 plus engineers spanning 9 cohorts and 10 countries.
+engineers from companies like google, microsoft, github, slack, facebook, tesla, yelp, flipkart, dream 11 and many, many, many more have taken this course and have some wonderful things to say.
+we cover topics, regis, from real time text communication for slack to designing our own toy load balancer, to creek buses, live text commentary to doing impressions counting at scale for any advertisement business.
+in all we would cover roughly 28 questions and the detailed curriculum, split week by week, can be found on the course page, which is linked in the description down below.
+so if you're looking to learn system design from the first principles, you will love this course.
+the first one is the live cohort discourse which you see on the left side, and the second one is the recorded course which you can see on the right side.
+the live cover based course happens every two months and it will go on for eight weeks, while the recorded course contains the recordings from one of the past cohorts, as is.
+if you are in a hurry and want to binge learn system design, i would highly recommend you going for the recorded one.
+otherwise, the live code is where you can participate and discuss things live with me and the entire cohort and amplify your learnings.
+so if you are interested to learn system design, go for it.
+a large chunk of users saw elevated error rates while using github.
+these users, the users that were affected during this incident- were all part of an ab experiment, right?
+so what happens is companies run eb experiment in order to decide which works the best- a or b.
+now here, like, for example, if you want to change a color of a button.
+let's say you'd want to change the shape of the button on the website.
+let's say you have it triangle, now you want to change it to a square- right, it's a.
+so what you do is, instead of directly rolling out your changes with respect to a square button to all of your users, what you do is you run an ab experiment.
+so control is your existing behavior and test is the new behavior that you are trying to test, right?
+so what happens is you randomly pick a set of users and you randomly show 50 of them- the default behavior, so no alterations for them- and 50 the new behavior, and then you measure the key vitals of your system.
+for example, if you are doing a eb experimentation for this particular button use case, how, how likely are people to click on this button would be a key metric that you would be chasing.
+that, hey, for, of all the people who i showed a, a, a button, which is in a triangle shape, which is my existing behavior, let's say, 10 percent of people clicked, but when i change my button to a square, 50 people clicked.
+so whenever companies are in doubt on should we go for a or b, or or or what the variation should be, they always run an ex a b experiment like we are all lab rats and they run experiment on us to see which one works the best and they roll it out to the rest of the users.
+what everyone does, a b experiments, small tweaks in ui, small functionality changes, and they measure how good that, uh, how good that rollout is, and if it is really good, they would allow it to 100 of the people, otherwise they would not right.
+a b experimentation for ui introduced an unknown dependency on the presence of a specific dynamically generated file that is served by a separate application.
+a lot of things put into one sentence, but let me dissect.
+how ab happens at github.
+in any organization, there is a a b service which basically does the measurement of how good a particular variation is right.
+it gets all the events that it wants to do that processing- and is the one that decides which user gets what- the default behavior or the new behavior, how aba experiments happen.
+at github it looked something like this: we're still not sure, we don't have a lot of idea, but from that two lines what i could deduce is they have something called as a conflict generator whose job is to generate configuration that would power an av experiment.
+for example, if i would want to change on the flight, change some parameters, for example, change the color of this button from blue to red, shape from triangle to square, this could be dynamic configuration, which it might be picking from this conflict generator and, because this is a dynamic, information of how the interface should behave.
+right, we still don't know what was the eb experiment that was run, so pure speculation.
+it, the configuration that is generated from here, could drive the front end configuration generated from here could drive some back-end information, for example, where to fetch data from, how to send data to uh, what kind of events are we capturing and what?
+not right, but in any case, the flow, what happens over here is whenever your servers, typically your front end servers- uh, and this specifically happens at github, might not be true for all organizations- so what they do is they load this dynamic configuration from here, from this conflict generator.
+so what happens is this service is responsible for for dynamically generating a configuration file which is sent to all of the front-end servers which they use to then power an av experiment and instrument.
+during an application deployment, the file failed to be generated on significant proportion of application deployments.
+this means that, due to some issue in deployment or something, a deployment was triggered and which obviously this had to generate a lot of files when the request came in.
+so anytime the front-end server boot up, it would made a request to config generator, it would have to generate that file and return it over here and then it would start serving the a, b, uh, experiment to the users.
+this service was overwhelmed because the file failed to be generated on significant proportion of application deployment due to a high retrieval rate being rate limited by the upstream application.
+so what happened is, when a lot of request came in to this config generator, this became overwhelmed.
+once this was overwhelmed, it stopped generating the file, it went down and a lot of front-end servers did not even get the file that it needed because they did not get a file that it needed.
+so what happened is the users who were enrolled in that experiment, they faced error rates because the front-end did not know what to render to which user, right.
+so because of this- and this typically happened- because conflict generator rate limited, if it would not have rate limited, obviously you should always rate limit, but if it would not have limited or if had an elevated rate limiting configuration, then it would have sustained, right?
+because conflict generator rate limited, the front-end servers did not get the file.
+so users were not shown the correct variation, right, and this happened.
+this happens a lot, right?
+so this resulted in site-wide application errors of percentage of users enrolled in the experiment.
+upon detection, we were able to disable the requirement on this file, which restored all of their services, which which basically make sense.
+this is kind of a rollback where you removed your dependency on uh, the file that was causing the problem, so they immediately shut it off.
+so conflict generator- it limited, it caused that issue.
+here we, what we understand is the rate limiting is very essential, but the limits specifically for internal service should be tuned very well, very well, otherwise it would cause outages like this.
+but what was that long-term fix going forward, configuration for a- b and multivariate expense a- b.
+so configuration for abn multivariate experiments will be cached internally, right?
+this clearly shows that configuration for abn multivariate experiment, the file contained the configuration to run a- b experiment will be cached internally to ensure successful propagation to dependencies.
+this clearly means that in the conflict generator.
+instead of every time generating a dynamically in, instead of every time dynamically generating the configuration file, they would be generating it once and caching it internally so that the load on the service is reduced.
+even if it gets large number of requested service would not go down.
+first of all, here we clearly see we should avoid synchronous dependency wherever possible.
+so with the existing flow that github had, the servers had to call this config generator to generate files and this was all synchronous communication happening.
+so if this service thought also, if config generator service throttles, it would take everything down with it, right?
+for example, the long term fix that you have shown: it looks synchronous but it is not doing heavy lifting.
+in a synchronous call it would be generating the configuration files and caching it so that it can just basically percolate the file downstream, right.
+uh, the request will be made synchronous but the processing would not happen synchronous.
+it would be pre-generated and it would just be sending the file upon request.
+it is very essential even- and this is a good thing- that a rate limiter is employed, even for an internal service.
+right, because it is very important, very important to rate limit.
+we saw in in previous videos how important rate limiters are, uh, so that our system and things don't go down and no one abuses each other service.
+so written limiters are great, but for internal service we might have a little higher uh threshold rather than having a very strict sla.
+you might go lean in depending on the services.
+what i feel is github should have- although they would have had this internally, but github should have classified their services into multiple tiers.
+so almost all big organizations, what they do, all the micro services that they have, they classified into multiple tiers, let's say tier one, tier two, tier three.
+so tier one services that you have is, if it goes down, it would take everybody with it.
+tier 2 services are important, but even if it goes down, you, your, your partial website can still function.
+and tier 3 services- if it goes down for a little longer, it's okay, right?
+so- and it should be very- it should be audited periodically to ensure that we are not having any blind spots, right?
+uh, obviously github would have it in their organization, but maybe a miss here or there it happens, it happens at work.
+like you, you can't blame anyone for anything, right?
+so creating keyword services is very important and classifying them and ensuring that tier one, especially, are periodically audited and we don't have any blind spots in that.
+but, yeah, i hope i hope you like this quick uh dissection.

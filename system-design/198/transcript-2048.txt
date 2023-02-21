@@ -1,0 +1,91 @@
+we use time series databases to hold the key vitals like cpu, ram, disk request, network, io, etc.
+pinterest generates millions of data points every second, and the existing time series databases were not performant enough to meet their needs, hence they built one in-house.
+in this video, we take a detailed look into the architecture and the key design decisions that pinterest took while designing their own in-house time series database named goku.
+but before we move forward, i'd like to talk to you about a course on system design that i've been running for over a year and a half now.
+engineers from companies like google, microsoft, github, slack, facebook, tesla, yelp, flipkart, dream 11 and many, many, many more have taken this course and have some wonderful things to say.
+the course is focused on building systems the way they are built in the real world.
+we cover topics ranging from real-time text communication for slack to designing our own toilet balancer, to quick buses, live text commentary to doing impressions counting at scale.
+the first one is the live cohort based course and the second one is the recorded offering.
+the live cover based course happens once every two months and will go on for eight weeks, while the recorded course contains the recordings from one of the past cohorts, as is.
+i've also put the link of this course page in the description down below and i'm looking forward to see you in my next cohort.
+they measure anything and everything.
+the data, like basically metrics, vitals events and whatnot, is stored in a time series database so that you can analyze it.
+everything is constantly being measured.
+they used at that time they used open tsdb as their main time series database to hold all the time series data that they have.
+tsdb is based on hbase, which is based on hadoop, so they use that as their time, basically as their time series database, and they were ingesting a million points every second.
+everyone hates them and it crashed very frequently, which is why they built their own in-house time series db called goku.
+so first let's understand what time series data model is, which means how are you collecting the data and how are you persisting.
+so every time series data point has two parts.
+the metric that you are tracking, for example, cpu of every single machine that you have, might look something like this: tcprogstatcputotal, which is the metric.
+you would want to keep it verbose, separated by dots so that you may want to do aggregation, use wildcards and whatnot.
+so typically you create hierarchy of such metrics, but while putting a data point, you would say, hey, this is my metric, and against the metric, you may also optionally specify the tags.
+now, tags would be, let's say, i have this metric, cpu total, but for which host?
+so at this point i am registering this value for this metric with this particular tag.
+apart from that, what you can also do with the data of the time series is you can do aggregation, because that is what you would want to find.
+you don't want to see individual data points, you want to aggregate.
+you might want to see: hey, what are the total number of requests that i received in last 60 days?
+if you want to see that, hey, every payment that i received, i'm registering one data point in my time series db and now i just want to sum them so that i can calculate my total revenue, right?
+so for aggregators, that most time series databases support- which they also support- are some max, min, average, count and deviation.
+down sampling is all about: let's say, i have 100 data points, but when i'm storing it i don't want to store individual items.
+now, this down sample is basically having a single point to represent a group of point.
+this way you typically you do this to save space and do efficient computation at scale.
+right, this is a time series data model.
+now let's talk about the challenges and the key decision that pinterest took while designing this database.
+the key design decision that they took is: hey, let's not store anything on the disk, let's put everything in memory, which is why it is very fast.
+and the way they have structured it is that they are using inverted index, simple hash map.
+they are using hash maps to store that information, given this metric.
+these are the number of like, these are all the data points for that in last two hours, for example, and it just stores them in raw hash maps.
+this way, your scanning is efficiently far is very fast, given that everything, data, every data, is stored in memory.
+so goku uses facebook's in memory time series database.
+so facebook has their own in memory time series database named gorilla, and there is a brilliant research paper on it, and it gives 12x compression out of the box, given that it is storing data in memory, and it does a lot of optimization.
+that, given that it knows how the data is and and how the key- the core properties of any time series information.
+so goku- that's why- uses gorilla as its time series engine.
+like that one instance, it would run gorillas time series db like not really time series db, but the storage engine of it, right.
+this way it reduces the size of the data, right, that it would need to process and store in memory.
+so what open tsdb does is open tsdb does scatter and gather, which means that it basically goes to every single node, like, for example, if you fired a query that requires it to go to three or four different places.
+it goes to three and four different places, gathers all the raw data, puts it in one server and then does the aggregation.
+because you are doing a lot of network io, because you are fetching the raw data and then doing aggregation, right.
+so open dsdb has to fetch all the data from all the places and then do aggregation.
+let the first aggregation, the first level of aggregation, happen on the storage node itself.
+for example, if i'm doing summation, and i'm doing summation across ah, summation of the data that is present across three shards, so the query goes in parallel.
+that's why it's fast, so you don't need a lot of data movement here and there.
+right, it's too slow and goku improved it by using thrift binary protocol to serialize the data.
+this weight requires very minimal storage, even if you would want to persist it on the disk, keeping it in memory using gorilla.
+so goku uses facebook's gorilla in-memory storage engine.
+like, obviously, gorilla itself is a time series db, goku does not use it, it just uses the storage engine to power an in-memory time series database of itself on one node, right, and what it does is goku is storing 24 hours worth of data in memory.
+so in memory storage is restricted to last 24 hours data only.
+so now here, what would happen is that architecture looks something like this, where you might have multiple time series, for example, one for cpu, one for ram, one for something, one for payments, authentication, request, network o what not.
+you have multiple time series information.
+now, each time series information.
+as we just discussed, each time series data point has a metric tags and value.
+for simplicity, assume each shard is one machine and each machine and each goku machine is running a time series db independently, right?
+so each, depending on the metric, it goes to a particular shard.
+each shard in memory has multiple buckets.
+for example, if i'm having a 24r for which i'm keeping the data, you might create 2r bucket, so one bucket for each, for each 2r combination, so 0, 1, 0, 1, 2, 3 and so on and so forth, so that you would have 2 r window present in one bucket map.
+each bucket map, how it is storing the data.
+it is basically storing it in something called as a bucket time series object, simple hash map, not over complicating.
+it is storing this information, right?
+so in a bucket time series object it is storing all of this information, and a bucket map also contains an in-memory- again an in-memory, immutable structure.
+first is a bucket time series object, which is a mutable buffer.
+but now, let's say this buffer, after an hour or after few minutes, becomes immutable, it would still be kept in memory because you are keeping last 24 hours worth of data in memory.
+this would still be kept in memory in something called as a bucket storage.
+so bucket time series object is a simple in-memory hash map where you are storing this information and then periodically putting it into a bucket storage again and in memory some data structure, right so last towards data kept in this hash map, then flushed.
+it's not really a disk plus but a memory memory flush in which you are making it immutable, right last 24 hours still held in memory.
+what does this bucket storage look like?
+bucket storage look like this: for each bucket you would have an immutable, immutable structure which is very optimized for queries because once the data has become immutable you cannot write to it, it is just there for query purposes, right?
+so the way the data would be structured in this bucket storage will be very optimal for querying it, given that it is in memory.
+it is typically storing it in an inverted index, normal hash map, right, and what would it have?
+it is also in memory, right.
+for example, every five minutes, entire bucket data is plused onto the disk so that you don't lose out on this data.
+once the bucket data becomes immutable, you also flush it to the disk.
+now let's see what happens when a user queries it.
+when, let's say, i have an analytics dashboard and it wants to query the time series dp.
+now this goku proxy has connection to all the shards that there are and all the goku instances, and this goku proxy, like, depending on what the query is, it knows which all, basically, which all goku shot should i go to.
+it would go to each of those particular goku shards, fire that same query, all of the shards would compute the aggregation there and send it to this goku proxy.
+so here, this is what i was talking about when i said computation is moved towards the storage, because if the data is in memory, each chart itself does a local aggregation and then sends the aggregated response to the user, uh, to the proxy.
+so this way your proxy does not need large ram where it all the shards send the data to the proxy, then proxy does this aggregation.
+they send this response, then this does this final aggregation and responds back to the user.
+right, and this is a very beautiful, simple time series db implementation that pinterest actually uses such a beautiful design.
+you saw how a company like pinterest has to like they had to build their own time series db because no other db was able to support their workload, but it was so easy for them to build it, given that they're sitting on the shoulders of giant.
+so highly recommend you to read the paper of gorilla and see how they're structured and typically this is what the structure is right.
+so the in-memory gorilla engine is taking care, it's basically taking care of storage, while goku is taking care of the compute part- kind of this, right?

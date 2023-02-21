@@ -1,0 +1,79 @@
+so exponential algorithms have to be the worst possible way to solve distributed consensus, but are they really that bad?
+in this video, we talk about an exponential, expensive yet important algorithm to achieve distributed consensus, named eig algorithm that gathers an exponential amount of information and then reaches a consensus.
+the first one is the live cohort discourse which you see on the left side, and the second one is the recorded course which you can see on the right side.
+thanks, so reaching consensus is extremely important in any distributed network.
+that is where we need the nodes to talk to each other and reach a consensus and agree that if the value is 1000 or 2000, achieving distributed consensus is extremely simple when it comes to the case that your network wouldn't fail and your processes wouldn't crash.
+right, and this is where we would talk about an algorithm called an exponential information gathering- eig algorithm to reach a distributed consensus.
+every node records the path from which it received the data until a certain degree of level or under a certain degree, and then decide that, hey, this is going to be the final value.
+eig stands for exponential information gathering, so this data structure is a tree.
+eig data structure is a tree that grows exponentially and is constructed level by level.
+the idea is that the path in the tree- like from node 8, because it is growing level by level, if a message was received from node a to node b, to node c, we would have on the path a, children b is children c and that's where the value would be stored.
+so, along the path from which i received the message, i would be storing it along the same path in the tree, right?
+and this tree is basically what it does is it basically stores all possible permutations and just reiterating, it stores all possible permutations of parts from which you could receive messages right.
+this way we would be very sure from all possible places that we received a message.
+now we can easily reach the consensus because we have gathered all the information that we need to reach to a distributed consensus right.
+so to put this information formally, we can say that at each level we would have at each level k, rather each level k, every node would have n minus k children.
+so if n are the total number of nodes in my tree, then at each level we would have n minus k children, right?
+so this way what we would have is we would guarantee the uniqueness of the path so that we would eventually have all possible permutations of the nodes sitting at the leaf.
+a quick example of that is: let's say i draw a three level deep eig right and i have three nodes in my network right.
+so my root node would be labeled as an empty string, right.
+right now, if i construct one more level, if i go a level deep on the third level, which means that my a, b, which is at level 2, would have n minus 2, which is 3 minus 2, which is 1, 1 children or 1 child.
+so which means that we are not forming a cycle of nodes and we are covering all possible permutations.
+right now this is where we would be storing the information about the values which we would come, because in a distributed consensus, what we would have to do is every node would have some opinion, right, that the value is 1000, 2000, 1500, something, right?
+we would want all the nodes to send values to all other nodes and then reach, and then we, every node, would independently form its own eig tree and then they would all or independently, agree on a particular value, right?
+so, given that we are making our distributed consensus tolerant to process slash nodes failure, the algorithm runs for total f plus 1 rounds and because we are giving enough chances for the nodes to fail- if it didn't fail, well enough, but at max we would be- we'd be tolerating failures of f nodes right at the end of f plus one round.
+every node would have the same eig with them the same eig and they would then be making the decision or basically reaching the consensus, right?
+in each round, a new level of eig will be created.
+now the flow would be simple: each process maintains its own eig tree.
+the process, upon receiving the values from other nodes and processes, updates its own copy of the tree right in distributed consensus.
+that's why we need to send this information to every other node, so that every other node at the end of a plus one round has the exact same information, so that they all make the exact same decision, right?
+okay, so after f plus one rounds, what would happen is every node would have the same copy of eig tree and they would be able to make the decision.
+so nodes independently take the decision, and building this tree is a way to gather the entire information.
+first is about gathering the information using this eig tree and second is about making the decision right.
+so the key highlight of this algorithm is how you gather the information to take that decision right.
+first round: every node sends the value that it holds to the entire network, including it's- well, including to its own.
+basically, it's saying that i'll be making, i'll be updating my own eig tree, right, but a formal way to say that is, every node would send a value to an entire network, including its own, so that every node would also update its own eig along the way, right, okay, so a sends data to b and c.
+upon receiving a value v, the node- let's say i- as a node.
+let's say, uh, i received a value from other node, j- right, so me as a.
+i received a value from b, so in a b- like i'll be updating because i'm creating the first level, i'll update.
+tree of b is equal to v, so i'll be creating the first level of my eig tree that i was at empty, like my root was empty.
+this is the first message that i received and i received the message b, right, sorry, i received a message from b, some value v, so i'll be creating the first level, like that, right?
+so the end of first round, every, at the end of first round, every single node in my network, let's say abc, at the node, they have values that they received from other nodes and itself and updated in its own eig tree, right?
+so at the end of this, every node would have the same eig and we would be constructing an eig tree of depth one.
+so for around 2 to round, k plus 1, right?
+every process, i, which means every node, i- sends all pairs x, comma, b from k minus 1 level.
+we use that level and we send these values, right?
+we send these values to every other node, including ourselves, right?
+we send this values to every other node in the network, right?
+so we send pairs x, comma, y from k minus 1 level in the network where i is not in the x, which means if i am sending the value, right.
+node a can thus form the next level of eig tree with path, because process b and process c are sending data to a, which means that a now received the message from a itself, from b and from c from b.
+it received message for a, the value for a, like the node labeled a and the node labeled c.
+so this way, node a can form the eig tree with path a.
+b because it would have received a message from b, a, b, because b sends tree of a to a, tree of c to a.
+so this four nodes, a, b, c, b, ac and bc, right, these four it formed.
+so node a will send x comma b to itself as well, and thus it would receive the value of tree of b and t of c from a to a.
+a, because it received the value of b from a and c from a.
+right, this way the node a would be forming the second level of this eig tree, right.
+so we have very beautifully created, if you look at this, up until this level, you are still covering all possible permutations of a and c of length 2, because a, b, a, c, b, a, b, c, c, a, c, b, with no repetitions, and this is the beauty of this particular eig algorithm on how we are exponentially gathering the information and forming this entire gigantic exponential permutation tree to eventually take the decision right.
+and this is the key highlight of this algorithm, where the first part is to gather the information, while the second half is all about deciding what the consensus is all about, right?
+right, the idea is pretty simple.
+if i received, if a received, a message from b, so i would update, i would construct the path because i received i.
+i am a, i received a message from b, so b a, c, a, i'll be updating that, right.
+right, okay, now this process is repeated at each node, so each node would have the exact same eig tree, because we are thinking that, uh, our communication lines are pretty reliable.
+uh, but our processes can crash, right?
+so even if, if, let's say, some of the process crash, they would not be sending information, but we would still have dense enough information to take that distributed consensus right.
+so thus we see how every node has all the values from all the nodes across all the paths, and the algorithm stops after f plus one round.
+uh, one node to fail, i would do one plus one, two, i'll do it for only for two rounds, right, and then i'll be in a position- because i gave enough chances for processes to fail and now i'm in a position to make that decision.
+now the decision process is pretty simple.
+you can go with the very basic approach to take the distributed like to decide on a particular value.
+you have the entire eig tree constructed within this tree.
+now what you can do is you can go through, you can traverse the entire tree and find all possible values that you receive from all possible paths across all possible nodes, and then you construct a set out of this.
+if it has only one value, you choose that value because every node has the exact same eig tree.
+it's like triggering a rollback, right?
+but eventually every node is making the exact same decision.
+so so long as you have total ordering in which you can very well say this value is smaller or this cell is younger or older or something like that, it's your decision rule.
+you would be making that particular decision and picking that particular value over there, right?
+so this is where, depending on your use case, using the total ordering of your system may be the latest value, smallest, greatest, whatever you can make that alternative decision strategy, no need to always trigger a rollback right.
+and this is how you would achieve a distributed consensus using an exponential information gathering algorithm.
+because we are gathering information across all possible paths over here.
+we are ensuring that we are making a same decision after getting all possible information that we would need then reaching a consensus right.

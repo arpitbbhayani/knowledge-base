@@ -1,0 +1,72 @@
+so why are the underlying arrays of the hash table always a power of two when we trigger a resize?
+in this eighth video of the hash table internal series, we answer some super cool questions and go in depth on hash table resizing.
+we understand why we do it, how we do it, why hash tables are always doubled up on resize, why are they always sized as a power of 2, and conclude with understanding how and when we shrink them.
+so in the previous video we looked at the quantification of performance of a hash table through a factor called load factor, which is represented by alpha, and it is just a fraction of the number of keys that are hash table holds divided by the total number of slots that you have.
+so if you have a hash table with 50 slots and you have placed 25 keys, your load factor becomes 25.50 is equal to 0.5 right.
+as load factor increases, your performance would degrade, because then it would take longer time for you to find a free slot and place your key there.
+so which is where, in order to maintain a consistent performance upon when your load factor hits a certain threshold, you might want to resize your underlying array right, so that you can maintain your consistent performance across.
+so resizing is a very expensive operation because you have, like you have, an underlying error in which you are placing your keys.
+now you have to resize, which means you have to allocate a bigger array and then move the keys and what not.
+if you become too aggressive, which means you are very frequently resizing your array, you are wasting a lot of time doing resizing and moving keys here and there, right?
+you have to resize now, which means you have to create a new array of size m new.
+you can use that to implement it, but that might not be very fruitful because real lock- what it, what real log- does is it creates that new array, copies elements as this like, for example, if you had an array of length 20, uh, if you had an error link 2050 within which you have 25 keys placed, it would literally copy that array as is to this new place, and the later half of the allocation would be empty.
+and the time taken to resize is proportional to the number of keys that you have.
+so time to resize is proportional to the number of keys that you are holding.
+so a typical strategy to resize is always double the array, right?
+so during insert, if we trigger the resize, we reallocate a new array of two times the size and rehash the key.
+to put it really simple, let's say i have an array of size 4 which holds keys k4, k1, k3 and k2 in this order, and my hash function, through which i'm deciding which key goes where, is h of k mod m, m old.
+we have heard it so many times, so many times that hash tables, whenever we are triggering resize, we always have to double.
+okay, to understand why we need to do it by two, let's say we, we go to the other extreme and say we always increase the array by one, right.
+so what we would do is we would allocate a hash table of slot one and whenever we add something to it, we would add a new, we would reallocate the array and then insert a new element into that right.
+so i started with hash table of slot one, right.
+i'll be allocating an array of size one and i'll be inserting the element, so number of operations one.
+total number of operations two right, insert c.
+when i'm doing it, what i would do is i would first allocate the array of length 3, then i would place, then i would copy a and b from my previous step, then i would insert c into it.
+the total number of operations would be 3, because one for the resize, two for copying of element and one for inserting a, c.
+so now, overall, if i'm inserting n keys, overall, if i'm inserting n keys in my hash table, the number of operations would be 1 plus 2, plus 3 plus 4 and so on and so forth, plus n right, because every time you resize, like every time you are resizing your array, and then you are placing your key in right.
+so for me to insert n keys, it would require me to do 1 plus 2 plus 3 plus 4 plus up to and so on, n operations, which is equal to n, into n minus 1 by 2 is equal to order of n square.
+so if i'm doing, if i'm being very aggressive on the resize, where i'm saying that i'll just allocate the bare minimum space that i would need to my overall time complexity of inserting data into hash table, like inserting n keys in my hash table, would be order of n square, very expensive, right.
+let's say my current size is n and i want to go to 2n, but i want to trigger a resize, i want to do a 2n of it.
+now let's take a look into when we insert n by 2 elements in the area of size n by 2..
+i'm taking an example, a very simple assumption that we resize just to make our- uh, just to make the explanation simple, we resize when the array is completely filled, right?
+but understanding this becomes very simple when you say that i would resize when i'm completely filling my array, then only i'll reside.
+so when i'm getting, if my array has four slots, when all four are complete, then only i'll trigger a resize.
+okay, so with this assumption, let's say we insert n by two elements in the area of size n by two, right, so i had n by two minus one elements.
+as soon as i'm inserting one, what would happen is i would have to resize and then basically, as soon as my arrays filled out, i'm basically triggering a resize, right, so i'll be inserting the element and then triggering a reside resize.
+so what i'll have is i'll have i'm having an n by two length array, i'm inserting my final element into it which completes my n by two array, and then i'm triggering a resize.
+so now my array size would be n and the state would be it would have n by two elements filled while the other half is empty, right.
+but it would contain n by two elements filled in the array of size, n right.
+right now i have an array of size n where i just filled by n by two elements, there is still n by two space left.
+so i will not be triggering my next resize until i fill the rest n by two slots of my array.
+so i'm resizing when my array is completely filled, right.
+so while inserting the last element i'm triggering a resize right.
+so what would happen is: first for the first n by two minus one elements, because n by two slots are still remaining in my array right, they're still empty in my array.
+so first n by two minus one elements i can very easily insert with order one right.
+then when i'm about to insert the final element, i'll see that my array needs a resize because my array would be completely filled.
+so the number of operations would be equal to n by 2 minus 1, because it is taking you order one time to insert n by 2 minus 1 elements, because post that only it would trigger a resize.
+you did then 1, or then order 1 to insert the final element, right, plus 2n, as part of allocation, because you are resizing the array.
+it would be two n operations plus n to copy elements from your old space into this new space, right?
+so the total number of operations, when we were very aggressively resizing by 1 every time, it was order of n square n into n minus 1 by 2..
+so you, when you want to insert a key, what you do is you take the key, you pass it through the hash function, you get a number.
+you mod that number by the size of the array to get the index and then you place the key to at that place, right.
+so here the mod operation is super important because it bounds your integer 32 range into the size of your hash table so that you can place your key at that particular index.
+so let's see what happens when my m is 4, which means my, the number of slots in my hash table is 4.
+let's see how my keys would change, like what is the output of my mod function.
+so if my hash key is 1, 1 mod 4, our answer is 1, so i'll go so output is 1.
+because for a number which is 2 raised to k minus 1, like 3, 7, 15, the lower bits are all one, higher bits are all zero and and operation acts as a filter, right?
+so if the keys are deleted from the hash table, then it does not make sense for us to keep it bloated, right, let's say, for hashtable only has one value and you have allocated 128 slots.
+so we know that we grow, or we grow our hash table when our load factor reaches half, which means when my array is half built, that's when we scale up.
+so if your table has n slots, then it would have, at max, n by two elements before we trigger a resize right because because- sorry- it would have at max n by two elements.
+if a table has n slots, it would have n by two elements, otherwise it would have triggered a resize right.
+so, number of elements: if let's say i have an array of slot 16, if i had, if i have had- eight elements, i would have triggered a resize.
+so the number of max number of elements before we trigger a resize could be 7 right.
+so when my slots is 16, my number of elements would be seven at max, because at eighth element we would trigger a resize right.
+this means that we need to have enough leeway where, let's say, we trigger a resize when i we have n by four elements, basically n by four minus one.
+so if i have 16 slots, let's say we trigger it at three, right, so when we do that, we still get a consistent performance.
+we need to shrink when the number of elements are such that a few insertions after that would not cause- would not cause a immediate resize, right.
+so basically, less than two elements when i'll have, that's when i would trigger a resize.
+you want to maintain a consistent performance while also ensuring that, hey, just one more insertion would not lead to a, would not lead to a resize again, right, okay, so this is why, or basically this is when you trigger a shrinking of your hash table to keep your memory utilization pretty, uh, efficient, right.
+point number two: resizing is super costly, right, we saw how allocate and move keys and whatnot.
+four, hash table always has two raised to n slots for faster compute because mod can be replaced by bitwise.
+and fifth, you grow the hash table when your load factor hits 0.5, like one by two, right.
+and that is it about resizing of hash table.

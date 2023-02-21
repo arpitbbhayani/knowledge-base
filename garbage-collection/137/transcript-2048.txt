@@ -1,0 +1,64 @@
+in the previous video, we took a look at a very simple microsoft garbage collector, and the approach we saw was a simple depth-first search traversal with two distinct phases: mark and sweep.
+the algorithm required us to pause the program so that we can run garbage collection.
+so can we write a garbage collector that does not stop the world and runs concurrently with the program, giving us a massive performance boost?
+in this video, we take a look at something foundational called tri-color invariant, and the concept we discussed is something that was contributed by dijkstra, who is most famous for his shortest path algorithm.
+the tri-color invariant allows us to build garbage collectors that run concurrently with the program with very small pause times.
+so let's start with the recap of the mark and swift garbage collection algorithm, in which we have we the input to our garbage expression is this object reference graph in which we know which object refers which other object, right?
+the mark phase: it starts from the root node and sees which all nodes are reachable from it.
+and then comes the sweet place in which all the unmarked objects which are definitely not reachable from the root nodes are marked as garbage and then are.
+first state is the life state, in which we know that this object is definitely life and is reached from the root, right.
+and the third one is processing, in which that we have seen that particular object but are yet to process the child of it, right, so we are yet to complete the entire depth first search on that particular node right?
+so these are the typical three states in which every object lies in this- uh, this classification or this sort of analogy from a depth first search into this three color variant or this three state variant was something that was contributed by dijkstra.
+because if a garbage collector is not concurrent, what would happen is we would always have to stop the world for us to run the garbage collection, which would increase, which would have us larger pause times affecting the throughput of our program.
+so that's where we would want to build garbage collectors that run concurrently with the program.
+so in order to do this, what we typically, or what dijkstra contributed, is something called as tri-color abstraction, but which gives us high concurrency, which means your garbage collector runs concurrently with the program and within the garbage collector itself, it can leverage multiple threads to do cleanup very fast.
+correctness implies that even though, when we are guaranteeing or when we are having this feature of high concurrency, we would still not be cleaning up the items that are life like.
+so, no matter what happens, we would always clean up something which is definitely a garbage, right?
+so every object by default starts with white, right, and every object is right, which means every object is not processed, right, it's not yet seen, it's not yet traversed.
+then we have the gray set, which means when the object is seen, which means that we have started a traversal, but we are yet to complete the traversal for that node, which means that we traverse that node, but we- but we are yet to see the, but we are yet to go through all the, all the children's of that particular node.
+so if we visualize- sorry, if we visualize, uh, the overall coloring of nodes from black, gray and white, what we can typically see is, by the way here, because black on black background might not look good, that's why i'm painting it green, orange and white, like just just a heads up on that.
+so when we uh visualize this overall tracing based garbage collection, you can see it as a wave of gray nodes- this are the gray nodes- which separates the black and the white, and it moves across your object reference graph so slowly you would see like you'll start all nodes as white, and then the and then the gray wave swoops in behind.
+so you can see a very nice wave of gray notes moving in the object, separating the black and the white, until all the nodes turn black, like all the reachable nodes turn black right.
+when you are having this clear distinction between your black nodes, your white nodes, separated by your gray nodes, this clear distinction gives us concurrency.
+other nodes, which are directly or indirectly reachable by the root, is something that is life, and our job is to identify this efficiently and concurrently.
+so white objects are the candidate nodes to be garbage collected.
+by default, every node is garbage collected, right, because we don't know if it's reachable from the root node or not, right?
+so once all the nodes, all the root nodes, are marked as gray, then we start the depth first search, then those children nodes.
+once we have identified all of those tilde nodes and we have started processing them, those children nodes turn gray and the root nodes turn black and slowly suddenly everything turns black.
+right, so in the white set we have candidates that need to be garbage collected.
+this, the nodes which are colored black, are definitely the nodes who are the nodes that are live.
+so these objects are live and they definitely don't have to be garbage collected.
+right, because they are live and they are referenced from the root node.
+gray set are the nodes that are reachable from the root node, that are seen as children of some black node but are yet to be completely processed, right.
+right, so gray nodes are something that are definitely live, but they are yet to be completely processed.
+so eventually every single gray node will turn black, not all white nodes will turn gray and the things that after and when we stop the item, we can stop addition when the grey nodes are, when this set is empty.
+so what does our garbage collection flow look like now?
+we pick the objects from the gray set- right, because gray set is the one that we have just seen, we have not yet processed.
+gray set: once it's complete its children iteration, it will move to the black set, right.
+so we pick an object from the gray set and move it to the black set color.
+uh, every single child of the gray, of the node that we just saw, of the gray node that we just saw, mark them as gray from the white set and then move this into black one.
+so this way we repeat this entire process until every single node from the gray set is complete or is processed right, once the gray set is empty, which means that all the nodes that we have processed, whatever is left in the white is garbage because it was not reachable by anyone from the root.
+here, whenever our objects are moved from white to gray and gray to black, the algorithm gives us a very important property, and this property is: no black object references white, no matter what happens, because these are three exclusive sets- black, grey and white- and the nodes will transition from white to gray and gray to black.
+there will not be any node having which is a black node, which directly references the white node.
+and that is a very important property of our algorithm, because this exclusivity between, or this guarantee of our coloration that guarantees that no black node will ever connect to the white node.
+it is guaranteeing correctness, which means that because black node is definitely the live node and if it is referencing a white node, if that is not possible, which means that our program or a garbage collection is correct, which means that we would never be collecting an object that is life, right.
+so that is a very important uh property of our tri-coloration that would guarantee correctness of our garbage collection, right.
+so single pass dfs that we build with mark and with basically a simple mark and, uh, sweep garbage collection is not fast.
+so here, when we are re-architecting these things into three different sets- black, gray and white- now you can very clearly see that whenever you are like, you can put as many threads like, let's say, you have basically an eight core machine.
+you can start sixteen, thirty, two hundred threads that continuously operate on this gray set only, whose job is to pick an item from the gray set, move it into the black set, mark every single child of it from the white side and move it to the gray set.
+this way you can like with single pass depth first search.
+you were not able to pull this off, but here you are making your systems reactive right by having this ability where you can run very like.
+you can run a thread as soon as like, you would have a set of garbage collection threads which are running on this gray area, which are concurrently running with your program.
+that was an important distinction that we wanted- and as soon as a node enters into this gray set, it is immediately picking that up, moving it into the black set, marking all the child of it from the white into gray right.
+rather than running a periodic garbage collection, we can have a reactive system that reacts to whenever a node is added into the gray set, and obviously you would not run it continuously, but after a certain threshold- like, let's say, a gray set has 1000 nodes into it, then you will run a quick cleanup right.
+so by doing this you are making your systems runs faster on a smaller set of data, rather than doing that complete iteration across all the nodes every time.
+on the fly is a method that was contributed again from which this striker abstraction is picked up by, basically dijkstra and and leslie lamport- let's still upward- someone who we know from the distributed systems, clocks bay, amazing or like.
+what would happen is the mutator thread itself, which means our program itself can start coloring the nodes, as in.
+as soon as a node and or an object is referenced from another object, you can mark that object as gray.
+and if your mutator can start and can simplify the coloring part of it, your job of garbage collector becomes very simple.
+and this is how your, your garbage collection and your main program can run concurrently.
+where our main program is job is also to color the objects with the appropriate colors in order to quickly uh in, in order to make a garbage collector uh, in order to make your garbage collection very efficient, so that it does not have to stop the world always right.
+we'll touch upon on the fly garbage collection in detail in some time, or, or in or in the next video or something, and which is where we would go into how exactly your concurrent garbage collectors actually work.
+right, we will look at the actual core algorithm behind it, but this tri-color invariant of this three exclusive subset, or three exclusive sets of your all the objects that you have on the heap, paves the way, or it lays the foundation, for us to have a concurrent garbage collector, right?
+so this was the key idea that i wanted to discuss in this video about tri-color invariant and how it lays the foundation for concurrent garbage collection, right?
+in the next video, what we'll look at is we'll look at improving our mark and sweep garbage collection using this tri-color invariant and build a concurrent garage collector out of it.

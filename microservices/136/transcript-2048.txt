@@ -1,0 +1,63 @@
+for example, your core api server needs to talk to your notification service to send notifications to the followers when you post something right now.
+picking the right communication pattern is super important, as a good decision will ensure a great user experience and scalability, while a bad one will ruin your party.
+whenever user b post something, user a is allowed to react on it- like, like, share and comment- and as soon as that reaction happens, the notification needs to be sent out to the user who created it post, which means user b, right?
+monolith is just like: you don't have microservices architecture, but rather everything just fits into this one gigantic code base you have, which means that sending out a notification to a user is just a function call, nothing extra.
+there might be a network failure, your target service, which means the notification service, is down, or your notification service is overwhelmed by the number of requests that it is getting, so it is not able to respond as quickly as you would want it to.
+so, for example, whenever user, whenever some user, reacts on a particular post, that reaction service, when it registers it in its database, it will be synchronously talking to your notification service to send out, let's say, a notification service exposes a bunch of endpoints, the reaction service will trigger or will synchronously invoke the apis of your notification service to send out a notification.
+so here, this, the key highlight of synchronous communication, is that it is a blocking call, which means that when your user hits the like button, the api of the reaction service gets invoked.
+so now let's talk about advantages of synchronous communication.
+the biggest disadvantage of synchronous communication is that the caller is blocked until the response is received, which means that, say, if reaction service is talking to a notification service and let's say, notification service does not respond in 5 millisecond, 50 millisecond, 100 millisecond, 200 millisecond, one second, two second, your reaction service is blocked and because your user made a synchronous api call to a reaction service, your user is blocked for that time.
+because the communication is synchronous and your user needs to be blocked, it may hit a timeout or to your network level.
+so what you are doing is your reaction service is triggering api of your notification service in synchronous way.
+when that is happening, what you definitely need to do, because the communication is synchronous, your reaction service will make a call to your api of your notification service.
+if the request gets dropped or you see higher latency, it would impact the overall latency of that your user experiences, which is where you need to always ensure in case of synchronous communication.
+right, and the worst part here is you have to do it for peak, which means that, let's say, if you see a sudden surge of users and if you don't have enough notification servers to who are sending out synchronous, or beat any service, not just, i'm just taking that as an example- beat any service if it does not have enough capacity to handle it.
+there is a chance, or rather number one: the service will get, or the servers will get overwhelmed, the database will get overwhelming, can cash and, uh, your end user latencies will shoot up, which means your end user experience is going to suffer a lot.
+which means that with synchronous communication, whenever you are doing it- not just notification service, any service- always think about it.
+but when you have synchronous communication in place, your service are tightly coupled, which means that if your a is synchronously communicating with b, if b changes something, a should be kept in the loop, right, like, for example, api contract changes, a needs to know about it.
+and, like with synchronous communication- you always have to think about that- are my apis version.
+let's say, i want to like, uh, like a post, so user will trigger an api to like that particular post and until it gets the response, it will not move forward, right?
+the second is when you want real-time response, for example, chat and check out, like when you're.
+so this is a classic standard diagram for a synchronous communication in which what you typically have is, whenever two services need to talk to each other, instead of directly invoking each other's api, they send out a message in a broker.
+this is a classic idea behind notification or behind asynchronous communication, right?
+so here the interaction between the two services, or like the reaction service and the notification service, is via an exchange of a text message, for example your reaction service, or when your user reacted to something.
+user making an api, a rest api call to register a like on a particular post, then the reaction service would update its database and then would send a message to your message broker saying that this user reacted to this post made by this particular user.
+and because of the best part of going for an asynchronous communication is that there is no cascading failure, because this is above, in synchronous communication you always made a call right away, but here the messages are stored in message broker, which can eventually get consumed by the notification service.
+so here, because this is acting as that buffer, which means that this communication does not need to happen in real time, so there is no risk of cascading failures.
+that's the biggest advantage of going for an asynchronous communication here, like in synchronous, where everything was blocking.
+so what would happen is because, uh, your user making an api call to a reaction service is synchronous.
+so user registered a like reaction service, updated database, then it created an asynchronous task in a message broker.
+this acknowledge: after your reaction service got that acknowledgement that the message is stored in the broker, it would send the okay response to your user.
+so now when your user makes a like, the, the, the reaction gets registered and asynchronous message is pushed in, the broker gets a response, gets a response, and only for this much of time the api is blocked or the or your user is blocked, right and now?
+once the message is registered, now your broker notification service can run at their own time and can trigger the notification.
+so here the notification service can pull the message out of the broker and send out the notification to the user.
+the biggest advantage of asynchronous communication is that your services don't need to wait for the response.
+so earlier your reaction service used to send communication to notification or synchronous connection notification and then you should get response.
+but what if notification service is with asynchronous communication?
+so now what would happen is the api response time that your user sees, your end user sees- is pretty low because it stores one reaction in the database, sends out a message and done.
+this way, if you get a surge of request, your system is unaffected because what was happening is in synchronous communication.
+you had to ensure that the notification services is bulked up, but to handle the search in case of a synchronous communication, your reaction service, because when you're, when exactly are you getting search?
+but for every request that you get over here, you are updating the database that you anyway have to ensure and it needs to send a message to the message broker, right, it is.
+when this is done, like here, no matter how many requests you get, your reaction service only has to store messages in the message broker.
+this way, what would happen is, no matter how big the search is, your end user experience is pretty consistent because so long by, by the way, so long as the message broker is skilled enough, right?
+so here the key idea is, if there is one request per second or 1000 requests per second, the api response time, sees as experienced by your end user, remains unchanged, because your reaction service updates this database and sends a message broker, and that's exactly what it would always do: beat one user or one request per second or 1000 requests per second, right.
+you can see that, hey, if there are large number of messages in the broker, then scale up the notification system because the communication is not synchronous.
+if, so long as the delay is acceptable, your notification service can slowly consume all the messages, right.
+the next advantage is that you require fewer infra components like load balancer when your reaction service is talking to a notification service via broker in this communication, you don't really need a load balancer sitting in front of notification service because what's happening?
+in case of coming like this load, like if your user was directly talking to this api server, let's say the time it took was 100 millisecond, but with this load balancer in place it might take 105 millisecond.
+the next advantage is there are no request drops or data loss in synchronous communication.
+but with asynchronous, there is no data loss because the reaction service simply has to put the message in the broker.
+what would happen is your notification service, because your reaction service just put the message in the broker, the notification service will eventually consume all the message and will catch up, right.
+so even if there is a very high surge of reactions coming in sitting in your message broker, notice, if you have just fewer servers, it will take, let's say, 10 minutes to consume the messages.
+so it's purely horizontal, scalable consumers that you have over here, right, but in any case you'll not have any request drop whatsoever because your reaction service only has to put the message in the broker.
+the next one is you get better control over failures because in synchronous communication, if their request field you had no way to retry, you had to do like your user had to do: retry, which is a very poor experience because having retries on your client side is not a good solution.
+but with this asynchronous communication what do you get is you can retry like, let's say, you're while processing a particular message or notification server crashed.
+the next one is your services are truly decoupled because, like your, notification service can scale independently, your reaction service can scale independently because these are synchronous communication so long as a message broker is good enough for it to handle the traffic.
+notification service remains unaffected- right, because it's pure text based messages which are sent here and which is consumed over here.
+you are okay your system to be not strongly consistent, because what would happen is the message is sent synchronously but then it is consumed asynchronously.
+so you have lost your control and if there is enough load coming in enough message piled up, your system will eventually send out the notification to all the users, but not in real time, right?
+so it's very important that whenever you have a synchronous communication in place- because this message broker is the backbone of your architecture- it needs to be horizontally scalable.
+it needs to guarantee that there is no data loss if the message is stored there, right?
+so that's what you do, is you add a message to a broker and let your notification service consume it, because it does not need to be real time.
+your synchronous communication cannot wait for one hour, right?
+so when it is okay for you to allow failures and retries, this is where you will go for an asynchronous communication rather than going for a synchronous one, right?

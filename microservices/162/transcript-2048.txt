@@ -1,0 +1,79 @@
+so, as your application evolves, supporting multiple types of clients like desktop, mobile apps, etc.
+in this video, we take a look at an interesting high level architectural pattern used in microservices that solves this exact problem, and the pattern is called back end for front end, fondly called as bff.
+we would see in detail what this pattern is all about, where it is actually used, how to implement it, look at its advantages and disadvantages and conclude by building an understanding of when should we actually start using it.
+you expose it through your favorite web server and what you support right now, your support only one type of client.
+so, given that, uh, as your current situation, your, your typical three-tier architecture would look something like this: you would have your users, which are talking to your monolithic apis, which are then uh, which in turn fires the query together to the database, gets the response and sends it back to the user- a very standard three-tier architecture that you will have, right.
+and to take more concrete example, let's say you are building an e-commerce app, right, and in this e-commerce app, what you need is you have an api that sends product details.
+so all of this is what you are sending in in one api response, because when you do this in one api, like you might think, hey, let me fetch reviews separately, let me fetch faq separately, let me fetch something else separately.
+now, when that happens, every single thing that the page required, you are exposing it on that end point, which is get slash v1, slash product, slash product id.
+so when you foray into mobile, you have now two types of clients to support your desktop web and your mobile app: right.
+but if you think about it, the information that we sent to desktop web was okay for us to render the entire page.
+you would show the user the most essential, most critical information that he or she needs to make the product decision.
+a lot of things might be non-critical per se, so you should be moving that to a different screen, right?
+so because that you are not rendering that information in the first viewport, why do you even send it in the api response?
+so what would happen with that is if this, if you are using the same endpoint that you used for desktop web and your mobile app, you are sending a lot of extra information with it.
+so if we just want to ensure the great user experience with very low network bandwidth being consumed and being very efficient on your mobile device, you should be sending only the data that your mobile is definitely going to use to render the screen.
+plus, it would load your page very quickly, because now there is a very small amount of data that your mobile needs to process and render, so it's very efficient.
+you might want to have different set of responses depending on different types of client that are coming in a very and just to extend this problem, it's not just limited to mobile apps.
+this problem like, for example, you have a desktop app, your mobile app, but now let's say you would want to create an alexa plugin and you can do that if you want to have an alexa plugin- the kind of responses alexa would need is very different.
+it is not the stream format, like the json that you resent in the response of product details is not how alexa would understand what to communicate.
+a very nice way of implementing this would be: hey, in my api request or in my uh exposed endpoint, let me accept query parameters.
+the filtering happens at your bff layer, your backend for front-end layer.
+desktop bff would then talk to monolith.
+monolith then then talks to db, get the data sent to the bff and bff forward set to the desktop client.
+mobile bff goes to monolith.
+monolith goes to database, gets the response sends to bff and which is then sent to user.
+for example, whatever information it got from the monolith or from the backend apis, it would filter out the things that it does not need to send to the corresponding type of client.
+so, desktop bff or mobile bf4, in general, your bff service would only take care of the presentation part of it.
+if i'd want to make something extra, call it to some another back-end micro service to get some information.
+it sits between your core back-end system and your client, acts as a proxy for a corresponding type of client, and all the presentation hacks go there, right.
+so multiple bff is equal to multiple api gateways: that you have one for each type of client, so one.
+they are talking to each of the uh bff and bff is internally making calls to other services, right?
+so it needs to know, like every single bff decides, given an api request that is coming to it, what it needs to fetch, how it needs to fetch and what it needs to send in the response.
+uh, it purely works on the presentation layer of your data, right, might match extra information here or there, but that is not a business logic.
+it, let's say you are fetching a product detail, your request goes to your request from your mobile app, goes to mobile bff.
+mobile bff talks to monolith, gets this gigantic response and then decides to drop reviews, faqs and other stuff that it does not want to send to the mobile, right.
+it's very simple to keep your back ends very generic while having a bff layer that takes care of the presentation, depending on the client.
+right now what you need to do is the request from your back, request from your desktop web comes to a desktop bff.
+in order for desktop bff to gather that information that needs to be rendered, it would have to talk to your product detail service, seller service and review service to grab all the information and send it out to the user right.
+when the request comes from your mobile app goes to mobile bff, it would fetch product detail, seller detail.
+it doesn't have to talk to review service because it is on the next screen, so only product details.
+only the logic only has to be with the corresponding bff layer, right, so that's why it fits very beautiful in the micro services space architecture.
+now let's take a look at advantages of bff service or of a bff layer.
+so the idea here is: your desktop player does not need to know your mobile layer.
+like, for example, if tomorrow your android team says, or the mobile team says, hey, we also need this information.
+you don't need to change more your monolith or your backend services.
+they can send the same set of response that it was sending to any anyone and everyone on your bff layer.
+for example, you might not want to send a particular sensitive information due to any like your back end is generating that, but you would want to filter it out on your bff layer.
+so now you can filter out the things that you don't need hide sensitive information, then picking the right stack for their protocols for a client, and it's not just for client but even for backend, because you have a bff layer sitting in between.
+let's say you have a client that you have a legacy client that only understands xml, but your backend is sending response in json.
+your bff layer can do the transformation because for a particular type of client it only understands xml.
+so when bff interacts with the backend services, you can pick the best protocol out there.
+for example, your client would not know what grpc is you're like.
+for example, the attacks that are possible through mobile device are very different from attacks that are possible through web interface, right?
+so, depending on the client that you have, you might want to apply the corresponding checks onto your bff layer, and that makes it very easy.
+you don't have to apply all the checks at all the layers, right, you can apply very specific client or very client specific security checks at your corresponding bff layer, ensuring that, no, that no information is preached or no user uh is at stake.
+you need a single general purpose backend for everything, and bff can take care of a customization.
+the core backend that you have can send all the information is very generic in nature.
+filter outs is happening at bff layer, so your back ends are very performant on the caching side.
+the final advantage that we take a look at is bff can also act as a request aggregator because bff is sitting in between and let's say you have multiple microservices.
+your client does not have to talk to individual microservice to get the information.
+same thing because bff are like api gateways.
+request comes to bff, bff fans it out, gets the response, gathers it and sends it back right.
+so bff can also act as a request aggregator, making your clients very lightweight: just one api call from them.
+we are finding out a lot of calls internally right, solid, solid, solid advantages that you get by using uh bff pad, but obviously grass is not always green.
+although that work that i just talked about as an advantage of bff, it also falls as a disadvantage of bff because now, if we think about bff, doing the fan out with it is very network heavy process, right.
+for example, you should not be using python to create your bff because you would want concurrency.
+you would want ability to fire multiple network calls, like when i'm talking about python, python 2.7, python 3, with asynchro you can still use.
+you could see that mobile, desktop, multiple types of client.
+so most of the code across your bffs for different client would be very similar.
+with large set of infrastructure, large number of services, you would have to ensure that all of these things are managed, maintained, monitored and deployed because you cannot have blind spots in your system might lead to a big outage and with this proxy layer, with this bff electricity in between, it would increase our latency slightly because you are making a call to one service that internally makes call to multiple services to get the data and send it back, adding that one extra network hawk, network hop.
+first, when the interface are slightly different across clients, for example, where you have your, where your interface for your web is very different from your interface in your mobile app.
+for example, if you have a legacy integration or a very specific integration which only expects you to send a data in a particular format.
+it goes to back and fetches the generic information, transforms it into the format that alex understands and sends it out right.
+similarly, for supporting mobile device, it would go to the backend service, get the information, transform it or basically filter out the things that it doesn't need and send it to the mobile.
+it understands the information in a particular format, let's say xml.
+hypothetical example: let's say your bank understands xml but every other client that you have- your mobile app, your desktop app, everything- understands json.
+you have your user monolith exposes json endpoints client.
+it gets the data from the database, sends it into the bff.
+so this way, you can now support multiple types of plan that understands totally different formats through a very simple and elegant solution called bff.

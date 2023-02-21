@@ -1,0 +1,73 @@
+hence we need a distributed network to maintain a minimum spanning tree so that we can do a broadcast of this message to all the nodes in the most efficient way possible.
+hence, in this video, we take a look into the famous ghs algorithm to construct a minimum spanning tree in a distributed setup.
+we'll go through the algorithm step by step and see how spanning tree makes leader election a piece of cake.
+thanks, so say node wants to broadcast a message in a network, but this has to be extremely efficient.
+to do this efficiently, we use something called as a minimum spanning tree, right?
+now if you want to send a message to all the nodes of a network, now what would happen?
+this is where having a good knowledge of minimum spanning tree for the network comes in, because you can do that in the most efficient way possible, because you are minimizing the edges of it, and this is what makes this particular algorithm classic.
+take it by congestion level: in in my network with the same connection, and what if one link is having very high load while other links are sitting idle again, minimum spanning tree is really important, right, because you are optimizing on time, you are optimizing on congestion, you are optimizing on cost- pick up, pick your favorite factor- and you would need a minimum spanning tree to solve this particular problem.
+so, hence, what we can at max assume is we can assume that every node knows the weight of all of its incident edges and the total number of nodes in the network.
+so if i were to, if i were to formulate the problem statement, it would be: find the minimum weight spanning tree for the entire network, such that each node slash machine decides which of its incident edges are part and not part of the spanning tree, right?
+every node would just know out of, let's say, if a node has four incident edges at the after this algorithm is completed, it should know out of these four edges, which edges are covered and which edges are not in the spanning tree, because there would not be anyone who don't have the entire information.
+the core strategy to construct a spanning tree in a distributed setup is we start small, with a forest of spanning trees and we repetitively merge them to create a single spanning tree, kind of like divide and conquer, right?
+so you would start with a large number of spanning trees, individuals penetrate and merge them, merge them, merge them to have a final complete, uh, to have a final spanning tree that covers the entire network, right?
+so what would have is, let's say, uh, at a particular state of my network, i have two components, each one having some nodes con, which are creating a spanning tree, a subspanning tree, within that.
+it's just a leader who is representing this entire component or a subspanning tree, right?
+level zero, basically, where initially- this is your day zero, this is your initial setup- every single node is a spanning tree in itself.
+it is indeed a spanning tree in itself, right, because all the nodes are covered, no edges, and a subset of edges are got.
+so if i have n nodes in my network at level 0, where there are no edges covered yet, this is the spanning forest of n spanning trees.
+but here, because the component or the subspanning tree only consists of one node, everyone, every node it, knows its own uid.
+it knows that it is the leader of this component, right?
+now the next step is that each node within the component sends a search message.
+right, to merge the two components, we need to know how they can be merged.
+now, because this is a distributed setup, no node in my component knows which are the edges that are outgoing edges.
+none of the nodes in my component know which are the edges that go out of that component.
+right, so search message within the component is sent using bfs, like broadcast bfs.
+when a node receives the search message, what would happen is it would be searching for an outgoing edge that is going out of the component.
+now, a node only knows its outgoing edge, but it.
+but how would it know if the edge that is going out is actually connecting some other component?
+we spoke about this assumption that every node in the system knows the component it is part of by the leader of that component.
+so what every node would do is every node, upon receiving the search message, it sends a test message to its neighbors and the neighbors respond with the leader uid of its component.
+so every node knows the component that it is part of and the leader uid of that component, right?
+so if i receive the message, what i would do is i would send it to all of my neighbors saying, hey, i am this node, i have this leader, what do you have?
+it would say that, hey, i am this node, because it would know, like, this is the node and i am part of a component having this as a leader.
+if leader uid varies, then they are part of the different component and that's how it would know that this particular edge that took me toward this particular node is connecting me to a different component.
+so for all of such edges, it would need to know the minimum of it, right?
+right now, that every node knows, if applicable, one, one outgoing edge that connects itself to the com, to another component.
+right, so it would know that these are the peripheral nodes of my component, because this is what we have to find.
+now, once these nodes know that, hey, this is the outgoing edge that is connecting r component to other component, what it would do is it would, it would uh, of all of these minimum edges, it would send this information back to the leader, that every peripheral load, it would send a message back to the leader using what converge cost, right?
+it would compute the global minima and that's how it would know that, hey, i need to connect to, like, i need our component to merge with that other component, right?
+all it knows that the minimum weight it got was from this particular node of its own component.
+now the components combine over this mwoe minimum weight outgoing h right, the edge that was chosen by the leader.
+they are connected by this minimum weight outgoing edge and these two components would merge on that.
+so leader of the component talks to the nodes connected via mwoe, the minimum weight outgoing edge, because the leader itself chose that edge.
+the leader would tell the nodes, both the nodes, to mark the edge that it belongs to this component.
+now, because now what would happen is because we have two component: if that edge that is connecting this two component, if it is marked to be part of this one to be part of this one component, then it's basically like merging the two components.
+so the leader would send a message to both the nodes connected via this mwoe to tell you, hey, change your edge.
+so the way it would happen is the new leader of the merged component will be out of the two nodes, that whose who are connected by mwoe.
+the node having the larger uid becomes the leader of this merged component.
+when the two nodes who are connected by this minimum weight outgoing edge they merge, or like they are changing the edge, both of them knows each other, the both of them knows each other's uid and they would know: hey, my ui dislodger, i'll be the leader.
+level uh, how merge happens and how new leader is elected.
+like now you can very clearly see that because it's a distributed setup, there is no one component who is trying to forge his way across the network.
+right, and in case if a level one and a level zero merges, because it is possible that your node does not have a two, uh, uh, the number of nodes in the network may not be in the power of two, right?
+how would your algorithm know that the minimum spanning tree is constructed?
+that component would have a leader right because whenever the merge happens one of the two nodes connected by mwoe, they form a new leader right.
+when it does that, it would not find any because the nodes, when the message is received, when the nodes send it to their neighbors, it would not receive anything back, like it would receive the messages which would have the same leader uid.
+so every node would send null responses to the leader saying that, hey, there are no, like i do not have any edge that connects our component to other component.
+so because each level takes order end time, because they're sending message to the nodes, receiving it back, its order n.
+and when we talk about communication complexity, what is happening is each, at each level, order of n messages are sent and order of e messages are received to decide m w o e, because leader, like every node, sends a message.
+outgoing nodes respond with this and the number of messages received is equal to the number of edges in the system.
+so it would be order of n plus e log n right, because the total number of messages would be the number of levels at each level: order n messages and plus order e to get the minimum outgoing edge.
+now let's see how our life becomes super simple when we already have a minimum spanning tree constructed and if you want to do leader election, because this shows that how one algorithm empowers hundreds of different use cases.
+now let's see, assume that we have a minimum spanning tree constructed in a distributed network using the gss- ghs algorithm we just discussed.
+now we are doing a leader election between them, right out of this node.
+so leaves would send the leader election converge cast message up the level.
+right in the spanning tree, it would wait for the messages to come in from n minus one of its descendant and once it received them it would send.
+it would combine the message and send it over the one edge which is remaining, over that one which it would be its parent typically like.
+so the root node might not even like root node, would not even be sending the message, right?
+so if this happens, then you'd know that this node becomes the leader, because this is the only node which is left to send any message and it is converged to this one root node and that becomes the leader.
+when it's happening this way, there would be two cases: either that node receives messages from all of its neighbors without sending anything, that becomes a leader.
+if two neighboring nodes receive message from each other, this means that one of them needs to be elected as a leader, because everything else is covered.
+they both send messages to each other because leader is still not elected.
+and this is how, and this is how you can power a leader election algorithm in a network who has all that has already constructed a minimum spanning tree.
+and this is the beauty of this algorithm, this is the beauty of how minimum spanning tree can power a use case like leader election and how simple leader election becomes in a distributed- and there are hundreds of ways to do that.

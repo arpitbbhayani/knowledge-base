@@ -1,0 +1,82 @@
+so outages happen, and in such 10 situation, the main priority is to get the system back up and running, but is that it is everything done once the service is up?
+there are many things to take care of once the outage is mitigated, and in this video we dissect the github incident, understand what happened and look at a set of common practices that we follow to ensure a complete closure.
+but before we move forward, i'd like to talk to you about a course on system design that i have been running for over a year now.
+engineers from companies like google, microsoft, github, slack, facebook, tesla, yelp, flipkart, dream 11 and many, many, many more have taken this course and have some wonderful things to say.
+the first one is the live cohort discourse which you see on the left side, and the second one is the recorded course which you can see on the right side.
+the live cover based course happens every two months and it will go on for eight weeks, while the recorded course contains the recordings from one of the past cohorts, as is.
+otherwise, the live code is where you can participate and discuss things live with me and the entire cohort and amplify your learnings.
+thanks, so, like always, we start with incident report and here it goes.
+the incident was caused when a foreign key for scope tokens exited max in 32.
+this is one very common reason that we seen with github, where your auto increment integer column uh overflow- right, so it started not accepting rights and it led to a lot of failures and a perpetual downtime.
+right, so this resulted in a high failure rate for github actions and github pages.
+what's common between github actions and github pages and why, like we have seen so many outages happening with github actions?
+if you see with integer overflow, where your auto increment integer column hit its limit, it typically happens when you have very high write rates.
+right, because that's what you would exhaust the limit and actions and pages are very high throughput service.
+it has very high write rates because github actions is triggered every single time you make a commit.
+right, and another set of actions where you might find it amusing- hey, my integer id would cross- is push and pull, and which is exactly what we also see in the outage document.
+it also prevented some access to operations against github, apis and low level git commands like push and pull.
+right, so push and pull, uh, in order to authenticate the request on github, it requires scope tokens and push and pull very frequent operation.
+again, scope tokens exhausted and done right caused an outage.
+so if you are using a sql database with auto integer increment- with auto or with auto increment integer column, ensure that you are well within the limits and not hitting the uh and not basically having an outage because of that.
+the mitigation strategy is very simple: run a schema migration that would convert the 62-bit column to a 64, to convert a 32-bit column to a 64-bit column.
+they mitigated this with a long running schema migration to change the foreign key to in 64.
+when you see, because it was a foreign key reference, right, this is typically put under the carpet, like people typically skip it key array.
+people take care of ids as such, the primary key of the table, but foreign key typically is very sneaky, right, so people might skim it through, people might forget about it, and this is what the reason for this outage was.
+so the scope token, integer, uh, auto incrementing integer column, foreign key reference, which led to integer overflow 32 bit.
+so int the id column was there, it was 64-bit, but the foreign key was 32-bit.
+so when id overflow, when it went from, when it crossed that 32-bit limit, foreign key started failing, which is what caused this outage.
+run a schema migration, change the column type of foreign key column, uh, to 64-bit, and that's exactly what they did.
+schema migration would take a long time to complete, but that's the only way out.
+so convert integer to big integer and run that sigma migration to handle that right.
+but now comes the interesting part, and- and obviously just to uh, uh, if you want to know how this happens, uh, how to do this, actually do this migration, and what all challenges come in, i've- i've basically covered it in two different videos which i would highly recommend you to check out.
+you'll find the exact ways to run this schema migration, why it takes long time, how to do it quicker, uh, three or four approaches i discussed.
+so you can uh watch that video to understand how this actual mitigation happens.
+but uh, coming to the main agenda for this video, like, assume that the mitigation is done, everything is operating, but is that it right?
+once the foreign key migration was successful, obviously the right started, or the rights started to get accepted, and things became normal.
+the internal engineering teams then worked to slowly remove token records stored in our cache layer that were considered invalid.
+issue was mitigated, right.
+mitigation is all about you phase in outage.
+once the system is up and running, your issue is mitigated, but it is not yet resolved.
+right, mitigation just implies that, hey, my service was not running, but now it is running.
+so first thing that i would want to discuss is data inconsistencies.
+now let's say between these two statements, so update: a equal to a plus hundred happened then.
+so one way to handle this is by using proper guard drills, like sql transactions, to ensure that either all of them happens on another happen, basically atomicity of the operation.
+so that is where what you should be ensuring is: when the outage happened, check for such data inconsistencies, understand the system really will, check for data and consistencies and ensure that those things are cleared off right.
+this is what github also did by removing- uh, by removing like kind of not really an inconsistent, but some invalid tokens were there in the cache which they removed right, because they were not really needed anymore and that kind of puts it in inconsistency.
+but in general, whenever you are having an outage, after that, ensure that your data does not go in consistent state, because it might be an irrecoverable situation.
+that should not happen, right?
+second point which is very relevant to this outage is cache invalidation.
+so some of the data in the cache might need to be deleted because partial entries were not fruitful, right.
+so what happens here is you wrote to a cache, then you had to remove it, but, but between that outage happened, the entry is still there in the cache, which it should not be right.
+so maybe what we need to do is- this is a very common use case where your cache has a lot of stray entries which it should not have, which is where it is important to understand how you are utilizing your cache and do cache invalidation if required and because you should not be serving very stale data to your user.
+that's where it's a very important thing that, after an outage, understand how your cache behaves and see if you would want to invalidate the critical reads that go to the cache.
+right, and if you are okay serving it, let it be, but if not, check for those inconsistencies and invalidate the cash.
+if you want to right and at least notify the dependent services key, something like this happened, so you might want to clear off the cash that you have, okay, next, alerting and linting are already in place to prevent integer overflows in the database.
+what github says is they already had alerting and linting in place to prevent integer overflows in the database.
+they already had it, but then still the outage happened.
+why, unfortunately, these mechanisms were not sufficient, in this case due to it being a foreign key that predated our linting.
+but still it happened because these mechanisms were not sufficient, because it was a foreign key that changed.
+like i said, that id column checks- everyone puts it, but foreign a thing, it's very sneaky- and that's exactly what happened with github.
+so they had checks on the primary key but not on the foreign key, and which led to this outage.
+so what they do is they in response, we are manually auditing all in 32 columns, not just primary key, but all int 32 columns, and investigating further improvements to our automation to help prevent such outages and moving forward something, something, something.
+they had those things in place, but still it happened.
+so having such ways to ensure, like regular audits, regular audits of things, are very important.
+so what we should all be doing is auditing the alerting strategy to ensure the right set of alerts are configured.
+so here it was a miss: the alert was configured on the primary key but not on the foreign key.
+so ensuring that we periodically audit our alerting strategy and ensure that everything's in check and we would be notified whenever something similar might happen.
+and this it's not just we do it beforehand, but if an outage happened, right once the issue is mitigated, set up very thorough alerting.
+that is how you should be operating: that once you made a mistake, you learn from it and you ensure that you are not facing an order with the same mistake again, right?
+so this is what the github team did to when they set up alerts across foreign keys.
+they did manual auditing of every single integer column, not just primary key, but every single integer column, just to ensure that they are well placed and they not face the issue with the same reason again.
+given the nature of this overflow- something or something, but this is important- our internal engineering teams are actively working on reducing the impact and likelihood of this class of issue happening in the future.
+again, preventive measures, right, this works.
+this work includes tooling to prevent database inconsistencies and improved alerting to allow faster remediation, right?
+so this is a very big learning: that whenever there is an outage, what you should be doing is you should be ensuring that you are not getting the outage for the same reason.
+take preventive measures from this happening ever again.
+so, preventing measures to ensure that another outage does not happen for the same reason.
+in this use case, what github did is they re-audited their alerts, they checked for their linters, they ran their automation or they updated their automation to find it.
+and this is very important- this, if you just take care of this one thing, that you are always ensuring that you would never see an outage for the exact same reason.
+like because unknown out or outage because of unknown reasons are very common, but once you know that it happened because of the season, try not to have it again.
+yeah, so this is what we learned from this outage and this is very exhausting, obviously very use case, specific uh, very company, specific organization, specific uh on what needs to be done.
+but these four checks- data inconsistency, cash invalidation or so many things have break because of cash not being invalidated.
+then, uh, setting up the right set of alerting, write immediately, like immediately after the outage, and taking preventive measures, preventing measures to ensure that the output doesn't happen because of the same reason again- is very important.

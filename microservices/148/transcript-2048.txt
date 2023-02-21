@@ -1,0 +1,64 @@
+so micro services should be loosely coupled in, autonomous, so that they can take their own decision and be as performant as they can be.
+a high level architecture pattern that allows us to achieve this is the database per service pattern, in which each microservice owns its database and can take independent decisions about it.
+in this video, we quickly talk about database per service architecture pattern, look how it helps in modeling massive systems, understand the advantages of adopting it and conclude by going through some drawbacks of this architecture pattern.
+but before we move forward, i'd like to talk to you about a course on system design that i have been running for over a year now.
+engineers from companies like google, microsoft, github, slack, facebook, tesla, yelp, flipkart, dream 11 and many, many, many more have taken this course and have some wonderful things to say.
+we cover topics ranging from real-time text communication for slack to designing our own toy load balancer, to greek buses, live text commentary to doing impressions counting at scale for any advertisement business.
+the first one is the live cohort discourse which you see on the left side, and the second one is the recorded course which you can see on the right side.
+thanks, so almost all micro services need some kind of data store to hold and persist the state of its information.
+for example, order service will need to store the incoming orders somewhere in some database.
+payment service would need to store the incoming payments or the refunds that they are making into some database.
+this promotes something that we strive for in a good micro services based architecture, which is loose coupling.
+by having a service owning its own database, we are creating loose coupling between the two services, making them independent and autonomous: independent to build, test or deploy and scale their applications autonomous to take the decision on their own database or any other peripheral decisions, for example, for example, the communication business logic, api contracts.
+there are so many services that you would have to build in order to run or in order to have just one social network.
+for example, a chat service where there is a very high ingestion volume of information coming in, where people are chatting and everything needs to be stored and persisted.
+the chat service needs to have a database that is right, heavy or that can handle large amount of rights and should also be able to support a specific kind of reads.
+so that's where a partition nosql database like apache cassandra would be a very good choice for a chat microservice.
+for an authentication service, a simple relational model or a simple relational database with master and replica setup is good enough to have a large amount of load.
+or in case of a profile service, well, let's say you have a very schema, less information about, uh, some information that a profile of a person might hold.
+you might want to go for a non-relational database which is schema less like a mongodb, and in order to scale reads, you might want to configure it in a read replica setup, right, so that would give the best performance, uh, or extensibility for that particular use case.
+you would not want to fire your, your super complex analytics query onto your main transactional database.
+so that's where analytics query would need its own database which would be its data warehouse, like amazon redshift.
+you might want to go for something like an aws s3 or any kind of blob storage to hold that information right.
+so here we see how a simple looking social media that we use on a day-to-day basis has so many micro services and each service has to take its own decision about its database so that it could give the best performance for itself, like for chad to be performant with respect to, because that is a use case where it is read heavy and right heavy, more more so than that.
+because of that, we need to have a database that supports very high right throughput and that too, in and that to it, and hence it needs to be partitioned.
+you may not need partitions or you may not need sharding for authentication service or for profile service, but for chat, definitely, yes, right.
+why would you want to fire that query into your main transactional system or into a shared database?
+so one bad query or one gigantic analytics to be done would take down your entire database.
+so now let's talk about advantages, now that we understand, uh, the kind of decisions we would be making or the kind of things that we are signing up for.
+let's talk about the advantages of adopting database per service, of adopting the database per service pattern.
+this is the heart and soul of micro services based architecture, where, because of loose coupling, what we would definitely want is every service to run independently and, uh like, not just service, but also the team owning that service should not be dependent on other teams.
+this way, any changes that can happen onto a database will keep the service unaffected and you can very easily scale out the system now.
+tomorrow, if we have another service who needs the same profile information could just talk to profile service rather than sharing the same database or doing that part.
+that's the heart and soul of micro services based architecture through this database per service pack.
+you have a very specific need, for example, in order to, in order to model relations on social network, for example, a follows b or a is friends with b, you might want to go for something like a graph database.
+so if you are modeling something like a social network or social relationship on a network, you might want to go for a graph database because you need those algorithms you might not not want or, if you do it on a relational debate, would be very inefficient to do so.
+so that's where, in order to fulfill the specific need of a particular use case of your application, you would want to go for a specialized database.
+a small example to conclude on this point would be: uh, to power a full text search engine, you might want to go for elastic search, so that, because that's meant for that particular use case, why would you want to do it on a relational database using like queries, right, very poor way to design that.
+so that's where to, in order to fulfill the specific need of a specific service or a specific use case, you would want it to be as isolated as possible and as autonomous as possible.
+next point is: you want to have granular control of scaling or of scaling your service database.
+but scaling your database is tricky because you, your databases, are not elastic like you cannot just say, hey, increase the size of my database.
+for example, in case of a chat system, a partitioned way of scaling is good for right ingestion or a right heavy system.
+that's where you might want to have a partition database.
+on the other hand, where you are building something like a payment service, you might want to go for a very strong, asset compliant database like mysql or postgres, so that your data never goes in an inconsistent state.
+scaling for system like chat, you could add, read replicas or you could to handle rights.
+so that's where, for your specific service, for your specific use case, you would want to pick- or you should be picking- the best scaling strategy that would keep the cost in check.
+next is if your database goes down when you have data- and in most cases, most outages that happen in the world are either due to dns or due to a database.
+so, because it's in most cases it is due to database, or your database choking, or your database is under heavy load, or it went into a reboot state, something, something happened with your data.
+so, for example, if you are storing a critical information like, let's say, financial data or payments, you might want to have a, a policy where you would want to encrypt the data at rest, which means that whereby, while you're storing the data in your database, it should be stored in an encrypted way, or the disk on which a database is stored that should be encrypted, and so on and so forth.
+now here what would happen is if you have database per service architecture, you would only need to encrypt that database or that table and like, for example, your entire data size is 2 terabyte, but your pi information under financial information only comes in 10 gb.
+so that is where for a separate compliance, and it is always better to to keep your database granular so that you can put those necessary checks only on those databases and not touch upon any other right.
+so these are the advantages of having database per service architecture.
+obviously, again, as i always say, grass is not always green- we have to look at disadvantages of going for database per service architecture.
+first disadvantage is your cross service transactions are super complex and super expensive.
+so, cross service transactions, for example, uh, if you have, if you are building, let's say, a 10 minute grocery delivery system- i have a video on actually implementing distributor transaction.
+but let's say, if you are building a 10 minute grocery delivery system and hypothetically you only want to accept the order when you have the inventory and you have a delivery person available, inventory is as its own database, is its own micro service, logistics has its own database and is its own microservice.
+it's not as simple as you start begin transaction and transaction like you do in your relational database.
+you are actually slowing it down because it is that slow to implement, because you have, because there are a lot of distributed components that come into the picture and it takes time for you to guarantee consistency and what not as part of disabled transaction.
+so i would highly recommend you check that out on my channel or on my website: uh, implementing distributed transaction using two phase commit, where i've actually implemented that, and if you are- and you would realize that disabilities are not just theoretical- you can actually physically implement those things and i would highly encourage you to check that out, okay, second disadvantage is con, not disadvantage, but a little, uh, a little hiccup where conveying updates across services is difficult, like, for example, if the two services would have shared the database, they could like directly talk to the database and see the latest state of it, right.
+but here let's say you have, you are building social network and you have a post service on which, like whenever user posts something that comes to this service, and it has its own database where it is persistent.
+or graph database- right, your teams need to, your sre team, or even, in your case, if you are managing it, you need to have those expertise into, first of all, writing efficient queries.
+it's not that they don't want to change, but it's more like managing them.
+slash concerns about database per service architecture, and i hope it was pretty uh exhaustive per se, though i try to give you a little bit of insights around everything on how those things happen and, uh, how we function.
+so, yeah, now you understand database per service architecture, uh, advantages of it, disadvantages of it: modeling a social network, different kinds of databases- we just trust upon it a few times.
+uh, understanding how it promotes loose coupling, autonomous and independence, right, so yeah, that's it.

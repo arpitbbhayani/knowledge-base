@@ -1,0 +1,80 @@
+linear probing is one of the simplest and the most intuitive ways of handling hashtable collisions, and it is based on a technique called open addressing.
+in this video, the fourth of this hash table internal series, we take a detailed look into linear probing, understand what it is, how hash table operations happen with linear probing, learn why it is so simple yet so efficient, and conclude with looking at two challenges that come with adopting it.
+the first one is the live cohort business which you see on the left side, and the second one is the recorded course which you can see on the right side.
+thanks, so conflicts are inevitable as we are trying to map a large range of application keys into a smaller hash table.
+in the previous video we looked at what open addressing is and how it tries to resolve conflicts in hash table while accommodating all the keys that come in.
+there are multiple ways of implementing the probing function and one of them is linear proofing, which we will take a detailed look today.
+open addressing tries to solve this problem that whenever there is a collision in the hash table, it tries to find an available slot from the hash table itself.
+it is trying to utilize the space of the hash table as much as it can right without using an auxiliary data structure and probing function it is: it tries to place the key, it tries to basically find the next available slot it.
+basically, a good probing function generates a sequence of permutation of all the indexes of your hash table and we try each one of them one by one, and then the first available slot we find we try to place it right.
+so every single technique that falls under open addressing is just about defining this probing function right.
+so the idea of linear probing is extremely simple.
+what it does is it says that if i face a collision, let's say if i'm facing a collision at index 3 right and i'm trying to insert a particular key, the hash function, when i passed it it gave me the index 3 right.
+so i'm going to the index 3 trying to check if it is occupied or not.
+so if let's say this index 3 is occupied by some key, then what we would do is we would go to the image at right and see if index 4 is available.
+if 4 is not available, we'll go to 5 and then 6 and then eventually, let's say we go to 7, which is available, so our key gets inserted into index 7.
+right, this is linear probing and mathematically it can be very simply written as my probing function is a function of key and an attempt i.
+so my probing function h of my probing function k, comma i, is equal to h of k, as in hash of the key k plus i, mod m, right.
+we, like the keys, would be hashed at random locations, but if that is occupied we would move to the right to find the first available slot.
+we circle back to index 0 and resume our lookup and, like always, open addressing has this problem where if you- i- have filled all the slots of your hash table, then you cannot insert any more keys and obviously that limitation holds with open addressing in general.
+right now let's quickly take a look into how hash table operations work with linear probing.
+so when i pass k1, k2 and k3- all of them- the hash function spits out 2, right.
+so all of them are trying to get inserted into my hash table at index2.
+this is a linear lookup that you are making, one after another, to see the first available slot and put it there right now let's take a look at another operation: key lookup.
+how does key lookup look like?
+so what we do is we invoke the probing function, we pass the key through the hash function and when we pass the key through the hash function, we get a slot right.
+we go to that index and check if the key is there.
+let's say, during the traversal if we encounter an empty slot, if i encounter an empty slot, it means that there would not be any key that has collided on that address, like the key that you are looking for has not collided on there is not yet present in the hash table, otherwise that would not have been an empty slot, right.
+so if you discover or if you encounter an empty slot while traversing, you have to stop the iteration right.
+otherwise, unless you find any key, you would continue iterating through the array to find the key of your interest and eventually you will find it if it is there in the hash table, right.
+this is how key lookups work right, and obviously you would have foreseen it.
+the worst case of this is you are iterating the entire hash table, the entire big range of array, in case every single slot is filled.
+you will be iterating through the entire hash table to look up for a key right, and that is a problem.
+but in most cases your hash table is large enough and you would have far, far empty slots in between and that would you don't need to iterate the entire table whatsoever.
+you would encounter an empty slot much before you iterate the entire table, right?
+here also, we have to do soft delete because if we are not doing soft delete, if we do hard delete, what would happen is it would create an empty slot so it never move forward for the collided key of that same, for the same index.
+so whenever a key is there that you needs to be removed or that needs to be deleted from the hash table and you are using linear probing, you would start from that index, move forward until you locate the key and soft delete that key right, so that you, by looking up, you can continue your iteration moving forward right.
+this is how the three operations, the three key operations of a hash table would look like with linear probability.
+right now, let's take a look at how.
+why linear probing is so fast?
+it's like going through the hash and then moving forward for forward.
+it takes that 1 kb block and puts it into cpu cache, right?
+a block is read from the ram and it is cached on the cpu right.
+let's say you were iterating on the array a and your hash function splitted out 2 for a particular key.
+that is where linear probing very beautifully exploits the locality of reference.
+though your os, your cpu hardware, is anyway caching those things and it is very beautifully leveraging it, which is where linear probing gives a very solid performance when it comes to handling collision keys right and looking up them and deleting them.
+there is one very strong claim which says that linear probing gives a constant time performance.
+for average cases it gives constant time performance.
+it's a big claim because you see that the worst case is always moving forward for forward eye training through the entire array.
+you would use a hash function that is random enough, that is distributed across your entire space, right.
+which means that, let's say, on an average per slot, there are five collisions right when you are accessing one of the key, but anyway, bringing all of them in a cpu cache.
+you don't even have to go to your ram to access it right, which is why, on an average, it gives you constant time performance.
+it's a big claim, but that's how, and that's how hash functions are supposed to work.
+but the worst case is still painful when entire hash table is filled and you have to iterate all of them.
+challenge number one: a bad hash function would make linear probing very inefficient, right, because it would have to do like.
+let's say, assume that a bad hash function, for example, every single key is hashing on to the same value.
+so let's say, if you have a hash table of size eight, every single one of them is hashing to the same location too, then eventually your hashtable fill out and because it's a poor hash function, you would always have to do linear lookup across the table.
+so a bad hash function would ruin your linear probing, right?
+that is where it is very important to use a good hash function which nearly uniformly distributes the hash space or the hash output across your entire range, right?
+that is really important, which is why, with linear probing, murmur hash is very much preferred, because it's really very random, like it looks near uniform the way it distributes it.
+so that's where linear probing has its disadvantage: that it relies heavily like a poor hash function will ruin the entire experience, right?
+so that is where picking a good hash function is very important.
+linear probing suffers from clustered collisions.
+so, for example, what would happen over here is: let's say i have key k1, k2 and k3, and k1 hashes to index 2, k2 hashes at index 2, k3 hashes to index 3, right?
+k1 sits there and k2 also hashes to index 2.
+k2 will go to index 2, will see the slot is occupied.
+it is affecting the key sitting nearby, right?
+so then k3 also got impacted because k1 and k2 occupied the slot of k3, right?
+so this is where you see a lot of clusters being form of collided keys which are impacting each other somewhat the other way, right, plus a bad function if it tries or if it uh places or if it generates localized hashes.
+for example, if you're having a range from 0 to 100, but your hash function is creating or is basically producing values, which is really clustered in the range of, let's say, 10 to 20, right?
+so then all the keys are put into this same 10 to 20 slot and then they spell and they are actually spillover across the table.
+then what would happen is you are unnecessarily seeing large number of collisions in a small space and then, unnecessarily, you have to do linear lookup.
+you almost nearly uniformly distributes your key across the entire hash table, right?
+now, when i say displacing it does not mean it would move the other case- but, like in this example, k3 would have been indexed at location 3, but because k2 already held index 3, it would the k3 had to move to 4, and this is what is catastrophic, right?
+so that is where, if your hash function is creating a clustered, is generating a clustered output somewhere in the range, like it's occur, although you have a big range.
+but if your hash function is only creating values in in clusters, and which is very common to see with poor hash functions, then you are seeing a lot of clustered collisions and then eventually the problem transfers into a linear lookup problem rather than a hash table lookup problem.
+right, this is a big problem with linear hashing.
+that is why, again, a good, uniform hash function is very important, right?
+you are, you are just converting your hash table into a linear lookup, which is very poor, right?
+the idea was to go in depth of linear probing.
+the idea was to go in depth about linear probing, help you understand the challenges and the advantages and why it is so fast, why, as it leverages cpu cache and whatnot.

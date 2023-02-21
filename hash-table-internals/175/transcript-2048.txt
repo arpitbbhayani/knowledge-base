@@ -1,0 +1,84 @@
+in this 11th video of this hashtable internal series, we take an in-depth look into the implementation of maps using hash tables, popularly called as hash maps.
+we will go into the implementation details and performance tunings of map and see how they are built on top of tables having chaining and on top of tables having open addressing.
+the first one is the live cohort discourse which you see on the left side, and the second one is the recorded course which you can see on the right side.
+thanks, so hash maps are amazing data structure.
+it's so powerful, it spans so many use cases, the core idea being we want to store application level key value pairs in a data structure and all the accesses would be key based.
+for example, if i am storing a as a key and value as apple, b as key, value as ball, c for cat, d for dog, i'd want to do lookups by key, right.
+so key and value both has application context that i can place any type of key.
+i can place any type of value against that particular key right.
+so, given a key, get me the value, put a key comma value, look up a particular key right and, we're sorry, basically delete a key as well.
+right, so all the operations are key based, but we are.
+so what do we need to store in the hash table?
+in the hash table we earlier only used to store keys, but now we would also need to store the value as well.
+and in an integer hash key, which is when i pass the key through the hash function, i get in the range of 0 to 2, raised to power 32, that hash key i would store so that i don't have to recompute the hash every time all over again, and i'll store a white star value so that i can hold any type of value against this particular key.
+this is what we would be storing in our hash table implementation detail.
+so, given that we are supporting a generic key type which is white star, how would we compare two keys?
+we would need to know that, hey, for a particular key, i get the hash value.
+some other key which is not yet inserted in my hash table got hashed into that same location.
+so that is where, even after we reached the location in the hash table, we would need to do a key comparison, which is where we would need to accept a custom key comparator while we are setting up a hash map and this key comparator would take two keys or two void pointers and then it would in its responsibility of the application developer to pass the key comparator function, not inter, not implementation of a hash map.
+all the information possible- key competitor function- needs to be passed by the developer, right?
+second implementation detail is when we delete a key from the hash table, it may be our responsibility to clean them up.
+it might be the last reference of the key comma value in our hash map, which is where to have a very robust implementation, we would need to also accept the destructor function: the destructor function for key and destructive function for value.
+for example, if you are building or using a language that supports manual memory management and if that is the final reference of it, so then if the destructor function is passed, we would be invoking it when we delete the key permanently, right?
+so that is where this micro implementation data is really important to build a robust implementation of a hash map.
+okay, so here a key thing: hash map.
+all operations are key based and this is a very important insight because that is where the comparator function we never accept.
+we never, we, we never wanted a value comparator function.
+we only wanted key comparator function.
+right, value is they're just there, white star.
+so, putting some key, like with hash map, with hashtags.
+this is really interesting that when we are, if a key exists and if i'm trying to insert a new key, we cannot just discard in the hash set implementation, we discard it.
+we cannot just discard a key that already exists in the hash map just because, like.
+so that is where the updation needs to kick in, right, and this goes into the implementation details of it, right, okay, now let's take a look at how do we implement hashmap with chaining right, with the hashtables having chaining.
+so overall properties of hashmap would be the array of linked lists that it is holding, that the size of the array, the number of keys that it has right.
+the comparator function, the destructor function for the key, the distorter function for the value.
+this six things that it would need while setting up a hash map right, the overall array, the size of the array, the number of keys that it's there, the comparator function for the key, the destructor function for the key and the value.
+if passed, we would be invoking it when we do a hard delete right, and given that it is chaining upon collision, every array, no, or every element of an array is just a pointer to the linked list.
+then integer 32 hash key, so that we avoid recomputation again and again.
+white star key: that would help us hold any type of key.
+void star value: that would help us hold any type of value and struct node star next, which is pointer to the next node in the linked list.
+a classic linked list implementation, just changes from the hashtag side.
+so destructor functions of value and key: very important when you are doing manual memory management.
+right implementation detail for hashtable training.
+so lookup function would return the value for the provided key, or null if it does not exist.
+so instead of having a separate function that checks the existence of the key and doing something around that, we can just have a function called lookup whose job is to, given a key, give me the value.
+if the key exists, the value is written.
+it's a very standard implementation but it helps us avoid redundant implementation of like having a contains function and having a lookup function, right.
+to avoid duplicates, we always have to check and insert, right, so we don't want to have two elements.
+are two keys, two exact same keys in my hash map, right?
+so that is where we cannot just blindly insert whatever we get at the head of the linked list, because problem right, you cannot have two keys, uh, in your hash map.
+so that is where approach number one: if the key is present, we do not insert at all, but we update.
+you would say, but why, if the key is already there, i can simply go and update the value.
+very interesting advantage of that: what this would do is we know that we are always inserting at the head of the list, which means that, upon iterating, the recent keys would be much quicker to find.
+so imagine if this is more like a uh, i'm reading my own rights kind of use case where i'm very, i'm very likely to read the recently written keys.
+so if you'd want to maintain that that most recently put keys are very likely to be accessed, it's better that we delete and we reinsert the key with the new value.
+right approach number three is, if the key is present, we insert the key without deleting.
+without deleting, which means there would be multiple keys with the same, with the same name, right?
+so if i'm inserting k1 with v1 and then i'm inserting k1 with v2, both of them would exist in the linked list, like k1, v1 and another node that would be 1, v, 2, both of them would exist.
+right, because we do not have to check and compare and what not.
+this is very space inefficient because multiple nodes having the same key inefficient, but we get super fast insert.
+so if your workload is right, heavy when you need very fast inserts, then you might want to go for this option.
+you'll have to go through the entire linked list and find all the instances of the key and then trigger a delete of all of them.
+so the three approaches to implement a insertion in a hash map and it depends on what your application needs, right?
+okay, now let's talk about implementing hashmap with hash tables and, uh, implementing hashmap with hashtables having open addressing.
+so, with open addressing, we are not using any auxiliary data structure like link list that we did with the chained approach, but we would be leveraging the free slots present in my hashtag, in my array already.
+second, the number of keys that are there in the array.
+okay, so your hash map would, overall, have the array that is, holding the size of the array, the used slots of the array and active keys count.
+when we're discussing about performance of a hash table, if you're not sure, go check that out right, we'll go into real depth of it on how it is implemented right.
+then avoid star key to hold the actual key of generic type void star value to hold value of generic type right to compare the key.
+we already have a key comparator function right now.
+implementation detail: during insert, lookup and delete, when we find the matching hash key.
+we need to explicitly compare the key to check its existence, because it might be possible that you inserted a key but you are deleting some other key, but that other key does not exist in your hash map.
+which is where it's very important to, when you reach to the location in the hash table, you do an explicit key comparison to ensure that you are deleting the key that you are intended to right.
+that's why key competitor function- really important for this implementation right.
+so explicitly comparing the keys is very important and not just do a void, start a pointer: equality check, actual value comparison, actual key comparison needs to be there, right.
+second, implementation detail: destructors should be invoked only when we are hard deleting the key, for both key and value.
+if provided so here, what would happen is, given that with open addressing we are always triggering soft deletes, we would not invoke destructor when we are doing soft deletes, when we do hard delete, which means when we resize the hash people, be it growing or shrinking, that's where we would be not copying the soft deleted keys.
+that is where we would be invoking the destructor operation, because the reference should not be dangling and pointed here and where right.
+when we are doing hard delete of the key and the value, right and both.
+the destructor function needs to be invoked if provided right.
+and these are some micro implementation details of hash map using hash tables, like really other implementations, pretty straightforward.
+but these are some things that we would definitely need to keep in mind when we are implementing our hashmap using hashtable having open addressing.
+that's it about those implementation details that you might need to take care of everything else, but i would highly recommend you to implement your own hash table and eventually implement your own hashmap.
+i hope you learned something new in depth about the most common data structure that we use day in and day out- hash tables.
+and this was the 11th video in this hash table internal series where we talked about implementation of hashmap using hash table.

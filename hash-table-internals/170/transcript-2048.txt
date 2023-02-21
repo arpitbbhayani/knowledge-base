@@ -1,0 +1,89 @@
+in the previous videos we talked about linear probing and saw how good it is, but we learned that it suffers from clustered collisions.
+and then we spoke about quadratic probing and saw how it addresses the issue of clustered collisions.
+in this sixth video of the hash table internal series, we talk about the final technique of conflict resolution, called double hashing.
+learn about a few things that would help us choose a good hash function and conclude by looking at the advantages of using double hashing as a probing technique.
+but before we move forward, i'd like to talk to you about a course on system design that i've been running for over a year now.
+we cover topics ranging from real-time text communication for slack to designing our own toy load balancer, to quick buzzes, live text commentary to doing impressions counting at scale for any advertisement business.
+so if you're looking to learn system design from the first principles, you will love this course.
+the first one is the live cohort discords which you see on the left side, and the second one is the recorded course, which you can see on the right side.
+thanks and like always, conflicts are inevitable because we are trying to map a large applications key space into a smaller hash table.
+the technique that we are discussing today is called double hashing, which is a probing technique used with open addressing.
+open addressing does not use an auxiliary data structure like a linked list to store collided keys.
+instead, it leverages the free slots available in the hash table itself.
+right, so if there is a collision, we try to find a slot, a free slot, where we can place our key.
+we use something called as a probing function.
+in the previous couple of videos we looked at linear probing and quadratic probing to solve it.
+probing function is defined as p of k comma i, where k is the key and i is the attempt number.
+so from i changes from 0 to 1, and with first attempt we find another slot where we can place the key.
+if that is also filled, then 2 will find next slot to place the key, and so on and so forth until we look up all m slots of the table right.
+so there are two very uh simple techniques to which helps us probe the keys and place it at the right slot in the hash table.
+first of them is linear probing, where what we do is if a particular slot is like if i want to place a particular key in my hash table, and if that slot is not empty, then we find the first immediate slot to the right of it which is empty and we place our key there.
+a very simple mathematical representation of this would be: p of k comma i is equal to h of k plus i, where i is the attempt number.
+it would go to the next plot, then the next, then the next until it finds the empty slot right.
+linear problem suffix from the problem of clustered collisions, which means that with the poor hash function, a lot of they would form a lot of clusters where a lot of collided keys would be placed, because we are just moving a step to the right, right.
+so you would see clustered collisions spread across your hash table, which means the more collisions happen, the longer it would take for you to do kilo cups because you would have to do conflict resolution.
+but instead of finding one slot to the right, we use our arbitrary quadratic function to find the next slot right.
+so plus 1 plus 4 plus 16, plus 1 plus 4 plus 9, plus 16 plus 25, and so on, but with some arbitrary probability formula, right, this would help us almost utilize a space of your hash table, plus it would keep.
+it would not eradicate, but it would minimize the chances of clustered collision because it is jumping with a very high leap in order to find the next plot.
+in this one we would look at the third and the final technique to do conflict resolution, or uh, in hash table, which is called double hashing.
+so if the problem that we are trying to address is only of clustered collisions, then why to go linearly to do something right?
+why can't we use a second hash function?
+so, for example, we use the first hash function to find the primary slot and then we use a second hash function, multiplied with your attempt number, to find the next, to find the next slot right.
+so this is the core idea of double hashing, where your first hash function gives the primary slot and, upon collision, it uses a second hash function as an offset, multiplied with the num, multiplied with the attempt that you are making.
+just a simple mathematical representation of this would be: p of k comma i is equal to h 1 of k, which is a primary hash function, plus i times h 2 of k right?
+so by not relying on a quadratic function or a linear function in order to find an x slot, we are leveraging a second hash function applied on the same key, which means we are first getting near uniform distribution with the first hashing function and upon collision we are using another hashing function to find the next slot right.
+so this way we are trying to leverage the entire hash table without following any specific pattern.
+because it's a hash function, it has a uniform probability of hashing to any of these slot.
+so, first hash function, uniform probability of hashing anywhere in the hash table.
+upon collision it would fire another hash table.
+so again, a uniform probability of sitting anywhere in the hash table, making us, or literally minimizing the repeated collisions and clustered collisions in our hash table.
+so with quadratic probing you exactly know how long were you taking jumps from, but with double hashing you don't know that all like there is no fixed pattern.
+it totally depends on the key and the hash function, on how big your leap is going to be and which is what the best part is, right.
+so, again, your probing function would be h 1 of k plus i times h 2 of k, right?
+so as i increases, as number of attempts increases, the leap would vary, right, and it totally depends on the key, which means that you will get a very nice equi-spaced distribution of your of your collisions, of your clustered collisions, across your hash table, which is what the best part is.
+so, because it does not follow any specific pattern, which is why it reduces or it minimizes the chances of having clustered collision, which means a lot of clustered collisions placed in your hash table, right?
+there might be some cases where hashta, where hash function, collides, but it would not be significant.
+so a very simple sequence of this would be: for your key k, if you are trying to place it the first time, you would fire h 1 of k plus 0 times h 2 of k.
+so h 1 of k plus 1 times h 2 of k, right, so that would be your next slot.
+if that is occupied, you will find the next slot with h1 of k plus 2 times h2 of k, right?
+okay, so now let's take a look at few considerations that you have to make while choosing a second hash function.
+the first hash function we all discussed, like a murmur hash, would do a really solid job, right?
+but second hash function has to be a little more like.
+we have to be little more picky about the second hash function, right?
+because second hash function has this very strong response or very important responsibility of ensuring that it covers the entire spectrum, right?
+so there are three major- uh, three major- criterias of choosing a second hash function.
+so what would happen is you are not literally leveraging your second hash function at all, which should give you the offset.
+so we are, because if your second hash function ever returns a zero, i times the number of attempt.
+so you are again going back to the primary slot which is increasing your collisions.
+so your second hash function should never return 0.
+second is it should cycle through the entire table and order would not matter, which means that when your hash function- the way you're choosing your hash function, so i times hash function- this factor should cycle through every single, every single slot of your hash table so that you do not have any slot m.
+you do not leave any slot empty of your hash table when you are trying to place a particular key right.
+so i times h 2 of k should cover your entire spectrum, right?
+third is your second hash function should be fast to compute and it should be nearly a random number generator.
+right, it needs to be very fast to cover because there are hash functions which are extremely computationally heavy and you cannot use such hash function.
+what i mean is it should be so uniform that every slot of my hash table is equally probable to occur.
+this way we would ensure minimized clustered collisions in my hash table.
+right, and it's not difficult to choose the second hash function.
+it would be a simple, arbitrary mathematical function whose job is to iterate through your entire thing, and it's not hard.
+it is also a hash function.
+a hash function is anything that maps your key into an integer space.
+okay, now let's conclude with looking at the advantages of double hashing.
+so double hashing, obviously we look at it as a betterment of your linear and quadratic probing.
+it is to some extent because it addresses the problem of clustered collisions.
+but still, looking at the advantages of double hashing, the first one it is it gives you uniform spread upon collision.
+right, with linear probing you had a fixed pattern.
+so what would happen is where one collides, where one key collides and it occupies the next slot, the other key that was supposed to be placed in the next slot will also start to have collision.
+but with double hashing you get a very nice uniform distribution across your hash table, which means the degree of collisions on a particular slot will be less, which means you would have a faster lookup types.
+second advantage: it follows no specific offset pattern and it purely depends on the key.
+with linear probing, you knew the pattern.
+with quadratic probing, you knew the pattern.
+with here, you cannot predict the pattern because it is totally key dependent, so it can be placed at anywhere in the hashtable.
+so that's why you get a very nice spread across your table, right.
+again, because of uniform distribution, it is least prone to the clustering problem, right, and which is the beauty of it.
+so, which means that you will have very short probing path, which means that very fewer collisions per slot in your hash table.
+so, which is why double hashing is a very preferred technique in the world of hash tables.
+right, because for each, because of its uniform distribution, the number of collisions per slot will be very minimal.
+and this is what makes double hashing as a technique very, very, very special.
+and that is all about double hashing.
+this was the final technique that we are going to discuss about, uh, hash tables, and next we will be talking about how to make our hashtables perform and talk about those.
+so yeah, this was the sixth video in the hash table internal series.

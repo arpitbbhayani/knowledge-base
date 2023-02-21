@@ -1,0 +1,88 @@
+you will always feel like writing a new service to solve every single problem at hand.
+you can go to a very fine granular level to write a microservice for every single micro requirement you have, versus you can keep a lot of them together and and solve a bigger problem right.
+we need a separate microservice to solve this, to solve this specific problem?
+in the previous video, we talked about the advantages of having a microservices based architecture, and in this one, we talk about ways to model a robust and flexible architecture using just two concepts: low coupling and high cohesion.
+but before we move forward, i'd want to talk to you about a code based course on system design that i have been running since march 2021.
+right, if you're looking to learn system design from the first principles, this course is for you.
+this course is taken by more than 500 engineers to date, spanning nine countries and seven cohorts right?
+seven is about building uh ir systems, basically information retrieval systems, and adult designs where we design our own message brokers, like sqs, where we design distributed task scheduler.
+right, i have also attached a video, verbatim as is, from my first code where we designed and scaled instagram notifications.
+so it is always exciting to create a new micro service.
+there are so many things to look forward to like, so many new things like, for example, you get to work on a fresh code base, which means that you can- you can- bury down all of your legacy not so optimized, not so well written code base in the past and start afresh.
+that that gives you this new perspective where you can use a lot of good practices, design patterns and what not to build the best possible solution to solve that particular problem.
+you can pick your own tech stack, and that is much more exciting than anything else because you get to learn new things, you get to explore new uh databases, libraries, frameworks and whatnot you can.
+you can build your own fresh ci cd setup versus using that same legacy thing, like writing a script or something.
+so that is where we need to think upon: hey, what happens if we do not create a microservice?
+so when we are fencing something, we need to define a very rigid boundary on what exactly would a particular service would solve, right?
+so if you have a very big boundary, you are putting in a lot of components, which means you have too few of your micro services.
+when you have too few of the micro services, what happens is there are lot of teams who would be collaborating on the same code base or on the same service.
+change in one component would take down the entire service.
+deployment would be slower because changing in one component, deciding to deploy that service, would require you to take approval from that other team, right?
+so having a too few of the microservice might not be the best choice, right?
+so we would be defining two guiding principles that would help us design or that would help us model the micro services such that they are not too big or they are not too small either.
+so the two concepts that we talk about here is loose coupling and high cohesion.
+you are flexible enough to change one service, architecture of one service, cicd of one service and whatnot, or the entire tech stack, everything in one service without having other service to even know about it.
+you don't want to break it two minute where your related components sit separately.
+then you will have a lot of inter-service communication and a lot of cascading failures because of one component going down, and so the idea here is: keep all of your related components together, no matter if it results that service to be a gigantic one.
+that is okay, so long as the related components are together, right, so these are two key things that we would be discussing in detail.
+right, so we'll start with loose coupling.
+so loose coupling, as i just said, it's changing one service should not require change in another one.
+this is the ideology with which a micro services based architecture even started.
+okay, so the idea is: let's say, you have two services and orders and logistics.
+one isn't written in java, another one is written in golang- right, but the way these two services communicate, it could be an api contract, it could be synchronous communication, could be asynchronous communication, could be anything, but the communication is always through this interfacing layers.
+so so long as the in like, if orders want to communicate to logistic service, this interfacing layer talk to each other could be rest api, grpc, raw tcp connections, what not right.
+but so long as these two interfacing layers do not change the api contract, do not change the change in one service.
+let's say order service is transparent to logistics, so logistics do not care on how order services model, which database it chooses and what.
+not, so long as interfacing listing remains the same, there is no requiring like order service change, no required to change the logistics part of it.
+so few things to remember is a service should know as little as it needs about other service.
+for example, when logistics service or when order service is talking to logistics service, order service does not need to know the architecture of logistics services, does not need to know you know what kind of database it is using, or does not even need to know the credentials of those databases, right?
+depends on the organization, on what kind of interoperability or what kind of transparency do you need from that other system, like what kind of information is allowed for you to be exposed?
+so a few basic things that we can think about is: hey, does a service like.
+does order service needs to know public api is a logistics service?
+does order service need authentication apis for logistic service?
+yes, otherwise, how would order service call logistics service?
+does order service require it to know the database of logistics service?
+probably no, because order service will never connect to the database.
+then rate limits: yes, order service need to know the rate limits of- uh, the logistics service.
+so you need to know rate limits of the logistics service.
+you need to know the api contracts behind it, right?
+so if a service knows too much about other service, this typically leads to tight coupling.
+a small, a simple example of this: if your order service know that your logistics uses a my sequel database and it knows the credential, then the order service might actually talk to the database directly to get that information, rather than going through this.
+rather than going through this interfacing layer of logistics service, it would directly connect to the database to get that information.
+if logistics service, without informing order service, changes to move from is equal to mongodb, order service would fail, right.
+so that is where, in order to have a seamless communication between the two services or in order to have low coupling between the two services, it is better to keep the information masked.
+you don't need to share unnecessary information to other teams, right, so to other services.
+so that is where you would see isolation as one of the key requirements whenever you go into a microservices phase architecture where you are not even exposing the db or the db credentials or any other internal details from of one service to another service.
+right to allow, to allow low or to allow lose coupling.
+otherwise, if this happens and if logic service decides to upgrade the database or change the database, then order service is unnecessarily impacted and if orders go down, it takes everybody with it, right?
+so what high cohesion means is related behavior, not services.
+related behavior sits together, right.
+so, for example, payment service requires payments worker- they sit together in one code base- and payment service three apis: make payment, del, uh, make payment, revoke payment transfer.
+you don't need to create separate services for that.
+make all of your related components sit together in one micro service and expose all of those endpoints together.
+so the core idea behind high cohesion is: services should operate independently if you have related components sitting together, working in a close knit team or teams like a couple of teams, it is always faster for you to roll out the new changes to it.
+if you have two separate components sitting together in one place, then deploying changes in one would require both the teams to be known.
+for example, hypothetically, in order service you have orders module and customer model.
+now, when you have that, if you change one module, you will need to get approval from the other team to deploy your changes because both of you are sharing the same code.
+suppose if you're sharing the same micro service, so it would make a development slower.
+so, which is where you would always need to keep in mind that, hey, ask this question: i am trying to put these two modules on this microservice.
+if they are not, create a separate service out of it.
+when, like, two services will share the same codepersonal?
+let's say our company started, and it started with a monolith, because you know you need speed of deployment and speed of development and you don't need over complexity.
+so you started with the monolith architecture and then you decided to move into micro services based architecture.
+from monolith to microservices, you, not like, all of a sudden rewrite the entire code, right?
+you would want to show continuous progress to your senior management, which is when you say, hey, because all of my code base is already residing in my monolithic code base, let me create a new service out of it which uses the same code base, right, and it only exposes.
+you have profiles, uh, orders, customers, logistics, everything right, and you were serving it very well.
+now you know that, hey, logistics needs a separate service of its own.
+you create the same code base, right?
+you, sorry, you create a micro service using the same code base, but it only exposes the logistics apis.
+so now you have a monolith that has commented out the logistics endpoint and you have the logistics service that has commented out non-logistic endpoints, but both are using the same code base.
+now, what would happen if someone changes the code base?
+right, so both of these services would need to be deployed because both of, because the code base change, both of them would be would have to be redeployed so that the new changes reflect.
+right, because this way you are again going into this.
+this strong coupling between the two systems, like your monolith and your logistics service, unnecessarily unnecessarily, and deploying multiple services at once is more risky than anything.
+otherwise unnecessary complications, deploying multiple services at once, plus depending on other teams to get that approval to do the deployment- very messy.
+it is very simple to understand the flow, the dependency, the coupling, everything right.
+so hence, whenever you see the requirements in, whenever you want to decide if you want to create a separate microservice for this to solve this specific problem, ask this question like: how do you fence it is?
+right, try to avoid as much of cross service communication as possible because it would make things slower.
+i post three in-depth engineering videos every week like this, and i'll see you in the next one.

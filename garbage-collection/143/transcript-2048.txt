@@ -1,0 +1,83 @@
+so we have been told that caching improves performance, but is that totally true?
+what would happen if we try to apply caching to something like market soup garbage collector?
+today, we understand the key patterns that are essential for our caching to work.
+today, we take an in-depth look into caching, how it works, why it works, and understand why there would not be a significant performance improvement if we apply caching to our markets of garbage collector.
+right, i have also attached a video, verbatim as is from my first code, where we designed and scaled instagram notifications.
+so this way the unreachable objects after the mark phase are swept down and hence the phase is called sweep phase, right.
+we want our garbage collection to take as minimal of a time as possible so that we get enough cpu cycles for our actual business logic.
+say, if you are building the next facebook, you want cpu to do uh, to basically spend time creating a post, lacking a post, versus doing garbage collection.
+so can we use caching to improve the performance, like if?
+if i would say like: hey, let's improve the performance of my garbage collector.
+can i use caching to improve the performance of it or not?
+so, in order to understand if caching would improve the performance- and this again it's very- uh, this is a very basically use case agnostic concept.
+it's here you're trying to establish the key patterns that caches exploit, like, if you are applying caching to a particular use case, it needs to satisfy few patterns.
+so a cache is literally anything, anything that stores data so that our future requests are served faster.
+so the cache is something which is extremely fast and it sits very close to cpu, so that you don't have to waste time doing that recomputation again.
+for example, the two classic things that we know we cache are: first, which is result from previous computation.
+right, and here the data that you would be pulling in into your faster storage should be like: issue is likely to be accessed.
+if it is not likely to be accessed, you are then just wasting, uh, your storage to pull that thing out from a store.
+like, just to give you a perspective on uh from memory onwards the cache.
+so if, in order for you to extract a value or a range of value from your main memory, if it takes 50 nanoseconds, like reading one value takes 50 nanoseconds, then an l3 cache would do it in 10 nanoseconds and l2 cache can do it in five nanoseconds and l1 cache, which is literally present in your cpu code, can do it in one nanosecond.
+right, so it's a 50x improvement from your main memory.
+if you know that something is really needed, instead of putting it in like, instead of you having the data in your main memory, which is 50x lower, you would want to put it in an l3 cache or an l2 cache or an eleven cache right, which should significantly boost your performance.
+when would adding a cache improve the performance of our application?
+what temporal locality says is that a recently accessed memory location or data is more likely to be accessed again.
+which means, let's say, if i have accessed a particular memory location, then i'm more likely to access that location again.
+for example, if i take example of a traditional web 2 application, it would be a blocking application if i am on my profile and i am more likely to refresh the page, which means that the profile information of my as a user can be cached.
+so first call can be can take some time, but if i'm more likely to access my own profile, i would be cashing that information in a faster storage so that i can retrieve it faster and send it out.
+so what spatial locality says is that if a location is recently accessed, the locations adjacent to it will be accessed soon, right?
+so, for example, one thing that works really well with spatial locality is that databases.
+if it knows that a particular block is red, you are very likely to access the adjacent log.
+your database engine can actually prefetch that block and put it in the cache, so that- and, um, sorry, so that n, so that we don't have to make another disk i o, it can prefetch it.
+now for caching to work, right, for caching to work, or for caching to not rather work, but for caching to give us a significant performance improvement, it needs to have at least one of these two: temporal locality, spatial locality.
+otherwise caching would not give you any performance benefit, right?
+so the way modern hardwares work is something called as hardware free patching or cache prefetching.
+so the idea here is exactly the same that we talked about, that if we know that a particular location is accessed- the adjacent location is bound to be accessed soon- then i'll just prefetch it and put it into my cache so that the next time- or not next time, so when that particular block is accessed, it is present in your l1 cache or your caching channel, right?
+so your cash transparently sits between your main memory, or rather your slower storage, and your access request.
+so now what would happen is if, let's say, i took a purple block, which is so, let's say, i have six disk blocks, or i have six memory locations, right, a purple- sorry, a blue, a pink and then white.
+your cache will be much smaller than your main memory, right?
+and now, when i'm doing that, when the one- the blue block- is getting pulled or is getting accessed, my hardware would know that, hey, the pink block is adjacent to that, very likely to be accessed, so let me prefetch it.
+so it would prefetch the pink block and put it into cache.
+it is already there in the cache, right?
+it is already there in the cache, right?
+here we are exploiting spatial locality, right, and how the data prefetching works.
+sorry, they know the access pattern on how you are accessing the data and they take the smart decision: hey, this data is more likely to be accessed, so let me just prefetch it.
+it would take it and put it in the cache, right, so it like.
+here we are going into details of hardware: main memory to l1 cache.
+so the core idea of caching remains the same, no matter what the application is, your application needs to exhibit- or your use case needs to exhibit- spatial locality or temporal locality for it to leverage caching.
+right, so now can we leverage caching to speed up our garbage collection process?
+why- and that's the point part- like we always think, hey, caching, yeah, we would get performance benefit now, but with garbage collection that does not happen.
+because our markets with garbage collection does not exhibit a temporal locality, not a special locality.
+so with temporal locality, what we know is that where the temp uh with mark consume garbage collector, what we do is we have an object in memory, right?
+so the variable that we created of the class object or the class instance that we created, it would have a mark bit right.
+so during the mark phase we are starting from the root node, going to all the objects which are reachable from them and setting the marked bit as fun, correct.
+so here, the object that you set the mark bit as one for for the object that you did, you are never going to access that object again, like immediately.
+again you would be going through all the objects that are reachable and then you would be invoking the sweep face right.
+and even in the sweep base, those objects are never accessed which were marked, because that's where the sweep piece is all about.
+then let's see if it exhibits special locality, spatial locality.
+you know that with respect to spatial locality, you would know that if you accessed a particular location you are very likely to access adjacent location over here.
+but if we talk about the way mark and ship garbage collector works, is that what you do is you start with a particular object.
+i'll mark the student object as live.
+so the way this works is that it is doing a random look up on your memory, because school object can be present somewhere.
+your student object will be present somewhere in the memory.
+if they need not be adjacent, then if we try to cache the next object which is sitting next to a student object- that is few times so then you, what you would have to typically do is you would have to typically, uh, prefetch the object which is referenced from that other object, and that is an explicit pre-patching operation, because your hardware cannot smartly do it.
+there are ways to navigate that, but you basically get the idea right.
+in any case, that object is red, it's kept in the memory, but you're not getting significant performance out of it.
+out of the box, you might have to do, you might have to pull some strings on your own, do an explicit prefetch, but it's still not solving the problem out of the box for you, right?
+so if you're going for a blunt spatial locality where you are caching the next adjacent object, that is definitely not going to work.
+in case of a marking sub garbage collector, you have to do smart prefetching if you would ever want to optimize that.
+but you basically get the idea on why special locality would not work.
+but so now we have established that, hey, caching would not improve the performance by a massive margin.
+then is there a small, small scope, small scope where, basically, caching would solve the problem or would improve performance, not by a huge margin, but a small margin.
+obviously there are always, like when you add cash: if you are smart with respect to the access pattern you have, you can still gain some performance out of it.
+a simple example of that is type objects like, for example.
+i am doing this as a very crude example, right, and i will tell you how it actually happens in programming languages.
+a very good example is that my student type object, like, let's say, i have an object of type student, so it would have attribute called type.
+so student itself is an object like the type.
+student itself will be an object, right, which will have the functions that it holds and other information, and this object is like this object of type student will be associated to every student object.
+all of them will point to the student type object that i have right.
+so what if we cache the type objects, low cardinality, highly reference thing, we cache that right.
+this is a place like if you cache the, if you catch this particular thing, if you catch the type objects, you will still get a significant performance book because it would not have to go time and read that particular location, it can just access it immediately.
+so that's where the data types of your languages, the type objects for your data type in your languages can be cached.
+through this you will get not significant but a minor performance boost, right, and this is how you would try to gain as much of performance for your garbage crusher for your use case as possible.
+i hope, uh, you understand caching very well now, like around temporal locality, special locality.

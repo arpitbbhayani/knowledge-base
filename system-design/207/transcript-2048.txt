@@ -1,0 +1,72 @@
+with data being distributed across so many databases that emerges a need to unify them, to extract deep product insights, make strategic business decisions, train ml models and so much more.
+so a company typically needs a data platform for their business decisions and strategies, to power the data science and train ml models and generate the product insights that makes their product better by the day.
+so first reason: each service needs are most probably would have its own separate database right now when they have it.
+you need all of them at one place in a in a singular format, so that you can you can fire the queries that you want and generate insights out of it, right.
+and if you want to make a distributed join- that's extremely expensive and extremely computational, heavy, people typically don't do that- right.
+so let's say you have your database, which is actually serving a production traffic and you are firing queries on that.
+so your gigantic analytics query- maybe you are, you are basically firing it in a distributed board- it still can choke down your database and affect your production workload.
+so there has to be a better way, which is where what typically we do when we build a data platform is we get all the data from all the database, duplicate them and put it in a data warehouse.
+so the idea here is you take all of your transactional data across all of your micro services that you need and you put them together in one data warehouse.
+people typically use basically Amazon redshift or Google bigquery for this purpose, but you can build your own on top of hdfs if you want to.
+so these data warehouses are typically optimized for Gigantic analytics query, not for transactional purposes.
+so what that core need is that they have their data distributed across bunch of databases.
+now, from this data warehouse people will get like different teams, let's say insights, your analytics team, your product management team, your machine learning team, your data science team and your business teams- and who not, can directly query this one data warehouse which has data from all the databases in this one structured format.
+this means that, let's say, if you have your, if you have your payment service in one, you have your payments data in one database.
+you have profile data in another database, but you want to join them so that you can do some.
+right, if you want to do, if you want to do this sort of analysis, you need this, you need this sort of information: that data from payment GB, data from profile DB, needs to be pressed present in one database, which is where data warehouses, data Lakes, come in very handy, right?
+so typically, data warehouses are structured data because you have to file analytics query needs to be structured, so, but your transactional databases might be key Value Store might be non-relational databases, something around that.
+right, then each team might need a different View for the same set of tables that you are querying.
+you want to merge it and use it for your retention analysis, then table 2 and table 4 to get deeper payment insights.
+right, so each team will have its own set of requirement, its own set of queries, that how these two table wants to be joined and kept together to empower their use case.
+so now, this makes it very interesting because if you have hundreds and thousands of tables, you can merge them, you can join them in any way that you would want and then generate different views for different teams so that they can consume them right now.
+this makes building data platform fun, interesting and very challenging right now.
+now these three tables, like your auth and profile, can be part of one database.
+your inside steam, your analytics team, needs this data at one place so that they can query it and it, and here you can very clearly see that auth and profile table for the transactional needs needs to be separate, because odd table will do your login, logout stuff, while the profile information is there to store your profile information.
+so what happens is what Discord did here is they created derived tables, but from core table.
+so what they Define is they Define first they have your transactional tables, which is typically what a micro service directly interacts with.
+you have to join them, you have to merge them, you have to like, for example, authen profile, make sense that you keep auth and profile together joined, because it- because it's a one-to-one mapping, you typically would want all the information together for almost all of your use cases.
+so your data is entirely merged, joined and replicated into user detail core table.
+so first you have transactional tables, then you create a bunch of code tables.
+now this derived tables, you can take any number of tables or queries that you are firing to join multiple tables from your code table and you create derived tables out of it.
+right now, each team is free to create derived tables the way they want.
+the idea is pretty simple: a table that you create from a select query from above.
+and the output of this query is the derived table that you are creating, called user details.
+similarly, let's say you want to merge, let's say, for insights to get detailed payment information, User detail and payment stable needs to be merged and joined so that you have one table that holds all the payment DB, payment information, along with details, so that inside scene can directly fire and do the analysis that they want to.
+right, so you can create the way you want the derived tables out of it.
+right, and that's how you can very beautifully see how your hierarchy of tables is created.
+from there you create code tables, which are very commonly merged and joined.
+from this code tables you create derived tables.
+okay, so now how do we create a derived table?
+now this yaml based config is like if you would want to create a derived table, you would already know, okay, these are the code tables that I have.
+now, for example, you want to create a new derived table right now.
+so in the yaml file you specify that, hey, I want to create this new derived table having this n columns, where you specify the type of the column and constraints and whatnot.
+which means that, when I'm creating this, when I'll be firing a SQL query to merge the data or to join the data from two core tables, and, if I'd want to, if I and if I'm basically, uh, putting the output of this select into my derived table, should I be merging with the existing data or should I be appending to the existing data or should I be replacing the entire derived table?
+so you would Define the strategy, then you define the schedule schedule is: how frequently do you want to refresh this derived table?
+this typically means that you are not getting very real time data, like as soon as your transition data is updated.
+you may want to specify how you want to partition a derived table, because it's very much possible that one node is not enough to support the huge amount of data that you have.
+so you have to specify the partition key on that so that the derived table itself is partitioned across your data nodes right in your bigquery setup that you have.
+and then you specify from which data set you would want to get and the SQL statement that you would want to fire repetitively, right?
+so the idea, this SQL query that you specify over here, will be fired repetitively by the schedule operating on this window, the output of which would be either merged, append or replaced in the table that you specify, right?
+you're putting it into your data warehouse, right?
+so one yaml file for each derived table that you would have, right?
+so one yaml file for each derived table.
+so each ml file gets its own kubernetes part that is continuously running, that is, keeping the derived table updated.
+right, because in yaml file, in the SQL of yaml, you can provide any table.
+so these are core tables or transactional tables in which are getting all the data and putting it over there.
+right now, when the table updation, you fire the SQL query into this corresponding tables.
+you get the data and then you're putting it into your bigquery and for each ml file you are creating one table, either merging, appending or replacing.
+right now, from this bigquery, from this bigquery or data warehouse, what you get your teams, because this team, like insights product ml, they are the one who specify the yaml file.
+so they would know, okay, okay, this is the table name in which I'll find my data, which is periodically updated, right, so, depending on the schedule, it will update and they can seamlessly get unified view of data and they can do their processing time.
+so in my next iteration I want to start from this position, because you would not be generating all the data every time again.
+it's over here, right, so it uses the metadata log, the yaml file, the sources to act, to execute the query and load the data in bigquery, right, okay, but is this the end right once the data is in bigquery.
+you typically expect a millisecond latency with your MySQL or your mongodb database that you have, but you cannot expect it with a data warehouse.
+but there are use cases which are online use cases, which means, let's say, for example, you have a prediction service, somehow you have a prediction service and you want this prediction service to serve the predictions to your end users in real time.
+but the data that this prediction service needs is a derived data, which means it's a combination of a bunch of data distributed across bunch of databases.
+so what you first need is specify your yaml file, take that data from different database and have it, and you create a derived table out of it.
+so what you need is to pull the data out from bigquery and put it into a real-time database or a database that supports, or a transactional database, a database.
+you can choose whatever destination you want to, but you take the derived table- some derived table that you need for online processing, to power end user use cases- from this bigquery into Skylar DB and then your prediction service can use this Kyla DB and there would be a job that is running in your airflow somewhere which is repetitively pulling this and putting it over here.
+right, just like how we specified configuration, the yaml, there might be some more configuration that you can add that would take the data out from bigquery- some tables- not all one or two tables- and put it into Skyler DB for your online processing.
+you can replicate the data, create derived tables out of it and power your use cases.
+this means that there is no need of explicit data engineering intervention to get your things done and every team is empowered with a bunch of data so that they can make the best decision possible, because data doesn't lie, and this, this is the beauty of building a very generic self-served data platform.
+Airways typically, what most data engineering teams use to build workflows like this right.
+then bigquery, or data of lake, or data warehouse, in case you are unaware, right, so touch upon those points.

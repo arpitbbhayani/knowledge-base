@@ -1,0 +1,90 @@
+so grab processes millions of foods and Mart orders every single day, and the most critical but brittle part of the infrastructure is the database.
+given how critical orders are to grab, they have to ensure a very high availability of the database while ensuring a very fast query tank.
+in this video, we take a look at a very high level architecture of the data layer of grabs order platform and see the practices they follow to ensure High availability, stability and performance at scale.
+but before we move forward, I'd like to talk to you about a course on system design that I've been running for over a year and a half now.
+so the first step towards architecting a database layer for any such product, any such service, any search system like this, is to understand the kind of queries that we would fire onto this database.
+now, transactional queries are classically basically getting something, updating something, deleting something, right?
+second are the analytical queries, where you might want to get historical orders of a particular user or some statistic around orders, let's say, grouping orders by a particular attribute, right?
+these are analytical queries which can take some time, and it's okay, right?
+one very interesting thing that happens is they have to be very good at handling spikes, because the traffic for a platform like grab would not be uniform.
+or maybe there is an event and a lot of people order from food and Mart on grab, right.
+so which means that handling Pi- uh, handling spikes is really important, right?
+so, with respect to grab, their design goals were pretty simple and straightforward, but really important.
+now, when you are architecting a database layer, given how critical database is to any system- because if databases on everything is done, so given how critical database is, the most important part or the most important criteria for a good design has to be stability, that the system has to be stable enough, which means it needs to handle a very high level of query per second.
+it needs to be available because, given the database is the one that is storing the order, basically creating and getting the order, which means that if this database goes down it is loss of Revenue, which means that your data layer has to be highly available.
+third, consistency: this is so important, like you would not as a user, when you're using grab, when you create an order, when you go to the page to see your historical orders, you don't want to array.
+you want strong consistency for transactional but eventual- still fast enough, but eventual consistency for analytics load.
+so because transactional queries are really important, because when you are updating an order, it needs to update right there and then you cannot just say, yeah, I will update it with some DeLay- So you need strong consistency for transactional queries and eventual consistency for analytics queries.
+now let's see how they architected the data layer, considering these things.
+now, first step is because there are two types of queries: one transactional, one analytical.
+what if we create or we use two types of database: one specializing for transactional side, one specializing for analytic side?
+you may not need a data warehouse per se, but a query that is good with analytics kind of stuff.
+so transactional database- they are called oltp- online transactional processing database- and analytical database, because this is online, which means you need almost right there when you fire the query.
+so oltp databases are databases which are meant for transactional purposes, which means that they would be the single source of truth, no matter what.
+right, because that is where your orders would be created, updated, deleted and whatnot.
+okay, now, these databases are meant to be transactional in nature, which means that any interaction coming from the user will be directly going to this database.
+so these databases are specialized to be transactional in nature, right, and they may not hold all data, because it's okay if your historical data is moved to some other place, right?
+so these are key design decisions, right, we are, we would be taking into consideration when you're architecting it.
+old orders will also be there, and these database would be designed.
+or the database that we choose over here would be specialized to make analytics efficient, right.
+a classic way is to build a data ingestion pipeline whose job is from your order service.
+let's say, use dynamodb or my.
+but given that you need to have now you are having two databases- one transactional, one analytics- you need to keep these two in sync.
+classic way, when your transition thing is done, you push a message to Kafka consumed by workers, eventually being updated, like eventually being persisted in your analytics database.
+we will see what we can use over there, but this is a standard way to do it, right?
+so transactional goes to a transactional DB, analytics asynchronously goes to your analytics database, right, okay?
+in order to choose a transitional DP, we need to understand the kind of queries we would be firing on that and see how it fits on it.
+so here, with respect to grab, what happened is given the transactional database was going to use for: get an order, delete an order, updated order, create an order.
+second, dynamodb because we want strong consistency from our primary database.
+dynamodb provides strong consistency for primary key reads, right.
+so for a particular key, which is the primary key of the table, you fire the query- get put, create, delete.
+but in general, dynamodb is known to handle spikes, and which is what grab also needed.
+but if a particular partition is hot because, let's say, few keys are constantly getting requests and that partition becomes hot, what dynamodb does it?
+right, and this is brilliant part of dynamodb, which is why grab went for dynamodb.
+highly recommend you to check that out now, apart from just using dynamodb tools, it also matters, how smartly do you use it right?
+so, given that we are, all we want to store is orders, we would have orders table in which we have order ID, the state of the order, which means: is it ongoing or completed or canceled, something around that created at it means at this time the order was created, user ID has been, who placed the order, and there is one more key called user ID GSI.
+so order stable has orders ID as a primary key, because you want to get an order, delete another, basically put an order and whatnot.
+right, so that is a primary key.
+but you would also want to fetch the ongoing order of a particular user, won't you?
+so, given that you would need an index on user, so you create a global secondary index on user, so you do that.
+but now what happens is This Global secondary index is managed by dynamodb.
+but now this index, the common query that we are firing on this database would be: give me ongoing orders of a particular user, right.
+once the order is moved from ongoing to completed, we would not be querying on this DB because we have another database to do it.
+when an order goes from ongoing to completed, we would never query that, which means that we can remove it from the index.
+so they created this key user ID underscore GSI.
+they added a new attribute called user underscore ID, underscore GSI and they created Global secondary index on this attribute, right, okay.
+so now what they do: when an order is created and it goes into ongoing set by default the first date is ongoing state.
+it sets user underscore ID underscores GSI is equal to user ID, right.
+then when the order is moved from ongoing to done, they set this column, this attribute, to null.
+so the global secondary index would, at a given point in time, would only hold the entries that are of a of ongoing orders.
+like God, this is interesting, right.
+they, instead of creating a global secondary index on user ID in order to get ongoing orders of a particular user, they created another field called user ID GSI.
+it's a special field and they created Global secondary index on this.
+when an order is created, user underscore ID, underscore GSI is set to user ID.
+right, so that you can find ongoing orders of a particular user.
+but as soon as you move your order from ongoing to done, then you set this user ID underscore GSI to null, which would make it delete from the global secondary index.
+the entry would still be that in the order stable, but it would not be there in the index.
+this way you keep the GSI, the- the global secondary index- size very small.
+it would be equal to the amount of ongoing orders at any given moment, which means it would be very lean, which means when you fire the query to get the ongoing orders of a particular user, it would be lightning, fast, brilliant optimization, right?
+which is how you need to know the database internals to leverage it to the full extent, right?
+and obviously, given that there is an analytics database in which the same data is already flowing through events, you will have TTL set on these rows so that, let's say, you would want to keep only three months worth of data in the uh, in this transactional DB, while historical data goes to analytics DB.
+the key would be automatically deleted by the dynamody means and you don't have to worry about it, right, okay, fourth, which database would we pick for?
+olap, now this analytics, like, now this use cases analytics, right, so you may choose.
+hey, let me go for data warehouse.
+do you still want to fire good chunk of queries, but why would you want to Overkill with an analytics database, because it's all about only orders.
+but data warehouse would be an Overkill, right?
+so what graph did is grab, chose MySQL as our analytics database, right, and what?
+use dynamodb as your transactional database.
+then all the events from order service decks are sent to Kafka, right?
+you still have to handle that because High availability- you won't say that, hey, if Kafka is on, I won't push the data over here, right?
+so, once our events are pushed to Kafka, a bunch of consumers read them and they update it in MySQL, right, so consumers consume and ingest the data in MySQL.
+the data flows into my SQL, right, okay.
+so if Kafka is down, the order service pushes the same message to sqs and which is then, which is then consumed by few consumers here and there and put into MySQL.
+that's AWS guarantee and which means that, no matter what, your analytics database is getting the data eventually right, but the lag is bare minimum, right?
+because what if given messages may come out of order?
+what if an update event on an order comes before create event?
+this way, even if you get out of older events, it would not matter, right?
+so that is why two very important design decisions is: we always do obsert in the database in order to handle update coming before create.
+and while we are updating, we always need to check for the timestamp that, no matter what, we were never applying a past update on a later version of the data.
+and yeah, this is how grab handles millions of orders every single day around food and mod categories that they have such a brilliant, such a brilliant architecture.
+right, very interesting, very interesting data architecture that we see over here from crap.

@@ -1,0 +1,72 @@
+so how can an edge case, in your business logic can, take down an entire database?
+in this video we understand what happened and take a fictional example- a total fictional example- of how an edge case can put extra load onto the database.
+so if there is any application that is interacting with your master database, right away you need to be very careful that, hey, if that application is misbehaving with your database and your database goes down, you are directly practicing the master database affecting a number of internal services.
+internal services is fine, right, but this causes an impact to githubcom services, which means an internal database that was handling rights got affected, which, with a cascading effect, took down the main githubcom website.
+so investigation had identified an edge case in one of our most active applications.
+it is one application that is firing a large number of queries on your database.
+so if there is an edge case into something that is very frequently invoked, making a call onto the database, it has the potential of taking a database down.
+so if, let's say, some service queries a database once every hour, even if that is done it would not impact much.
+so we have to be very cautious that whenever we are writing a service that is very active or very frequently invoked, we cannot potentially bear the cost of an edge case in that right.
+it led to the creation or generation of poorly performing query capable of impacting the overall database capacity.
+this is pretty serious because one edge case is leading to creation of a poor sql query which is then fired onto the database, which means that whenever- and obviously we know that if our queries are not optimal, what would happen?
+and because this application is a most active application, which means that the number of queries that it would fire will also be large, so a large number of queries- sorry, a large number of unoptimized queries- being fired onto the database, it would suddenly, it would suddenly increase the cpu and the memory utilization of it eventually taking it down.
+uh, what if i put a load onto the database but database would eventually execute the query, right, yes, but it would take time for database to do it.
+it would do retries because it failed and that would have massive impact onto your database because it is continuously getting bombarded by poor or unoptimized queries, which is putting unnecessary load on to it.
+even here they mentioned that this combined with like even generated poor performing queries, but this combined with application retry and queueing logic.
+or rather, that works, but that would put in, in this case, a more unnecessary load onto a database because let's say you wrote a query which is very poorly, or a query was generated which is very poorly performing and let's say it takes 10 seconds for it because of this, where it takes 10 seconds to execute, and let's say you have a retro logic or you have a timeout of, let's say, 5 seconds and after five seconds you do a retry so you shorter query onto your database, which takes things 10 seconds to execute.
+it is bombarding a large number of queries onto the database, which means that your database is never getting a chance to automatically recover, which is the worst part.
+so if your database would have gotten a breathing space, it could have recovered on its own, but because of application retry logic, a large number of poor queries are getting fired onto your database just so that, like just so that you thought that it would automatically fix your transient tissue and get your things up and running.
+but poor performing queries firing continuously on your database can take it down right.
+it was an edge case that took down the database.
+so what i'll do now is we'll take a quick look into a fictional example on how an edge case can take down a database, although we just talked about how there is an edge case which led to generation of poor performing queries.
+this api server was generating a mysql query required to be on, which was getting fired onto this database.
+uh, your api request came in, api generated the mysql query and it fired onto the database.
+so here what happened is a: b- added retries to recover the transient issue, right.
+but it also led to shooting large number of queries onto a database.
+so while your database was already executing heavy queries, it got retries.
+it got large number of queries.
+so whenever an outage like this happens, you typically cut down all the rights, you give your database time to recover and then, once it is back up, you then again start moving requests to that.
+this is just an example, nothing to do with github, just i'm just trying to explain how an edge case can put huge amount of load onto a database.
+the column created at is epoch milliseconds, which means it's stored as an integer right and let's say, for every- uh, for every- user of github, we are rendering a profile card like this in which you have photo, name, some bio information and 72 commits last week- so basic analytics- in which we are showing users that, hey, you made 72 commits last week.
+so what you do is you fire a query in order to aggregate or in order to count the number of commits you made.
+you fire a query like this: select, count id from commits where author id is equal to one to three and created add is greater than start date.
+this start date over here is an integer, because created at is an epoch milliseconds column.
+it can happen with any language, but i'm just taking any a very particular example of an edge case.
+so let's say a service is written in golang and we get start date in the query parameter, right?
+so from your front end you would get request something like this: https, colon slash, apigithubcom commits and in querymeter and then basically query parameter we pass start at is equal to some epoch timestamp.
+so that is why it is important to send start date as a query parameter.
+so now, if i write a go link based code to solve this problem, what i would do is because i am getting started in my query parameter.
+oh sorry, in any case, whenever we get the query parameter, they are all string, right?
+so what we have to do is we have to extract that query parameter, convert it into an integer and then pass it into our sql query, right?
+so what i have code, what our code would typically look like, is: in started you define an integer variable called start date.
+so, given that you invoke this function and you have assumed that the input that you will get will always be an integer or will always be- uh, will, will- will always look like an integer, right?
+now, the front end would always give me a correct integer to start with.
+so you what you wrote is: you wrote start underscore date, comma underscore, which means you are ignoring the error, then colon equal to strconv, dot a2y, and in bracket you are passing the query parameter and then you are using the start underscore date, which is now an integer, into your sql query and trying to execute it.
+so when you do you fire a query like this- select count id from commits where author id is equal to 1 to 3 and created at is greater than start date- this started being an epoch millisecond- you are literally injecting this integer into the string and basically trying to evaluate the query.
+now what happens is, let's say, there is an edge case where your front end did not pass the start date.
+if your front end did not pass the start date or due to any reason, your front end could not pass, uh, an integer value in the query parameter.
+the version got upgraded, something weird happened, but because of which the starter that it is sending from the front end is either not passed because of some backward compatibility front end issue, or is not an integer value.
+because a query parameter is not there, start underscore date.
+in this case, because you ignore the error, the default value of an integer will be used.
+so because now it is using the default value, the query that would be fired would look something like this: select count id from commits where author id equal to one to three and created at is greater than zero.
+column is an integer which is storing epoch milliseconds and now it is doing and created at is greater than 0, which means it is literally for that person.
+so this means that every time this query is invoked it has to go through all the rows or all the commits made by the user ever and do a count of it.
+so when at a when one of the most active applications is having an edge case which lets it to generate a poorly performing query, it would put unnecessary load on to your database.
+right, because this is an expensive query.
+it is continuously getting fired onto a database.
+so this means that unnecessary load is being put because of an edge case, right?
+so given this is a very common query, very frequent query, it will put a massive load onto a database.
+so this is a fictional example of an edge case which is generated.
+take away from this that whenever we are firing any query, or whenever we know that something is very actively or some query will be very actively fired onto a database, no matter how confident you are, never miss out on any error, never ignore any error, never overlook an edge case.
+assume everything- ah, assume everything that was given to you would be errored or would be viewed like, let's say, you are right or you are inserting a string.
+also do sanitization right before you invoke a query.
+otherwise you'd never know when a weird thing happens or a backward compatibility issue happens in your front-end library, taking down your entire back-end or, sorry, basically taking down your entire database and eventually your paying customers getting affected, right?
+always think about edge cases or how something could go wrong.
+that information is not given, how would my query perform?
+this is a classic case where what if start date is not an integer?
+this particular error was that when we do select count andy from commits were authority one, two, three and created at greater than zero, you could have like a simple guard rail, even though you would have not handled greater than zero use case right, whereas target is not given.
+so you are just trying to protect the cartridge, like or you are just trying to install a guard rail, that hey, even if that is a, even if i see an edge case, i can protect myself or i can limit the iterations that i want to make on to my database.
+is there an edge case into this query?
+can this query take down your database?
+that hey, how can this, this, this simple looking query, take down my database?
+these are some basic noises and obviously i just took a very fictional example to help you folks understand, uh, the importance of edge cases, uh, retries, how a database can be taken down because of an f in edge case, how poor, how poor sql queries are generated.

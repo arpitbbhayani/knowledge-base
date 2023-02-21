@@ -1,0 +1,69 @@
+on november 27, 2020, when github had a major outage across their services- like github actions, api requests, code spaces, get operations, pull requests and many more- and it all began with running a simple alter table command, but on a gigantic mysql table.
+the table is locked, or, if you are doing it in place, the row is locked for some time and then it is rewritten with the new schema right.
+so if your table is large, it will take larger time for you to run and complete the migration and for those entire duration, the table or the rows, depending on what your uh, what your database tuning is- they would be locked right.
+but, as i said that, whenever you are running all the table in gigantic or even a small table, it has to acquire locks on the rows, locks on the table, in order to make the schema changes right.
+so that's where large migrations after a particular scale is something that your developer or your sra team would do, and it's not like just simplifying alter table command.
+so with this, without acquiring a lock on the rows or without, uh, or basically without affecting the throughput of your database, you were able to successfully apply a migration or a schema alteration on to onto your table.
+right, and this is exactly what mysql does internally, but because it is doing it on the same table, it would have to acquire logs.
+but now, when we do it explicitly, the steps that mysql internally runs on alteration of a table, we do it explicitly so that we don't have to acquire locks on that particular table and this does not degrade the performance of your database or acquire logs or affect throughput.
+in any case, right so, because that is the final step, this particular step of renaming table repositories- one, two repositories- is that step where, there, where the read replicas got stuck right.
+isn't it strange to think that read replicas entering into a deadlock state but like it's all redirectly because it's serving read request, then where are these rights coming from?
+there is this replication job that is continuously replicating data from the master onto the read replica.
+they are sent to the read replica for them to execute it as part of the replication job, so that when a new row is inserted in the master, that row is replicated on the replica right.
+so now rights are happening through the replication job and if a write required to take a lock over here, that same lock will be taken on replica as well, one when the replication is being done.
+so when this happens, your replica can go in a deadlock state where your right acquired some locks or, sorry, when, when a replication job that you have written, when it is when it is firing that update query, it might take log, exclusive log, shared log, most probably exclusive lock.
+to replica right, and this typically happens when you have large amount of data that you would need to handle and migrate and whatnot.
+multiple read replicas for production traffic- interesting, everyone has that.
+multiple read replicas for production traffic- interesting, everyone has that.
+and several replicas that serve internal read traffic for backup and analytics purpose.
+what you would typically want to do is you would want to typically have read replicas that are dedicated to serve production traffic, for example, like when we- uh, when we create an issue on github or when we create a pr on github and when we try to read them, that read goes to read replica right.
+you would not want to impact the user performance or the user experience, so that's why you would have a dedicated set of read replicas on which the production traffic comes in, the production read traffic comes in right, and then obviously, your main database that you have.
+this way, your analytics team can fire very gigantic queries onto this replica and the production, uh performance will not be impacted, right?
+so in most companies you'll find this sort of similar or like this sort of architecture where you would always have a few set of replicas dedicated for the internal teams, while while the remaining set of rate replicas for their actual production traffic that comes in.
+and then it entered a crash recovery state, causing an increased load on healthy read replicas.
+due to cascading nature of this scenario, there were not enough active read replicas to handle production request.
+read replicas that hit the deadlock entered a crash recovery state.
+whenever your database crashes, it would the process would reboot, it would try to recover itself, right, and then, because of heavy load, it would again crash.
+so that's why your reader applicants are constantly going into this crash recovery state and because of this- and one very important line that is written over here- is that, due to the cascading nature of this scenario, there were not enough active read replicas to handle production request.
+what happens is, let's say you have three read replicas that were handling production traffic.
+one of the read replica went down- right.
+now what happens is, let's say, one of the read replicas go down.
+so the read replica who had 32 gb ram was supposed to handle, let's say, 1000 requests per second, is now suddenly getting 1500 requests per second.
+so let's say the total number of requests that were that we- hypothetically that we were handling- were 3000 requests per second on three read replicas.
+right, so each read replica handles 1000 requests per second.
+it will now go to the first and the second right, and when that happens, the read replica that was configured to handle only one thousand requests per second is now bearing 1500 requests per second, 1.5 x offload.
+so there were not enough reactive read replicas to handle production request, which impacted the availability.
+so, which is why the outage happened, there were not enough read replicas to search.
+the active replica also started crashing and they all went into this crash recovery loop, right?
+because now, what you think now, in order to mitigate this outage, the natural tendency would be add more read replicas.
+uh, in order to put an effort to increase the capacity, we promoted all available internal replicas that were in healthy state into production path.
+so when an outage happens, you as an engineer, you would always be on your toes key, and let me first quickly get up, like, get my site up and running.
+so when that happens, we know that we had two fleets of read replica, one handling the production traffic, one handling the internal traffic.
+creating a read replica takes a long time, right, if, like, there are ways to to basically speed up the entire process, but it would still take a long time.
+when the mitigation is happening, you don't have enough time to let like, like some of the engineers would have created, uh, or basically, would have initiated the creation of read replicas, not denying that.
+so you wanted to increase the capacity on your production fleet, because on your production fleet you had three read replicas, out of which two are done, and only one was handling what, like, one was barely handling the request right.
+what their engineers did is because there were, like other, fleet of reed replicas replicating from the same master node, but they were serving internal traffic.
+so now what happened when they added or when they promoted this existing read replicas into the production fleet?
+the rights are being served, right, you, just like all of your read replicas, are affected, but your rights are being served.
+we also observed that the read replica serving production traffic would temporarily recover from the crash recovery state, only to crash again due to load.
+so the load was so high that, even if they added the machines from your internal fleet to this and added more replica, it started crashing and crashing and crashing and crashing- right, so there was no.
+right, like a great organization like github, what they said: based on the crash recovery loop, because your replicas were were crashed, they recovered and they crashed again.
+because of this crash recovery loop, we chose to prioritize data integrity over site availability by proactively removing production traffic from broken replicas until they were able to successfully process the table rename.
+so when your read replicas were constantly recovering from the crash and again going down, what might have happened?
+so, in order to protect your replica from not going corrupt or from not getting corrupted, they chose to let it crashed and they removed it out of their production fleet.
+and now, when they removed it out of the production fluid, what happened is that now they stopped getting read request on that read replica and it had time to complete the schema migration that everything started with right.
+because there was a schema migration that was happening right.
+they let the crash replica not handle any traffic, which means they removed the replica out of the production fleet.
+this way, the breathing space that the replica needed, which it was not getting because of high read load coming in from the production traffic, it got that space so it can complete the migration with ease.
+and once that is done, they added the read replica onto the production plate.
+if deadlocks would not be there, your read replicas would very easily handle the load right.
+let the read suffer, let your replica get time for it to apply the migration and then basically be healthy and start serving the production request.
+it was all happy and handling all the right requests coming in, but reads were the one that were affected by a huge margin.
+so when the rights operation remain healthy and they, when, when an outage like this happens, when there is lot of crashes and recovery is happening, you always have to check for data corruption, that is, your mysql table corrupted.
+so what happened is they have this one gigantic database in which they have multiple tables, like, let's say, repositories table, pull request table and issues table and actions and web books.
+so now what would happen is, when you are running a migration, then all of the services- because they all rely on the same database- they all get affected.
+all the tables required for you to power issues on github will go to this database, right?
+so you'll have like, even if some outage happens, your other services are working fine, you don't have to think, because here the migration- let's say the migration- happened on pull request table, but because, uh, in the current architecture the pull request table issues web books, everything lied in that one database.
+but if it would have been functionally partitioned, then the migration that you have applied on the pull request table would have only affected the database holding the pull request table every like.
+so that's what these folks are talking about, where they would need to update an internal procedure to increase the amount of each cluster is over provisioned, which means that if it required them 32 gb of ram to process 1000 requests per second, instead of giving 32 gb, let's give it 64 gb, so that even if one of the replica goes down and the load moves to other read replica, they are provisioned to handle that much of load.
+right, so, as the next steps, we are continuing to investigate the specific failure scenarios and we have paused schema migrations until we know uh, until we know that no more uh, like.

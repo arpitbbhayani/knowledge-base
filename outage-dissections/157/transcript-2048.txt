@@ -1,0 +1,94 @@
+so github team was switching their master database from one node to another.
+while doing this, something went wrong and the new database crashed.
+in this video, we dissect this incident and understand what happens when a company announces a planned maintenance window.
+how they sold it and ran some really cool things- really cool things about switching databases and solving data divergence problem.
+engineers from companies like google, microsoft, github, slack, facebook, tesla, yelp, flipkart, dream 11 and many, many, many more have taken this course and have some wonderful things to say.
+the first one is the live cohort business which you see on the left side, and the second one is the recorded course, which you can see on the right side.
+thanks, so, like always, we start with the incident report and here it goes.
+what it says: for a period of approximately 5 hours, users may have observed delays before data returned to their affected database cluster were visible in the web interface and api.
+this tells us that user observing delays- which means not data loss, but delays in data being visible on the interface or api after it is being written in through their database- this clearly shows.
+this indicates us about having a master replica set setup in which the reads are going to read replica while the rights are going to master and there is some sort of asynchronous replication happening between them, right?
+so, given that the data was written successfully, it implies that master did not have any problem, the, the rights were getting accepted, but there was a lag.
+there was a lag from the time the write happened and if the user wanted to see those changes on the ui, it took delays.
+we will circle back on why it took five hours, right.
+but now what we see is what exactly happened with github.
+what they say is, during a planned maintenance operation failing over a mysql primary instance, we experienced a noble crash in mysql d process.
+so we always see on twitter where companies announce, or they even drop you an email- they say that hey, we are going for a planned maintenance.
+so plan maintenance is of time window in which company tells its customer that hey, we will be unavailable.
+so here we talk specifically about database maintenance window.
+so what happens during this database maintenance window?
+so companies have to reboot their databases due to n number of reasons.
+so typically your database vendors, like mysql, postgres, they give you security patches.
+apart from security patches, there are other reasons why you might have to do version upgrades of your database.
+let's say you want to alter the cache configuration of your database so that it is performing faster.
+let's say you want to change switch from one index type to another index type, right, so when you do that, it is not an on the fly operation.
+right, so that can also be done in this plan maintenance window.
+right, and this typically done because hardware goes through, uh, basically wear and tear and it would like s type.
+same thing happens with any hardware in the world, even with the cloud provider.
+typically this does not happen, but doing a periodic reboot solves a lot of problem, right?
+so this is why companies do plan maintenance, right?
+so now we talk about we like in this uh plan maintenance window.
+what github did is they switched their primary database from one machine to another.
+so when i say that there is a plan maintenance under the window of, let's say, 10 minutes, this does not mean for the entire 10 minutes of duration.
+every company tries to minimize the plan matters window, so they ask their customer for a big enough time, but they try to wrap their thing in in a very small fraction of that time, right?
+so here, what github did is this: flipped their master database because they had to do some maintenance on the old one right standard procedure.
+so what they do is: uh, they keep a second instance handy, right, and with just a configuration.
+they bring up a new master, exactly same as the old master, with no data loss or with, with, with basically complete data being in sync and then, with birth configuration change, they flip from master one to master two or old, from from old to new.
+right, and for this very short duration, when this conflict flip is happening, your database would become unavailable, but nothing more, nothing else, right?
+so this is all about plan maintenance window.
+so when they were switching the master from old to new, what happened is as soon as the new master got the traffic, it crashed.
+that crashed, which means they flipped the traffic to the new master and it crashed.
+so if that master crashed, we already had an old instance.
+because as soon as we flipped, as soon as we flipped it to the new master, it crashed.
+and that's pretty smart idea, right, you already have the database and you do it.
+as soon as this crashed, this flipped out the traffic to the old master and it should have worked, and it did.
+the crash to my sequel primary had already served approximately six seconds of traffic, specifically right traffic.
+so here, when they flipped from old master to new master, that database worked for six seconds before it crashed.
+so for six seconds the database took in all the rights, because master is handling all the rights.
+so all the right traffic that went to the new master got accepted, so rights were successful, right, and then it crashed.
+now, if github flips from new database, from new master to old master again, what about the rights that happened during that six seconds?
+so then this is that that user saw right getting successful, but your database does not have that data because you flipped it to the old database.
+old database does not have it.
+so some writes that went to the new database and we switched back.
+all the old rights were anyway, went to the blue master, which is the old master.
+then some rights happen on the new master, right, and then the machine crashed.
+when the crash happened, the team flipped to the old master.
+so the newer rights are now going to old master.
+so what about the rights that went to the new master?
+we want these rights to be there in double master.
+only for that six seconds of time that it accepted the rights.
+okay, so the current situation that we are in right now is we have two master nodes, one old and one new.
+newer rights are going to old master because your new master crashed after accepting the rights for six seconds.
+right, and the old data is intact.
+so all we have to do is whatever the new data was written in- the- uh, sorry, whatever the rights were written in the new database or the new master needs to be picked up and put it into old database.
+so this is where- uh, right ahead, logging of database has come into the picture, because my, uh, because github is using mysql.
+all of those queries are locked into a bin log file, right.
+they keep a track of this so they know exactly at which point they flipped the database.
+so what would have happened is the new master, when they spun up from the old master, they would have taken the snapshot of the old, then they spun up the new, then they would have enabled the replication so that both of the data comes in sync, and then they would have done the configuration switch right.
+these is there in the new master right.
+this, all this particular bin lock file, is present in the new master that we have now.
+what we have to do is we have to pick all the updates that went into the bin lock file after that coordinator, after the failover happened, from the new database or from the new master and applied to the old master.
+this is exactly how company does it and my guess is is exactly how github would have done it, because they move the traffic back to the old master.
+they want to ensure that the old data that is there- or sorry, the rides that went to the new master for that six seconds- needs to be copied into the old one, right, because new master is not, is not accepting any rights.
+the last n bin log statements would be the one that were for the new writes, so it just have to start iterating from the bin law coordinate where the failover happened and read it to the end of the file and apply to the old database.
+this way, the new chunk of data that was pushed into the new master for six seconds would come to the old master, right, and this is exactly how companies do it.
+bin logs is like bin log: makes our life so simple, right.
+so, right ahead: logging very important for database, bin logs very important for database, and this is exactly how companies mitigate such situation, right, okay, now let's move.
+but if you remember, github said that, hey, they had an incident blasted for five hours.
+so what typically happens is what github said.
+well, let's start with that and then i'll explain what exactly happened.
+so, at this point, so when they switch back to the old master, at this point, a restore of replicas from the new primary was initiated, which took approximately four hours, with a further r for cluster reconfiguration to enable full read capacity.
+whenever a failover happens like this or some outage happens like this, right, most companies, they want to give it a fresh start, right?
+so we create a fresh set of replicas from the master that is now accepting the rights and rotate all other replicas.
+from the master that is currently serving, we spin up new read replicas and slowly transfer the traffic to this new replicas.
+so now what happens is, while doing this, spinning up when you read replica takes time.
+given the amount of data github has, it takes very long time, right?
+so speeding up those many replicas takes time and some time to wait to do cluster configuration, as in: hey, these are the set of read replicas.
+let me go and change into my configuration about: hey, talk to this read replica and not talk to that other read replica and what not.
+so creating read replicas and configuring it took them total five hours.
+it was not entire site down, it was just that reads were getting delayed and the reason reads were getting delayed, or the cons or the cons or the rights that they made were getting delayed to be reflected on the ui- this, only this much thing happened, and this purely happened because it took time for them to spin upright replicas.
+some reads were going to old ones, slowly the data was getting replicated and over that five hours they required that to went to full rate capacity, right.
+it took them five hours to get rid of all replication lag and go to full read capacity, right.
+so whenever company says incident, it does not typically imply the complete outage, but more like, hey, something went wrong, we acknowledge it and this is what we learned from it and would ensure that we are not making the same mistakes again.
+if you're really very curious, i would highly, highly, highly encourage you to read about bin lock.
+bin lock coordinates how synchronous and asynchronous replication happens.

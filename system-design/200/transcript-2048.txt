@@ -1,0 +1,82 @@
+so notifications are extremely crucial for fintech companies, as it is a way to notify a user about an incoming transaction.
+hence, it becomes extremely important for companies like Razer pay to ensure that the notification is delivered to the user within a certain amount of time.
+in this video, we take a detailed look into how Razer pay scale the notification systems and look at their high level architecture and key design decisions they made along their way to ensure that they always meet their slas.
+but before we move forward, I'd like to talk to you about a course on system design that I've been running for over a year and a half now.
+instead, a small, focused group of 50 to 60 Engineers will be brainstorming the systems and designing it together.
+ingenious from companies like Google, Microsoft, GitHub, slack, Facebook, Tesla, Yelp, Flipkart, dream11 and many, many, many more have taken this course and have some wonderful things to say.
+we cover topics ranging from Real Time text communication for slack to designing our own toilet balance side, to cricbuzz live text commentary to doing impressions counting at scale.
+the first one is the live cohort based course and the second one is the recorded offering.
+the Live code base course happens once every two months and will go on for eight weeks, while the recorded course contains the recordings from one of the past cohorts assets.
+otherwise, the Live code is where you can participate and discuss the systems and its design life with me and the entire cohort.
+so notification systems are primarily or outbound Communications, for example smss, emails, push, web books and whatnot.
+now you'd see why a company like Razer pay, a finance company or a fintech company, would want notifications.
+now razor pay needs to send a the email about the, about the invoice, as the confirmation of the transaction, and it wants to send a post notification to B.
+for example, we want to send a slack notification via Web book- a reserve.
+so this is where sending notifications become extremely critical for finance companies.
+now think about it: if you are receiving a payment but you have not received the notification, you would be wondering, hey, where is that gone?
+so you'd have to open the Razorback console to see that, hey, you indeed received the- uh, the money, right?
+now here let's see how this payment system is built at Razer pay right now, or rather the existing flow, and then how they made it better, right.
+API server pushes a message to sqs.
+they take up this event, then they send it to executor.
+but this could very well be one same code base on one same machine running right.
+now you'll think, hey, why would a company need to store the messages that I sent to the user in a database?
+the answer to this is very simple: given that it is transactional information, when a sent money to B, and if a is not receiving a message or a B is not receiving a message, that's a problem.
+now, to do this, to ensure that the message is definitely delivered to A and B, they have to keep a track of it in a database so that, in case there is a error in sending it, a scheduler can pick that up and do the retry.
+so that is where you would have a scheduler component whose job is to pick the message that needs to be retried and then reschedule it in sqs and so that it can be consumed again.
+one very interesting design decision that we saw is about persisting the outbound Communication in a database, so that, because here, uh, guaranteeing, or basically a guaranteed delivery, is essential, right?
+the problem with this architecture was that their P99 drops from two second to four second for more than 1000 transactions per second.
+so as soon as their systems hit the limit of 1000 transactions per second, the response time of this, the SLA, drops from 2 second or the P99 latency is dropped from 2 second to four second, which is not acceptable.
+so this is where they thought of: hey, let's rebuild, right?
+challenge number one: read: load on the database during Peak.
+because now, here, if you look at it, in order to send the notification, it would need a lot of information about the user, the transaction, the sender, email, SMS- sorry, email, phone numbers, Web book and whatnot.
+it would need that plus the database, the database in which they are storing this communication that needs to be scaled and what not.
+but at scale, even adding a read replica, even doing a lot of vertical scaling, might not be the best decision because it would not work right.
+you would think that, hey, when I'm getting a lot of messages to send, I'll just add more workers to that.
+but if you think about it, if you add more workers to that, what happens to your database?
+so database has limited i o operations, which means that, let's say, your database can only handle 300 concurrent connections.
+your workers would choke off and your database would be over by that problem.
+so that is where, when you think of horizontal scaling, it's not that your database.
+if you think about it, that your database needs to be very well provisioned, the problem with this comes in is that you would have to have a very heavily provisioned database.
+you are not making a cost efficient architecture, so that is problem with scaling.
+second problem is scaling.
+so in the first architecture that we saw, it was straightforward: we have to send a notification.
+it comes to sqs: worker picks up, executor sends a notification and entries made in the database- dead, dead simple.
+but if you think about it, not all notifications are equal, because transactional information much more important than marketing pushes, because razor pay through their challenge, like they can also, like a business can also send notifications to their customers, like, maybe, reminder for payment and whatnot, right.
+for example, if I'm sending my transactional info, let's say if I'm sending a big marketing push, a big random that I'm sending here, please, like a, let's say, a happy New Year message to all the customers.
+now, when this is happening, you're like imagine Razer by sending this to 20 million people, but during that time, let's, a transactional message needs to be sent.
+so that is where one type of event, like making other Starve, is not a good design.
+so P0 is the ultimate priority, P1 is a default, qp2 is the marketing burst queue right.
+so what you can do is your API server, when it pushes the message, instead of pushing it to one SQL like only one sqsq.
+API server needs to decide: hey, this is the type of message.
+hey, if it's a transactional, let me send it to b0, if it's a burst marketing message, let me send it to P2.
+you would always ensure that a transactional message is always picked up, is very efficiently picked up as soon as possible and is sent right.
+even though a big marketing push is happening, you are not getting affected.
+your transactional messages are still going.
+but if you think about it, you would also need a rate limiter, because now what could happen is that each queue, event and customer.
+to ensure that you are giving consistent performance, or rather consistent experience to all of your users, all of your customers, you need to ensure that, even if one of the cons, one of the customer, is abusing it- let's say, a customer sent notification and that, let's say, that customer has a million customers- hypothetical situation- and if that customer sent large number of messages, like a bulk happy New Year message.
+now what would happen is that because of that one customer, one, because of that one notorious customer, every other customer is getting impacted, even though it sends to P2.
+all of them, all the other messages sent by other customers are getting, they.
+if it is not, which means you are not directly dropping it- you will be putting it into a separate rate limited events queue and then you would be slowly processing it.
+so you are having three cues for three types of priority and a fourth queue for all the events that breached your rate limiting right.
+this is a very important design decision.
+so now this data is the main the mySQL database in which the executor was updating it, the entry, the scheduler was reading from it to see if any messages needs to be redried.
+because this database cannot scale.
+if I add large number of workers, let's say if I had 500 workers, if my database only handles 300 iops, like rather 300 concurrent connections, what would happen is, because it has limit of 300, I cannot scale my workouts more than 300..
+and this is what their high level architecture looks like, where you have your user, you have your API server, you have your rate emitter, rate limiter.
+all the notification events goes through rate limiter, rate limiter knows hey, where do I need to send it.
+like it does the rate limiting check and then it pushes into either priority zero, Priority One or priority 2q and if it is rate limited or which means that particular event user consumer breached it, and everything goes into this rate limited events queue from where a secondary consumer might pick that up.
+now this is where the change is happening: from the executor, instead of executed directly writing to the MySQL DB, executor pushes an update to Kinesis.
+it pushes a message to kindnesses and then it writes to mySQL.
+it can consume the events slowly and steadily from kindnesses and make the updates right.
+so in two hours your messages would definitely be consumed from kindnesses, right, and then your normal scheduler flow Remains the Same, so whether scheduler picks up from the MySQL and sees what, which messages needs to be retried, and it pushes them back to the sqs, and that's how this normal flow happens.
+so executor writes to kinosis: kinases rights to the database.
+but one key, important design fragment that we have to think about is observability, like: unless we knew that, which component is the bottleneck?
+the first thing that comes is that you need to have ample amounts of dashboards, like you may use graphene or any of your favorite visualization tool to see and constantly monitor what's happening.
+then set up the right set of alerts so if any message breaches their SLA, that should be an alert.
+then look for anomalies, see if a customer has just sent message to a million people or not.
+so that is where you need to have this exhaustive tracking happening in the system so that you can take those calls, because your rate limiter also needs monitoring.
+you need to constantly check for you need to constantly monitor for the health checks of your worker executor scheduler, so that you, if you don't know if your executor is down, then your message messages in your SKS would continue to pile up and that is an extremely poor user experience.
+or rather, let me be explicit how what percentage of messages were sent within one second, within two second, within three second, within four seconds, depending on what their SLA is right, if I think.
+so this kind of success rate needs to be there and just to ensure the overall SLA, are they meeting it or not?
+and these are the factors that goes in designing real systems where you think about cost at every single stage.
+and that is how razor paid designed a rather re-architected their notification system.
