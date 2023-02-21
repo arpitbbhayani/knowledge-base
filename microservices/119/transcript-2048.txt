@@ -54,7 +54,6 @@ but how, how can we fence a micro service such that it, it, it's, it's better fo
 you also need to know when should i break things into micro services like what is that one fence of a micro service, so the services when you are breaking it or when you are fencing it?
 it cannot be too big, because if it is too big it is the problem is same as the monolith right because you have multiple teams coordinating on it and that, and then the same set of problem comment, but just at a smaller scale.
 a problem would be there, you, it cannot be too small, otherwise there would be so many inter team or inter service dependency, like internet.
-imagine when, when you have been broken into very small, into into very small services and then you're communicating, the first problem that would come in is is very costly inter-service communication.
 and secondly, if each one of that sub component is handled by separating, then inter team dependencies very, very, very messy.
 so a good start to breaking things into micro service is go feature wise, so a feature.
 so typically the way your organization is structured, right, so there would be teams that that would be looking at a specific set of uh features.
@@ -67,7 +66,6 @@ so each one of them has its own set of responsibilities, one team to look after 
 for example, someone just takes off prepayment flow, a team takes care of post payment flow, so then those two become to separate micro services, right?
 so a good indicator of that is the way your organization or the team is structured, depending on which you would want to break your things into micro services.
 in overall, improving your development velocity, right, and as an engineer, when you are starting to build or to break your monolith into micro services, this is a very solid way to do to go about it right.
-but again, remember, each service of yours will have a lot of sub components.
 you can call them micro services, but overall, in a bigger picture, notification becomes your big micro service and then you might have smaller components that are again between them.
 they are working harmonically, right.
 so, approaching it, fencing a micro service, is purely subjective and it is always designed so to optimize your overall development cycle, right.

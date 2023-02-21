@@ -1,19 +1,12 @@
 so leader election is important for our distributed systems to auto recover from failures.
 in this video, we take a detailed look into a simple, naive and intuitive distributed leader election algorithm called lcr and understand how simple yet effective this algorithm can be.
-but before we move forward, i'd like to talk to you about a course on system design that i have been running for over a year now.
-instead, a small, focused group of 50- 60 engineers every cohort will be brainstorming systems and designing it together.
-engineers from companies like google, microsoft, github, slack, facebook, tesla, yelp, flipkart, dream 11 and many, many, many more have taken this course and have some wonderful things to say.
-we cover topics raging from real time text communication for slack to designing our own toy load balancer, to quick buzzes, live text commentary to doing impressions counting at scale for any advertisement business.
-in all, we would cover roughly 28 questions, and the detailed curriculum, split week by week, can be found on the course page, which is linked in the description down below.
-so if you're looking to learn system design from the first principles, you will love this course.
-the first one is the live cohort discourse which you see on the left side, and the second one is the recorded course which you can see on the right side.
-the live covered based course happens every two months and it will go on for eight weeks, while the recorded course contains the recordings from one of the past cohorts, as is.
-if you are in a hurry and want to binge learn system design, i would highly recommend you going for the recorded one.
-check out the link in the description down below and i hope to see you in my next cohort, thanks.
+see you in my next cohort, thanks.
 so say, in a distributed system, we have a node which is acting as a leader and then other nodes are actually following it.
+right now, what could happen?
 and if the leader goes down, we don't want an engineer to configure some other node to be the new leader.
 this has to be an automated process, which is where the leader election algorithm kicks in, where it helps us not to do this manual intervention and fix the system right with lcr algorithm.
 this is one of the simplest algorithm that you could think about, but it's very effective, right?
+this algorithm, it works in a synchronous mode.
 synchronous mode means that every node which is participating in this election would know: hey, now my election is starting.
 right, and this is what the synchronous mode is all about: that every node.
 it's not that nodes are pitching in their words at their own time.
@@ -24,6 +17,9 @@ right now, this algorithm is so beautiful that it runs or it works, even when we
 we just know: hey, this is a distributed system having some number of nodes which are connected via unidirectional ring, but it does not in, but it does not need every node to know the total number of nodes in the system.
 it's that beautiful of an algorithm that it's so simple that it does not need any additional information whatsoever.
 right, every node has a unique uid.
+it will be an integer or a bit string.
+to be generic, it can be a bit string, but not a large enough.
+every node has a unique identifier, unique implying two nodes cannot have the same id, and which is extremely important for this algorithm.
 second is uids are comparable, which means, if you can do less than greater than on node, uids that you have, and every node knows its immediate clockwise neighbor.
 again, we don't need any information about the total number of nodes in the system and this algorithm still works.
 right now, let's take a look at this algorithm, what this algorithm is all about.
@@ -36,9 +32,14 @@ so every node creates a message with its own uid and send it to its neighbor, be
 so what every node would do is it would pitch itself, which means that it would create a message with its own uid in it and send it to the neighbor that, hey, i would want to participate in this election and i want to be the new leader.
 now what a node would do when it receives a message from its neighbor?
 so, when a node receives a uid from its neighbor, it compares the incoming uid with its own uid.
+now what it would do is it would say, hey, i have some uid.
+let's say i have uid9 and my incoming uid is three.
+it would compare the incoming uid with its own uid and would check.
 so if incoming uid is greater than own uid, right?
 so let's say i am nine and i received a message from three that three wants to be leader.
 i, i know that i want to be the leader.
+so now what it would do if, if your incoming uid is less than your own uid, you would discard incoming uid because, hey, you are smaller or you are younger, don't do you?
+you cannot do that, right?
 so you would discard the message coming from a node whose uid is lesser than yours.
 but if yours is greater, oh sorry, if the if the incoming uid is greater than your own uid, which means that, hey, you were 9, but you received message from, let's say, 18, so 18 is greater than 9.
 so now what you do is you would forward the uid to your neighbor.
@@ -51,6 +52,7 @@ if it is greater than its own uid, it is just forwarding it.
 so the node with the highest uids message would be surviving the entire ring and would be coming back to the originating node, and when that happens, it would know that, hey, i started like i have.
 like the node would know that, hey, i have the largest uid, which means that i am the new leader.
 and now this node would then announce this through another message, relaying into this network that, hey, i am the new leader going forward.
+so what this algorithm does?
 it basically says that the new leader is the one whose node, whose node uid is the largest.
 and the way it does this, it basically takes this message and forwards it in, like every single node in this distributed system participates in it, creates a message, pitches itself, sends it, basically sends it to its immediate neighbor and the neighbor then basically relays it.
 if it is, the incoming uid is larger than its own uid, right?
@@ -84,8 +86,14 @@ the compute in it is basically called as communication complexity, the number of
 here the number of messages exchanged would be order of n?
 square, because every node is not just receive, is sending the message for its candidature.
 it's receiving message from its from its previous neighbor right, and the messages survive from from the previous neighbors as well.
+so the overall communication complexity is order of n?
 square, which might be problematic when your distributed network is large.
+but for a smaller distributed network this would work just fine.
 one more reason why communication complexity is important: because if you are exchanging large number of messages, what would happen is your network can get congested- congested with respect to the constant movement of packages operating at the network layer.
 so any algorithm in distributed systems is always designed in a way to keep the communication complexity bare minimum.
 worst case communication complexity works very well for smaller network.
+might not be good enough for the larger one, right, but yeah, this is what its amortized analysis is, and so yeah, that's it.
 this was a very simple, intuitive lcr algorithm for later election.
+now you see how people think when they write distributed algorithms, and this is what ideas: take baby steps that at every time you are moving forward in time, just take the bare minimum baby step that you could think of and you would have a very nice, robust distributed systems algorithm at hand.
+if you guys like the channel, give this channel.
+thanks [Music] you.

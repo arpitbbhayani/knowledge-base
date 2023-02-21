@@ -13,7 +13,6 @@ a lot of things might be non-critical per se, so you should be moving that to a 
 so because that you are not rendering that information in the first viewport, why do you even send it in the api response?
 so what would happen with that is if this, if you are using the same endpoint that you used for desktop web and your mobile app, you are sending a lot of extra information with it.
 so if we just want to ensure the great user experience with very low network bandwidth being consumed and being very efficient on your mobile device, you should be sending only the data that your mobile is definitely going to use to render the screen.
-plus, it would load your page very quickly, because now there is a very small amount of data that your mobile needs to process and render, so it's very efficient.
 you might want to have different set of responses depending on different types of client that are coming in a very and just to extend this problem, it's not just limited to mobile apps.
 this problem like, for example, you have a desktop app, your mobile app, but now let's say you would want to create an alexa plugin and you can do that if you want to have an alexa plugin- the kind of responses alexa would need is very different.
 it is not the stream format, like the json that you resent in the response of product details is not how alexa would understand what to communicate.
@@ -49,6 +48,7 @@ so now you can filter out the things that you don't need hide sensitive informat
 let's say you have a client that you have a legacy client that only understands xml, but your backend is sending response in json.
 your bff layer can do the transformation because for a particular type of client it only understands xml.
 so when bff interacts with the backend services, you can pick the best protocol out there.
+for example, you can use a very crude grpc from because bff is also server in your infrastructure, microservices also server in your infrastructure.
 for example, your client would not know what grpc is you're like.
 for example, the attacks that are possible through mobile device are very different from attacks that are possible through web interface, right?
 so, depending on the client that you have, you might want to apply the corresponding checks onto your bff layer, and that makes it very easy.
@@ -70,10 +70,12 @@ so most of the code across your bffs for different client would be very similar.
 with large set of infrastructure, large number of services, you would have to ensure that all of these things are managed, maintained, monitored and deployed because you cannot have blind spots in your system might lead to a big outage and with this proxy layer, with this bff electricity in between, it would increase our latency slightly because you are making a call to one service that internally makes call to multiple services to get the data and send it back, adding that one extra network hawk, network hop.
 first, when the interface are slightly different across clients, for example, where you have your, where your interface for your web is very different from your interface in your mobile app.
 for example, if you have a legacy integration or a very specific integration which only expects you to send a data in a particular format.
+right, it might expect response in a particular format.
 it goes to back and fetches the generic information, transforms it into the format that alex understands and sends it out right.
 similarly, for supporting mobile device, it would go to the backend service, get the information, transform it or basically filter out the things that it doesn't need and send it to the mobile.
 it understands the information in a particular format, let's say xml.
 hypothetical example: let's say your bank understands xml but every other client that you have- your mobile app, your desktop app, everything- understands json.
+so what you can have, you can have just one layer of bff that is specifically for xml.
 you have your user monolith exposes json endpoints client.
 it gets the data from the database, sends it into the bff.
 so this way, you can now support multiple types of plan that understands totally different formats through a very simple and elegant solution called bff.

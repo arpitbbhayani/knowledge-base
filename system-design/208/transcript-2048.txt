@@ -1,9 +1,9 @@
 designing a highly available and performant service is really difficult, but bookingcom does it really well.
 the rating and review service is one of the most critical services for booking and in this video we dive deep into how they designed and scaled it to ensure that they seamlessly handle a peak traffic of more than 10 000 requests per second.
-but before we move forward, I'd like to talk to you about a course on system design that I've been running for over a year and a half now.
 because the thing is that, using reviews, people make informed decisions that, hey, do I need to book this hotel, or is this hotel, or is this stay, or is this, too, really good enough?
 so now people are coming to booking to read the reviews and then make an inform District: hey, I want to book this particular Hotel.
 so people come on bookingcom to read the reviews about a place or about a stay or about a tour, and they book after that.
+so this becomes the top of the funnel, which means that it drives their Core Business, which means that reviews service cannot go down.
 so here this service needs to be supporting a very high availability and a very low latency, because this service is something that everyone is having their eye on, that this service has to be up and running, because this is what is driving their core feature.
 no one really thinks about rating and review system that much, but here, because this is the top of the funnel, it becomes critically important for an organization to have it up and running 24: 7..
 right, okay, now that we understand why ratings and review service needs to be highly available, we would take a look at how they do it, but this gives us a hint on how they would be thinking about testing.
@@ -15,6 +15,7 @@ now this indicates that the reviews that you see on booking, they have to be mos
 so this materialized views make your reads much faster, right, and plus a centralized cache like radius, memcache, couch based something, something around that you can use to build it right.
 but this gives a critical hint that, because we need low latency, we would go for a something like a cache based solution.
 okay, that being said, now let's think about the amount of data that they have, because this gives us Glimpse around the the overall database architecture that they might have.
+obviously, not all reviews are getting serviced.
 now, this means that for us to have a response time under 50 millisecond that we just observed, like P99 is less than 50 millisecond, which means that we need to have our database started.
 because it's a very high traffic- 10 000 requests per second- OneNote definitely cannot handle it with ease, so we would add a bunch of replicas, so we would typically have a master which is taking all the rights, replica which is serving a lot of reads and, and very importantly, because we want the service to be highly available.
 so, apart from having a bunch of read replicas to serve the read request, you would have a replica that is replicated, that keeps the replicated data in another availability Zone, which means that, let's say, if your Singapore data center is down, it will be served from, let's say, Mumbai data center.
@@ -58,7 +59,6 @@ now, right, this technique is can be used across any service that you are design
 so wherever you see a problem of you wanting to build a service that needs to scale up and down at will and there is a lot of data that is moving because of your routing logic, you employ consistent hashing at that location.
 once you employ consistent hashing at that location, your problem is typically solved, because it ensures that you have to do a minimal data movement when you add or remove nodes from the consistent hashing ring that you have.
 and again, do remember that all consistent hashing answers is data ownership.
-now, what does high level architecture of this entire design look like?
 you have a bunch of users firing lot of requests onto a review service.
 review service has a consistent hashing implementation who's using which it basically routes the request to the corresponding sharded, to the corresponding Shard of your sharded database.
 so they use a relation database to store ratings and reviews and whatnot, and they and this ownership info and, uh, the database cluster is mentioned in the consistent hashing ring, depending on which your review service would router request to the corresponding node.

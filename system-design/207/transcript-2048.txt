@@ -10,6 +10,7 @@ so the idea here is you take all of your transactional data across all of your m
 people typically use basically Amazon redshift or Google bigquery for this purpose, but you can build your own on top of hdfs if you want to.
 so these data warehouses are typically optimized for Gigantic analytics query, not for transactional purposes.
 so what that core need is that they have their data distributed across bunch of databases.
+they want to replicate it and put it into a data warehouse.
 now, from this data warehouse people will get like different teams, let's say insights, your analytics team, your product management team, your machine learning team, your data science team and your business teams- and who not, can directly query this one data warehouse which has data from all the databases in this one structured format.
 this means that, let's say, if you have your, if you have your payment service in one, you have your payments data in one database.
 you have profile data in another database, but you want to join them so that you can do some.
@@ -36,6 +37,7 @@ right, so you can create the way you want the derived tables out of it.
 right, and that's how you can very beautifully see how your hierarchy of tables is created.
 from there you create code tables, which are very commonly merged and joined.
 from this code tables you create derived tables.
+while defining a derived table, you have to specify what query should I fire on core tables repeatedly to populate my derived table?
 okay, so now how do we create a derived table?
 now this yaml based config is like if you would want to create a derived table, you would already know, okay, these are the code tables that I have.
 now, for example, you want to create a new derived table right now.
@@ -63,10 +65,10 @@ you typically expect a millisecond latency with your MySQL or your mongodb datab
 but there are use cases which are online use cases, which means, let's say, for example, you have a prediction service, somehow you have a prediction service and you want this prediction service to serve the predictions to your end users in real time.
 but the data that this prediction service needs is a derived data, which means it's a combination of a bunch of data distributed across bunch of databases.
 so what you first need is specify your yaml file, take that data from different database and have it, and you create a derived table out of it.
+once you have created a derived table out of it, but this denive table is where it's in bigquery, but bigquery cannot give you millisecond latency.
 so what you need is to pull the data out from bigquery and put it into a real-time database or a database that supports, or a transactional database, a database.
 you can choose whatever destination you want to, but you take the derived table- some derived table that you need for online processing, to power end user use cases- from this bigquery into Skylar DB and then your prediction service can use this Kyla DB and there would be a job that is running in your airflow somewhere which is repetitively pulling this and putting it over here.
 right, just like how we specified configuration, the yaml, there might be some more configuration that you can add that would take the data out from bigquery- some tables- not all one or two tables- and put it into Skyler DB for your online processing.
 you can replicate the data, create derived tables out of it and power your use cases.
-this means that there is no need of explicit data engineering intervention to get your things done and every team is empowered with a bunch of data so that they can make the best decision possible, because data doesn't lie, and this, this is the beauty of building a very generic self-served data platform.
 Airways typically, what most data engineering teams use to build workflows like this right.
 then bigquery, or data of lake, or data warehouse, in case you are unaware, right, so touch upon those points.

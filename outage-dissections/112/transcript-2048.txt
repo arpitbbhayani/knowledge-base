@@ -1,7 +1,6 @@
 the first set of speculations that came was: maybe their authentication service is done or some of the related component is down, but because we are not able to log in, we can't use their services.
 what are different infra components that need to talk to each other to ensure that everything works well, right, okay, so let's jump into this.
 uh, okay, so they say that on march 8, they experienced a global outage triggered by issue in a cloud hosted service discovery system used at spotify.
-so this service discovery is the keyword over here, because what this implies is: spotify has a lot of micro services and for one micro service to discover other micro services, they're using something to discover the services, right?
 so basically, there are a few few, few very solid solutions out there, but this shows that at scale, when company operates, they are using something for service discovery.
 so this one word here is very critical: like any time you are architecting anything, always ensure that you have a fallback plan on what happens if that component goes down.
 however, some of our services use xds, so xds is an open protocol on how service discovery needs to happen.
@@ -70,4 +69,3 @@ as soon as the problem was discovered, a spotify team rolled out a configuration
 uh, let's say here, in this case, spotify was heavily relying on gcp, which is okay, obviously, there, obviously, the job of gcp is to handle it.
 so spotify used multiple service uh service discovery technologies.
 so just imagine if, if spotify did not have a dns like, if they did not have any services that were using dns based routing, what could have happened?
-it would have taken them far long to meeting at the issue, or they could have just simply sat back and saying, hey, let the gcp folks fix in, but up until then my services weren't working.

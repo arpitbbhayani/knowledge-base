@@ -2,10 +2,6 @@ to be honest, building micro services is much more than an engineering problem t
 there are many pitfalls to avoid and decisions to be made and, in the process, build a solid, functional, high performing team.
 in this video, we'll look at some engineering and non-engineering things to remember while building microservices, for example, it being a massive, massive, massive opportunity for personal growth.
 everyone should be okay with architectural evolution, importance of periodically addressing technical debt and striking the right balance to keep engineering and business aligned to the same strategy goals.
-instead, a small, focused group of 50- 60 engineers every cohort will be brainstorming systems and designing it together.
-we cover topics ranging from real-time text communication for slack to designing our own toy load balancer, to quick buzzes, live text commentary to doing impressions counting at scale for any advertisement business.
-the first one is the live cohort business, which you see on the left side, and the second one is the recorded course, which you can see on the right side.
-otherwise, the live court is where you can participate and discuss things, live with me and the entire cohort and amplify your learnings.
 thanks, first key thing to remember while building micro services, that it is a huge, huge, huge opportunity for growth, right.
 so when we have micro services based architecture or we are transitioning into microservices based architecture, what it gives us is we are creating a lot of services which are very focused, right, which means there would be lot of engineers, lot of teams, lot of technologies to work, with lot of interactions to happen between services.
 for example, there is a technical problem to solve: how two services should communicate to each other.
@@ -15,6 +11,7 @@ apart from all of these non-engineering things that we discussed with respect to
 so, as an engineer, if you are stepping up to this challenge, you would have a very, very, very solid growth trajectory in the organization, right.
 right, you can come out as a subject matter expert for this particular thing.
 okay, when you have a micro services based architecture, each team owning a few set of services and, let's say, those two services needs to interact.
+right, conflicts are bound to happen.
 right, this is where- and you should always remember that there is no one right way to build any system- any and every system can be built in hundreds of different ways, right, and it's just that you have to be good at making that trade-off that, hey, this one is better for this situation, while the other one was better for that other situation.
 right, it's very subjective, but you have to be like, you have to understand that your way is not the only way through which this system can be built.
 he, or basically that senior engineer, would be helping you solve that issue and while doing that, watch and learn.
@@ -39,6 +36,7 @@ the way you would be designing needs to be abstract enough so that any changes t
 this is a big decision, right?
 and in some cases, you might also have to prove your seniors that, hey, are we really going to do this?
 that's where you as an engineer, or you as a early leader, needs to step in and say, hey, have we really given a thought on this?
+because if we move from a database to another, there is no going back, right?
 if you make them aware about these kind of situations, they would be putting in twice the amount of thought and coming up with, hey, yeah, we are definitely doing this, no matter what, and we are okay having this one way: route that from database one to move to database two we have.
 we cannot always build the system the best way possible and it is always that because we engineers- or vs engineering teams- we are always running a race against time, we always have to ship things faster.
 we do not have all the time in the world to design the best architecture possible, so that is why you would always see we cut some corners, some things we leave out, or tk.
@@ -63,8 +61,12 @@ second way to solve this is when you have a central team trying to enforce a sta
 so in a microsoft, especially in a microservices based architecture, this is very important- that, hey, it should not be that, hey, one team is enforcing all the things on us.
 and the final thing that i want to talk about, the most, most most important part: business is more important than engineering.
 if business doesn't exist, we are gone right.
-but your machine learning team- just giving an example, no need to be offered at ml engineers, but your ml team is requesting your sre team to provision 50 massive gpu clusters.
+every single team should know what the strategy of the business is, or what the strategic goals of the business is for next couple of months, or three months, or six months or a year, and every single project you pick has to be aligned to that vision.
+if the work that you do is not aligned to the business, then you are not creating an impact.
+you are giving output but you are not driving outcomes right.
 so you can drive massive outcomes only when the things that you pick are aligned to the vision of an organization.
+if you are not doing that, you are just doing something right, but it's not going to be impactful.
+right, always remember this.
 uh, i know it was not so technical video, but i always wanted to highlight few things, few key aspects to remember when we build micro services, because these are things that are typically that most people overlook, but if an engineer or an early leader spots them, can create massive impact for them.
 early engineers: learn from it and try to drive impact in their organization.
 early leaders: ensure that your teams is not suffering from the pitfalls that i mentioned and, overall, just always align yourself to the business goals rather than running your own side projects.

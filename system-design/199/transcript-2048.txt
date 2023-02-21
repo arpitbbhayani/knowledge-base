@@ -1,7 +1,5 @@
 search is one of the most used features in any e-commerce and to give a better user experience, it is almost customary to provide type by head search suggestions.
 in this video, we will talk about how Flipkart made that type ahead, search hyper personalized and dive deep into their high level architecture and key design decisions.
-Engineers from companies like Google, Microsoft, GitHub, slack, Facebook, Tesla, Yelp, Flipkart, dream11 and many, many more have taken this course and have some wonderful things to say.
-the first one is the live cohort based course and the second one is the recorded offering.
 so when a user is typing a query, we have to suggest some Search terms, because this gives user a better experience, because now user does not have to think twice on what needs to be typed, what's the spilling of it.
 now the problem is: how can we make this type of headset suggestions hyper personalized?
 so, for example, if your past history suggests that you have bought a lot of shoes and if you type sh, like your shoes should come at the top, and if you have purchased- let's say, always purchase- Shoes less than 2000, then shoes under 2000 should be the hyper personalized search suggestion that it should give.
@@ -9,6 +7,7 @@ that is hyper personalized for the user who is making that search.
 so now, when we are thrown at this problem statement, or rather when Flipkart was trying to solve this particular problem statement, the first thing that they thought is: hey, what are the parameters to rank it?
 because this entire problem statement boils down to how we are defining, or how we are defining, the ranking function, because we might have thousands of terms that matches sh, but out of which, picking the top five that suits the user, the best is what we want.
 the first parameter for ranking would be the quality of the suggestion.
+so, for example, should you even be considering some, uh, search phrases that are not at all popular?
 for example, if a search phrase is not at all popular, why should you even consider it in your search suggestions, even if it is hyper personally?
 second is performance, which means that does this search term when click?
 because if you are recommending a search term, the user is very likely to tap on it, which means that if a person Taps on it, there has to be enough items in the search result.
@@ -28,7 +27,6 @@ so depending on which user is searching, what if this search suggestions can bec
 so, first of all, a nice way to think about this is: hey, let me just create cohorts of user, let me just create groups, like, let me just create small groups of people having similar purchases to a similar interest, and then to all of them, let me show the same set of suggestions.
 that's a nice way of thinking it, because what that would mean is that even if, like, there would be a chance where a user would be misclassified into a particular code- very high chance, right?
 because every user search journey is going to be unique, the needs are going to be unique or the context is going to be extremely recent, which means that user has made last five searches belonging to a particular type of thing.
-then the next one is highly likely to be belonging to the same category.
 so that is where the first thing that we have to do is to understand the user intent that, hey, if user search for something, what does that user actually mean?
 this is the taxonomy that I am talking about now, depending on the search term.
 every search term that user is firing could belong, or rather could come, would belong, to one of these categories.
@@ -52,6 +50,7 @@ then comes the part of personalizing the search.
 now that we have the data, we have mapped it, now we understand what we would want to leverage now if we think about personalizing the suggestions.
 the idea is pretty simple: the model that you will be building.
 this model needs to be built on how user interacted with your system.
+so, for example, if you showed user 10 suggestions and user didn't click on any of them, that's a negative feedback for you.
 so, which means that that un like the one that the user clicked on gets a higher score, while it gets a negative score for the other nine items.
 this way, you would want to rank it.
 you would want to start ranking and assigning score to each of the suggestion that you are giving, and that's how your model would need to learn over and over and over and over again.
@@ -76,6 +75,9 @@ so solar will then use this thing, like the Json that you provided- and this is 
 now, how would solar get the search suggestions?
 there would be gigantic big data pipelines around all the search queries that has fired on the system.
 you would want to do that, that particular grammatical check, quality check, popularity check and then then you would want to ingest it into solar.
+and this is how your entire thing would be powered, right?
 so Auto suggestion feature would have a cache, a solar, a big data pipeline, a machine learning model, training and explicit server to do that.
 once the training is done, the Json, the model, would be exported, as in Json, inserted into solar so that it can use it for ranking, right?
 and this is how Flipkart made their search suggestions hyper personalized, and that is it.
+thanks [Music].
+thank you.

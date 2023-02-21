@@ -17,7 +17,6 @@ so now that we know what the input is, what the output is now in a distributed s
 so, because the algorithm is synchronous, right, so every node moves forward step by step, round by round, like they're synchronous.
 in that way, nodes proceed in sync and let's, let's say the BFS, the breadth first search, has to be initiated by some node, right, it cannot be like.
 like, when you are building that topology, you need to know, okay, hey, this is the node which is initiating the breadth first search in my network.
-let us say I 0 is the node that initiates the breadth first search and there are total nodes in the system.
 the first round is where I 0 sends a search message to its neighbor.
 Now, search is just a general terminology implementation, like, you just need to create a text message and then send to the nodes, but I'm just classifying that message as a search message, right?
 so I 0 sends a search message to its immediate Neighbors, because the only thing that the node knows are the immediate neighbors, nothing else, right?
@@ -49,13 +48,12 @@ now, if only B sends the message that, hey, I chose you as a parent?
 so what we do is, whenever we send or wherever a node receives the search message from other node, it would be sending back if it's a, if it shows the other node as a parent or not.
 so parent slash, non-parent message is sent from all the outgoing nodes to the node from which it received the message right, so that that node would know if it is chosen as a parent or Not by the other word.
 this way, the parent now also knows the information about the child that.
-these are the nodes who picked, who chose me right.
 right, okay, now comes the main part: how would your algorithm terminate?
 they know something like n nodes exist, that's it.
 so it basically all the messages converts to a single node, right?
 right now, here just a slight twist to that: that a node responds- or to the to its parent only when it receives message from all of its children or all of its outgoing roads.
+that, hey, once everyone like one, like you, would respond only after you received an acknowledgment from every single of your child.
 let's say B has children, d and e, so B would wait for response like parent slash, non-parent message from d and e when it receives message from both.
-it looks like extremely small baby steps, but that's how distributed systems are.
 so by adding this Blocker, we are ensuring that the outgoing messages percolate and then a node responds only when it received all the messages or all the responses from its corresponding children, and so on and so forth.
 this way, the originating node would know: hey, this is like these are his children, and now the algorithm is complete.
 then it may again send a message in the network that algorithm is complete and whatnot.
@@ -66,10 +64,10 @@ what if that communication line is unidirectional, which means that i 0 can send
 a would initiate another breadth first search to inform this message to I zero via some different parts.
 so in a directed, in a unidirectional distributed Network where the communication line are unidirectional, it would have to recollect every node would be triggering another bet for search to inform its parent, huge number of messages exchanged.
 and this is the ultimate beauty of distributed system, right, okay?
-synchronous breadth first, search traversal.
 you, you would have seen it from farthest of distance that, hey, this is the classic case where I can use this system to broadcast something to my network and I would do that.
 okay, so if a node in a distributed system wants to broadcast a message M, it can just initiate the synchronized BFS algorithm with itself as the root.
 you saw how converge cast was happening, that a node waits for all of its children to respond.
+to power distributed computation further, map, reduce, mapreduce is a classic case of this where you are sending a computation job throughout the network.
 now what would happen is, let's say, I want to compute a diameter of a network, which means that what is the farthest or what is the largest distance between any two nodes in my network?
 every node initiates a BFS and thus they would be knowing which node is the farthest from that node and they would all converge, flood each other with the same message and they would all know the global maximum of it and they would know the diameter of the network, right?
 so this particular algorithm- breadth first search- it's foundational for so many other things, right, and this are, and these are the challenges that comes in when we are operating in a distributed setup, like we cannot even assume anything.

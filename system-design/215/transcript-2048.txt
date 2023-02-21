@@ -1,13 +1,8 @@
 say, you are writing a payment service and you wrote an API that transfers money from one account to another, but because of a network glitch, the client automatically retried the API call and this led to the reduction of money twice.
 to handle the situation, we need our apis to be item potent, and in this video we take a look at what Ida potent apis are, how to write them and how they form the heart and Crux of any payment service.
-but before we move forward, I'd like to talk to you about a course on system design that I've been running for over a year and a half now.
-the course is focused on Building Systems, the way they are built in their real world.
-in all, we would be covering roughly 28 systems and the detailed curriculum, split week by week, can be found in the course page linked in the description down below.
-the first one is the live cohort based course and the second one is the recorded offering.
-the Live code base course happens once every two months and will go on for eight weeks, while the recorded course contains the recordings from one of the past cohorts, as is.
-I've also put the link of this course page in the description down below and I'm looking forward to see you in my next cohort.
 the second, we can pass the observed error to the user and then let user decide if he or she try or do whatever with it.
 typically you would think that hey, automatic retries gives the best user experience, so let's just do that.
+but depending on where the failure happened, it would determine if we could retry or not.
 so let's say we look at the failure timeline on where possibly the failure could have happened.
 first, let's say user a makes an API call, but before this call even hit the server, the, the network got interrupted, which means the request did not even hit the server.
 if, in case, you know this, you can automatically retry.
@@ -29,9 +24,11 @@ so in either case, the answer to this is we need a way to be item potent, which 
 so the idea here is: the apis that we build needs to be item potent, which means that when the server sees the API for the first line, it processes it.
 if it sees called multiple times, it either ignores or throws error.
 but what we are exactly trying to do over here is we are trying to build an exactly one's semantic that if a request is made, it will be processed exactly once, not twice, not Thrice, not zero times, but exactly once.
+now gives us a problem, right?
 hey, at least we have now converts to a part where we understand the problem really well, and now we would want to define a solution for this in order to now here we can very clearly see that when we are getting so many requests, we need to know that, because we would want to process the request exactly once, no matter how many times it comes.
 we need a way to understand or to keep track, or that, hey, have we seen this request before?
 so you may be tempted to just do a copy paste of URL, or rather, keep track of all the requests that you have seen and then you see if, if you have processed it before or not.
+if you just do, if you just keep track of URLs, if you just keep track of URLs, then and if the payload is different, then you don't know, like, what to do or what not to do, because you may think that you have already handled it, but you would have not because payload would be different.
 so then you would, you might be tempted to keep track of the URL and the payload, maybe some parameters you are passing in in HTTP header.
 so, instead of making it highly complicated, we keep it really simple, right, and how we go about that is using something called as item potency Keys.
 let's just keep it simple and let's just create something called as item potency Keys.
@@ -39,6 +36,7 @@ now, item potency Keys is something that would help us or help server disambigua
 first, your client, before making the actual API call, First talks to the server to generate a random ID.
 this random ID will be the item potent key that it would need to pass in future request.
 now, this key might- or it totally depends on the implementation- but against this random ID, your server might store what purpose or what API did the user want to, or what operation did the user want to take.
+for example, money transfer would be one of the operations.
 you might have other operations for which you are generating the item potent keys.
 now, this key and the purpose that you- and this is something that your server- would store in the backend so that the next time the request comes in, the server keeps or the server can validate if it has handled this request or not.
 let's say your client wanted to transfer money from A to B account.
@@ -55,20 +53,24 @@ so when you are retrying, you would be retrying the same API again, which means 
 now, when server gets this request, it checks that hey, have I already handled this other potent key or not?
 if it has already handled, it would throw the error, ignore the request and tell Clan to not retry.
 so instead of doing an implicit thing on URLs and headers and payloads or hash and compute and whatnot, you keep it really simple and ask your client to tell, to ask server for an idea, and server keeps track of it.
+now here, this is exactly what almost all payment service out there does.
 you are required to pass an item potency key header while making the API request of transfer, and this is exactly what are.
+this is exactly how most of the payment services are built.
 they handle item potency this exact same way and this is exactly how you are that.
 you could pass item potency key.
 you can also pass in with query parameters and whatnot, but stripe asks you to pass a request header called adopt and Z key in which is: add: a potency key is faster, right, okay.
 so a basic flow of Architecture is where, instead of just having a user in API server and your payments DB, you would have an auxiliary database, a simple key value store with some TTL, in which the idea is that whenever your client would want to make a critical API call, it would first generate an either potency key from the server, the server would generate one.
+keep track of it in a key value store with some TTL stored.
+let's say, red is- you may pick any, by the way, it really does not matter.
 so the server keeps track of all of these item potency key in this database that you have.
 it's a simple key Value Store.
+when the operation is successful, the server actually deletes it from the system.
 this way, what you get is: the server will always ensure that, no matter what the pro, the request is processed.
 exactly once, right, no matter how many times your client retries, the server would do would process this request exactly once.
 so what we just pulled is we built an exactly one semantics for our API, and this is not just limited to payment.
 you can apply to any critical API that needs to be executed exactly once, no matter what, and you can add meta information to handle other cases if you want, or just handle the validation of user and operation and whatnot.
 but the idea is to have a separate database or a separate table to just keep track of all the item potency keys that the server has ever generated for a user for a particular operation.
 right, and this is how most payments services, or most payments apis, are built, by considering item potency.
-right, and all of this is taken from Stripes engineering block, which I've Linked In the description down below.
 I would highly recommend you to check out the stripes API documentation to understand what all apis require you to pass- item potency keys and what all apis are: just normal, normal plane, simple API that basically does not require you to pass such keys right.
 you can very clearly see the difference of which apis are critical, which apis are not right.
 uh, I hope you found it interesting.

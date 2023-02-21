@@ -1,27 +1,17 @@
 so leader election is necessary to make distributed systems order, recover and remain autonomous.
 in this video, we take a detailed look into a leader election algorithm called flood max that works on any network with any topology.
 we spend some time understanding the runtime complexity of this algorithm and look at a couple of optimization that makes it efficient.
-but before we move forward, i'd like to talk to you about a course on system design that i have been running for over a year now.
-the course is a cohort based course, which means i won't be rambling a solution and it will not be a monologue.
-instead, a small, focused group of 50- 60 engineers every cohort will be brainstorming systems and designing it together.
-the course to date is enrolled by 600 plus engineers spanning nine cohorts and 10 countries.
-engineers from companies like google, microsoft, github, slack, facebook, tesla, yelp, flipkart, dream 11 and many, many, many more have taken this course and have some wonderful things to say.
-we cover topics ranging from real-time text communication for slack to designing our own toy load balancer, to quickbuzzers, live text commentary to doing impressions counting at scale for any advertisement business.
-in all we would cover roughly 28 questions and the detailed curriculum, uh split week by week, can be found on the course page, which is linked in the description down below.
-so if you're looking to learn system design from the first principles, you will love this course.
-the first one is the live cohort discourse which you see on the left side, and the second one is the recorded course which you can see on the right side.
-the live code base course happens every two months and it will go on for eight weeks, while the recorded course contains the recordings from one of the past cohorts, as is.
-if you are in a hurry and want to binge learn system design, i would highly recommend you going for the recorded one.
-otherwise, the live code is where you can participate and discuss things, live with me and the entire cohort and amplify your learnings.
-i put the link of uh the course in the description down below, so if you are interested to learn system design, go for it.
-check out the link in the description down below and i hope to see you in my next cohort.
+see you in my next cohort.
 so in distributed systems where you have leaders and followers, if a leader goes down, we want another node to take place of this new leader.
+this can be done manually, but it takes time.
 that's why we want the system to automatically elect the new leader right now.
 before we jump into this algorithm, let's talk about a concept called diameter of a network.
 so diameter of a network, with any topology, is basically the maximum distance between two nodes in a network.
 so basically it implies that how far are any two nodes in this network from each other?
+if they are directly connected, the distance would be zero, but if they are not directly connected, what is the distance between them?
 and if we do this, if we compute the distance between all pairs of nodes, we would get the and we pick the maximum of it.
 that is the diameter of the network.
+the diameter concept of a network is very important in a lot of distributed algorithms, where it expects to have this knowledge that hey, this is the diameter of this network, so that your algorithm can halt.
 right now we take a look into fluid max algorithm and see how it works.
 so, flood max algorithm.
 the beauty of this is that it works with a network that is arbitrarily connected, which means there is no need for it to be ring topology or a star topology or a mesh topology- it could be anything.
@@ -30,20 +20,25 @@ now, every node is given a comparable uid, just like always, and the uid is rand
 and and one big assumption is: every node in this network nodes the diameter of the network.
 that if my diameter of the network is 3, every single node knows that.
 hey, the network that we are part of has the diameter of three, because that's how they would know when to stop the lead reduction algorithm, right?
+so this is the assumption that we start with.
 now let's talk about the algorithm.
 the algorithm is called flood max.
+flooding is what you would think of, and it's exactly that.
 that it selects, like the flood max algorithm, selects the load with the maximum uid to be the new leader, and the core idea is: we have to flood the network with the max uid.
+this is the core id of this algorithm.
 so what we do is the election happens across multiple rounds, right, and the number of rounds through which were like, for which this happens, is equal to the diameter of the network, which means the maximum distance between the two nodes.
 so the diameter of the network is three, the number of rounds in the election would be three.
 if the diameter is five, the number of elections, the number of rounds in the election, would be five.
 so it would take five rounds for the network to determine who is the new leader right now.
 what would happen in each round?
 so in each round, every single node of the network would keep a track of the maximum uid that it has seen so far, including its own.
+so every round.
 the idea is like, if every node of the network would keep a track of the maximum uid that it has seen, so it would receive something from the neighbors, the uid of the neighbors, and they would check: hey, like what is the max id that i have seen till this time?
 and what it would do is it would do the broadcast of this maximum uid that it has seen so far to its immediate neighbors right now, because it can be connected with any topologies, it's not just that one neighbor in the clockwise direction, any nodes that are connected to this node.
 it would send this information to every single one of them, right?
 so every node keeps track of the maximum uid that it has seen so far and it broadcast this max uid to the nodes connected to it.
 right, and this happens in each round.
+so now what would happen?
 in each round, every node receives the max the, receives the max uid from each of its neighbor that they have seen so far and it would forward it to this node.
 now this node computes its max the.
 basically, this node updates its max uid if it wants to and then it sends this information to its neighboring node.
@@ -53,6 +48,7 @@ and this is how your maximum uid will be propagated throughout the network: by l
 if the node, like every node, will check, hey, what is the max uid that i have seen till this time, after diameter, number of rounds, if the node that has like, if the node with the max uid sees itself as the max that it has in so far, it knows that its uid is the largest, so it would be the leader if self uid is not equal to the max i have seen so far.
 so if, let's say, my node 3 sees maximum of 18 but its uid is 3, it knows that it is not a leader, it is a non leader.
 but if my node 18, which has the maximum uid, sees itself, which means that it has the maximum uid and it is the new leader of this network right now, this is how each node knows who is the leader and if it itself is a leader or not.
+so it solves both the purposes.
 so by flooding the network with the max?
 uid that the node has seen so far, we cover all bases and every node in the network would know who is the leader and who, and if itself is leader or not.
 right now, if you do the complexity analysis, pretty straightforward: it takes order of diameter, number of rounds to elect the leader.
@@ -60,24 +56,37 @@ so that becomes your time complexity right now, and in each round what have what
 so the number of messages exchanged during this leader election is equal to order of diameter, number.
 uh is order of diameter into the total number of directed edges in the network.
 right, so that is what your messaging complexity, because across each round we are sending messages across each of the network or each of the edge in the network.
+right?
 so this is what the communication complexity of the network is going to be.
 now let's take a look at two optimizations that we can do.
+obviously the communication complexity seems a little bit high.
+let's reduce it.
 step one: what we can do is we can reduce the number of messages exchanged during the election by only sending, like a node can only send a message only if the maximum uid that it has seen changes.
 so, for example, if a node three is seeing seven, so it would broadcast the message that, hey, my max id that i have seen is seven now.
 so i'm basically flooding the network with that.
+now, let's say, after seven, it received from six.
 it's like, oh, the max i've seen is seven, the new one that i'm getting is six, so i'll not broadcast anything to anyone, right?
 so this would significantly reduce the number of messages exchanged across the network because there is no like every round.
 you don't need to send the max uid that you have seen, because only when it changes to the broadcast, otherwise remains silent.
 this reduces the number of messages exchanged in the network.
 second way to to do this is to reduce the communication.
+you should not be broadcasting the.
 you should not be sending the message of the you, of the max d that you are seeing from the node where it is coming from.
 for example, if my, if i have node 7, 9 and 3, 3 received a message from 7 and it received a message from 9, right?
 so now three knows that the maximum that it has seen is nine.
 so it should not send the maximum nine along the direction of nine.
 right, it should not be sending in that direction because it's few time, because nine is already the max.
+it has seen it.
 so why to send it in the direction in which it is received from?
 so this is also an optimization through which you are not sending messages that would result into a discard from the other one, so reducing the number of messages exchanged, thus reducing the computational uh, thus reducing the communication complexity of this leader election algorithm, right?
 so the idea is by to reduce the communication, a message is not sent to the max uid in the direction of the neighbor from which it was received, thus saving you a bunch of messages that are exchanged.
 this couple of optimizations gives you a pretty decent performance in doing leader election, and the best part of this algorithm is that it does not really require you to be in a specific topology.
 any topology, any strongly connected diagram would work just fine for this algorithm, and this was the fluid max algorithm and the fluid max algorithm to do leader election in a distributed network with any topology that you could think of.
+that's it for this video.
+if you guys like this video, give this video a thumbs up.
 if you guys like the channel.
+give this channel a sub.
+i post three in-depth engineering videos every week and i'll see the next one.
+thanks again.
+thanks again.
+[Music] you.

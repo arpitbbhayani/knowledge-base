@@ -3,7 +3,6 @@ the core idea here is, like, with respect to zomatos principle, what it says, th
 but now, to guarantee a delivery under 10 minutes, what zometo would have to ensure is that the food is available, like when it shows to the user that the order is placed.
 when it shows to the user that the order is placed, the food has to be available in the store and the delivery partner has to be available to deliver the food.
 so here the core part that we have to guarantee is: unless both of them are there- which means unless the food is available- and delivery partner server, then only you will tell user that the order is placed.
-right, so order placing api should fail if either of the two conditions is not matched.
 here we are trying to solve that one order is assigned to one agent and so basically, one order has one agent and one food item.
 so let's say, if there is one delivery agent, agent one and that particular delivery agent- like that should not happen- that two orders are assigned.
 the same delivery agent or the same food item is not assigned to two orders, right?
@@ -13,7 +12,6 @@ so order service will talk to store service and say, hey, reserve food.
 order service will talk to delivery service and say, hey, reserve an agent.
 this is not about assigning an agent to an order, it's just about reserving that particular person for delivery, who anyone can use it, anyone like.
 then, now that the preparation, now that the preparation phase is done, there will be a phase of assignment or there will be a phase of commit when, because you have kept aside, you have reserved a food and an agent.
-now the only thing that you have to do is just assign that food to an order and assign an agent to an order.
 so by splitting this into two separate phases, we have we will achieve atomic transactions and you'll say: hey, but if i reserved something and but i did not, but, but the assignment failed due to some reason.
 obviously, this being a critical service, you would not want to let it go down for a very long time, but in any case, your reservation will not span hours.
 right, you would have a timer set which say that, hey, after this much time, my resources would be free, like the food packet that you reserved for a particular order will be free, will be now available for some other order to be picked.
@@ -59,7 +57,6 @@ i'm not making it an http based service, but a very simple way on which i'm just
 so, let's say, i'm placing 10 concurrent orders for a particular food item and this means that at the end of my transaction there should be 10 delivery agent assigned to 10 uh and 10 and 10 foot packets assigned to one assigned to 10 orders.
 so i'm placing an order for a particular food id, i'm getting an order or an error.
 i'm returning an error saying that food is not available for me to do in well, for me to place an order.
-so here i have agents- agent not assigned to any order- and then i have packets.
 you would see like there were 15 packets, uh, out of which 10 got placed, after which 10 got assigned to a particular order, right.
 because my delivery agent- because my delivery agent- is already assigned to a particular order, it should give end user order not placed, right?
 if i now run it again, it would give me order not placed for all of them because deliveries are not available, not available, not available, not available, right.

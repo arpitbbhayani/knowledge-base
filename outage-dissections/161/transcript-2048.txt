@@ -1,13 +1,10 @@
 github at an outage because some nodes of a zookeeper cluster ran an election and elected a second leader.
 we would also talk about how important zookeeper is for managing a kafka cluster.
 we would see what happened during the outage and how github was able to mitigate it with zero data loss and a brilliant fallback strategy.
-but before we move forward, i'd like to talk to you about a course on system design that i have been running for over a year now.
-engineers from companies like google, microsoft, github, slack, facebook, tesla, yelp, flipkart, dream 11 and many, many, many more have taken this course and have some wonderful things to say.
-the first one is the live cohort discourse which you see on the left side, and the second one is the recorded course, which you can see on the right side.
-the live code based course happens every two months and it will go on for eight weeks, while the recorded course contains the recordings from one of the past cohorts, as is.
 thanks, so before we go to the incident report, let's spend some time understanding the importance of zookeeper for a uh, for a kafka cluster.
 and kafka is not a single node cluster.
 there would be multiple nodes that are running kafka process and each node is called as a broker.
+over here, each partition of a particular topic has a leader and has a replica.
 a broker can have a leader of one partition and a replica of another partition right, and this is how across such cluster, across this cluster, it is able to sustain a high read load and a high right load.
 zookeeper fulfills for his four key responsibilities for apache kafka, first of all is controller election, basically the leader election.
 so here, for every partition, for every topic, there is a node which is acting as a leader, while other node is acting as a follower.
@@ -66,14 +63,17 @@ so here, what we clearly see is there were two distinct kafka clusters that were
 this is where your client needs to be uh, smart enough to understand that, that i am getting a, that i am getting a conflicting set of information, so i should not be writing to this right.
 and how would you know that there is a second logical cluster zookeeper configuration because your rights are failing?
 you can see, totally see, the two leaders are getting elected, or two leaders are operating because of which the rights are failing.
+you would be deleting those entries from zookeeper right and removing those nodes right?
 so the incorrect state, caused right failure to approximately 10 percent of the request to our background job service, resulting in backup jobs as we migrated traffic and worker capacity to our secondary job processing system.
 right, some internal jobs that they were running they stopped processing because rights were failing and what not?
 so did they lose like this looks like a pure case of data loss, because the rights was supposed to happen but rights failed.
 so whenever you are putting a message in a broker, what you should be always doing is, if writing that message to a broker fails, have a provision of something called as a dead later queue.
+it's a very standard nomenclature, so dead letter q is what would hold the messages that got failed.
 so if your client is writing to a message to kafka and if this fails due to some reason, it would write the message to a dead litter queue.
 but what would you do if your client tries to write to kafka, it does with some retries, three or four retries, and if it still is not successful, it would write it to a dead later queue.
 this becomes your secondary job processing system, right, your primary one is very ingested into kafka and there are workers consuming it.
 but in case your right to the kafka fails, have a fallback- and this dead letter q is a fallback to do so, right.
+so your client was writing to kafka.
 it pushed through dead letter q, right, so there is no message loss whatsoever.
 right, and there are consumers- these are the primary consumers which are reading from kafka- that did not get any job because rights were failing.
 but what would happen is, because this is not as throughput as kafka, a lot of things would pile up, right.
@@ -81,6 +81,9 @@ so it would take some delay, but no data loss- very important, right.
 delay is okay for internal job processing system, but not data loss.
 so have a dead letter queue, right, okay.
 right, have a dead letter queue so that you have a secondary job processing system, so that you don't have any data loss, right?
+it's very important that your consumer- the way you are writing your consumers for any job, for any message processing system- the consumer that you are writing has to be idempotent in nature.
+third, your clients and consumers should have retrieves right.
+your client should not just make one call to kafka and expect it to write.
 but if that fails after three or four retries, you put it into a real queue right and the fourth one, automatic cluster provisioning with the jitter.
 so here, what happened when github tried to do it, or when github was adding node to zookeeper?
 so this shows that it is quite possible that some engineer would have added more nodes into zookeepers or was doing manual rotation of zookeeper cluster, in which he or she added a lot of nodes in a very short time, which led to this pure speculation.

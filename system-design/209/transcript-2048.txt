@@ -1,21 +1,20 @@
 so an emergency button in a ride hailing app like uber can be life-saving, but what happens when you click it?
 in this video, we dive deep into the architecture of Uber's emergency SOS service and look at the key design decisions that make it highly available and reliable.
-ingenious from companies like Google, Microsoft, GitHub, slack, Facebook, Tesla, Yelp, Flipkart, dream11 and many, many, many more have taken this course and have some wonderful things to say.
 so during an emergency, every single second matters, which means that whenever a button is stopped, you have to do whatever you can to ensure that very quick actions are taken during such time.
 so first of all, we'll take a look at what kind of information should we be capturing when an SOS button is pressed on the app.
 so the critical details that we need to capture could be current location, the trip details, vehicle details and Driver Rider details.
+right, some of this information would be available on the server side.
 so, for example, the current location where the SOS button was pressed, that has to be taken from the client side.
 second, when that SOS button is tapped, the most critical thing is that every like it's not just that where the SOS button was tapped, but after the SOS button is tapped, the every single second, or every two, or basically twice a second- the location of the client needs to be continuously sent and monitored on the server, right?
 think about it- you might be in an emergency situation where you cannot talk on a phone, where, if, let's say, the information is sent, but you still need to send this to someone else.
-no, so, which means that there has to be a way to create SMS from all of the details that we are capturing and sending it to the First Responders.
 and, more importantly, that when you hit the SOS button and someone from the internal support team at Uber needs to be notified- like they, because they are the one who would be coordinating- so they also need to be notified so that they are coordinating that, hey, are you safe or not?
-and, by the way, whatever we are discussing, whatever I'll be going through as part of Architecture, is all taken from the Uber's engineering block, which I'm linking in the description down below.
 obviously, when an SOS button is pressed, you would capture the location.
 like, will you just send GPS location to police?
 so where G, where reverse geocoding comes in, is where you use the lat long and try to deduce the address out of it.
 like, this is such an important design decision, such an important decent decision, to ensure that, during time of an emergency, the life, like the overall situation, is made simpler for the person in a potential danger.
 right, okay, so now here, which is where the reverse geocoded address right is sent to local police Authority.
 uh, it can be used to send SMS to your emergency contacts and whatnot.
+right, so this is an important component which would be part of the location microservices.
 right and now, while this is happening, we also know that when source button is pressed, the location needs to be continuously sent to their backend server so that Uber's internal staff or some of their services can keep an eye on it.
 now, when this information is sent, you just don't need to send lat long along with that because it's an emergency.
 you would be sending reverse geocoded information and storing it.
@@ -31,6 +30,7 @@ so this way you would want to make life simple for your end user, which is wheth
 that thing is that you have to send the notifications to internal support, emergency contact and Rapid SOS in parallel.
 so this is an important design, like very low level but very important design decision, where you are doing this in parallel, so sending notification to emergency contact or sending it to support or sending it to Rapid SOS, so that, even if one of the fields, even if one of these three fails, the other two are still succeeded and someone is notified about an emergency situation, right, which is what is more important than anything else at the moment.
 right, such an important piece of code that you would be writing to ensure that.
+the next one now, because this service is dealing with emergency situation.
 you are hitting the SS button, but the emergency service is down.
 now, this would ensure that when you hit the SOS button, there is someone who is responding to that right.
 so, first of all, Kafka, to send a notification, or, sorry, to send an event- about an emergency and being consumed by multiple Services, let's say, emergency contact, rapid resource or something.
@@ -45,10 +45,12 @@ because, like, for example, we know that once the SOS button is pressed, we woul
 emergency service would have its own small database in which it would be stored in that particular information.
 now this database would can be used by our internal support team to see where you are, what you are doing, what's the emergency and the details around it.
 but, more importantly, when the SOS button is pressed, you have to continuously send locations every one or two seconds.
+now this location needs to be sent to a location service.
 but apart from that, the when you are sending this location to the location service for an ASR situation, the location service should respond with a reverse geocoded address.
 now this address becomes extremely important for you to render the template on your mobile phone so that you can send it to emergency contact if you have to right.
 so that is extremely important for your location service to do so.
 how does this location service continuously update the database with your latest information or is showing the chart on where you have been, because it needs to have that trail?
+right, you would want to help local police to follow the trail that you took.
 right so, which is where every single location that is being sent needs to be captured and stored somewhere so that it is rendered efficiently on the for the help of local police or for internal Looper staff to do the internal investigation.
 right so, which is where the location service, whenever user sends the location, it would be throwing it into Kafka and then it would be consumed by the emergency service, which is updating the location in the database, which can be later consumed by your but stuffer can be shared with the local police Authority.
 right so that is what you would do, with continuously streaming of location data through Kafka to emergency service, and so on and so forth.
@@ -61,8 +63,10 @@ this has to be continuously done in order to ensure that you are giving enough i
 how we have to ensure a continuous streaming of location data being consumed by Kafka, sent to emergency service and stored at rapid SOS and your internal database to keep an eye on it.
 and this is how your design something like an SOS service.
 now, this is exactly what Uber did with their SOS service and this is- this is basically taken verbatim from that particular part right now.
+here, key things to ensure that there is no single point of failure.
 right, you can very clearly see multiple servers of support, multiple notifications, multiple instances of emergency service.
 we are using Kafka, which gives us very nice reliability and availability, location services, multiple instances.
+so, and repetition, and basically, rapid SOS is obviously assuming it's always up.
 now, some things that, let's say, due to any reason, the consumers and emergency service is down, which are not consuming it from Kafka, because Kafka provides persistence, the data would not be lost.
 they're not specified it in their job, but they might be having something that the Uber internal support staff can directly communicate with few of their uh, or can himself or herself dire 911 or 100 to inform that in, to inform the local police Authority about that part, because Uber internal support at least, would have all of that information, which is because why we are storing the location information not only with rapid SOS but also in the database.
 right, and this is exactly how Uber has implemented their emergency service, and we see how critical some design decisions become, like reverse geocoding, why it is important, because you just can't send that law right.

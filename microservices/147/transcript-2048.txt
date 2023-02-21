@@ -23,6 +23,7 @@ the way we define our urls is how rest recommends us to do that, and both have b
 so here, one thing that made http uh really solid for us to adopt rest is http verbs- verbs as it get put, post, delete, http methods that we have.
 that is a very powerful feature because with http, what you have is you have this verb or you have this http method- get put, post, delete- and you have a path or you have a url on which you are making that request, right?
 so this url is nothing but your resource and your http verb is the action.
+so, for example, if i want to delete a particular user, we expose an endpoint, slash users, slash user id, and we expose the method delete on that.
 so, because delete is the http verb or http method that is out of the box supported by all web servers out there, you can directly invoke an http delete on slash user, slash one, which is which becomes your resource identification.
 so this fits so beautifully well that your action is specified by http method and your resource is identified by your url.
 and which is why we, when we expose uh http endpoint, we think we are doing rest slight difference, but you basically get digest.
@@ -51,7 +52,6 @@ we are using rest, on the other hand, because it runs on top of http, there is n
 obviously you can use http client to make a call, but when you get the response- you are getting response, say, in json- you have to convert it to a native object and then consume.
 here we got it in json response, but then you have to write those things on your own that i want to.
 obviously it's not easy, but it is repetitive as well, which means anyone and everyone who wants to consume the same uh resource or do that operation on the same resource, you have to write it same stuff again and again, for example serialization, digitalization, logics to and from native objects, failures, timeouts, retries, compression, security and whatnot.
-a company might have an internal standardization, let's say a common way to do it, but in most cases you would have to do that thing again and again.
 the next is some web servers may not support all http works.
 so for a standard server like, let's say, jersey or nginx or your uws gi servers, they support all http works.
 but let's say you made a decision choice of picking a particular http server that only supports get and post, does not support put, delete, patch options.

@@ -2,6 +2,8 @@ so collisions happen in hash tables as we are trying to map a huge space of appl
 thanks, so conflicts are inevitable as we are trying to map a huge space of application keys onto a small array of limited size.
 this happens because we are passing our key through a hash function which spits out a hash value right, and there are chances that multiple keys that pass through that hash function would spit out the exact same hash key, which means that both of them are hashed to the same location, which means they have to occupy that same slot.
 now what could happen is, if we are not handling collisions, the second value that is put in the in your array would replace the first one, which is bad because which makes your database or which makes your hash table lossy, which means if you inserted a particular key, then you are reinserting it.
+if both of them has to the same location, the first one would be overwritten, right, and you don't want that to happen, because your user trusted you with its data and you don't want it to be deleted.
+the core idea of chaining is that we put the colliding keys in a data structure and hold them well.
 for example, if two keys are slaughtered in the same slot of an array, instead of one overwriting the other, we would use an auxiliary data structure in which we can accommodate both the keys hashed to the same slot right.
 and one of the most common implementation of this is with linked list right, and which is why it got its name called chaining, because it it resembles a chain right.
 so a small, just a quick uh gist of the idea is we would form a chain of keys that are hashed to the same slot right, for example, in index one.
@@ -11,12 +13,9 @@ now we'll dive into smaller details of it to understand things, uh, that we woul
 we'll first discuss chaining with linked list, right.
 so when we talk about when we want to chain and we are using linked list for it, there are three very important operations that we would need to, uh, that we would need to support: first of all, adding a new key to this linked list.
 second of all, check if the key is present in the linked list.
-and, third of all, remove a key from the link list.
 right, because these are the three exact operations that happen on the hash table.
 so, upon collision, you would need to add this thing to the link list.
 you would need to check if the key is present in the hash table and for that key, if it is going and basically hashing to a same slot, which is hold by english, you need to check in the link list if the key is present or not, and remove a list when hash table operation comes in to remove a key, which means you also have to remove it from the link list, right?
-on linked list: right.
-so now, the array that we have, right, the array that we have, that array is nothing but an array of linked list.
 right, where each slot of the array holds a head pointer to the linked list.
 right, so that whenever a key is hashed to that location, it is added to the to this particular linked list.
 it would hold the actual linked list to when, because we have to support collisions, right.
@@ -65,9 +64,7 @@ what you can clearly see is, if you have a very large collision rate, right wher
 so that is where, instead of using linked list, you can use other data structure.
 for example, you can use a tree, a self-balancing binary tree, instead of a linked list.
 instead of using linked list, you would use it where your.
-which means that, let's say, i have four elements in my array and, due to some implementation result, i cannot expand it to it, and i want to keep my hash table array to be a very small length when i want to do that.
 if i was implementing it with a linked list, i would have to do a linear traversal of it.
 in that way, because it is self balancing binary tree, i can do a login search and return the value right.
-you can also use something like a self-balancing binary tree.
 that's when you might want to go for a self-balancing binary tree instead of a linked list, and this is all about chaining.
 this is all about chaining, its implementation with linked list, its implementation with trees, and that's all what i wanted to cover.

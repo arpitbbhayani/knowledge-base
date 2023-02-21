@@ -1,6 +1,5 @@
 linear probing is one of the simplest and the most intuitive ways of handling hashtable collisions, and it is based on a technique called open addressing.
 in this video, the fourth of this hash table internal series, we take a detailed look into linear probing, understand what it is, how hash table operations happen with linear probing, learn why it is so simple yet so efficient, and conclude with looking at two challenges that come with adopting it.
-the first one is the live cohort business which you see on the left side, and the second one is the recorded course which you can see on the right side.
 thanks, so conflicts are inevitable as we are trying to map a large range of application keys into a smaller hash table.
 in the previous video we looked at what open addressing is and how it tries to resolve conflicts in hash table while accommodating all the keys that come in.
 there are multiple ways of implementing the probing function and one of them is linear proofing, which we will take a detailed look today.
@@ -41,6 +40,7 @@ it's like going through the hash and then moving forward for forward.
 it takes that 1 kb block and puts it into cpu cache, right?
 a block is read from the ram and it is cached on the cpu right.
 let's say you were iterating on the array a and your hash function splitted out 2 for a particular key.
+when it is trying to access a of 3, it is already there in the cpu cache.
 that is where linear probing very beautifully exploits the locality of reference.
 though your os, your cpu hardware, is anyway caching those things and it is very beautifully leveraging it, which is where linear probing gives a very solid performance when it comes to handling collision keys right and looking up them and deleting them.
 there is one very strong claim which says that linear probing gives a constant time performance.
@@ -63,13 +63,13 @@ linear probing suffers from clustered collisions.
 so, for example, what would happen over here is: let's say i have key k1, k2 and k3, and k1 hashes to index 2, k2 hashes at index 2, k3 hashes to index 3, right?
 k1 sits there and k2 also hashes to index 2.
 k2 will go to index 2, will see the slot is occupied.
-it is affecting the key sitting nearby, right?
 so then k3 also got impacted because k1 and k2 occupied the slot of k3, right?
 so this is where you see a lot of clusters being form of collided keys which are impacting each other somewhat the other way, right, plus a bad function if it tries or if it uh places or if it generates localized hashes.
 for example, if you're having a range from 0 to 100, but your hash function is creating or is basically producing values, which is really clustered in the range of, let's say, 10 to 20, right?
 so then all the keys are put into this same 10 to 20 slot and then they spell and they are actually spillover across the table.
 then what would happen is you are unnecessarily seeing large number of collisions in a small space and then, unnecessarily, you have to do linear lookup.
 you almost nearly uniformly distributes your key across the entire hash table, right?
+so just to reiterate on the clustered collision first is when, in a smaller space of keys or a smaller range where a lot of keys get collided or they get hashed, you would have to do spillover and it would be displacing the other keys.
 now, when i say displacing it does not mean it would move the other case- but, like in this example, k3 would have been indexed at location 3, but because k2 already held index 3, it would the k3 had to move to 4, and this is what is catastrophic, right?
 so that is where, if your hash function is creating a clustered, is generating a clustered output somewhere in the range, like it's occur, although you have a big range.
 but if your hash function is only creating values in in clusters, and which is very common to see with poor hash functions, then you are seeing a lot of clustered collisions and then eventually the problem transfers into a linear lookup problem rather than a hash table lookup problem.

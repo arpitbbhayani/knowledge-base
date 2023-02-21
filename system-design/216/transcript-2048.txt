@@ -2,27 +2,7 @@ so, when the network is unreliable, the clients retry the apis to ensure complet
 this approach works when there are fewer clients, but what happens when there are millions of them?
 every single client will keep on retrying until the API is completed.
 this will bombard the server with the request, and this problem is called a Thundering Herd problem, and in this video we understand what this problem is, why it occurs and how to solve it.
-but before we move forward, I'd like to talk to you about a course on system design that I've been running for over a year and a half now.
-the course is a code based course, which means I won't be rambling a solution and it will not be a monologue at all.
-instead, a small, focused group of 50 to 16 genus will be brainstorming the systems and designing it together.
-this way, we build a very solid system and learn from each other's experiences.
-the course is enrolled by 800 plus Engineers, spanning 12 codes and 12 countries.
-ingenious from companies like Google, Microsoft, GitHub, slack, Facebook, Tesla, Yelp, Flipkart, dream11 and many, many, many more have taken the this course and have some wonderful things to say.
-the course is focused on Building Systems the way they are built in the real world.
-we will be focusing heavily on building the right intuition so that you are ready to build any and every system out there.
-we will be discussing the trade-offs of every single decision we make, just like how you do in your team.
-we cover topics ranging from Real Time text communication for slack to designing our own toilet balancer, to cricbuzzes, live text commentary to doing impressions counting at scale.
-in all we would be covering roughly 28 systems and the detailed curriculum, split week by week, can be found in the course page linked in the description down below.
-so if you are looking to learn system design from the first principles, you will love this course.
-I have two offerings for you.
-the first one is the live cohort based course and the second one is the recorded offering.
-the Live code base course happens once every two months and will go on for eight weeks, while the recorded course contains the recordings from one of the past cohorts, as is.
-if you are in a hurry and want to learn and want to binge learn system design, I would recommend going you for the recorded one.
-otherwise, the Live code is where you can participate and discuss the systems and its design life with me and the entire cohort.
-the decision is totally up to you.
-the course details, prerequisites, testimonials can be found on the course page: arpitbani dot me slash masterclass.
-I repeat, ad with many: dot me slash masterclass and I would highly recommend you to check that out.
-I've also put the link of this course page in the description down below and I'm looking forward to see you in my next cohort.
+see you in my next cohort.
 so say, user a makes an API call to the back end and because of some Network issue, that API call failed.
 now in such situation, what do we typically do here?
 we typically retry in order to recover from intermittent failure, so that in case there is a network glitch, some TCP connection broken between or something like that happened, and assuming that our apis are either potent in nature, what do we do?

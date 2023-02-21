@@ -4,7 +4,6 @@ so there is bound to have collisions and we know that as hash table gets filled,
 so load factor theoretically is alpha, which is equal to n upon m, where n are the total number of elements in your array or, sorry, in your hash table, divided by the total number of slots in your hash table.
 so if i am placing 20 elements in my hash table where my size of the array is 10, my load factor is 20 upon 10 is equal to 2, right?
 a table will never get full because with chaining, you are always adding the key that you are inserting in the new slot, or rather in the new node of a linked list, right, you are always creating a new node and putting it there.
-this way, even if there is collision, even if there is anything, you are just adding a new node to the link list.
 but obviously, when you add a large number of keys, even with chained hashing, your performance would start to degrade and you- and that would be worrisome for you- with open addressing you, with open addressing, you would eventually fill the table, because what you are doing is you have an array where you are trying to place a key.
 if that's what is occupied, you are finding the next free slot in your hash table and with time and with time, the entire hash table array that you have will be filled, right.
 so that is where it is very important for you to measure how full the table is and then take preventive measures of your hash table still performing really well, right?
@@ -23,10 +22,12 @@ hey, given load factors, given the way we are storing the data, which strategy s
 so this is very costly for a chained hashing because each probe requires you to do a random access of your memory, because your node can be allocated anywhere in the heap.
 so if your slots or if your linked list nodes are placed together, then it would be much efficient for your cpu because it would not have to go to ram to access it, but rather from cpu cache itself it can access it.
 so probing is costly with chain dashing purely because of linked list nodes can be allocated anywhere in the heap.
+that would slow down the performance, right, because you are not using cpu cache.
 evaluating a hash function takes time, takes cpu cycles to do it and it's very intensive, right.
 right, but it suffers from another problem: that double hashing is also not cache friendly.
 when you are accessing an array, the next, because you are jumping within the hash table by a long and by taking longer leaps, the next index that you might access in your array might not be present in the cpu cache, requiring you to go to ram, get the data and access it.
 it depends on the use case, just like system design, just like most of the things in real world, everything is a trade-off, right?
+it depends on how your application is structured, how your application is going to exploit the data, how your application is going to access the hash table.
 it's better that if you, if you practice, or if you have a particular use case in mind that you are trying your hash table for, apply all sorts of probing techniques and tune it, benchmark it against the load and see which one performs the best.
 so if you are figuring out a hash table for your use case, or tuning or hash table for the best performance out there, or you are building your own hashtable, it is important to understand how good you did right, how good your implementation is or how good your tuning is.
 so how long does it take for you to do a key lookup as the load on your hash table increases.
@@ -38,6 +39,7 @@ first is performance for open addressing technique degrades as alpha tends to on
 so if you are implementing an open addressing strategy for your hashtable con, hashtable collision resolution, you would see that as alpha tends to one, your performance start to degrade, because alpha tends to one implies the number of elements is almost equal to the number of slots of your array.
 you do a lot of traversal within the array, so your performance for your open addressing will start to degrade as alpha tends to one.
 to put it, you are not bounded by the slots of the hash table, so performance would not degrade.
+linear probing sees clustered collision, so your lookup time increases when you are having large number of collisions for a slot for linear probing.
 so linear probing would be slower than double hashing in almost all the cases because of clustered collisions.
 and fourth, probes of double hashing would be shorter, right.
 so with double hashing, because you are almost leveraging the entire hash table slots that you have, the number of probes per collision would be much shorter as compared to linear probing.
@@ -49,12 +51,10 @@ so if you are looking at a very high performance hash table, chain hashing might
 because chain hashing is not cache friendly, because, again, you are jumping here and there in the in the memory, because a linked list note can be allocated anywhere.
 but when tables go large and the number of collisions increase, your chain hashing would start to suffer.
 there is a very interesting hack that makes it cash friendly and that is how about we leverage cash for chained hashing- and when i say cash, it's about cpu cash.
-how about, instead of allocating one new linked list node every time, we allocate it in chunk, for example?
 so, upon a collision, so you have a hash table array for each slot of a hash table, you are creating linked list of arrays so that array might be of size, let's say, uh, 16, right, and in 16 you might say you might fit in two nodes of your linked list, right?
 because you are allocating that large chunk of memory in one shot, the the elements that you are putting in in that array or in that, in that allocation, would be closer to each other, so when you are accessing them, there is a very high chance that the entire slot will be cached on the cpu.
 this way, when you are traversing through the linked list, you are still iterating through the array, right, because they are contiguously allocated, given that you can leverage cpu cache, and that is such a beautiful optimization.
 yeah, hacks always exist and this is one of the most brilliant hacks that i have seen to get to make chained hashing, which is supposedly very poor on cpu cache, make it cash friendly.
-when you do that, the entire the three or four linked list nodes that you are trying to fit in there, all of them would be allocated together contiguously in ram.
 so when you are accessing one, if others would be present in the cpu cache, making your chain hashing cache friendly and iterations faster, right?
 okay, so this is a very interesting optimization on chain hashing to make it cache friendly.
 if it's very critical for an application, for your hash tables to be performed, you have to tune, you have to experiment, you have to try out different strategies, parameters and algorithms to get the best, because that is the most critical part of your application.

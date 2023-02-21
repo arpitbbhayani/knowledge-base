@@ -1,6 +1,4 @@
-so we all love creating micro services, but what if every team creates their service in their own unique way and using their own conventions?
 this propels us to have some standardization on how we build a new micro service, and hence in this video, we talk about why it is important to standardize some aspects of micro service, how enforcing a few practices would help us in the long run, and look at three most important verticals that you should definitely standardize while adopting microservices.
-the first one is the live cohort discourse which you see on the left side, and the second one is the recorded course, which you can see on the right side.
 thanks, so we all love creating micro services, but there has to be a way that standardizes on how we can build a microservice.
 or i want to use, let's say hypothetically, which i want to do- is fortran for this unnecessary, unnecessary addition of tech stack or languages or frameworks into our organization.
 so this is one key reason on why we need to have some sort of a limited white listed frameworks and languages that we can use right by while we pick- and obviously this is not about discouraging an organization to not pick a new language, but it has- but there has to be a reason.
@@ -17,6 +15,7 @@ so a service definitely needs to be manageable, not just with current engineers,
 for example, your srn devops team needs to know how to fire fight any outage that happens with that service.
 okay, observable with respect to you, knowing on what's happening in a service and not having their own unique conventions to do it.
 there has to be a standard way through which we are ensuring our services are observable.
+and if there is a major bug that is reported in that service, who would be debugging that right?
 for example, some languages out of the box now support http 2 and maybe a persistent display, just to make it simply, just to simplify, a persistent tcp connections while making http requests.
 so if you are using that, how would someone know, like some other ninja might just be: hey, this is requested this response.
 so, always knowing all of this fact, we have to decide: hey, these are the particular tech stack or ways through which we would build a service, so that it makes it easier for anyone and everyone part of your organization to see what exactly would be happening.
@@ -39,6 +38,7 @@ but the idea being every single thing put together, put into this one central pl
 some metrics that you would want to standardize that we should be collecting, and it's mostly infrastructure configuration or your common library framework configuration that you can configure like like that you can alter.
 collecting logs like application log, process application log, as in your application or how how is request coming and what's happening and what's not.
 so these are some basic metrics that, out of the box, every single micro service should be throwing into your uh, into a central monitoring system.
+in most cases not everyone needs to monitor it, but that's a standardization, needs to be there on when your service is deployed.
 but having a centralized or having a standardized way of accessing it is a key.
 for example, i can use http rest, i can use grpc, i can use soa, i can use so many things in order to have this communication from server to server or user to server, but then you cannot allow anyone and everyone to pick any and every framework or tool or protocol to do it.
 so it's up to you on what kind of rules that you would want to impose, otherwise people would create random routes and then there would be no standardization whatsoever, right?
@@ -51,6 +51,7 @@ there has to be us a common way how which we are retrying the- uh, the request r
 it's up to you, but there has to be a standardized way of doing it so that- and in most cases it would be json.
 but having a standardized way gives clarity for any engine, any and every engineer in your organization, on how to interact with it, and you can obviously not just engineer side of things but also automation side of things that you exactly know, that whenever a payload would come in, it would always be json, for example.
 it would make life so simple that you can abstract out the complexity of passing bodies and creating json at every client right by just having this standardization or convention in there.
+so tolerance is very important in order to ensure that our infrastructure is not going down or a service or a product is not going down.
 so there we have to ensure that if one service bombards another service with a lot of request, right, that should not take down any other service, or even that service, for that matter.
 so that is where every its responsibility of every service to shield itself, right.
 for example, if you are, let's say, if you are- owner of profile service, what you have to ensure that, no matter how many requests you get, you are not going down.

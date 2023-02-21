@@ -1,10 +1,10 @@
 although chaining is a popular way of handling hashtable collisions, there is a very interesting way of achieving the same, and it is called open addressing.
 the key highlight of open addressing is that it does not require any additional data structure to hold the collided keys, making them super space efficient.
 in this video, we'll look at open addressing, the core idea behind it, lay a super solid foundations for probing functions and understand how the implementation of our core hash table functions changes with this scheme in place.
-the first one is the live cohort discourse which you see on the left side, and the second one is the recorded course which you can see on the right side.
 thanks, so conflicts are inevitable in hash tables as we are trying to map a large set of application keys into a smaller range of your hash table right.
 so when you pass different keys through the same hash function, you might end up with the same hash key right, which is what causes the collision.
 in the previous video we looked at chaining as a way to handling collisions.
+in this one we look at open addressing.
 if your hash table itself has empty slots, let's try to reuse them somehow, which means that when there is a collision, when, let's say, two application keys hash to the same location, one gets placed but we have to find the slot for the second key and that secondly key the way we would be finding the slot.
 it needs to be very deterministic in nature, right, so that we do not just we cannot just pick random slot which is available to place the key, because then it would be a linear lookup, always right, or it would be very, very incoherent.
 uh way, to look up your keys upon collision.
@@ -30,6 +30,7 @@ it may be in different order, but it has to be deterministic and it has to be co
 so the idea would be to find to pass in that attempt with the key that spits out an index, and we'll try that.
 so if i would, if i'm trying to insert a particular key, k my in- and this is my first attempt- my hash table is empty.
 what i would do is i would trigger this hash, i would trigger this probing function p of k comma 0.
+if it is not empty, i would invoke probing function with k comma 1.
 it might be somewhere in the hash table, right, but it has to be very deterministic so that you can able to find it.
 so, given this as a probing function, how does our hash table operations change?
 so how does adding a new key look like?
@@ -37,8 +38,8 @@ if we are not able to find it, we would keep probing the function so that we, wh
 for example, let's say i'm trying to insert a key k1.
 when i pass it through my probing function, attempt 0, it would give me 5.
 i would try to place my key at location at index 5..
+uh, is the slot number seven available?
 place my key two, place my key k at index two, right, and this is what we would cut, and the probing function would be generating the entire permutation in some deterministic order.
-right then, how does your second operation look up look like?
 let's say, we are trying to find a key k in my hash table.
 what i would do is i would invoke a probing function with attempt 0 and then it would spit out some j, which is the first index, will go to that index and see if the key is there or not.
 the worst case here is we, all the slots are filled and our key is not there.
@@ -64,6 +65,7 @@ so that is where we invoke the probing function.
 let's say probing function spits out for attempt 0, it spits out 5 and then 7 and then 2..
 right now, save a would want to delete k2.
 which means now my k2, which was present at index 7, is gone and my slot is empty, right.
+and now let's say we fire a get of kt, of a get of key k3.
 now, when this lookup happens, what would happen is i would invoke my probing function with attempt 0 on k3.
 then we would invoke probing function with attempt to one.
 as soon as the slot is empty, our lookup function will stop iterating and saying that the key k3 does not exist, but key k3 was there.
@@ -75,6 +77,7 @@ uh, you would discard the put that you got on your hash table, right, two ways o
 but in general, the limitation of open addressing is the number of keys that you can hold in your hash table is equal to the slots that you have in the array, right.
 but this is the core limitation of open addressing with chaining, because it required us an auxiliary data screen.
 you can put in as much of data you want in that auxiliary data structure, for example a link list, right, and that would not have been a problem.
+but here it is a problem and this is a limitation of open addressing.
 so, yeah, this is all about open addressing.
 this is all about the foundations of probing functions.
 in the coming videos we'll look at detailed implementation of various probing strategies to understand how they function and what are the strengths and weaknesses of this.

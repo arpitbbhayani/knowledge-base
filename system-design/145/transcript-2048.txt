@@ -19,6 +19,7 @@ it will get from this meta configuration and then it will connect to that partic
 so we need to store this information somewhere and this has to be a consistent view across all api servers.
 this configuration will have to be changed so in the mapping that we stored that this table is present in this database.
 after we move the table, this configuration needs to be changed, that, hey, now this table is present in another database.
+for example, table t2, which was present on database 1, is now moving to database 2..
 and once it is changed, what we would want is we would want this information to be reactively sent to all api servers, which means that your your.
 otherwise, what would happen is you have changed the configuration, which means your table has moved from one database to another database, but what if your api server doesn't know about it?
 if api server doesn't know about this movement, it would continue to connect to the old database server, which is wrong.
@@ -68,7 +69,6 @@ so engineer then fires this thing, uh, moves the table, uh, like doing that mysq
 where the two, where the two databases, that one table across two databases getting replicated.
 as soon as you do a cut over, you fire the update on to zookeeper saying that now table t2 is present on db2.
 as soon as the uh, the configuration is updated on zookeeper, the update is sent to all the api servers, the newer requests that come in will go to that corresponding database.
-so newer request for t2 will go to db2 instead of db1 and this is how vertical partitioning is actually implemented.
 right, because when you are updating the zookeeper, or when you are renaming the table in db1, updating the zookeeper and this update is getting sent to episode for that small time we do hardly: 5 millisecond, 10, 5 millisecond, 10 millisecond at max, 15 millisecond, not more than that.
 some right that are there during the downtime, that are gone, but all the rides that happened will eventually propagate with replication like will almost zero.
 the reason why that would be a challenge is because it will take because if a table is huge, it means it is taking large amount of rights.

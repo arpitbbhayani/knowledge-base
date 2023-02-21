@@ -1,7 +1,6 @@
 so grab processes millions of foods and Mart orders every single day, and the most critical but brittle part of the infrastructure is the database.
 given how critical orders are to grab, they have to ensure a very high availability of the database while ensuring a very fast query tank.
 in this video, we take a look at a very high level architecture of the data layer of grabs order platform and see the practices they follow to ensure High availability, stability and performance at scale.
-but before we move forward, I'd like to talk to you about a course on system design that I've been running for over a year and a half now.
 so the first step towards architecting a database layer for any such product, any such service, any search system like this, is to understand the kind of queries that we would fire onto this database.
 now, transactional queries are classically basically getting something, updating something, deleting something, right?
 second are the analytical queries, where you might want to get historical orders of a particular user or some statistic around orders, let's say, grouping orders by a particular attribute, right?
@@ -35,6 +34,7 @@ we will see what we can use over there, but this is a standard way to do it, rig
 so transactional goes to a transactional DB, analytics asynchronously goes to your analytics database, right, okay?
 in order to choose a transitional DP, we need to understand the kind of queries we would be firing on that and see how it fits on it.
 so here, with respect to grab, what happened is given the transactional database was going to use for: get an order, delete an order, updated order, create an order.
+we don't have to worry because at that business matters not how much are you managing your own infrastructure, right?
 second, dynamodb because we want strong consistency from our primary database.
 dynamodb provides strong consistency for primary key reads, right.
 so for a particular key, which is the primary key of the table, you fire the query- get put, create, delete.
@@ -52,6 +52,7 @@ but now this index, the common query that we are firing on this database would b
 once the order is moved from ongoing to completed, we would not be querying on this DB because we have another database to do it.
 when an order goes from ongoing to completed, we would never query that, which means that we can remove it from the index.
 so they created this key user ID underscore GSI.
+they didn't create an index on user ID.
 they added a new attribute called user underscore ID, underscore GSI and they created Global secondary index on this attribute, right, okay.
 so now what they do: when an order is created and it goes into ongoing set by default the first date is ongoing state.
 it sets user underscore ID underscores GSI is equal to user ID, right.
@@ -71,6 +72,7 @@ and obviously, given that there is an analytics database in which the same data 
 the key would be automatically deleted by the dynamody means and you don't have to worry about it, right, okay, fourth, which database would we pick for?
 olap, now this analytics, like, now this use cases analytics, right, so you may choose.
 hey, let me go for data warehouse.
+you don't need data warehouse.
 do you still want to fire good chunk of queries, but why would you want to Overkill with an analytics database, because it's all about only orders.
 but data warehouse would be an Overkill, right?
 so what graph did is grab, chose MySQL as our analytics database, right, and what?

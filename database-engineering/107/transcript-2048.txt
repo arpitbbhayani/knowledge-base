@@ -32,7 +32,6 @@ when you start a django server, the default database it uses to create that migr
 so you would see a sqlitedb file created on your local machine when you start a avengers at a django server for the first time, without giving any any database correction string, so that that is an embedded database.
 see, that particular file is acting as an embedded.
 uh, is your embedded database right there?
-it's it gives you a sequel like interface to talk to it right, without like and like.
 because that's like spinning up another environment, like speeding up another environment to do that testing and then you're destroying it, versus just do it on that, on the self-confined space of that embedded database.
 so then you can like, just delete the file in your entire database is gone, right, so, and that's just confined within that one server, right, again embedded within that process.
 some some other feature of sql database- right then.
@@ -71,5 +70,4 @@ it's always better to use an embedded database, which gives you very nice, get p
 so anytime you find such use cases, go for an embedded database that they are mind-blowing- mind-blowing, to be really honest, like in every database, is really solves for a niche.
 but it is important to understand embedded databases, folks, from the cs background, for sure, in your database.
 in a dbms course, even when i was in college like, we used to have one chapter dedicated for embedded databases, and we didn't understand the thinking.
-this is like: okay, it's part of process and all.
 i hope i introduced the world of uh embedded databases to you very well.

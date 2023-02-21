@@ -1,16 +1,9 @@
 so to keep our distributed systems efficient and performant, we have to ensure that the messages that are sent within the network they take up the most efficient path.
+we may think network uh graph, efficient path and shortest path.
 can we not use a traditional shortest path algorithm in this setup?
 there is no single node that holds the information about the entire topology.
 every single node simply knows about its neighbors and the incident edges, like the edges that are coming in or going out.
 right in this video we take a look into a variant of a famous bellman ford shortest path algorithm and see how it operates in a distributed setting.
-but before we move forward, i'd like to talk to you about a course on system design that i have been running for over a year now.
-the course to date is enrolled by 600 plus engineers, spanning nine cohorts and 10 countries.
-engineers from companies like google, microsoft, github, slack, facebook, tesla, yelp, flipkart, dream 11 and many, many, many more have taken this course and have some wonderful things to say.
-so if you're looking to learn system design from the first principles, you will love this course.
-the first one is the live cohort discourse, which you see on the left side, and the second one is the recorded course, which you can see on the right side.
-the live code base course happens every two months and it will go on for eight weeks, while the recorded course contains the recordings from one of the past cohorts, as is.
-if you are in a hurry and want to binge learn system design, i would highly recommend you going for the recorded one.
-otherwise, the live code is where you can participate and discuss things, live with me and the entire cohort and amplify your learnings.
 thanks, so determining the shortest path in a distributed system is critically important, right, because it finds its use case across so many things, and whenever it talks about performance, of delivering messages, you think about your test path first, right?
 so some of the functionalities that it powers really well- or we need shortest path algorithm to power them- are: let's say you want to deliver a message to a specific node.
 that is why you first construct the shortest path from a single node to all the vertices and then you send it across that.
@@ -18,6 +11,8 @@ and second is when you want to do an efficient routing in a p2p network, again a
 if i want to go to that mega scale, it works on this very similar algorithm, like not the entire internet scale, but on subscales of that.
 so when we talk about shortest path, first thing that we have to definitely throw out of our head is it's not just about the distance.
 for example, if two nodes of a distributed system are connected via communication line, a lot of things could go wrong.
+first of all, the connection line can be congested, so the weight of the edge can determine the congestion level of the network or of that particular connection line.
+maybe one node or one edge is having capacity of 10 gbps while other has 50 gbps, so that could be a factor.
 so when you are doing the shortest path, it's not just a distance, it could be congestion, or rather it could consider congestion, communication overhead, expensive communication channels, third-party cable infra and whatnot.
 so when you think about shortest path, it is not just the distance, it's not just the time, could be n number of factors that you may want to optimize on.
 so, depending on what you want to optimize on, that became the weight of the edge and the idea is to go for the shortest path so that you are efficient, performant, cost efficient and what not, whatever you want to add, you can do that right.
@@ -32,16 +27,20 @@ okay, now let's look at how bellman ford algorithm beautifully sits in a distrib
 now here, just as a disclaimer, it's a distributed network, so no node knows the entire topology orbit.
 everyone just knows the weights of the incident edges to it and the total number of nodes in the network.
 we have to devise a shortest path algorithm.
+okay, and, to be honest, this is the beauty of disabled system, where you have very limited information, but you still need to achieve something, right?
 okay, the algorithm that we are discussing is synchronous in nature, right, which means that it proceeds further in steps, synchronously or in rounds.
 it could be clock based or basically time based synchronization, where everyone does it like every one second they would move forward, or it could be another message passing- that could be happening, but somehow synchronicity is maintained.
 but this algorithm, the core of it, is it moves synchronously forward, like every node moves synchronously forward, step by step.
 right, and this is where it is extremely important.
 this is how synchronous algorithms are built like.
+how you achieve synchronicity, that's a different problem, right?
 okay, so now every node knows n and the weight of the edges incident to it.
 classic bellman ford implementation, but in a distributed setup.
 so what every node would do is every single node would keep track of a distance, some variable called dist or some quantification called dist, which is which represents the distance, the shortest distance of that node from the source node.
 now the source node could be i zero, let's say i zero is initiating the shortest path to all the nodes.
+so every node will keep a track of the distance, the shortest distance of that node from the root node, which is i zero.
 right now what we do is classic bellman ford use case.
+we start with that distance of i zero from i zero is zero, right?
 the nodes are still not reachable, right?
 at each round, every single node sends out its disk to all of its neighbor right.
 so in round one, every single node, every single node participating it, sends out the dist that it has to all of its neighbors.
@@ -55,8 +54,10 @@ now, incoming distance is j, the weight of the edge it would know, because every
 so the node would know the weight of this incident edge.
 so it would do incoming list plus weight of this edge and it would compare it with its own dist.
 so if the incoming distance plus the weight is less than the distance that it has already seen, which means that there exists a much shorter path than what it thought it was, so it would update.
+so this is the relaxation step that we all studied in the bellman ford.
 and now when this happens, right?
 so, after a node receives incoming dist from all of its neighbors, it does, it basically does this what it does, it continuously keeps on updating and eventually it would have the minimum value of what it has seen from its neighborhood.
+so it would have the minimum distance from i0 and it would be revising after each round of iteration.
 right now, this is how a node would know about the distance.
 now how would you know the path of it, which is where every node also keeps track of parent?
 so if let's say, i had some distance from a particular node, but now let's have seen a better distance like distance plus weights edge computation.
@@ -77,5 +78,7 @@ so n into e, like order of n into e, is the communication complexity of this alg
 obviously, there are ways to reduce it if you'd want to, but you might not need to right.
 order of n comma e is the shortest path, is the communication complexity of this approach, while order n is the time complexity of this approach.
 now, it's important to understand this complexities because in distributed system, this is extremely critical.
+so optimizing on that really important, knowing which to use when- extremely important.
 and that is it about shortest path, right?
 i hope you had fun understanding how things work in distribute setup, how we have to take baby steps whenever we are moving forward, otherwise it's it's going to be fully, fully chaotic, right?
+and that's it for this video, right?

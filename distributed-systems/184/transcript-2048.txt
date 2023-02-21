@@ -1,6 +1,4 @@
 in this video, we take a detailed look at a synchronous ring-based algorithm called the hs algorithm and see how it works on a bi-directional network, in order n log and complexity.
-but before we move forward, i'd like to talk to you about a course on system design that i have been running for over a year now.
-the first one is the life cohort discourse which you see on the left side, and the second one is the recorded course which you can see on the right side.
 so the algorithm that will be talking about is called as the hs algorithm, which is also a synchronous algorithm, which means that every node participating in this election would know: hey, now the election is starting, now we are moving to the next round, then the next round in the next round, and now the election is ended.
 the best part of this algorithm is that its communication complexity, which means that during the leader election the number of messages exchanged is just order of n log n.
 it had a communication complexity of order n square and this is just order n log n, which means that the total number of messages exchanged during the leader election is just order n log n, which is very efficient as compared to your previous lcr algorithm which was n square.
@@ -12,6 +10,7 @@ so these are the bare minimum assumptions that we start with, and now we take a 
 so here, when a node detects that hey, leader is down, it triggers a leader election and, because it is synchronous, every node would know: hey, now we are starting up a leader election, uh, in our network.
 hey, i want to be the new leader right now.
 every node creates a message with its own uid.
+here there are two neighbors right, one in the clockwise direction, another one in the anti-clockwise direction.
 so it creates a message and sends it to both of its neighbors, now in order.
 so the idea here is not every node, like there would be multiple rounds in this algorithm, but the nodes who know that their uid is definitely less than someone in the network, they would be immediately stepping out of election, that hey, we are not participating in the election anymore, and this way the number of messages would be reduced.
 this would reduce the number of messages that are exchanged during this leader election and hence reducing the communication complexity.
@@ -55,6 +54,7 @@ and when that happens, when a node receives its probe message- right, so the nod
 let's say, if in my ring i have six nodes, what would happen as soon as i hit my four neighborhood, like two raise to two as soon as i go to my second phase- what would happen is i would receive my own.
 i would receive my own probe message, right, because i'm moving it to eight hops.
 so what would happen is i will go around the ring and come back to the same node again.
+so that's how you would know that hey, no one else is surviving, everyone else stepped out.
 so because there are no local maxima and i'm the only one local maxima, which means i'm the global maxima, right, and this is how the message from a node with the highest uid survives the ring.
 and when a node receives its own probe message, it would know that hey, it has the highest uid and it can, and it is the new leader anymore.
 so now the new leader relays the message in both the direction and every node knows about it that, hey, this is, this node is the new leader, and this is how the new leader is elected in this system, by this algorithm.
@@ -64,6 +64,7 @@ hey, now i have, now my message has made four hops and now i have to come back a
 so the message that a node sends in a particular phase, it has three details: uid, which is the node that has i'm participating in the selection, so my uid would be there, plus the number of hops it needs to make.
 so 1, 2, 4, 8, 16, the hop count and the direction: is it left or right, is it clockwise or anti-clockwise?
 now, what this would help is, every time this message is forwarded to the new node, or or basically, to the neighborhood node, it would reduce the hops and send it forward, it would reduce the hop and send it forward, and on and so on and so forth.
+once it reaches the node and the hops are exhausted, it uses its direction and reverses it and sends it in the other direction.
 once it becomes zero, it relays it back to the originating node in the opposite direction, and that's why we are sending the hops and the direction beat clockwise or anti-clockwise in the message itself.
 right, and this is a very simple yet very efficient implementation of a leader relation algorithm.
 this is how it reduces the communication complexity, because each node is now only acting as a relay rather than pitching itself.

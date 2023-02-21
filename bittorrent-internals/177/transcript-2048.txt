@@ -1,6 +1,5 @@
 so to download or upload any file from the torrent network, we need a torrent file, but what exactly is this file?
 in this second video of the bittorrent internal series, we take a detailed look into the dot torrent file and understand its life cycle, what information it holds and the encoding that it uses to structure the data internally.
-the first one is the live cohort discourse which you see on the left side, and the second one is the recorded course which you can see on the right side.
 thanks, so when a user wants to download any file from the torrent network, it needs a dot torrent file.
 dot torrent file holds the information about the file that the user wants to download.
 so, for example, if you'd want to download an ubuntu operating system from the torrent network, that ubuntu operating system iso image would have a torrent file.
@@ -37,7 +36,6 @@ the name field in the multifile format holds that information right.
 in that directory you would have multiple files that you would want to put out right.
 so for each file you would have a dictionary entry made in this info director, in this info dictionary, and each of that entry would have the length of that particular file, the md5 sum of that file and the path of the file in like, for example, if i have a dictionary that i'm, if i have a directory that i'm serving, in that directory i have a file a dot txt, b dot txt and c dot txt.
 it will start downloading the content, right.
-but one very interesting thing: the weight stores the path of the file.
 for example, if i have path like slash a, slash, b, c dot txt in the torrent file, it would be stored as a list of strings: a, comma, b, comma, c, dot txt.
 how would i know where to download from, like, where are the pieces in the blocks?
 this is where, in the info dictionary itself, there is two very important fields which are like super critical.
@@ -64,6 +62,7 @@ so torrent file is a dictionary of key value pair.
 it supports only four types: strings, list, integer and dictionaries.
 right, a string is formatted something like this: it has a format of length colon string.
 so, for example, if i want to store arpit, a r p i t would be stored or would be b encoded as five colon: a r p i t, so five is the length, because urban has five characters, so five colon ar pid.
+so if i'm having a b encoded string, what i would do is i would first read the.
 this is what a b encoded string looks like.
 b encoded integers are stored as i, then your actual integer and then e for end.
 so representing 10 in my b encoding would be i 10, e, right then.
@@ -82,6 +81,7 @@ so if you write a small parser, a b encoding parser, you can parse your torrent 
 and, to be really honest, it hardly takes 15 minutes to write a b encoding parser, but i would highly encourage you to write one, right?
 you just have to write a small recursive parser to pass the b encoding files and once you do that, you can read your own torrent file and extract the information and then start writing your client.
 like when you get it on and when you get the torrent file, you first need to understand the information of it and then start downloading the file from elsewhere.
+so yeah, it's very fun to write your b encoding parser.
 so yeah, and that is how your torrent file is structured, is encoded and serialized in the format that anyone in the world can understand.
 so anyone in the world who can understand b encoding can understand the torrent file and then extract the information out of it and then do whatever it wants to right and the information that it holds- announce pieces, piece length, very critical information.
 using that information, it would start downloading the file, which will talk about it in the next video.

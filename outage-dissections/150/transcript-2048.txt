@@ -1,8 +1,6 @@
 so github wanted to optimize their sql query performance and they had to flip a database index.
 this outage gives us a super in-depth insight into mysql and its indexing capabilities.
 so in this video, let's dissect this outage, understand what happened, why github had to flip their index, how things went wrong and affected end users like us, and conclude with three super important key takeaways from this outage.
-engineers from companies like google, microsoft, github, slack, facebook, tesla, yelp, flipkart, dream 11 and many, many, many more have taken this course and have some wonderful things to say.
-the first one is the live cohort discourse which you see on the left side, and the second one is the recorded course which you can see on the right side.
 this is what github team says is: this incident was caused by a database migration to flip the order of an index, which means they had an index like any database that you use, let's say sql database, in order to improve the read performance, you create index on top of it.
 when that index is stored, it is stored in the ascending order of user id, right?
 and github team had to run a database migration to flip the order of an index.
@@ -32,12 +30,14 @@ obviously, when you are creating an index like it would require you to do a full
 right, so creating because they were creating a new index in a different order, they had to go through all the rows and create a new index so that anywhere requires full tables can.
 what i also say is reversing index caused a full table scan since there was a missed dependency on the changed index.
 this means that index that was being changed there was a dependency by a generated active record query what is active record?
+if you are a django person, django rm is what you use to query the database.
 if your java person use hybrid to query on your database, that is orm.
 so instead of writing raw sequel queries, folks write like normal ruby code using active record that translates into sql query and gets fired onto the database engine.
 so now when you change the order of the index.
 some queries like: obviously you thought that, hey, now my requirement has changed and i want a date in descending order, user id in ascending order.
 who wanted both of them in ascending order could be right.
 but the new query that you are trying to optimize for, like, you didn't even know this query existed, or a query existed that required both of them in ascending order.
+so now you have two queries: one required date and user id in ascending order, which is query that you are not, that you don't know yet, and the query that you are trying to optimize for, which requires date in descending and user id in ascending order.
 you are trying to optimize this response time, but the other query that you did not know existed is now inefficient because you flip the order.
 this would cause a lot of load on your database, because this is much more frequent than what you are trying to optimize for.
 because of a pure blind spot, you didn't know that query existed or that use case even existed right.
@@ -51,7 +51,6 @@ so how can you tell your database: hey, stupid database, use this particular ind
 when you do that, you are telling your database: hey, database, you can use this index to execute this query.
 but there is another hint called force index, which would tell a database you have to use this index right.
 so, for example, due to any reason, if your database is not picking the right index to execute your query- which you, as an engineer, are thinking is much better- then you can force your database to use a particular index by using indexings, right.
-is it not using the right set of indexes?
 the performance degradation due to the table scan had a cascading effect, obviously.
 so they had a cascading effect on query response time, which resulted in timeouts for various dependent services.
 as expected, because you are doing a foldtable scan, it is becoming very inefficient to fire that query and obviously it would take a lot of time.

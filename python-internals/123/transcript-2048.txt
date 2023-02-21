@@ -12,7 +12,6 @@ since dictionaries are so heavily used in python, optimizing key lookups would a
 so, given this thing, let's find out what it does internally.
 going by the name it really looks like it's an implementation of cis dot enter right.
 this is the main function, uh, that is responsible for interning the strings, like: because in this, this thing, there is nothing else than this.
-right other thing is just checks and all.
 so pi unicode in turn in place is the one that performs all the string and turning uh, let's check its implementation.
 and here what it is doing is it is checking if my pi unicode is actually interned or not.
 so this seems this is like that global table that we, that that help text, was talking about, where it's dumping all the intern string.
@@ -47,7 +46,6 @@ so if this hypothesis is true, for the first thing it would have to say in turni
 so now if i call make, i build this code, i call make and what i'll get is: let me just let it just build the entire object and the binary see it already started printing already in turn internal intent.
 i'll set a equal to the honest python what it should do.
 it should say interning that particular string.
-it said in turning, the honest python it said already in turn for other strings, which is stdr, flush, flash and std out, that's okay.
 but for the string that we are interested in, which is the honest python, it came out over here.
 but now, when i do be equal to the honest python, it says already in turn.
 it says already in turn it changed the reference and that printed this particular thing and it returned: got it.
@@ -67,7 +65,6 @@ uh, what if i would want to print if a string is interned or not.
 like, for example, if i have string a and when i do a enter, it should also print if my string is interned or not.
 okay, let's do this fun thing so that it would help you guys understand on how to like think about making changes.
 so in unicode dot c you need to have that rdpr function, right?
-so let's just do a control f of repr and since it's a function, should end like something like this: does it have unicode repr, rep, pi object repo?
 let me check for unicode repr function.
 it was something: check in turn, right, check, pi unicode, check intent.
 i have put in unicode pioneer, check in turn.

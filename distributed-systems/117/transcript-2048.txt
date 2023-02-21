@@ -54,7 +54,6 @@ now you can start a, now you can assign this agent, you can inform this agent th
 these two call are bound to be successful, unless there is a network failure because the items were already reserved for that particular order.
 and if both of these are success, then you actually place an order informing your end user that, hey, your order is place and will be delivered in 10 minutes.
 then if one of them, if any one of them fails, we like let's say if we book the food and if we book the agent.
-and so long as, because of the network, it is not going to be a perpetual network failure, eventually the call will go through, right, eventually the call will happen, eventually the food will be, or the food will be assigned to an order of the agent will be assigned to that order and this is not going to be perpetual.
 right, because network failure after few retries will able to block that, and that because it is reserved, right, because it is reserved, that will be assigned to that order.
 so then that item, that food item or that agent will never be perpetually reserved or will be perpetually blocked on something, right, they would always be freed up for some other, for some other order to consume.
 because you were able to reserve it, no one else was actually able to book them, which means you reserve and then you commit.

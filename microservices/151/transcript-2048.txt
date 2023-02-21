@@ -1,8 +1,7 @@
 now for a new use case that is introduced in the product, we have to talk to not one, but three services together to compile the final response.
 so what is a good way of implementing this and supporting this kind of request coming in the future?
+a high level pattern that helps us do this is called api composition.
 in this video, we in depth talk about the super simple pattern to query microservices, see what it is, how it is implemented and understand how it not only helps in improving the performance of our backend systems, but also improve the performance or the experience of our end users, and we'll conclude our discussion with going through the advantages and disadvantages of adopting this.
-but before we move forward, i'd like to talk to you about a course on system design that i have been running for over a year now.
-the first one is the live cohort discourse, which you see on the left side, and the second one is the recorded course, which you can see on the right side.
 so in this case, what we would have to do is, in order to get the order detail, we will have to talk to the order service.
 so here, our one client needs to talk to multiple services to get the things done.
 now, this is a classic case of how would we want to query the micro services?
@@ -12,6 +11,8 @@ so in api composition, what we do is we put a middleman, we put a composer sitti
 the user makes a request to composer.
 this composer knows what to do when it gets a particular request.
 this composer would then talk to order service to get order information.
+would talk to payment service to get payment information.
+sitting or basically placing a middleman in your architecture to hide the complexities of the underlying systems, is what this particular pattern solves for us.
 so api gateway is a classic example of a composer and we typically place it behind or basically before all of our micro services.
 so this typically, or api gateway, is the first point of contact for any request coming in from the user, and then api gateway would decide where it would need to forward the request to, or send multiple requests to multiple services and get the response and whatnot.
 that serves as an api gateway, right.
@@ -35,6 +36,7 @@ and then your client needs to be smart enough to understand the three responses 
 so although this looks hey, let me just write three api calls on javascript and that would make a call, but it is not very efficient to do it.
 plus, it would eat up a lot of data of your end user because you are making three api calls.
 so how do we make the end users experience better using composer?
+because composer is acting as a single point of entry, the user would make just one request, just one http call from browser to composer.
 composer in turn would fan out to three different services: get the response, merge them or join them and then send the response.
 one thing that i want to talk about is, obviously this is not just one level of composition.
 let's say we have a very complex logic in our system and we just simply said, hey, the composer's address will talk to order service, member and service and larger six servers to get that information.
@@ -52,17 +54,16 @@ who should it talk to and get the response from, and then it would do the need f
 so this is where, or on the composer side, or on the gateway side, we can implement security, limiting, caching and whatnot.
 so that's why composer is again a very famous pattern to be implemented, because it makes life so simple for the internal teams.
 let's say, you had a very tight deadline, very tight deadline, and you just like, randomly sent any response or any structured response without putting in a lot of thought into: uh, how are you structuring your response from one of your microsoft strings, let's say your, let's say your payments, micro services, right, the response is not ideal, uh, not very good for your client.
-but then what happened is: you made that bad design decision and now something needs to change.
 very commonly seen in high growth startups, you would see a lot of hacks being applied at your composer level and that's how you hide your bad design decisions and wrap them with a very new, shiny interface.
 so now, because composer is great at hiding the implementation detail, say we have this monolith that we had, which is a legacy monolith, and the first service you would want to fork out is payment service.
 so what we'll do is we'll put a composer in between, forward any request that comes to slash payment to payment service and every other request goes to legacy microservices, to- sorry, to- basically legacy monolith.
 this way your user doesn't need to know that, hey, there is a separate payment service or there is a separate monolith service and you can slowly keep forking out your monolith com or your monolith modules into separate microservices without impacting anything on the user side, but just by adding a layer of abstraction sitting in between.
 let's talk about disadvantages of api composition.
 first one: our composition or our composer is uh, is basically firing a lot of request onto services, getting the response, merging them.
-so for a particular block, the block service would have the entire blog page, block details, everything that it would need for a particular blog.
 so that's where, when you are transferring large amount of data or when you are merging large amount of data, you have to ensure that your api gateway is scaled enough and if it you that who you have written, or if it is you who has who has written composer, you have to ensure that it is well written and, uh, basically at best, efficient, right.
 here we can very clearly see that when the request comes to our composer and it goes to three of the downstream services, like blocks, commands and claps, what we know is our availability is challenge.
 if one of those services down, we are not able to compile the response right.
+so that's where, unknowingly, downtime of one service had an impact on your end user, which impacted the overall availability of your system.
 plus, what would happen is, as you have large number of services that you are talking to from your composer layer.
 your composer needs to manage and maintain a lot of state- who or which services, where and how, and how to connect to that and how to get the re uh, how to send the request and get the results and what not.
 if you have large number of services there, or if you're talking to large number of services in one request, it would add up to a lot of load on to your api gateway, which might turn it into a gigantic bottleneck which you can't get rid of.

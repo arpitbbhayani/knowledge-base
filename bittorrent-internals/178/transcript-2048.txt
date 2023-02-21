@@ -1,5 +1,4 @@
 in this third video of the bittorrent internal series, we take an in-depth look into its architecture and understand different components in it, like trackers, seeders and leechers, and learn how they work together to be this amazing file distribution network.
-but before we move forward, i'd like to talk to you about a course on system design that i have been running for over a year now.
 thanks, the bittorrent architecture consists of four key entities: the dot, torrent, file trackers, seeders and leeches.
 so whenever we are sharing a file in the bittorrent network, the file is not entirely shared.
 so whoever wants a file would not download the entire file together.
@@ -15,6 +14,7 @@ as soon as you download a piece from the seeder, you will inform the, your entir
 so if any one of you needs this piece, instead of going to the cedar, you can directly talk to me, and this way, all the peers, as soon as they download any piece, they would start informing everyone else.
 every peer would not have to go to this one server to download the piece.
 they can internally among themselves also exchange the pieces and eventually have the entire file downloaded.
+this is the actual power of p2p network, right?
 okay, now let's talk about the dot torrent file.
 in the previous video we saw the detailed structure of dot torrent file and about when coding that it uses to encode the file and what information it holds.
 but in the context of this bittorrent architecture, there are some key elements that are part of this dot torrent file.
@@ -26,6 +26,7 @@ depending on what it responds, you can then directly talk to the peer to downloa
 each torrent file is uniquely identified by something called as an info hash.
 infohash is a shard, is a sharvan hash of the info section of the dot torrent file.
 in case you are not aware, in the previous video we talked about what holds in the info section and some that's the most important section of your dot or in file, but that that has that information.
+so each torrent file is identified by a unique info.
 but with respect to architecture overview, understand that there is something called as an info hash that would uniquely identify a dot torrent file.
 uh, in the ecosystem, right, okay, that was importance of the dot torrent file.
 announce url and that is what we'll use to talk to tracker, right, okay, now let's talk about tracker.
@@ -67,7 +68,7 @@ maximum number of connections that your server needs to make for this network ar
 this way you'd get a very nice distribution of: hey, you're not just downloading but you also have bandwidth to upload.
 so let's say you are a peer, you have a torrent file and you want to download something, so how would you get this torrent file?
 so the step number one would be: someone first has to upload the original file in the torrent network.
-so this is more of a application side of things, where people are using it to search for torrents and once they download the torrent file, then obviously this is out of picture.
+from the file that you have, using any bittorrent client, pick any pick your favorite- you can create a dot torrent file and would upload the torrent file on a torrent server.
 so first step is to upload the torrent file to this torrent server.
 now you, as a peer who wants to download this torrent, you go to the search engine, you search for the torrent and you get the file.
 now you, as a peer have that file.
@@ -80,9 +81,9 @@ so someone having the entire file becomes a seeder.
 cedar is someone who does not need to download anything but it just is benevolent enough to just continue uploading it in the network.
 quickly your file gets distributed in the network.
 leecher is a peer that is downloading the file it.
+eventually a leacher would have all the pieces and then it would become a seeder, right?
 so leecher is not just downloading the file but it would also upload the pieces to other peers who wants it, right?
 so seeder is having entire file and it is only uploading.
 leachate is the one who is downloading the file and informing other peers the pieces that it has, and once a leecher has entire file, it becomes a seeder, right?
 it's a very simple architecture, like it's all p2p network.
 so all it has is a huge set of machines to connect to and download pieces and just formulate it out right?
-i hope you understood the bittorrent architecture and the key components in it and some of the design decisions.

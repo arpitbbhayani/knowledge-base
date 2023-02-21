@@ -3,7 +3,6 @@ an interesting challenge comes when a search query is not homogeneous.
 this query contains a restaurant, a dish and a location.
 getting relevant information from your search engine, like, let's say, elasticsearch with this kind of query, is a very interesting problem to solve.
 in this video, we dive deep into how zomato identifies the intent of the search query to better its search experience and make it more conversational using national language processing.
-Engineers from companies like Google, Microsoft, GitHub, slack, Facebook, Tesla, Yelp, Flipkart, dream11 and many, many, many more have taken this course and have some wonderful things to say.
 now, one of the main medium for people to discover food and dishes and restaurants is through the search bar.
 now, zomato allows people to search for three typical entities.
 second, a restaurant, like, for example, if I'm searching for Domino's Pizza, hot or any favorite chain of yours.
@@ -21,7 +20,9 @@ I'm just basic making this up, but you understand the problem with this, right, 
 this query content, this query contains all types of entities and we need to understand what are we actually looking for.
 this is where natural language understanding comes in, and so that, given a query, we try to understand the intent of the user.
 because voice search makes people speak like here.
+we are saying what we would want to search and then basically speech to text kicks in and it basically converts it into text and then this is fired in the button.
 now, when a human is speaking, when we are speaking or we are providing input to this search engine, we tend to be more verbose when we speak, when we type, we are lazy, we type fewer words.
+so let's say, if I am, if, if I would want to search for, I'd say basically, let's say, garlic bread with cheese dip.
 then let's say, veg restaurant, koramangala- this is I'm looking for a category of restaurant which serves vegetarian food in location which is koramangala.
 and third, maybe let's say chai and Samosa restaurant that serves chayan Samosa- both I would want rank them to to on the top.
 right now, single intent queries are easy to answer.
@@ -66,7 +67,6 @@ so, for example, if someone types in mixed veg, sub G or Roti, so you have to to
 so, for example, mix with sub G, this three words together is a dish, is what we have to answer.
 for example, if I am searching for Jack's Aloo Tiki Burger, so then Jax is the restaurant, Aloo Tiki Burger is a dish right.
 so the keywords for you to explore- in case you are, you would want to rebuild this- is word to back: uh, byte pair encoding bi-directional lstm and CRF.
-if you are familiar with python, you will find a bunch of examples where all of these things are put together and you just have to copy paste and run and train it on your data set.
 right now, this is what would help us fire better queries on our search engine, which is what we were discussing at the first.
 for example, if I am looking for Domino's Pizza, what I would do if I identify that Domino's is the name of the restaurant, I would search Dominos in the restore collection and Pizza in the food menu.
 right, so that I get better search results.

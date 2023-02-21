@@ -1,9 +1,8 @@
 we all have heard that some replica is chosen and promoted to be the new master.
 in this video, we dissect yet another data about it, but, apart from understanding what exactly happened and how github mitigated it, we would spend a significant amount of time learning how databases are managed in production and the kind of tools that companies like github use to ensure optimal db performance and very high availability.
-engineers from companies like google, microsoft, github, slack, facebook, tesla, yelp, flipkart, dream 11 and many, many, many more have taken this course and have some wonderful things to say.
-the first one is the live cohort business, which you see on the left side, and the second one is the recorded course, which you can see on the right side.
 the incident report says that as part of the database maintenance activity, the database team rolled out an updated version of proxy sql on monday, june 22nd.
 the primary mysql node on one of our main database clusters failed and was replaced automatically by a new host.
+so proxy sequel rollout happened.
 a week later, master node crashed and after that something.
 the first term that we heard new was proxy sequel.
 so api server makes a connection to proxy sequel processable internally, makes connection to your mysql cluster.
@@ -23,6 +22,7 @@ whenever someone fires a query on any other table, it should go to replica one, 
 this can be seamlessly done on proxy sql, so your api server need not know which data node to connect to to get things done.
 proxy's equal would forward it to the corresponding database.
 and, yeah, and your performance and your architecture is performed because api server does not have to connect to all the three clusters and get things done.
+so that is a very, very, very big advantage that we get by using proxy sql.
 as soon as you have a proxy layer sitting in between, the first thing that you might have thought of is caching, like because everything is going through proxy sql, so you can cache sql query responses.
 so places where you might want to cache things, proxy sequel can be one of such places to do it.
 so temporary access management is also done at proxy sequel layer.
@@ -39,6 +39,7 @@ orchestrator's anti-flapping mechanism prevented subsequent automatic failovers.
 so orchestrator detected failure and quickly promoted the replica to be the new master and it and it, uh, helped us ensure that there are no cascading like something called as anti-flapping pattern.
 another master was appointed, so replica was promoted to be the new master and it was done automatically.
 so rather, orchestrator is a tool that is used to do mysql topology management- just fancy terms of managing mysql clusters- and doing: hey, this is the master, this is a replica.
+if master goes down promoter.
 so it's all about topology management as such for uh through a tool called orchestrator, right?
 so what it does is uh orchestrators- anti-flapping mechanism- prevented subsequent automatic failures.
 so, apart from having your api servers, your mysql cluster, your proxy sql, there is a fourth component called orchestrator.
@@ -64,6 +65,7 @@ so what anti-flapping would do is, if it sees a master go down, it promotes a re
 if this new master also goes down, it would not promote any other replica, because it would know that if i might promote another replica, that would also go down because this second one went down.
 like, although it's not making things better, your master is still having an outage, but your reader, your reads, can still be served.
 that is anti-flapping mechanism, right?
+okay, so this is how it prevents us, how it prevents, uh, cascading failures of database.
 for until a pull-off period, and this school of period is typically five to six minutes, where after five to six minutes only it would promote another replica to be the new master.
 so that's where, because orchestrator did not again promote another replica to be the new master, what it did?
 so that's where what github team did is, after they recovered uh, so uh, because subsequent failovers were stopped with anti-flapping mechanism, after we recovered services, after we recovered services manually, the new primary became cpu start and crash.
@@ -88,5 +90,6 @@ how proxy sequel sits in between and does a lot of things.
 fancy orchestrator does auto, does automate- a lot of manual things that an engineer required to do so process equal on orchestrator at a scale.
 when you have a large mysql cluster, you would typically see proxy sequel in orchestrator in your architecture.
 another thing we learned, and the fourth one: when nothing works, do a full revert, right.
+so understand what changed, what happened in the architecture or in the code and do a full revert.
 i've used proxy sql a lot.
 uh, orchestrator i've definitely not used, but some scripts do these sort of things automatically at few of the places that i've worked uh, so yeah, proxy's equal orchestrator are not just theoretical, it is very well used in the industry across and i hope- and you should be exploring that, uh, if you would want to understand how databases are very well managed in production.

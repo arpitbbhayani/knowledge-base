@@ -16,7 +16,6 @@ this typically happens when the disk is getting full, that your database is boot
 right, so there is some: either some sort of file file corruption or basically some sort of file file system corruption, or it is because of low, like, very low, disk space that database is not able to write anything onto the disk, right?
 so in order to now, if we jump, like basic, before we jump into short-term solutions and long-term solutions, one very key point that i would want to highlight is you need to have a very exhaustive monitoring on your database.
 like, like in order to get your database up again, you first need to know what happened.
-like, if you do not know what exactly happened, what, what would you fix?
 so that's where you need to know he, what is what, what is wrong with my database on the first place, like, what is the root cause of it, and then solve it right.
 so one possible reason of your database going down is because the connections have maxed out, which means that, because of the hardware that your database has, it can only accept a certain number of connections, a certain.
 so when that happens, it means that your api servers will not be able to create new connections onto your database.
@@ -32,7 +31,6 @@ one very quick thing, although it requires a downtime, is to quickly scale up yo
 so let's say, if you're using a managed service, let's say by aws, like aws rds, you can quickly go and scale up your database to and basically make it 2x of the size if you're using 4gb of ram, make it 8gb of ram.
 double it when you do that, although it requires a database reboot, but you are sure that you will be able to handle those number of connections.
 so if it's genuine traffic, scaling up your database might not be a bad option because you want to handle it.
-few possible reasons to solve that problem like this.
 so when you know that cpu is constantly under 100, which means that even though your database can accept large number of connections but there is no cpu cycles to execute it, because it, because the wait time is very high, because there are far too many queries that have come in and you're able to handle the connections but you're not able to execute the query, so that's where your cpu is operating at 100, and few fixes for that is, first of all, killing the queries that are running for the long time.
 when you kill a, when you kill a query that is running for a very long time, what would happen?
 so when you require cpu cycles to solve that particular, so to execute that particular query, what would happen?
@@ -41,7 +39,6 @@ like check, if any recent deployment was done that led to that, led to a push of
 and if you see a consistent usage of, let's say, your cpu was always around eighty percent and now it has hit hundred percent, where you are not able to execute it, that's where, now that, since you have seen consistent usage of cpu, that's why you decide, hey, now it's time to scale the database up right.
 okay, now that we have seen short-term solutions, let's move into long-term fixes for that.
 you would want to immediately start working on the long term solution for that to ensure that your database does not go down again for the same.
-so let's say, first of all, what we should be doing is ensure that the right set of indexes are in place.
 this is the most common reason that i have seen your database operating at 100 cpu, like if you do not have the right set of indexes on your table that you are querying.
 so that's where ensure that you have the right set of indexes in place, because if you have, if you had an index on user id for the table, the query execution would have taken milliseconds, if not microseconds to do it.
 that's where you need to monitor the, the queries that are taking a long time on your database to execute, and see if it needs indexing of some sort, and do that.

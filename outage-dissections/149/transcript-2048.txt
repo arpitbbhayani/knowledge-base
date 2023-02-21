@@ -1,15 +1,11 @@
 so imagine you're trying to create a new github repository and the api call is failing- failing for 53 minutes.
 this happened with github in april 2021 when, for 53 minutes, people were unable to create new repositories.
 so in this video, we dissect this outage, understand the root cause of it, look at the importance of secret scanning and conclude with building an understanding on how github mitigated this issue.
-the course to date is enrolled by 600 plus engineers spanning 9 cohorts and 10 countries, engineers from companies like google, microsoft, github, slack, facebook, tesla, yelp, flipkart, dream 11 and many, many, many more have taken this course and have some wonderful things to say.
-the first one is the live cohort discourse, which you see on the left side, and the second one is the recorded course, which you can see on the right side.
-the live cover based course happens every two months and it will go on for eight weeks, while the recorded course contains the recordings from one of the past cohorts, as is.
-so if you are interested to learn system design, go for it.
 thanks, so this is the incident report for this particular outage, where the folks from github says that our service monitors detected an elevated error rate when using api request, which resulted in degraded state of availability for repository creation, clearly states that repository creation flow was broken upon.
 upon further investigation, we identified that the issue was caused by a bug from a recent data migration in a data migration to isolate secret scanning tables.
 now let's take a look at what exactly is secret scanning.
-for example, a database, a cache or elasticsearch cluster may be some sas offering maybe aws to to do something with their infra.
 for example, with aws we need api, we need uh, api access scan secret key.
+now, the most basic way of putting this information would be in your settings file order constraints file, right, so where you might have a key called api access key and where you are actually specifying are actually your, your actual api access key.
 so what happens with that is, if you are checking in this file with your code, this secret stays permanently in the github repository.
 you will say, hey, but my github repository is private.
 right, then your private repositories are out in the public, right, accidentally made public because of the database that happened on github.
@@ -32,10 +28,13 @@ so it says that the data migration to isolate secret scarring tables into their 
 so secret scanning table was moved to its own cluster, which means that there would be initially a common database in which they would have had all the tables.
 one of those tables would be for secret schedule and during the repository creation, right from marking or right from creating the repository, making an entry in the database for repository, they would have had a table in which they would be making an entry.
 for now this repository needs to be scanned periodically.
+let's say i have four tables in my database node.
 their migration would have kept the three tables as this and move the fourth table which belongs, which is the, which is the table that holds, which all database needs to be scanned- what's the configuration about it and what not that table into its own cluster.
 so moving this table from their old database and separating and out- this way, this they would have typically done to handle large scale.
 they said that in the report it said that they discovered a bug that broke the ability of application to successfully write to secret scanning database.
+this is super interesting.
 so it says that bug broke the ability of the application to successfully write to a secret scanning database.
+why is this interesting?
 we would typically think that in a pure micro services based architecture, you would have a repository service, you would have a secret scanning service.
 secret scanning service would have its own database.
 they all start with a monolith and then they migrate to microservices, which means that there would come a transition phase, or rather, there would come a phase where everything exist in this one database and you try to fork it out right.
@@ -44,12 +43,14 @@ but here what we see is it says that application was unable to write successfull
 so it was easy for the repository service to write it into the, to make an entry into the database, but this failed after the data migration, which means when this secret scanning table was taken out of this database and put into a separate database, this started failing because your application, which means, let's say, a repository service, was not able to write it to this database.
 right, they have not specified why it did not happen, but few possible reasons could be: there might be a network configuration which does not whitelist a particular database to be connected from a particular application.
 or you might have some random network security policies that might have been imposed, or some genuine issue with your database because of which your migration failed, but you didn't know about it.
+there could be a ton of reasons for this to not happen and they have not specified it anywhere in the report side.
 right, and one very important point is what they say is repository creation had, like the incident revealed, an unknown dependency that repository creation had upon secret scanning, which makes a call for every repository created, which means upon repository creation.
 every time a new repository is created, an entry is made into this table.
 imagine, at the scale of github, they having blind spots, they having blind spots about hey, who is doing what, and that happens.
 everything was working fine, but they didn't know during the data migration that a, this, y to be something that would be affected.
 so repository service directly writing on to the database was an unknown dependency.
 because now your repository service, where it was trying to create an entry into the database, was not working due to some bug- they have not specified what bug, network issue, something, something, something would have happened, but it was not able to write it- because of which your repository creation was failing.
+if it was asynchronous then repository connection would not have failed.
 but because it failed, the call was singles, which means user gave request to api, to repositories, to create a repository, repository service.
 so when this failed, your entire api request or entire response failed, which resulted into a 5xx and repository not getting created, right.
 oh, let's quickly roll back, because you know that the rollback would definitely work.
@@ -63,8 +64,10 @@ hey, now we can enter into this database rather than doing it synchronously in t
 they- in in the incident report we saw this- simply mentioned that they roll back the data migration.
 so as soon as the data would have been migrated, the creation, the api, uh, the repository creation, would have failed and they quickly moved back.
 moved back as in they migrated the table and they migrated it back into the old tv could be one, but because they are like it seems very weird that you have to re-migrate the table to the old thing, it they might just have changed the network configuration as well, because the old table would have been there in the old database, because they would not have immediately deleted it.
+they would have had it in the old database and they would have just changed the configuration to start pointing it to the old database, uh, immediately, so that it starts to work.
 but in general, whenever an outage happens, the first intuition of an organization is to see if it could be rolled back.
 and it purely is the context in which the outage happened.
 because repository creation, secret scanning- who would have thought these two components talk to each other?
 second application: directly writing it into the database.
+i'll make a call to this service and that service would write to its own database.
 writing it into two separate places, one of them, failing, took down the entire repository creation.

@@ -1,24 +1,18 @@
 so dynamodb is extremely powerful, scalable and fast key value stored, but it lacks aggregation.
 in this video, we designed a use case that is very common for food delivery startups like deliveroo and swiggy.
 that would require us to do real-time aggregations of dynamodb data in an extremely cost efficient way.
-but before we move forward, I'd like to talk to you about a course on system design that I've been running for over a year and a half now.
-Engineers from companies like Google, Microsoft, GitHub, slack, Facebook, Tesla, Yelp, Flipkart, dream11 and many, many, many more have taken this course and have some wonderful things to say.
-the course is focused on Building Systems the way they are built in the real world.
-we cover topics ranging from real-time text communication for slack to designing our own toilet balancer, to cricbuzzes, live text commentary to doing impressions counting at scale.
-in all we would be covering roughly 28 systems, and the detailed curriculum, split week by week, can be found in the course page linked in the description down below.
-the first one is the live cohort based course and the second one is the recorded offering.
-the Live code base course happens once every two months and will go on for eight weeks, while the recorded course contains the recordings from one of the past cohorts, as is.
-otherwise, the Live code is where you can participate and discuss the systems and its design life with me and the entire cohort.
-I've also put the link of this course page in the description down below and I'm looking forward to see you in my next cohort.
 so dynamodb is a low latency key Value Store offered by AWS.
 it supports operation like Get, Set, partial updates, delete and expiration right.
 so let's say we are building a food delivery app, for example, something like swiggy zomato or deliveroo, right.
+and what do we need is we need a way we need to show users some aggregated information.
+so let's say: deliveroo- uh, does food delivery, and it's quite popular in Europe.
 users can browse through that, pick their favorite restaurants and order from it.
 right, very, very simple- like extremely simple idea, but extremely useful and popular.
 and now, on that app, what you can do is you can Mark a particular restaurant as your favorite right, and here, when you mark a restaurant's favorite, a lot of users are doing so- right.
 and to store this information in, let's say, dynamodb, what you need is you need a partition key, right.
 so every dynamodb table that you create has a partition key and an optional sort key.
 now, if you would want to register that if a user, if a user, favorited a particular restaurant or not, you would have a partition key that is combination of your restaurant ID and user ID, right?
+a combination of these two would become your partition key.
 you don't need a sort key for this particular use case, right?
 and you'd have additional attributes like created at and user ID, so that you can query on it and see if this user has marked a particular restaurant favorite or not.
 so if this key exists, which means that user like this destroy is marked as favorite by a particular user.
@@ -33,10 +27,12 @@ so, for example, if one of the restaurant received 1000 favorites and other rest
 a simple way to do this is by using something called as a dynamodb stream.
 so the core idea here is: you typically have your API service which is accepting the favorite or unfavorite actions.
 that API call is typically making pointed queries on this, your, your database, your dynamodb table, in which you are storing all the favorites that we just saw the schema for right now.
+up until here everything is good, like pointed queries are solved.
 but now, when we would want to show the aggregated count.
 so we would want to show that this restaurant, a particular restaurant, are received n favorites.
 right, and we want to persist this.
 a way to build this is using dynamodb Stream.
+So what is a dynamodb stream?
 any insert, update, delete happening on the dynamodb.
 this event is sent to a stream and this stream is something like bin log or change log that we have heard of, right?
 similarly, all the events that happened on this Depot will be sent to this particular string.
@@ -44,8 +40,10 @@ now, from this stream, we can invoke a Lambda function, entire serverless archit
 so from this stream, a Lambda function can consume.
 so all the events that happened on the table get streamed to the stream and it's consumed by this particular Lambda.
 so every time an event comes in, this Lambda function gets invoked, right, and so on.
+what would this Lambda function do?
 this Lambda function will do this aggregation part, right.
 so, for example, for it might have, it might make an update in some table, some dynamodb table, in which you would have a restore ID and the total number of favorites that it received, right?
+so every time something happens, every time a new favorite is marked, insert happens.
 basically, over here you are doing count plus plus, right?
 from dynamodb the events are configured and sent to the animated we stream from which you write a language function to consume those events, right?
 so let's say, we create a new table and this table would be storing the aggregated favorites count.
@@ -54,6 +52,8 @@ so restaurant ID becomes my partition key, time window becomes my sort key, righ
 and then time window can contain all time, which means all time: how many favorites did a particular restaurant get?
 or maybe you might want to do month wise, right?
 but you definitely want to do that all, all time things so that you can render a global list, and then you may.
+if you would want to query it, you can do that.
+so, given that the partition for dynamodivity, table partition key and sort Keys combination has to be unique, so you can do at a very granular level as well.
 for example, all time, one entry for all time, one entry for a particular month and one entry for a particular day, if you want to do that right, so this would be our partition key.
 other thing, like your time window, would be the sort key, and then you would have a favorite count and updated that right, and whatever aggregation or or what would your aggregator function would do, is every time you receive a batch right.
 so from dynamodb, your Lambda function would receive a batch of events.
@@ -61,19 +61,27 @@ so whenever something, an entry, is created in the favorites table or entry is r
 so that is where in most cases you think, hey, let me just read the value, do a plus, plus and then I'll set the value.
 this is not an atomic operation because there would be multiple concurrently executing Lambda functions trying to act on that same restaurant object.
 if, let's say, multiple people marking the same restaurant as favorite or not, it might lead you to it might lead to invoking of concurrent Lambda functions acting on that same object.
+problem, right.
 so instead of using this we- because we have to automatically update it- instead of uh invoking set, we would be using add, Addis and operation in dynamodb that is atomic in nature and would do increment or decrement using it right.
+second is, we would be using dynamodb transactions to do that.
+so in batch we would be getting multiple events.
 let's say we filter out, uh the events that we are not interested in and we keep in certain remove events with us, right.
 now, when you are updating in the table, do use a dynamodb transaction to do that right, so that it ensures that in case there is a failure, your data does not pick up like, does not go in an inconsistent state.
 so dynamodb offers your transactions and you can use that to write to do batch updates of 100 rights at a time.
 but using Lambda function to just do this small update, won't it be costly?
 like every time an update is happening, every time an event is there, and like we have to pick this up and Lambda function needs to be invoked.
+like, isn't this costly?
 if you think about it, how many favorite events would come in?
 it's not a social network where you are liking the post, where it's very high right volume thing.
 imagine, on your app, on your food delivery app, How likely are you to Mark a restaurant as your favorite?
 that would mean that that would be very fewer rights and deletes.
+that would happen on the table.
 so was 7 000 writes per day and each execution of Lambda function.
 so, for every event, if you invoke a Lambda function, it is just 25 milliseconds it takes.
+and if you sum it up and check it for over a month, it turns out to be less than a dollar a month, which is nothing, right?
 that is where serverless comes at our rescue, because this is not a high right throughput event.
+right?
+advantages of this architecture, first of all, is it's extremely cost efficient.
 we just saw how much it would cost, right?
 it is extremely cost efficient for a given user Behavior, right it.
 you cannot just use it for social networks, right.
@@ -88,6 +96,7 @@ because what's happening over here is, let's say, you're running a daily full sc
 that is not expected, like you would want to give a much closer near real-time user experience.
 second, you may think, hey, instead of me doing it once every day, what if we do a synchronous update?
 so my API itself would update at two places: one in your favorites table, second in your favorites aggregated table.
+that sounds doable, that sounds good, but your API response time would shoot up because now, instead of doing one right, it has to do two rights right, so that would become slower.
 so, in case you are fine, you find yourself using dynamodb and you want this kind of aggregation, do a basic capacity planning and see if you need constantly running servers or you can go via serverless right, using dynamodb streams and Lambda functions, right, I hope.
 and basically that is what I wanted to cover.
 thanks [Music].

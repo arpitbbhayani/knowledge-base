@@ -5,7 +5,6 @@ the main culprit, or the main thing that got impacted, was the map style api was
 your end user, during this outage, saw what they saw: great isles, right.
 so, because the tile api service was down for an end user, what did they see?
 so during this outage, what happened is 65 percent error rate.
-directions, api p99 response time hit: 8.5 seconds and 8 500 milliseconds.
 so that's that's pretty insane amount of hit that, uh, google maps took during that outage and 37 error rate in navigation.
 so someone using google map for navigation, 37 of the requests were resulting in errors.
 uh, there happened a feature rollout in a particular and obviously, every single day, some of the other developers ships the code and some feature got rolled out in some service and that feature and that particular rollout might had some bug or something in it, because of which it exhausted the allocated resources on the server.
@@ -46,11 +45,9 @@ but that service got overwhelmed by the number of requests.
 right, and that's exactly what happens when you have synchronous dependency as part of your micro services architecture.
 so here there was the synchronous dependency from user to map sdk- you can't do much about it- from s map sdk to tile, from tile to some service.
 because of retries, which was which happened, uh, which grew the traffic to the 10x of the normal levels, your service went into a denial of service so it thought that it was a dinner service attack and it's, and it started rejecting the request.
-like we know that if any latest deployment happened and that uh, and we know that some deployment happened, the first thing that you do is you, if you can roll back the deployment, you do it right away.
 during that time the synchronous communication happening between other services was still showing the cascaded error.
 so the errors on the main service, the, the, the, some service got down, it got recovered, but because of the cascading failures that happened, it took some time for other services to recover.
 it took one hour or one or twenty minutes for other services to recover because people were retrying on that, sdks were trying on that and what not, right?
-so it took some time for them to recover and obviously, after two, after two hours, everything got recovered.
 so then, as part of prevention- this is where i loved this thing about uh, this particular outage on what on how google is planning uh to to, to basically prevent uh the outages happening because of the same reason.
 so they mentioned this in the, in the outage document- that they would want to re reject the request when the server is operating at the full request, full capacity, which means graceful degradation.
 so, instead of accepting the request, making a call to trying to render it, it's always better that if you know that your server is full, do not accept the uh, do not accept the request at all, and instead immediately return an error to the user that hey, i am overwhelmed right now.

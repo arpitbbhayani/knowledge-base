@@ -1,8 +1,6 @@
 so almost all Engineers start working on a feature, thinking it is a simple and a no-brainer, but when we start thinking of the implementation details, we realize how complicated things actually are.
 in this video, we go deep into the email classification service at slack, whose sole job was to classify an email into an internal or an external one.
 the feature seems like a cakewalk, but when we start jotting down the implementation specifics, things turn out to be a little more complicated than we anticipated.
-ingenious from companies like Google, Microsoft, GitHub, slack, Facebook, Tesla, Yelp, Flipkart, dream11 and many, many, many more have taken this course and have some wonderful things to say.
-we cover topics ranging from Real Time text communication for slack to designing our own toilet balancer, to cricbuzzes, live text commentary to doing impressions counting at scale.
 so on slack, we can invite people by email.
 the difference is that internal people, when you are inviting, they are directly added to the workspace, while external are just added to a few set of channels.
 now, depending on whom we are inviting, we would want to trigger an internal onboarding floor and external onboarding floor, which could be as simple as just showing a different dialogue.
@@ -14,7 +12,6 @@ so if I get in- uh, if I get, and so if I have to invite a person with a differe
 now these would become their email domains, right, there would be a possibility of that.
 second is, an organization might also want to classify their- uh, their interns- they are basically contractual employees- their vendors- with different email domains so that they could restrict accesses on other set of their internal tools, private infrastructure and whatnot.
 right now, given this, we would want to make this process as simple of an onboarding process as possible, which is why we would need an email classification service, right?
-the way we would want to approach this is through heuristics, like because heuristics would always work.
 what you are trying to do is, given an email, let's say, person a wants to invite person B whenever an invitation is, whenever a person a types a person B's email address, or email classification service kicks in and it classifies it: open, internal and external.
 so first is the settings context, because it is very possible that an employee that uh in a workspace the administrator has has configured that these are the domains that are internal, While others are external, or it they might have just basically uh, shut down, uh, basically external invites, right.
 so if you have configuration, that would help you, that that would help you do a shortcut evaluation, right, or a short circuit evaluation of the part that, hey, is it an internal or an Excel One?
@@ -33,6 +30,7 @@ so that is why they are just keeping the aggregated count, which is grouped by d
 so here the idea is pretty simple: given an email, you just see that for a particular like, you extract the domain out of that email and see where it holds right and when you see it you see what percentage of people and role combination are they have the same domain, right, if it is more than 10 percent you consider it as an internal, if it is less than that you consider it as an external.
 so I can see that if I am want to classify for one directbarcom, it would be an internal classification because there are 68 people right with barcom, with bar dot in there are 30.
 gmailcom is will be classified as external because there are only three people out of 100- almost 100, uh- which are having this particular thing.
+so you can, you would, you are tempted to classify it as external, right?
 so this is a simple heuristic that they went with a simple high level architecture, for this would look something like this: a user never wants to invite someone named classification service is triggered.
 it refers to the domain stable in order to identify or in order to classify where this particular email, or basically where this email particular, where this particular email sits, sorry, so it's internal or external.
 you'd want to make it as simple as possible.
@@ -46,10 +44,13 @@ there is a very interesting challenge that is coming out of this particular thin
 now this becomes a problem because now, let's say, if a particular user got created, you updated the entry in the database, but your broker thought that a message was not consumed, or before the message was deleted, you re, or the message got recued again.
 which is where what slack did is they had, or they built, a Healer service whose job is to periodically heal the numbers and bring it back and bring it back to a consistent state.
 second is when you, when a user upgrades a, let's say, workspace, was a free tier and then they changed their plan to a pay tier, you might just want to Recons the numbers and ensure that everything is in place, because their licenses, that billing, depends on this right.
+it's easy to draw box around healer and, hey, this would heal the system.
 now, a naive approach that you may think to heal is that, hey, let's say, whenever A Healer runs, I would just recompute the count and update it in the DB.
 so, which means that whenever my healer is running, I am simply going through all of the users that I have, I'm extracting their email domains and then I'm doing the count in memory and I'm updating it in the database, which means I'm replacing the domains DB for that particular team.
 now, let's say, this healer took five minutes to compute it because there were far too many users now in this five minutes- the new users that came in, or the new updations that happened.
+so what you do is, when your healer starts, at that point in time you keep track of the date time.
 this is the date time at which your healer started.
+now it in the table, in the domains table that we had, we had a column called Date Update.
 you, when you your healer starts, you keep track of the date time.
 you compute the numbers, you see the drift and you know that, hey, this is what I want to do, plus n minus, and what I would want to do again: absurd operations.
 right now with this, what happens is up until this point, the time at which healer started, you knew what the state of your domain stable was.

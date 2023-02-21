@@ -37,6 +37,7 @@ it is Json based endpoints on top of grpc, so it creates that code that you can 
 right, so you can still have your backend running grpc, but while if you'd want to consume over rest, slash Json, you can do that with grpc Gateway and this generates a code which runs a server.
 it takes a lot of time and typically the time is taken because when you learn, when you start a new node and you would want to set up the leucine on that or download those segments and keep it handy, what you would typically need to do is, let's say, whenever a write comes to primary, you write it to the disk.
 once a segment is created, you periodically back it up to S3 or your blob storage and then, when a new node boots up, that would download it from the S3 right and then, once the download is complete, it would start serving the request.
+when a node, uh, is running, let's say I started my primary node, when I'm writing, I'm not writing to the local disk of that server.
 so they named their search engine as nrt search, which is near real time search, and while writing it there, uh, they don't write to the local disk of that server, they write it to the EBS volume attached to it.
 so, which means if my primary node goes down, they just spin up another ec2 machine, which takes like 10 seconds, and then they just attach the same EBS volume there.
 in just couple of seconds they are done with that, right, okay, so now the next challenge that comes in is around primary replica sync.
@@ -64,4 +65,3 @@ so in that case what people do is they send request to both elasticsearch as wel
 100 of requests goes to elasticsearch, but five percent of them goes to nrt search and they compare the output of both of them.
 so it does not mean user is seeing responses from nrt search, user is saying responses from elasticsearch.
 right, and this is how they're beautifully architected and reconceptualized: search on top of Lucy, right, just like what elasticsearch does.
-they built kind of their own elastic surge, but specific for their needs, and this is what is brilliant about their design, right?

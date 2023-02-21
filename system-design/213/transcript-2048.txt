@@ -1,9 +1,6 @@
 a database is typically scaled by splitting the data across multiple shards, but what happens when a particular shot becomes hot due to excessive load hitting It, While others remain underutilized?
 a classic way to address this is by moving a fragment of data from one Shard to another.
 in this video, we look at how Shopify rebalances the chart by moving a fragment of data from one database to another without incurring a downtime.
-the first one is the live cohort based course and the second one is the recorded offering.
-the Live code base course happens once every two months and will go on for eight weeks, while the recorded course contains the recordings from one of the past cohorts, as is.
-otherwise, the Live code is where you can participate and discuss the systems and its design life with me and the entire cohort.
 so people can host their shops on Shopify, and Shopify uses MySQL lizard primary database and this is what their current architecture looks like.
 now this pod- please don't confuse it with the kubernetes, but Paul- is just a logical grouping of shops which share a common database.
 right now, here these two databases, they do not have any data in common.
@@ -34,6 +31,7 @@ so no matter what happens, no matter where you are moving data, no matter how go
 second, there should not be any data loss or corruption, because you cannot just say, hey, because I move the data from One DB to another and then, like, I just missed few rows, that cannot happen.
 so phase one: batch copy and tailing bin log.
 and now, yeah, by the way, all of this thing, whatever I'm discussing, is taken from shopify's engineering blog, which I've Linked In the description down below.
+you do batch copy of data from One DB to another DB.
 we know that every Row in the table has a shop ID as one of its column.
 you iterate through all the tables, pick the rows that has a specific shop ID and you write them into another database in a transaction.
 this way you ensure that there is a bulk copy happening from 1 DB to another.
@@ -46,6 +44,7 @@ second way to do it is just make a note of Bin log coordinates.
 here, obviously, performance optimization: you just don't need to have just one thread which is copying the data from the batch copy.
 okay, now, second step: once you say you have made note of that, either that bin log coordinate, that hey, up until this 10, or, in case you are using Q, in either case, you would know that you have completed your batch copy till that point.
 right, you know that because you will keep track, hey, from this point, I am anyway capturing all the live events that were happening.
+so you cop it till that, state you, you apply your for Loop until that particular bin log coordinate is hit.
 when you do that, which means that now your batch copy is done, which means that by enter time, when the batch copy started from your first DB, all of the data is present in your second DB.
 right now, what Remains, the things that remain is that you have to copy the new things, like from the time that you started a batch copy.
 whatever new rights have happened onto the DB, you have to take and apply it over there.
@@ -56,6 +55,7 @@ then you are, you have kept track of from this point, I did it right- and then y
 so this way there will be some lag, some lag between the new rights happening in the main DB and being- and that right being- updated in another DB.
 you may call it replication lag, right, but in general just a lag that is happening with you then.
 this way, your users would not see any perceivable downtime, but you would still have this small cutover phase where your DB is not accepting the rights because you are switching the database, right, so you just have to be aware of this fact that you might need to have retrace there, right?
+right, once the difference was few seconds, one or two seconds, you stop the incoming traffic onto your database or onto your, onto your API site and you waited for everything to be going down, right.
 so, once all the changes that you know- because you are not accepting any new new rights- once you have consumed everything, you would know that, hey, everything is caught up.
 at this stage, there are no new rights coming onto the source DB and your Source DB is equal to Target DB because the data on both the databases is exactly the same.
 there are no new rights coming in.

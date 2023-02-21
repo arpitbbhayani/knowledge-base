@@ -2,10 +2,8 @@ so only checking for authentication is not enough when we need granular access c
 so let's say I do not want someone else to be able to edit my LinkedIn post, right?
 let's say you are Airbnb and you don't want people to access Wi-Fi information unless they have made a reservation on it, right?
 third, a little more complex example: let's say we are in Google Drive and can user u3 read file present in a folder shared with group G3?
-right, we need a way to design it very robustly, very flexibly on low level side and on High level side.
 you may split, you may still have multiple modules, but this authorization part can be very basically, basically very nicely modeled either as a separate module or you can put this check at the beginning of every function, but it is just a simple function invocation for you to ensure authorization, right?
 so if I want to check if user U1 can edit a particular post or not, it should be very easy for me.
-now what we'll do is we'll go through the architecture and key design decisions of a centralized authorization authorization service at Airbnb named him Aji. this entire thing is taken from airbnbs engineering blog, which I've Linked In the description down below.
 right, for this service, for himeji, an authorization is modeled as a tuple, a tuple that contains three items: first is the entity, second is the relation, third is the principle.
 so, for example, on a particular post with id123 on comment, this is an entity, right, relation could be right.
 so let's say, user ID 123 has the right privileges on post with id123 on command.
@@ -47,9 +45,11 @@ this entry is listing colon dollar ID.
 there is a reservation relation to a particular user, right, you would have something like that, but then instead of user ID you would have a reservation ID.
 is you are checking for existence of reservation over there that does this like: is the reservation for this user exist or not?
 so listing dollar ID hash reservation at direct reference reservation, colon dollar rid hash guest.
+so now, let's say, in my database I have three entries.
 first entry is that listing colon 1 hash owner at direct user123, because user123 is the owner of listing one, which is what we have first entering the database.
 second entry in the database is listing colon 1 hash reservation at the rate reference reservation, colon 500.
 reservation ID is linked as a guest to a particular user.
+we want to use our 456, who has guest relation with reservation.
 now, let's say we want to check if user 456 can read listing listing colon 1, colon location.
 this entry does not directly exist in the database.
 as per the rule, read is a union of owner and listing.
@@ -86,6 +86,10 @@ so image reads uses consistent hashing to understand which of the cache server s
 if not, it goes to the database as a fallback and then read the data populate in the cache and responds back to the user, right.
 so image lead need to know the consistent hashing so that it can forward a request to the corresponding cache node.
 then it computes the response as per the config, like the evaluation that we just saw, and it responds back to the user right.
+so that's why they need consistent hashing to forward the request to node.
 so they have that sort of consistent hashing based structure over here where you have a set of nodes to take care of the data, right.
+right, you would have sharded but persistent database which acts as your source of Truth.
+for example, user was able to access the location of the property.
 now, user should not be able to do that, which means whenever the data is changed in the source of Truth, we need to invalidate this cache, not the entire cache, but just that entry.
 this way, with some lag- obviously it's not extremely real time, but with some lag- what you would do is you would have a very nice caching validation, which you would definitely need because once any relation changes, you would want to consume that an invalidated disk cache so that the next request comes in does not, because if, let's say, I canceled my reservation and still for one day I'm able to access, uh, all the critical details.
+extremely simple, right, okay.

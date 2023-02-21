@@ -1,6 +1,5 @@
 in this 11th video of this hashtable internal series, we take an in-depth look into the implementation of maps using hash tables, popularly called as hash maps.
 we will go into the implementation details and performance tunings of map and see how they are built on top of tables having chaining and on top of tables having open addressing.
-the first one is the live cohort discourse which you see on the left side, and the second one is the recorded course which you can see on the right side.
 thanks, so hash maps are amazing data structure.
 it's so powerful, it spans so many use cases, the core idea being we want to store application level key value pairs in a data structure and all the accesses would be key based.
 for example, if i am storing a as a key and value as apple, b as key, value as ball, c for cat, d for dog, i'd want to do lookups by key, right.
@@ -38,6 +37,7 @@ then integer 32 hash key, so that we avoid recomputation again and again.
 white star key: that would help us hold any type of key.
 void star value: that would help us hold any type of value and struct node star next, which is pointer to the next node in the linked list.
 a classic linked list implementation, just changes from the hashtag side.
+we are also storing value pointer over here, not the actual value but the pointer to the value, so that we only require four bytes of memory to hold it right.
 so destructor functions of value and key: very important when you are doing manual memory management.
 right implementation detail for hashtable training.
 so lookup function would return the value for the provided key, or null if it does not exist.
@@ -48,13 +48,15 @@ to avoid duplicates, we always have to check and insert, right, so we don't want
 are two keys, two exact same keys in my hash map, right?
 so that is where we cannot just blindly insert whatever we get at the head of the linked list, because problem right, you cannot have two keys, uh, in your hash map.
 so that is where approach number one: if the key is present, we do not insert at all, but we update.
+if the key is present, you delete the old key and reinsert.
 you would say, but why, if the key is already there, i can simply go and update the value.
+right, why would someone delete and reinsert?
 very interesting advantage of that: what this would do is we know that we are always inserting at the head of the list, which means that, upon iterating, the recent keys would be much quicker to find.
 so imagine if this is more like a uh, i'm reading my own rights kind of use case where i'm very, i'm very likely to read the recently written keys.
 so if you'd want to maintain that that most recently put keys are very likely to be accessed, it's better that we delete and we reinsert the key with the new value.
+think of it like caching, like like quicker access of key value pair.
 right approach number three is, if the key is present, we insert the key without deleting.
 without deleting, which means there would be multiple keys with the same, with the same name, right?
-so if i'm inserting k1 with v1 and then i'm inserting k1 with v2, both of them would exist in the linked list, like k1, v1 and another node that would be 1, v, 2, both of them would exist.
 right, because we do not have to check and compare and what not.
 this is very space inefficient because multiple nodes having the same key inefficient, but we get super fast insert.
 so if your workload is right, heavy when you need very fast inserts, then you might want to go for this option.
@@ -64,6 +66,7 @@ okay, now let's talk about implementing hashmap with hash tables and, uh, implem
 so, with open addressing, we are not using any auxiliary data structure like link list that we did with the chained approach, but we would be leveraging the free slots present in my hashtag, in my array already.
 second, the number of keys that are there in the array.
 okay, so your hash map would, overall, have the array that is, holding the size of the array, the used slots of the array and active keys count.
+so use slots like with uh, open addressing.
 when we're discussing about performance of a hash table, if you're not sure, go check that out right, we'll go into real depth of it on how it is implemented right.
 then avoid star key to hold the actual key of generic type void star value to hold value of generic type right to compare the key.
 we already have a key comparator function right now.

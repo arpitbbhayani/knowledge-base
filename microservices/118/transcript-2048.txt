@@ -12,7 +12,6 @@ right, then, how long should your search service wait for a response from the an
 and then, if it did not get response in that time, what action should search service take?
 but you need to be aware, hey, what if the timeout happens?
 so, first thing that could go wrong is when there is this, my inter service communication is where, let's say, somehow the request made by the search service never reached the analytics service.
-so it thought that it made a request and it is waiting for the response and all but your.
 let's say you are making an http call to analytic service to get that information.
 this is not possible in that case because your once, if you are unable to create your tcp connection, then you would definitely know about it, right, as part of your exception or something.
 but due to network congestion, due to an asynchronous communication, this could happen where you think that you fired a request and waiting for response, but this request never reached analytic service for some reason.
@@ -32,7 +31,6 @@ so just ignoring the, the, the no show of that other service that he, let me mov
 so here, one thing is that we either assume that the operations- like in some cases where we may assume that the operation is succeeded, where we did not get a response, like not in search and analytics use case but some other use case- let's say you want to asynchronously store something in the database and you put the message.
 but in reality it might have happened that message is not stored in rebatemq for other to consume, right, so it depends.
 hey, timeout happened, waited for the response.
-so there is a like: anytime you make a call to the service, you know what kind of exceptions to expect.
 so let's say, in case of search and analytic survey, this, this fits in very well.
 so let's say, with respect to configure and use default, let's say you have search service, an analytic service.
 your search service waited for less than 200 milliseconds for it to get response.

@@ -18,7 +18,6 @@ any place where you want to ensure reliability, you will use right ahead logging
 so the core idea, the core idea of right head logging, is, before you make the changes to actual data files, your tables, your indexes, what we saw in the first one, like, before you make changes here, write those changes, log those changes in a separate file which is open in a sync mode, as as we just discussed.
 this, this change, should be logged in a file before you make the update.
 yeah, before you flush the updates onto the desktop as part of your commit, it should be run first on the lock file and then the changes should be made onto the table or the index.
-the usual flow that would happen is, whenever you update a trigger, you log the entry.
 you may not log what exactly just needs to be like what exact changes were meant, but at least just dump the sql query or any query that you have fired with.
 hey, at least, because, let's say, you are updating a million rows, you are not waiting for those million rows update to be flushed onto the disk.
 you are just writing that, hey, update that the right, so that entire update statement is flushed onto the disk in the lock file, and then you take your own time to write those status onto the disk.
@@ -47,14 +46,12 @@ so, right ahead logging gives you a way to create a point in time snapshot.
 right, i'm just logging an entry, but it's not that simple.
 so when you write something onto the disk, right, it needs to be protected.
 by protection i mean that while, let's say, you are writing a line onto the disk, if your process crashes, you need to ensure that the thing that you have written onto the disk is proper.
-because, assuming as if you were writing a 100 character long line, you wrote like, you wrote the changes to 512 bytes, and then your machine crashed.
 so this way it ensures that if, while reading or while recovering from the crash, it will tell you: hey, the record that you are trying to write is is is corrupted, right, it will give you that error.
 it ensures that, hey, the changes that are written onto your log file, they are proper, they are intact, they are not meddled by anyone while transit, while flushing anywhere, right?
 so, right ahead, logging is by default enabled by all persistent databases out there.
 so whenever you are writing something like right ahead log is a very simple append only file, which means you can open the file only in append only mode.
 so a write ahead log is not just one file they write a headlock typically contains multiple set of files, each file called as a segment, and each segment is roughly 16 mb big.
 like each segment, like right ahead log is contains multiple segments, each segment is one file, each file, and each file is at max 16 mb big.
-in the previous video we talked about how disk reads happen in terms of blocks.
 it would help you, uh, it would help you build a very solid understanding on how disk io actually happens with help of blocks.
 so there, as soon as you write something into your uh right ahead log, it gives that entry an identifier.
 it's the sequence number of that entry in the log file.

@@ -1,4 +1,3 @@
-that needs to be done by constructing a very simple index- basic mathematics, to just understand what happens behind the scene.
 so in this one we'll take an example of a very simple, uh, a, a very simple sequential serialization, like here, like what we typically see with sql databases, right?
 so let's say we have a users table and it has five columns: id, name, h, bio and total blocks.
 so every column or every attribute over here will take up some space onto the disk, which means that when that attribute or when this row needs to be serialized, every attribute gets its particular size or its particular set of bytes stored onto the disk, right?
@@ -12,7 +11,6 @@ uh, like, it is split into 600 byte blocks, right, and whenever, like, let's say
 so here, if i am requesting these bytes, what your disk io will do is it will go to the disk like it will hit the disk, read that particular block, load it in memory, read these bytes and then send it to the user right and basically send it for the further processing right.
 so no matter how many bytes you would want to read, it's not that only those bytes are read, but the entire block is a brought into memory.
 you read that many bytes and then you basically continue your processing right.
-so block is the unit of data read from the disk.
 right now let's see how our users table that.
 so we know that each record or each row of my users table is 200 bytes long.
 we know that a block size for this example is 600 bytes, right?
@@ -45,7 +43,6 @@ our one disk block is 600 bytes.
 in order to represent your index onto your disk, like if you are serializing your index and storing it onto the disk, it will only require you two disk blocks to store that.
 now let us evaluate the same query with index and see how the flow would happen.
 like i'll go through my complete index without any optimization, right?
-so let's say i am firing the queries, find all users with h equal to 23.
 the first thing that i'll do is i'll iterate through all the entries in my index, right, and find out who for which h is 23.
 what i'll do is i'll go through this index, like, every entry, one by one, and i'll find all the entries whose age is equal to 23..
 all of these ids are something just which, which i am interested in because for these ids age is equal to 23, right?

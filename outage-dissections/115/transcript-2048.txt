@@ -21,7 +21,6 @@ being marked for deactivation, the team provided the ids of the entire cloud sit
 so the script that we used provided both mark for deletion, which is the capability that they use in the day-to-day operations, and permanently delete capability that is required to permanently remove the data.
 so now when you physically delete the row, it is not possible to recover it, right?
 gdpr gives us, or gives users, as in we, as an end consumer, the power like or the right to be forgotten, which means you can reach out to any gdpr compliant website and say: i want to delete all of my data from your website and i have the right to be forgotten, so delete the existence of mine from your system.
-they would have to permanently delete, uh, your data from their system, be it any subsystem, main database, transactional database, analytics database, whatever.
 and these are the key compliance reasons why people would have to physically hard delete the, the data and the script was executed with the wrong execution mode and the wrong id list, which means that, instead of doing soft delete, they did permanent delete.
 instead of doing it on the individual app, they did it on the customer website, so they permanently deleted the entire customer site, which led to this outage.
 so what happens is- this is the fourth inside that we get- like, how do companies in general give you high availability, right?
@@ -61,5 +60,4 @@ when they are iterating through those rows manually, they would have to extract 
 because they have to physically load the data, store into a database, extract the rows like, understand which rows needs to be restored first, which needs to be restored second, and then apply it onto their main db, and which is why their recovery process is taking weeks for them to happen.
 right, but when this at this scale, this happened for the large subset of users- like 400 customers, massive amount of data and some of them might be very large customers as well- it would take time for them to recover the data because they are doing that explicitly, going through row by row and trying to apply that right.
 when the site is restored again, which table to load first is, and while restoring, there is no data loss.
-so this is what exactly happened, like my speculation of what, what could have happened during this outage and some key insights about it.
 restore customer data extracted from backups, including users, permissions, etc.

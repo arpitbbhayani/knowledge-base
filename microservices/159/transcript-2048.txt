@@ -1,20 +1,10 @@
+running microservices in isolation does not make any sense.
 to get something done, multiple microservices need to talk to each other and put a task to completion.
 this requires services to interface with each other.
 so how would services interface and integrate?
+is there a common way to do it?
+are there any best practices to follow?
 in this video, we'll talk about the best practices we should follow while designing micro services such that it promotes inter-service integration while keeping them loosely coupled at the same time.
-but before we move forward, i'd like to talk to you about a course on system design that i have been running for over a year now.
-instead, a small, focused group of 50- 60 engineers every cohort will be brainstorming systems and designing it together.
-the course to date is enrolled by 600 plus engineers spanning 9 cohorts and ten countries.
-engineers from companies like google, microsoft, github, slack, facebook, tesla, yelp, flipkart, dream 11 and many, many, many more have taken this course and have some wonderful things to say.
-we cover topics raging from real-time text communication for slack to designing our own toy load balancer, to quick buzzes, live text commentary to doing impressions counting at scale for any advertisement business.
-in all we would cover roughly 28 questions and the detailed curriculum, uh split week by week, can be found on the course page, which is linked in the description down below.
-so if you're looking to learn system design from the first principles, you will love this course.
-the first one is the live cohort business which you see on the left side, and the second one is the recorded course which you can see on the right side.
-the live cover based course happens every two months and it will go on for eight weeks, while the recorded course contains the recordings from one of the past cohorts, as is.
-if you are in a hurry and want to binge learn system design, i would highly recommend you going for the recorded one.
-otherwise, the live code is where you can participate and discuss things live with me and the entire cohort and amplify your learnings.
-i put the link of uh the course in the description down below.
-so if you are interested to learn system design, go for it, check out the link in the description down below and i hope to see you in my next cohort.
 thanks, so the true power of microservices is unleashed when we make them work together, we make them work in sync, we make them integrate with each other.
 so there are few key things to remember or best practices to follow in order to ensure that we are keeping our services ready for integration, and it would make life simple for everyone who is integrating with it.
 right, four things to consider.
@@ -23,27 +13,40 @@ this is one of the most critical things to consider or to have whenever you are 
 so any changes you roll out, any changes you roll out, has to be forward as well as backward compatible.
 so you cannot just on the fly change the type of a column or remove a column or remove an attribute, because that would have catastrophic effect on the services that are intake, that are interfacing or integrating with you.
 so three key places where you should be very proactively thinking, hey, are these backward compatible?
+are these forward compatible or not?
+first of all, database migration.
 so we are using, let's say we use- relational database.
+it holds true for non-relational as well.
 but if you are using relational database, like, ensure that if you are adding a new column, removing a column or making alterations to a column, they are all backward compatible.
 some of these changes are not backward compatible, but that's what you have to keep in mind: that doing some things that would break your forward compatibility or your backward compatibility is wrong.
+so, first place, database migrations.
 second is api responses.
 so you have exposed an- uh, a rest end point and people are connecting or other services are connecting to that rest endpoint.
 now the api response that you send, or the way you are accepting the request, it has to be backward compatible.
 which means, let's say, if you are accepting a request with some particular query parameter, now you would say no, no, i'll stop supporting that, and now you'll now use another query parameter.
+that is wrong.
 you cannot abruptly change the way you are interfacing overnight, because it would break the consumers or other services without depending on it.
 third, messages sent in asynchronous communication, so obviously synchronous, like the previous one we discussed, where it was synchronous communication, a rest api being exposed and people using that to talk to microservices.
 this is a synchronous one, where a microservice puts a message in a broker, consumers pick it up from different service and they do something with it.
 right, the messages that you are sending needs to be forward as well as backward compatible.
 you cannot abruptly stop sending a particular field in a message unless you are very sure that this is not really concerned.
+so never make abrupt changes.
 the changes or the deletion of some attributes or keys can be gradual, but it should not be abrupt, right?
+always keep those things in mind.
 so some do's and don'ts around ensuring backward compatibility and forward compatibility.
 first of all, try to never using a very strong word, but in most cases it would not harm if you just continue to support a particular column or an attribute, right?
 so never change the type of a column or an attribute overnight, because if that would happen, the depending services would falter.
+similarly, never delete a column or an attribute.
 these are two very basic things that we ensure.
 we would almost ensure forward as well as backward compatibility.
 so never delete a call over an attribute in the api response message, passing or database.
 have this in your day to day checklist that whenever you are making any changes in your api response or your database, just ensure that, hey, will this break something?
+will this break anything that is consuming it?
+if it does, leave it as is, add a new column if required, or add a new attribute if required.
 second, make api interface, take agnostic.
+so variety field is very amazing.
+every 15 minutes, 30 minutes, something, new things come up.
+right, and it's always tempting to go for newer technologies because they are far more performant than the old ones.
 but what would happen is, if we make a wrong technology choice, what would happen is the way interfacing would happen would be coupled to that tool framework library, whatever you are using, right.
 so whenever you are picking a particular technology, ensure that the way you are defining your interface it has to be technology agnostic.
 for example, if i am using a particular library to expose an rpc endpoint, it should not be the case that the other services who has to integrate with this has to be written in a particular language with a particular library on a particular tech stack.
@@ -51,22 +54,30 @@ because this is, you know, because this is going against the rule of microservic
 we want things to be loosely coupled.
 we want services to make their own decision.
 a quick example: so let's say this is your first or the first microservice that the service that you are writing is exposing an rpc endpoint with a marshalling format that can only be understand by a library that is written only in java and would work only with mysql as a backend.
+just giving random example.
 but you get the intensity of the problem and the other services has to be written in java with that specific library, using mysql as a backend.
 no, never use a technology for never use a technology that would keep you very closely coupled, very closely coupled with, and or rather, which would demand other services to be written in a specific way.
 that is a very poor way to design microsoft, because we are- we are stealing autonomy from other service.
 every micro service needs to be autonomous.
+they need to be able to make their own decisions, but this is not allowing them to do so.
 you can have tight coupling within your micro service where you are adhering to a particular tech stack and return in a certain way, but your interfacing should not dictate other services to do key.
+no, no, no, you only have to do this, otherwise you cannot interface.
+right, that is very bad.
+third is dead simple consumption.
 most people think about writing good code.
 hey, my code is the best.
 the way i've written, structured and using low level design patterns, it's the best code ever.
+yeah, it is good.
 but think about: is it easy for other services to integrate with yours?
 if it is not, then your well-written code has no value, right?
 so given that microservices are built to interact with other microservices, they should be very- it should be extremely- simple for others to integrate.
+this is where you have to be consumer centric.
 you have to think that, hey, who are the consumers of my api?
 let me make life simple for them, right?
 so your api needs to be simple.
 the data format that you are sending has to be simple.
 for example, you cannot just use a random protocol to send the data or the random martial format instead of json.
+keep it simple, keep it predictable.
 so integration with your apis or your micro services needs to be simple enough so that it promotes integration.
 so if the way someone has to talk to microsoft it's super complex to set up or super complex to understand, people would not use it, and you can see it in day-to-day world with a lot of apis being available by sas providers or software as a service.
 that happens on the internet like people build companies around it.
@@ -81,12 +92,26 @@ so never let your interfacing services learn about internal implementation.
 so what needs to happen is the services that you have needs to have their own common interface.
 hey, if you'd want to talk to me, make this rest api call and get the response.
 they should not know how your db structured, what column your db has or what caching strategy are you using, or they directly talking to your db or your cache to get things done.
+that is stupid, because if you do that, what would happen is: if they are internally so, if they are somehow binding themselves to an internal implementation of yours, what if you change that implementation?
 how would the other service know about it?
 so unnecessarily, you are creating a bounded coupling or a very tight coupling between two services just because the other service knows about the internal implementation of it.
 keep your interfaces very straight, very simple for others to interact, rather than making it like asking the gate.
 you can directly talk to our database and do that, or know an internal detail and try to exploit it.
+no, don't do that, right.
+no, don't do that, right.
+no, don't do that, right.
+no, don't do that, right.
 what this would also prevent you from doing is, if there is an- and if if there is a dependency on your internal implementation from your other service, what would happen is your upgrades become very difficult, because for you to upgrade it, what would happen?
+they would have to also change.
 it would form a synchronous dependency between the two services, unnecessarily right, and a worst thing that would all this would affect is it would affect your technical debt, because when you are binding to other surveys or an internal implementation, you are incurring tech that now you cannot change the tech stack quickly and move fast and you lose your agility and it would reduce your shipping velocity eventually, right?
+so very important point to understand that have a very strict interface to interface communication.
 be dressed rpc whatever you'd like, but it has to be technology agnostic, it has to be very simple and it has to be very strict on the interface.
 no one should know the internal details of each other, right?
+okay, that's it.
 these are the four key points that you should definitely be think are four key points and best practices that you should follow while designing micro services in order to ensure that your micro services interface and integrate with each other very easily, right, nice, so that's it.
+that's it for this video.
+i hope you like this one.
+uh, if you guys like this video, give this video a thumbs up.
+if you guys like the channel, give this channel a sub.
+i post three in-depth engineering videos every week and i'll see you in the next one.
+thanks.

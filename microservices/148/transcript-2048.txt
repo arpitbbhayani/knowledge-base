@@ -1,10 +1,6 @@
 so micro services should be loosely coupled in, autonomous, so that they can take their own decision and be as performant as they can be.
 a high level architecture pattern that allows us to achieve this is the database per service pattern, in which each microservice owns its database and can take independent decisions about it.
 in this video, we quickly talk about database per service architecture pattern, look how it helps in modeling massive systems, understand the advantages of adopting it and conclude by going through some drawbacks of this architecture pattern.
-but before we move forward, i'd like to talk to you about a course on system design that i have been running for over a year now.
-engineers from companies like google, microsoft, github, slack, facebook, tesla, yelp, flipkart, dream 11 and many, many, many more have taken this course and have some wonderful things to say.
-we cover topics ranging from real-time text communication for slack to designing our own toy load balancer, to greek buses, live text commentary to doing impressions counting at scale for any advertisement business.
-the first one is the live cohort discourse which you see on the left side, and the second one is the recorded course which you can see on the right side.
 thanks, so almost all micro services need some kind of data store to hold and persist the state of its information.
 for example, order service will need to store the incoming orders somewhere in some database.
 payment service would need to store the incoming payments or the refunds that they are making into some database.
@@ -42,6 +38,7 @@ for example, in case of a chat system, a partitioned way of scaling is good for 
 that's where you might want to have a partition database.
 on the other hand, where you are building something like a payment service, you might want to go for a very strong, asset compliant database like mysql or postgres, so that your data never goes in an inconsistent state.
 scaling for system like chat, you could add, read replicas or you could to handle rights.
+you would want to go for partitions for scaling payments.
 so that's where, for your specific service, for your specific use case, you would want to pick- or you should be picking- the best scaling strategy that would keep the cost in check.
 next is if your database goes down when you have data- and in most cases, most outages that happen in the world are either due to dns or due to a database.
 so, because it's in most cases it is due to database, or your database choking, or your database is under heavy load, or it went into a reboot state, something, something happened with your data.
@@ -57,7 +54,10 @@ it's not as simple as you start begin transaction and transaction like you do in
 you are actually slowing it down because it is that slow to implement, because you have, because there are a lot of distributed components that come into the picture and it takes time for you to guarantee consistency and what not as part of disabled transaction.
 so i would highly recommend you check that out on my channel or on my website: uh, implementing distributed transaction using two phase commit, where i've actually implemented that, and if you are- and you would realize that disabilities are not just theoretical- you can actually physically implement those things and i would highly encourage you to check that out, okay, second disadvantage is con, not disadvantage, but a little, uh, a little hiccup where conveying updates across services is difficult, like, for example, if the two services would have shared the database, they could like directly talk to the database and see the latest state of it, right.
 but here let's say you have, you are building social network and you have a post service on which, like whenever user posts something that comes to this service, and it has its own database where it is persistent.
+now what would happen is, anytime a new post is created, you have to trigger the feed service or you have to let the feed service know about that newly created post so that your feed service can put it into the feed of your followers right now.
+but the idea here is, from post service to feed service, some way you have to flow the updates right, so you have to convey the update.
 or graph database- right, your teams need to, your sre team, or even, in your case, if you are managing it, you need to have those expertise into, first of all, writing efficient queries.
+so you need to have that knowledge to manage the database, monitor it, and it's not very trivial.
 it's not that they don't want to change, but it's more like managing them.
 slash concerns about database per service architecture, and i hope it was pretty uh exhaustive per se, though i try to give you a little bit of insights around everything on how those things happen and, uh, how we function.
 so, yeah, now you understand database per service architecture, uh, advantages of it, disadvantages of it: modeling a social network, different kinds of databases- we just trust upon it a few times.

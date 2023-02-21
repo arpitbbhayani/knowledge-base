@@ -2,14 +2,11 @@ in this video, i'll walk you through on the two approaches that i have been usin
 right, we'll start with what is system design, then we'll take a look at the two approaches and then i'll share the three key pointers that you should remember while you're designing any system out there.
 instead, it will be a collaborative environment where every single person who is part of the cohort will can pitch in his or her ideas and we will evolve our system around that.
 right, every single problem statement comes with a brainstorming session where we all together brainstorm and evolve our system.
-instead of just saying, hey, we'll use a particular queue, we'll have the justification why we use only that queue, why we use that particular database, why sequel, why not no sql?
-right, people from all top companies have taken this course and the outline is very intriguing.
 we start with the core foundation of the course where we design online offline indicator.
 then the third week is all about going distributed, where we design our load balancer.
 i'll walk you through the actual code of a toy load balancer and understand how tcp connections are managed and how simple it is to build load balancer.
 week five is all about building your own storage.
 indians, like we'll build that intuition on, if you were to ever design your storage agent, how would you do that right?
-then week six is about building high throughput system.
 seven is about building uh ir systems, basically information retrieval systems, and add-on designs, where we design our own message brokers like sqs, where we design distributed task scheduler.
 right, i have also attached a video verbatim, as is from my first code where we designed and scaled instagram notifications.
 i will highly encourage you to check this video out, right.

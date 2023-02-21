@@ -1,18 +1,7 @@
 so leader election helps our distributed systems to auto recover without any human intervention and make the system autonomous.
 in this video, we take a detailed look into leader election algorithm, called time slice, and this algorithm is extremely impractical but still provides us with a great insight into a seemingly weird implementation.
-but before we move forward, i'd like to talk to you about a course on system design that i have been running for over a year now.
-instead, a small, focused group of 50- 60 engineers every cohort will be brainstorming systems and designing it together.
-the course to date is enrolled by 600 plus engineers spanning nine cohorts and 10 countries.
-engineers from companies like google, microsoft, github, slack, facebook, tesla, yelp, flipkart, dream 11 and many, many, many more have taken this course and have some wonderful things to say.
-we cover topics ranging from real-time text communication for slack to designing our own toy load balancer, to greek business live text commentary, to doing impressions counting at scale for any advertisement business.
-in all we would cover roughly 28 questions and the detailed curriculum- uh split week by week, can be found on the course page, which is linked in the description down below.
-so if you're looking to learn system design from the first principles, you will love this course.
-the first one is the live cohort discourse which you see on the left side, and the second one is the recorded course which you can see on the right side.
-the live code base course happens every two months and it will go on for eight weeks, while the recorded course contains the recordings from one of the past cohorts, as is.
-i put the link of the course in the description down below.
-so if you are interested to learn system design.
-go for it, check out the link in the description down below and i hope to see you in my next cohort.
 thanks.
+so in a distributed system, the leader node may go down, which is, which means that some other node needs to be the new leader either.
 this can be done by a, by an engineer configuring a node to be the new leader, but it requires time.
 that's why it's always better if your system auto heals itself, which is where leader election algorithm kicks in.
 as soon as the node detects that the leader is down, they trigger a leader election and they elect a new leader in the system and your system auto restores it when your system basically restores itself.
@@ -21,6 +10,7 @@ now, this time slice is very impractical algorithm, but it's very interesting.
 it's like sleep sort, but on steroids, right.
 so what happens is that time slice algorithm is an unbounded, so you would not know when your algorithm would stop.
 it's an unbounded algorithm, impractical, but synchronous, right, as i mentioned, like the synchronous algorithm where every node knows that hey, now the election is starting and now we are moving in first place, second phase or something like that.
+everything is happening synchronously.
 right, so, it's a synchronous algorithm which is unbounded, impractical but very interesting, right.
 so here what happens is it assumes that each node in the network is placed on a unidirectional ring.
 this is the bare minimum assumption that we are making: that every node is placed on a unidirectional ring and it knows its immediate neighbor.
@@ -32,6 +22,8 @@ so if this network has six nodes or seven nodes, every single no, or or every si
 right, the algorithm is very, very, very slow and it elects the node with the minimum minimum uid as the new leader, right, very important up until now, algorithms that we saw, most algorithms of elect the node with the maximum uid.
 here it elects the node with the minimum uid, the number of messages passed, which is the communication complexity is extremely low, it's just order of n, but the time is very high.
 the time it takes is order of n into u mean, which is the minimum uid of the network.
+okay, then let's talk about the algorithm.
+so here, what happens is the algorithm happens in phases: phase 1, 2, 3, 4 and so on and so forth.
 right, each phase consists of n rounds, where n is the number of nodes in the system.
 so if the number of nodes is six, first phase would have six rounds, second phase would have six rounds, third phase would have six rounds, and so on and so forth.
 right, so each phase has end rounds in it.
@@ -42,53 +34,78 @@ so if nothing happens, then the election moves to phase two.
 in phase two, the node with uid2 can send a message.
 in a phase i, a node cannot forward a message from any node except i.
 right, any message that contains any uid except i.
+you can very clearly see that a lot of rounds would go waste.
+but this is what the algorithm is all about.
+so let me take a a simple example to help you understand this better.
 so let's say, in my distributed network i have nodes- uh, i have nodes 3, 4, 5, 11, 13 and 18 right, and now these nodes- it needs to elect a leader amongst themselves.
 so now what would happen as soon as my leader election algorithm starts?
 it starts from phase one.
 so in phase one, what would happen?
 phase one, round one, phase one, because there is no node has which has uid one.
+the minimum uid is three.
+so phase one for all six rounds of phase one.
 nothing happens right.
+then initiates phase two.
 any node in my system has uid2.
 no, so nothing happens for next 6 rounds.
 so first 12 rounds are gone, right.
 no messages exchange, no leader elected.
+it's waste of first 12 rounds.
+and now we enter phase 3.
 as soon as we enter phase 3, now magic starts to happen.
 as soon as we interface three, what we would know that node with uid three would be less key array.
+up until now i did not receive any message.
+now it's beginning of phase three.
 so, hey, i, i am the leader now because i have the minimum uid.
 as soon as this happens, as soon as the node knows, hey, we have entered the phase three, i did not receive any message, i am the leader now.
+so, now node.
 now the node with uid3 will react and because it has not received any message- it knows that it is the new leader- it creates an announcement message.
 it creates an announcement message with its own id 3 and it then sends it to its neighbor.
 so phase 3, round 1: node with uid 3 creates an announcement message and sends it to its neighbor which is node 11 or node 17, something, any node in its right.
+it does that right.
+so now what would happen?
 round three, it sends it to its neighbor 11, ah, sorry, it basically sends it to its immediate neighbor in the right now.
 phase three, round two.
 what the rule was that a node like a message, with that like interface i, the announcement message with i in it, can be sent.
 so because this node 17 has the message with id 3, with uid 3, and it is phase 3, in round 2 the message will be forwarded to the next node, so 4, and then in the next one it will go to 13, in the next round it will go to 8 and the next side will go to 5..
 so in the phase 3, all n rounds the announcement message will send, will be moved from one node to another node, to another node, to another node, right?
+so this is what the synchronous algorithm is all about.
 because everyone knows that, hey, we are in phase three, round one, round two, round three, round four.
 because this is happening synchronously, everyone knows that with each passing time, with each passing ground, i have to forward the message.
 so everyone, every node, just simply knows that we are in this round.
 i have to take this message because it has the same uid.
 i'll be forwarding it to the, to my immediate neighbor, and when the next one comes in, the new, the next node would know: hey, i have message with this uid and we are in this particular phase.
 so now, here, what happens is, up until the time we see the minimum uid, those many rounds or those many faces are gone.
+so those many phases uh are gone.
 and now the bare minimum- sorry, the minimum uid that you have in the network is what is what is elected as the leader and over the next end rounds, everyone in the network knows about this new leader, right?
 so in this example that we take, uh, in this example that we took, it was node uid 3, which was the least one, so which is where your new leader was elected as node id 3.
 and in the phase 3, for end rounds, every node in the network knew about this new leader.
+and after that the election process stops.
+and after that the election process stops.
 and this is how your election process halts: extremely slow, but it still works what it's supposed to do, right.
 the number of messages exchanged are just order n.
 if i have n nodes in the system, the number of messages exchanges n, because up until phase i, where i is my minimum node, nothing happens.
+there is no message exchange.
 so null messages or receipt of no message implies that there is nothing happening in the system, right?
+so order n is what is the message?
 complexity of this algorithm: extremely efficient, but the time complexity is pathetic because for n rounds, up until we see umin, up until we see the minimum uid in the network, we are just waiting and waiting, and waiting.
 so that's the order, uh, bc, that's the time complexity.
 what if the minimum id is 1000, if the minimum id is 1000 in the network, for 1000, right, for 1000 phases, and if let's say, there are n iterations?
+we have no doubt, uh, like any n minus one into one thousand, we are not doing anything.
 for each of the round, we start forwarding the message, and which is what the slowness of this algorithm is all about, right?
 so, given that the messages are not even sent until we see the start of phase i, which is equal to u min the minimum uid in the network.
 we are just waiting and waiting and waiting, and hence the time complexity is unbounded.
 it is dependent on the minimum uid of this network, and which makes this algorithm pathetically slow and impractical, but it's still very interesting.
 it's still very interesting about how algorithms can be thought, about how a system without having any coordination works and- this is the beauty of it- on how you can split it into phases and then rounds, and everyone knows, hey, now we are moving to the next phase or the next round.
 right, and this is why this algorithm is pretty interesting to understand.
+it gives us a way on to thinking, hey, this is also possible, or basically, this is how systems can be built.
 right, you may take this, uh, you may take an inspiration from this algorithm and put it at 100 different places, and which is why knowing such algorithms make sense, because it's not just efficient algorithm that rules the world.
 mostly inefficient, impractical algorithms give you much better insights about networks and systems and and in general, computer science.
 right, because that's where you need to be very vt or very smart with the implementation.
+so, yeah, that's it for this video.
+if you guys like this.
 we and i hope you- had fun learning this time slice algorithm.
 it was like sleep sword per se and, uh, quite, quite interesting to know about, right.
+if you guys like this video, give this video a massive thumbs up.
+if you guys like the channel, give this channel a sup.
 thanks [Music] you.

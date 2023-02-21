@@ -1,15 +1,14 @@
 so the hash table needs to be resized in order to maintain a consistent performance.
 in this ninth week of the hash table internal series, we go into the implementation details of resize operation and talk about when and where in the code should we trigger a resize, two ways to implement resize while using chain hashing and things to remember while resizing a hash table that uses open addressing.
-but before we move forward, i'd like to talk to you about a course on system design that i have been running for over a year now.
-engineers from companies like google, microsoft, github, slack, facebook, tesla, yelp, flipkart, dream 11 and many, many, many more have taken this course and have some wonderful things to say.
-the first one is the live cohort discourse which you see on the left side, and the second one is the recorded course which you can see on the right side.
 load factor: a simple ratio of the number of keys that are there in your hash table divided by the number of slots that you have, and we see that as the load factor increases, as it approaches 1, the performance of the performance or the lookup time of your hash table starts to degrade, and and it primarily happens because of two reasons.
 but now let's talk about how to actually implement it with chain hashing and with open addressing.
 okay, so let's talk about chain hashing first.
 to decide when to resize, we definitely need to know the load factor and hence we need to keep a track of the number of keys that are there in the hash table and the number of slots in the hash table, right, we need to know this information.
 so that is where any struct or class that we would use to implement this needs to have those two fields or those two attributes with it: that anytime you are inserting a new key, you might have a variable that says count underscore keys that becomes plus plus every time you insert, right, and then you would have the length of that array or the length of the hash table that you know, the total number of slots that you have.
 so every time, upon insert, you would compute alpha, which is equal to count underscore keys divided by length underscore table.
+when this alpha hits or becomes greater than 0.5, we resize, right, we resize the table and make it twice its size to maintain a consistent performance, right?
 so this is what your actually place, your resize function right.
+you do the resize if needed, right?
 second, in the chain hashing itself, we have to shrink the table.
 also, because it is very much possible that you have deleted a bunch of keys and then what happened is you are having a large number of empty slots, so you're wasting a lot of contiguous memory in the uh.
 so we saw that we would shrink when alpha or when a load factor becomes one by eight, and this would be triggered when you invoke delete key operation.
@@ -29,6 +28,7 @@ second, one is slightly efficient- obviously slightly efficient, but the code mi
 these key factors that you would have to think about when you do resizing of a hash table that uses chain hashing.
 now let's talk about resizing of a hash table that uses open addressing.
 instead, it finds the empty slots from the hash table and tries to place the key there.
+we know that when we are deleting- see insert would be straightforward.
 you literally have to iterate through all the keys and put it into the new table.
 we know that we always soft delete, we always stop, delete the element so that we can reach the keys further in the collision chain.
 simple example: let's say in my hash table i have keys in the order: k3, k6, k1, ky, k2, k4, k8, k7 and k4, k5, k2 and k4 have collided to index 2, right.
@@ -41,9 +41,11 @@ first is the keys counter, which keeps track of active keys of your hash table r
 so these are the keys which are actually active in your hash table, so you would be not counting soft deleted keys over here.
 so, which means whenever you are inserting a key, you do this keys counter plus plus.
 when you are deleting a key, you do keys counter minus, minus, right.
+and then you would have second counter, called used counter, whose job is to keep track of slots that are occupied.
 it would consider, or it would also consider, the keys that are deleted, so it would count them as well.
 whenever you are inserting a key, you would do used counter plus plus, and when you are deleting a key, you would not do not do anything because your keys is still being used.
 so this way, with keys counter, you would know the exact number of active keys in your hash table, while the used counter would say the exact number of slots that are occupied in your hash table with deleted keys or with the actual keys of your hash table.
+so here, what you'll do is, instead of using your keys counter to main to measure the load factor, you would use the used counter to find the load factor.
 so now your load factor alpha is equal to the number of keys used, or the number of slots used in your hash table, divided by the total number of slots.
 this means that we are accounting for the soft deleted keys as well, right, this is a slight change in the implementation part.
 so let's see what happens when we do trigger, and so your resize is triggered when you try to insert into it.

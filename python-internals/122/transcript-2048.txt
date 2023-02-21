@@ -15,13 +15,11 @@ what you would want to do, it is: you would want to initialize the variable and 
 you want to define the variable and take input as part of condition itself and let this evaluate and use this particular thing, uh, as part of, and, and use the value which is being input in command and uh, and put it against and basically compare it against the exit string.
 and this is exactly where your uh walrus operator kicks in, where your assignment expression kicks in: uh, uh.
 what would happen is, since we are using colon equal to which is, which makes this uh as an assignment expression and not just a simple assignment statement, it would take an input, assign it to the variable command, and now this variable gets defined in the scope and i can use it within the while loop.
-and since assignment expression returns it, so the anything that is being assigned to command gets also returned.
 it gets me all the file i do pwd and i do exit it grace, it gracefully exited my shell, right.
 so this is exactly where your walrus operator assignment expression fits in really nicely.
 so it makes your code look really intuitive.
 uh, the problem is very interesting, so i'll just open up a shell which i built using the very code that's there on my machine.
 so now what we do it is: we have seen that a normal assignment looks like a equal to 10 and a gets value 10..
-now, instead of using assignment, let's try using wordpress operator.
 so you would expect this to work as a normal assignment statement, but it doesn't.
 it works seamlessly, and my value 10 gets assigned to a.
 if i do it with b colon equal to 10, and you'd see that b gets defined and b end the value 10.
@@ -75,7 +73,6 @@ in order to do this, let's look out for where expression statement is used.
 let me just find expression statement in dot c files.
 so when we look for it, we get an astc, which is an abstract syntax tree file for c, and let's open this and what we get is: we get and sorry, yeah, so we what?
 this should be the one that is handling expression statement and which is the rule in which we made the change.
-so what it would have it is when i'll have a colon equal to 10.
 it would give me number of children to be 3, because it's like a colon equal to and 10, so 3 children of my.
 here it checks for if num equal to equal to one, which means if it has just one child, as in, if i just type a and then i hit enter, then what i mean is i want to get the value of a and print it there, right?
 it is doing for test list and returning null or if no error, then it is returning an expression which is with basically treating this statement as a normal expression and evaluate it.

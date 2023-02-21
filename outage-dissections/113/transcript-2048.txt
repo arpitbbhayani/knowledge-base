@@ -38,7 +38,6 @@ but in any case it's an exception of the value is not yet inserted into the tabl
 so what we have to do is integer hit the limit.
 so what we have to do is integer hit the limit.
 so first, uh, i'll just share my other screen, okay, so we'll start going through this particular part on seeing what exactly happens and how we go about it.
-now comes the main part, because we got a duplicate key error.
 like from the databases side, what could have actually happened when, right through a duplicate key error?
 so, given that it is stopping there now, from that outer increment we got that same value with the max value, and now when we are trying to insert the row, it would get the same id.
 it would try to insert it, but hey, the row exist with the same id, so then insert would fail because of duplicate key error and not because of change data.
@@ -84,4 +83,3 @@ so all of that will be slowly copied into this user's table.
 it will be part of this user's old table and the data will be slowly migrated and this can go on for days to be realized.
 there are many ways to handle it, but if you ever hit into an outage where this hits the max value, this is what you should be doing, right?
 amazing, it was a really fun thing when i first i didn't know- i saw hitting limit and that's where we moved into a distributed id generator.
-so i hope you learned- obviously, like always when we learn- more from the dissections then usual work, so that's the fun part of it.

@@ -43,6 +43,7 @@ if you look at this, all of this, this algorithm is already trying to increase y
 so, every 30 seconds, one additional interested peer is unchoked at random.
 so, for example, IMA, I have a bunch of pieces, a lot of peers are interested in me, right, I am first ordering them by download rate that I'll get.
 I am unblocking three of them, I'm unchocking three of them, right, but every 30 second I'll, from All N minus three peers that are there, I'll unchoke one at random.
+I don't want anything else from him, from that particular peer, but I'm willing to give one piece or or a few pieces that that person wants right?
 for example, let's say a new peer entered the system and that Beyond has amazing download speed of, let's say, 500 Mbps then, but if no one gives it a chance, how would people leverage that download speed right?
 so that is where, uh, what would happen is you are giving chance to the new peers to evaluate their download capacity so that other people would get the faster downwards right?
 So eventually, after this step, you would exactly unchoke four peers, three having the fastest download.
@@ -56,10 +57,11 @@ very high chance that the net, the peer who is choked by everyone, gets unchoked
 but to increase the number of optimistic unchokes, it retaliates and take a lot upload to anyone, increasing the number of optimistic unchokes and thus the algorithm moves forward, maximizing the download speed in the system.
 so with the for a seeder, the choke algorithm is executed every 10 seconds or every time a peer leaves a peer set, similar to the Leisure State, and all right.
 now, first step: the algorithm orders peers according to the time they were last unchoked.
+very simple case: what would you do when you want to choose who to unchoke?
 this way, what would happen is the I because you cannot just give, because you just cannot give, like sorry, why you cannot order it by upload speed.
+list a Free Rider with a very high download speed.
 a Free Rider with a very fast download speed can come in the network and your Cedar would continuously give it to them.
 problem because you'd want to penalize the Free Rider, right?
-you would not have your sorting criteria based on the download speed of the peer or the upload speed of- or sorry, the download speed of- the peer, but instead you do it on the last unchoked time, because your Free Rider will be not unchoked frequently, so they would move back in the list with respect to the sorted criteria.
 so the algorithm orders the peers according to the time they were last unchoked, just to prevent Free Rider from leveraging it.
 so higher upload rate is a priority, right, but before that you would be ordering it by the last unchoked time, so that Free Riders- last one, took the like- they would be very infrequently unchoked, so they would be always behind or they would be always lagging in the sorted list.
 what you are ensuring is you are giving the most to the network as a seeder, while not getting overwhelmed how Cedar is not unchoking based on the upload rate.

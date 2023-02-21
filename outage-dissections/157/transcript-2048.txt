@@ -2,8 +2,6 @@ so github team was switching their master database from one node to another.
 while doing this, something went wrong and the new database crashed.
 in this video, we dissect this incident and understand what happens when a company announces a planned maintenance window.
 how they sold it and ran some really cool things- really cool things about switching databases and solving data divergence problem.
-engineers from companies like google, microsoft, github, slack, facebook, tesla, yelp, flipkart, dream 11 and many, many, many more have taken this course and have some wonderful things to say.
-the first one is the live cohort business which you see on the left side, and the second one is the recorded course, which you can see on the right side.
 thanks, so, like always, we start with the incident report and here it goes.
 what it says: for a period of approximately 5 hours, users may have observed delays before data returned to their affected database cluster were visible in the web interface and api.
 this tells us that user observing delays- which means not data loss, but delays in data being visible on the interface or api after it is being written in through their database- this clearly shows.
@@ -23,6 +21,7 @@ apart from security patches, there are other reasons why you might have to do ve
 let's say you want to alter the cache configuration of your database so that it is performing faster.
 let's say you want to change switch from one index type to another index type, right, so when you do that, it is not an on the fly operation.
 right, so that can also be done in this plan maintenance window.
+typically, your cloud provider wants to replace an underlying hardware, so it leverages that maintenance window in order to replace the underlying hardware.
 right, and this typically done because hardware goes through, uh, basically wear and tear and it would like s type.
 same thing happens with any hardware in the world, even with the cloud provider.
 typically this does not happen, but doing a periodic reboot solves a lot of problem, right?
@@ -40,6 +39,7 @@ so when they were switching the master from old to new, what happened is as soon
 that crashed, which means they flipped the traffic to the new master and it crashed.
 so if that master crashed, we already had an old instance.
 because as soon as we flipped, as soon as we flipped it to the new master, it crashed.
+so what github says is: to mitigate the impact of the crash, we manually redirected traffic back to the original primary.
 and that's pretty smart idea, right, you already have the database and you do it.
 as soon as this crashed, this flipped out the traffic to the old master and it should have worked, and it did.
 the crash to my sequel primary had already served approximately six seconds of traffic, specifically right traffic.
@@ -92,3 +92,4 @@ it took them five hours to get rid of all replication lag and go to full read ca
 so whenever company says incident, it does not typically imply the complete outage, but more like, hey, something went wrong, we acknowledge it and this is what we learned from it and would ensure that we are not making the same mistakes again.
 if you're really very curious, i would highly, highly, highly encourage you to read about bin lock.
 bin lock coordinates how synchronous and asynchronous replication happens.
+five, six, six sequel query that you have to fire and you are sorted for life right.

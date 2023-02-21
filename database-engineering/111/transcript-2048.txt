@@ -17,7 +17,6 @@ so now what we'll do it is, if i were to so, we'll start with inserting categori
 we want to insert 50 categories.
 so what we'll do it is what we would do over here is we would want to pipe the insert and the select statement.
 so in insert you can either explicitly specify values that you would want to insert for each row or you can specify that insert from the select.
-so what i'll do is insert into this topic and i'll pass a select query to this and uh, what i'll do is i'll select, uh, i'll select id from.
 when i do this, output of this command is having just 50 rows uh, from 0, 0, 0 to 0, 4, 9, right?
 so we'll be using this to create 50 uh topics now, when i would want this.
 so what i want is i want three columns here: name, parent id and type.
@@ -33,7 +32,6 @@ so we have inserted fifty rows into table.
 right now comes to the next part, where we want to, uh, where we want to insert what sub?
 we want to insert sub categories, similar to how we insert categories, we'll be inserting subcategories.
 so what we would want to do, it is we would want to insert into topics name, parent id and type.
-the parent id is something that would be specific to every subcategory, right?
 so we'll start by yeah, so, and the type will be 2, okay, so now, what we now, what remains is we want to uh, handle this id and this parent id.
 so if i take a join without specifying where clause, it literally matches every single row to every other of that other table, right?
 instead of doing this, if i use topics as t1 and counters are c2, right.

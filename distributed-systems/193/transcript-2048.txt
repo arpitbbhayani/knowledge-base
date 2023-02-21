@@ -2,23 +2,12 @@ so byzantine agreement is an important problem to address in a distributed netwo
 it is all about being tolerant of the nodes that are malicious in nature, which means that they are corrupt and are trying to ruin the sanity, integrity and correctness of the network.
 right in this video, we talk about an algorithm that gathers an exponential amount of information to build a robust understanding of different values proposed by different nodes.
 once we have this information, we reach a consensus such that, even if there are a few nodes who are malicious in nature, who sent random values to us, we would still be reaching the correct consensus.
-but before we move forward, i'd like to talk to you about a course on system design that i have been running for over a year now.
-instead, a small, focused group of 50- 60 engineers every cohort will be brainstorming systems and designing it together.
-the course to date is enrolled by 600 plus engineers spanning nine cohorts and 10 countries.
-engineers from companies like google, microsoft, github, slack, facebook, tesla, yelp, flipkart, dream 11 and many, many, many more have taken this course and have some wonderful things to say.
-the coolest part about the course is the depth we go into and the breadth we cover.
-we cover topics ranging from real-time text communication for slack to designing our own toy load balancer, to greek business live text commentary to doing impressions counting at scale for any advertisement business.
-in all we would cover roughly 28 questions and the detailed curriculum, split week by week, can be found on the course page, which is linked in the description down below.
-so if you're looking to learn system design from the first principles, you will love this course.
-the first one is the live cohort discourse, which you see on the left side, and the second one is the recorded course, which you can see on the right side.
-the live codebase course happens every two months and it will go on for eight weeks, while the recorded course contains the recordings from one of the past cohorts, as is.
-if you are in a hurry and want to binge learn system design, i would highly recommend you going for the recorded one.
-otherwise, the live code is where you can participate and discuss things live with me and the entire cohort and amplify your learnings.
-the course details, prerequisites, testimonials can be found on the course page at pitt binary dot me slash master class, and i would highly recommend you to check that out.
-i put the link of the course in the description down below.
-check out the link in the description down below and i hope to see you in my next cohort.
+see you in my next cohort.
 thanks, so, reaching consensus is extremely important in a distributed network.
 say, we have a database cluster in which one node thinks the value of price is one thousand dollars.
+well, the other note thinks the value of price is two thousand dollars.
+now, depending on where the request goes, we either work with one thousand or two thousand.
+this gives a very inconsistent view to our clients.
 right, this is where the nodes needs to talk to, needs to talk to each other and come to a consensus key: what the value of price is, either 1000 or 2000.
 this is the problem of distributed consensus right now.
 we assumed up until now we always assume- that the nodes are genuinely, they are all genuine nodes, which means that the value that they are claiming they may be lagging in time, they may be slow, they may have crash, they may have some corruption, something right, but they are all genuine in nature.
@@ -26,6 +15,7 @@ what byzantine's agreement says is that, let's say, a node is malicious in natur
 so, no matter what the nodes is deliberately trying to say- you know, the value is 5000, random number, right.
 and if node is trying to do that, how can we reach a consensus, even in the presence of such nodes in the distributed network?
 this is where we talk about an algorithm called exponential information gathering algorithm- eig algorithm, to solve this part.
+now, eig algorithm works on a data structure called eig data structure.
 the idea is to gather exponential amount of information so that we can reach the correct consensus, or we can reach the proper consensus that we should.
 eig data structure is a tree that grows exponentially.
 right, this tree is constructed level by level.
@@ -36,20 +26,30 @@ so at level k, we would have all possible permutations of length k of all the no
 so, for example, if i have nodes a, b and c in the network, then and if i am constructing a three level deep eig tree, so at the leaf of eig tree, what i would have is i would have all possible permutations of a, b and c.
 now the idea of this construction is pretty simple: that my root node is labeled as an empty string, then i have the children of.
 it is a, b and c, then ace children, like root node, had three children, then a- this worst level children- would have two children, then then only one child, right.
+so a will have two children, a, b and a, c, b will have two children, b, a and b, c, c will have two children, c, a and c b.
+now a, b will have one child, abc, ac will have one child, acb, and so on and so forth.
 this way we would be covering the entire permutation range of length k at the after a div at the level k in my eig tree right.
 this is the exponential information that will be gathering across the network.
 right, okay, now the algorithm.
 now here, the algorithm that we'll be talking about is how we would be achieving, we would be solving the byzantines agreement problem.
+okay, so here, the eig tree is not central tree.
 every node in the distributed network is sending information to every other node, such that every node, eventually, will have the exact same eig tree.
 right now, the algorithm we will be discussing will be tolerant to f faulty processes, which means that, at max, f processes can be- uh, air processes can be malicious or they are trying to deliberately ruin the sanity of the system.
 right, so we are will be making tolerant to f processors.
+at max, this algorithm would work when the number of nodes are greater than 3 times f, which means if i am tolerant to one faulty process, i need at least three nodes, or at least four nodes, rather, for my algorithm to work, which means that the number of nodes are much larger than the number of faulty processes that i may have in my system.
 right, okay, so now, when a process sends informed information- maybe some junk, maybe some garbage value- to other nodes participating in the consensus, the consensus should not be prone to that.
+this is the problem statement.
+now, the flow here would be pretty simple.
 the process propagates the value for f plus one routes and each processor node builds its own eig tree, right?
+the idea is pretty simple.
 so every node is constructing its own eig tree independently for f plus one levels and the value it receives will be put into that corresponding path.
 it's like a try: it would be put into that corresponding path and then eventually the judgment would be made again.
 construction is covered in the previous video.
+i would highly recommend you to check that out.
+i would highly recommend you to check that out.
 the idea is pretty simple: sending the value to the nodes of the path at n minus 1, at k minus 1 level, such that you are not in that path.
 it basically covers the permutation, right?
+okay, now, while exchanging this information.
 right, because at every round every node will send its information to every other node of the previous lab, right?
 so if a node receives a garbage value, the node ignores it.
 for example, i say that the value should be an integer, but if i receive a string, say a, i would be discarding it and putting it as a null in the tree, right?
@@ -58,19 +58,27 @@ so this is a very basic sanity check that you are making, that if a node is beca
 so, just as a very basic sanity check, if a random value is received, you throw it up right once the entire eig is constructed.
 so, while the eig tree is being constructed, every node sends value to every other node.
 when that happens, eventually you would have this entire tree filled with values that you received across multiple communication path.
+and now it's time to make that decision.
+and now it's time to make that decision.
 now, because you know that there will be few faulty processes who are malicious in nature.
+you are trying to be tolerant to that.
 so how will you make this decision: to be fault tolerant or to be not followed to be tolerant to malicious users?
 your decision process would happen ground up right, which means that all the leaf node would send its value to the node above.
 the node above will pick the majority of the value that it saw in the children right.
 so, for example, if the node a- sorry, if the node a, b- has one child abc.
 so abc will send its value to a b, right.
+so a b, because it only has one child, it would be getting the.
 that would become automatically, become the majority, and a b would accept that particular value.
 what it would do is every node would see the value that it got at its base, oh, sorry, at its children, immediate children.
+from that immediate children, it would be propagating it up the level.
 now for the non-leaf node, the value is equal to the majority of values of its children.
 so if there is a clear-cut majority, then your final value of that particular level is equal to the majority that has just been formed.
 right in case you cannot form agility, let's say you have two child, or sorry, two children- and you receive two different values of that, let's say one thousand and two thousand.
+so you cannot form a majority.
 so that's when you would resort to a default value that you were not able to make that decision and that default value would be propagated up right.
+eventually.
 you could very clearly see that if one of, if there are few nodes that are corrupt in my, if there are few nodes that are corrupt, what would happen is only some paths would be affected, not the entirety.
+that's why it was in that way.
 that's why it was important to gather exponential amount of information so that the fewer malicious users can corrupt only a small subset of path while most of the path would remain same in my particular tree.
 now, the final value, the final consensus that you would form would be the one that would be formed at the root node.
 right, the root node, when it's going ground up, ground of ground up, it's like basically post order travel, not really post order, but basically bottom up traversal the value.
@@ -86,3 +94,11 @@ right, so so long as there are few faulty net, few faulty nodes in your network,
 but as soon as it becomes, or they have the majority, they would ruin your entire network.
 right, and this is the idea: to become tolerant to agreement.
 right, so that even if the fault tolerant nodes, or even if there are malicious nodes, you would still have a working system.
+right, and that's it.
+right, and that's it.
+right, and that's it.
+that's it for this video.
+if you guys like this video, give this video a thumbs up.
+if you guys like the channel, give this channel a sub.
+i post three in-depth engineering videos every week and i'll see the next one.
+thanks [Music] you.

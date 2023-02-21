@@ -1,6 +1,4 @@
 in this video, we talk about what are microservices, understand how it all begins with a very simple monolith, eventually to evolve into micro services based architecture, look at their key characteristics, understand their advantages and conclude with some anti-patterns that we all should keep in mind to ensure that we are not doing it wrong.
-engineers from companies like google, microsoft, github, slack, facebook, tesla, yelp, flipkart, dream 11 and many, many, many more have taken this course and have some wonderful things to say.
-the live code base course happens every two months and it will go on for eight weeks, while the recorded course contains the recordings from one of the past cohorts, as is.
 the way i would like to put it is: micro services are like reusable functions, the functions that we normally write in our code, like that, but little bigger, with a bigger set of responsibilities, and put over the network.
 right when it comes to words like highly maintainable and loosely coupled, it's more about that.
 given that a service would be having a limited set of responsibility, it would be easy to maintain it.
@@ -12,6 +10,7 @@ so, when a business is creating a team of focused individuals to get a particula
 it exposes the necessary functions that your application can use to get everything done around payment, and there would be a focus set of team looking after payments.
 this is the idea around how we structure micro services with respect to business requirement.
 for example, the profile service will be a bunch of instances all running a profile code or every function that is required by or or that constitutes to be part of your profile service.
+so microservices, they try to optimize typically two things.
 first is rapid feature delivery: that when, if you are just putting all of your code into one codebase, it becomes highly unmaintainable, becomes overwhelming for most developers and it takes time for you to add new features to it as time passes, or as the code break, or as the code base becomes little more complex, right?
 so that is where, by having a micro services based architecture, it is trying to optimize for rapid feature delivery so that when a focus set of people are only working on that one set of service, it is easy to make changes there, because it's a very small code base.
 so, for example, i can choose the best stack possible for a particular service.
@@ -59,6 +58,7 @@ so the first characteristic of a mic, of any micro services based architecture, 
 like every micro service based architecture is autonomous, such that every micro service in itself is independent in taking its own decision and driving its own operation: decision with respect to tech stack, decision with respect to storage, decision with respect to api contract right, decision with respect to the kind of infrastructure on which it needs to run.
 it is independent to do so because everyone else is talking over apis to this particular service.
 every micro service that you create is very specialized, which is focused on solving just one problem really well.
+for example, your profile service would do the best it can to ensure that getting a profile of a user is it does in a very optimal way.
 so focus, set of responsibilities, but doing it really very well, right, in the most optimal way possible.
 third, a micro service is typically built for business.
 so let payment be a separate microservice which is taken care by a separate team whose only responsibility is to ensure that payment service never goes down and is very robust, resilient and performant.
@@ -70,6 +70,7 @@ fourth, it's very simple to understand because your mono, uh, because your micro
 right same thing goes over here with micro services based architecture.
 the micro service that you create is reusable.
 they would just talk to the service and get those things done.
+these anti-patterns is very important so that you don't do micro services wrong.
 do not start with micro services.
 micro services is typically not a day zero architecture.
 if you spend time doing micro services and all, it would take a longer time for you to develop things.
