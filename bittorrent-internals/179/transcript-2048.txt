@@ -1,4 +1,3 @@
-in this fourth video of the BitTorrent internal series, we go deep and understand what the choke algorithm is, how it works and, most importantly, how, without having a central Authority, it ensures that no one abuses the P2P network.
 for example, it does not have a place which tells you it does not have a unit that tells you, hey, go and download this from this exact peer, or go and do exactly this, or you stop doing this, right?
 so there is no master, or there is no ring master in your network, given that it becomes very interesting on how, where equal peers that you have in the network, they talk to each other and formulate a way that maximizes the download speed for everyone and, second, that it prevents anyone from abusing the network.
 so it's a very natural tendency for any and every peer to download things as fast as possible.
@@ -40,6 +39,7 @@ no, it's a download rate, because in a P2P Network the peer can be sitting anywh
 so the peers are ordered by the download rate to the local peer and who have sent at least one block in last 30 seconds.
 so for regular unchoke, the peers are ordered by the download rate to the local peer and who have sent at least one block in last 30 seconds.
 if you look at this, all of this, this algorithm is already trying to increase your download speed, right?
+so if any peer has sent any Block in last 30 seconds, then only I'll unchoke that peer so that the peers who are active I'm downloading from them, making my download faster.
 so, every 30 seconds, one additional interested peer is unchoked at random.
 so, for example, IMA, I have a bunch of pieces, a lot of peers are interested in me, right, I am first ordering them by download rate that I'll get.
 I am unblocking three of them, I'm unchocking three of them, right, but every 30 second I'll, from All N minus three peers that are there, I'll unchoke one at random.
@@ -50,6 +50,7 @@ So eventually, after this step, you would exactly unchoke four peers, three havi
 so if you unchalk a particular peer and that peer is not interested- for example, you chose up here at random right- and if that peer is not interested in the content that you have, you would still unchoke that person, but you would continue to hunt because what you'd want to promote, you would want to give chances to peers who want something from you, because that would overall increase the file distribution speed in the network.
 so if upload rate is high, more peers would unchock it giving a faster download.
 Free Riders never upload, so they only download, and hence other peers who, uh, who, uh, when they're choosing whom to unchoke a free rider will be the last in the list because of the Sorting criteria, because sorting criteria does what it is: sorting on the basis of the download speed that I am getting: download speed from when I'm trying to pull the data from the peer.
+there is an edge case where there is a possibility that a peer is choked by all others, like I wanted something, but everyone has choked me, but I don't have anything like anywhere to go to.
 for if I am, as a peer, unchoked by everyone- I'm sorry, I must appear, who is choked by everyone, but so?
 I can only rely on optimistic unchock that, hey, someone would randomly pick me and unchoke so that I can download the, I can get the file that I want.
 so what would happen is when I'll retaliate and say I'll not upload to anyone who is not giving me anything, what would happen is it would increase the number of optimistic unchokes in the network, because now there would be very few peers, because when this nubbing is happening, when no one is giving anything, the number of random selections would increase.

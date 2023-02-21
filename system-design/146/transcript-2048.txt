@@ -1,5 +1,5 @@
-in this video, we take an in-depth look into what rolling deployment is, how it is actually implemented, how to tune it to get the max out of it, some key challenges that we face during adoption, and conclude with understanding the pros and cons of adopting it.
 rolling deployment is a deployment strategy that slowly replaces the previous version of your application with the newer version of your application, and it is most commonly implemented by replacing the underlying infrastructure, which means, out of nine servers that we have, which initially runs the version one of all of which basically runs the version one of our code, on all of them we slowly start taking one server upgraded to version two, then another server upgraded to version two, right.
+all servers will eventually serve the version two of our code.
 so what kubernetes does when you, when you basically trigger a deployment with this strategy, it would replace one container at a time, that it would have a docker image, or we would have a container ready with a new version of our code and let's say we have hundred containers running.
 it would start replacing those containers one by one so that eventually we would have all the containers running with the new version of the code and the old or in the, and every single one of the old container will be terminated.
 we have multiple ec2 servers and then we start upgrading them one by one, either terminating the old one or basically replacing the old, or basically replacing the code on the old with the new one.
@@ -21,6 +21,7 @@ but the idea here is that at the end of this step, we need to have one server th
 so the next step here would be to attach this server with the new code that we just have to, uh, basically behind our load balancer.
 as soon as we add server behind a load balancer, it would start getting the incoming request from the user, and this way we have upgraded this one server from version one of our code to version two of our code, and this we repeat this process for every single server that we have on our infrastructure, and this is how rolling deployment is implemented.
 so just to summarize it, what we do is we pick a server for deployment, we stop the incoming traffic to it by removing or by basically, by basically detaching it from the load balancer, so now it won't get any new incoming traffic.
+this is extremely important because if we don't wait, then what would happen is user would suddenly see, basically, connection breakdown, or or your request suddenly stop responding, or some some error or some abruptness in the system would be observed, depending on what your interfacing clients are.
 then, once you have waited for all the existing requests to be gracefully completed, then, depending on if you, if you don't want to replace your infrastructure, then you pull the latest code on that server and you restart the process and if you want infrared placement, you terminate the server and you create a new server with the new version of your code.
 and now that the server that you have need your infra replaced or not replaced, this new server will have- or the server will have, uh- the new version of your code, which now you will attach back behind the load balancer.
 this is exactly how rolling deployment is implemented in any tool of your choice.
@@ -41,6 +42,7 @@ but one thing that we have to be very sure of when we adopt this, this way to im
 so ensure that your db cache any stateful components that you have that are able to handle large number of connections may not be request, but connections definitely, but this is a very interesting strategy to implement.
 and the third one is something that we already discussed, where we are terminating one server at a time and spinning it with the new code.
 so we'll start with the pros of adopting rolling deployment.
+it takes quite a bit of time to do it, so it is much faster than blue green deployment.
 you can tune n so that you can do five servers at a time or ten servers at a time, it would complete very quickly and you'll start getting changes in one uh.
 instead, we are doing an incremental or, uh, more likely, a a rollout, in which we are affecting few servers at a time, right.
 we saw during any uh the, the few implementations that we saw about rolling deployment.
@@ -48,7 +50,6 @@ there was not an instant where we did not have any servers serving any kind of c
 this is excellent, because what this gives us is- this gives us this confidence that we would never have a downtime when we are adopting rolling deployment.
 so when we are rolling out our changes, we are rolling out a few servers at a time and incrementally increasing it.
 where, in case your deployment fails, there is a bug in the code, your server is not starting, it would affect, let's say, you rolled it out to five servers at a time, so for the first high five hours you'll only get to know key array.
-and this strategy is very cost effective because you saw you always had like up, except from the double half implementation.
 now let's discuss the cons of adopting rolling deployment.
 first of all, there is no environment isolation, which means that you would have your infrastructure which is partially serving the old version of your code and the new version of your code, so there is no isolation between them.
 a request can go to any one of them server depending on your load balancers configuration.

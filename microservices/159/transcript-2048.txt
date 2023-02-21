@@ -1,10 +1,4 @@
-running microservices in isolation does not make any sense.
-to get something done, multiple microservices need to talk to each other and put a task to completion.
-this requires services to interface with each other.
-so how would services interface and integrate?
-is there a common way to do it?
-are there any best practices to follow?
-in this video, we'll talk about the best practices we should follow while designing micro services such that it promotes inter-service integration while keeping them loosely coupled at the same time.
+see you in my next cohort.
 thanks, so the true power of microservices is unleashed when we make them work together, we make them work in sync, we make them integrate with each other.
 so there are few key things to remember or best practices to follow in order to ensure that we are keeping our services ready for integration, and it would make life simple for everyone who is integrating with it.
 right, four things to consider.
@@ -78,6 +72,7 @@ so your api needs to be simple.
 the data format that you are sending has to be simple.
 for example, you cannot just use a random protocol to send the data or the random martial format instead of json.
 keep it simple, keep it predictable.
+don't go out of the world to get something done.
 so integration with your apis or your micro services needs to be simple enough so that it promotes integration.
 so if the way someone has to talk to microsoft it's super complex to set up or super complex to understand, people would not use it, and you can see it in day-to-day world with a lot of apis being available by sas providers or software as a service.
 that happens on the internet like people build companies around it.
@@ -115,3 +110,4 @@ uh, if you guys like this video, give this video a thumbs up.
 if you guys like the channel, give this channel a sub.
 i post three in-depth engineering videos every week and i'll see you in the next one.
 thanks.
+[Music] you.

@@ -1,5 +1,3 @@
-so why are the underlying arrays of the hash table always a power of two when we trigger a resize?
-we understand why we do it, how we do it, why hash tables are always doubled up on resize, why are they always sized as a power of 2, and conclude with understanding how and when we shrink them.
 so in the previous video we looked at the quantification of performance of a hash table through a factor called load factor, which is represented by alpha, and it is just a fraction of the number of keys that are hash table holds divided by the total number of slots that you have.
 so if you have a hash table with 50 slots and you have placed 25 keys, your load factor becomes 25.50 is equal to 0.5 right.
 as load factor increases, your performance would degrade, because then it would take longer time for you to find a free slot and place your key there.
@@ -9,6 +7,7 @@ now you have to resize, which means you have to allocate a bigger array and then
 if you become too aggressive, which means you are very frequently resizing your array, you are wasting a lot of time doing resizing and moving keys here and there, right?
 you have to resize now, which means you have to create a new array of size m new.
 you can use that to implement it, but that might not be very fruitful because real lock- what it, what real log- does is it creates that new array, copies elements as this like, for example, if you had an array of length 20, uh, if you had an error link 2050 within which you have 25 keys placed, it would literally copy that array as is to this new place, and the later half of the allocation would be empty.
+and the time taken to resize is proportional to the number of keys that you have.
 so time to resize is proportional to the number of keys that you are holding.
 so a typical strategy to resize is always double the array, right?
 so during insert, if we trigger the resize, we reallocate a new array of two times the size and rehash the key.
@@ -41,6 +40,7 @@ so while inserting the last element i'm triggering a resize right.
 so what would happen is: first for the first n by two minus one elements, because n by two slots are still remaining in my array right, they're still empty in my array.
 so first n by two minus one elements i can very easily insert with order one right.
 then when i'm about to insert the final element, i'll see that my array needs a resize because my array would be completely filled.
+let's take a look at the number of operations we would require to do this.
 so the number of operations would be equal to n by 2 minus 1, because it is taking you order one time to insert n by 2 minus 1 elements, because post that only it would trigger a resize.
 you did then 1, or then order 1 to insert the final element, right, plus 2n, as part of allocation, because you are resizing the array.
 it would be two n operations plus n to copy elements from your old space into this new space, right?
@@ -60,8 +60,10 @@ that if it has n by two elements it would have triggered a resize.
 so, number of elements: if let's say i have an array of slot 16, if i had, if i have had- eight elements, i would have triggered a resize.
 so the number of max number of elements before we trigger a resize could be 7 right.
 so when my slots is 16, my number of elements would be seven at max, because at eighth element we would trigger a resize right.
+so which means that when i have slot 16 and element 7, i cannot trigger the string.
 this means that we need to have enough leeway where, let's say, we trigger a resize when i we have n by four elements, basically n by four minus one.
 so if i have 16 slots, let's say we trigger it at three, right, so when we do that, we still get a consistent performance.
+my 3 would become 4, load factor would become 0.5 and i would trigger a resize again.
 we need to shrink when the number of elements are such that a few insertions after that would not cause- would not cause a immediate resize, right.
 so if i have 16 slots, i would do i would trigger a resize when there are 16 by 8 is two.
 so basically, less than two elements when i'll have, that's when i would trigger a resize.

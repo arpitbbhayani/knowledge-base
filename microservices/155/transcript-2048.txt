@@ -1,4 +1,3 @@
-this propels us to have some standardization on how we build a new micro service, and hence in this video, we talk about why it is important to standardize some aspects of micro service, how enforcing a few practices would help us in the long run, and look at three most important verticals that you should definitely standardize while adopting microservices.
 thanks, so we all love creating micro services, but there has to be a way that standardizes on how we can build a microservice.
 or i want to use, let's say hypothetically, which i want to do- is fortran for this unnecessary, unnecessary addition of tech stack or languages or frameworks into our organization.
 so this is one key reason on why we need to have some sort of a limited white listed frameworks and languages that we can use right by while we pick- and obviously this is not about discouraging an organization to not pick a new language, but it has- but there has to be a reason.
@@ -19,6 +18,7 @@ and if there is a major bug that is reported in that service, who would be debug
 for example, some languages out of the box now support http 2 and maybe a persistent display, just to make it simply, just to simplify, a persistent tcp connections while making http requests.
 so if you are using that, how would someone know, like some other ninja might just be: hey, this is requested this response.
 so, always knowing all of this fact, we have to decide: hey, these are the particular tech stack or ways through which we would build a service, so that it makes it easier for anyone and everyone part of your organization to see what exactly would be happening.
+she knows how to see the key metrics and how to debug basic stuff.
 but then you'll say: hey, pete, you were talking in the in the previous few videos, talking about autonomy, and every micro services is needs to be autonomous and is allowed to make their own decisions.
 right, there has to be a set of things that you want them to adopt.
 switching teams becomes easy, debugging becomes easy and you know what you are signing up for, that there will be not random thing coming into your text.
@@ -43,6 +43,7 @@ but having a centralized or having a standardized way of accessing it is a key.
 for example, i can use http rest, i can use grpc, i can use soa, i can use so many things in order to have this communication from server to server or user to server, but then you cannot allow anyone and everyone to pick any and every framework or tool or protocol to do it.
 so it's up to you on what kind of rules that you would want to impose, otherwise people would create random routes and then there would be no standardization whatsoever, right?
 so if you are going for a rest based thing, all the routes should adhere to the rest standards, otherwise it should not be pushed, something that you need to enforce, and there has to be a standardized way to do it so that it makes life, so it makes things predictable for every engineer in the organization to understand.
+or are you always creating a sub domain for it, like just rand, like just example that i'm giving you that possible way that i've seen people uh creating routes right or basically doing versioning on their api routes right.
 so there has to be a single way, like we cannot have profile service using approach one while payment service using approach two.
 there has to be a single way: that which the entire organization is creating or is versioning that apis.
 the next one is about uh connection timeouts or how, when two servers or two service communicate with each other or user communicates with the server, there will always be a timeout and this timer needs to be set like.

@@ -1,20 +1,23 @@
-this happened with github, where a big chunk of the users saw elevated error rates.
-in this quick incident dissection, let's take a look into high level overview of how github does their abi experiments, how a low level design decision led to this incident for a large chunk of the users, and conclude with some key things that we should all learn from this particular outage.
 thanks, so what actually happened?
 a large chunk of users saw elevated error rates while using github.
 these users, the users that were affected during this incident- were all part of an ab experiment, right?
+so what exactly is an ab experiment?
 so what happens is companies run eb experiment in order to decide which works the best- a or b.
 now here, like, for example, if you want to change a color of a button.
 let's say you'd want to change the shape of the button on the website.
 let's say you have it triangle, now you want to change it to a square- right, it's a.
 so what you do is, instead of directly rolling out your changes with respect to a square button to all of your users, what you do is you run an ab experiment.
+so what a- b experiment would do is you create two groups, a and b, which is your control and test.
 so control is your existing behavior and test is the new behavior that you are trying to test, right?
 so what happens is you randomly pick a set of users and you randomly show 50 of them- the default behavior, so no alterations for them- and 50 the new behavior, and then you measure the key vitals of your system.
 for example, if you are doing a eb experimentation for this particular button use case, how, how likely are people to click on this button would be a key metric that you would be chasing.
 that, hey, for, of all the people who i showed a, a, a button, which is in a triangle shape, which is my existing behavior, let's say, 10 percent of people clicked, but when i change my button to a square, 50 people clicked.
+so this is the huge jump in people clicking that particular button.
 so whenever companies are in doubt on should we go for a or b, or or or what the variation should be, they always run an ex a b experiment like we are all lab rats and they run experiment on us to see which one works the best and they roll it out to the rest of the users.
+we have companies like instagram, facebook, twitter.
 what everyone does, a b experiments, small tweaks in ui, small functionality changes, and they measure how good that, uh, how good that rollout is, and if it is really good, they would allow it to 100 of the people, otherwise they would not right.
 so this is the idea of a b experiment and now you get that.
+now the entire incident is related to a b experiment.
 so what github says is changes to better instrument.
 a b experimentation for ui introduced an unknown dependency on the presence of a specific dynamically generated file that is served by a separate application.
 a lot of things put into one sentence, but let me dissect.
@@ -34,6 +37,8 @@ so now what happened is very interesting.
 during an application deployment, the file failed to be generated on significant proportion of application deployments.
 this means that, due to some issue in deployment or something, a deployment was triggered and which obviously this had to generate a lot of files when the request came in.
 so anytime the front-end server boot up, it would made a request to config generator, it would have to generate that file and return it over here and then it would start serving the a, b, uh, experiment to the users.
+so when something happened, they again.
+so when something happened, they again.
 no one specifies what exactly happened, but when something happened, this service was overloaded.
 this service was overwhelmed because the file failed to be generated on significant proportion of application deployment due to a high retrieval rate being rate limited by the upstream application.
 this is where rate limiter came in.
@@ -65,7 +70,6 @@ in a synchronous call it would be generating the configuration files and caching
 uh, the request will be made synchronous but the processing would not happen synchronous.
 it would be pre-generated and it would just be sending the file upon request.
 you will get the very low load on that service and it would not go down frequently.
-second key type: the second key take away from this: rate limiters are great, although we saw how rate limiter was the one that caused this outage, but it does not put it in a bad picture.
 it is very essential even- and this is a good thing- that a rate limiter is employed, even for an internal service.
 right, because it is very important, very important to rate limit.
 we saw in in previous videos how important rate limiters are, uh, so that our system and things don't go down and no one abuses each other service.
@@ -82,9 +86,12 @@ so what should happen is of periodic audits should happen for the services and s
 wherever there is any sort of classification, or whenever any service is classified to be a tr1 service, the interaction of that service with every other service should be as a synchronous as possible.
 so- and it should be very- it should be audited periodically to ensure that we are not having any blind spots, right?
 because if tr1 goes down, everything goes down with it, right?
+so having sort of tiered nature uh, really helps over here.
 uh, obviously github would have it in their organization, but maybe a miss here or there it happens, it happens at work.
 like you, you can't blame anyone for anything, right?
 so creating keyword services is very important and classifying them and ensuring that tier one, especially, are periodically audited and we don't have any blind spots in that.
 it's a very, very short video, but yeah, that's it.
 there are some very interesting key takeaways.
 but, yeah, i hope i hope you like this quick uh dissection.
+if you guys like this video, give this video a thumbs up.
+if you guys like the channel, give this channel a sub.

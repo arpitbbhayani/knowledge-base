@@ -1,6 +1,3 @@
-what if one of the nodes wants to efficiently broadcast a message in the network?
-the situation is not as simple as it sounds, because there is no single node that holds the information about the entire topology.
-in this video, we take a look into an algorithm that powers synchronous breadth first search traversal in a distributed setup, understand its time and communication complexity and talk about its applications.
 so breakfast search is a very critical algorithm in any distributed system because it Powers some of the key features that we need.
 for example, if you were to broadcast a message in a minimum amount of time, that first search comes at play right.
 when you want to build a topological understanding of your network, that first search comes at play when you want to compute stats about your network, for example how big your network is or basically what's the diameter of your network is- then again that first search traversal comes at play right now.
@@ -48,9 +45,13 @@ now, if only B sends the message that, hey, I chose you as a parent?
 so what we do is, whenever we send or wherever a node receives the search message from other node, it would be sending back if it's a, if it shows the other node as a parent or not.
 so parent slash, non-parent message is sent from all the outgoing nodes to the node from which it received the message right, so that that node would know if it is chosen as a parent or Not by the other word.
 this way, the parent now also knows the information about the child that.
+hey, these are the notes in my directed spanning tree.
+these are the nodes who picked, who chose me right.
+uh, like you would have your nodes getting to know your child as well as your parent, like all those knowing that information.
 right, okay, now comes the main part: how would your algorithm terminate?
 they know something like n nodes exist, that's it.
 so it basically all the messages converts to a single node, right?
+so the core idea, building on the child pointer that we talked about, that a message sent to the outgoing edges, the nodes report if it's parent or non-parent- to the incoming node.
 right now, here just a slight twist to that: that a node responds- or to the to its parent only when it receives message from all of its children or all of its outgoing roads.
 that, hey, once everyone like one, like you, would respond only after you received an acknowledgment from every single of your child.
 let's say B has children, d and e, so B would wait for response like parent slash, non-parent message from d and e when it receives message from both.
@@ -64,6 +65,7 @@ what if that communication line is unidirectional, which means that i 0 can send
 a would initiate another breadth first search to inform this message to I zero via some different parts.
 so in a directed, in a unidirectional distributed Network where the communication line are unidirectional, it would have to recollect every node would be triggering another bet for search to inform its parent, huge number of messages exchanged.
 and this is the ultimate beauty of distributed system, right, okay?
+synchronous breadth first, search traversal.
 you, you would have seen it from farthest of distance that, hey, this is the classic case where I can use this system to broadcast something to my network and I would do that.
 okay, so if a node in a distributed system wants to broadcast a message M, it can just initiate the synchronized BFS algorithm with itself as the root.
 you saw how converge cast was happening, that a node waits for all of its children to respond.

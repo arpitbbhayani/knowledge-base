@@ -1,6 +1,3 @@
-so dynamodb is extremely powerful, scalable and fast key value stored, but it lacks aggregation.
-in this video, we designed a use case that is very common for food delivery startups like deliveroo and swiggy.
-that would require us to do real-time aggregations of dynamodb data in an extremely cost efficient way.
 so dynamodb is a low latency key Value Store offered by AWS.
 it supports operation like Get, Set, partial updates, delete and expiration right.
 so let's say we are building a food delivery app, for example, something like swiggy zomato or deliveroo, right.
@@ -31,6 +28,7 @@ up until here everything is good, like pointed queries are solved.
 but now, when we would want to show the aggregated count.
 so we would want to show that this restaurant, a particular restaurant, are received n favorites.
 right, and we want to persist this.
+you would have to store this pre-computed.
 a way to build this is using dynamodb Stream.
 So what is a dynamodb stream?
 any insert, update, delete happening on the dynamodb.
@@ -57,6 +55,7 @@ so, given that the partition for dynamodivity, table partition key and sort Keys
 for example, all time, one entry for all time, one entry for a particular month and one entry for a particular day, if you want to do that right, so this would be our partition key.
 other thing, like your time window, would be the sort key, and then you would have a favorite count and updated that right, and whatever aggregation or or what would your aggregator function would do, is every time you receive a batch right.
 so from dynamodb, your Lambda function would receive a batch of events.
+from this batch of events, what would you do is you would first of all filter out and keep the only the events which are insert and removed.
 so whenever something, an entry, is created in the favorites table or entry is removed from the favorite symbol is what you will consume.
 so that is where in most cases you think, hey, let me just read the value, do a plus, plus and then I'll set the value.
 this is not an atomic operation because there would be multiple concurrently executing Lambda functions trying to act on that same restaurant object.
@@ -81,7 +80,6 @@ so, for every event, if you invoke a Lambda function, it is just 25 milliseconds
 and if you sum it up and check it for over a month, it turns out to be less than a dollar a month, which is nothing, right?
 that is where serverless comes at our rescue, because this is not a high right throughput event.
 right?
-advantages of this architecture, first of all, is it's extremely cost efficient.
 we just saw how much it would cost, right?
 it is extremely cost efficient for a given user Behavior, right it.
 you cannot just use it for social networks, right.
@@ -91,6 +89,7 @@ you just saw how we write our API server rights like: creates an interior, remov
 that is totally asynchronous Behavior managed by AWS, so our API response time are not getting affected at all and this is much better than traditional approaches.
 you might think, hey, instead of me adding this serverless layer or to that and like, let me just do a daily full set and what?
 so, for example, you go every day, you iterate through the entire favorites table, aggregate data in memory and then you push it into this- uh, into this basically favorites aggregated table.
+because you are iterating on that entire table.
 given the amount of restaurants you have, amount of events that you would be receiving, that becomes costly.
 because what's happening over here is, let's say, you're running a daily full scan, which means for your data to get updated you have to wait for an entire day.
 that is not expected, like you would want to give a much closer near real-time user experience.
@@ -99,5 +98,7 @@ so my API itself would update at two places: one in your favorites table, second
 that sounds doable, that sounds good, but your API response time would shoot up because now, instead of doing one right, it has to do two rights right, so that would become slower.
 so, in case you are fine, you find yourself using dynamodb and you want this kind of aggregation, do a basic capacity planning and see if you need constantly running servers or you can go via serverless right, using dynamodb streams and Lambda functions, right, I hope.
 and basically that is what I wanted to cover.
+if you guys like this video, give this video a thumbs up.
+if you guys like the channel, give this channel a sub.
 thanks [Music].
 [Music].

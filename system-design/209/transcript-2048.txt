@@ -1,5 +1,3 @@
-so an emergency button in a ride hailing app like uber can be life-saving, but what happens when you click it?
-in this video, we dive deep into the architecture of Uber's emergency SOS service and look at the key design decisions that make it highly available and reliable.
 so during an emergency, every single second matters, which means that whenever a button is stopped, you have to do whatever you can to ensure that very quick actions are taken during such time.
 so first of all, we'll take a look at what kind of information should we be capturing when an SOS button is pressed on the app.
 so the critical details that we need to capture could be current location, the trip details, vehicle details and Driver Rider details.
@@ -7,6 +5,7 @@ right, some of this information would be available on the server side.
 so, for example, the current location where the SOS button was pressed, that has to be taken from the client side.
 second, when that SOS button is tapped, the most critical thing is that every like it's not just that where the SOS button was tapped, but after the SOS button is tapped, the every single second, or every two, or basically twice a second- the location of the client needs to be continuously sent and monitored on the server, right?
 think about it- you might be in an emergency situation where you cannot talk on a phone, where, if, let's say, the information is sent, but you still need to send this to someone else.
+no, so, which means that there has to be a way to create SMS from all of the details that we are capturing and sending it to the First Responders.
 and, more importantly, that when you hit the SOS button and someone from the internal support team at Uber needs to be notified- like they, because they are the one who would be coordinating- so they also need to be notified so that they are coordinating that, hey, are you safe or not?
 obviously, when an SOS button is pressed, you would capture the location.
 like, will you just send GPS location to police?
@@ -19,6 +18,7 @@ right and now, while this is happening, we also know that when source button is 
 now, when this information is sent, you just don't need to send lat long along with that because it's an emergency.
 you would be sending reverse geocoded information and storing it.
 so this is one of the most critical decisions, very counterintuitive but very important decision, design decisions that you have to take while you are designing this particular service, right?
+second, obviously, when someone press it now, you have to notify police, the local police Authority.
 obviously, it's not a good idea that everything has to be done by Uber, so which is where they use something called as rapid SOS.
 now, rapid SOS is a B2B company that offers SOS Services, which means that they expose endpoints on which you send some data in some particular format and they send or they forward this data to the nearest local police Authority.
 so now you just invoke: whenever user presses an SOS button, the API call is made to your emergency service.
@@ -40,6 +40,7 @@ instead of that, what if the service, the emergency service, which is writing to
 yes, there is, but given the criticality of this service, it's essential because you cannot assume that Kafka is running all the time, due to some reason, some errors, some maintenance that is down, and you get emergency.
 so that is where, falling back on synchronous API- again an extremely important low level design decision that you would be making while designing this particular service.
 whenever you are architecting a service like this, because it's such a critical one, you have to ensure that there is no single point of failure at any part in your service or in your architecture at all.
+right now, this call comes through the API Gateway.
 API Gateway forwards it to either emergency service or location service.
 because, like, for example, we know that once the SOS button is pressed, we would make call to emergency service registering an SOS, so that call would come synchronously from API Gateway to emergency service.
 emergency service would have its own small database in which it would be stored in that particular information.

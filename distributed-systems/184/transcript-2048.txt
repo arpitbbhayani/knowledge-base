@@ -1,4 +1,3 @@
-in this video, we take a detailed look at a synchronous ring-based algorithm called the hs algorithm and see how it works on a bi-directional network, in order n log and complexity.
 so the algorithm that will be talking about is called as the hs algorithm, which is also a synchronous algorithm, which means that every node participating in this election would know: hey, now the election is starting, now we are moving to the next round, then the next round in the next round, and now the election is ended.
 the best part of this algorithm is that its communication complexity, which means that during the leader election the number of messages exchanged is just order of n log n.
 it had a communication complexity of order n square and this is just order n log n, which means that the total number of messages exchanged during the leader election is just order n log n, which is very efficient as compared to your previous lcr algorithm which was n square.
@@ -32,7 +31,9 @@ what could happen is the incoming uid is less than its own uid, right?
 now let's say i'm talking about node nine receiving message from node 7..
 9 would say that hey, incoming uid 7 is less than my own uids, i will discard the message.
 the message is discarded by that node, right.
+and now, if your incoming uid is same as your uid, you would identify yourself as the local leader.
 so here, when the message is sent, like, when a node participates in this phase of election, it sends message to its neighborhood, right.
+when it sends message to its neighborhood, it sends in some local neighborhood, let's say 1, 2, 4, 8, something.
 when it is sending the message in that neighborhood, once the number of hops exhaust, then the message is sent back to the originating node.
 so, for example, in phase 0, a node sends message to its immediate node, to its immediate neighbors, right, and then they would send back the message to the originating node because one hop is complete right.
 so then it would do 2 raised to 1 hops, which means it would start from this node and send to its immediate neighbors and they would send to their neighbors.

@@ -1,9 +1,8 @@
-so exponential algorithms have to be the worst possible way to solve distributed consensus, but are they really that bad?
-in this video, we talk about an exponential, expensive yet important algorithm to achieve distributed consensus, named eig algorithm that gathers an exponential amount of information and then reaches a consensus.
 thanks, so reaching consensus is extremely important in any distributed network.
 that is where we need the nodes to talk to each other and reach a consensus and agree that if the value is 1000 or 2000, achieving distributed consensus is extremely simple when it comes to the case that your network wouldn't fail and your processes wouldn't crash.
 it becomes impossible to achieve distributed consensus when your network is unreliable, which means that there is no guarantee when a process a sends a message to process b, and if there is no guarantee that the message would be delivered, achieving distributed consensus is impossible.
 right, and this is where we would talk about an algorithm called an exponential information gathering- eig algorithm to reach a distributed consensus.
+the core idea of this is: every node sends data to every other node.
 every node records the path from which it received the data until a certain degree of level or under a certain degree, and then decide that, hey, this is going to be the final value.
 eig stands for exponential information gathering, so this data structure is a tree.
 eig data structure is a tree that grows exponentially and is constructed level by level.
@@ -46,6 +45,7 @@ we use that level and we send these values, right?
 we send these values to every other node, including ourselves, right?
 we send this values to every other node in the network, right?
 so we send pairs x, comma, y from k minus 1 level in the network where i is not in the x, which means if i am sending the value, right.
+we have root node and we have abc constructed.
 right, if i am process b, i would be sending a and c to a and c, right.
 node a can thus form the next level of eig tree with path, because process b and process c are sending data to a, which means that a now received the message from a itself, from b and from c from b.
 it received message for a, the value for a, like the node labeled a and the node labeled c.
@@ -67,6 +67,7 @@ so thus we see how every node has all the values from all the nodes across all t
 uh, one node to fail, i would do one plus one, two, i'll do it for only for two rounds, right, and then i'll be in a position- because i gave enough chances for processes to fail and now i'm in a position to make that decision.
 now the decision process is pretty simple.
 you can go with the very basic approach to take the distributed like to decide on a particular value.
+you have the entire eig tree constructed within this tree.
 now what you can do is you can go through, you can traverse the entire tree and find all possible values that you receive from all possible paths across all possible nodes, and then you construct a set out of this.
 if it has only one value, you choose that value because every node has the exact same eig tree.
 but eventually every node is making the exact same decision.

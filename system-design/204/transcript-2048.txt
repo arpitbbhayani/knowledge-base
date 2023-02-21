@@ -1,9 +1,8 @@
-elasticsearch is a great search engine, but Yelp was not happy with its performance and hence they built their own HTTP player on top of Lucin.
-in this video, we take an in-depth look into the architecture, performance improvements and key design decisions that Yelp took while reconceptualizing their own search engine.
 this means that let's say you have your search service, which is powered by elasticsearch, and on elasticsearch cluster you have three nodes: right and inelastic search.
 let's say you index a document, the right goes to the primary replica or the primary node.
 when you index a document there, now the same operation would be done on replica, which means that when you are writing something, when you are indexing a document, the right operation not only happens on the master but also on the replica.
 now, this means that because the same index operation is going to happen there on the replica, which means that if I would want to scale up, I would also need to scale the CPU power of it, because obviously, indexing a document requires you to process the text, split it, put it into inverted index and whatnot.
+also, just because you want to support right high, right load, your replica also needs to have enough CPU capacity.
 but what could happen is, let's say, when you're creating an index in elasticsearch, you specify the number of shards of that Index.
 so I only have an index having five shards, but split across only three nodes, which means that there is a chance of having uneven distribution.
 so which means that there are chances of uneven load distribution and some Shard, some physical data node would become more hot.
@@ -21,6 +20,7 @@ so because segments are immutable, whenever a write happens, whenever you update
 it can literally just pull this segment out in one shot and- sorry, pulling it would copy the segment from the primary node into the replica node and then replicant can start serving its request for that particular segment.
 so, which means that once the segment is created in the primary, you, like the replica node, can just make an API call or just access it, because it's a physical segment on the disk, and just copy it and basically copy it to its disk, making it much, much faster to do this.
 so there is no need of explicit re-indexing of the data like an elasticsearch.
+there is no need of reindexing, because the data is already indexed and stored in segment in the form that is, that is directly consumable.
 so that with this, what implies that if I want my replica to start serving the request, it does not have to do re-indexing of the document.
 instead it's just have to copy the segment from its primary node into the replica node.
 this is feature that Lucin, provided elasticsearch is not using right.

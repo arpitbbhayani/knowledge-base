@@ -1,6 +1,6 @@
-with data being distributed across so many databases that emerges a need to unify them, to extract deep product insights, make strategic business decisions, train ml models and so much more.
 so a company typically needs a data platform for their business decisions and strategies, to power the data science and train ml models and generate the product insights that makes their product better by the day.
 so first reason: each service needs are most probably would have its own separate database right now when they have it.
+third is: you cannot make cross database joins and make sense out of data that is distributed.
 you need all of them at one place in a in a singular format, so that you can you can fire the queries that you want and generate insights out of it, right.
 and if you want to make a distributed join- that's extremely expensive and extremely computational, heavy, people typically don't do that- right.
 so let's say you have your database, which is actually serving a production traffic and you are firing queries on that.
@@ -8,6 +8,7 @@ so your gigantic analytics query- maybe you are, you are basically firing it in 
 so there has to be a better way, which is where what typically we do when we build a data platform is we get all the data from all the database, duplicate them and put it in a data warehouse.
 so the idea here is you take all of your transactional data across all of your micro services that you need and you put them together in one data warehouse.
 people typically use basically Amazon redshift or Google bigquery for this purpose, but you can build your own on top of hdfs if you want to.
+obviously, they can continue, or they will continue, to use their existing database for the transactional needs.
 so these data warehouses are typically optimized for Gigantic analytics query, not for transactional purposes.
 so what that core need is that they have their data distributed across bunch of databases.
 they want to replicate it and put it into a data warehouse.

@@ -1,5 +1,3 @@
-for example, python calls it a dictionary, when java calls it a hashmap, but the core idea remains the same: it holds pairs of keys and values and supports constant time insertion, updation and deletion.
-in this video, we talk about what are hash tables, how are they structured internally, and we would lay a solid foundation to understand that constant time implementation.
 hash tables are indeed one of the most widely used data structures and literally every single language has its own implementation and its own nomenclature for it.
 for that and this mapping is also so in most languages, classes are also implemented as hash tables, right?
 so this is called as a symbol table, which is used basic, like in, through which people do variable lookups, and that is also a hash table implementation.
@@ -39,6 +37,7 @@ so what we'll do is, in the second step, we take the hash key, which is in the r
 so this is the second step and which is what now makes our hash table very efficient, right?
 so now let's say we are planning to store four keys in the hash table so we can have a bin.
 so instead of having two, raise to 32 as the holding array, we can have just eight, because we are planning to store only four keys and what we'll do is for every key we would every application key, let's say apple- it first passed through the hash function.
+let's say for apple, we get one, two, seven, six, two, one, seven, nine, some big number, right?
 we take this hash key and map it to a smaller range of, let's say zero to eight, right, because our error length is eight.
 when i pass through the hash function in the first step, i get value 51962- again a random number.
 and then when- and this is the hash key- when i pass it through my second step and map it to a smaller range of zero to it, let's say, i get five.
@@ -51,8 +50,8 @@ right, and this is why we need two step process or any hash table implementation
 two step process: first from application domain key to hash key and second from hash key to a smaller range.
 now let's say i want to store 12 keys.
 so what you do is you try to reallocate and then re and then re-index all the keys into this new array, and that would require you to take a pause in accepting the rights that are coming in, and then you would then, once you allocate a big chunk, you move all the existing keys and then you start accepting other puts onto this hash table and- and this is what happens internally- right, and this is okay, because you are not doing very frequent allocation.
-this is what internals of hash table implementations are okay.
 so then, why are we even hashing from the application domain key to integer?
+because of the first step, what we are doing is we are simplifying our problem statement, given that, for any type, we are converting it into an integer of range 2 raised to power 32.
 right, and for us, the internals of hash table, our input, is this integer that we are getting and how we would want to map these big integer range into a smaller range.
 is our efficiency coefficient of our hash table implementation, like how well we do it, how well we distribute it, how will we provision it.
 first step is very important and that's why we are hashing the first set of application keys into a big integer range and from this big integer into a small integer range.
@@ -64,4 +63,5 @@ you have abstracted out now your hash table implementation is working on only th
 all your end user has to do is just provide you the hash function that spits out an integer for a given object.
 you have the key, you have the integer, you map it to whatever range you want, the way you are storing it onto the disk, right, and if your m resizes, or your, if your bin array resizes, your end user doesn't it?
 this is what we would be looking at into this series of hash table implementation.
+this is first video in this series where we are talking about hash tables, because this is such a fascinating data structure.
 in this series i'm planning to go deeper into a lot of implementation details of hash table and planning it to implement in raw c language using arrays and a lot of super interesting insights around it, right?

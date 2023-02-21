@@ -1,6 +1,3 @@
-github at an outage because some nodes of a zookeeper cluster ran an election and elected a second leader.
-we would also talk about how important zookeeper is for managing a kafka cluster.
-we would see what happened during the outage and how github was able to mitigate it with zero data loss and a brilliant fallback strategy.
 thanks, so before we go to the incident report, let's spend some time understanding the importance of zookeeper for a uh, for a kafka cluster.
 and kafka is not a single node cluster.
 there would be multiple nodes that are running kafka process and each node is called as a broker.
@@ -12,11 +9,13 @@ who does this leader election zookeeper?
 so zookeeper is acting as a very nice brain that is doing this leader election for every topic, for every partition in the cluster.
 so now that there are multiple machines on which your kafka is running, you need to know which machine is in, which machine is out, whenever machine joins a cluster, whenever machine leaves the cluster, abrupt failures and what not.
 stored as part of topic configuration in apache, kafka right.
+then acls and quota, like who is allowed to read from a partition, who is allowed and how much, is something which is managed by, uh, zookeeper.
 so now, here you see how important is zookeeper for managing, uh, apache, kafka, right, so it is acting as a brain, as a ring master, to hold and manage the entire cluster.
 for us, the just disclaimer: kafka from version 2.8 does not have a true dependency on zookeeper.
 now they managed, or they have built their own internal thing to manage the cluster, so they have removed the dependence on zookeeper, but, uh, it still holds true.
 so what incident report says: while reprovisioning zookeeper nodes as part of routine upgrades, right, so every cluster needs to go throughout them.
 so, while provisioning zookeeper nodes as part of routine upgrades, new hosts were introduced too quickly, which resulted in the election of a second leader.
+let's spend some time understanding what exactly happened.
 so zookeeper nodes were getting changed right, and when they were, when this was happening, a lot of new nodes were added.
 right, and when nodes were added too quickly, what happened is they they ran another election algorithm.
 uh, internally, what happens whenever a node is added to a zookeeper cluster?
@@ -24,12 +23,14 @@ right, what would happen is zookeeper is made to be near autonomous, right.
 so when a node is added, when a node is added to a zookeeper cluster, what it would try to do it would try to understand what the cluster looks like.
 right, when a lot of new nodes were added into the cluster, they could not find a leader, or they could not discover a leader might be any reason they could not discover a leader and the majority of information that they found was like they seem to have majority of nodes not knowing where the leader is right.
 so, when a lot of nodes are added, these nodes did not know where they were not able to quickly discover the leader.
+right, and this is where what happened is.
 and because there were too many nodes added too quickly, leader election was successful.
 they elected a new leader and the new setup and the newer set of replica or the newer set of nodes were became part of a second logical cluster.
 they were all part of this one uh cluster, but within that they elected another leader.
 so the the end state of this uh, after they added nodes too quickly, was that they had two logical clusters with two leaders and multiple replicas.
 and this is, i am talking about- zookeeper cluster.
 right, so now we have two logical zookeeper clusters part of the same infrastructure, right, okay, so now what happened?
+uh, basically, a second leader problem or a second brain problem is bound to happen.
 right, so this happened for zookeeper.
 it happened because we added- uh, because the github team added a lot of nodes in a very short time, right, so leader election had to spun up.
 so after they added this, effectively introducing a logically distinct second zookeeper cluster where there should have been only one.
@@ -65,6 +66,7 @@ and how would you know that there is a second logical cluster zookeeper configur
 you can see, totally see, the two leaders are getting elected, or two leaders are operating because of which the rights are failing.
 you would be deleting those entries from zookeeper right and removing those nodes right?
 so the incorrect state, caused right failure to approximately 10 percent of the request to our background job service, resulting in backup jobs as we migrated traffic and worker capacity to our secondary job processing system.
+two keywords: ten percent request fail and secondary job processing system.
 right, some internal jobs that they were running they stopped processing because rights were failing and what not?
 so did they lose like this looks like a pure case of data loss, because the rights was supposed to happen but rights failed.
 so whenever you are putting a message in a broker, what you should be always doing is, if writing that message to a broker fails, have a provision of something called as a dead later queue.

@@ -1,7 +1,5 @@
-so outrageous are inevitable, but we should design our architecture such that if a component is down, it should not lead to a complete outage.
-a partial outage affecting few services is fine, but a complete outage is catastrophic.
-in this video, we dissect yet another github outage, gather few interesting insights about that microservices architecture, spend some time discussing and understanding the importance of having a smaller blast radius and talk about a foolproof way of achieving that.
 so, like always, we start with the incident report and sure it goes so what it says.
+on january 28, uh, 4 am, utc- our services are our service monitors- detected abnormal levels of errors affecting action service.
 by the way, most of the outages that i've seen of github are related to action service.
 but, yeah, some abnormal level of errors affecting action service.
 this incident resulted in the failure or delay of some cute jobs for a period of time.
@@ -41,6 +39,7 @@ in this case, the failure pattern was not recognized by the automated processes 
 so there is a classic case where your database is down, or but your butter telemetry is not showing it, and this is very common, very, no, not very common, but this is common.
 this is indeed common, where the automation that you may have written might not be capable of detecting this failure, because it might be trained on some particular patterns, but not on this pattern, and it might not.
 it might be very possible that the entire database is not down, only a fragment of it is done, or some particular kind of tables are locked, or not everything, uh, or it is not a very obvious outage, outage on the database, right?
+so this is very common, right?
 so here the orchestrator was not able to identify that the master was stopped, so failover did not happen.
 because failover did not happen and because the telemetry also did not show that the database was having an impact- and very common this kind of thing- because it could not show something's wrong with into the database.
 how would engineer even come to know gary databases down right?
@@ -49,7 +48,9 @@ when they look at elementary, they eric the database is doing fine, let me debug
 the database was done but the telemetry was not showing it right.
 they did not specified in the necessary report, but there would be two possible ways to do it right.
 promote the replica to be the new master and reconfigure your database very easy.
+so if you know that the master is down due to transient failure, reboot the machine during that.
 reboot rights would fail, but in any case it is failing because there is an outage, so that's fine.
+but in case you would want to dive deeper into other ways of doing it, i've discussed a few more approaches in other live section videos.
 he uh, the telemetry did not show any issue and the database resulted in the longer time time uh on determine the root cause.
 okay, to help avoid this class of failures in the future, we are updating the automation process in a sql database layer to improve error detection and failover.
 everyone says this and this is something which becomes a step zero after the, after the issue is mitigated, to ensure that you do not see the outage because of the same reason again, and that is a very important thing to do anytime when you face an outage, right?

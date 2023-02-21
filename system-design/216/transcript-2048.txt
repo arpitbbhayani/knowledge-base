@@ -1,7 +1,3 @@
-so, when the network is unreliable, the clients retry the apis to ensure completion.
-this approach works when there are fewer clients, but what happens when there are millions of them?
-every single client will keep on retrying until the API is completed.
-this will bombard the server with the request, and this problem is called a Thundering Herd problem, and in this video we understand what this problem is, why it occurs and how to solve it.
 see you in my next cohort.
 so say, user a makes an API call to the back end and because of some Network issue, that API call failed.
 now in such situation, what do we typically do here?

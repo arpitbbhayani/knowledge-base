@@ -1,10 +1,10 @@
-in this video, we talk about what are microservices, understand how it all begins with a very simple monolith, eventually to evolve into micro services based architecture, look at their key characteristics, understand their advantages and conclude with some anti-patterns that we all should keep in mind to ensure that we are not doing it wrong.
 the way i would like to put it is: micro services are like reusable functions, the functions that we normally write in our code, like that, but little bigger, with a bigger set of responsibilities, and put over the network.
 right when it comes to words like highly maintainable and loosely coupled, it's more about that.
 given that a service would be having a limited set of responsibility, it would be easy to maintain it.
 and you know what all things happen, it becomes hard to maintain or hard to even build on top of it, right?
 if i would want to change a tech stack of a particular service, i should be able to do it.
 so micro services are typically structured around business teams.
+so the way an organization is typically structured like you might have a team that does analytics, you might have a team that takes care of a certain function.
 so, depending on what your business needs is, depending on any new feature that your business wants to start, if any new thing that a business wants to introduce, that the business typically creates a small team of people, not engineers, but in general, a small team of people whose only responsibility is to ensure that that thing is done.
 so, when a business is creating a team of focused individuals to get a particular task done, that particular set of people or that particular set of product features and all evolves into, or they own this particular part of microservice, like it's basically a one-to-one mapping from the business side to the product side, right?
 it exposes the necessary functions that your application can use to get everything done around payment, and there would be a focus set of team looking after payments.
@@ -15,6 +15,7 @@ first is rapid feature delivery: that when, if you are just putting all of your 
 so that is where, by having a micro services based architecture, it is trying to optimize for rapid feature delivery so that when a focus set of people are only working on that one set of service, it is easy to make changes there, because it's a very small code base.
 so, for example, i can choose the best stack possible for a particular service.
 and then if let's say i want to upgrade, let's say i was using python and now i'd say, hey, golang is a new shiny thing and it would give us very solid advantages if we move to, if you move our payment service to that, so then you would go for it.
+no one else would have to know, because everyone's just using the apis to talk to your service.
 so these are two key advantages or two key reasons, or two key things that micro services try to optimize right.
 so most microservices architecture- they they never start as micro service architecture.
 they start with a simple monolith architecture.
@@ -29,6 +30,7 @@ so key advantage of going for monolith would be simple to develop.
 simple to build: there is just one artifact that gets built: your jar, your code base or binary, just one thing that gets tripled across all machines.
 it's just one thing to test, like one code base to test someone just spinning up or running a web server on that.
 some over engineering folks are there to start with micro services.
+start monolith, keep it simple.
 once you know you are in market for a long run, then you break into micro services.
 so you might not realize this problem on day zero, but as time passes and your code base grows or your complexity grows, you would start to realize.
 you just import from payments, import that util function right, unnecessary dependency between modules.
@@ -69,8 +71,8 @@ third is: take freedom: picking the right stack for your service.
 fourth, it's very simple to understand because your mono, uh, because your micro service, is just a small code base that does that one thing really well.
 right same thing goes over here with micro services based architecture.
 the micro service that you create is reusable.
+so anyone- let's say you create a micro service for profile information- any service that ever needs profile information- would go to this service and get the data.
 they would just talk to the service and get those things done.
-these anti-patterns is very important so that you don't do micro services wrong.
 do not start with micro services.
 micro services is typically not a day zero architecture.
 if you spend time doing micro services and all, it would take a longer time for you to develop things.

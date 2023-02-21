@@ -1,7 +1,3 @@
-so byzantine agreement is an important problem to address in a distributed network.
-it is all about being tolerant of the nodes that are malicious in nature, which means that they are corrupt and are trying to ruin the sanity, integrity and correctness of the network.
-right in this video, we talk about an algorithm that gathers an exponential amount of information to build a robust understanding of different values proposed by different nodes.
-once we have this information, we reach a consensus such that, even if there are a few nodes who are malicious in nature, who sent random values to us, we would still be reaching the correct consensus.
 see you in my next cohort.
 thanks, so, reaching consensus is extremely important in a distributed network.
 say, we have a database cluster in which one node thinks the value of price is one thousand dollars.

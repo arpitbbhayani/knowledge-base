@@ -1,6 +1,3 @@
-in the previous video, we looked at linear probing as a way to handle hash table collisions, but is that the only way, or can we do something better?
-in this video, we take a look at quadratic probing as an alternative to linear probing.
-we spend some time understanding what quadratic probing is and how it is better than the linear counterpart.
 so, like always, conflicts are inevitable as we are trying to fit in a large application key space into a smaller hash table.
 right, we are talking about open addressing as a technique to do so, which is very space efficient as we do not required auxiliary data structure to do it.
 right, to handle hash table collisions.
@@ -27,6 +24,7 @@ but now if we talk about k3, let's say k3 came in and k3 got indexed at slot 3, 
 so you see a good cluster of collisions happening in a small area.
 right, and this typically happens because of a poor hash function.
 right, so we know that with a poor hash function, linear probing would suffer, and that is the biggest challenge with it.
+right, so how?
 so then, as an alternative way to do it, what about a way through which we can reduce clustered collisions?
 right, so we don't want a lot of collisions happening in one place, because it's literally, with linear probing, it's literally one slot getting collided by multiple keys and they just move a step to the right.
 right, this way you're forming small clusters, of course, so any key that goes there, they will be collided.
@@ -44,6 +42,7 @@ so as an alternative, what you can do is, instead of going one step at a time, t
 so when you do this, what happens is, instead of going one step at a time, you are taking a quadratic leap.
 this way your clusters will not be formed because they would be spaced very well.
 square, so zeroth attempt would give you the primary slot.
+so that how big of a leap it would going to take.
 so this would help you minimize the clustered collisions that you would get in case of linear probe, right sample sequence.
 if i talk about it so obviously, because it's a quadratic function, your, your c1 cannot be zero because you want ice, sorry.
 your c2 cannot be zero where p of k i is equal to h of k plus c, 1 of i plus c 2 of i square.
@@ -66,7 +65,9 @@ we know that how linear probing leverages cpu cache in order to make iterations 
 so when you are accessing this from main memory, this page, this memory page would be brought into cpu cache and from there it would be accessed.
 right, let's see if there is a collision in af2.
 and obviously when you are talking about the page that it brings in, it is not just bringing a of 2, it is bringing neighboring elements as well, because the number of elements of an array or the segment of an array that could be brought into the memory would be brought into the memory, uh, into the cpu cache.
+my bad, okay.
 and when that happens- let's say you found collision f at a of 2 and then you are iterating- the a of 2 is not available.
+let me go to a of 3.
 when accessing after, it would already find a 3 and cpu cache so it would not have to do a memory lookup much faster.
 so linear probing is the best way to leverage your cpu cache and it's really fast, right.
 it also does a fair job to it, because what you're seeing is, if your hash function is good enough that it does not cause a lot of collisions, then you're here.
@@ -76,6 +77,7 @@ then you will go to a of 3, as in plus 1, and then a of 6, which is plus 4, righ
 so if you talk about a small memory page of 5 slots, you are bringing a of 2, a of 3, a of 4, a of 5, a of 6..
 so you are already bringing in three slots that you might find your key in, right.
 so this way, at least for some iterations, because if you are not having a lot of collision, then attacks, two to three or four average collisions, if happens, all of those can be found in your uh cpu cache, because you are fetching that contiguous memory uh segment into your cpu cache, right.
+so it gives you a good.
 it gives you a good uh leverage of cpu cache, but not as excellent as linear problem, while solving the problem of clustered collision.
 a little little better than linear probing in some case.
 but if your hash functions are poor, where a lot of keys are hashed to the same location, that ruins everything, because then you would have a big, a large number of collisions.
@@ -87,10 +89,13 @@ it gives you decent enough leverage of your cpu cache.
 it is still just reducing it, not me not eradicating it completely, right.
 a little better than linear probing, uh, when you have fewer collisions on a particular set of key, right.
 so with a good, decent hash function, quadratic probing triumphs over linear problem, right?
+okay, that's it.
 that's it about quadratic probing.
 that's it about quadratic probing.
 that's it about quadratic probing.
 i hope, uh, i went into enough details for you to understand and make those decisions if you're ever building a hashtable- on which one to go for linear or quadratic and how to implement it.
 it's all about just tuning your probing function right.
 okay, so as part of this, uh probing strategies for hash table- next video will be the final one that will be covering uh, double hashing as a technique and then we'll go into advanced part of it, like load factors and whatnot.
+if you guys like this video, give this video a thumbs up.
+if you guys like the channel, give this channel sub.
 i post three in-depth engineering videos every week and this video is part of hash table internal series and i'll see you in the next one.

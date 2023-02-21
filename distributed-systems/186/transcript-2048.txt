@@ -1,6 +1,3 @@
-so leader election is necessary to make distributed systems order, recover and remain autonomous.
-in this video, we take a detailed look into a leader election algorithm called flood max that works on any network with any topology.
-we spend some time understanding the runtime complexity of this algorithm and look at a couple of optimization that makes it efficient.
 see you in my next cohort.
 so in distributed systems where you have leaders and followers, if a leader goes down, we want another node to take place of this new leader.
 this can be done manually, but it takes time.

@@ -1,5 +1,3 @@
-in this 11th video of this hashtable internal series, we take an in-depth look into the implementation of maps using hash tables, popularly called as hash maps.
-we will go into the implementation details and performance tunings of map and see how they are built on top of tables having chaining and on top of tables having open addressing.
 thanks, so hash maps are amazing data structure.
 it's so powerful, it spans so many use cases, the core idea being we want to store application level key value pairs in a data structure and all the accesses would be key based.
 for example, if i am storing a as a key and value as apple, b as key, value as ball, c for cat, d for dog, i'd want to do lookups by key, right.
@@ -7,6 +5,7 @@ so key and value both has application context that i can place any type of key.
 i can place any type of value against that particular key right.
 so, given a key, get me the value, put a key comma value, look up a particular key right and, we're sorry, basically delete a key as well.
 right, so all the operations are key based, but we are.
+we would also want to place values in that.
 so what do we need to store in the hash table?
 in the hash table we earlier only used to store keys, but now we would also need to store the value as well.
 and in an integer hash key, which is when i pass the key through the hash function, i get in the range of 0 to 2, raised to power 32, that hash key i would store so that i don't have to recompute the hash every time all over again, and i'll store a white star value so that i can hold any type of value against this particular key.
@@ -48,6 +47,7 @@ to avoid duplicates, we always have to check and insert, right, so we don't want
 are two keys, two exact same keys in my hash map, right?
 so that is where we cannot just blindly insert whatever we get at the head of the linked list, because problem right, you cannot have two keys, uh, in your hash map.
 so that is where approach number one: if the key is present, we do not insert at all, but we update.
+right, we do not insert at all.
 if the key is present, you delete the old key and reinsert.
 you would say, but why, if the key is already there, i can simply go and update the value.
 right, why would someone delete and reinsert?
@@ -57,6 +57,7 @@ so if you'd want to maintain that that most recently put keys are very likely to
 think of it like caching, like like quicker access of key value pair.
 right approach number three is, if the key is present, we insert the key without deleting.
 without deleting, which means there would be multiple keys with the same, with the same name, right?
+so if i'm inserting k1 with v1 and then i'm inserting k1 with v2, both of them would exist in the linked list, like k1, v1 and another node that would be 1, v, 2, both of them would exist.
 right, because we do not have to check and compare and what not.
 this is very space inefficient because multiple nodes having the same key inefficient, but we get super fast insert.
 so if your workload is right, heavy when you need very fast inserts, then you might want to go for this option.

@@ -1,5 +1,3 @@
-so a classic challenge that comes while building Instagram or Google photos is about quickly and efficiently serving and rendering a large number of thumbnails.
-in this video, we take a look at an ultimate Hack That Dropbox used to very efficiently serve a large number of preview thumbnails by streaming the response from the servers using chunk transfer encoding.
 so they what we typically see is we see thumbnails, and when someone Taps on it, we see the enlarged photo, right.
 so if you have hundreds of photos listed there you would want to fetch- you need to fetch those explicit images from the back end, right?
 your, your photo might be 2mb, 3MB, 5 MB big, but your thumbnail can be 1 KB or 2 KB big, right.
@@ -7,10 +5,12 @@ so, given that you would first want to show a large number of thumbnails and the
 so this is what is the very interesting challenge that comes in, because now imagine this: you are using this app, you are using Google photos, you're using Dropbox and you are constantly scrolling to go to the photo of that particular time that you are hunting and as you scroll, you would want to see every single photo's thumbnail so that you can make a decision.
 okay, before we jump into the solution, before we see what Dropbox data, how Dropbox solve this particular problem.
 right, and it is happening over HTTP 1.1.
+if you are already using HTTP 2, the approach to solve this problem is very different.
 so typically what happens is that any browser slash client that you are using that has a limit, that has a limit on how many maximum concurrent TCP connection that it can create to a particular domain.
 so what would happen is, if you are making a lot of request, all the requests would be initiated, they would be queued, six would be picked and then when any of one of them completes, the next one would be picked from the queue.
 now, let's say you are rendering, that, you got 60 image URLs, right, and you are loading it in IMG tag.
 so what would happen is your browser would make 60 request, one for each IMG tag, to get the photo.
+then, when one of those six gets completed, then one of those which are waiting gets picked up and gets executed, right?
 so if I assume that every uh, the time to fetch every photo or every thumbnail is exactly the same, it would happen: first six would take place, then second six would go in, then third six would go in, and so on and so forth, and finally, from 55 to 68 would be making the request and you'll be rendering the photo, right?
 in HTTP 2, a lot of things have changed and a lot of other approaches can be used to solve this exact same problem, right, okay.
 thumbnails are small, thumbnails are not 1mb, thumbnails are few KB bits at bags, right, so what do you do is you expose an end point whose job is to do a thumbnail batch and in which it accepts paths which are comma separated path strings to those particular thumbnails.
@@ -32,6 +32,7 @@ you are making 10 parallel calls to S3, waiting for it to send you the response.
 then you are encoding it, putting it over here and then sending it back as a response.
 so if you are using HTTP 1.1, this is a, this is a massive, massive feature when you are transferring large files, right?
 so to have your client understand that you would be sending response in chunks, you have to pass this response header called transfer hyphen- encoding- chunked- and the idea is the core idea behind transfer encoding chunk is like, for example, your server doesn't know how big the response is, right.
+so what typically happens is you send a request, server computes the response, server sends the response.
 while sending the response, the server knows how many bytes it has to send.
 it sends the content length header in the response itself so that your client also knows that these many bytes are coming my way.
 but there are cases where your server doesn't even know how many bytes it would need to send.
@@ -55,6 +56,7 @@ and then server got i1 and I2, so it put both of them in that one response and s
 one server knows that, hey, it wanted to fetch four Images.
 so that's why your server would send a null response.
 so it would send an HTTP response having the null byte in it, marking that your chunk transfer is now done and now you can stop sending, or now your client can terminate the connection.
+right, this is the idea.
 so every single- uh, so basically every single language that you are using, it supports partial streaming of responses to the server, or twos, or to the client, right?
 so in nodejs you do res dot send, you can invoke res dot send as many times as you want and your server would keep sending the response to the client.
 similarly with golang, similarly with python using core routine, similarly with Java as well, every single server supports every single programming language supports a way to send chunk responses- right, because at the end it is just a TCP connection you can invoke send as many times as you want, but, depending on the framework that you are using, you need to see how to do partial streaming of responses right once these images are received on the client or these responses are received on the client side.

@@ -1,6 +1,6 @@
-so the hash table needs to be resized in order to maintain a consistent performance.
-in this ninth week of the hash table internal series, we go into the implementation details of resize operation and talk about when and where in the code should we trigger a resize, two ways to implement resize while using chain hashing and things to remember while resizing a hash table that uses open addressing.
+we all know that, and the performance degrades as the load factor increases.
 load factor: a simple ratio of the number of keys that are there in your hash table divided by the number of slots that you have, and we see that as the load factor increases, as it approaches 1, the performance of the performance or the lookup time of your hash table starts to degrade, and and it primarily happens because of two reasons.
+basically, finding an empty slot takes much more time, or going through that collisions to spot your particular key takes time.
 but now let's talk about how to actually implement it with chain hashing and with open addressing.
 okay, so let's talk about chain hashing first.
 to decide when to resize, we definitely need to know the load factor and hence we need to keep a track of the number of keys that are there in the hash table and the number of slots in the hash table, right, we need to know this information.
@@ -9,6 +9,7 @@ so every time, upon insert, you would compute alpha, which is equal to count und
 when this alpha hits or becomes greater than 0.5, we resize, right, we resize the table and make it twice its size to maintain a consistent performance, right?
 so this is what your actually place, your resize function right.
 you do the resize if needed, right?
+this is i'm talking about chain hashing.
 second, in the chain hashing itself, we have to shrink the table.
 also, because it is very much possible that you have deleted a bunch of keys and then what happened is you are having a large number of empty slots, so you're wasting a lot of contiguous memory in the uh.
 so we saw that we would shrink when alpha or when a load factor becomes one by eight, and this would be triggered when you invoke delete key operation.
@@ -27,9 +28,11 @@ this is slightly more efficient because it helps us not, or rather it enables us
 second, one is slightly efficient- obviously slightly efficient, but the code might not be as readable as you would want it to be right and this is how you would like.
 these key factors that you would have to think about when you do resizing of a hash table that uses chain hashing.
 now let's talk about resizing of a hash table that uses open addressing.
+this is where things become a little more interesting with open addressing.
 instead, it finds the empty slots from the hash table and tries to place the key there.
 we know that when we are deleting- see insert would be straightforward.
 you literally have to iterate through all the keys and put it into the new table.
+did because, basically, deletion is where things become very interesting.
 we know that we always soft delete, we always stop, delete the element so that we can reach the keys further in the collision chain.
 simple example: let's say in my hash table i have keys in the order: k3, k6, k1, ky, k2, k4, k8, k7 and k4, k5, k2 and k4 have collided to index 2, right.
 i have to do a soft delete, right, we talked about it in detail in in previous couple of videos, but just to recap, that's why we always do soft deletes in open addressing.

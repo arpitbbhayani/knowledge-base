@@ -1,5 +1,3 @@
-in the previous six videos we talked about internals of hash table, ways to implement them and how to gracefully handle collisions.
-in this video, we put our entire focus on performance and we would look at how to quantify the load on a hash table, the impact of chaining and open addressing on performance, understanding the performance gains and loss for each strategy, and conclude with a very interesting performance optimization.
 so there is bound to have collisions and we know that as hash table gets filled, the performance would degrade.
 so load factor theoretically is alpha, which is equal to n upon m, where n are the total number of elements in your array or, sorry, in your hash table, divided by the total number of slots in your hash table.
 so if i am placing 20 elements in my hash table where my size of the array is 10, my load factor is 20 upon 10 is equal to 2, right?
@@ -50,11 +48,14 @@ so looks like chain hashing is a very good approach, but it is not cash friendly
 so if you are looking at a very high performance hash table, chain hashing might not be the best way to do so.
 because chain hashing is not cache friendly, because, again, you are jumping here and there in the in the memory, because a linked list note can be allocated anywhere.
 but when tables go large and the number of collisions increase, your chain hashing would start to suffer.
+if you think about it, we spoke about so much about, uh, chain hashing not cash friendly.
+chained hashing out cash friendly.
 there is a very interesting hack that makes it cash friendly and that is how about we leverage cash for chained hashing- and when i say cash, it's about cpu cash.
 so, upon a collision, so you have a hash table array for each slot of a hash table, you are creating linked list of arrays so that array might be of size, let's say, uh, 16, right, and in 16 you might say you might fit in two nodes of your linked list, right?
 because you are allocating that large chunk of memory in one shot, the the elements that you are putting in in that array or in that, in that allocation, would be closer to each other, so when you are accessing them, there is a very high chance that the entire slot will be cached on the cpu.
 this way, when you are traversing through the linked list, you are still iterating through the array, right, because they are contiguously allocated, given that you can leverage cpu cache, and that is such a beautiful optimization.
 yeah, hacks always exist and this is one of the most brilliant hacks that i have seen to get to make chained hashing, which is supposedly very poor on cpu cache, make it cash friendly.
+when you do that, the entire the three or four linked list nodes that you are trying to fit in there, all of them would be allocated together contiguously in ram.
 so when you are accessing one, if others would be present in the cpu cache, making your chain hashing cache friendly and iterations faster, right?
 okay, so this is a very interesting optimization on chain hashing to make it cache friendly.
 if it's very critical for an application, for your hash tables to be performed, you have to tune, you have to experiment, you have to try out different strategies, parameters and algorithms to get the best, because that is the most critical part of your application.

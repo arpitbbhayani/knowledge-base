@@ -1,4 +1,3 @@
-so only checking for authentication is not enough when we need granular access control that defines who can do what on our platform.
 so let's say I do not want someone else to be able to edit my LinkedIn post, right?
 let's say you are Airbnb and you don't want people to access Wi-Fi information unless they have made a reservation on it, right?
 third, a little more complex example: let's say we are in Google Drive and can user u3 read file present in a folder shared with group G3?
@@ -34,6 +33,8 @@ on, the only entry that exists in the database is listing colon 1 hash owner at 
 the second that would be fired is listing colon 1 hash right at direct one, two, three.
 write is Union of right and owner, so listing colon 1 hash right at the red user123.
 the third is listing colon 1 hash owner at direct user123.
+this is the only entry that exists in the database.
+this is the only entry that exists in the database.
 now, because a database contains this entry, the check of listing one comma, read comma- user123- evaluates to true right.
 so, whatever the entity hash relation is append at the rate, the user in action or the entity in action or, sorry, the principle in action- you just check for existence of it in the DB.
 right now things get complex because now there are cases where your access to something depends on existence of some other entity.

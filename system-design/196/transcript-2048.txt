@@ -1,17 +1,18 @@
-so we all love food but are lazy to go out to a restaurant to pick it ourselves, and this gave rise to food delivery startups likes.
-chatbots are essential for them, as they resolve most of the complaints that customers have without spending a lot of money on the customer service representatives.
-in this video, we take a look at how swiggy designed their chat bots to achieve business efficiency at scale, and dive deep into their tech architecture and key components that we need to consider while designing it.
 thanks, what are chat bots?
 chat bots are computer programs that automatically simulates the interactions with customers based on some predefined events and conditions.
 so, primarily, if you are unhappy with an order, you go to the support screen.
+that is where you are taken on a journey which requires zero, almost zero, human intervention around how your how you are navigating through.
+it is your order.
 if your order is spilled, what you do if something else happened?
 so you are taken on that journey which you would have inherently taken while on a call with a customer service representative.
 right, and let's talk about how do we design a chatbot flow.
+so this is the official engineering blog of sweegee on this particular topic, on how they do it.
 so, designing a chat bot.
 what they say is: this is actually just a decision tree that is running in the back end.
 this is a really solid insight because, if you think about it, when you are on a support screen, your chat bot is nothing but a decision tree which is taking you along a path, depending on some control variables that you have.
 for example, you start your support, that that is your start node.
 right, depending on which condition you move, you go to that particular node and then some other condition.
+you go to the next node, then some other condition.
 right, so this is a classic decision tree that runs in the back end to power a chatbot.
 so if you are ever building your own chat bot, decision tree is the way to go, because in most cases you don't need fancy nlp, fancy bots, who talks different languages.
 normal decision tree would work just fine for most of your use cases, right, okay, so what they say is: at each step of the chatbot flow, we show the customer a list of valid child nodes and, as an option to proceed further simple.
@@ -21,11 +22,13 @@ or do you want to talk to customer care executive?
 you tap on one, you go to that, you have picked that option and then the corresponding action is taken.
 so building a chat bot is equal to just maintaining a good, or building a good decision tree and doing that state management right.
 thousands of conversations created by the customers who wanted to cancel their ongoing orders.
+we gathered common reasons of cancellation.
 so how would you build a chatbot?
 so how would you build a chatbot?
 so sorry, how do you build a decision tree?
 so, because the heart and soul of your chat bot is a decision tree.
 it is very important to build a good decision tree.
+you also need some historical data or some historical data backing it.
 for example, these five are the top reasons for which people reach out to us.
 so that becomes your level one node for this particular type of query.
 these are the five reasons or five things that people ask for.
@@ -88,9 +91,11 @@ but if the chatbot is service is working, fine, everything will be served to the
 right, and one very interesting thing that they brought about is: which key metric would you put your focus on, given this state, like, given that you are building a chatbot, which key service or which key metric that you will be putting your focus on?
 so what they put focus on is called as both: uh, it's called, basically, bot efficacy percentage, which means that the percentage of conversions resolved by the bots versus the percentage of conversions resolved by the support executives, which means that they would want a large number of requests to be served by the chatbot and very few and very minimal human intervention.
 this is an important thing because, at scale, when you are optimizing, you pay for fixed salaries of these employees.
+you would want to chop those costs down.
 that is where tech would enable you to make those critical optimizations in your businesses so that you save cost at scale, still while making your customers happy and doing your job.
 now, obviously, because a lot of systems did have to talk to each other, all of them comprises in this support system.
 it's not just chatbot, but it's just an entire support system, because they might have some services in java, some in nodejs, some in ror, apache, kafka, acting as a backbone where all the events and messages and whatnot are streaming- my sequel to hold this decision, tree transactional information, postgres- something similar- and redis.
+for caching and for front end, they use react.
 this is exactly what would be embedded through a webview in their app.
 so they don't have to build a different app interface for this and a different web interface.
 they're just writing react and embedding that in a webview within the app.

@@ -1,5 +1,3 @@
-so distributed transactions are heart and soul of distributed systems, and getting all the participating nodes to agree to that commit or about a distributed transaction is not an easy job.
-in this video we talk about the two-phase commit protocol that takes baby steps to ensure that we can get all the nodes to either commit or abort, while ensuring that the data never goes in an inconsistent state.
 thanks.
 say we have a distributed database with three nodes and we want our commit to succeed when the commit at all the db's succeed.
 this is a classic case of distributed transaction, when we are writing it in a transactional manner that either everyone succeeds or if even one of them aborts, everything about right.
@@ -10,6 +8,7 @@ primarily, if we use tcp connection, this is pretty much unshort, right?
 second assumption: that a process failure can happen, which means that while participating in a distributed transaction, this- like one of the node, or the leader or someone, something processes can crash.
 but you still should be either committing or aborting, and that should be unanimous.
 third, your graph is fully connected, which means that every node knows about existence of every other node.
+you cannot have a partially connected graph, right?
 and at the end of your distributed transaction, you should ensure- or the algorithm, the protocol should ensure- that no two processes can decide on different values, which means that either everyone commits or everyone aborts.
 hey, five nodes would commit but four are aborting, right?
 so the decision has to be unanimous and it has to be uniform, right?
@@ -22,6 +21,7 @@ in most cases it could be the first node that received the right request from th
 or it could be the leader node of your network, anything but a process.
 a node has to become the coordinator of this two-phase commit protocol.
 right now, this two-phase commit happens in two phases.
+that's why the name two phase commit, phase number one, where now what would happen is we are preparing to commit.
 here what we would do is all the nodes, if they can commit or abort, they send this value to a, given that a is your coordinator node, right?
 if i have a four node network- a, b, c, d- a is my coordinator.
 so i will be receiving messages from b, c and d setting if they can commit or not, right?
@@ -46,6 +46,7 @@ first one where everyone sends its decision to the coordinator node.
 in the phase two, your coordinator sends the final decision that the entire cluster is taking to every single one of the node, as simple as it can be, right, okay, in case in case, if any node did not participate in round one due to any reason- maybe crash, maybe anything- they will be deciding on the decision sent by a.
 so, whatever a decides, because you did not participate, you have to live like it's classic election case where, even if you didn't vote the person who came into the power, you have to abide to that person because that person is the leader.
 right, okay, this is a classic case of two-phase commit.
+here the interesting part is obviously it is not full proof, it's prone to a lot of failures and which is what gave us rise to other algorithms.
 but now let's understand the failure scenarios in a network that implements two-phase commit protocol.
 case number one: where your coordinator node fails before initiating the first phase.
 let's say you got some right and you wanted to know whether my network is going to commit or abort.
@@ -78,6 +79,7 @@ so when here, when the participant comes back up, it does not know if it has to 
 problem, this is a classic case.
 so that is where obviously all the participating nodes needs to somehow maintain this state persistent so that even after recovering from the crash they have that information.
 now things become extra interesting in the fifth case, where if coordinator and one participant die in phase two, so every node send its local decision to a.
+a made the global decision.
 now what a did is a, when it is broadcasting the information, it is broadcasting the information one by one to each of the other node, right.
 so b, c and d, a sending message to bcnd individually.
 say a send a message to b and after this a and b both crashed.

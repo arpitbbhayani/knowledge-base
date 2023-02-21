@@ -1,13 +1,6 @@
-charting is super important to scale, specially when one database server is unable to handle all the incoming load.
-horizontal sharding is when we split the table by rows and keep them on separate servers.
-in vertical sharding, we distribute the table across multiple database servers.
-for example, all the payment related tables goes in one database server.
-all authenticated related table goes in another database server.
-so vertical sharding comes in super handy when we are moving from monolith to micro services where, for example, you are, you are splitting out your.
-in this video, we take an in-depth look, not on the theoretical side of vertical sharding, but on the implementation side of it.
-we'll see exactly how vertical sharding is implemented- that too, with minimal doubting- and what are the exact steps to do it.
 these charts are actual physical database servers.
 for example, if you kept a table t2 in this, or rather, uh, if you have one database which is, let's say, chart2, which handles table t1 and t4, and there is a lot of incoming load coming in for table t1, so what?
+so to better manage the load, what you would want is you would want to physically take one of the table- let's say you took the table t1- and put it into another chart which is not so under pressure.
 let's say you took the table t1, move from chart2 to sha 3 to reduce the load, or on chart two, right?
 so what we'll do is, in this video we'll talk about how to you know how to actually implement, uh, vertical sharing.
 so, before we directly jump into the moving part of it, what we definitely want to do is we would want to store meta information like, for example, what you'll have is, given that now, after you do vertical sharding, you'll have multiple databases handling multiple tables.
@@ -52,11 +45,14 @@ so when you restore this dump onto another database, this is not entire database
 so now, after this step, you have db2 with that one table with that entire data up till the time when you took the snapshot, when you dumped it.
 your main database is still accepting the rights, so the new entries would keep on getting added in bin log.
 once we restore the table onto another database, let's say db2- what we have to do is we have to start a replication.
+there are a lot of utilities out there that does this, where what you'll do is you'll read the updates from db1 for that particular table and apply them onto db2.
 this way, your db2 had the old data till a particular time from the snapshot that you took, and then all the recent dinners that have happened on the db1 while you were doing this will also get replicated to db2.
 in most cases you will not be able to use the mysql's default replication because there are some extra steps or extra checks that you might want to apply, filter out some things and then apply.
+let's say we snapshotted a bin log at 156th position, which means up till up till bite offset 156.
 this way, all the incoming rights that are happening on db1 will then start replicating onto dp2.
 this way, eventually my, the two, the two databases, db1 and db2, for that one table will come in sync.
 so what we do here is we know that if the replication lag between the two databases for that table is very low- let's say it's literal, literally 0.00001, something like that.
+well, basically to underscore backup, if you change it to that, the incoming queries that are coming for the table- for t2, the table does not exist and rename operation is atomic, it's very fast.
 we want to stop the incoming rights onto this database, onto this database for this table.
 but as soon as you update the entry that now table t2 is present on db2, zookeeper, as i said, reactively sends information to all api servers using watch as it sends information to api server.
 api server then any new incoming request coming in for table two, for table t2, because you updated in zookeeper, zookeeper proactively send that information to api server.
@@ -73,4 +69,5 @@ right, because when you are updating the zookeeper, or when you are renaming the
 some right that are there during the downtime, that are gone, but all the rides that happened will eventually propagate with replication like will almost zero.
 the reason why that would be a challenge is because it will take because if a table is huge, it means it is taking large amount of rights.
 if it is taking large amount of rights, your db1 and bb2 for that huge table might never come in sick or the replication lag would always be there because it is taking that many or that much of rights.
+write it script, take the dump, note the bin lock position, write a replicator.
 i hope you learned, like you understood, that vertical partitioning is not just theoretical, it actually happens in your world.

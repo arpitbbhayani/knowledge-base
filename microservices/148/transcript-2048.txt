@@ -1,9 +1,7 @@
-so micro services should be loosely coupled in, autonomous, so that they can take their own decision and be as performant as they can be.
-a high level architecture pattern that allows us to achieve this is the database per service pattern, in which each microservice owns its database and can take independent decisions about it.
-in this video, we quickly talk about database per service architecture pattern, look how it helps in modeling massive systems, understand the advantages of adopting it and conclude by going through some drawbacks of this architecture pattern.
 thanks, so almost all micro services need some kind of data store to hold and persist the state of its information.
 for example, order service will need to store the incoming orders somewhere in some database.
 payment service would need to store the incoming payments or the refunds that they are making into some database.
+now here the two databases where the orders is storing the orders or payments, storing the payments information, could be same or different.
 this promotes something that we strive for in a good micro services based architecture, which is loose coupling.
 by having a service owning its own database, we are creating loose coupling between the two services, making them independent and autonomous: independent to build, test or deploy and scale their applications autonomous to take the decision on their own database or any other peripheral decisions, for example, for example, the communication business logic, api contracts.
 there are so many services that you would have to build in order to run or in order to have just one social network.
@@ -33,6 +31,7 @@ so that's where, in order to fulfill the specific need of a particular use case 
 a small example to conclude on this point would be: uh, to power a full text search engine, you might want to go for elastic search, so that, because that's meant for that particular use case, why would you want to do it on a relational database using like queries, right, very poor way to design that.
 so that's where to, in order to fulfill the specific need of a specific service or a specific use case, you would want it to be as isolated as possible and as autonomous as possible.
 next point is: you want to have granular control of scaling or of scaling your service database.
+like, if your database scales, your service scales because api server- the scaling of api servers- is pretty much sorted like you put it behind road balancer: add an auto scaling group and that is sorted.
 but scaling your database is tricky because you, your databases, are not elastic like you cannot just say, hey, increase the size of my database.
 for example, in case of a chat system, a partitioned way of scaling is good for right ingestion or a right heavy system.
 that's where you might want to have a partition database.
@@ -42,6 +41,9 @@ you would want to go for partitions for scaling payments.
 so that's where, for your specific service, for your specific use case, you would want to pick- or you should be picking- the best scaling strategy that would keep the cost in check.
 next is if your database goes down when you have data- and in most cases, most outages that happen in the world are either due to dns or due to a database.
 so, because it's in most cases it is due to database, or your database choking, or your database is under heavy load, or it went into a reboot state, something, something happened with your data.
+imagine having a common database for your entire social network.
+what would happen if that database goes down?
+next is you have a separate compliance need for a certain type of data.
 so, for example, if you are storing a critical information like, let's say, financial data or payments, you might want to have a, a policy where you would want to encrypt the data at rest, which means that whereby, while you're storing the data in your database, it should be stored in an encrypted way, or the disk on which a database is stored that should be encrypted, and so on and so forth.
 now here what would happen is if you have database per service architecture, you would only need to encrypt that database or that table and like, for example, your entire data size is 2 terabyte, but your pi information under financial information only comes in 10 gb.
 so that is where for a separate compliance, and it is always better to to keep your database granular so that you can put those necessary checks only on those databases and not touch upon any other right.

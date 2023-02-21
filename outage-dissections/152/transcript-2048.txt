@@ -1,10 +1,3 @@
-has it ever happened to you that you anticipated that something would go wrong?
-hence you proactively fixed it, but it still went wrong?
-this exact thing happened to get up on march 1st 2021, on a situation for which they were prepared for six long months.
-this is a very amusing incident, as it teaches us a lot about the blind spots that exist in every system out there.
-in this video, we talk about an outage that github faced with their action service.
-take an in-depth look into what happened, why it actually happened, what github did to prepare for this very situation, but it still went wrong.
-so let's jump right into it.
 thanks.
 so this is the incident report that we would dissect.
 what it says is that our service monitors detected a high error rate on creating check suits for workflow runs which affected action service.
@@ -12,6 +5,8 @@ this incident resulted in failures or delays of some cute jobs.
 that's okay, but now we'll drill down into what exactly happened.
 so what happens is whenever you push something onto a repository, let's say you create a pull request, and then you add commits to it.
 for every pull request or for every commit you add, there are some fixed set of checks that github has to execute in order to ensure that it is okay to be merged.
+for example, it could be simple linting checks.
+it could be simply, it could be simple: secret detection checks.
 you can even write your or you can even add your own checks as part of a commit or as part of your pull request, right?
 so they let's say what happens is you have multiple repositories.
 they all talk to this action service to run these sort of actions and checks on the particular report.
@@ -19,6 +14,7 @@ before any action is run, a checksuit is created, right, and this checksuit cont
 once all of those checks are done, then you are okay to merge that particular repository- uh, sorry, to merge that particular branch- into the parent branch, right?
 now here, one peculiar thing to observe is if it is something, or if a workflow is something that is running on every commit that happens.
 this is a very high frequency event, which means that there is a chance that the id might exhaust, and this is exactly what happened.
+so whenever a check is created or whenever a check is to be executed, every execution of it is given a unique identifier.
 this identifier, obviously, is a row identifier in your relational database, so github very heavily uses mysql, i am assuming, for this data, for this use case also, they are using mysql itself.
 for every execution of this check there is an id in the database.
 so basically, there is an entry in the table, right?
@@ -27,12 +23,14 @@ so yeah, when i say explode, it's not really going down, but it's more about hav
 so what happens here is your id is of type integer, which is an auto incrementing id, and integer by default.
 when you create a mysql table, the size is 32 bits.
 so when what happens is because it is a 32 bit, it has a limit, let's say 2 billion.
+uh, it's a sign integer and the limit is 2 billion.
 but the idea is that because it is a, because it is an integer or 32-bit integer, it has a relatively smaller range.
 and for a use case which is this frequent, where you are running checks on every single commit and every single execution is having an entry in the database, this becomes very possible that you will run out of your id, right.
 this exact thing happened and, uh, in the past github also experienced an outage because their id or their uh or their id column hit its max limit.
 you can check that out on this very channel and i would highly encourage you to do that, because then i discussed how to mitigate that issue, like, if you ever come into that situation, how to fix that with two or three approaches.
-github anticipated this.
+so go check that out if you haven't already.
 like github already had those checks in place which could tell them: hey, this tables id range might exhaust, so do something about it.
+so in such situations, what uh engineers do is they alter the table.
 they change the column type from end to big.
 it begin is a 64-bit integer, so it gives you a massive, massive range, so that possibly would never uh be exhausted, but it's a gigantic range, right.
 so github already anticipated this and six months back they already fixed it.
@@ -70,7 +68,9 @@ this service or this library or this dependency failed, and because it failed, t
 so that's where what happened is: because jobs failed to be queued, check suits were left in a pending state, they were not getting completed, like they were just waiting, waiting, waiting, waiting, and this was the outage.
 they immediately pushed the code fix so as to ensure that the tasks that are cured- uh, so the tasks are queued for execution and then they are picked up by executors to finally execute.
 right, so they push the code fix to do that.
+that would not have used that particular dependency, but some other dependency that supports in 64..
 the idea was to put a code fix that ensures that the tasks are queued for execution, because executors didn't have any problem.
+they were working just fine.
 database was working fine.
 the only thing that failed was puller trying to pull from the database and putting it onto the queue.
 this, this particular thing, fit, so mostly it was the outage of the puller that pulls it from the database and puts it into this, like somehow the graphql dependency came into play over here, right?
@@ -96,8 +96,13 @@ what we learned from this outage is to help avoid this class of failures, like n
 github team audited and updated usage of all external libraries, so they audited every single external library that they are using and they ensure that they don't run into the same class of failures, for example, failure due to integer 32 exhaustion.
 this is what happens when you blindly trust any open source repo, any repository, not just opens, but even proprietary.
 you need to know on what's happening behind the scenes so that you avoid this sort of outages.
+right?
+right?
+right?
 pretty interesting, pretty amusing outage.
 i loved it because it taught us that, even if you are prepared, it's if things are supposed to go wrong.
 there are always blind spots in the system, especially when you hit a particular scale.
 nice, so yeah, this is all about this outage.
+if you guys like this video, give this video a thumbs up.
+if you guys like the channel, give this channel a sup.
 thanks, saturn.

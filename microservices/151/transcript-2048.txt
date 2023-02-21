@@ -1,7 +1,3 @@
-now for a new use case that is introduced in the product, we have to talk to not one, but three services together to compile the final response.
-so what is a good way of implementing this and supporting this kind of request coming in the future?
-a high level pattern that helps us do this is called api composition.
-in this video, we in depth talk about the super simple pattern to query microservices, see what it is, how it is implemented and understand how it not only helps in improving the performance of our backend systems, but also improve the performance or the experience of our end users, and we'll conclude our discussion with going through the advantages and disadvantages of adopting this.
 so in this case, what we would have to do is, in order to get the order detail, we will have to talk to the order service.
 so here, our one client needs to talk to multiple services to get the things done.
 now, this is a classic case of how would we want to query the micro services?
@@ -13,8 +9,10 @@ this composer knows what to do when it gets a particular request.
 this composer would then talk to order service to get order information.
 would talk to payment service to get payment information.
 sitting or basically placing a middleman in your architecture to hide the complexities of the underlying systems, is what this particular pattern solves for us.
+a very common component that solves this exact problem is called an api gateway.
 so api gateway is a classic example of a composer and we typically place it behind or basically before all of our micro services.
 so this typically, or api gateway, is the first point of contact for any request coming in from the user, and then api gateway would decide where it would need to forward the request to, or send multiple requests to multiple services and get the response and whatnot.
+and what all popular api gateways can we use?
 that serves as an api gateway, right.
 so anything that would give you an api gateway is something that you can use as a composer.
 so what we do in our architecture we place api gateway in front of all of our microservices and request directly comes to epa gateway.
@@ -38,6 +36,7 @@ plus, it would eat up a lot of data of your end user because you are making thre
 so how do we make the end users experience better using composer?
 because composer is acting as a single point of entry, the user would make just one request, just one http call from browser to composer.
 composer in turn would fan out to three different services: get the response, merge them or join them and then send the response.
+it would have lower latency as compared to the first approach that we discussed and there is just one round trip so and then your client can be dumped to just understand what the response is and start rendering.
 one thing that i want to talk about is, obviously this is not just one level of composition.
 let's say we have a very complex logic in our system and we just simply said, hey, the composer's address will talk to order service, member and service and larger six servers to get that information.
 but what if order service itself needs to talk to seller and inventory service to get its information?
@@ -52,14 +51,18 @@ so pretty solid, single point of interact, no smartness needed on the client sid
 so you, your user, made a request to your composer.
 who should it talk to and get the response from, and then it would do the need for right.
 so this is where, or on the composer side, or on the gateway side, we can implement security, limiting, caching and whatnot.
+so every single thing around logging, security, practic, basically logging, security practices, monitoring, uh, what, not everything could be applied on this composer site.
 so that's why composer is again a very famous pattern to be implemented, because it makes life so simple for the internal teams.
 let's say, you had a very tight deadline, very tight deadline, and you just like, randomly sent any response or any structured response without putting in a lot of thought into: uh, how are you structuring your response from one of your microsoft strings, let's say your, let's say your payments, micro services, right, the response is not ideal, uh, not very good for your client.
-very commonly seen in high growth startups, you would see a lot of hacks being applied at your composer level and that's how you hide your bad design decisions and wrap them with a very new, shiny interface.
+but then what happened is: you made that bad design decision and now something needs to change.
 so now, because composer is great at hiding the implementation detail, say we have this monolith that we had, which is a legacy monolith, and the first service you would want to fork out is payment service.
 so what we'll do is we'll put a composer in between, forward any request that comes to slash payment to payment service and every other request goes to legacy microservices, to- sorry, to- basically legacy monolith.
 this way your user doesn't need to know that, hey, there is a separate payment service or there is a separate monolith service and you can slowly keep forking out your monolith com or your monolith modules into separate microservices without impacting anything on the user side, but just by adding a layer of abstraction sitting in between.
 let's talk about disadvantages of api composition.
 first one: our composition or our composer is uh, is basically firing a lot of request onto services, getting the response, merging them.
+the responses that it is getting from the services is huge, huge.
+then the comments is part of a separate service because it requires special kind of scaling.
+imagine wikipedia pages so dense in information, right?
 so that's where, when you are transferring large amount of data or when you are merging large amount of data, you have to ensure that your api gateway is scaled enough and if it you that who you have written, or if it is you who has who has written composer, you have to ensure that it is well written and, uh, basically at best, efficient, right.
 here we can very clearly see that when the request comes to our composer and it goes to three of the downstream services, like blocks, commands and claps, what we know is our availability is challenge.
 if one of those services down, we are not able to compile the response right.

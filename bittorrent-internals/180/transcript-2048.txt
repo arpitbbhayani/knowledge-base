@@ -1,5 +1,4 @@
-so the performance of the BitTorrent Network relies heavily on the order in which the pieces are requested by the peers.
-in this fifth video of the BitTorrent internal series, we take a look at the peace selection algorithm that BitTorrent uses and learn how it makes the network fault tolerant while ensuring a very fast download rate across the network.
+so the original file that is shared in the network is split into pieces.
 through this we, when we are trying to download a particular file, we know that these are the pieces.
 so, as part of First Step, you would want to download a torrent file you've got.
 you'll go to the tracker to say, hi, I have this torrent file and I want, uh, to download this particular file.
@@ -13,6 +12,7 @@ so, which is where the order in which the pieces are requested by the peers matt
 so this is why the order in which we are requesting the pieces matters and which is why we need a piece selection algorithm with us.
 so we would want a piece selection algorithm to fulfill two needs.
 to complete the download right and to maximize the download speed, obviously your peace selection algorithm cannot make the overall download slower, because that's what the aim of a P2P network is: to distribute the file as quickly as possible, right?
+you would try to prioritize downloading that and the piece which are common.
 this way we would be reducing the dependency on the Cedar and we would ensure that everyone in the network has almost all the pieces that are required to complete the fight, so that, even if Cedar leaves the network, you would have enough nodes in the network that would have those pieces so that you can complete the download, like every node would complete the download, right.
 so the core idea of this algorithm is prioritizing downloading of a piece that is rare.
 pra wants to download a file, so it would start downloading the pieces from its peer set B and C.
@@ -28,6 +28,7 @@ so you'd get a very fast download fit, because there is a very nice uniform dist
 we know that the reciprocation is a very important part of BitTorrent, through which it ensures that no one abuses or there are no Free Riders in the platform or in the network.
 so what this would mean is if you as a peer hold a rare piece, everyone in the network would want it from you.
 and this is what makes this uh strategy very special, because now if you hold a rare piece, everyone wants it from you, so you'll in turn get a better download speed.
+we would never have a, a situation where a rare piece goes missing because we are prioritizing downloading of the rare piece first, right when, which is really important, right.
 so reducing the dependency on the cedar while ensuring that, even if someone leaves the network, we would still have the pieces floating around in the network that people can complete their corresponding downloads.
 right now there are two ways by which peer can tell about the pieces they have.
 because now what you need to know is, let's say, I know the pieces, oh sorry, I know the peers, but how would I know what pieces they have?

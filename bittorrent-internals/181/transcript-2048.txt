@@ -1,7 +1,4 @@
-in this video, we take a super detailed look into distributed hash table implementation and we would see how it can power the routing of request without having any central authority.
-we look at how data and nodes are represented, how it leverages xor as a distance function and how it always converges to the node that we are looking for.
 thanks, so to get information about the peers, a node in a bit torrent talks to a central entity named tracker.
-so bittorrent uses something called as an academia, as an overlay network- right, so there is.
 so if, like, bittorrent can be implemented with a central entity called tracker or you, or it can go pure p2p with by using an overlay network, uh, that is implemented using kadamlia, right.
 so cademia is an implementation of a distributed hash table: hashtable, simple key value pairs- right, but if one node is not enough to handle a lot of data, what do we do?
 so we would have a lot of nodes in our network and they are all storing some bunch of key value pairs.
@@ -9,6 +6,7 @@ let's say, i want to get a particular key value pair request can come to any nod
 right, instead of going deep into bittorrent part of it, we'll talk about this raw distributed hash table implementation, which you can leverage and extend across hundreds of use cases out there, right?
 so how is every node and a key participating in this dht, in this distributed hash table they are represented by.
 okay, so every node or every data in this dht implementation is gets a unique 160 bit or 20 byte id.
+you can take the node ip, pass it through the hash function and the ha and it would spit out a sha 1, uh, 160 by 160 bit hash, or you can take the key that you are storing, pass it to the hash function.
 so any network, any pure p2p implementation, needs to first solve the problem of ownership, as in given a key, given a node, or given a key and a set of node, which node would this key reside on?
 right, how would we know which is the closest node?
 right, and this is where we need a way to define the distance metric.
@@ -23,6 +21,7 @@ so, given that we have distance metric based on xor, let's see how we can visual
 my key, my node n2, is having id of 5, so 0, 1, 0, 1, right.
 so when i have this, so in order to find which node owns the key ka, i have to take, i have to find distance from ka to n1, ka to n2, right.
 hey, these two are actually close to each other, right, so we can visualize the distance metric that we were talking about in a try.
+but if i have not seen any key, that is one, one, zero, something, i can just place my n one into the, into the shortest path possible, right?
 now if i want to place this, instead of having a complete binary tree, what we would have to do is we would just place it as at the smallest height possible, right, such that it disembed, that it disambiguates itself from the other nodes, right.
 so instead of having the entire like, instead of you needing to travel entire 160 bit, just keep it at a shortest disambiguated path possible, right, and that's the idea.
 so with this, you, and also, if a particular sub tree does not have any node or any key placed in there, you don't even need to construct it.

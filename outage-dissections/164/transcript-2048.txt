@@ -1,6 +1,3 @@
-so outages happen, and in such 10 situation, the main priority is to get the system back up and running, but is that it is everything done once the service is up?
-so today let's spend some time talking about the aftermath of an outage.
-there are many things to take care of once the outage is mitigated, and in this video we dissect the github incident, understand what happened and look at a set of common practices that we follow to ensure a complete closure.
 thanks, so, like always, we start with incident report and here it goes.
 the incident was caused when a foreign key for scope tokens exited max in 32.
 this is one very common reason that we seen with github, where your auto increment integer column uh overflow- right, so it started not accepting rights and it led to a lot of failures and a perpetual downtime.
@@ -10,6 +7,7 @@ if you see with integer overflow, where your auto increment integer column hit i
 right, because that's what you would exhaust the limit and actions and pages are very high throughput service.
 it has very high write rates because github actions is triggered every single time you make a commit.
 so that is, it is very likely- of a candidate of where your integer limit would breach.
+by default, 32-bit integer, sign integer is 2 billion, while unsigned integer is 4 billion and that's not much for a right heavy system.
 right, and another set of actions where you might find it amusing- hey, my integer id would cross- is push and pull, and which is exactly what we also see in the outage document.
 it also prevented some access to operations against github, apis and low level git commands like push and pull.
 right, so push and pull, uh, in order to authenticate the request on github, it requires scope tokens and push and pull very frequent operation.
@@ -36,6 +34,7 @@ but uh, coming to the main agenda for this video, like, assume that the mitigati
 once the foreign key migration was successful, obviously the right started, or the rights started to get accepted, and things became normal.
 the internal engineering teams then worked to slowly remove token records stored in our cache layer that were considered invalid.
 issue was mitigated, right.
+what is issue mitigation?
 mitigation is all about you phase in outage.
 once the system is up and running, your issue is mitigated, but it is not yet resolved.
 so mitigation and resolution are two very different things.
@@ -43,6 +42,7 @@ right, mitigation just implies that, hey, my service was not running, but now it
 so first thing that i would want to discuss is data inconsistencies.
 so what happens is, let's say we fire two sql queries, one after another.
 now let's say between these two statements, so update: a equal to a plus hundred happened then.
+before b equal to b minus hundred could have happened, the system crashed.
 so this put my data in an inconsistent state, and this is very important.
 so one way to handle this is by using proper guard drills, like sql transactions, to ensure that either all of them happens on another happen, basically atomicity of the operation.
 so that is where what you should be ensuring is: when the outage happened, check for such data inconsistencies, understand the system really will, check for data and consistencies and ensure that those things are cleared off right.
@@ -59,6 +59,8 @@ if you want to right and at least notify the dependent services key, something l
 what github says is they already had alerting and linting in place to prevent integer overflows in the database.
 they already had it, but then still the outage happened.
 why, unfortunately, these mechanisms were not sufficient, in this case due to it being a foreign key that predated our linting.
+right, this is pretty interesting.
+because they had the guard rails, they had all the checks, they had linting in place, but still it have.
 but still it happened because these mechanisms were not sufficient, because it was a foreign key that changed.
 like i said, that id column checks- everyone puts it, but foreign a thing, it's very sneaky- and that's exactly what happened with github.
 so they had checks on the primary key but not on the foreign key, and which led to this outage.
@@ -86,3 +88,4 @@ like because unknown out or outage because of unknown reasons are very common, b
 yeah, so this is what we learned from this outage and this is very exhausting, obviously very use case, specific uh, very company, specific organization, specific uh on what needs to be done.
 but these four checks- data inconsistency, cash invalidation or so many things have break because of cash not being invalidated.
 then, uh, setting up the right set of alerting, write immediately, like immediately after the outage, and taking preventive measures, preventing measures to ensure that the output doesn't happen because of the same reason again- is very important.
+doing this would solve eighty percent of your problem, right, and you can very well save eighty percent of your outage uh outages by doing this basic four steps.

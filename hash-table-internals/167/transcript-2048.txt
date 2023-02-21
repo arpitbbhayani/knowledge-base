@@ -1,6 +1,3 @@
-although chaining is a popular way of handling hashtable collisions, there is a very interesting way of achieving the same, and it is called open addressing.
-the key highlight of open addressing is that it does not require any additional data structure to hold the collided keys, making them super space efficient.
-in this video, we'll look at open addressing, the core idea behind it, lay a super solid foundations for probing functions and understand how the implementation of our core hash table functions changes with this scheme in place.
 thanks, so conflicts are inevitable in hash tables as we are trying to map a large set of application keys into a smaller range of your hash table right.
 so when you pass different keys through the same hash function, you might end up with the same hash key right, which is what causes the collision.
 in the previous video we looked at chaining as a way to handling collisions.
@@ -31,6 +28,7 @@ so the idea would be to find to pass in that attempt with the key that spits out
 so if i would, if i'm trying to insert a particular key, k my in- and this is my first attempt- my hash table is empty.
 what i would do is i would trigger this hash, i would trigger this probing function p of k comma 0.
 if it is not empty, i would invoke probing function with k comma 1.
+so for a particular key i have to get it in a particular order only so that it is deterministic for me.
 it might be somewhere in the hash table, right, but it has to be very deterministic so that you can able to find it.
 so, given this as a probing function, how does our hash table operations change?
 so how does adding a new key look like?
@@ -40,6 +38,7 @@ when i pass it through my probing function, attempt 0, it would give me 5.
 i would try to place my key at location at index 5..
 uh, is the slot number seven available?
 place my key two, place my key k at index two, right, and this is what we would cut, and the probing function would be generating the entire permutation in some deterministic order.
+right then, how does your second operation look up look like?
 let's say, we are trying to find a key k in my hash table.
 what i would do is i would invoke a probing function with attempt 0 and then it would spit out some j, which is the first index, will go to that index and see if the key is there or not.
 the worst case here is we, all the slots are filled and our key is not there.
@@ -64,6 +63,7 @@ so that is where we invoke the probing function.
 so that is where we invoke the probing function.
 let's say probing function spits out for attempt 0, it spits out 5 and then 7 and then 2..
 right now, save a would want to delete k2.
+and let's say we do a hard delete, right, we do a heart delete of k2.
 which means now my k2, which was present at index 7, is gone and my slot is empty, right.
 and now let's say we fire a get of kt, of a get of key k3.
 now, when this lookup happens, what would happen is i would invoke my probing function with attempt 0 on k3.
@@ -75,6 +75,7 @@ so that is where, as soon as you stumble upon an empty slot, you would stop your
 and what is the limitation- and obviously grass is not always green- there has to be a limitation of open addressing, the limitation, as you can very clearly see, is that the number of keys that you can put in your hash table is equal to the number of slots that you have otherwise, because your probing function is trying to find an empty slot in the array.
 uh, you would discard the put that you got on your hash table, right, two ways of handling it.
 but in general, the limitation of open addressing is the number of keys that you can hold in your hash table is equal to the slots that you have in the array, right.
+so as soon as your array is about to get filled, you would have to resize and do rebalance and what which we'll touch upon in the coming videos.
 but this is the core limitation of open addressing with chaining, because it required us an auxiliary data screen.
 you can put in as much of data you want in that auxiliary data structure, for example a link list, right, and that would not have been a problem.
 but here it is a problem and this is a limitation of open addressing.

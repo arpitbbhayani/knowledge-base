@@ -1,5 +1,3 @@
-designing a highly available and performant service is really difficult, but bookingcom does it really well.
-the rating and review service is one of the most critical services for booking and in this video we dive deep into how they designed and scaled it to ensure that they seamlessly handle a peak traffic of more than 10 000 requests per second.
 because the thing is that, using reviews, people make informed decisions that, hey, do I need to book this hotel, or is this hotel, or is this stay, or is this, too, really good enough?
 so now people are coming to booking to read the reviews and then make an inform District: hey, I want to book this particular Hotel.
 so people come on bookingcom to read the reviews about a place or about a stay or about a tour, and they book after that.
@@ -23,6 +21,7 @@ right, this would make your service highly available, right?
 okay, given that we have 500 GB of data and a lot of ridiculous coming, and obviously one node should not be able to- or OneNote is not able to- support that much of request, you Shard the data.
 accommodation ID is, let's say, hotel ID, or two, right, something around that.
 so let's say a request came in for a particular occupation, that, hey, give me all the reviews.
+or let's say, let's create a review for this particular accommodation.
 that how would your review service know which Shard to connect to?
 and most classic, most typical way to do it is a hash based routing where you take the accommodation ID, you mod it with the number of shards that you have, you get an index and then that particular node, you go and fire the query and create the rating or review right.
 now here what happens is, let's say you have three nodes and you have sharded the data according to that to handle the load and what not.
@@ -31,11 +30,13 @@ you want it to be easy for you to add and remove data nodes from your cluster, w
 so if you folks don't know about consistent hashing, I would highly recommend you to read my blog post on consistent hashing, which also contains its implementation.
 I've talked about not just a theory but the implementation part of it as well, and it just takes a sorted array and binary search to implement consistent hashing.
 the core idea of consistent hashing is very simple.
+you structure it in ring and whatnot, like you will read it there, but what it answers it?
 given this, given this, where would we put this consistent hashing logic in the review service?
 right, because review service was the one that holds the routing information that earlier, if you are using hash based routing, the request, com, the request came to review service.
 review service would be Computing the hash and a mod number of shards and find the index and put it there, right?
 so, similarly, the consistent hashing that you implement will be part of your review service, right?
 it would go and hit the request on that particular shot, right?
+so, consistent hashing, beautiful- algor them to do minimal data transfer, and that's what the key highlight of consistent hashing is.
 right now, that is what what a consistent hashing does.
 that's it, and that's the beauty of consistent hashing, right?
 go read that to understand consistent hashing in depth, along with implementation.
@@ -55,6 +56,7 @@ then the next request that comes in starts hitting the new node, right.
 so now you would have four nodes in your cluster, right, and everyone serving the request.
 so add and remove the node that you would want to copy the data that needs to be moved by by balancing- and obviously not a lot of data would happen, only data from the peripheral nodes would move, nothing more, right, and that's the beautiful.
 and you notify the review service to start consuming the new ring, right.
+so this way, the new request goes to the new nodes and you balance a lot across four nodes.
 now, right, this technique is can be used across any service that you are designing.
 so wherever you see a problem of you wanting to build a service that needs to scale up and down at will and there is a lot of data that is moving because of your routing logic, you employ consistent hashing at that location.
 once you employ consistent hashing at that location, your problem is typically solved, because it ensures that you have to do a minimal data movement when you add or remove nodes from the consistent hashing ring that you have.

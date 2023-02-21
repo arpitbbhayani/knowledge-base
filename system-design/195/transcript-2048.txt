@@ -1,7 +1,3 @@
-Instagram has millions of hashtags and millions of people tag their photos every single day to discover.
-Instagram allows us to search for a hashtag.
-in this video, we will take a detailed look into how Instagram efficiently searches for hashtags and serves them ordered by count.
-while doing so, we will dive deep into a super interesting database optimization called partial indexes.
 see you in my next card.
 so, to understand this use case, let's jump right into the Instagrams engineering blog, and here's what they say.
 as we scaled Instagram to an Ever growing number of active users, postgres has continued to be our solid foundation.

@@ -1,5 +1,3 @@
-so leader election helps our distributed systems to auto recover without any human intervention and make the system autonomous.
-in this video, we take a detailed look into leader election algorithm, called time slice, and this algorithm is extremely impractical but still provides us with a great insight into a seemingly weird implementation.
 thanks.
 so in a distributed system, the leader node may go down, which is, which means that some other node needs to be the new leader either.
 this can be done by a, by an engineer configuring a node to be the new leader, but it requires time.
@@ -32,6 +30,7 @@ in phase one, only the node with uid one can send a message if in phase one, rou
 no one else can do anything, only the node with uid one can do it, right?
 so if nothing happens, then the election moves to phase two.
 in phase two, the node with uid2 can send a message.
+now, when i say send a message, it would be: either the node with uid2 can send a message and the message that is forwarded can also only contain uid2- a node cannot forward a message.
 in a phase i, a node cannot forward a message from any node except i.
 right, any message that contains any uid except i.
 you can very clearly see that a lot of rounds would go waste.
@@ -106,6 +105,9 @@ so, yeah, that's it for this video.
 if you guys like this.
 we and i hope you- had fun learning this time slice algorithm.
 it was like sleep sword per se and, uh, quite, quite interesting to know about, right.
+so, yeah, that's it.
+that's it for this video.
 if you guys like this video, give this video a massive thumbs up.
 if you guys like the channel, give this channel a sup.
+i post three in-depth engineering videos every week and i'll see in the next one.
 thanks [Music] you.

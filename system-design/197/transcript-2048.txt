@@ -1,11 +1,9 @@
-so, when a product is catering to a large audience, providing contextual information becomes important, and at the scale of Airbnb, it becomes non-optional.
-they collated all the data and structured it into a knowledge graph that today Powers their search, Discovery and trip planner services.
-in this video, we take a detailed look into how Airbnb designed its Knowledge Graph, some key components of it and some key design decisions it took while architecting it.
 now, to have all of this information- obviously all of this information is present there on each of their own respective databases, but to have them collated, helping users make the best decision, you have to have this information at one place, making them easily accessible.
 Facebook also has their own Knowledge Graph and whatnot.
 so here we would take a look at how Airbnb does that right.
 they have most of their data, like most of the transactional data present in the relational databases, but why they cannot use that information to power this functionality?
 because, like with relational databases, you typically know that it's a most common way to store stuff you have.
+for each type of entity, you have a table right and every single row of the table represents one entity.
 for example, you might have a table for hotels, you might have table for events, a table for experiences and what not, and then what you would have is you would have foreign key references connecting to all of them.
 so relational databases are meant to work very well with the transactional information, for example, payments, the way we do it, affordable users, post even for this, for the transactional thing where I'm getting something, putting something, that sort of stuff on an individual entity level, it works really, really well.
 for example, what if we would want to take the user on this journey of finding a city that hosts a type of experience in July and August?
@@ -39,6 +37,7 @@ that, hey, Taj Mahal is a landmark in the city of Agra, right?
 so this is how your relation is, your relationship is defined and each Edge type would have that.
 you need to have that strict constraints that landmark in a city can connect only Landmark from, like a landmark to a city, right, and they didn't go for graph DB.
 again, just to emphasize on that: that keeping things simple is the heart and solid scale is to make it operations, because operations overhead is there and they do not have enough expertise to like.
+at that time they didn't have expertise to manage a graph DB.
 so they use relational DB to build it right.
 and and the knowledge graph that they have needs to be periodically dumped for offline consumption.
 for example, I don't have to always query the graph, my knowledge graph, to get some information, for example, let's say, if I want to do some search engine ranking or if I'd want to run some recommendation.
@@ -50,6 +49,7 @@ so how a normal service- let's say search- wants to use this knowledge graph, ho
 so a graph typically is meant to be traversed, because you don't know what kind of query you'll get.
 but you would have to Traverse the graph and find the most relevant information out of it.
 so, for example, you might want to find all the places, like all Place nodes, connected via with a particular City node.
+Los Angeles, with h type, contains location where listings are more than 5000 and they are Scenic category, which means that I want to find out all famous places in Los Angeles where number of listing is more than 5000 and they have a scenic view in them.
 this way, if I want to do this, I would want to Traverse a graph, so there has to be a way through which I should be able to provide a query.
 now this could be a simple Json format in which they are expressing this query and this query layer understands it, understands that particular Json and then goes to the knowledge graph, converts this type of query into an into your relational database, understandable SQL query, fires on the relational database, gets the output and sends the response back to the user.
 the idea is this graph query layer.
@@ -58,6 +58,7 @@ this is the role of graph query API layer and this totally depends on how they w
 they typically did it with simple Json.
 you can have your own custom format, no one stopping you from doing that, but the idea is keep it simple Json.
 everyone understands user that right.
+then the third part, which is the most interesting part of this, is the storage mutator.
 now here, and the key thing here is: so, say, we have some information in our knowledge graph, but obviously, let's say I have listings.
 now that listing changed, right, so the description of the listing chain.
 for example, let me use a simpler word, let's say you have a City information, so City will have its own micro service, or have its, or is its, in its own database.

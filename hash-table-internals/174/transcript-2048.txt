@@ -1,6 +1,3 @@
-so sets are amazing, but how are they implemented?
-in this 10th video of this hashtable internal series, we take an in-depth look into the implementation of sets using hash tables, popularly called as hash sets.
-we'll go into the implementation details and performance tuning of sets to see how they are built: on top of hash tables having chaining and on hash tables having open addressing.
 thanks.
 so set is an amazing data structure that keeps track of everything unique.
 it powers operation like union intersection and set difference, but the core idea is that it would try to keep everything unique in the set.
@@ -24,6 +21,7 @@ so if you are passing a string, you have to do string matching or we have to do 
 so even after you reach to that location, you would have to do a key comparison to find out if your key is the one that you are looking for, right?
 now, what do we need to store in the hash table?
 right up until now, in the hash like, what we are trying to store is, we are trying to store a key which has an application context, for example, a string of an integer.
+it could be an object as well, right, it could be a struct instance, it could be anything.
 so now, what do we have to store in the hash table?
 actual hash table would be key.
 like, let's say, if i'm implementing it in c, i would store a white star so that i can put it.
@@ -68,6 +66,7 @@ so your headset would, overall, have array, number of keys, number of activities
 very similar to what we had in a hash table.
 uh, hashtag implementation with chained hash tables.
 we have to keep track of the number of keys, number of active keys and number of new slots, because when we do a delete, it has to be a soft delete and not a hard delete.
+we talked about it in depth in the previous video.
 right, because of delete is important.
 we need to have two explicit counters on the total number of active keys that are had, total size of the array and total number of use slots, because our load factor would be dependent on the total number of used slots and not on the total number of active keys.
 right, okay, now each struct or each element of this add a would be a struct, say slot, which holds four information: first, is empty, which tells if the particular slot is empty or not.
@@ -88,5 +87,11 @@ so that's it about implementation of.
 has said, we went into those micro details of it and the implementation is pretty straight forward.
 given that we understand the hash table, the implementation is straightforward.
 but i wanted to highlight some really interesting uh micro nuances that we would have to think about when we are implementing hash sets using hash tables.
+right, so that's it.
+right, so that's it.
+right, so that's it.
+that's it for this video.
+if you guys like this video, give this video a thumbs up.
+if you guys like the channel, give this channel.
 so this was the 10th video in the hashtable internal series and i'll see you in the next one.
 thanks, [Music] you.

@@ -1,6 +1,3 @@
-so almost all Engineers start working on a feature, thinking it is a simple and a no-brainer, but when we start thinking of the implementation details, we realize how complicated things actually are.
-in this video, we go deep into the email classification service at slack, whose sole job was to classify an email into an internal or an external one.
-the feature seems like a cakewalk, but when we start jotting down the implementation specifics, things turn out to be a little more complicated than we anticipated.
 so on slack, we can invite people by email.
 the difference is that internal people, when you are inviting, they are directly added to the workspace, while external are just added to a few set of channels.
 now, depending on whom we are inviting, we would want to trigger an internal onboarding floor and external onboarding floor, which could be as simple as just showing a different dialogue.
@@ -16,8 +13,10 @@ what you are trying to do is, given an email, let's say, person a wants to invit
 so first is the settings context, because it is very possible that an employee that uh in a workspace the administrator has has configured that these are the domains that are internal, While others are external, or it they might have just basically uh, shut down, uh, basically external invites, right.
 so if you have configuration, that would help you, that that would help you do a shortcut evaluation, right, or a short circuit evaluation of the part that, hey, is it an internal or an Excel One?
 so, for example, if I would want to invite someone and if my domain is, let's say, a bar dot external, then and I'm inviting someone with bar dot external, so which means that we both have same domain, so whatever my classification is, same thing would apply to that person as well.
+that would be like almost a surety that, hey, this person also belongs to the same class as the other person, right?
 so these two are fairly simple and would cover at least 50 percent of the cases, but there might still be a chance where there are emails that you are seeing for the first time.
 you cannot just mark them as external, mark them as internal, and you cannot also probe every time when you see a new email domain: hey, do you want to add it to this list or not?
+right, you just want to make the process as seamless as possible so that, because the more adoption you get, the more Revenue make, the company makes money and we keep our jobs right.
 okay, now comes the third case, where you cannot derive something out of simple configuration, like through settings or through inviter's context.
 so now, given a query, which is, which you sent today, given this email ID, give me the classification if it is internal or an external.
 given this, if you have millions of people, how quickly can you identify if this is an internal or an external?
@@ -26,6 +25,7 @@ for example, if I have, let's say, four domains part of my workspace in which I 
 you just keep on inviting people seamlessly, and that system would need to keep track of all the count, like, like the overall aggregation of the number of people against each email.
 the table looks something like this: for a particular workspace or a theme, they specify or they keep a track of domains that they have, the count against them, the date at which they'll it was last updated and the role of that particular group.
 basically, what they're doing is that it says that for team a barcom has two people with role admin.
+so the idea is: in this table, for every team that they have, they would keep track of all of these things.
 so that is why they are just keeping the aggregated count, which is grouped by domain and role for a particular team.
 so here the idea is pretty simple: given an email, you just see that for a particular like, you extract the domain out of that email and see where it holds right and when you see it you see what percentage of people and role combination are they have the same domain, right, if it is more than 10 percent you consider it as an internal, if it is less than that you consider it as an external.
 so I can see that if I am want to classify for one directbarcom, it would be an internal classification because there are 68 people right with barcom, with bar dot in there are 30.
@@ -44,6 +44,7 @@ there is a very interesting challenge that is coming out of this particular thin
 now this becomes a problem because now, let's say, if a particular user got created, you updated the entry in the database, but your broker thought that a message was not consumed, or before the message was deleted, you re, or the message got recued again.
 which is where what slack did is they had, or they built, a Healer service whose job is to periodically heal the numbers and bring it back and bring it back to a consistent state.
 second is when you, when a user upgrades a, let's say, workspace, was a free tier and then they changed their plan to a pay tier, you might just want to Recons the numbers and ensure that everything is in place, because their licenses, that billing, depends on this right.
+now, given the frequency of this healing process, you would want to ensure that it's lightweight, it's consistent and it does not make your data go inconsistent.
 it's easy to draw box around healer and, hey, this would heal the system.
 now, a naive approach that you may think to heal is that, hey, let's say, whenever A Healer runs, I would just recompute the count and update it in the DB.
 so, which means that whenever my healer is running, I am simply going through all of the users that I have, I'm extracting their email domains and then I'm doing the count in memory and I'm updating it in the database, which means I'm replacing the domains DB for that particular team.
@@ -52,10 +53,10 @@ so what you do is, when your healer starts, at that point in time you keep track
 this is the date time at which your healer started.
 now it in the table, in the domains table that we had, we had a column called Date Update.
 you, when you your healer starts, you keep track of the date time.
+so who's updated ad is up until the noted date time.
 you compute the numbers, you see the drift and you know that, hey, this is what I want to do, plus n minus, and what I would want to do again: absurd operations.
 right now with this, what happens is up until this point, the time at which healer started, you knew what the state of your domain stable was.
 second, you went through all the events of user creation, updation, deletion, up until that modified time, because you would have updated ad field in your users table or somewhere like that.
 you would go through that and Recons the numbers find the drift and you create an absurd operation of plus and minus and, whatever your operations are, you would start pushing those things through that same route.
 so now the architecture of this looks something like this: everything else Remains the Same and you just plug a Healer, who job is exactly what I just described, right.
 so from the events that are flowing in, a Healer consumes it and it, it sees it, basically queries the DB, gets the drift, it triggers the corresponding absurd happens, which happens on the DB and system eventually heals.
-and this is where we see we could have just drawn boxes and said, hey, this is the system that we designed, but in reality, when you start thinking of the implementation, you start realizing that it's not as simple as it seems.

@@ -1,8 +1,7 @@
-so leader election is important for our distributed systems to auto recover from failures.
-in this video, we take a detailed look into a simple, naive and intuitive distributed leader election algorithm called lcr and understand how simple yet effective this algorithm can be.
 see you in my next cohort, thanks.
 so say, in a distributed system, we have a node which is acting as a leader and then other nodes are actually following it.
 right now, what could happen?
+that leader could go down.
 and if the leader goes down, we don't want an engineer to configure some other node to be the new leader.
 this has to be an automated process, which is where the leader election algorithm kicks in, where it helps us not to do this manual intervention and fix the system right with lcr algorithm.
 this is one of the simplest algorithm that you could think about, but it's very effective, right?
@@ -80,6 +79,7 @@ every node pitches itself the mess and every node forwards whatever incoming mes
 if incoming uid is greater than this, the worst case of this the number of messages is n?
 square because every node is doing it.
 the message is sent to every node to the next.
+so worst case is n?
 square, where every node is forwarding every message to the next node unless it basically disappears to the node before that.
 so the worst case: complexity, the number of messages.
 the compute in it is basically called as communication complexity, the number of messages exchanged.
@@ -91,9 +91,13 @@ square, which might be problematic when your distributed network is large.
 but for a smaller distributed network this would work just fine.
 one more reason why communication complexity is important: because if you are exchanging large number of messages, what would happen is your network can get congested- congested with respect to the constant movement of packages operating at the network layer.
 so any algorithm in distributed systems is always designed in a way to keep the communication complexity bare minimum.
+square.
 worst case communication complexity works very well for smaller network.
 might not be good enough for the larger one, right, but yeah, this is what its amortized analysis is, and so yeah, that's it.
 this was a very simple, intuitive lcr algorithm for later election.
 now you see how people think when they write distributed algorithms, and this is what ideas: take baby steps that at every time you are moving forward in time, just take the bare minimum baby step that you could think of and you would have a very nice, robust distributed systems algorithm at hand.
+that's it for this video.
+if you guys like this video, give this video a massive thumbs up.
 if you guys like the channel, give this channel.
+so i post three in-depth engineering videos every week and i'll see the next one.
 thanks [Music] you.

@@ -1,5 +1,3 @@
-search is one of the most used features in any e-commerce and to give a better user experience, it is almost customary to provide type by head search suggestions.
-in this video, we will talk about how Flipkart made that type ahead, search hyper personalized and dive deep into their high level architecture and key design decisions.
 so when a user is typing a query, we have to suggest some Search terms, because this gives user a better experience, because now user does not have to think twice on what needs to be typed, what's the spilling of it.
 now the problem is: how can we make this type of headset suggestions hyper personalized?
 so, for example, if your past history suggests that you have bought a lot of shoes and if you type sh, like your shoes should come at the top, and if you have purchased- let's say, always purchase- Shoes less than 2000, then shoes under 2000 should be the hyper personalized search suggestion that it should give.
@@ -27,6 +25,7 @@ so depending on which user is searching, what if this search suggestions can bec
 so, first of all, a nice way to think about this is: hey, let me just create cohorts of user, let me just create groups, like, let me just create small groups of people having similar purchases to a similar interest, and then to all of them, let me show the same set of suggestions.
 that's a nice way of thinking it, because what that would mean is that even if, like, there would be a chance where a user would be misclassified into a particular code- very high chance, right?
 because every user search journey is going to be unique, the needs are going to be unique or the context is going to be extremely recent, which means that user has made last five searches belonging to a particular type of thing.
+then the next one is highly likely to be belonging to the same category.
 so that is where the first thing that we have to do is to understand the user intent that, hey, if user search for something, what does that user actually mean?
 this is the taxonomy that I am talking about now, depending on the search term.
 every search term that user is firing could belong, or rather could come, would belong, to one of these categories.
@@ -44,6 +43,7 @@ for example, if I am searching for computer monitor and then if I'm typing c o, 
 second is evaluating reformulation, which means that, for example, if user is reformulating the query- which is typically what we do- for example we are looking for shoes.
 I have a red shoe, but then I like the bunch of Nike things.
 second query was red shoes.
+so then, if my fourth query starts with an A, there's a very high chance that I'm looking for an Adidas shoe.
 so, leveraging this, you build a predictive model that tells: okay, hey, what are the chances?
 if a person is typing this, you would want to build a predictive model that it belongs to this particular category.
 then comes the part of personalizing the search.
@@ -57,6 +57,7 @@ you would want to start ranking and assigning score to each of the suggestion th
 XG boost would work just fine, and Flipkart actually uses XG boost with 100- with 100 plus threes in their production environment to do this, to do this analysis, I right.
 so here the idea is very simple: when your user, when your end customer, fires a query, that- hey, I am the user- typed in sh.
 now the query or the request, the API request, would come to our Auto suggest service.
+first is, for example, you Auto suggest sir?
 uh sorry, auto suggest service would first check: hey, is there a scope of personalization or not?
 so if you cannot personalize the output to a particular user, you would want to serve it from the cache, because that would not change for anyone, because it is not personalized at all.
 solar is a search engine through which they power this part.
@@ -67,6 +68,7 @@ this would be firing on solar, because it's very efficient to do so right now.
 how would your search engine rank it?
 the way it would rank It Is by using a machine learning model.
 but how to use a machine learning model with solar?
+you you want to change your ranking function from TF IDF to LTR.
 right, but now, first of all, with this solar, how would it get the machine learning model?
 so that is where every search in, like solar elastic search, if I talk about they.
 you can like, with LTR ranking model, you can provide a Json in an HTTP request.

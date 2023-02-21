@@ -1,4 +1,3 @@
-in this third video of the bittorrent internal series, we take an in-depth look into its architecture and understand different components in it, like trackers, seeders and leechers, and learn how they work together to be this amazing file distribution network.
 thanks, the bittorrent architecture consists of four key entities: the dot, torrent, file trackers, seeders and leeches.
 so whenever we are sharing a file in the bittorrent network, the file is not entirely shared.
 so whoever wants a file would not download the entire file together.
@@ -32,6 +31,7 @@ uh, in the ecosystem, right, okay, that was importance of the dot torrent file.
 announce url and that is what we'll use to talk to tracker, right, okay, now let's talk about tracker.
 so for a particular torrent, it, the dot torrent file- contains a tracker url and that tracker will take every peer in the network connects to this tracker to get the meta information about who all are there in the network.
 first, it keeps track of the peers who hold the file, as in people who are part of this network.
+your tracker keeps track of them and that's why it's called a stacker, by the way.
 it is just helping us hold the meta information about the network: that how many peers are there, who all are there, who are downloading, who all are seeders, who all are leeches and what not.
 so anyone who needs any information, this is the source of truth where they go to and there is not just one tracker in the world you can have like.
 basically there are thousands of trackers in the world and you make spin up your own tracker very easily so that anyone having the torrent file with that tracker forms that network, right?
@@ -69,6 +69,7 @@ this way you'd get a very nice distribution of: hey, you're not just downloading
 so let's say you are a peer, you have a torrent file and you want to download something, so how would you get this torrent file?
 so the step number one would be: someone first has to upload the original file in the torrent network.
 from the file that you have, using any bittorrent client, pick any pick your favorite- you can create a dot torrent file and would upload the torrent file on a torrent server.
+so this is more of a application side of things, where people are using it to search for torrents and once they download the torrent file, then obviously this is out of picture.
 so first step is to upload the torrent file to this torrent server.
 now you, as a peer who wants to download this torrent, you go to the search engine, you search for the torrent and you get the file.
 now you, as a peer have that file.

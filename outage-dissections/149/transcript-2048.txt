@@ -1,10 +1,8 @@
-so imagine you're trying to create a new github repository and the api call is failing- failing for 53 minutes.
-this happened with github in april 2021 when, for 53 minutes, people were unable to create new repositories.
-so in this video, we dissect this outage, understand the root cause of it, look at the importance of secret scanning and conclude with building an understanding on how github mitigated this issue.
 thanks, so this is the incident report for this particular outage, where the folks from github says that our service monitors detected an elevated error rate when using api request, which resulted in degraded state of availability for repository creation, clearly states that repository creation flow was broken upon.
 upon further investigation, we identified that the issue was caused by a bug from a recent data migration in a data migration to isolate secret scanning tables.
 now let's take a look at what exactly is secret scanning.
 for example, with aws we need api, we need uh, api access scan secret key.
+so all of these things needs to be part of your code- may not be our code, but at least part of your service, using which they would be successfully be able to communicate with that other system.
 now, the most basic way of putting this information would be in your settings file order constraints file, right, so where you might have a key called api access key and where you are actually specifying are actually your, your actual api access key.
 so what happens with that is, if you are checking in this file with your code, this secret stays permanently in the github repository.
 you will say, hey, but my github repository is private.
@@ -49,6 +47,7 @@ every time a new repository is created, an entry is made into this table.
 imagine, at the scale of github, they having blind spots, they having blind spots about hey, who is doing what, and that happens.
 everything was working fine, but they didn't know during the data migration that a, this, y to be something that would be affected.
 so repository service directly writing on to the database was an unknown dependency.
+no, like part and parcel of your engineering career.
 because now your repository service, where it was trying to create an entry into the database, was not working due to some bug- they have not specified what bug, network issue, something, something, something would have happened, but it was not able to write it- because of which your repository creation was failing.
 if it was asynchronous then repository connection would not have failed.
 but because it failed, the call was singles, which means user gave request to api, to repositories, to create a repository, repository service.
@@ -67,6 +66,8 @@ moved back as in they migrated the table and they migrated it back into the old 
 they would have had it in the old database and they would have just changed the configuration to start pointing it to the old database, uh, immediately, so that it starts to work.
 but in general, whenever an outage happens, the first intuition of an organization is to see if it could be rolled back.
 and it purely is the context in which the outage happened.
+right, obviously, pure speculation.
+i would not want to comment a lot because we don't know what their internal architecture or what exactly their mitigation plan was, but your speculation out of it.
 because repository creation, secret scanning- who would have thought these two components talk to each other?
 second application: directly writing it into the database.
 i'll make a call to this service and that service would write to its own database.

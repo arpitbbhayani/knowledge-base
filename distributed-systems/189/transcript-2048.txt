@@ -1,8 +1,6 @@
-hence we need a distributed network to maintain a minimum spanning tree so that we can do a broadcast of this message to all the nodes in the most efficient way possible.
-hence, in this video, we take a look into the famous ghs algorithm to construct a minimum spanning tree in a distributed setup.
-we'll go through the algorithm step by step and see how spanning tree makes leader election a piece of cake.
 thanks, so say node wants to broadcast a message in a network, but this has to be extremely efficient.
 to do this efficiently, we use something called as a minimum spanning tree, right?
+so when in let's say, let's take an example- in a distributed network, if the nodes are connected via communication line having different tariff- so, for example, a communication line is from one of the provider, other communication lines from other provider.
 now if you want to send a message to all the nodes of a network, now what would happen?
 this is where having a good knowledge of minimum spanning tree for the network comes in, because you can do that in the most efficient way possible, because you are minimizing the edges of it, and this is what makes this particular algorithm classic.
 take it by congestion level: in in my network with the same connection, and what if one link is having very high load while other links are sitting idle again, minimum spanning tree is really important, right, because you are optimizing on time, you are optimizing on congestion, you are optimizing on cost- pick up, pick your favorite factor- and you would need a minimum spanning tree to solve this particular problem.
@@ -35,7 +33,9 @@ if leader uid varies, then they are part of the different component and that's h
 so for all of such edges, it would need to know the minimum of it, right?
 right now, that every node knows, if applicable, one, one outgoing edge that connects itself to the com, to another component.
 right, so it would know that these are the peripheral nodes of my component, because this is what we have to find.
+and out of all the edges from the peripheral nodes, which one are connecting or which one has a minimum weight, is what every node keeps it ready.
 now, once these nodes know that, hey, this is the outgoing edge that is connecting r component to other component, what it would do is it would, it would uh, of all of these minimum edges, it would send this information back to the leader, that every peripheral load, it would send a message back to the leader using what converge cost, right?
+this is the minimum outgoing edge from me as a node.
 it would compute the global minima and that's how it would know that, hey, i need to connect to, like, i need our component to merge with that other component, right?
 all it knows that the minimum weight it got was from this particular node of its own component.
 now the components combine over this mwoe minimum weight outgoing h right, the edge that was chosen by the leader.

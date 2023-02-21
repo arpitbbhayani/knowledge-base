@@ -1,7 +1,3 @@
-so github team was switching their master database from one node to another.
-while doing this, something went wrong and the new database crashed.
-in this video, we dissect this incident and understand what happens when a company announces a planned maintenance window.
-how they sold it and ran some really cool things- really cool things about switching databases and solving data divergence problem.
 thanks, so, like always, we start with the incident report and here it goes.
 what it says: for a period of approximately 5 hours, users may have observed delays before data returned to their affected database cluster were visible in the web interface and api.
 this tells us that user observing delays- which means not data loss, but delays in data being visible on the interface or api after it is being written in through their database- this clearly shows.
@@ -9,7 +5,6 @@ this indicates us about having a master replica set setup in which the reads are
 so, given that the data was written successfully, it implies that master did not have any problem, the, the rights were getting accepted, but there was a lag.
 there was a lag from the time the write happened and if the user wanted to see those changes on the ui, it took delays.
 we will circle back on why it took five hours, right.
-but now what we see is what exactly happened with github.
 what they say is, during a planned maintenance operation failing over a mysql primary instance, we experienced a noble crash in mysql d process.
 so we always see on twitter where companies announce, or they even drop you an email- they say that hey, we are going for a planned maintenance.
 so plan maintenance is of time window in which company tells its customer that hey, we will be unavailable.
@@ -23,7 +18,9 @@ let's say you want to change switch from one index type to another index type, r
 right, so that can also be done in this plan maintenance window.
 typically, your cloud provider wants to replace an underlying hardware, so it leverages that maintenance window in order to replace the underlying hardware.
 right, and this typically done because hardware goes through, uh, basically wear and tear and it would like s type.
+when we purchase a new laptop, it works really well and then the performance starts to decline.
 same thing happens with any hardware in the world, even with the cloud provider.
+and in general, you might want to do periodic reboots just to ensure that, in case there are any memory leaks into your database, they are not eating up a lot of stuff.
 typically this does not happen, but doing a periodic reboot solves a lot of problem, right?
 so this is why companies do plan maintenance, right?
 so now we talk about we like in this uh plan maintenance window.
@@ -39,7 +36,6 @@ so when they were switching the master from old to new, what happened is as soon
 that crashed, which means they flipped the traffic to the new master and it crashed.
 so if that master crashed, we already had an old instance.
 because as soon as we flipped, as soon as we flipped it to the new master, it crashed.
-so what github says is: to mitigate the impact of the crash, we manually redirected traffic back to the original primary.
 and that's pretty smart idea, right, you already have the database and you do it.
 as soon as this crashed, this flipped out the traffic to the old master and it should have worked, and it did.
 the crash to my sequel primary had already served approximately six seconds of traffic, specifically right traffic.
@@ -63,6 +59,7 @@ right, and the old data is intact.
 so all we have to do is whatever the new data was written in- the- uh, sorry, whatever the rights were written in the new database or the new master needs to be picked up and put it into old database.
 so this is where- uh, right ahead, logging of database has come into the picture, because my, uh, because github is using mysql.
 all of those queries are locked into a bin log file, right.
+so whenever, always, remember whenever- companies do a failover from one node to another node, any time and every time, what they do is they keep a track of the bin lock coordinate that, hey, exactly after this bin log coordinate or exactly after this statement, we did a failover.
 they keep a track of this so they know exactly at which point they flipped the database.
 so what would have happened is the new master, when they spun up from the old master, they would have taken the snapshot of the old, then they spun up the new, then they would have enabled the replication so that both of the data comes in sync, and then they would have done the configuration switch right.
 these is there in the new master right.

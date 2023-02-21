@@ -1,9 +1,7 @@
-so collisions happen in hash tables as we are trying to map a huge space of application keys in a small array.
 thanks, so conflicts are inevitable as we are trying to map a huge space of application keys onto a small array of limited size.
 this happens because we are passing our key through a hash function which spits out a hash value right, and there are chances that multiple keys that pass through that hash function would spit out the exact same hash key, which means that both of them are hashed to the same location, which means they have to occupy that same slot.
 now what could happen is, if we are not handling collisions, the second value that is put in the in your array would replace the first one, which is bad because which makes your database or which makes your hash table lossy, which means if you inserted a particular key, then you are reinserting it.
 if both of them has to the same location, the first one would be overwritten, right, and you don't want that to happen, because your user trusted you with its data and you don't want it to be deleted.
-the core idea of chaining is that we put the colliding keys in a data structure and hold them well.
 for example, if two keys are slaughtered in the same slot of an array, instead of one overwriting the other, we would use an auxiliary data structure in which we can accommodate both the keys hashed to the same slot right.
 and one of the most common implementation of this is with linked list right, and which is why it got its name called chaining, because it it resembles a chain right.
 so a small, just a quick uh gist of the idea is we would form a chain of keys that are hashed to the same slot right, for example, in index one.
@@ -13,9 +11,11 @@ now we'll dive into smaller details of it to understand things, uh, that we woul
 we'll first discuss chaining with linked list, right.
 so when we talk about when we want to chain and we are using linked list for it, there are three very important operations that we would need to, uh, that we would need to support: first of all, adding a new key to this linked list.
 second of all, check if the key is present in the linked list.
+and, third of all, remove a key from the link list.
 right, because these are the three exact operations that happen on the hash table.
 so, upon collision, you would need to add this thing to the link list.
 you would need to check if the key is present in the hash table and for that key, if it is going and basically hashing to a same slot, which is hold by english, you need to check in the link list if the key is present or not, and remove a list when hash table operation comes in to remove a key, which means you also have to remove it from the link list, right?
+on linked list: right.
 right, where each slot of the array holds a head pointer to the linked list.
 right, so that whenever a key is hashed to that location, it is added to the to this particular linked list.
 it would hold the actual linked list to when, because we have to support collisions, right.
@@ -28,9 +28,11 @@ so adding a key to the linked list.
 we have an array of size 4, right, and because, with the arrays in area of linked list.
 each head pointer of the linked list it points, it's, it's, it's basically set to null, which means there is nothing in it, right?
 let's say, put k1 comma v1 came in and let's say k1, hashed to index 2, so it would go to the index 2 and it would then your node, then your head pointer at index 2 of the array would start pointing to this new node, right?
+then we got a put for k2, v2, which means insert key k2 with value v2.
 let's say it got hashed at index 0, so it would go and sit at index 0 at the head of the link list, right.
 hey, on index 2, the head that is already set, so k, so key k 3 comma v 3 would go and sit at the tail of the linked list after key k 1 comma v 1.
 we would form a very solid chain of the nodes whenever the collision happens, right?
+we create a new linked list node with k comma v.
 we add it to the chain present at index i in the array right.
 this is a basic add operation that would happen right.
 now, for example, given that you want to add a value to, or given that you want to add a key to this linked list because there was a collision, if you want to add it to this link list where you can add it right.
@@ -51,7 +53,9 @@ so three possible implementations of inserting in the linked list: always add it
 one caveat is, if you are by default adding it to the head, one small problem would come in: you might get duplicate keys in your collision.
 so there are multiple ways to implement this, but it is up to you as an engineer, or which approach do you want to pick, right?
 okay, now let's look at second operation, deleting a key.
+on slot 2, i have k1- v1 and k3- v3 in this order right.
 we reach the slot in order one time because, given a key, we would pass it to the hash function.
+once we got the index, we know which linked list are we targeting.
 so one key thing to note over here: when you are implementing it with linked list, ensure that your pointers are handled and adjusted well, because this is a very common uh uh reason why segmentation faults or some error happens, like because it's very bug prone, right.
 you just need to keep track of a previous node while you are deleting it, right?
 so here what we do is, let's say, we would want to get a particular key from the hash table.

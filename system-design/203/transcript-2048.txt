@@ -1,5 +1,3 @@
-so Jiffy is the world's most popular gym website and it serves 10 billion media content every single day, and we can totally guess it would be using some kind of CDN to do that.
-in this video, we dive deep into how GP uses different features of CDN to solve different kinds of problems, and while going through it, we will also take a look at a very interesting internal implementation detail of a CDL.
 so, Jiffy, you can host, serve and search gifs.
 it serves 10 billion media content every single day and, if you think about it, serving API is a relatively easier job.
 because when you're serving an API given a request, you send the Json response.
@@ -14,6 +12,7 @@ so what happens is they may be- maybe we don't know that- they may be storing th
 so request for those images go to CDN, while the API responses go there go to their classic API servers, right?
 now what does GP cache on CDN?
 so we typically know what can be cash, static resources, static resources like images, videos, JS bundles and whatnot.
+but on apart from that, what GP also uses CDN for is to Cache API disposition and we'll say, hey, API responses, yes, CDN can also cache API responses.
 so the idea here is, while you serve apis, right?
 so instead of giving you, basically, instead of giving the domain name of your API server, you give domain name of CDN and on CDN, configure origin or something else.
 this way you can serve API responses from CDN.
@@ -35,6 +34,7 @@ so people from the US, their request will go to the nearest Edge server if it ha
 if it does not have the data, it comes to the origin, gets the data, caches it and then serves it.
 so every single server- just to reiterate, every single server is every single server of CDN- is called an edge server.
 if H server has the data, good enough, it would serve it back.
+if it does not have the data, it goes through the origin.
 it goes to the origin, gets the data, caches it here and then sends the response to the user.
 right now here one very interesting detail, very, very, very interesting internal detail that comes our way is: hey, if?
 what could happen if there is a Content that is going viral now, obviously for a particular reason?
@@ -61,6 +61,7 @@ right, such a brilliant way.
 which other feature does Jiffy use?
 the next feature: that gpus of CDN is a route specific TTL.
 obviously, when you are setting or when you are using CDN as a cache, a CDN is a cache, so when you are configuring it you would want to specify that.
+hey, please catch the response of this for n minutes, but now, should n be constant, should n be same for every single resource that you have.
 no, it has to be very specific to the resource, which is where almost every single CDN provider gives you a way to specify the cash duration for each URL pattern.
 so, for example, for an API response like slash V1, slash GIF, slash trending, you might want to have a smaller duration, while when you're serving the actual GIF- let's say slash GIF, slash one, two, three, four, five, dot GIF- that would have a longer duration.
 the next feature that Jiffy uses is around response configured cache.
@@ -92,6 +93,7 @@ uh, if you are doing that and let's say you would want to invalidate all the URL
 when, let's say, you rewrite everything, you want to invalidate it, right.
 which is where, again, surrogate Keys come in.
 so, in case, think about surrogate Keys as tagging.
+when you are caching something, you can pass in extra tags.
 you can leverage that, that specific tags, to eradicate or to invalidate the cache entities on the CDA, which is what subjects that is really important for a use case like Jiffy, right?
 so, yeah, such such amazing pieces of functionalities that CDN provides, I would highly, highly, highly encourage you to go through CDN documentation, like Akamai, fastly, cloudflare, and see the kind of features that they provide you.
 then they while explaining in their documentation, they also specify a few very practical use cases.

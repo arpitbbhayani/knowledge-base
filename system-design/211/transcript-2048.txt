@@ -1,6 +1,3 @@
-so search is one of the most important services for any product and at Twitter scale, it becomes Ultra important.
-how can we ensure that a search service continues to function no matter what kind of load hits the system?
-in this video, we dive deep into how Twitter built its tooling around elasticsearch that helps them handle massive surges in search traffic, do real time ingestion and ingest hundreds of terabytes of data in backfill.
 so Twitter uses elasticsearch to power search of their tweets, users and direct messages.
 elasticsearch provides speed, it provides scalability, it is distributed in nature, which means scaling out is just adding more nodes, and, more importantly, it provides very simple rest interface to interface with it.
 right, because of the simple rest apis.
@@ -38,6 +35,7 @@ right, and elasticsearch is bad at handling such searches.
 two things that happen typically is the indexing latency shoots up and the query latency shoots up, so it like indexing the data into elasticsearch becomes slower and firing the search query on elasticsearch becomes slower.
 but at Twitter scale, spikes or surges are natural.
 for example, if there is an event happening, you would see a lot of people tweeting about it at that moment.
+so there would be surge in traffic, depending on how real world mimics but real world you cannot predict what's happening in, what would happen in real world, what would Trend at a particular time.
 so that is where Twitter had to be very sure about handling spikes, handling searches.
 instead of letting that thing directly get ingested into elastic surge, they did it in an asynchronous way.
 so any right coming to be put into elastic search.
@@ -50,9 +48,11 @@ so there is no direct ingestion happening in elastic search.
 it ensures that that we are putting in data in a correct, streamlined way to elastic Source rather than relying on something else.
 you can very clearly see how we have per topic- uh, one topic for each elasticsearch cluster.
 when you put in a bulk of indexing request, you can take few at a time and make bulk calls to elasticsearch, reducing the lowest non-elastic search.
+given that if elastic search is slowing due to any reason, the workers can slow things down very easily because elastic search is not responding.
 they can just wait for some time before they start to readjust the data.
 right, then retrace in case there is a failure.
 in case elastic searches are due to any reason, the right request- the injection is law- is basically queued up in this Kafka and again later be consumed to be put into elastic search.
+so you get resiliency just by adding this one more layer of Kafka in between.
 it ensures that we are streamlining a consumption and ingestion into elastic search, right.
 the next service, and really interesting one, which is where we see the entire architecture together, is a backfill service.
 now it's a very common requirement across organizations that you will have to backfill a lot of data into elasticsearch.
@@ -73,6 +73,7 @@ so whenever someone wants to talk to elasticsearch, it has to talk through this 
 so request comes to this proxy.
 proxy sees: if it's a read request, read request directly goes to elasticsearch.
 right, there is no, no points there.
+it will can only happen through elasticsears.
 so read directly goes to elasticsearch.
 now there is a write that is happening in real time.
 for example, a new tweet is created.

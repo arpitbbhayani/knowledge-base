@@ -1,7 +1,5 @@
-so reaching consensus is extremely critical in a disabled system, as we would have situations day in and day out where we need nodes to agree upon a common value.
-the tricky part here is to achieve agreement even when the nodes participating in the consensus crash.
-in this video, we talk about the simplest algorithm, called the flood set algorithm, that helps us achieve fault tolerant, distributed consensus.
 the reaching consensus is extremely important for any distributed Network.
+see, in a database cluster of three nodes, one node says that the value of price is one thousand dollars, while the other node says the value of price is two thousand dollars.
 that is where we want the nodes to talk to each other and come to a consensus key: what the actual value of Price is.
 achieving distributed consensus becomes extremely simple.
 right, it's just exchanging a bunch of messages and you'll have a nice consensus handy.
@@ -15,7 +13,9 @@ you might have 10, 15, 20 nodes in your cluster and every node goes about every 
 so all nodes and processes start with some value, which means that every node or process knows here: hey, this should be the value of price, for example, and they all are trying to reach to a consensus on what the final value is going to be right and every node knows the default value for that.
 the problem statement is very generic, right, so that you can apply it to hundreds of cases or hundreds of applications per set right.
 so what we want is we want all the nodes to agree upon one same value for the variable price.
+now, the possible value for the possible values of price would be stored in capital V.
 that would be all possible values, out of which one every node would be agreeing on right.
+so what do we want from our consensus?
 we want that no two processes, no two processes- decide on different values, which means that once we know that we reached the consensus, no matter what, every process or every node in your system would all agree upon that one value right, be it VX or V 0.
 v x is the agreed upon value or V 0, the default value, which means a transaction either commits or rolls back right.
 if all processes starts with v belonging to capital V, then they decide on V, which means that if all processes say that the value should be 1000 and no one pitched any other value.
@@ -23,6 +23,7 @@ so then the value that everyone would be converging on has to be 1000, which mea
 so the value that is selected should be the one that is proposed, and if everyone starts with that same initial value, everyone should be agreeing on that same initial value and all non-faulty processes eventually decides that, if the process survives the consensus, everyone should be in a situation where they have decided on the final value right now.
 this we would achieve through an algorithm called the flood set algorithm.
 the core idea of flood set algorithm is extremely simple, extremely intuitive, and that's the beauty of distributed systems.
+it's just that you have to handle a lot of failure cases.
 okay, so the core idea of flood set algorithm is that we keep a track of all the values seen so far.
 e v, as in every single node, would keep a track of all possible values that they have seen so far, and they use some decision rule, some decision rule to pick one name.
 so this is the core idea of it, which means that in a complete graph, every node would maintain a set w and W would be a subset of all possible values.
@@ -55,6 +56,7 @@ and then what they would do is they see that W has more than one element, so the
 now, implementation is totally up to you, right?
 so if W contains more than one element, which means that your your consensus could not be formed, so you would pick the default option, right?
 so this way we see that if all nodes start with the same V, after f plus one round, the W would just contain v at every node independently and hence every node would be deciding on V to be the final value.
+fine, okay, now what is an alternate decision strategy?
 a simple example for that again, that instead of picking a default value, given that the first phase of this algorithm, for the f plus one round, nodes are continuously broadcasting the W the depth scene so far, which means after f plus 1 rounds, they all would have seen all possible values that they need to agree upon right after.
 because they have seen all possible values, all they have to do is just make a decision.
 for example, they can see: I'll pick the smallest one out of it, depending on your use case, or you may pick, I'll pick the newest one out of it.

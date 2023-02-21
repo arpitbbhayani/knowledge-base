@@ -1,7 +1,5 @@
-so github wanted to optimize their sql query performance and they had to flip a database index.
-this outage gives us a super in-depth insight into mysql and its indexing capabilities.
-so in this video, let's dissect this outage, understand what happened, why github had to flip their index, how things went wrong and affected end users like us, and conclude with three super important key takeaways from this outage.
 this is what github team says is: this incident was caused by a database migration to flip the order of an index, which means they had an index like any database that you use, let's say sql database, in order to improve the read performance, you create index on top of it.
+that index, where it is stored onto the disk, has a particular order.
 when that index is stored, it is stored in the ascending order of user id, right?
 and github team had to run a database migration to flip the order of an index.
 in a table where you have 10 or 15 columns, the two important columns are user id and date and you have like, whenever you are querying on it, you are always squaring on user id comma, date combination, which means, in order to improve the performance, for that you would create a composite index or you would create an index that involves multiple columns, right?
@@ -15,6 +13,7 @@ so if you would have had the right set of index on those particular column, you 
 but now, because indexing the way your index is structured right now, both ascending- there is no way for a database engine to very quickly compute your answer.
 that's why it would resort to something called as file sort, in which it does kind of like a full table scan.
 would not want to go into those details, but very expensive, had to do a lot of disk ios, operate on the actual table data and do a lot of like.
+that's the thing that you can take away from it and which, if you do large, uh disk ios, that would, uh, that would degrade the performance of your system, right.
 so key, take away from this two columns you want, one ordered in ascending order, one ordered in descending order.
 but by default both indexes or both the columns are ordered in ascending order in mysql.
 so they had to flip the order so that they could make this query much more efficient, right?
@@ -22,6 +21,7 @@ otherwise it would have incurred a lot of disk ios onto a database, degrading th
 so now to answer this query, we want a date in descending order, user id in ascending order.
 this is supported by mysql version 8, right, where you can specify that: hey, i want to create an index on the date column in ascendant, in descending order, while user id on ascending order.
 so the way this index would be structured onto your disk would have date and descending and the user id in ascending, which would make your uh, your required query much, much, much faster too when it is executing.
+now one of them has to be descending, another one has to be ascending and it is a composite index.
 okay, what they say in the outage is: reversing the index caused a full table scan.
 so they tried to reverse an index, which they had to, and it caused a full table scale, since there was a missed dependency on the changed index by a generated active record query.
 they said that reversing the index caused a full table scan.
@@ -51,6 +51,7 @@ so how can you tell your database: hey, stupid database, use this particular ind
 when you do that, you are telling your database: hey, database, you can use this index to execute this query.
 but there is another hint called force index, which would tell a database you have to use this index right.
 so, for example, due to any reason, if your database is not picking the right index to execute your query- which you, as an engineer, are thinking is much better- then you can force your database to use a particular index by using indexings, right.
+is it not using the right set of indexes?
 the performance degradation due to the table scan had a cascading effect, obviously.
 so they had a cascading effect on query response time, which resulted in timeouts for various dependent services.
 as expected, because you are doing a foldtable scan, it is becoming very inefficient to fire that query and obviously it would take a lot of time.

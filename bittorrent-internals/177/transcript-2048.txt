@@ -1,5 +1,3 @@
-so to download or upload any file from the torrent network, we need a torrent file, but what exactly is this file?
-in this second video of the bittorrent internal series, we take a detailed look into the dot torrent file and understand its life cycle, what information it holds and the encoding that it uses to structure the data internally.
 thanks, so when a user wants to download any file from the torrent network, it needs a dot torrent file.
 dot torrent file holds the information about the file that the user wants to download.
 so, for example, if you'd want to download an ubuntu operating system from the torrent network, that ubuntu operating system iso image would have a torrent file.
@@ -23,6 +21,7 @@ whoever wants to join the network needs to talk to the corresponding tracker.
 that it would find in the dot torrent file.
 so if i want to download an ubuntu image, i'll download the torrent file.
 i'll read the announce, i'll get the url and that is the tracker that i'll talk to, right for that particular file.
+then comes a very important information called info.
 so the torrent file that you have is just a dictionary.
 it's just a dictionary of key value pairs where first five keys that i talked about is announce, created by created date, uh, encoding comment.
 info is a dictionary, so it's a dictionary within a dictionary and what it holds is it holds the information about the file itself, which means if i'm downloading the ubuntu image, it would contain the information about the ubuntu image itself.
@@ -30,6 +29,7 @@ so you would have seen that in torrent there are two types of downloads.
 first is a single file download.
 right, because you might want to download a folder from the torrent network so you can also stream a folder content directly instead of just a file.
 that's a single file format that has three fields in the info dictionary.
+then, if you are streaming multi files, multiple files, or you are streaming a folder that has multiple files, what you would have is you would have a key called name that would store the name of the directory.
 files is a list of dictionary which would contain information about each file in the particular directory.
 you have a directory that you would want to put out in the torrent network.
 the name field in the multifile format holds that information right.
@@ -74,6 +74,7 @@ right, because i have first as a string of, i'm storing a, which is of one chara
 so a list of string a, string b in t and integer one is encoded like this and then final element, uh, final time, that it supports is dictionary.
 dictionary is d and then b encoded string, then b encoded value and a repetition of it is basically storing the key value pair that you have ending with an e, so d and e, and within that you would be having key value, key value, key value, k value that you are storing and key has to be an integer.
 so, for example, if i'm storing a dictionary of keys where keys i have is string a with value 1, string b with value 2, my dictionary, which is b encoded, would look something like this: d: 1 colon a, i 1 e, 1 colon b, i to e, e, right, so my dictionary ends.
+within that i have a key a, so a is a string, so one colon, a value is one as an integer.
 if one is an integer, so it would be i, one e, then key is b, b is one colon b, and then two is i to e, right?
 so your torrent file is nothing but a dictionary, a dictionary of all the attributes we discussed, like announce, created, ad creation, date, created by uh pieces, piece, info, all of that.
 so it's a b encoded dictionary, so entire torrent file is be encoded.
