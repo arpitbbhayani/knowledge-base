@@ -1,0 +1,39 @@
+right, this is where the nodes needs to talk to, needs to talk to each other and come to a consensus key: what the value of price is, either 1000 or 2000.
+we assumed up until now we always assume- that the nodes are genuinely, they are all genuine nodes, which means that the value that they are claiming they may be lagging in time, they may be slow, they may have crash, they may have some corruption, something right, but they are all genuine in nature.
+what byzantine's agreement says is that, let's say, a node is malicious in nature, which means that node is deliberately trying to ruin the correctness of the system.
+so, no matter what the nodes is deliberately trying to say- you know, the value is 5000, random number, right.
+and if node is trying to do that, how can we reach a consensus, even in the presence of such nodes in the distributed network?
+this is where we talk about an algorithm called exponential information gathering algorithm- eig algorithm, to solve this part.
+so, because this trees cover is basically constructed level by level, at each level we would have all possible permutations of length, k.
+so, for example, if i have nodes a, b and c in the network, then and if i am constructing a three level deep eig tree, so at the leaf of eig tree, what i would have is i would have all possible permutations of a, b and c.
+now the idea of this construction is pretty simple: that my root node is labeled as an empty string, then i have the children of.
+it is a, b and c, then ace children, like root node, had three children, then a- this worst level children- would have two children, then then only one child, right.
+this way we would be covering the entire permutation range of length k at the after a div at the level k in my eig tree right.
+every node in the distributed network is sending information to every other node, such that every node, eventually, will have the exact same eig tree.
+right now, the algorithm we will be discussing will be tolerant to f faulty processes, which means that, at max, f processes can be- uh, air processes can be malicious or they are trying to deliberately ruin the sanity of the system.
+right, okay, so now, when a process sends informed information- maybe some junk, maybe some garbage value- to other nodes participating in the consensus, the consensus should not be prone to that.
+the process propagates the value for f plus one routes and each processor node builds its own eig tree, right?
+so every node is constructing its own eig tree independently for f plus one levels and the value it receives will be put into that corresponding path.
+construction is covered in the previous video.
+the idea is pretty simple: sending the value to the nodes of the path at n minus 1, at k minus 1 level, such that you are not in that path.
+so if a node receives a garbage value, the node ignores it.
+for example, i say that the value should be an integer, but if i receive a string, say a, i would be discarding it and putting it as a null in the tree, right?
+so this is a very basic sanity check that you are making, that if a node is because a malicious node might not know the correct value or the or the possible value of that particular variable or by that particular key, it might send some garbage.
+so, just as a very basic sanity check, if a random value is received, you throw it up right once the entire eig is constructed.
+so, while the eig tree is being constructed, every node sends value to every other node.
+when that happens, eventually you would have this entire tree filled with values that you received across multiple communication path.
+your decision process would happen ground up right, which means that all the leaf node would send its value to the node above.
+the node above will pick the majority of the value that it saw in the children right.
+so abc will send its value to a b, right.
+now for the non-leaf node, the value is equal to the majority of values of its children.
+right in case you cannot form agility, let's say you have two child, or sorry, two children- and you receive two different values of that, let's say one thousand and two thousand.
+that's why it was important to gather exponential amount of information so that the fewer malicious users can corrupt only a small subset of path while most of the path would remain same in my particular tree.
+now, the final value, the final consensus that you would form would be the one that would be formed at the root node.
+right, the root node, when it's going ground up, ground of ground up, it's like basically post order travel, not really post order, but basically bottom up traversal the value.
+the final value that would be getting at the root node will be the one that you will be forming the consensus, because every node has the same exact eig tree.
+right, and this is how you become tolerant to one of the loop: a few faulty nodes or few corrupt nodes, few malicious nodes in your network.
+all nodes would converge to the same majority value, for the few corrupt nodes, sending few corrupt values here and there will be absorbed and will not be propagated up.
+that's why your route will be: will be tolerant to any or to a few malicious user in your network.
+right, so so long as there are few faulty net, few faulty nodes in your network, you're still tolerant enough.
+right, and this is the idea: to become tolerant to agreement.
+right, so that even if the fault tolerant nodes, or even if there are malicious nodes, you would still have a working system.

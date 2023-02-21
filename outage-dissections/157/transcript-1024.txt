@@ -1,0 +1,42 @@
+what it says: for a period of approximately 5 hours, users may have observed delays before data returned to their affected database cluster were visible in the web interface and api.
+this indicates us about having a master replica set setup in which the reads are going to read replica while the rights are going to master and there is some sort of asynchronous replication happening between them, right?
+so, given that the data was written successfully, it implies that master did not have any problem, the, the rights were getting accepted, but there was a lag.
+there was a lag from the time the write happened and if the user wanted to see those changes on the ui, it took delays.
+so plan maintenance is of time window in which company tells its customer that hey, we will be unavailable.
+so what happens during this database maintenance window?
+let's say you want to alter the cache configuration of your database so that it is performing faster.
+let's say you want to change switch from one index type to another index type, right, so when you do that, it is not an on the fly operation.
+right, and this typically done because hardware goes through, uh, basically wear and tear and it would like s type.
+typically this does not happen, but doing a periodic reboot solves a lot of problem, right?
+so this is why companies do plan maintenance, right?
+every company tries to minimize the plan matters window, so they ask their customer for a big enough time, but they try to wrap their thing in in a very small fraction of that time, right?
+so here, what github did is this: flipped their master database because they had to do some maintenance on the old one right standard procedure.
+right, and for this very short duration, when this conflict flip is happening, your database would become unavailable, but nothing more, nothing else, right?
+so when they were switching the master from old to new, what happened is as soon as the new master got the traffic, it crashed.
+as soon as this crashed, this flipped out the traffic to the old master and it should have worked, and it did.
+the crash to my sequel primary had already served approximately six seconds of traffic, specifically right traffic.
+so here, when they flipped from old master to new master, that database worked for six seconds before it crashed.
+so for six seconds the database took in all the rights, because master is handling all the rights.
+so all the right traffic that went to the new master got accepted, so rights were successful, right, and then it crashed.
+now, if github flips from new database, from new master to old master again, what about the rights that happened during that six seconds?
+so then this is that that user saw right getting successful, but your database does not have that data because you flipped it to the old database.
+so some writes that went to the new database and we switched back.
+then some rights happen on the new master, right, and then the machine crashed.
+when the crash happened, the team flipped to the old master.
+so the newer rights are now going to old master.
+so what about the rights that went to the new master?
+okay, so the current situation that we are in right now is we have two master nodes, one old and one new.
+newer rights are going to old master because your new master crashed after accepting the rights for six seconds.
+so all we have to do is whatever the new data was written in- the- uh, sorry, whatever the rights were written in the new database or the new master needs to be picked up and put it into old database.
+so this is where- uh, right ahead, logging of database has come into the picture, because my, uh, because github is using mysql.
+so what would have happened is the new master, when they spun up from the old master, they would have taken the snapshot of the old, then they spun up the new, then they would have enabled the replication so that both of the data comes in sync, and then they would have done the configuration switch right.
+these is there in the new master right.
+what we have to do is we have to pick all the updates that went into the bin lock file after that coordinator, after the failover happened, from the new database or from the new master and applied to the old master.
+this is exactly how company does it and my guess is is exactly how github would have done it, because they move the traffic back to the old master.
+they want to ensure that the old data that is there- or sorry, the rides that went to the new master for that six seconds- needs to be copied into the old one, right, because new master is not, is not accepting any rights.
+the last n bin log statements would be the one that were for the new writes, so it just have to start iterating from the bin law coordinate where the failover happened and read it to the end of the file and apply to the old database.
+this way, the new chunk of data that was pushed into the new master for six seconds would come to the old master, right, and this is exactly how companies do it.
+so, at this point, so when they switch back to the old master, at this point, a restore of replicas from the new primary was initiated, which took approximately four hours, with a further r for cluster reconfiguration to enable full read capacity.
+given the amount of data github has, it takes very long time, right?
+some reads were going to old ones, slowly the data was getting replicated and over that five hours they required that to went to full rate capacity, right.
+it took them five hours to get rid of all replication lag and go to full read capacity, right.

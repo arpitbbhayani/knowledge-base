@@ -1,0 +1,32 @@
+thanks, so conflicts are inevitable in hash tables as we are trying to map a large set of application keys into a smaller range of your hash table right.
+if your hash table itself has empty slots, let's try to reuse them somehow, which means that when there is a collision, when, let's say, two application keys hash to the same location, one gets placed but we have to find the slot for the second key and that secondly key the way we would be finding the slot.
+it needs to be very deterministic in nature, right, so that we do not just we cannot just pick random slot which is available to place the key, because then it would be a linear lookup, always right, or it would be very, very incoherent.
+that is where you need to know if your particular index, you you got a particular hash key, you are trying to place your key into that slot.
+so probing is a function that would help us find the next available slot right, and the strategy is obviously called as proving strategy and how it, and how we could define it as probing strategy, is a function of a given key and an attempt right.
+so, for example, if you have hash table of size eight, you would, you can, make eight attempts to place your key.
+or you may either want to replace one of those key, right, but the probing strategy is the one that would help you find the next available plot, and this is what the theoretical definition of a probing function is.
+so we would always start with open addressing, we would always start with the probing function, a good probing function, and we would start to make attempt zero if the slot is filled.
+so we would invoke the probing function with the key and attempt one, so one, and then we would fire the thing which would spit out another index.
+so obviously we can write as simple of a probing function as it can be like, which returns a static index, which could make it super complex the baby would want.
+because, obviously, like, for example, if your hash table has a size of eight, which means that you may have to make an attempt eight times, and it should cover all the indexes in your array so that you know that eventually you are, you will cover the entire hash table, so that if there is any slot available anywhere in the hash table, you will be able to find it in any of the attempts that you are trying to make.
+so, which is where the way you would be writing your probing function, it has to cover all the indexes of your array, from 0 to m minus 1, both included.
+it may be in different order, but it has to be deterministic and it has to be complete so that eventually you would cover the entire hash space, right?
+so the idea would be to find to pass in that attempt with the key that spits out an index, and we'll try that.
+so if i would, if i'm trying to insert a particular key, k my in- and this is my first attempt- my hash table is empty.
+if we are not able to find it, we would keep probing the function so that we, when we would do this until we find the first freeze plot, first free slot, and then we put the key there.
+place my key two, place my key k at index two, right, and this is what we would cut, and the probing function would be generating the entire permutation in some deterministic order.
+let's say, we are trying to find a key k in my hash table.
+what i would do is i would invoke a probing function with attempt 0 and then it would spit out some j, which is the first index, will go to that index and see if the key is there or not.
+second is your iteration stops when you stumble upon an empty slot, for example, because you are, because the probing function would generate a permutation of numbers.
+right, because if that slot is empty you have to stop the iteration.
+otherwise, if there were any keys after that, this slot would not have been empty, because this is the deterministic order that a probing function is following.
+right, so your iteration would stop when you stumble upon an empty slot and if you still haven't find your key, which means that your key doesn't exist in the hash table.
+now, because there could be m slots, you have triggered your proving function m times, which is you have literally accessed if m different indexes in your hash table.
+so, which means your hash table is filled and you have exhausted all of your iterations, right.
+the deletion when you are using open addressing and hash function is a soft delete, which means that you are.
+so now, obviously we cannot place 3 keys in the same array slot that we have 5, right.
+let's say probing function spits out for attempt 0, it spits out 5 and then 7 and then 2..
+as soon as the slot is empty, our lookup function will stop iterating and saying that the key k3 does not exist, but key k3 was there.
+so, which is where- because now you have had deleted your k2, you have emptied the slot 7, so your lookup iteration would need to stop.
+and what is the limitation- and obviously grass is not always green- there has to be a limitation of open addressing, the limitation, as you can very clearly see, is that the number of keys that you can put in your hash table is equal to the number of slots that you have otherwise, because your probing function is trying to find an empty slot in the array.
+but in general, the limitation of open addressing is the number of keys that you can hold in your hash table is equal to the slots that you have in the array, right.

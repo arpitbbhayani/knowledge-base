@@ -1,0 +1,36 @@
+we all have been told that, hey, you cannot send data in http request payload, uh, for a get request.
+so long as our web servers understand, uh like our web servers need that data and they understand how to process it, it's totally fine for us to send the data in the certificate request.
+and i'll give you an example of a very popular open source tool, extremely popular open source tool, that actually accepts http, uh, that actually accepts a request payload in http get body.
+your client fires an http get request to get some information from the api server and apis.
+that when this request is received by your api server, your api understands that, hey, the client or the user is requesting information, is requesting information about user id 1729, right?
+so what it would do is it would fetch the information about the requested user from the database and send it to the and basically send it to the client, right?
+so the recent http 1.1 specification, rfc 7231, says: like it, it.
+earlier specifications used to say, like earlier specifications of http 1.1 had this comment where it said that, hey, message body should be ignored while handling request.
+here it's the http 1.1 specification: rfc 7231- right?
+what it says is that the get method request transfers of a current selected representation for target resource, right, so any target resource that you requested it, that the client wants your server, should be able to serve that.
+and here you can see, the http interface for a resource is just as likely to be implemented as a tree of content objects, a programmatic view on various database records or a gateway to other information systems.
+and here it's what it says: that a payload within a get request message has no defined semantics, right?
+so in http post request there is a defined semantics and, hey, that this is the data that will be stored.
+so there is a content type associated to it, or basically, it's a standard where the form submission- http post request- you send the data.
+but sending a payload on a get request might cause- might cause some existing implementations to reject the request.
+existing implementation because, as i said, in the earlier specifications, they have mentioned that, hey, you should be ignoring the request body, but when the latest one, it does not say that.
+that if you are using an old system that was ignoring http- uh, that was ignoring the request payload in the http get request, if you fire it it would still ignore, right?
+if we would want to send data in http request payload for a get request, we can send it, right?
+so so it's up to it's totally subjective and it's totally up to our web server to interpret and process the request or the payload, or to ignore it.
+right, so we may actually write a web server that understands the http request payload in an http get request.
+so even a web server, a simple web server like flask, you can access the http request body for an http get request and it's not stopping you.
+some web servers can say that, hey, i will not even provide you a data key over here, like it can choose to ignore, because the request is first handled by your flask handler.
+your flask handler or in general, any web server handler can choose to ignore the payload- most don't, but if they would want to, any implementation can do, because it's just specifically just a basic protocol that you may choose to follow.
+that used to be http get request and in that, because the search query that used to pass on elasticsearch was a complex one, like it was complex json based search query in which you had must clause, shoot clause and whatnot, uh about tokenization part and uh, any sort of runtime evaluation.
+so that's where they used to accept an http get request, which was a search request on a particular index, and in the request payload you could pass the actual complex json query and then the elastic searches web server used to understand it.
+it used to not ignore the request payload, rather it used to understand the request payload, transform it, uh, into an in-memory object and then process the, the complex json query that it has given.
+because i want to get the information, but because the requirement specification was complex enough where you, where you could not, let's say, hey, just user with particular id or just just few parameters.
+that's where json based passed in http request payload.
+hey, every web server should just block search requests.
+now, just discourage, because when you fire- because http get is the by default method, that is shot when you hit something from the url or in your browser and there you cannot send payload.
+in http post you definitely can do, but in get, your browser is not sending any payload to it, right, but this does not mean that we cannot like, we can, but we should not.
+oh, we just, uh, saw in that webpage, right, we just saw that web page where it says that, hey, it might break some existing implementations and might cause some existing implementations to reject the request.
+right, it never says anything that it would not like all implementations would stop accepting it.
+to most extent, no, but unless you have a very specific requirement of your, so of your data requirements that you would want to make to your, to your web server.
+then you can choose to use request payload and pass in that complex requirement, just like what elasticsearch did, and basically fire it and and handle it onto your web server, right?
+so next time, whenever you are designing your http get endpoint, see, if you have a very complex requirement and you cannot express it in query parameters in your get url, it's better to pass it in http request payload if you can handle it, and otherwise choose to ignore it as well.

@@ -1,0 +1,40 @@
+what it says is that our service monitors detected a high error rate on creating check suits for workflow runs which affected action service.
+so what happens is whenever you push something onto a repository, let's say you create a pull request, and then you add commits to it.
+for every pull request or for every commit you add, there are some fixed set of checks that github has to execute in order to ensure that it is okay to be merged.
+you can even write your or you can even add your own checks as part of a commit or as part of your pull request, right?
+they all talk to this action service to run these sort of actions and checks on the particular report.
+before any action is run, a checksuit is created, right, and this checksuit contains a bunch of checks that needs to be executed.
+now here, one peculiar thing to observe is if it is something, or if a workflow is something that is running on every commit that happens.
+that, given that this checks run upon every single commit, that happens, there is a lot of entries that happen on the database or in the table, which would make the table explode, right?
+so when what happens is because it is a 32 bit, it has a limit, let's say 2 billion.
+and for a use case which is this frequent, where you are running checks on every single commit and every single execution is having an entry in the database, this becomes very possible that you will run out of your id, right.
+this exact thing happened and, uh, in the past github also experienced an outage because their id or their uh or their id column hit its max limit.
+you can check that out on this very channel and i would highly encourage you to do that, because then i discussed how to mitigate that issue, like, if you ever come into that situation, how to fix that with two or three approaches.
+like github already had those checks in place which could tell them: hey, this tables id range might exhaust, so do something about it.
+what went wrong if github already was prepared for a situation like this?
+to begin six months back clearly shows a very good preparedness from the github team in order to ensure that outage because of id exhaustion never happens.
+we failed to identify a graphql library we depend on that uses integer 32 when unmarshalling json.
+they thought it's hunky dory and uh, their code basis never had an explicit check for uh in 32, which means even a 64 integer, like ruby, go c sharp, all of them supports like big integers.
+we failed to identify a graphql library we depend on using in 32 and unmarching json.
+so when some job needs to be run on a repository, they create a checksuit that we just saw the creation of checksuit worked just fine because the database was already on on integer 64 or a big integer.
+so creation of entry, that, hey, this job needs to be executed, it worked fine.
+but what failed is they made an entry into the database that hey, this needs to run, but someone has to run it right.
+so what typically happens in such cases is: entry in the database was successful.
+there is a service or a process that pulls this rose out of the database and puts it into a queue so that executor can execute it.
+so a typical flow that happens is: from db, a process pulls it, puts it into a queue- there are multiple executors who read from this queue- and then executes it job.
+don't know the internals of it, how it comes in, but this is where that graphical library comes in, that it pulls or whatever is pulled, or it tries to pull from the database and puts it into the queue.
+this service or this library or this dependency failed, and because it failed, the jobs were not getting queued into the queue for execution.
+so that's where what happened is: because jobs failed to be queued, check suits were left in a pending state, they were not getting completed, like they were just waiting, waiting, waiting, waiting, and this was the outage.
+right, so they push the code fix to do that.
+the idea was to put a code fix that ensures that the tasks are queued for execution, because executors didn't have any problem.
+the only thing that failed was puller trying to pull from the database and putting it onto the queue.
+this, this particular thing, fit, so mostly it was the outage of the puller that pulls it from the database and puts it into this, like somehow the graphql dependency came into play over here, right?
+when actions identify the job needs to be done on a repo, we first create a task, a checksuit.
+they were all prepared for database, but processing those response failed due to external library.
+something on the company, right, that's fine, we know what they did to fix it.
+so the search service also had an impact because it was uh returning incomplete results, like the workflows or the- yeah, the workflows that had ids greater than integer 32.
+hypothetically, let's say they are using elasticsearch further indexing, right, because the job that had to put it into elasticsearch dependent on that dependency.
+right, because it was intended to do the search service itself, like the data was not getting indexed in elasticsearch, so someone has to take the data and put it into elasticsearch.
+it was also the responsibility of that same library that they depended on, which failed, and hence the documents having ids greater than integer 32's limit were not because they were not getting unmarshaled, they were not getting pushed into elasticsearch.
+so this was another peripheral impact of this particular outage, right?
+you need to know on what's happening behind the scenes so that you avoid this sort of outages.

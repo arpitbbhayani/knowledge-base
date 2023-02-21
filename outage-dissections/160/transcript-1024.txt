@@ -1,0 +1,44 @@
+the incident report says that as part of the database maintenance activity, the database team rolled out an updated version of proxy sql on monday, june 22nd.
+the primary mysql node on one of our main database clusters failed and was replaced automatically by a new host.
+so api server makes a connection to proxy sequel processable internally, makes connection to your mysql cluster.
+okay, okay, so proxy sequel sits in between your api servers and your database.
+any query that you fire goes through proxy sql and processible, forwards it to a database, gets the response and sends it back.
+so your application layer doesn't need to know that it is connecting to proxy sql or mysql cluster.
+so your database you never create more number of connections than your database can never handle, because everything goes to proxy sql- the buffering, the weighting of firing of sql queries, and every single thing happens at the proxy sql layer.
+so, for example, if you have a three node mysql cluster- one master, two replica- one of the replica is created to serve very frequent reads- small frequent reads- while another one is used to serve gigantic analytics query that you are finding on a massive table.
+this can be seamlessly done on proxy sql, so your api server need not know which data node to connect to to get things done.
+so this way, by having a proxy list sitting in between, it makes life so seamless and simple for engineers and api and your api servers to connect to your database.
+so that's why scale companies use proxy sql, right?
+so, as per incident report what it says, that, uh, the primary mysql node on one of the main database cluster failed and was replaced automatically by a new host.
+okay, so your existing master crashed, then an automated failover happened.
+then the new master that was appointed, that also crashed, right?
+so what happened is this looks like a very classic case of you promoting a master and that master, not being able to like, is not capable of handling the existing load, so it crashes.
+orchestrator's anti-flapping mechanism prevented subsequent automatic failovers.
+so orchestrator detected failure and quickly promoted the replica to be the new master and it and it, uh, helped us ensure that there are no cascading like something called as anti-flapping pattern.
+another master was appointed, so replica was promoted to be the new master and it was done automatically.
+so rather, orchestrator is a tool that is used to do mysql topology management- just fancy terms of managing mysql clusters- and doing: hey, this is the master, this is a replica.
+so what it does is uh orchestrators- anti-flapping mechanism- prevented subsequent automatic failures.
+so, apart from having your api servers, your mysql cluster, your proxy sql, there is a fourth component called orchestrator.
+orchestrator job is to keep an eye on your database topology, as in how many data nodes you have, which one are replica, which one is master, what is the replication lag if master goes down, promote one of the replica automatically.
+when a master goes down, in few seconds a replica is promoted to be the new master, right?
+so it is very important to have discovery, to have you being able to see what's happening in your database cluster, like how is it performing, how is the replication lag right, understand the performance and the topology that you have in your record.
+but there has to be a visual way to see it directly by connecting to a database cluster, which is where orchestrator comes in.
+it could have promoted another replica to do to be the new master.
+that master node went down right and let's say you have three replicas and you have some x amount of load coming your way.
+now these three nodes has to handle all the load, all the right load, coming to this one master.
+so what anti-flapping would do is, if it sees a master go down, it promotes a replica to be the new master.
+like, although it's not making things better, your master is still having an outage, but your reader, your reads, can still be served.
+so that's where, because orchestrator did not again promote another replica to be the new master, what it did?
+so that's where what github team did is, after they recovered uh, so uh, because subsequent failovers were stopped with anti-flapping mechanism, after we recovered services, after we recovered services manually, the new primary became cpu start and crash.
+okay, so because automated failover did not happen, what would need to do some engineer has to do it manually, because until the cool off period, orchestrator would not promote another replica to be the new master and an engineer needs to be involved.
+i would just add another, like i would manually promote a replica to be the new master.
+they tried to recover the services manually and when they did it, the new replica that was promoted also crashed.
+so what they did is because what they are seeing is, anytime they are promoting or replica as a new master, things are crashing.
+and finally, when they promoted a new master, it started accepting rights and things became normal.
+the changes happened on june 22 and a week later a node crashed and it was not recovering or any new node was not taking its place properly, right?
+so they it because here they did not even know why it is crashing or new master coming up.
+so, at scale, when you are managing any database, you need to understand how the core dump looks like, what kind of things it has, how to use it to debug such issue.
+okay, four things we learned: uh, how companies handle production databases.
+we learned about proxy sequel and orchestrator.
+how proxy sequel sits in between and does a lot of things.
+when you have a large mysql cluster, you would typically see proxy sequel in orchestrator in your architecture.

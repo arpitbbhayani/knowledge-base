@@ -1,0 +1,32 @@
+so here, our one client needs to talk to multiple services to get the things done.
+so we have added three services, but our user or our client has to talk to them to get the response.
+this composer would then talk to order service to get order information.
+so api gateway is a classic example of a composer and we typically place it behind or basically before all of our micro services.
+so this typically, or api gateway, is the first point of contact for any request coming in from the user, and then api gateway would decide where it would need to forward the request to, or send multiple requests to multiple services and get the response and whatnot.
+so anything that would give you an api gateway is something that you can use as a composer.
+api gateway either forwards the request to multi up a background, basically forwards the request to multiple services, gets the response uh, merges them, joins them and sends it back to the user.
+but then when you get a request to your api gateway, how would it forward the request to the uh, to the downstream services?
+it is very use case specific where we need to understand that, hey, do we have all the information to fire the queries in parallel?
+it's perfectly fine, but it's very use case, specific, right, but in general, if we do it sequentially, pure sequentially, one after another, after another, it would take a long time for it to execute, but it is okay.
+so in this case it would consume a lot of resources of api gateway in order to do that parallelism: wait for the response, merge the result and send it back.
+as in the browser of your user, would need to make calls to three services- order service, payment service and logistics service- to get that information, compile it together and show it in your ui.
+so here your client would be, have to initiating three api calls to three services separately, wait for the response before it can render the page on its end.
+plus, it would eat up a lot of data of your end user because you are making three api calls.
+composer in turn would fan out to three different services: get the response, merge them or join them and then send the response.
+let's say we have a very complex logic in our system and we just simply said, hey, the composer's address will talk to order service, member and service and larger six servers to get that information.
+the idea is, let's say, your composer sends a request to order service, but order service would need to talk to seller service and inventory service to get the order details.
+obviously not very performant or not good for low latency application, but you get the risk that you might have to have multi-level api composition, something that i would not want to discard right.
+right now, let's talk about advantages of api composition.
+who should it talk to and get the response from, and then it would do the need for right.
+let's say, you had a very tight deadline, very tight deadline, and you just like, randomly sent any response or any structured response without putting in a lot of thought into: uh, how are you structuring your response from one of your microsoft strings, let's say your, let's say your payments, micro services, right, the response is not ideal, uh, not very good for your client.
+so what we'll do is we'll put a composer in between, forward any request that comes to slash payment to payment service and every other request goes to legacy microservices, to- sorry, to- basically legacy monolith.
+first one: our composition or our composer is uh, is basically firing a lot of request onto services, getting the response, merging them.
+so that's where, when you are transferring large amount of data or when you are merging large amount of data, you have to ensure that your api gateway is scaled enough and if it you that who you have written, or if it is you who has who has written composer, you have to ensure that it is well written and, uh, basically at best, efficient, right.
+here we can very clearly see that when the request comes to our composer and it goes to three of the downstream services, like blocks, commands and claps, what we know is our availability is challenge.
+plus, what would happen is, as you have large number of services that you are talking to from your composer layer.
+your composer needs to manage and maintain a lot of state- who or which services, where and how, and how to connect to that and how to get the re uh, how to send the request and get the results and what not.
+if you have large number of services there, or if you're talking to large number of services in one request, it would add up to a lot of load on to your api gateway, which might turn it into a gigantic bottleneck which you can't get rid of.
+next is when your, your user- is sending request to one, let's say, api gateway and it is forwarding request to three services.
+so, coming back to this use case, that if you need a strong data consistency or if you need rather transactional data consistency, it is very hard to get it when you have multiple micro services behind uh, an api gateway, to get that information right because your api get, we need to maintain or have to do the transactional part.
+we added one more component in our uh system, which is your composer or api gateway, needs to be managed, maintained, observed, alerted and what not adds up to that part.
+even if it is a managed service, you would still need to monitor it just to ensure that if it goes down, you know the backup plan for that and the final thing is your composer may become a bottleneck again.

@@ -1,0 +1,30 @@
+thanks, so we all love creating micro services, but there has to be a way that standardizes on how we can build a microservice.
+so this is one key reason on why we need to have some sort of a limited white listed frameworks and languages that we can use right by while we pick- and obviously this is not about discouraging an organization to not pick a new language, but it has- but there has to be a reason.
+another thing to elaborate on is if we don't have a way to, or if we don't have standardization in, let's say, the way we are collecting the data from our servers and applications and whatnot.
+what if there is a production outage and each service is having their own way of logging things?
+it would be very hard for- uh, for us to have a central logging infrastructure that analyzes any and every log and keeps us handy for us during an outage, because if each team is following their own conventions, it would be harder for your central logging system to process it, and so that is where it is very important to have standardized way of logging things, standardized way of accessing things, standardized way of building things, right?
+but is that micro service what you want in your, as part of your ecosystem, right?
+if they follow that criteria, or if they complete that criteria, that would qualify to be a good micro service, right?
+so that is where a simple three- or if we ensure that we follow these three things, or if we ensure that these three things are met, we can say that, hey, this is a good service, right?
+for example, your srn devops team needs to know how to fire fight any outage that happens with that service.
+there has to be a standard way through which we are ensuring our services are observable.
+so, always knowing all of this fact, we have to decide: hey, these are the particular tech stack or ways through which we would build a service, so that it makes it easier for anyone and everyone part of your organization to see what exactly would be happening.
+but then you'll say: hey, pete, you were talking in the in the previous few videos, talking about autonomy, and every micro services is needs to be autonomous and is allowed to make their own decisions.
+right now let's talk about three pillars, or three important word pillars, but three important verticals that we should definitely standardize on.
+so we need to have a way through which we can visualize and see what's happening and, in case of an outage, in case of a bug, we are able to trace those things to the particular service and then debug it right.
+have one standard distributor tracing tool that would solve this problem for you, so that every single engineer in the org exactly knows where to look for when he or she wants to debug a distributed bug.
+so, apart from this, we also need to know, with respect to monitoring, how is every single server of us in an infrastructure is doing, how is every single service is also doing?
+we want to measure the health checks, the periodic health checks of that service, the request counter- 2 x x, 5 x x, 3 x x happening on the surface, right.
+we need a standardized way to gather these metrics and put it into a database for us to set up alerting on top of that.
+you can go for so gathering all the metrics from all the servers, all the services, and basically collecting it into one of this possible text.
+but the idea being every single thing put together, put into this one central place, standardized way of doing it and putting it into this one db for everyone else to query it right.
+so these are some basic metrics that, out of the box, every single micro service should be throwing into your uh, into a central monitoring system.
+so it's up to you on what kind of rules that you would want to impose, otherwise people would create random routes and then there would be no standardization whatsoever, right?
+the next one is about uh connection timeouts or how, when two servers or two service communicate with each other or user communicates with the server, there will always be a timeout and this timer needs to be set like.
+but having a standardized way gives clarity for any engine, any and every engineer in your organization, on how to interact with it, and you can obviously not just engineer side of things but also automation side of things that you exactly know, that whenever a payload would come in, it would always be json, for example.
+for example, if you are, let's say, if you are- owner of profile service, what you have to ensure that, no matter how many requests you get, you are not going down.
+if one service bombards a lot of request and takes on a profile service, every other thing gets affected, right, so we'd have to ensure that this does not happen.
+next is it's not just about rationing the incoming request to you, but also, as a good citizen, you have to ensure that you are not also bombarding someone else or some other service to, or to a very large level.
+for example, you want to ensure that you are not bombarding the notification service to send millions of notifications every minute, right, because that might take down notification service, giving out a bad performance.
+so that is where have an ability that you know that if a particular downstream service is down, you are immediately cutting it off, so that you don't even make a call to that service and send a default response to your user, right?
+so these four abilities are very important in order to define, for, in order to have a good fault tolerance level for your service, right?

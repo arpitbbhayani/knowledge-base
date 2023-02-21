@@ -1,0 +1,41 @@
+thanks, so before we go to the incident report, let's spend some time understanding the importance of zookeeper for a uh, for a kafka cluster.
+a broker can have a leader of one partition and a replica of another partition right, and this is how across such cluster, across this cluster, it is able to sustain a high read load and a high right load.
+zookeeper fulfills for his four key responsibilities for apache kafka, first of all is controller election, basically the leader election.
+so zookeeper is acting as a very nice brain that is doing this leader election for every topic, for every partition in the cluster.
+so now, here you see how important is zookeeper for managing, uh, apache, kafka, right, so it is acting as a brain, as a ring master, to hold and manage the entire cluster.
+now they managed, or they have built their own internal thing to manage the cluster, so they have removed the dependence on zookeeper, but, uh, it still holds true.
+so what incident report says: while reprovisioning zookeeper nodes as part of routine upgrades, right, so every cluster needs to go throughout them.
+so, while provisioning zookeeper nodes as part of routine upgrades, new hosts were introduced too quickly, which resulted in the election of a second leader.
+so zookeeper nodes were getting changed right, and when they were, when this was happening, a lot of new nodes were added.
+right, and when nodes were added too quickly, what happened is they they ran another election algorithm.
+uh, internally, what happens whenever a node is added to a zookeeper cluster?
+right, when a lot of new nodes were added into the cluster, they could not find a leader, or they could not discover a leader might be any reason they could not discover a leader and the majority of information that they found was like they seem to have majority of nodes not knowing where the leader is right.
+they elected a new leader and the new setup and the newer set of replica or the newer set of nodes were became part of a second logical cluster.
+so the the end state of this uh, after they added nodes too quickly, was that they had two logical clusters with two leaders and multiple replicas.
+right, so now we have two logical zookeeper clusters part of the same infrastructure, right, okay, so now what happened?
+right, so this happened for zookeeper.
+it happened because we added- uh, because the github team added a lot of nodes in a very short time, right, so leader election had to spun up.
+so after they added this, effectively introducing a logically distinct second zookeeper cluster where there should have been only one.
+while the zookeeper host were in this state, a single kafka broker in the cluster connected to the newly formed second zookeeper cluster and elected itself as a node controller.
+there were a lot of brokers who were connected to old uh leader or they had information about old leader and all and old followers of zookeeper.
+right, a single broker, a single broker got added or got connected to this new logical zookeeper cluster.
+so when this broker got connected to this newly formed zookeeper, it elected itself as a controller for a particular topic.
+so now you would have multiple controllers in your zookeeper class, uh, in your kafka cluster for a same set of topics- problem.
+so whenever a write needs to happen to kafka- let's say you're writing it to the kafka- you have to talk to zookeeper to get the information on where to write on.
+this did not happen with github, but there might be some rights that would have gone to the new, from the new broker to the new zookeeper cluster.
+only one broker got added to this new cluster, so there was not data loss.
+but if there were multiple brokers and they themselves elected themselves, okay, i'll be the- uh, i'll be the follower, you'll be the leader and all.
+at this point, there were two distinct kafka clusters that were serving conflicting cluster state information to the client.
+so here, what we clearly see is there were two distinct kafka clusters that were serving conflicting cluster state information to client.
+this is where your client needs to be uh, smart enough to understand that, that i am getting a, that i am getting a conflicting set of information, so i should not be writing to this right.
+and how would you know that there is a second logical cluster zookeeper configuration because your rights are failing?
+so did they lose like this looks like a pure case of data loss, because the rights was supposed to happen but rights failed.
+so if your client is writing to a message to kafka and if this fails due to some reason, it would write the message to a dead litter queue.
+but what would you do if your client tries to write to kafka, it does with some retries, three or four retries, and if it still is not successful, it would write it to a dead later queue.
+this becomes your secondary job processing system, right, your primary one is very ingested into kafka and there are workers consuming it.
+but in case your right to the kafka fails, have a fallback- and this dead letter q is a fallback to do so, right.
+but what would happen is, because this is not as throughput as kafka, a lot of things would pile up, right.
+so have a dead letter queue, right, okay.
+right, have a dead letter queue so that you have a secondary job processing system, so that you don't have any data loss, right?
+but if that fails after three or four retries, you put it into a real queue right and the fourth one, automatic cluster provisioning with the jitter.
+so here, what happened when github tried to do it, or when github was adding node to zookeeper?

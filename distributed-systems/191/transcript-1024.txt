@@ -1,0 +1,30 @@
+that is where we want the nodes to talk to each other and come to a consensus key: what the actual value of Price is.
+it becomes impossible when your network is unreliable, which means that if there is no guarantee that if you send a message from one node for it to reach the other node, if there is no guarantee to that, then it is impossible to achieve distributed consensus.
+in the previous video we talked about it through the two generals problem why it is impossible to achieve right now.
+how do we set up distributed consensus where we assume processes could fail, right?
+so a formal statement for that would be that we have a complete n graph or node graph, so which means that every node knows about existence of every other node, right, and a classic database cluster would would very easily be an example of that.
+so all nodes and processes start with some value, which means that every node or process knows here: hey, this should be the value of price, for example, and they all are trying to reach to a consensus on what the final value is going to be right and every node knows the default value for that.
+the problem statement is very generic, right, so that you can apply it to hundreds of cases or hundreds of applications per set right.
+that would be all possible values, out of which one every node would be agreeing on right.
+we want that no two processes, no two processes- decide on different values, which means that once we know that we reached the consensus, no matter what, every process or every node in your system would all agree upon that one value right, be it VX or V 0.
+the core idea of flood set algorithm is extremely simple, extremely intuitive, and that's the beauty of distributed systems.
+okay, so the core idea of flood set algorithm is that we keep a track of all the values seen so far.
+e v, as in every single node, would keep a track of all possible values that they have seen so far, and they use some decision rule, some decision rule to pick one name.
+so this is the core idea of it, which means that in a complete graph, every node would maintain a set w and W would be a subset of all possible values.
+if you assume that we can assume that, hey, at Max, F nodes would fail, so f is the failure rate that we are assuming that F nodes would fail while this consensus is happening, then the flood set algorithm would run for f plus 1 rounds.
+right, flood set algorithm would run for f plus 1 rounds, which means that we are giving enough chances for the nodes to crash.
+so that's why our algorithm would run for f plus 1 rounds, right, so that everyone gets enough chance to fail.
+to make the decision right, every process would say that, hey, the value of- uh, let's say, price is one thousand, someone would say two thousand, someone would say three thousand, right, depending on where the API call went and how they are trying to converge.
+now, when you're trying to reach these consensus, what would happen is everyone would have this W set, right?
+now, for each round, every node broadcast this W in the network, which means that because every node knows about existence of every other node, when they broadcast, they send message to every other node, right?
+and because it is broadcasting the value, every node would be receiving W from every other node and the node would keep on doing set Union of all the values that it is getting, which means after f plus 1 rounds, or rather even after the first out.
+for example, if some note think price to be 1000, some nodes think price to be 2000, so after f plus 1 rounds, every single node in the distributed Network would have: W is equal to 1000 comma two thousand.
+right, they are getting all possible values that all possible nodes think.
+so if the W, the set that the node has it contains just one element, which means all the nodes- during the first step itself they were thinking of the same value- then they would be picking up that only element which is part of the sector, right?
+so if W contains more than one element, which means that your your consensus could not be formed, so you would pick the default option, right?
+so this way we see that if all nodes start with the same V, after f plus one round, the W would just contain v at every node independently and hence every node would be deciding on V to be the final value.
+a simple example for that again, that instead of picking a default value, given that the first phase of this algorithm, for the f plus one round, nodes are continuously broadcasting the W the depth scene so far, which means after f plus 1 rounds, they all would have seen all possible values that they need to agree upon right after.
+to build a consensus, you may choose to pick the newest value, totally up to you.
+if you have a total ordering of values, you may have that as a decision strategy, because the first phase of this algorithm says that, hey, I'll ensure that I'm flooding the network with all the values that are there, I'll ensure that every node has every value possible and they would just need to have their own decision strategy.
+we'll pick the newest one, totally up to you, depending on what kind of consensus you would want to build, you would change your decision strategy right.
+so the communication complexity, which means the total amount of messages exchanged, would be equal to f plus 1 into n Square, because in each round, every node is sending n messages to n nodes.

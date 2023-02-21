@@ -1,0 +1,45 @@
+in this video, we understand why a programming language needs an automatic garbage collection in the first place.
+then we look at the construct that language provides us to do a basic garbage collection and why that is unreliable in the first place and that leads to the need of programming language having a way to do automatic garbage collection.
+so every object that we see on the screen or the variable we use are allocated somewhere in the memory.
+so whenever you allocate a variable, let's say in a equal to 10, it first gets allocated onto- like not first but uh- in the function scope.
+when you do in a equal to 10, the variable gets allocated in the stack frame of the function.
+so that's where you do not really need an explicit garbage collection for variables that are allocated on stack.
+but you definitely need garbage collection where your variables are allocated in the second part of storage, which is heap.
+what you can do is you can request your languages runtime engine to allocate n bytes for your memory, uh, for your object.
+let's say i want to store 10 books in my in memory array, right when the size of each book is, let's say, 100 bytes.
+you are- look at big objects onto heap, right when it comes to the heat part of it.
+multiple functions can refer to that same variable location, which is out there, right?
+so if two functions want to update the same variable, they are same object in memory.
+because it's like, hey, if i'm not using hip, i don't need garbage collection, so let's just get rid of him, right?
+as soon as the function is popped, the data is gone, right, so we need.
+so those type of objects that wants to outlive the execution of your function, you allocate it onto the heap right.
+so either objects that are too big, you allocate it onto the heap or they're too inefficient to be on the stack, you'll get onto the hip.
+second reason is you want dynamically growing objects like arrays, linked list trees.
+so anywhere when you need dynamically growing objects, they are mostly always allocated on heap right.
+third thing: you want multiple functions to use the same instance object.
+so whenever objects are allocated on top of heap, they are always addressed by reference, basically pointer so address to that particular object.
+so it will always be the starting offset of this particular object, which which typically referenced by pointer right.
+so whenever you allocated something in the heap, programming languages will have a way for you to mark that object as, like youtube phys, to physically d allocate the object from the memory, allowing it to be re used by some other function.
+now this object, or, sorry, this memory location is now free for any other malloc to or any other function called to grab it.
+so every programming language gives you a way of explicit deallocation, right.
+so standard example talking in terms of cc plus, in cc buses, you have functions like free and delete that explicitly deallocates an object, allowing it to be reduced by someone else, right?
+but now what happens is someone has, like your code has to trigger, free and delete to dialogue it, right?
+first case: what happens if an object is not deleted and is not referenced by anyone, so object is just lying there, you get memory leak, right.
+so memory leak is a very critical condition of your program where you are allocating objects onto your heap but not deallocating it.
+let's say you trigger a new malloc, you would want to allocate some memory.
+so always you need to ensure that whenever you are writing some code, when you are allocating things onto heap, if you don't need it, explicitly mark it for di location, so otherwise your process will crash- your, and then it would be restarted.
+out there, right, so slowly, like these blue boxes, are the objects which are allocated but not referenced by anyone.
+so, still, incidentally, the entire memory space, the entire heap, would be filled 100 percent allocation and when you try to malloc next, it crashes right now.
+another case is when what happens when an object is freed but it is still referenced like could happen right here.
+this is a classic case of a dangling pointer where, let's say, this yellow box is that object that exists and is still referenced.
+like, so some, some function is still accessing this object.
+someone thinks that the object exists, but you deallocated, some language runtime allocated this location for some other thread to work on, or so the allocation for another malloc that executed.
+in most cases your process actually do not crash because even if c has allocated or c is using this memory now, b would still get some data.
+so the best case that you would expect, like you would hope for, is, if there is a dangling pointer, please, please, my process crash, right.
+right, you need to know that you think that variable exists.
+that variable does not exist for you because you de-allocated it and some other thread is starting to use it.
+so unpredictable behavior is the worst kind of things that would happen now because of these reasons, right, where doing an explicit disallocation is is good for writing, uh, with respect to coding best practices, but with respect to human behavior, with respect to human uh, like you, adding to human efforts to remember how to deal with this object and all it's, it's very tedious.
+so that's where every programming language out there needs a way to automatically do garbage collection.
+why do programming like this even need garbage collection in the first place?
+hey, all right, this object was allocated, now i want to deal with it.
+now, if you can appreciate garbage collectors even more, it's basically reducing our efforts into ensuring the every object we allocate, we are freeing it garbage collection.

@@ -1,0 +1,35 @@
+this is one very common reason that we seen with github, where your auto increment integer column uh overflow- right, so it started not accepting rights and it led to a lot of failures and a perpetual downtime.
+what's common between github actions and github pages and why, like we have seen so many outages happening with github actions?
+if you see with integer overflow, where your auto increment integer column hit its limit, it typically happens when you have very high write rates.
+right, and another set of actions where you might find it amusing- hey, my integer id would cross- is push and pull, and which is exactly what we also see in the outage document.
+again, scope tokens exhausted and done right caused an outage.
+so if you are using a sql database with auto integer increment- with auto or with auto increment integer column, ensure that you are well within the limits and not hitting the uh and not basically having an outage because of that.
+the mitigation strategy is very simple: run a schema migration that would convert the 62-bit column to a 64, to convert a 32-bit column to a 64-bit column.
+they mitigated this with a long running schema migration to change the foreign key to in 64.
+when you see, because it was a foreign key reference, right, this is typically put under the carpet, like people typically skip it key array.
+people take care of ids as such, the primary key of the table, but foreign key typically is very sneaky, right, so people might skim it through, people might forget about it, and this is what the reason for this outage was.
+so the scope token, integer, uh, auto incrementing integer column, foreign key reference, which led to integer overflow 32 bit.
+so when id overflow, when it went from, when it crossed that 32-bit limit, foreign key started failing, which is what caused this outage.
+run a schema migration, change the column type of foreign key column, uh, to 64-bit, and that's exactly what they did.
+but now comes the interesting part, and- and obviously just to uh, uh, if you want to know how this happens, uh, how to do this, actually do this migration, and what all challenges come in, i've- i've basically covered it in two different videos which i would highly recommend you to check out.
+but uh, coming to the main agenda for this video, like, assume that the mitigation is done, everything is operating, but is that it right?
+once the foreign key migration was successful, obviously the right started, or the rights started to get accepted, and things became normal.
+so one way to handle this is by using proper guard drills, like sql transactions, to ensure that either all of them happens on another happen, basically atomicity of the operation.
+so that is where what you should be ensuring is: when the outage happened, check for such data inconsistencies, understand the system really will, check for data and consistencies and ensure that those things are cleared off right.
+this is what github also did by removing- uh, by removing like kind of not really an inconsistent, but some invalid tokens were there in the cache which they removed right, because they were not really needed anymore and that kind of puts it in inconsistency.
+so maybe what we need to do is- this is a very common use case where your cache has a lot of stray entries which it should not have, which is where it is important to understand how you are utilizing your cache and do cache invalidation if required and because you should not be serving very stale data to your user.
+that's where it's a very important thing that, after an outage, understand how your cache behaves and see if you would want to invalidate the critical reads that go to the cache.
+right, and if you are okay serving it, let it be, but if not, check for those inconsistencies and invalidate the cash.
+if you want to right and at least notify the dependent services key, something like this happened, so you might want to clear off the cash that you have, okay, next, alerting and linting are already in place to prevent integer overflows in the database.
+what github says is they already had alerting and linting in place to prevent integer overflows in the database.
+but still it happened because these mechanisms were not sufficient, because it was a foreign key that changed.
+like i said, that id column checks- everyone puts it, but foreign a thing, it's very sneaky- and that's exactly what happened with github.
+so they had checks on the primary key but not on the foreign key, and which led to this outage.
+so having such ways to ensure, like regular audits, regular audits of things, are very important.
+and this it's not just we do it beforehand, but if an outage happened, right once the issue is mitigated, set up very thorough alerting.
+so this is what the github team did to when they set up alerts across foreign keys.
+they did manual auditing of every single integer column, not just primary key, but every single integer column, just to ensure that they are well placed and they not face the issue with the same reason again.
+so, preventing measures to ensure that another outage does not happen for the same reason.
+and this is very important- this, if you just take care of this one thing, that you are always ensuring that you would never see an outage for the exact same reason.
+like because unknown out or outage because of unknown reasons are very common, but once you know that it happened because of the season, try not to have it again.
+then, uh, setting up the right set of alerting, write immediately, like immediately after the outage, and taking preventive measures, preventing measures to ensure that the output doesn't happen because of the same reason again- is very important.

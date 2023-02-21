@@ -1,0 +1,36 @@
+this has to be an automated process, which is where the leader election algorithm kicks in, where it helps us not to do this manual intervention and fix the system right with lcr algorithm.
+synchronous mode means that every node which is participating in this election would know: hey, now my election is starting.
+this starts and ends in a synchronous mode that everyone knows: hey, now it's first step, now it's second step, now it's third step, and everyone is participating in it, right?
+another thing that this algorithm requires is: no matter how the topology is structured, there should be a way through which the nodes by the nodes of this distribute system needs to know what's in its clockwise direction, like the immediate neighbor in the clockwise in the clockwise direction, which means that it needs to form a unidirectional ring.
+it may hold some other information, but this is the bare minimum that we expect: that every node needs to know some node in its clockwise direction so that it can form a topological unidirectional link.
+right now, this algorithm is so beautiful that it runs or it works, even when we don't know the total number of nodes in the system.
+second is uids are comparable, which means, if you can do less than greater than on node, uids that you have, and every node knows its immediate clockwise neighbor.
+again, we don't need any information about the total number of nodes in the system and this algorithm still works.
+so as soon as someone detects that hey, leader is down and that node triggers an election into the system, now what would happen?
+every single node, because it's synchronous, every single node would know that the leader is down and everyone knows that, hey, now the leader election process begins, right?
+so, given that every single node participates in this election and every single node pitches itself to be the new leader, like when the leader is down, every single person of the gang says: hey, i want to be the new leader, right?
+so every node creates a message with its own uid and send it to its neighbor, because that's the bare minimum expectation that we have: every node knows its clockwise neighbor, bare minimum expectation.
+so what every node would do is it would pitch itself, which means that it would create a message with its own uid in it and send it to the neighbor that, hey, i would want to participate in this election and i want to be the new leader.
+but if yours is greater, oh sorry, if the if the incoming uid is greater than your own uid, which means that, hey, you were 9, but you received message from, let's say, 18, so 18 is greater than 9.
+so you would say, hey, i received this message from 18, i am 9, so i am forwarding 18 to my neighbor, right?
+but if it survives the entire ring and it comes back to you, which means that you have the highest uid, given that you have the highest uid, you declare yourself as the leader, right?
+so here what would happen is, because every single node is participating, the message by the largest uid will survive the ring, because everyone is forwarding the message with the highest uid, right?
+so the node with the highest uids message would be surviving the entire ring and would be coming back to the originating node, and when that happens, it would know that, hey, i started like i have.
+like the node would know that, hey, i have the largest uid, which means that i am the new leader.
+and now this node would then announce this through another message, relaying into this network that, hey, i am the new leader going forward.
+it basically says that the new leader is the one whose node, whose node uid is the largest.
+and the way it does this, it basically takes this message and forwards it in, like every single node in this distributed system participates in it, creates a message, pitches itself, sends it, basically sends it to its immediate neighbor and the neighbor then basically relays it.
+so this way, the only message that would survive would be from the node that has the largest uid and, given that that node, the message comes back to the originating node and it would know: hey, i have the latticeword and i'll be the leader, right, and this is a very simple literal election algorithm called lcr.
+there is no way for a node to know that the election is over, right?
+when it knows that, hey, i am the new leader, because it received its own message, it would create another message and send, would announce itself to be the new leader in the system.
+and that's how every single node halts the election process, right?
+so when they receive this report message that hey, i am the new leader, they all, every node, halts the election process.
+they store the new leader information locally and forwards the message to a cvj number.
+so the bare minimum assumption that we are making is: every node only knows about its neighbor to its immediate right or in the clockwise direction, whether this is the.
+so that's where, when a new leader announces, the message would be sent to the node next to it.
+it would halt the election process on its own and then stores this information that hey, this is the new leader and forwards the message to the next node.
+this way the entire ring would know that hey, this is the new leader and the election process would stop.
+every node pitches itself the mess and every node forwards whatever incoming message it got.
+if incoming uid is greater than this, the worst case of this the number of messages is n?
+square, because every node is not just receive, is sending the message for its candidature.
+so any algorithm in distributed systems is always designed in a way to keep the communication complexity bare minimum.

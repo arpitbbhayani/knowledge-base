@@ -1,0 +1,33 @@
+so people can host their shops on Shopify, and Shopify uses MySQL lizard primary database and this is what their current architecture looks like.
+right now, within this database, each table would have a column called shop ID which help us identify that this row belongs to this shop.
+like if you have an orders table in that order stable, there will be in in that order stepper, there will be a column called shop ID which tells that, hey, this order belongs to this particular table.
+now, when A Shard becomes hot, which means, let's say, there's a huge amount of load coming on shop one, which makes this pod one hot.
+so how do you move data from one database to another without having a downtime, which is what makes it extremely challenging but fun at the same time.
+so a normal approach to think about it is: hey, let me just iterate through all the tables of my database, pick the rows with a specific shop ID and I move this rows from one database to another database.
+so which is where, without incurring any downtime, you have to move data from one database to another, which is what makes it really interesting problem to solve.
+here we clearly see that if there is a huge number of requests coming on one shop, it would make this database piping hard, which means that there is a chance, there is an increase in probability of this fragment of infrastructure failing, which you should not let happen, because one shop spacing this excessive load takes down other shops with it- is unacceptable, right?
+so, which is why we think of: hey, let's do rebalancing of shards such that the load across all of my pods is fairly equal, right, okay?
+so the first problem comes: how do we decide which shop lives in which Shard?
+so this is typically done by the data science team, because their job is to Crunch data, to apply those models which tell you that, hey, this shop, this should move to this chart, this shop should move to another shot, right?
+so the factors that you might consider that, the first normal factor that you might come to a conclusion that, hey, let's just move it with respect to the number of shops in a database.
+you don't want that to happen, right so, which is why you apply heuristics to see, hey, where which shot can move to which shot.
+otherwise, you can look at historical traffic that you see and, more importantly, you can use forecasting, because, let's say, there is a shop which calls you and tells you: hey, uh, we are having a big, big flash sale, so we would want- uh, so we are expecting this much of traffic.
+so, second, without having any downtime, right, okay?
+so no matter what happens, no matter where you are moving data, no matter how good you are making that infrastructure or their performance, downtime is not expected, because it would impact not only your Revenue but your customers revenue, and that's more important.
+second, there should not be any data loss or corruption, because you cannot just say, hey, because I move the data from One DB to another and then, like, I just missed few rows, that cannot happen.
+you might create like you might just have a process or a machine that is just basically editing through the tables and copying and pasting the rows over here, right while this batch copy is happening.
+obviously, while this batch copy is happening, there are new updates which are flowing in the main DB.
+so, which means that when you start copying, you also have to keep track of whatever new changes are coming in into this DB.
+so from there, this would ensure that the first step is ensuring that your you are batch copying the data from One DB to another while you are keeping track of changes that are happening live on the database.
+okay, now, second step: once you say you have made note of that, either that bin log coordinate, that hey, up until this 10, or, in case you are using Q, in either case, you would know that you have completed your batch copy till that point.
+right, you know that because you will keep track, hey, from this point, I am anyway capturing all the live events that were happening.
+right now, what Remains, the things that remain is that you have to copy the new things, like from the time that you started a batch copy.
+whatever new rights have happened onto the DB, you have to take and apply it over there.
+but here a critical thing- that you don't just have to apply all the updates, but only the updates that are for your shop, right?
+so here what happens is that, because the batch copy would be very fast, you are bulk copying the data of the shop that you are interested in another DB.
+then you are, you have kept track of from this point, I did it right- and then you're starting from that new point and just filtering the events that you are interested in and applying the changes into another DB.
+at this stage, there are no new rights coming onto the source DB and your Source DB is equal to Target DB because the data on both the databases is exactly the same.
+this is that that nginx layer in which you have defined, or you have defined, a custom routing module which says that, hey, for this shop, you go to pod one, but now it changes to go to pod 2..
+once that change is done in the routing table, you start accepting the request and all of the requests for shop one that used to go to pod one will now go to part two without having any downtime, because the database as is basically caught up, right.
+you apply all the updates coming in from the bin log.
+thanks, [Music].

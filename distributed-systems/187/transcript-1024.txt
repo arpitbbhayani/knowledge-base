@@ -1,0 +1,32 @@
+for example, if you were to broadcast a message in a minimum amount of time, that first search comes at play right.
+so here, the key idea of a synchronous algorithm is that every single node of the network participating in the algorithm, they know when to move forward.
+so, because it's a breadth first search traversal, the output of this traversal would be a breadth first directed spanning tree, which means they see the, the distributed Network.
+so just to highlight that point, a node may be reached via multiple nodes, but in a BFS spanning tree, only one of them would be the parent, right?
+so now that we know what the input is, what the output is now in a distributed setup, see how how interesting things get right.
+so, because the algorithm is synchronous, right, so every node moves forward step by step, round by round, like they're synchronous.
+in that way, nodes proceed in sync and let's, let's say the BFS, the breadth first search, has to be initiated by some node, right, it cannot be like.
+like, when you are building that topology, you need to know, okay, hey, this is the node which is initiating the breadth first search in my network.
+Now, search is just a general terminology implementation, like, you just need to create a text message and then send to the nodes, but I'm just classifying that message as a search message, right?
+so I 0 sends a search message to its immediate Neighbors, because the only thing that the node knows are the immediate neighbors, nothing else, right?
+now I am part of the spanning tree, right, and as soon as I know- okay, hey, I've never received a message before and this is the first time I'm receiving the message, I'm part of the spanning tree and I'll update my parent.
+so whenever a node receives a search message, if it is an unmarked node, then it would be marking itself: hey, now I'm part of the spanning tree and this is from, and this is the node from which I received a message.
+right now, in the second round, the nodes who received the message in the first round, right, like, for example, if not, I zero- send message to A, B and C.
+the idea is, with every round, the nodes who just received the message would participate in the next round, right?
+so the nodes who just received a message in the round one participates in the round two and they send a search message to its outgoing Neighbors and this process repeats until the entire graph is covered.
+eventually, every single node will be covered and would be having a and would be part of a spanning tree, right, and we would be covering the center.
+right now, if we talk about the complexity analysis of this, the, given that the nodes proceed every round, the time taken to cover the entire network will be proportional to what?
+so the time complexity of this is the diameter of the network, right, and the number of messages that are exchanged, which is the communication complexity will be what will be, because we are sending how many messages in each round, the number of outgoing edges from the nodes participating in them, and once then that node participates, they're not re-participating again.
+right now, here, when we think about this, let's say we built this spanning tree, but in most cases what is happening here up until now is every node knows who it's who, which node is its parent, but parents should also know which one of the nodes chose it to be the parent.
+so, for example, if I zero sends message to node a, b and c, and let's say A and C were already part of the spanning tree.
+basically, just having an outgoing H does not mean that that node is the parent in this distributed spanning, in this distributed breadth, first padding tree, right?
+so here what would happen is, as soon as a node receives the search message and if it is marked like if, let's say, it is already part of the spanner, it would say: I will discard the message.
+and if it is not marked, which means it is receiving the message for the first time, it would update its local state with this as the parent.
+so it basically all the messages converts to a single node, right?
+right now, here just a slight twist to that: that a node responds- or to the to its parent only when it receives message from all of its children or all of its outgoing roads.
+this way, the originating node would know: hey, this is like these are his children, and now the algorithm is complete.
+it would just know that algorithm is complete, right, and then it can proceed to other use cases.
+like, for example, if we send message to D, if, let's say, I zero sent message to A, B and C, it's easy that on the same communication line a, b and c can respond to I zero, right, because the communication line is bi-directional.
+so in a directed, in a unidirectional distributed Network where the communication line are unidirectional, it would have to recollect every node would be triggering another bet for search to inform its parent, huge number of messages exchanged.
+okay, so if a node in a distributed system wants to broadcast a message M, it can just initiate the synchronized BFS algorithm with itself as the root.
+so this particular algorithm- breadth first search- it's foundational for so many other things, right, and this are, and these are the challenges that comes in when we are operating in a distributed setup, like we cannot even assume anything.
+it's the bare minimum assumption that we have to move forward with, and I hope you like this and this is what I wanted to cover when it comes to breadth first search traversal in a distributed setup.

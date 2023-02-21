@@ -1,0 +1,34 @@
+there are so many challenges that comes with adopting micro services.
+so with monolith you have just one thing to manage, but with micro services you have hundreds, if not thousands, of services.
+like, hey, your micro service should not be too small.
+so that is where, whenever a proposal of a new micro service is given, it needs to be a well thought through thing.
+it cannot be just: hey, our team wants to build a micro service, let's do it.
+a lot of people should be involved into making the decision: hey, do we really need a service for this?
+like random micro services would be created in inner infra, which would overall increase your uh, your uh, your overall latency of your api request, given that there will be so much of inter-service communication and all.
+so that's why there needs it needs to be a well thought through thing rather than just thinking, hey, let's adopt micro services.
+also, adding to this point is with when it comes to managing micro services, you would always feel, or every team would feel, an urge: hey, let me build this from scratch.
+so that's where it is counter-intuitive that you- or rather, it is very important to fight your urge to create new tools or to rebuild existing tools like you should not be spending time creating your own ci, cd, use jenkins instead, right?
+always try to like blind spots would come in with time, but we have to be very of the fact that we have to keep them at the bare minimum right and blind spot, not just with respect to an existence of a service or existing or existing of a dependency.
+let's say your end user is facing a particular problem and that api call that end user made talks to seven different micro services in different order.
+it's a very nice open source tool, that sub that powers distributed tracing, and the idea is to have a constant or a request id that would flow across micro services and you would be able to trace out exactly what happened, with that request id becoming, uh, basically becoming a bastion, so it becoming that singular point that would string all of the services together.
+like you can just say, hey, i want to talk to payment service, but how would it talk to payment services- something that a service discovery module should be thinking about or should be taken care of?
+you need to do it, uh, because of like, if you want to go with no trust policy, that we don't trust anyone and have security as your default way to approach things, should be thinking about this.
+other way, let each service store its configuration in a secure location, for example.
+so that's where, when you adopt micro services, you would have to think about a central configuration management system where all the configurations are stored.
+so what happens is when you are making this decision of moving from monolith to micro services.
+the third thing here is people have adopted to new tools and processes, like when you we just saw uh, whenever we are adopting microservices, there are so many new tools that we have to bring in, for example, tool for distributed tracing, rule for monitoring and logging, centralized logging, secret management and whatnot.
+hey, when you are making this decision of moving to micro services, it's very, very, very, very hard to come back.
+when you have so many components- uh, because microservices, architecture and all you have so many components, so there are more ways to fail because when, like if you think about if, on an average, a server goes down- hypothetical example, if a server goes down once every 100 days and if, let's say, you have 100 servers, so on an average, one server will go down every day- right, pure math.
+so if you think about it at scale, when you are managing hundreds and hundreds, 500 or even thousand servers, this comes in very uh, or this becomes very critical- that every once a while some other service would be going down.
+so that is where, whenever you are modeling micro services, think about modeling it loosely coupled, where, even if one service goes down, it does not affect other, and try to have, instead of synchronous, dependency across services.
+testing becomes super complex when it comes to micro services because a good testing environment is always isolated right whenever they would want to, or whenever your qa team or automated test needs to run.
+and with microservices architecture, let's say you have five micro services and every time i test super suit, you would have to spin up those five micro services with some infra provisioning to to get that thing done.
+second, it's a big engineering challenge where how easily can you spin up all of your micro services in a standalone environment?
+so bit of engineering challenge, bit of organizational challenge, but something that we all should be thinking of while we adopt micro services.
+but if you are dependent on that service synchronously, then you should be the one who should be handling it, right?
+so with synchronous dependency, when two services are dependent on each other, if one going, if one goes down, the other is affected, right?
+so how do you manage service dependency that?
+a very poor way of having your micro service or having you try to untangle yourself, but every time you think about it you are tangling yourself even more, and that happens.
+so, like, output of recommendation service, consumed by five different services, right, any change in data pattern or the way data is structured in uh, your recommendation service, will affect every single one of the depending services.
+right, this three dependencies, very critical we all should think about.
+that, hey, in order to design a good micro services based architecture, you need to think of all of these 10 possible challenges that comes in with it.

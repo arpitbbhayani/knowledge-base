@@ -1,0 +1,36 @@
+the way i would like to put it is: micro services are like reusable functions, the functions that we normally write in our code, like that, but little bigger, with a bigger set of responsibilities, and put over the network.
+and you know what all things happen, it becomes hard to maintain or hard to even build on top of it, right?
+so, depending on what your business needs is, depending on any new feature that your business wants to start, if any new thing that a business wants to introduce, that the business typically creates a small team of people, not engineers, but in general, a small team of people whose only responsibility is to ensure that that thing is done.
+so, when a business is creating a team of focused individuals to get a particular task done, that particular set of people or that particular set of product features and all evolves into, or they own this particular part of microservice, like it's basically a one-to-one mapping from the business side to the product side, right?
+so that is where, by having a micro services based architecture, it is trying to optimize for rapid feature delivery so that when a focus set of people are only working on that one set of service, it is easy to make changes there, because it's a very small code base.
+and then if let's say i want to upgrade, let's say i was using python and now i'd say, hey, golang is a new shiny thing and it would give us very solid advantages if we move to, if you move our payment service to that, so then you would go for it.
+so these are two key advantages or two key reasons, or two key things that micro services try to optimize right.
+so most microservices architecture- they they never start as micro service architecture.
+the idea of monolith is pretty simple: have one code base, put everything inside it, right, and it's not that these are different processes, it's more like these are different modules.
+so most of them start with the monolith: everything is part of this one code base and it's just that one deploy thing or one thing which is deployed across all ec2 instances, right, easy, transit any instances in your production environment, right?
+so everything is part of this one code base, one deployable artifact which is deployed across all of your machines, and this and is talking to a few set of databases.
+this is your typical monolith architecture where everything is just everything is part of this one code base and that one code base is deployed across all of your machines, right.
+and, to be honest, when a company is starting up you don't have to think about micro services.
+you start with monolith and get things done right.
+there are solid advantages and that's why most startups starts here and then when they realize, okay, now we are in market for next three or four years and our monolith is becoming a bottleneck, let me move to microservices.
+simple to build: there is just one artifact that gets built: your jar, your code base or binary, just one thing that gets tripled across all machines.
+some over engineering folks are there to start with micro services.
+second is your containers or your binary or your deployment artifact are bulky because you have one code base or one thing which is deployed across all machines.
+so eventually your overall infrastructure utilization goes down when you are growing in your monolith because you are over provisioning for a particular set of function but unnecessarily everything else also gets loaded.
+right, because there are so many things, so many functions, so many things to look at, it becomes very intimidating that you- and given that you know that there is like if you introduce a bug it would take your entire production down.
+let's talk about how we can evolve, or how we typically evolve, from monolith to microservices.
+when you go from monolith to microservices, you would typically be clubbing functions or grouping functions that do related work and create a micro service out of it.
+for example, all the functions related to user profile can be clubbed together and given its own code base, its own set of infrastructure to run profile service, exposing a proper set of api interfaces, right?
+you start extremely small, pick a particular set of module and try to fork out things or try to club the functions that you want it to go into one microservice.
+and you create that and then let everyone else who was initially just doing a function call here are making network calls to that particular service.
+right, and slowly and steadily you start clubbing all functions or all related functions and create separate micro services out of it.
+fred is spreading out and eventually your architecture would become entirely, entirely micro services based and you will be getting rid of monolith, right.
+so that is how your transition and the way we would be transitioning in from micro service to monolith.
+now let's talk about characteristics of micro services.
+like every micro service based architecture is autonomous, such that every micro service in itself is independent in taking its own decision and driving its own operation: decision with respect to tech stack, decision with respect to storage, decision with respect to api contract right, decision with respect to the kind of infrastructure on which it needs to run.
+fourth, it's very simple to understand because your mono, uh, because your micro service, is just a small code base that does that one thing really well.
+right same thing goes over here with micro services based architecture.
+the micro service that you create is reusable.
+do not start with micro services.
+it should not just be one or two things that that service does, right.
+these are some key things that i always wanted to talk about on how you should think about microservices, right, nice, so yeah, that's it.

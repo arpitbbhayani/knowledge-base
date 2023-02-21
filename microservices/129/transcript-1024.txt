@@ -1,0 +1,41 @@
+you will always feel like writing a new service to solve every single problem at hand.
+you can go to a very fine granular level to write a microservice for every single micro requirement you have, versus you can keep a lot of them together and and solve a bigger problem right.
+in the previous video, we talked about the advantages of having a microservices based architecture, and in this one, we talk about ways to model a robust and flexible architecture using just two concepts: low coupling and high cohesion.
+but before we move forward, i'd want to talk to you about a code based course on system design that i have been running since march 2021.
+that that gives you this new perspective where you can use a lot of good practices, design patterns and what not to build the best possible solution to solve that particular problem.
+so that is where we need to think upon: hey, what happens if we do not create a microservice?
+so when we are fencing something, we need to define a very rigid boundary on what exactly would a particular service would solve, right?
+so if you have a very big boundary, you are putting in a lot of components, which means you have too few of your micro services.
+when you have too few of the micro services, what happens is there are lot of teams who would be collaborating on the same code base or on the same service.
+deployment would be slower because changing in one component, deciding to deploy that service, would require you to take approval from that other team, right?
+you are flexible enough to change one service, architecture of one service, cicd of one service and whatnot, or the entire tech stack, everything in one service without having other service to even know about it.
+that is okay, so long as the related components are together, right, so these are two key things that we would be discussing in detail.
+so loose coupling, as i just said, it's changing one service should not require change in another one.
+this is the ideology with which a micro services based architecture even started.
+one isn't written in java, another one is written in golang- right, but the way these two services communicate, it could be an api contract, it could be synchronous communication, could be asynchronous communication, could be anything, but the communication is always through this interfacing layers.
+so so long as the in like, if orders want to communicate to logistic service, this interfacing layer talk to each other could be rest api, grpc, raw tcp connections, what not right.
+not, so long as interfacing listing remains the same, there is no requiring like order service change, no required to change the logistics part of it.
+for example, when logistics service or when order service is talking to logistics service, order service does not need to know the architecture of logistics services, does not need to know you know what kind of database it is using, or does not even need to know the credentials of those databases, right?
+so a few basic things that we can think about is: hey, does a service like.
+does order service needs to know public api is a logistics service?
+does order service need authentication apis for logistic service?
+does order service require it to know the database of logistics service?
+then rate limits: yes, order service need to know the rate limits of- uh, the logistics service.
+so you need to know rate limits of the logistics service.
+you need to know the api contracts behind it, right?
+a small, a simple example of this: if your order service know that your logistics uses a my sequel database and it knows the credential, then the order service might actually talk to the database directly to get that information, rather than going through this.
+rather than going through this interfacing layer of logistics service, it would directly connect to the database to get that information.
+you don't need to share unnecessary information to other teams, right, so to other services.
+so, for example, payment service requires payments worker- they sit together in one code base- and payment service three apis: make payment, del, uh, make payment, revoke payment transfer.
+make all of your related components sit together in one micro service and expose all of those endpoints together.
+so the core idea behind high cohesion is: services should operate independently if you have related components sitting together, working in a close knit team or teams like a couple of teams, it is always faster for you to roll out the new changes to it.
+so you started with the monolith architecture and then you decided to move into micro services based architecture.
+from monolith to microservices, you, not like, all of a sudden rewrite the entire code, right?
+you would want to show continuous progress to your senior management, which is when you say, hey, because all of my code base is already residing in my monolithic code base, let me create a new service out of it which uses the same code base, right, and it only exposes.
+now you know that, hey, logistics needs a separate service of its own.
+you create the same code base, right?
+you, sorry, you create a micro service using the same code base, but it only exposes the logistics apis.
+right, so both of these services would need to be deployed because both of, because the code base change, both of them would be would have to be redeployed so that the new changes reflect.
+this strong coupling between the two systems, like your monolith and your logistics service, unnecessarily unnecessarily, and deploying multiple services at once is more risky than anything.
+so hence, whenever you see the requirements in, whenever you want to decide if you want to create a separate microservice for this to solve this specific problem, ask this question like: how do you fence it is?
+right, try to avoid as much of cross service communication as possible because it would make things slower.

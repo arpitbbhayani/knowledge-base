@@ -1,0 +1,38 @@
+thanks and like always, conflicts are inevitable because we are trying to map a large applications key space into a smaller hash table.
+right, so if there is a collision, we try to find a slot, a free slot, where we can place our key.
+probing function is defined as p of k comma i, where k is the key and i is the attempt number.
+if that is also filled, then 2 will find next slot to place the key, and so on and so forth until we look up all m slots of the table right.
+so there are two very uh simple techniques to which helps us probe the keys and place it at the right slot in the hash table.
+first of them is linear probing, where what we do is if a particular slot is like if i want to place a particular key in my hash table, and if that slot is not empty, then we find the first immediate slot to the right of it which is empty and we place our key there.
+linear problem suffix from the problem of clustered collisions, which means that with the poor hash function, a lot of they would form a lot of clusters where a lot of collided keys would be placed, because we are just moving a step to the right, right.
+so you would see clustered collisions spread across your hash table, which means the more collisions happen, the longer it would take for you to do kilo cups because you would have to do conflict resolution.
+in this one we would look at the third and the final technique to do conflict resolution, or uh, in hash table, which is called double hashing.
+so if the problem that we are trying to address is only of clustered collisions, then why to go linearly to do something right?
+so, for example, we use the first hash function to find the primary slot and then we use a second hash function, multiplied with your attempt number, to find the next, to find the next slot right.
+so this is the core idea of double hashing, where your first hash function gives the primary slot and, upon collision, it uses a second hash function as an offset, multiplied with the num, multiplied with the attempt that you are making.
+just a simple mathematical representation of this would be: p of k comma i is equal to h 1 of k, which is a primary hash function, plus i times h 2 of k right?
+so by not relying on a quadratic function or a linear function in order to find an x slot, we are leveraging a second hash function applied on the same key, which means we are first getting near uniform distribution with the first hashing function and upon collision we are using another hashing function to find the next slot right.
+so this way we are trying to leverage the entire hash table without following any specific pattern.
+so with quadratic probing you exactly know how long were you taking jumps from, but with double hashing you don't know that all like there is no fixed pattern.
+it totally depends on the key and the hash function, on how big your leap is going to be and which is what the best part is, right.
+so, again, your probing function would be h 1 of k plus i times h 2 of k, right?
+so as i increases, as number of attempts increases, the leap would vary, right, and it totally depends on the key, which means that you will get a very nice equi-spaced distribution of your of your collisions, of your clustered collisions, across your hash table, which is what the best part is.
+so, because it does not follow any specific pattern, which is why it reduces or it minimizes the chances of having clustered collision, which means a lot of clustered collisions placed in your hash table, right?
+okay, so now let's take a look at few considerations that you have to make while choosing a second hash function.
+the first hash function we all discussed, like a murmur hash, would do a really solid job, right?
+but second hash function has to be a little more like.
+we have to be little more picky about the second hash function, right?
+because second hash function has this very strong response or very important responsibility of ensuring that it covers the entire spectrum, right?
+so what would happen is you are not literally leveraging your second hash function at all, which should give you the offset.
+so we are, because if your second hash function ever returns a zero, i times the number of attempt.
+you do not leave any slot empty of your hash table when you are trying to place a particular key right.
+third is your second hash function should be fast to compute and it should be nearly a random number generator.
+what i mean is it should be so uniform that every slot of my hash table is equally probable to occur.
+this way we would ensure minimized clustered collisions in my hash table.
+right, and it's not difficult to choose the second hash function.
+so double hashing, obviously we look at it as a betterment of your linear and quadratic probing.
+but still, looking at the advantages of double hashing, the first one it is it gives you uniform spread upon collision.
+right, with linear probing you had a fixed pattern.
+but with double hashing you get a very nice uniform distribution across your hash table, which means the degree of collisions on a particular slot will be less, which means you would have a faster lookup types.
+so, which means that you will have very short probing path, which means that very fewer collisions per slot in your hash table.
+right, because for each, because of its uniform distribution, the number of collisions per slot will be very minimal.

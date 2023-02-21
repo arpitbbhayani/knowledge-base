@@ -1,0 +1,33 @@
+because the thing is that, using reviews, people make informed decisions that, hey, do I need to book this hotel, or is this hotel, or is this stay, or is this, too, really good enough?
+so now people are coming to booking to read the reviews and then make an inform District: hey, I want to book this particular Hotel.
+so people come on bookingcom to read the reviews about a place or about a stay or about a tour, and they book after that.
+right, okay, now that we understand why ratings and review service needs to be highly available, we would take a look at how they do it, but this gives us a hint on how they would be thinking about testing.
+so obviously, with respect to when you think about ratings and review service, it would be a very simple, rest based API in which you can get a review, create a review, get a bunch of reviews, list a review by location, by uh tools, by accommodation and whatnot.
+right, so it will be assumed that that's a very simple rest based service written in Python, Java or basically whichever framework you would want.
+but this gives a critical hint that, because we need low latency, we would go for a something like a cache based solution.
+okay, that being said, now let's think about the amount of data that they have, because this gives us Glimpse around the the overall database architecture that they might have.
+because it's a very high traffic- 10 000 requests per second- OneNote definitely cannot handle it with ease, so we would add a bunch of replicas, so we would typically have a master which is taking all the rights, replica which is serving a lot of reads and, and very importantly, because we want the service to be highly available.
+okay, given that we have 500 GB of data and a lot of ridiculous coming, and obviously one node should not be able to- or OneNote is not able to- support that much of request, you Shard the data.
+and most classic, most typical way to do it is a hash based routing where you take the accommodation ID, you mod it with the number of shards that you have, you get an index and then that particular node, you go and fire the query and create the rating or review right.
+now here what happens is, let's say you have three nodes and you have sharded the data according to that to handle the load and what not.
+now the challenge: with a normal hash based routing, it's very evident that, hey, if you add or remove more nodes, the mod number of shards this would change, which would require you to do re-indexing and repartitioning of the entire data, which means it is not easy for anyone- for anyone, given that there is 500 GB worth of data- to re-partition the data among the new set of nodes.
+you want it to be easy for you to add and remove data nodes from your cluster, which means that you should not be having to do the re-indexing and repartitioning of the entire data set.
+given this, given this, where would we put this consistent hashing logic in the review service?
+review service would be Computing the hash and a mod number of shards and find the index and put it there, right?
+so, similarly, the consistent hashing that you implement will be part of your review service, right?
+but now, given that we would have consistent hashing implementation, the routing logic implementation, on the review service that we have, what is the practicality of it?
+when I want to do that, when I add the fourth node, I would first find the location of it in my consistent hashing ring that I have.
+once it has moved, then you notify the review service that, hey, now you can use the other ring.
+so just to give you a a nice crisp gist of it is that your review service has a consistent hashing ring available.
+now, when you add one new node into this consistent hashing ring, you first wait until some data, until the data that needs to be moved to this particular node moves there, right.
+and once that data is moved, once that node is ready to accept the request, then you notify the review service about the existence of this new node in the new ring.
+then the next request that comes in starts hitting the new node, right.
+so add and remove the node that you would want to copy the data that needs to be moved by by balancing- and obviously not a lot of data would happen, only data from the peripheral nodes would move, nothing more, right, and that's the beautiful.
+and you notify the review service to start consuming the new ring, right.
+so wherever you see a problem of you wanting to build a service that needs to scale up and down at will and there is a lot of data that is moving because of your routing logic, you employ consistent hashing at that location.
+once you employ consistent hashing at that location, your problem is typically solved, because it ensures that you have to do a minimal data movement when you add or remove nodes from the consistent hashing ring that you have.
+and again, do remember that all consistent hashing answers is data ownership.
+you have a bunch of users firing lot of requests onto a review service.
+review service has a consistent hashing implementation who's using which it basically routes the request to the corresponding sharded, to the corresponding Shard of your sharded database.
+so they use a relation database to store ratings and reviews and whatnot, and they and this ownership info and, uh, the database cluster is mentioned in the consistent hashing ring, depending on which your review service would router request to the corresponding node.
+it just does two things: answers data ownership and requires you to do minimal data movement when you add or remove a data node from it.

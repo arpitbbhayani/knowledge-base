@@ -1,0 +1,34 @@
+they have most of their data, like most of the transactional data present in the relational databases, but why they cannot use that information to power this functionality?
+because, like with relational databases, you typically know that it's a most common way to store stuff you have.
+so relational databases are meant to work very well with the transactional information, for example, payments, the way we do it, affordable users, post even for this, for the transactional thing where I'm getting something, putting something, that sort of stuff on an individual entity level, it works really, really well.
+for example, what if we would want to take the user on this journey of finding a city that hosts a type of experience in July and August?
+for example, the user is trying to book a, uh, to basically book a trip in the month of July and August, right, but he or she is looking for a very specific type of experience and you and he or she is open for multiple cities, so you'd want to list down top five cities where this type of experience is there in the month of July and August.
+let me just use a graph database.
+so what they do is Airbnb stores their entire Knowledge Graph in a relational database.
+the idea is where in the, in the, in a normal graph also, you have nodes and edges, in the relational database also, within split across multiple table, they store this very information, nodes and edges.
+for example, New York is in USA, so subject, verb and object, basically two nodes connected, VI and Edge, right.
+so this is this triplet is what most graph databases use to store this information, which we can very well mimic in a normal relational database within a table with three columns.
+so there is a way in this, in their own Knowledge Graph, to specify that, hey, this is my node type.
+you need to have that strict constraints that landmark in a city can connect only Landmark from, like a landmark to a city, right, and they didn't go for graph DB.
+for example, I don't have to always query the graph, my knowledge graph, to get some information, for example, let's say, if I want to do some search engine ranking or if I'd want to run some recommendation.
+so that's why, periodically, the data from the knowledge graph, this particular database, is dumped into a format that other service, other services can consume from, and they typically do it for offline ranking, processing, recommendations and whatnot.
+so how a normal service- let's say search- wants to use this knowledge graph, how would they query it?
+so, for example, you might want to find all the places, like all Place nodes, connected via with a particular City node.
+now this could be a simple Json format in which they are expressing this query and this query layer understands it, understands that particular Json and then goes to the knowledge graph, converts this type of query into an into your relational database, understandable SQL query, fires on the relational database, gets the output and sends the response back to the user.
+it takes an input, a Json, which is a very sophisticated nested query, converts it into SQL, fires it onto the database, gets the response and sends it back to the client.
+now here, and the key thing here is: so, say, we have some information in our knowledge graph, but obviously, let's say I have listings.
+for example, let me use a simpler word, let's say you have a City information, so City will have its own micro service, or have its, or is its, in its own database.
+you might say, hey, when something changes over here, let me invoke a Knowledge Graph API to update the information.
+but just imagine, at a scale of Airbnb, so many updates across so many entities would be happening in so like so frequently now all of them making synchronous updates to this knowledge graph is catastrophic.
+this mutation, this storage mutation, accepts those message and updates the knowledge graph.
+this way, the mutation layer exposes like, or rather, it allows us to do bulk updates in our knowledge graph.
+and this is such a beautiful design because in most cases, people think, hey, Knowledge Graph is a service, let me update it through an API.
+but if you do that, you are putting unnecessary pressure onto this knowledge graph, while you are making things slower to do bulk updates and you might also want to expose a bulk and pot and whatnot.
+let it happen over Kafka, because in Kafka message would remain persisted, they would ingest the data slowly, it would be consumed and the knowledge graph would be updated.
+so graph query, instead of directly talking to the relational database, they are talking to a storage abstraction.
+let directly your API Handler invoke uh the like, basically convert it into SQL query and fire it.
+but this storage abstractions job would be to primarily take the Json input, convert it into the SQL query and fire it onto the relational database, get the response, send it back to the user done.
+second is: this is what your normal flow would look like then: periodically, your relational database is dumped into a data warehouse- maybe a redshift may be S3 somewhere.
+relational database periodically dumped, uh onto your data warehouse so that it can be consumed by search or recommendation service for offline processing.
+right now, you would have a normal ingestion flow where, through the mutation, a like a batch or a streaming ingestion job would be run, whose job would be to take in regular updates that are happening from different sources through mutation, pass it and update it in your relational database.
+and then for bulk mutation that comes in, some external mutation- something that you would want to do, except those events through Kafka and those updates from other sources- can happen both ways: asynchronously through Kafka or synchronously through graph API.

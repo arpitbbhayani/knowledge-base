@@ -1,0 +1,31 @@
+in order to handle such situations gracefully and provide us with an early warning about some things wrong, we have something called as a canary deployment.
+it's a very interesting story- understand how they are actually implemented, talk about the pros and the cons of this deployment pattern and conclude with one really solid use case where you absolutely need canary deployment.
+canada deployment is a pattern that allows us to roll out our code, features, changes, whatever you want to ship to an initial subset of users before we roll it out to 100 of them.
+so the idea here is that when we are rolling out our things, or when we are rolling out our changes to 100 of the users, we have to be 100 sure that this would not cause an outage, right?
+for example, if we have seven servers in production, out of that, seven servers on one server, you will deploy this new code or the new change that you have right, and then you will monitor this server.
+your canary deployment pattern acts as your early warning indicator, which which warns you pretty early if something's wrong in your code, right.
+this is how we avoid a massive outage, because if we already detected on that one server that, hey, something's wrong, you would not go and proceed to 100 of deployment, right.
+so overall flow when you have a canary deployment would look something like this: you would deploy the new version of your code or the new changes that you have to one server, right, and then you would monitor the vitals of that server- cpu, ram error rates, pick your favorite vitals, or pick the vitals which is specific to your use case, and monitor them.
+if all's good, then you roll it out to remaining- uh, you, you roll it out to remaining servers that you have right, and then, if something's wrong, that you are not okay with the changes that have been just shipped onto the server.
+so there are like the true deployment of canary or, sorry, the true implementation of canary deployment- depends on your use case.
+but in a generic sense, if you are doing a server based rollout, what it would look like is you need to add a few bits and pieces in your infrastructure to get that thing done.
+let's say you are building an auth service and for that you want to ship out the new version of your code.
+you'll put a load balancer in front of it, configure the rules such that five percent of the traffic goes to this new setup, 95 of the traffic goes to this old setup.
+once that that proxy layer that is sitting in front it gets the request, it will transfer 95 of the request to the old setup, five percent of the request to the new setup and now that you are already monitoring the vitals on the new setup, you would know that if it's going good or not going good, or what's wrong and what's not, and then you can take a call on what to do next, right, okay, so now let's talk about the advantages or the pros of using of doing a canary deployment.
+although the word testing and production in one sentence does not good is not good, but still it allows you to test the changes in production with real use, with real users, with real traffic, and that is pretty solid, because not all cases might be covered during a unit test, integration test or qa if that's an idle situation.
+you monitor that thing, but it gives you that power to test your changes on the actual users, on the actual traffic that you get.
+roll backs are so simple that on your proxy layer, just configure instead of 595 000, this way, zero percent traffic would go to a new infra, 100 traffic would go to old infra.
+this way, as soon as you detected something's wrong, you immediately rolled back and it was just a simple configuration change, right, and this is how you get click.
+although some users were, some users were affected when that bad code was pushed on canary, but it did not impact 95 percent of the users.
+this is what we talked about, that if a new version of our code has bugs or it crashes, has memory leaks, anything, when it is deployed on canary and when you roll it back, it is only affecting the request that goes to that canary machine.
+this way, from 0 to 100, you are slowly doing this roll out of your new codes, new features, new changes, so your deployments become zero downtime.
+one thing to note that when the traffic would increase, always make sure that your canary- uh, your, your, your, oh, your, basically your canary fleet has enough machines to handle that load.
+you do a canary deployment right.
+okay, next advantage: we can use canary setup to do a b testing.
+and when you are very definite that you definitely see an improvement with search v2 in overall key metrics of your search, like ctr and whatnot, then you basically roll it out and then you are pretty sure that, hey, search v2 is definitely better than v1.
+it's more about a b testing kind of- but the idea of canary deployment still remains the same- which are rolling out the changes to a particular set of users right.
+we have canary deployment to test those things in production.
+so although it's good for exceptional use cases, but doing it often will lower your overall engineering practices that you would want to have in your org right.
+now the final thing: when do you absolutely need canary deployment?
+you need to have a parallel setup where you are incrementally rolling out changes from java to golang and just to check if everything's working fine or not.
+once your confidence- hundred percent confident- about it, then you make the hundred percent change to go like right, and this is where you would absolutely need canary setup right.

@@ -1,0 +1,31 @@
+this is the incident report of it and in this video, we will dissect this particular outage and, as an outcome of this, will understand how to design a robust micro services based architecture.
+what happened is, uh, on 18th of march, google maps platform api experienced elevated error rates, which means- which basically means, in terms of http request, a lot of 5x6 and the api setup.
+so that's that's pretty insane amount of hit that, uh, google maps took during that outage and 37 error rate in navigation.
+uh, there happened a feature rollout in a particular and obviously, every single day, some of the other developers ships the code and some feature got rolled out in some service and that feature and that particular rollout might had some bug or something in it, because of which it exhausted the allocated resources on the server.
+and when something exhaust, like when your server exhausts its resources and, as in your service, wants more resource but it is not there, let's say, service needs more ram, but it is not there, what happens?
+let's say your tile rendering service whenever, uh, it was making a call to some service, and we know that in a micro services based architecture, whenever there is a synchronous dependency between two services, it is always great to add time out to it.
+so let's say you say that, hey, tile rendering service, whenever it invokes the api of the sum service needs to get response within two seconds.
+because it always resulted in a timeout, there were tile training service, like any other good, good micro service design, does it retried, right so it it kept on retrying for that until the time out of this service hits from the user side or or from the customer side.
+let me just send a default response to the user, right so because tile rendering services resulted in timeouts because of synchronous dependency on a crash service, your tile rendering service started throwing errors.
+it would make a call to some service, wait for two seconds to get a response and then retry how many times?
+so it would take six seconds for the customer of, or someone who is invoking the style ending service to get an error, because style rendering service is internally doing this retry.
+so now your tile rendering service started throwing timeouts and because of timeouts- uh, because of retries, it started throwing errors after it after it exhausted all the retries and why the errors happened?
+but with that retries in place, the internal memory queues of tile rendering services reached capacity.
+so, because of retries, your tile, the tile rendering service, went, uh, they, it basically reached its capacity and it started crashing because server ran out of memory.
+and because your tile rendering service crashes, it, it increased like because it crashes, so that's then it started throwing what?
+they they depend on the tile rendering service synchronously.
+there are either end users like us who invoke map sdk through our mobile app to talk to that, or some b2b customer who might be using sdk to do some some sort of like, like they like to to to process their own request or use google's data for their own needs.
+so there might be some users who saw elevated error rates, while some user who saw it like completely down right because there might be some request that still got accepted, took 10 seconds for execution.
+this is the most interesting part of this outage: that because of the maps sdk and navigation sdk, directly depending on the style rendering service, the external clients were retrying, as in your device, my device, internally it was retrying to get the tile information from the google maps api.
+and that's going to happen, right, because it's very hard to differentiate between what a data lab service attack is and what, like, what's a genuine traffic and what's- and basically what's, a malicious traffic.
+right, and that's exactly what happens when you have synchronous dependency as part of your micro services architecture.
+during that time the synchronous communication happening between other services was still showing the cascaded error.
+it took one hour or one or twenty minutes for other services to recover because people were retrying on that, sdks were trying on that and what not, right?
+so, instead of accepting the request, making a call to trying to render it, it's always better that if you know that your server is full, do not accept the uh, do not accept the request at all, and instead immediately return an error to the user that hey, i am overwhelmed right now.
+if it, if basically there is a sudden jump in it, typically due to memory leak or some bad rollout, you should be notified right away, rather than your after your service has gone down.
+they said that they would block, they would find a way to block internal traffic and continue to serve customers, which means that on a service that went down, let's say your tile rendering service that got impacted, a lot of sdks, a lot of internal service might be dependent on it.
+right, like it was not just end users like us who directly depend on the tile rendering service, but also some internal service.
+so what they said is they would want to find a way through which they can cut off the traffic from the internal services so that end users like us, can- you can- can- continue to use google maps- uh, seamlessly.
+so that shows customer observation of google on how they are willing to like- and obviously this is not just basically cutting off all the internal services, but obviously they would.
+right, and by doing this, what happens if you cut off the traffic from your internal service?
+like i, i love this particular part where they would want to block the internal traffic to their backend servers just to ensure that your end user is not impacted.

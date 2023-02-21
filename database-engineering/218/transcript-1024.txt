@@ -1,0 +1,63 @@
+So we all know relational databases provides acid guarantees, but what is i in acid?
+Now, what do we mean when we say that, hey, database gives you isolation.
+Now, just to clear things up, isolation, like when database says, hey, we provide isolation.
+So it's isolation between transactions.
+So when there are two transactions running parallelly on my database, what kind of transparency one has over other, that's isolation.
+The way database gives you tools to tune that, that is called isolation levels, which you can change.
+Now, isolation level dictates how much one transaction knows about other, and given both of them are executing at the same time.
+We'll let actual queries to see how this affects.
+So there are four standard, like four SQL 1992 standard isolation levels possible.
+First, we'll start with repeatable reads.
+So the four are repeatable reads read.
+First is repeatable reads.
+Second is read commited.
+Next is read uncommitted and for the serializable.
+So first, let's start with repeatable reads.
+Now repeatable reads is really interesting.
+So what it does is it talks about you, it talks about giving you consistent reads within same transaction.
+Let me take an example writing actual queries to help you understand on what that is all about.
+So here, what I have done is I have created a very simple database which if I show you, select start from users.
+I've created a simple user stable.
+Let's do a describe user.
+What we'll do is we'll quickly insert just one row in this table.
+So now if I do select start from users, I would see one row ID one, name it.
+Left and right, left will be transaction one always.
+Right will be transaction two.
+Now here, first let's start with understanding repeatable read.
+So first what we'll do is we'll check what the transaction isolation level, what the current transaction isolation level is.
+The current transaction isolation level is repeatable read, which is what we need.
+So the command it be fire to get the current isolation level in my circle.
+By the way, F fire, I'm using my SQL, right?
+So this is all specific to my SQL, but I the concept of isolation level spans to all relational databases out there.
+But the demo I'm running on my SQL.
+Now select at the right at the right transaction underscore isolation gives me the current isolation level of my transaction.
+So let me run it on other session as well.
+And both session we see it's repeatable read, right?
+Now let's see what repeatable read like what it does.
+Now here what it says is that when I am actually reading the data like let's say I have one row.
+We saw we have considered one row in the table.
+So we have inserted user ID one name is a.
+Now here let's say I start to transaction.
+Let me set auto commit to zero.
+Now if I what auto commit does is in case you are not running inner transaction auto commit automatically commits every single line as in when it happens.
+But I'm explicitly setting auto commit to zero in both the terminals in order to ensure that there is no auto commit magic happening.
+We'll start right simple queries for what's happening behind the thing.
+I'll start my transaction to.
+I'll start my transaction to.
+I'll start my transaction to.
+I'll start my transaction to.
+So in both the places both sessions transaction one has initiated transaction to has initiated.
+So I've read a row in transaction one.
+So I've read a row in transaction one.
+So select start from users where ID equal to one I got a this row is read in transaction one now in transaction to I would read the same row.
+So both have read the rows both got a which makes sense.
+Now what next let's say my transaction one updates the road now in my transaction one I'm firing an update.
+So my transaction one fired an update it is yet to be committed.
+So now what would happen is if I read the row in transaction one what would we get.
+If I read the transaction one I would get the updated value because it is within this transaction you got the updated value.
+You wrote you read a you updated now you're reading that row again you are you'll get updated.
+But what happens when you read the same row in transaction to given that my transaction one has neither committed nor aborted what would my transaction to see when it is trying to read the same row.
+It sees the old row which means that it does not matter.
+If transaction one has made any changes unless those changes are actually committed the transaction T2 will not see and it makes sense it's it's basic sense right now right.
+But things become interesting what makes repeatable read interesting now with repeatable read what happens is now let's say my transaction T1 commits transaction T1 made the update transaction T1 committed.
+Now if I read the row I would get a underscore T1 now comes the interesting part what would happen transaction T1 committed now the actual value of row is a underscore T1 transaction T2 read the value it got a transaction T1 committed now if after transaction one after transaction one has committed if I read the row in transaction T2 what should we get if we fire this we still get a.

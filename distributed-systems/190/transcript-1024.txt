@@ -1,0 +1,44 @@
+thanks, so reaching consensus is extremely important in a distributed network.
+that is where what we need is a distributed database to come to a consensus that they agree that the value of price is two thousand or maybe one thousand, depending on what the true value is.
+so this is the classic problem of reaching distributed consensus.
+right now, reaching a consensus is extremely simple.
+but it becomes impossible- and i'm using a really strong word- it becomes impossible to solve a distributed consensus if the communication links are unreliable.
+we'll talk about it through an analogy, let's say the problem like the real world analogy, for that is called as a two generals problem, right?
+both of the generals wants to attack the common territory, sitting in between.
+right now, what do we want to like?
+which means that both the generals needs to coordinate on when to attack, because they have to ensure that they attack simultaneously.
+because for them to coordinate the attack, they have to send messenger, and this messenger, when it goes from a to b or b to a, that messenger might be captured, which means that in a distributed system, the message can be lost due to unreliable network, right?
+this would help us understand why we are using that strong word which says that it is impossible to attain a consensus when the network is unreliable.
+now, when messages are not lost, let's assume that the network is reliable, which means that if a sends message to b, the message is guaranteed to be delivered.
+if mess, if the communication channels are reliable, this is the easiest problem, because now what would happen is, let's say, a initiates a message, sends to b that, hey, we would attack at 6am tomorrow, are you okay?
+right, because no messages were lost.
+b said done, right, because this is not a commanding b that we will attack tomorrow.
+right, that's why we need four steps to build this consensus.
+if we would want to extend this to n general problem, it's just that with you, if you continue to do this, you would eventually form a consensus in your distributed network.
+it was easy purely because the fact that messages were not lost during like, because the communication channel is reliable, right, okay, now thing starts.
+right, which means that if you would want to commit into a distributed database where you have two nodes and when you are committing you are, you have to commit at both the places.
+this is how your two generals problem fit into your, your, your distributed system.
+now, okay, now let's see, in the context of two generals problem, what happens when messages are lost.
+so when a sent a message to b, okay, hey, let's attack at six, are you okay?
+okay, but this message never reached a right.
+they have not reached a consensus, either yes or no, right?
+fine, so as soon as messages, as soon as you start to assume that network is unreliable, you can see how difficult it gets to build a consensus in a distributed system.
+right, okay, just to extend to that situation.
+let's say a sent a message to be saying let's attack at 6 tomorrow.
+that if this message is received by b, right.
+no, because it would be waiting for an acknowledgement from b that hey, yes, i did receive your okay message.
+now you can very clearly see how you need an acknowledgement for an acknowledgement, for an acronym for an acknowledgement, purely because we assume that the network is unreliable.
+so now, if you were at the general's place, how would you have solved this problem?
+that, let's say, we think that, like when, before we plant our armies on at a spot and the b spot, we say that a by default attacks, right, so a by default attacks, and what it would do is it would, it can send a lot of messages to b, because it is possible that one message might get lost, two messages might get lost, three might get lost, but 10 might not, 15 might not.
+so now you're actually, you actually reduce the problem from two generals problem, because one was already that i'm definitely going to attack, no matter what, and it just increased its probability to do it right.
+right, and in case if, let's say, a sent 50 messages to b and if none of them went through, which means that we never received it, so a would attack and b would not gone, you lose the battle.
+okay, but we know that distributed consensus is possible, isn't it like?
+so if you can assume, if you assume that a network is unreliable only to a certain degree- let's say 0.5- what you can do is you, instead of sending one message, you'll send two or three messages again.
+just that's why in any distributed system we never assume 100 failure of network.
+we always assume the network, that delivery, that the communication channel is reliable to a certain degree.
+right, and that's a certain thing, which is why you always apply retry whenever you are making a network call.
+but in general, two generals problem is impossible to achieve, uh, like it is impossible to achieve distributed consensus in a two generals problem when you assume unreliability of your network.
+if you assume partial and reliability of network, it is very easily solvable with retries, right, but other than that, you cannot solve that problem.
+and this is the beauty of distributed system: such a simple thing, impossible to solve with heuristics.
+you are able to navigate your situation and which is why we apply retries and distribute systems wherever possible, because you cannot assume your network to be reliable, and that's it.
+that's it for this video, because i wanted to cover this distributed consensus, starting from the fact that it's impossible to attend and why we are even placing retries, like we assume a lot of things in general but we should not right, and that's it.

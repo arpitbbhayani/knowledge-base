@@ -1,0 +1,31 @@
+So we all know most databases store the data in B plus trees.
+We will talk about why there was a need to use B plus trees, how table data is actually stored in B plus trees and how is this tree serialized and stored on the disk.
+So, we all know SQL databases are known to store data in B plus trees, right?
+But it is true that even non-relational databases, they leverage B plus trees to store the data.
+Now, in this one, what I would like to do is to build an intuition around why there was a need to introduce a data structure like B plus tree and how it is actually serialized and stored, like the data serialized and stored on the disk.
+The most simplistic way to store the data is to store it in a single file, one row after another.
+Now, when you have something like this, when we store data in a file, sequentially, one row after another, literally one after another in a file, let's see how insert works.
+But now, for example, we know that relational database or most databases store the data ordered by primary key, which means that let's say I have defined a particular column ID as my primary key and I'm inserting row 1, 2, then 5, then 4 and then 3.
+That I cannot do, which means adding a new line in a file in between rows is not an efficient solution because now what we'd have to do is every time the insert happens, I would have to first locate the position at which I would want to insert, then copy all the lines, all the rows before that in a new file, add this new line, then copy the remaining file on this new, or basically copy the remaining lines in this new file, right?
+Now, let's add one to update row three, right?
+So range queries are efficient, but in order to find the first row itself, the worst case is order N, you'd have to do a linear scan, right?
+First of all, you'd have to find a row that you'd want to delete, find one operation order N, worst case, then you copy the rows up until that location into a new file, right?
+So given that order N insert, update, delete, cannot work well with in a transactional database, it's not perform enough, we have to find another solution, which is where B plus 3 comes into the picture.
+So for example, if 1B plus 3 node that I have, if it is 4KB big, which means I can store 4 kilobytes of data in this 1B plus 3 node, then in that case, if my average row size or average row document length, average length of the row is let's say 40 bytes.
+This is the leaf node of B plus 3, where you are actually storing the rows of the table, right?
+So given this is how my rows are structured in B plus 3 nodes.
+For example, for example, I have, we know that one B plus 3 node as per our assumption, 4KB disk block size equal to 4KB size of B plus 3 node, each row is 40 bytes, so I can store 100 rows.
+So given that I know that each node can store 100 rows, I will have, let's say, 400 rows.
+You would have, you would remember that the leaf node of the B plus 3 also stores the data.
+These are the leaf nodes of my B of my B plus 3 which is actually storing the row data that you have.
+Here you can see how a table data is stored in B plus 3 row or rather ID 1 to 100, 100 to 100, 200 to 100 to 100, 200 to 300 and so on and so forth are stored over here.
+Now, every B plus 3 node is serialized and stored on the disk.
+These are row ID, 5 0 and 5 0 to 5, but this is actual row data and leaf nodes are connected linearly.
+Let us start with find 1 by ID operation, find 1, like given an ID, find me the row.
+I am not going to store every single rows information, right, because it is range is what I am operating on.
+What I will do, read this block, understand where the 4 while would lie in the leaf node, I would come over here, insert find row 4, where 4 would lie, I would find this, I would read this entire block, find the place where I can place the row 4, it would be after 3 and because I am loading it in memory, I can do that arrangement, add something in between and move other forward, right.
+So, this way, you are insert can happen in between, you do not have to rewrite the entire file, in linear sequential way that we were storing, we would have to rewrite the entire file, here we do not have to, here what we are getting is we are getting this benefit that without touching any other disk block, any other B plus T node, I am just reading the blocks I am interested in, updating them and flushing it down, right.
+So, that is specifications of B plus T as a data structure, go through that, that is out of this scope, I am talking about how data is actually stores the data, right.
+Let me take a different example, update row 202, I would read this, I would know you come over here, read this, I would now have to come over here, read this, in memory now I have the entire disk, the entire B plus T node in memory, I would update whatever I want to flush it down on the disk, right.
+Let us say I want to find all the rows whose ID line the range 100 to 600.
+Now let us add one to read rows whose ID is in range 100 to 600, right.

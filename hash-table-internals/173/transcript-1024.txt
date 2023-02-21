@@ -1,0 +1,28 @@
+load factor: a simple ratio of the number of keys that are there in your hash table divided by the number of slots that you have, and we see that as the load factor increases, as it approaches 1, the performance of the performance or the lookup time of your hash table starts to degrade, and and it primarily happens because of two reasons.
+but now let's talk about how to actually implement it with chain hashing and with open addressing.
+to decide when to resize, we definitely need to know the load factor and hence we need to keep a track of the number of keys that are there in the hash table and the number of slots in the hash table, right, we need to know this information.
+so that is where any struct or class that we would use to implement this needs to have those two fields or those two attributes with it: that anytime you are inserting a new key, you might have a variable that says count underscore keys that becomes plus plus every time you insert, right, and then you would have the length of that array or the length of the hash table that you know, the total number of slots that you have.
+so every time, upon insert, you would compute alpha, which is equal to count underscore keys divided by length underscore table.
+so we saw that we would shrink when alpha or when a load factor becomes one by eight, and this would be triggered when you invoke delete key operation.
+so you might have a delete key operation that takes a table and a key and in the code you would again similar to insert, you would compute your load factor every time you delete a key, right, so alpha is equal to count underscore key is divided by length underscore table, and if alpha is less than 0.125, which is 1 by 8, you would trigger a resize and resize to the length underscore table by two.
+and so this is how you do a shrink and that is how you do a resize or a grow of a hash table right now it.
+so resizing is all about three things: allocating a new array of desired size, let's say, if you are growing, allocating a new area of that big of a size, then you would have to insert all the keys in the new array and then delete the old array that you had.
+first is, let's say, you have a hash table, you created a new copy with, with 2x of the size, a new array with two exercises, with zero elements in it, and then what you would do is you would iterate through the old keys that are there in the hash table and reinsert them into the new one by triggering the insert key function, which means your nodes, your chains, the way they are in the old setup, they would continue to be there.
+so the advantage of this is very simple: you're literally iterating and then calling an insert key function on this new table, right, and it would automatically take care of everything that you want to, what that you want it to, but it is very expensive because you had the nodes allocated in this with the first hash table.
+instead of reallocating the node and putting it into the new hash table and then deleting the old node, we just do the pointer adjustment of my linked list nodes.
+these key factors that you would have to think about when you do resizing of a hash table that uses chain hashing.
+now let's talk about resizing of a hash table that uses open addressing.
+instead, it finds the empty slots from the hash table and tries to place the key there.
+simple example: let's say in my hash table i have keys in the order: k3, k6, k1, ky, k2, k4, k8, k7 and k4, k5, k2 and k4 have collided to index 2, right.
+so that is where even a soft deleted key with open addressing, having a soft deleted key, is also as expensive as having a key inserted in the table right.
+first is the keys counter, which keeps track of active keys of your hash table right.
+so these are the keys which are actually active in your hash table, so you would be not counting soft deleted keys over here.
+so now your load factor alpha is equal to the number of keys used, or the number of slots used in your hash table, divided by the total number of slots.
+this means that we are accounting for the soft deleted keys as well, right, this is a slight change in the implementation part.
+instead of using keys count, you're using used count divided by length of table to find a load factor for open addressing and then, if it is greater than equal to 0.5, you trigger the resize right.
+so when you resize your table, you would be skipping your soft deleted keys and not needing it to be rehashed into the new new table, right?
+so, given that after your insert keys are crafted, so after the resizes happen, you would have to reset your counter of used count to be same as active count right.
+so, while shrinking the table, we only rehash the active keys and skip the deleted ones.
+so here also, whenever you delete a key, you would recompute your load factor to be equal to the used count divided by the length of the table and then, if it is less than 0.125, it is 1 by eight.
+and when you do resize, you would rehash all the keys, rehash all the active keys into the new hash table and then reset the counter so that you start a fresh with used code is equal to active part because you have skipped the soft deleted keys.
+with chain hashing, you can do two ways to do it with open addressing.

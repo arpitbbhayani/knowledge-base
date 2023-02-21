@@ -1,0 +1,45 @@
+so, like always, conflicts are inevitable as we are trying to fit in a large application key space into a smaller hash table.
+right, to handle hash table collisions.
+so, but how do we find the next available slot in the hash table so that we can place our key at that particular slot in case there is a collision?
+right, in the previous video, we looked at linear probing to do it, where we literally found a primary slot and, if that is occupied, we went linearly moving forward in the right direction until we find an empty slot.
+right now in this video, we'll talk about quadratic probing.
+probing function takes is is a function of the key that you would want to place in the hash table and an attempt right.
+this way you would be, you would be deterministically getting the next slots where you may place your key right.
+now let's recap about the challenges with linear probing.
+so what we know about linear probing: it first finds the primary slot.
+so here what would happen is when a key is placed in a particular location, let's say k1 is placed at index 2 and let's say k2 also came in, which also got hash to index 2 right, and because k1 is already occupied, the slot 2, your k2, would have to be placed at slot 3 because slot 3 is empty.
+right, and this typically happens because of a poor hash function.
+right, so we know that with a poor hash function, linear probing would suffer, and that is the biggest challenge with it.
+right, so we don't want a lot of collisions happening in one place, because it's literally, with linear probing, it's literally one slot getting collided by multiple keys and they just move a step to the right.
+right, this way you're forming small clusters, of course, so any key that goes there, they will be collided.
+so let's take a look at what quadratic probing is.
+so, instead of, instead of putting the key in the next available slot immediately to the right, by moving one step at a time, what we do is we find the successive value through a arbitrary quadratic function.
+buzzwords simple enough way, so linear, probing.
+this led to clustered collisions, because everyone is just collided to this one place, right.
+so as an alternative, what you can do is, instead of going one step at a time, take a quadratic function, for example: p of k comma i is equal to h of k, which is a primary slot, plus c 1 of i plus c 2 of i square.
+so when you do this, what happens is, instead of going one step at a time, you are taking a quadratic leap.
+so this would help you minimize the clustered collisions that you would get in case of linear probe, right sample sequence.
+if i talk about it so obviously, because it's a quadratic function, your, your c1 cannot be zero because you want ice, sorry.
+let's quickly take a look at how it is better than linear probing.
+it basically reduces the problem of clustered collisions and cascaded collisions, because the next slot, the next available order tries to hunt deterministically is is basically quadratic leap ahead, right.
+so with linear rubbing you are not getting equally spaced or near random spaced uh keys or uh or near random space where you can place your collisions right.
+with quadratic probing what you are getting is you are taking bigger leaps in order to place your successive collided keys.
+this way you get this advantage that, hey, even though my hash function is not good, but with collisions i'm trying to reduce clustered collisions by placing them a little far away from each other.
+right, this way it is a little better than linear probing only with respect to handling clustered collisions.
+let's take a look at two properties of quadratic probing.
+first property we all discussed: it reduces the cluster collisions by distributing it quadratically.
+right, it is obviously not immune to clustered collisions, because you can clearly see that if you are getting large number of keys for the same slot, they would all be collided, but other keys going to those other slots, they would still be almost equally, just not really equally, but.
+we know that how linear probing leverages cpu cache in order to make iterations faster.
+right, let's see if there is a collision in af2.
+and when that happens- let's say you found collision f at a of 2 and then you are iterating- the a of 2 is not available.
+so linear probing is the best way to leverage your cpu cache and it's really fast, right.
+it also does a fair job to it, because what you're seeing is, if your hash function is good enough that it does not cause a lot of collisions, then you're here.
+also, you are leveraging a good cpu cache, right.
+because if you think about quadratic probing, so your, your, uh, your next available slots would be, let's say, you are accessing a of 2, and if a of 2 is collided, you are taking a quadratic leap, right.
+so you are already bringing in three slots that you might find your key in, right.
+it gives you a good uh leverage of cpu cache, but not as excellent as linear problem, while solving the problem of clustered collision.
+but if your hash functions are poor, where a lot of keys are hashed to the same location, that ruins everything, because then you would have a big, a large number of collisions.
+so that is where you have to be very aware on the advantage that you'll get when you use clustered uh, when you use, basically, quadratic probing.
+a little better than linear probing, uh, when you have fewer collisions on a particular set of key, right.
+so with a good, decent hash function, quadratic probing triumphs over linear problem, right?
+it's all about just tuning your probing function right.

@@ -1,0 +1,45 @@
+by the way, most of the outages that i've seen of github are related to action service.
+okay, the database failure impacted one of the core microservices that facilitates authentication and communication between action microservices.
+so what it says is something happened on the authentic on one micro services, or, sorry, on one micro service part of its actions microservice that handled authentication and communication.
+one of them that we saw in the previous outage was around github actions premium service runner, something around that, right.
+so there is not one micro service powering github actions.
+there are multiple components that power github actions all together and they all share a database.
+either they share a database because- see, the outage happened because there was an infrastructure error in the sql database layer, right, which means that either all of them, all of the actions microservices- shared that common database and were directly dependent on it or indirectly dependent on it through synchronous way.
+all the people think that, hey, we should not have shared database of, or, or sorry, or we should.
+so sharing a database looks like an empty pattern, and it is indeed, but a lot of people adopt it.
+so this is a very common way to do it and looks like github, if not all services had was sharing a database, but at least the synchronous dependency.
+the second key point that we talked about: that the service that got affected handled authentication right.
+why you think, uh, services or micro services would need authentication, like they're all part of your infrastructure.
+so that is where, in most cases, the way microservices are designed, the design with zero trust, right.
+they ensure that even when a service wants to communicate to any other service, that needs to be authenticated and authorized to do that.
+and the service that got affected in this particular outage was the one that handled communication.
+it's all speculation, but you get the gist right: it handle authentication and communication.
+we know that the outage happened on the database layer, but we also know that, let's say, for database master is down, a replica is auto promoted, replica is promoted to be the master.
+so then this really should not have been an outage, because in most cases, automatic failovers are configured right.
+in normal circumstances, automated processes would detect that the database was unhealthy and failover with minimal or no customer impact, because this is a very regular exercise where master goes down and a replica is promoted to be a master.
+so database failover is very common to happen.
+it is not some magical thing that happens that automatically replica will be promoted.
+in this case, the failure pattern was not recognized by the automated processes and telemetry did not show any issues with the database, resulting in a longer time to determine the root cause and complete mitigation efforts.
+because failover did not happen and because the telemetry also did not show that the database was having an impact- and very common this kind of thing- because it could not show something's wrong with into the database.
+how would engineer even come to know gary databases down right?
+because the first thing when an outage happens, people look at telemetry.
+the database was done but the telemetry was not showing it right.
+reboot rights would fail, but in any case it is failing because there is an outage, so that's fine.
+he uh, the telemetry did not show any issue and the database resulted in the longer time time uh on determine the root cause.
+okay, to help avoid this class of failures in the future, we are updating the automation process in a sql database layer to improve error detection and failover.
+everyone says this and this is something which becomes a step zero after the, after the issue is mitigated, to ensure that you do not see the outage because of the same reason again, and that is a very important thing to do anytime when you face an outage, right?
+so, as part of the long-term strategy to ensure that the artist doesn't happen for the same reason, they would need to do is, uh, understand this failure better, right?
+first of all, they have to detect the failure, because this time, database was down but they were not able to figure it out.
+so, going through or re-auditing the scripts, re-auditing the authentic uh, the automation is very important to ensure that if similar thing happens in the future, it is not, it does not take a relatively longer time to debug it.
+so here we saw how impact on one database cause entire github's actions to be affected.
+right, because that critical database handled uh, authentication communication so synchronous.
+right, and this is what tells us importance of localizing features, localizing failures.
+when i say localized implies that if a particular micro service is experiencing a failure- or, let's say, database experienced a failure, only that micro service should be affected.
+you should be designing your architecture such that whenever something goes down, it just affects the bare minimum infrastructure components or micro service components whatsoever.
+so try to model the communication between your services asynchronously, as in use: message brokers, message streams like sqs, kafka, rabbit, mq- to do the communication between microservices.
+right things that can be done in an asynchronous way.
+try to model it to do it in an asynchronous way, keep them loosely coupled right, and it totally depends on your use case.
+it is very dependent on your use case, how you are modeling it, but this should be your, your thing, that you do on day zero, right?
+but in most cases, if you think about this one point, can i do this communication in asynchronous way would automatically make it loosely coupled right.
+this is what i'd want to convey: the importance of having loose coupling and to ensure that you have blast radio or basically your failures are localized, they don't propagate across the system.
+right, very, very, very important when you design microservices based architecture.

@@ -1,0 +1,33 @@
+second, a restaurant, like, for example, if I'm searching for Domino's Pizza, hot or any favorite chain of yours.
+let's say: I know I want to eat Chinese today, so I'll search for Chinese, and it should list the restaurant that serves Chinese food, right, fine.
+but given that the search bar is an open text box, people can pass in any query that they want, right.
+so what they can do is they can basically combine multiple of such entities and pass inquiry like: hey, Pizza space, Dominos, which means I want pizza from Domino's restaurant.
+now, but what when this query is fired on elasticsearch or a solar, with the configuration, what it would spit out is any restaurant that has best in their name, or coffee in their name or near in their name for some reason, or me in their name, would be ranked higher.
+I'm just basic making this up, but you understand the problem with this, right, given that best coffee near me is not about a restaurant, but about a food item- coffee- that you are looking for, and you are looking for restaurants that serve you best coffee, right?
+this query content, this query contains all types of entities and we need to understand what are we actually looking for.
+this is where natural language understanding comes in, and so that, given a query, we try to understand the intent of the user.
+but here, in this type of queries, when people are allowed to be verbos there, we need to understand the intent, right.
+it should automatically, like we have to write a service that understands the intent, which means from the search query, Domino's Outlet near me.
+I need to understand that intent is to find the nearest outlet, an entity which is the restaurant.
+the first is dish plus dish, in which, like, people are typing multiple dish name in the search query, like, for example, or uh, let's say pizza with cheese dip, right, dish plus dish is one type of query.
+let's say MCD Burger, right, they that people are telling that I want a burger, but specifically from McDonald's.
+uh, what you're looking for is a pizza, uh, and you want best of that right now.
+like, for example, if you would want to apply, uh, machine learning or, let's say, data science or NLP, nlu, something around it, you need label data.
+for example, let's say, given that you are allowed to do voice search, you may pass in uh, right, that's a typical Hindi phrase, and which means you want Dal makhni with none together like.
+for example, let's say we are training this model on zomato's data set.
+so if you do vector algebra on King minus man plus woman, it would give you a vector which would be very close to Queen's Vector right, and it's a very common example that you will see almost at every single block about word to back.
+now, this is the core rangia, that the way this neural network defines the weight, depending on the Corpus, is such that you can operate, you can perform any operations on this vector and it would be like performing operations on the word right.
+you can use this along with a bunch of other algorithms to do, uh, identification of synonyms, because two vectors that are close to each other, their words might have very similar meaning.
+this would be literal representation of words in an n-dimensional space such that it holds its semantics, it holds the meaning of it right, and this is the beauty of word to work, and in most cases you just do inputs, or you just do inputs I Pi, or let's say, import gen Sim and then train the word to work model to to drive it, but to know the internals of it.
+right now, this is exactly how, where sub word tokenization comes in and what.
+so, for example, if someone types in mixed veg, sub G or Roti, so you have to tokenize it and then identify what is a dish, what is a restaurant, what is a location, something around that right.
+for example, if I am searching for Jack's Aloo Tiki Burger, so then Jax is the restaurant, Aloo Tiki Burger is a dish right.
+right now, this is what would help us fire better queries on our search engine, which is what we were discussing at the first.
+for example, if I am looking for Domino's Pizza, what I would do if I identify that Domino's is the name of the restaurant, I would search Dominos in the restore collection and Pizza in the food menu.
+similarly, if I'm searching for, let's say, Jax alotiki Burger- I know I want restaurant having named Jack and then Aloo Tiki Burger is the name of a dish- I can refine my search query so that elastics are just not spit out stupid answers.
+right, because it's not its fault, but because we just cannot fire the query as is to the search engine and expect the best result out of it.
+search fires a query through this model and identifies the intent.
+it uses that and creates us very specialized queries, depending on what it got out of this as an uh, from this model as an output, and fires a very relevant elastic search query looking for those corresponding things in those corresponding indexes.
+right, and otherwise it would have given some random answer, like any restaurant having name Jacks might be on top and so it would be very hard to identify because query contained a lot of terms, a query contained a lot of entities that it was looking for.
+like they make their search experience better by identifying query, and almost all companies operating at scale have this, have this intent identification, something trained on their own data set.
+this is how zomato improves the search query, right, and all of this, all of this is taken from zomato's engineering block, which I've Linked In the description down below.

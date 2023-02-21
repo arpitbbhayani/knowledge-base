@@ -1,0 +1,32 @@
+hash tables are indeed one of the most widely used data structures and literally every single language has its own implementation and its own nomenclature for it.
+for that and this mapping is also so in most languages, classes are also implemented as hash tables, right?
+hash tables are famous to store key value pairs, right?
+so what you do is you need to somehow map an incoming key of any type to a wide range of integers, right, for example, in the range of 0 to n, it could be an entire integer in, let's say, in 32, like 2 raised to power 32 is what you can go for.
+right, let's dive deep into the first step, where we say that application keys are mapped to hash keys like what and why?
+integers, like some specific types, are there that you are allowed to put as a key in a hash table, for example, in python.
+let's say you created a class and the object of it is you want to place it as a key in a hash table.
+your class needs to implement a function called underscore, underscore, hash, underscore, underscore, which returns an integer right, and which would become your hash key.
+this is what you are supposed to write, right, and this is the whole idea of mapping your application keys into a hash key, so from any type that you have into a type or into integer, which then becomes an input for our second step right, and this typically the function hash that i was talking about.
+you don't need to implement it like the language has its own implementation, but internally there has to be something that is, converting your application level key through a hash function and converting into a hash key, which is then acting as the input for our second step, right?
+so this is the first step that we are doing from application domain to mapping it to a wide integer domain through a hash function.
+if you are already have a way to map an application key into an integer, our very basic implementation of hashtable could be through an array.
+let's say we take a gigantic array, right, we take an array where, given a key, we pass it through the hash function.
+for example, my key k gets indexed, or when i pass my key k through the hash function, i get value i, right, and ah, the value i is the index at which i would be storing the value in this array.
+imagine your range of hash keys is entire integer range, which is 2 raised to power 32, 0 to 2 raised to power 32, which means that from application key, one of the values from 0 to 2 raised to power 32 would come out right.
+so let's see how much of space would we require if n is equal to 10, which means your arrays length is equal to 10, or the number of possible hash keys is 10, the amount of storage would require is 4 into 10 is equal to 40 bytes, because each slot of an array would be an integer where you are storing the reference reference of the value or something like that.
+second is, even if we get that much of allocation- let's say you have- you are mapping your application key to a hash key in the range of 0 to 232 and you are only inserting 5 keys, then you are wasting so much of space, right?
+so that is where there has to be a better way to construct a hash table, which is where the second step comes in, which is really important, of mapping of hash key to a smaller range.
+so what we'll do is, in the second step, we take the hash key, which is in the range of integer 0 to 2, raised to power 32, and map it into a smaller range of 0 to m, where m is the length of the array, and length of the array should be a function of the number of keys that you are holding, right?
+so this is the second step and which is what now makes our hash table very efficient, right?
+so now let's say we are planning to store four keys in the hash table so we can have a bin.
+so instead of having two, raise to 32 as the holding array, we can have just eight, because we are planning to store only four keys and what we'll do is for every key we would every application key, let's say apple- it first passed through the hash function.
+we take this hash key and map it to a smaller range of, let's say zero to eight, right, because our error length is eight.
+and then when- and this is the hash key- when i pass it through my second step and map it to a smaller range of zero to it, let's say, i get five.
+second, hash function converts hash key into a smaller range, right?
+so 0, 5 and let's say cat hash key to 72, smaller range mapped to 3.
+right, and this is why we need two step process or any hash table implementation request.
+right, and for us, the internals of hash table, our input, is this integer that we are getting and how we would want to map these big integer range into a smaller range.
+it also enables us to keep our hash table agnostic of what type we are storing, because at the end, given that any, you can support literally any object and get an integer value out of it, that becomes a hash key as their own implementation.
+you want to store car as a key in your hash table.
+you have abstracted out now your hash table implementation is working on only this integer range.
+you have the key, you have the integer, you map it to whatever range you want, the way you are storing it onto the disk, right, and if your m resizes, or your, if your bin array resizes, your end user doesn't it?

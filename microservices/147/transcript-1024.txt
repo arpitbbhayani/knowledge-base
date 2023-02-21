@@ -1,0 +1,29 @@
+uh, in while while we are adopting rest, right, so any and every data that we have in our service, in our system, is an exposed resource.
+for example, students in my library management system is a resource which i am exposing through http endpoints, right, so the way we, the way we traditionally do, but the way student is stored in my db is up to me- like rest cannot enforce how i would want to store that information in my database.
+so you- and obviously it is not mandated as such, but your server should be able to support that sort of representation, but at least there is a way to do it, which is why you see, the http request we make has a content type header that hey, i am sending new content in this type and i'm expecting a content in this type, which is why http is very widely adopted to implement rest.
+your client would make in like: we know that most common implementation of rest is over http, so i'm just basically carrying forward on that.
+so it it purely depends on your server's implementation, or how it wants to send the data, or what all representation would it support, right?
+so here the idea is that any and every operation that comes, or any and every request that comes from the client, that request has to happen over a resource, and this resource is typically specified in the http url that we sent.
+so rest is saying that, hey, you can choose to use tcp, you can choose to use http, you can choose any protocol you like that to implement.
+so here, one thing that made http uh really solid for us to adopt rest is http verbs- verbs as it get put, post, delete, http methods that we have.
+that is a very powerful feature because with http, what you have is you have this verb or you have this http method- get put, post, delete- and you have a path or you have a url on which you are making that request, right?
+so, because delete is the http verb or http method that is out of the box supported by all web servers out there, you can directly invoke an http delete on slash user, slash one, which is which becomes your resource identification.
+so this fits so beautifully well that your action is specified by http method and your resource is identified by your url.
+and which is why we, when we expose uh http endpoint, we think we are doing rest slight difference, but you basically get digest.
+and this is a very well defined uh specification as part of http specification that, hey, these four methods would be there: get put, post delete or, obviously, options patch and others exist.
+but you basically get this idea that http, because it is so widely adopted, it has already support for http methods which every single client and web server understands.
+which is why we still you and we still expose just normal http endpoint, but we chose to do it in a certain way, like slash student, slash one.
+rest is how we are now accustomed to build endpoints: slash, student, slash one is the resource and get put post delete is the action right.
+so how we are using http to implement rest, rest is a specification on how you should be talking to your server, the way you should be specifying the input and the output.
+so because web is very widely allowed, obviously the internet is widely adopted, and because of the already established tooling that we have for http like, for example, you have clients like curl postman request in python and what not.
+you have the browser, you can directly make post request through form submission and you have your uh and you have your rest specification implemented on your api server.
+second, web caches, like nginx cache, varnish, ha, proxy- so many are there on which you can cash the responses out, which means you can get good sort of performance without changing a lot of things, because nginx and all you would anyway have with the rest, you are just leveraging what you already have.
+obviously you can use http client to make a call, but when you get the response- you are getting response, say, in json- you have to convert it to a native object and then consume.
+obviously it's not easy, but it is repetitive as well, which means anyone and everyone who wants to consume the same uh resource or do that operation on the same resource, you have to write it same stuff again and again, for example serialization, digitalization, logics to and from native objects, failures, timeouts, retries, compression, security and whatnot.
+but let's say you made a decision choice of picking a particular http server that only supports get and post, does not support put, delete, patch options.
+you are stuck with that, which means that you are limiting your potential of using rest because by changing the http method you are multiplexing actions on the same resource.
+or for ultra low latency requirement you might not want to go- for uh rest over http plus.
+but if you went for udp, uh, a rest over http won't understand, because http only under works on tcp, so, which is where you might not be able to extract the best performance out of your system, given your workload, right, it might not be like you always want udp, but for use case where you would want to switch protocol, it does not give you that flexibility.
+so using, but obviously going through this downside does not really mean that we should not be using rest over http.
+this was my way of listing on all the downsides that you have to be aware of while using rest over http.
+i hope you now you get an understanding of what rest is and what https and what, and just a small glimpse of what rpcs if you want.

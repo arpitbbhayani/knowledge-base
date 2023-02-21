@@ -1,0 +1,32 @@
+uh, the outage happened because their mysql table hit its integer limit.
+the id was set to auto increment id and it hit its limit right.
+so they created a table with a simple mysql integer type and it was set to auto increment.
+so the normal integer overflow part 2 raised to 31 minus 1, is where this person or this auto increment id stopped working.
+they attempted to insert large integers in the column, so they were trying to insert data, but the database rejected the value.
+we just want to know what happens when, when integer hits the limit, like that's the fun part of it, right?
+so id, which is of type integer, auto increment, and a primary key name is a vehicle type at 8, which is not null, right?
+yeah, so this is my sequel 8 documentation which says that, hey, if my integer type, oh, if my data type of a column is integer, the storage, the width of the integer is going to be 4 bytes and, because i have not given anything, the default value is a signed integer, which means it will support negative values and positive values.
+now let's insert a few rows and see what actually happens.
+okay, now that we know that this is there, let's insert the maximum possible integer value into this.
+now, what would happen if i try to add a new row without specifying the id, which means the auto increment should kick in?
+but in any case it's an exception of the value is not yet inserted into the table, right?
+like from the databases side, what could have actually happened when, right through a duplicate key error?
+okay, but to be really honest, really, really honest, this is a very poor error, right, for a once in a lifetime situation where your integer hitting where you, where your two billion entries are there in the table, and you're throwing duplicate key error.
+i mean, like you should have a separate exception for that, to be really honest, right, okay, so what did github do about to fix this issue?
+so they wrote that they have an alert set at 70 when an integer, uh, when an auto incrementing integer column hits it 70 percent, they raise an alert, right, so which is something that we should- we should all should- be using doing on the table that are high injection rate may not be on our table, which is low injection rate, like, let's say you are, let's say you are- a listing page of a particular seller or something like that, where you have a very limited set of very limited set of entries, not not a large number.
+so you create a db monitoring service that that periodically pings them, let's say every one hour or every one day, to see if limit is reached or not, and then you raise an alert, right, that's very simple.
+or make it a big integer, because as soon as you make it an unsigned integer you get a bigger range, because sine integer starts from negative 2 raised to 31, to positive, 2 raised to 31 minus 1, but an unsigned integer- wait, i'll just pull it now- but the unsigned integer, see, the maximum unsigned value is 4 billion, so you can directly double your space, right.
+basically, it says that, hey, i don't want to take any lock during alteration process so everyone else is allowed to read whatever it's there from the table, like basically, whatever could be working should be working, while when, when we are copying it, if there is no isolation level, which means the database can do it very quickly, like at the maximum speed, because we don't want to lose time on doing constraint checks because we are already having an output.
+so idea is to increase the width of the integer so that we can accommodate new stuff, and then we set it to not null, auto increment, then algorithm equal to copy and lock equal to shared right.
+so at the end of this command- and this approach only works when your table size is small- if your table size is big, alter table on an id column with two billion rows will go on for days.
+but let's say, if your table- which i think in case of github, this could be true, this could be true is when you're origin, when your table has the data which you might not need- for example, some historical logs or something like that- because of which it hit that, because 2 billion is a big, big, big number.
+if it reached 2 billion, there might be a possibility that the the data that you have on the table you might not need it, like it's just raw injection that is happening on the table.
+if you have that use case where you can live without your old data for few days, right, what you can definitely do is you can swap the table.
+we create a table like, let's say, users table had an outage, like it's it's limit reached.
+so we created another table called users, underscore 2, like users, which means it will have the same schema.
+now what we do is we alter the users 2 table and make integer bigger.
+now what we do is we alter the table users2 and set auto increment to 2 billion 147 million 483 648, not 47 but 48, because 47 was where to it was the limit of signed integer.
+so now when a new row is added into this table- uses 2 table, it will start from this particular id, because now it's possible to add it.
+with this, what happens is now we'll have an empty users table with a very large integer, width of like.
+an nt, an empty users table with large integer starting from this id, right, so all data is moved into user's old table.
+a new table is created, users to copied into like and it's renamed to users.

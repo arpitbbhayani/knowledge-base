@@ -1,0 +1,30 @@
+the first set of speculations that came was: maybe their authentication service is done or some of the related component is down, but because we are not able to log in, we can't use their services.
+what are different infra components that need to talk to each other to ensure that everything works well, right, okay, so let's jump into this.
+uh, okay, so they say that on march 8, they experienced a global outage triggered by issue in a cloud hosted service discovery system used at spotify.
+they use xds based traffic control plane discovery system called traffic director.
+so traffic director is a managed offering, uh, which is provided by gcp, basically google cloud platform.
+so spotify uses traffic director as their control plane.
+now let's spend some time into understanding what these things are, right, so i've just created a few basic set of nodes helping us to understand what.
+so now what exactly happens with service discovery is, let's say, you have four services, uh, let's say we're talking about spotify here.
+so for each service to talk to each other, right, obviously, like when a request comes in, only that service might not have all the relevant information to basically give out to, to be basically given out as a response, so that service would be dependent on other peripheral services in order to, in order to basically fulfill the request coming in from the user.
+so a popular way to do it is: let's say, you expose an http endpoint, like every services expose their http endpoints and they directly talk to them, like, for example, um, so this is a very standard way of doing it.
+there is a multiple set of servers whom they can connect to, and all so here, one way to do it is to have these url endpoints configured on all of these services, right, and they know whom to talk to, how to reach out to them- mostly rest based access, what you might want to define over here.
+so what is a service mesh is, service mesh is a way through which multiple services can talk to each other, such that the services only need to focus on the business logic side of things, while all the heavy lifting around- for example, tracing, load balancing, scaling, security, retry, circuit breaking- is all offloaded to a side car.
+instead, what it will do, authentication service will talk to the side car running very close to itself, like, for example, if this is one machine, you'll have one process that runs your authentication business logic.
+a very simple reason that justifies this thing is that every service needs to take care of: hey, if i'm talking to other service, what if that other service does not give me a response in one in, in, let's say, five seconds?
+like, as a service, let's say i am the owner of a search service and i don't want anyone from the streaming service to directly talk to me, like these sort of security things i want to handle like.
+so, apart from business logic that that service needs to handle, it would also need to handle uh, uh, tracing, load balancing, scaling, security, retry, circuit breaking and whatnot, right?
+so that is where what this new sort of new sort of architecture pattern suggests is to have a side car which offloads, which basically takes the burden of your micro service, and all of this common things is is handled over here, right.
+so how the communication happens is that the authentication service wants to talk to streaming service.
+all of that is handled by this control k, right, and this control plane, like every single service, uh, like for the- uh, basically, nystu and whatnot- everyone comes with its own set of control plan, that that you can leverage out there.
+so control plane will hold all the information, key virtual machines i have, what all processes are there or what sort of micro service or what sort of business logic is being written on that particular instance, so that it knows if there is comes a request, who should i basically forward it to.
+so whenever a new, uh whenever a new service is uh coming up, now when authentication service- let's say authentication service- wants to talk to streaming service for some reason, so what would happen is: uh, how would the sidecar of authentication service know whom to reach out to?
+so from your any service who wants to talk to that, they can directly talk to that by hitting that particular url, right?
+they said, hey, let me start using gcp's traffic director in order to manage the control plane that i have, right?
+we saw the outage on the on the spotify site, but actually the outage happened on gcp's traffic director.
+so they released some configuration which affected users having load balancers talking to this control plane and some hybrid architecture.
+and, apart from that, a very interesting thing was that there was also a bug in java's grpc client library that sent the error which originated as part of name resolver directly to the channel.
+so you would want to wrap this error and say: keep payment failure as a code, and then you might want to add some message to it which says that, hey, the exception that i'm handling over here and i'm passing forward is generated from the payment service.
+so they started to roll out a configuration which means, basically, they did a redeployment with some configuration chain where they said, hey, instead of using a traffic director or basically, instead of using service mesh, let's immediately like, just to mitigate this issue, let's just switch to dns based routing, because that was working fine, right.
+spotify immediately moved the traffic out of gcp's traffic director and started using dns based routing.
+so just imagine if, if spotify did not have a dns like, if they did not have any services that were using dns based routing, what could have happened?

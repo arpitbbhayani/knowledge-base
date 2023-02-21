@@ -1,0 +1,30 @@
+it is a very common thing to believe that the rate limiter is always external and it prevents our system from going down, but this is not totally true.
+in this video, we will understand what throttling and rate limiting is, why do we need it in the first place and see five use cases where throttling- both external and internal- is super useful.
+throttling is a technique that ensures that the flow of data request or anything that is sent to a target system, is sent at a rate which is acceptable to the target system.
+we need to ensure that this target machine is not overwhelmed by the number of requests that it gets right, which is where a component called rate limiter kicks in, who ensures that the data is forwarded to the target system at an acceptable rate right.
+throttling is generally perceived as a defensive measure, where you are being defensive of your system not going down, and there are three typical strategies to like when you are, when you know that there are far too numb, like far too many requests coming at your rate limiter, what you like, basically what your throttling mechanism would do, what your rate limiter would do.
+in case of slowing down, what you will do is when the when there are lot of request coming in on to your rate limiter, it would slow down and slowly drip the request to the target machines, which means that your rate limiter is acting as a buffer right.
+a classic example of this is a normal queuing, like a normal message broker, like sqs, revit or something, where a lot of requests that is coming in are buffered there and the consumers are reading it at their own pace, where the pace at which they're comfortable with, so the systems are not overwhelmed and there is a buffer to keep all of those stuff handy.
+so it might be possible, where you are getting a lot of request and if you get requests which are larger than, or or or which is more than a particular number of request, you would want to reject it, where you know that your system is not able to handle, will not be able to handle the load, so you will be rejecting those requests.
+a classic example of this is when you get a lot of request coming on to your api servers.
+instead of sending 429 as an error code, you just send 200 okay to the attacker and he and that person thinks that you have accepted the request and he or she is actually abusing your system.
+right, there might be, like you, you have built your system and you love it, but then you see, like, but there are a lot of users who are using your system, and then one user goes rogue and says, okay, i'll just thought, i'll just make as much of api calls as i can to bring your system down.
+you would want to add a rate limiter to ensure that your system is not going down, your system is not overwhelmed.
+what you would want to enjoy is if you accept a large number of requests from the user and you are spinning up a lot of infrastructure to process it.
+a classic example of this is a very expensive machine learning model which you might be running, so you might have exposed ml as a service and there are a lot of users hitting your system and what would happen is every request that comes in requested to spin up a huge gpu machine to do some sort of processing right.
+you typically want to ensure that you are accepting the request that could be handled within your acceptable limits.
+now this- another use case for this uh control consumption cost- is where if you are accepting a lot of request, then and you are, and you have to process it, and that becomes and it might not be worthy enough for you to execute those process or to run those process on your infra.
+so you might want to, just like you know, and it's okay for me, to drop those requests.
+to prevent cascading failures like when it's not just that when a lot of request comes in, only one system is going down.
+so which is where what you do is any request that comes in always hits a, always hits a rate limiter first.
+the rate limiter will ensure that it is only forwarding the request which can be handled by your infra, which is a legitimate request, and only those requests go to a system.
+you will be preventing, you will be configuring rules in your rate limiter to safely do not accept any more requests from this user, do not accept any more request from this authentication token.
+it's the job of the rate limiter to not buffer it, just drop those requests preventing your system from going down or from getting abused.
+so with this rate limiter, what you would still do is there will be requests of some users that would go through.
+request of other users might just drop right.
+any time any request comes in for the user to build something, it comes to our api server.
+api server, before triggering the build, what it would do is it would check with the rate laboratory: hey, has this user crossed the limit?
+you would want to have an internal rate limiter.
+so which is where, because it is very expensive, you need to ensure that, hey, you are operating within the limits, otherwise your infra cost or your bill with the vendor will go up right, which is why- this is another example- your rate limiter is not just external but also internal.
+what you would do is you would want to streamline the delete request that are coming in right.
+an example of an internal load: internal rate limiter: right.

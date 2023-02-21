@@ -1,0 +1,30 @@
+remote procedure calls, finally called as rpcs, they are widely adopted to do inter-service communication over the network.
+the core highlight that sets rpcs apart is that it is designed to make a network call look just like a local function call.
+where does it fit, what are stubs, how communication happens between the services, and conclude with going through the advantages and disadvantages of using rpcs.
+you take email and password, you write your basic code to generate access token and at the end, you put in notification underscore otp, in brackets email.
+so, for example, if you are using rest, like the most common way to do any communication right now is rest, right, and what you will do that you will write the function notification underscore otp.
+for example, if you're using python, you will use hypothetically, let's say, you're using request library, right, so at every place you are making that request library call and like, with a better low level practice you might want to, you would be abstracting few things out, but still you would have to write that that particular piece of python code to invoke that http api and then get the response.
+now, apart from that, you would also have to handle cases like, for example, what if your network is unreliable and your request fails or you need to do retry, or your client is down or sorry, right, or your server is down, and then you would have to do that retry, handle failures, send error message to the user, do exponential backup- what not right?
+every language has its own way of talking http with other services, like further, python has request library, java something else.
+so what if we abstract out this repetitive task- or repetitive and mundane task to be honest, like communication protocol, object creation, failures, retries, then when you are sending payload, you might want to compress it, you would want to support a continuous streaming of request.
+so rpc is the way to standardize the communication between services, no matter which language are you using, no matter how you are invoking, what your ecosystem is, it's all.
+it looks like a local function call, but internally it hides the complexity of making a remote network call.
+but it makes your- you know- function called so native that you will feel here it's a local call only, but instead, behind the scene, it has abstracted out the complexities and made it a network called handling all sorts of optimization and performance bottleneck, right.
+for us is rpc abstract out marshalling, like, for example, when you are invoking the function notification underscore otp and passing email into this.
+someone needs to take an email, is what i want to send to this server and that server need to understand that, hey, notification underscore otp is the method called on your end, give me the response back, right?
+but before we jump into what rpc is, let's take a small detour and understand what stub is like.
+someone needs to convert this and basically marshal this particular thing into something serializable, send into a format that is understandable by both like authentic, like you have login service, you have notification service, right, and someone invoke the function notification underscore otp, bracket email or basically while passing email as an argument.
+someone needs to take this information and basically create a format out of it which is understandable by the server, also by the notification service.
+so the flow here would be: let's say you have the authentication service written in golang, you have notification service written in java, right, authentication service has its own little running rpc runtime.
+but how it would create the response: go to the stub stub, would marshal it into a format, would send it so that stuff in the authentication service understands it and then it would convert it back right.
+so stub is the one that takes care of converting the method, the request type, the response type into the form that is used by the rpc system.
+most stuffs, the the most common way of configuring stubs is like, for example, every single rpc implementation.
+now, every rpc would have its own implementation, but if i take the most famous implementation right now, it's grpc and it uses the protobuf format to do so.
+so what you will do is you will define a common way, right, you will define it in a normal protofile on like: this is the service, this is the rpc.
+right, so what you do as the first step is you write this interface definition in the form, in the format of the or the compiler that the language understands.
+so, which means, let's say, you write so from the interface definition language, what you actually first do is you run a generator.
+so, from interface definition, you run a stop generator that creates this, this auto generated stub that takes care of marshalling, unmarshalling and invoking the network.
+right, and now all your job is that on the notification service, because that's the interface, so notification service needs to implement it, and you would write, and then you would uh generate the same thing on your golang site or on your authentication service side as well.
+so now when you're making a call, you can use those things as pretty straightforward local objects- although they are, although it would be seamlessly transitioned into a remote call- but you still are only focusing like you are invoking, like a normal function call, right.
+that's why we need to understand that the transport is totally separate and, uh, the way we would want to communicate, it's all abstracted out using grpc.
+third is: getting started is a little challenging because, unlike rest, where you just start a http server, start exposing endpoints with like, with basically resource-based endpoints and done with rpc, you have to write i, uh, you have to write an interface definition in a protofile, create basically generate the stubs, then integrate it and then implement it, and all takes some time to do it right.

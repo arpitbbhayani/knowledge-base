@@ -1,0 +1,38 @@
+we typically retry in order to recover from intermittent failure, so that in case there is a network glitch, some TCP connection broken between or something like that happened, and assuming that our apis are either potent in nature, what do we do?
+a nice way to do it is: hey, let's say we have a retry factor of 3, which means that in case the API call fails, we try three times before we say a, the API call fade.
+so let's say we write a loop as simple as for: I equal to 0 is lesson 3, I plus plus, do it, and do it is the one which is making the API call.
+now, when this happens, approach works fine when you have fewer clients, right.
+at scale, when you have millions of client and let's say the server was a little overwhelmed, because of which the API call failed for all the clients.
+now every single one of the connected client saw that failure and it is making the API call to recover from the intermittent failure.
+the server, which is now also get, which now anyway gets the new request, is now getting this other request, which is retries.
+the server, which was already overrunned with the request coming in, now gets far more request because of the retries that we are doing.
+so server does not get time to recover, like, for example, let's say the server was like, let's say the API call was requesting a lot of CPU, which was was doing a bunch of CPU computation.
+the server was overwhelmed because of retries.
+the server is not even getting time to recover right because of which, although the retries that we defined was supposed to recover from intermittent failure, are the root cause of this server not getting time to recover.
+so the outage for a logs right, and this is a classic problem that comes when we don't Implement retries properly.
+how do we solve it here, given that the formula that we wrote In order to retry is as simple as I, equal to 0, is less than three, I plus plus do it because you may think that, hey, because we are making this retries back to back.
+instead of making back to battery price, let's say we add some back off, right.
+the most common way to do it is an exponential backup in which what we do, instead of immediately retrying, right, we add some buffer in between which is exponentially spaced out.
+for example, let's say, at time T, we saw the error- the first retry that happens, it happens at T Plus 1..
+so here you see that we are exponentially waiting for longer duration as the number of retries increase.
+now here, because there is enough space between two retries, the server gets primed to recover.
+so here, what we are doing is we are trying to give server enough time to Auto recover because of issues, thanks, but this is a problem, right?
+now what would happen is because the exponential back of what we wrote is d, d plus 1, D plus 2, t plus 4, and so on and so forth.
+so what we are actually looking at is the server still does not get enough time to recover because there is a large number of Rick, because all the clients who saw error near that same time duration are are retrying at the equal spaced repetition.
+it says that, hey, now I'll retrain 20 seconds, I'll return 25 seconds, now 30 seconds, right, so it it increases exponentially.
+in order to enter, the server is not bombarded, right, and this is a good way to do it.
+but this has a problem, as we talked about, because of a lot of people, a lot of clients, who are retrying or who saw the error at at nearly same time.
+their periodicity of read rise would coincide, giving, or rather putting a large number of, or a huge pressure on the server at space time.
+right, that's the problem.
+right, that's the problem.
+solution to that is: let's say, we add some Randomness.
+so instead of retrying immediately, let's say we add some Jitter, a random Jitter, right?
+so instead of retrying at immediately one plus like one, two, four, eight, sixteen, what we do is we add some Jitter now.
+this is a random value that is chosen in some range and you wait for that time before you retry.
+the Jitter that you add would ensure that there are fewer coincidences that are happening around- read rice- and this would almost space out the repetitions or the retries that you are making on the server, giving server enough time to recover, given that there is not a huge Spike of request coming in because of retries, and this breathing space would allow your server to recover.
+so, as a golden rule, what we can do is, whenever we are writing retries on our apis, first thing that we have to ensure is first you add random Jitter right, instead of like immediately retrying back to back.
+you add random Jitter and your spaced or the retries are exponentially backed off.
+it's extremely important that whenever you are writing a retry logic, you follow these two things.
+this will ensure that in case your server, in case the error is intermittent and your server can Auto recover, your server would not be bogged on by a large number of retries, but instead it would have time to Auto recover right, and this is a Thundering Herd problem and a way to solve it, and this is almost the standard approach, but in most cases we don't typically do it.
+so, if you are writing your own retry logic, ensure that you are adding random Jitter and your retries are exponentially backed off right.
+but, uh, in general, just keep this thing in mind that whenever you are retrying or when you are writing your retry logic, you follow these two steps right.

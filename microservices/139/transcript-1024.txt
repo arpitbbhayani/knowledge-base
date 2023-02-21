@@ -1,0 +1,37 @@
+in a micro services based architecture, there will always arise a need to design workflows.
+for example, when on an e-commerce website someone places an order, we need to send an email confirmation to the user, notify the seller to keep the shipment ready and also assign a logistic delivery partner so that the package is delivered to the user.
+there are two high level architecture patterns to implement workflows in a micro services based architecture, and they are orchestration and choreography.
+how are we going to implement workflows in a pure micro services based architecture?
+whenever order is placed, order service accepts the order and somehow the user needs to be notified, seller needs to be notified, delivery partner needs to be assigned, right?
+so the core idea of orchestration is that the decision logic should be centralized, right?
+so a simple example would be: whenever the order service takes the order, it becomes the brain, it becomes a coordinator, and what it would do is it would invoke the api of the notification service to send an email notification to the user.
+i would then contact the logic service to basically assign a logic delivery partner, right?
+so here the order service is acting as that brain who would do that coordination and and ensure that the entire workflow is complete, right.
+so here all the three, and obviously this, this need not be a distributed transaction, not not going into that complexity- understand, oh, basically absorb the overall idea of orchestration as a, as a pattern, right?
+the coordinator, the order service will tell them, right?
+so that's the core idea behind the orchestration pattern, and the workflow we designed was just a one level workflow- key order service and then the three involved service.
+so the workflows can get as complex and you need a coordinator to do that and that is the orchestrator part of it, right?
+decision logic is distributed, right, so the idea here is let every single service have its own brain, and the core concept of choreography is to make it event driven.
+so let each service be independent and they need to think what they have to do when something happened, right, so the job of the order service is pretty simple now, so, or whenever order service accepts the order.
+so, basically, when the order is placed, the order service publishes a message somewhere into a pub, sub message broker, wherever it want to go.
+right, this event is subscribed by all the involved services.
+when the event is published, the notification service, seller service and logistics service which have subscribed to the event- let's say event is orders placed- they would take the action depending on the event.
+they are not told what to do, but the notification service, seller service and losses logic logistics service- whenever they get an event, they would take the decision: hey, now the order is placed, what do i need to do?
+law notification service will say: hey, i need to send a notification to the user.
+basically the prince, the architecting complex workflows on a pure asynchronous basis is basically choreography and the foundation for event driven architecture.
+so now, whenever the order is placed and the order service simply publishes an event, simply emits an event into a pub, sub, kafka, whatever you want to use that's, that's not a concern of us, right?
+and the notification service, seller service and losses logistics logistics service- sorry, gets that a particular event and then they decide what to do with it, right?
+now, for example, if tomorrow we have to add the fourth service, that whenever the order is placed, i want to, i want to show it into the orders page of the user, that would be a poor example, but hypothetically, let's say we want to do that, right?
+so then it would just be adding one more service which is subscribe to the same order placed event and then, like your system is very extensible because the services are pretty decoupled, right?
+but the core idea is publishing an event, subscribing from an event and every service independently taking its own decision now which one to use, when, where and by and how, and all of that right, how, how are we going to decide?
+we just saw how, uh decoupled all the four services were: order service: when it accepted the order, just need to publish an event and done.
+it made the system extensible as well, because we saw adding a fourth service as a consumption of the same order space event was so simple, right.
+so if one of the services down, let's say notification services down, it does not affect the other part of it, like the other services which are subscribing to the same event, they are not affected at all, right, so this makes our overall architecture pretty robust.
+but with choreography, what we need to be very aware of is the observability becomes very complex because the entire communication is asynchronous and decoupled.
+we can use it at a lot of places where we need synchronous communication between services, for example, services that needs to be invoked transactionally, basically distributed transaction across services.
+so if you would want to model distributed transactions- either all or none- that can very easily be modeled using orchestration, because the communication needs to be synchronous, right.
+that i just emit an event and my notification service will send an otp to the user.
+so what you do is, when you get item ids from your notification or from your- sorry, from your- recommendation service, you would want to enrich it with very rich details, right?
+this communication between your recommendation service and inventory, this, this thing should be synchronous, right?
+so you have two ways to implement it: your recommendation service, instead of just sending the ids.
+your recommendation service itself can talk to inventory service to get the item details and then send it to the user, so that your, your, your client does not need to do heavy lifting.

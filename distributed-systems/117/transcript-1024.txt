@@ -1,0 +1,28 @@
+we'll take an example of zomatos 10-minute food delivery to understand the overall algorithm, the overall protocol to guarantee at obesity, spanning micro services, right.
+so let's jump into the first part, where we under, where we solidify our understanding of two-phase commit protocol using zomatos 10-minute food delivered as an example, right, so how is alberto so?
+now let's talk about how you would want to like, as an engineer, how you will need to ensure that you guarantee 10 minute food.
+that particular burger from that particular restaurant is actually available in the zomata store and that burger needs to be available for you to place the order and the delivery partner is available to deliver it.
+you cannot guarantee a 10 minute food delivery, because if the food is not available in the store, then it needs to be get, then it needs to be picked up from the restaurant, which might be far away, and then delivered to the user.
+so this is a classic case of distributed transaction where, let's say, hypothetically, that flow looks like this: you as a user want to place an order, the request comes to an order service, it's it is about to place an order in this database, which stores all the user orders, but orders always.
+what it would need to do is it would need to talk to the store service, to, to, to reserve a food for an order, like to basically mark that this wood is for this order and this delivery partner is for this order.
+so both of these things should be done: that the food should be blocked for an order and the delivery partner should be assigned to an order, and then only you'll say to the user that hey, the order is placed.
+so you, as an engineer, let's say, you're building this order service out here, right, which would work like, which would be placing an order only when these two are, otherwise you would not place a 10 minute guaranteed order here.
+so yeah, here, if we take an example, if we extend our example and say that, hey, for the order service to work, order service will talk to the store service to reserve a food for a particular order.
+the store got the order but delivery agent is not assigned, which means that order that the store started warming the the, the food item and then basically packing it and keeping it ready for the delivery, but delivery agent is not yet it's not actually booked right, it's not actually assigned for that order.
+right with other use, other flow, where, let's say, the delivery agent is booked but the store is, but the store, like store service, is down or the food is not available, then what would happen?
+so this is like basically committing: hey, this item is now for this particular order.
+for the first phase, what order service would do is order service would make a call to store service to reserve a food.
+we are reserving the food, making it unavailable for any other order, kind of like you told us, turkey, keep this burger aside and let no one else have it.
+right, you are just blocking them, making them unavailable for any other order to pick that food item or pick that particular delivery person.
+the second phase is all about booking or assigning them, which is the- which is your commit phase, where what you say is: now that you have one burger reserved and one delivery agent reserved for for your order, right, what would you do?
+so if you would want to go through it, you can say, hey, book this food, which means the reserved food that you had for for, uh, for our use case, uh, you now assign this exact burger to a particular order, right.
+you can now inform that particular agent and then, once both of this is done, once both of this is done, you place the order right.
+so this, after this two is done, after the commit phase is done, then you make an entry in your orders, dbs, informing your end user that, hey, your order is placed will be delivered in 10 minutes.
+so after that particular timer expires, the reservation is auto cancelled and reservation, because we have not informed either the store or the delivery agent, it makes no difference because it just like you, release the lock that you took on your database, right?
+now you make a call to the store saying the food that you have reserved, right, the food you have reserved, now this food is assigned to this order.
+your order service is making a call to the store survey saying the thing that we just, the food that we just reserved, the burger that we just reserved, now is assigned for this order.
+right, this is where you you inform the store that now you can start heating and packing the food with agent.
+now you can start a, now you can assign this agent, you can inform this agent that, hey, come to this particular store, you need to deliver something, right, because they were already reserved.
+so then that item, that food item or that agent will never be perpetually reserved or will be perpetually blocked on something, right, they would always be freed up for some other, for some other order to consume.
+like, if your order service fails at any of this stage, because you have timer set, the item is never perpetually reserved, right?
+and second, it's prone to deadlock, like because you have a separate reservation phase and then separate commit phase, very high chance that you will create a cyclic dependency across your stores, orders and delivery service where you make free key: a is waiting for b, b is waiting for c, c and c is waiting for a.

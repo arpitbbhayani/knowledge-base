@@ -1,0 +1,29 @@
+through this we, when we are trying to download a particular file, we know that these are the pieces.
+once you have the list of peers in the network, you'll directly talk to the peers and request for the pieces that you need, and the peer would send you those pieces and then you would concaten it and create the file locally.
+let's say I have a file which is 5 MB big and I'm making a piece of length 1 MB, right?
+so what would happen is there might come a state where we know that there would be a cedar in the network who has the entire file and there would be leeches in the network, who does not, who are, who are right now downloading the file.
+so, which is where the order in which the pieces are requested by the peers matters a lot, right, so that we don't have an over dependence on the cedar, always right.
+to complete the download right and to maximize the download speed, obviously your peace selection algorithm cannot make the overall download slower, because that's what the aim of a P2P network is: to distribute the file as quickly as possible, right?
+this way we would be reducing the dependency on the Cedar and we would ensure that everyone in the network has almost all the pieces that are required to complete the fight, so that, even if Cedar leaves the network, you would have enough nodes in the network that would have those pieces so that you can complete the download, like every node would complete the download, right.
+so the core idea of this algorithm is prioritizing downloading of a piece that is rare.
+pra wants to download a file, so it would start downloading the pieces from its peer set B and C.
+so when a joined the network, 8 up to the tracker and said, hey, I need PS2 download file from, so the tracker would send in B and C, right?
+so this is how Aspire set: has B and C in it and it can only download files from BSC because it does not know the existence of other peers in the network.
+so what would happen is a would send a request to B and C, checking if they have pieces with them, and BNC would respond and a would keep track of the pieces available with the peers so that it would Fetch and request the rarest piece that is there in the network, right, it's.
+what would happen is because we are prioritizing the rarest piece first to be downloaded by a peer, what would happen is we are reducing the dependency on the Cedar and we would only go to the cedar when someone is requesting the piece that is not existing in the network, so the load on the cedar is reduced.
+whoever wants a piece that is not yet fetched by anyone in the network, then only would go to the cedar right.
+second, we would get an increased download speed, because the better the distribution of pieces in the network, the faster will be the download speed, because now it can go to multiple peers and basically download the the pieces that it wants right.
+so what this would mean is if you as a peer hold a rare piece, everyone in the network would want it from you.
+so reducing the dependency on the cedar while ensuring that, even if someone leaves the network, we would still have the pieces floating around in the network that people can complete their corresponding downloads.
+right now there are two ways by which peer can tell about the pieces they have.
+so what happens is whenever a peer downloads a particular piece or it has a particular piece, it would broadcast a half message that I have this piece right.
+so everyone tries to prioritize downloading of the rarest piece first, right, and the redist piece is computed every time you receive a have message from a priority receiver, bit field message from appear, because you need to recompute it every time, right?
+when a peer has just joined the network, right, it would need to have downloaded the first piece as soon as possible.
+so because of this, when a peer joins a network, it would not have any peace with it, because if it does not have any peace, what would happen is it would need to prioritize downloading of first piece as soon as possible so that it has something to share.
+you are just downloading any piece that you can get at random from the network so that you have at least something to start with.
+so that is where, if you have less than four pieces, exactly if you have less than four pieces of a particular file that you are trying to download, then instead of going for rare s first, you would go for random uh.
+you are focused and you are downloading all the blocks of a piece, completing a piece so that you can then broadcast a have message in the network and say, hey, I have this piece now, right, very important.
+so this is how you would ensure that your focused on downloading the piece on priority and as soon as possible, and the final policy is the end game mode.
+now that you are waiting for the response to come in, typically towards the lag end of the download, Things become slower because the pieces are hard to find or because everyone else is anyway busy, so you would want to complete the download as soon as possible.
+instead of saying that, hey, I'll only talk to One peer to get my particular piece, you'll broadcast this to every PR in your PR set and say, hey, I need this block, give me all of them, right.
+and this is how, uh, your overall P2P network is built: with chokes algorithm to ensure you select the right peer and you don't, uh, and, and you basically penalize the Free Riders.

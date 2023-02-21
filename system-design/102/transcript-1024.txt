@@ -1,0 +1,36 @@
+so item buttons is one of the most critical things to consider while designing an api or a microservice.
+in this video, i'll walk you through what item potence is, why do we need it and, more importantly, take a look at an approach of implementing item buttons.
+i've, in this video, i've talked about one good common approach of implementing item buttons, but obviously it is very subjective and it depends on the problem statement that you have.
+let's say you, let's say we build a bank, let's say we build a payment service in which your user a wants to pay user b twenty thousand dollars, right?
+that because, like to ensure that no bug can let this transaction happen twice, right?
+so basically, the overall justice: whenever there is a possibility of you doing that same thing twice due to retries, explicit issue, bug or something you should not want to do.
+so this payment gateway- something on which you send request key from a to b, i want to transfer money and then one shot, transfer happens, hypothetically.
+so let's say your payment service wants to, like you got a request that a wants to transfer twenty thousand dollars to b, right?
+so payment service made a request to payment gateway and payment gateway, when it gets the request, it would immediately, immediately transfer a to b, twenty thousand dollars, like hypothetically.
+so then here it processed the payment, which means it, it did the transfer where it detected money from a's account and created to b's account, and then it send a response.
+the payment service crashed because of a transient issue, right, and once the service got back up it retried the transaction of the recovery.
+so either payment service retried or payment gateways.
+and- and let's say hypothetically, if you apply that because you don't want to have to give user a poor user experience, so you try to retry on your javascript site or on your android apps or on your ios site, only right.
+right, so by retrying this we like.
+this is the classical case why we want item potence in the flow where, if the same request is hit again, we should not be processing it right.
+uh, the first one, which most people typically don't think about, is: you won't need item buttons if we do not retry.
+so there are, like, basically there is no compulsion that, hey, every api you write needs to be item.
+for example, on instagram, let's say you double tap the photo right and then, if, due to some reason, your api call failed, throw error to the user.
+so this is something that i definitely wanted to add, because most people think, hey, let me design the best api out there, with all light up borders and all those things.
+for example, if the payment transaction failed, where this api call will propagate this error to the user, saying that, hey, the the transition couldn't happen.
+so then the user will go through the entire flow and then make the payment right.
+so this is one of the most popular approaches of implementing hyder buttons, where it's obviously very common as well, where you say that, hey, check and update, which means that you would retry, or you would update the entry, or the backend system would do it only when you know that the first transaction definitely failed.
+in the case of payment, what you can do is you can get the status of the payment and then retry only when it is not processed right.
+when everyone is talking in sync key- hey, this was the payment that i wanted to like, for example, you need to identify that what payment was going on.
+flow is extremely simple and goes like this: what you do is your payment service generates, or rather pings payment gateway to generate a payment id.
+now, this payment id is something that can- you definitely would- propagate to your end user site will keep it, along with your payment service, in its own database, and the payment gateway anyway has it in its own database, right?
+second, now, what would happen is, instead of just saying that, hey, transfer 20 000 from a to b, you say transfer twenty thousand dollars from a to b for this payment id, right?
+and then when it hits like this is something that we got from the user, this payment id came to the payment service.
+it was saying that, hey, for this payment id, i'm making the transaction of a to be twenty thousand dollars, right.
+and now let's say, payment gateway process the transaction, right.
+now your payment service would retry, right, either this retry starts from your payment service or it starts from your end user, but it's an automatic retry where, which is where we need to guarantee item potential right.
+so because the payment was processed over here, now, when the retry happens, so retract, like because we are sending in the same request.
+so no matter how many times your payment service invokes the same api to initiate the same transfer, if the transfer is already done, it would not redo the transaction, right?
+so by weaving all the three stages over, this one payment id is something that has helped us make our api design, item put it, and this is one of the most popular ways of implementing item portals, which is why in real, in actual uh payment gateways also, you would see something very similar to this.
+so if you ever integrate stripe, paypal or, let's say, razer pay into your stack, you would see that at every stage it gives you that one id that weaves your entire payment together, and that is the first thing that you do when you initiate a transaction, that's exactly the first response you get and whenever you would want to do anything, you pass in this particular id, right?
+but this is the overall idea of implementing either importance by weaving the three systems together using a common identifier right.

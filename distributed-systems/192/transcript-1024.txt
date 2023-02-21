@@ -1,0 +1,31 @@
+that is where we need the nodes to talk to each other and reach a consensus and agree that if the value is 1000 or 2000, achieving distributed consensus is extremely simple when it comes to the case that your network wouldn't fail and your processes wouldn't crash.
+right, and this is where we would talk about an algorithm called an exponential information gathering- eig algorithm to reach a distributed consensus.
+every node records the path from which it received the data until a certain degree of level or under a certain degree, and then decide that, hey, this is going to be the final value.
+the idea is that the path in the tree- like from node 8, because it is growing level by level, if a message was received from node a to node b, to node c, we would have on the path a, children b is children c and that's where the value would be stored.
+so if n are the total number of nodes in my tree, then at each level we would have n minus k children, right?
+a quick example of that is: let's say i draw a three level deep eig right and i have three nodes in my network right.
+we would want all the nodes to send values to all other nodes and then reach, and then we, every node, would independently form its own eig tree and then they would all or independently, agree on a particular value, right?
+so, given that we are making our distributed consensus tolerant to process slash nodes failure, the algorithm runs for total f plus 1 rounds and because we are giving enough chances for the nodes to fail- if it didn't fail, well enough, but at max we would be- we'd be tolerating failures of f nodes right at the end of f plus one round.
+every node would have the same eig with them the same eig and they would then be making the decision or basically reaching the consensus, right?
+the process, upon receiving the values from other nodes and processes, updates its own copy of the tree right in distributed consensus.
+that's why we need to send this information to every other node, so that every other node at the end of a plus one round has the exact same information, so that they all make the exact same decision, right?
+okay, so after f plus one rounds, what would happen is every node would have the same copy of eig tree and they would be able to make the decision.
+so nodes independently take the decision, and building this tree is a way to gather the entire information.
+first is about gathering the information using this eig tree and second is about making the decision right.
+first round: every node sends the value that it holds to the entire network, including it's- well, including to its own.
+basically, it's saying that i'll be making, i'll be updating my own eig tree, right, but a formal way to say that is, every node would send a value to an entire network, including its own, so that every node would also update its own eig along the way, right, okay, so a sends data to b and c.
+let's say, uh, i received a value from other node, j- right, so me as a.
+so the end of first round, every, at the end of first round, every single node in my network, let's say abc, at the node, they have values that they received from other nodes and itself and updated in its own eig tree, right?
+every process, i, which means every node, i- sends all pairs x, comma, b from k minus 1 level.
+we send these values to every other node, including ourselves, right?
+we send this values to every other node in the network, right?
+so we send pairs x, comma, y from k minus 1 level in the network where i is not in the x, which means if i am sending the value, right.
+node a can thus form the next level of eig tree with path, because process b and process c are sending data to a, which means that a now received the message from a itself, from b and from c from b.
+so this way, node a can form the eig tree with path a.
+so node a will send x comma b to itself as well, and thus it would receive the value of tree of b and t of c from a to a.
+right, this way the node a would be forming the second level of this eig tree, right.
+so we have very beautifully created, if you look at this, up until this level, you are still covering all possible permutations of a and c of length 2, because a, b, a, c, b, a, b, c, c, a, c, b, with no repetitions, and this is the beauty of this particular eig algorithm on how we are exponentially gathering the information and forming this entire gigantic exponential permutation tree to eventually take the decision right.
+right, okay, now this process is repeated at each node, so each node would have the exact same eig tree, because we are thinking that, uh, our communication lines are pretty reliable.
+so thus we see how every node has all the values from all the nodes across all the paths, and the algorithm stops after f plus one round.
+uh, one node to fail, i would do one plus one, two, i'll do it for only for two rounds, right, and then i'll be in a position- because i gave enough chances for processes to fail and now i'm in a position to make that decision.
+now what you can do is you can go through, you can traverse the entire tree and find all possible values that you receive from all possible paths across all possible nodes, and then you construct a set out of this.

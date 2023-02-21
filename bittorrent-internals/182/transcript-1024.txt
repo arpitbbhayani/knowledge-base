@@ -1,0 +1,39 @@
+free riders are the peers in the p2p network that are downloading a lot but never uploading anything back to the network.
+first is that it affects the genuine users in the p2p network because they, like they are under a pressure because they would not get the download speed that they deserve, because free riders are heating up everything.
+and second is having a lot of free riders threatens the existence of the system, because they would put a lot of load on cedars and on other leisures and they would leave the network or they crash off right.
+so this is what the problem is when you have a lot of free radars- and this is a big problem in any p2p network- right, things would have been very easy if there was a central authority who was distributing the data.
+in bittorrent, we know that there is a tracker who keeps track of stuff, but it still does not do the actual data distribution, right?
+so it's hard to prevent abuse, but central authority, who is also responsible of distributing the data, could have solved that right.
+so before we jump into exploiting part of things on the engineering side, uh, let's talk about or let's have a very quick overview of bittorrent, right?
+so, leaders, they talk to seeders and other leaders to complete their download faster, right?
+every so a bit on network just suggested guidelines on how peers should behave, but it, but it- cannot enforce anything because there is no central authority.
+so the guidelines are there, but a peer can choose to not follow it, which is what leads to exploitations, right?
+so what we know of is that, when you join a network, right, so you can say that, hey, i don't have any file.
+please give me a list of all the peers that i can talk to, right, so this is what your announce phase looks like, right?
+so when you join the network, you announce yourself: hey, i am here, i don't have anything, i am a new peer.
+give me the list of peers who i can download my data from, right, and this is where you talk to tracker to get it.
+so now what would happen is: uh, now, when you are joining a network and you are claiming yourself to be the new peer- new peer, as in, you do not have any pieces to share.
+uh, you, as a peer who is trying to exploit it, you can tell to the tracker i don't have any piece, and tracker would have to believe it because it's a p2p.
+gather as many peers in the network as possible by aggressively making call to tracker and getting the peer list.
+this way you would have, you would have- accumulated a large number of peer addresses whom you can reach out to and get your data from.
+and this is when you have a large number, a large number of peers to talk to and you show them interested, you are maximizing your chances of downloading the piece that you need.
+you need addresses of the peers in the network, because that's what you don't have.
+right, a entire bittorrent network might have, let's say, 50, 000 nodes, but you, when you make a call to tracker, you are only getting 50..
+so if you aggressively make call to your bittorrent network, or if you make aggressively calls to tracker, you can accumulate thousand, two thousand, five thousand of them, and when you have that much, you you can talk to anyone to get the data from.
+and so be aggressive in making requests to the tracker and gather as much of ip addresses as possible so that you know that, hey, these are all existed in the network with through whom you can get it right.
+uh, in a couple of videos back when we talk about piece selection algorithm, we saw that how bittorrent nodes, or the peers participating in the torrent- they prioritize downloading of rarest piece first.
+so the piece that is the rarest is downloaded first, so that someone in the network at least has it right.
+no, grab whatever piece you get from the peer and download it on you right once you download it.
+open as many tcp connections to as many remote peers as possible and show them you are interested in downloading a piece.
+this way, what happens is, although you- the node, like you- have shown your interest in downloading a particular piece from a particular peer, even if you have not uploaded, there is still a chance, a one in four chance, that it would unchoke you so that you can download right- and this is optimistic- unchecked, to solve problem of bootstrapping and all.
+given that it is pure random selection, you are increasing your chances to be optimistically unchoked, giving you a good download speed.
+right, you don't need to upload anything, but because it's a random selection, you would get it.
+so the download speed is proportional to the number of peers we connect to, and it's a and it's a linear relation.
+okay, the final exploitation that i want to talk about is pretending to upload right.
+so here, who said that you like- although you know you would get a better download speed if you upload much more?
+for this, you have to tell tracker that, hey, i have downloaded this much and i have uploaded this much here.
+what happens is there is no way for tracker to know that how much you have uploaded the number that you send.
+hey, i uploaded this much and i downloaded this much, so have to do send bloated number.
+you, as a stealer, are a very good citizen and you are uploading more than you are downloading, so it would give you a boost by sharing you as a peer in others.
+so now you are getting connected to a lot more peers and accelerating your download.
+second way to pretending of download is upload dummy data.

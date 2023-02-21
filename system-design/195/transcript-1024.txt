@@ -1,0 +1,41 @@
+so, to understand this use case, let's jump right into the Instagrams engineering blog, and here's what they say.
+this means that the raw transactional DB that they are using is postgres and they rely very heavily on it for user created data.
+okay, so here in this one, we are focusing on partial indexes as the optimization technique.
+so let's first understand how they must be using postgres to store hashtag related information, right?
+against each hashtag, they would be having something called as a media account in which they would be storing the total number of photos, plus videos, plus reels, everything that they have, every kind of media that they have.
+they would be storing the count over here, right, so for each hashtag, they would be storing the count of the media that they have.
+if you search for, let's say, snow hashtag, start with snow, you would want to surface the top hashtags having the most number of media like, ordered by the most number of media that it holds right now.
+obviously they can, but what they said is they use elasticsearch for advanced use cases, and this is a pretty trivial use case for which they would want to rely on postgres.
+what they say is, if you find yourself frequently filtering your queries by a particular characteristic and the characteristic is present in minority of your rows, partial indexes might be a big win.
+let's say you are typing slow, you take the snow and you would want to find hashtag that starts with snow.
+so you are trying to filter out the rows from the table with a particular characteristic which is prefix, and this is present in minority of Errors.
+obviously not every row would be present with snow- very few rows as compared to the number of rows that Instagram has would be stored or would be starting with snow.
+you are filtering out a large number of rows my back right.
+you are filtering out a large number of rows my back right.
+so, as an example, when searching tags on Instagram, we try to surface tags that are likely to have, more likely to have many photos in them, as we discussed, ordered by count, while we use Technologies like elasticsearch for fancier results in our application.
+so to understand this, let's understand the schema that they have: hashtags and media account.
+start from hashtags where name like snow percentage, which means where name matches snow percentage.
+that starts with that particular prefix, right?
+so when Instagram executed this and they saw the query execution plan, they saw that it has to do a sorting of 15455 rows, which is high given the frequency of a query like this.
+notice how postgres had to sort through 15 000 rows.
+so they fired this query, got the query execution plan and they got that they have to sort 15445 rows because those are the rows that matched and they would want to sort on that, and sorting is a very expensive operation, right?
+it means that fewer hashtags will have large number of photos, while large number of hashtags would have fewer photos, which is very clear because there would be few tags which are extremely popular, While most of the tags are having 5, 10, 1500, 500 photos like this.
+because you are already based surfing the the Hashtags with the most photos, basically in the descending order, for any prefix you would want to serve.
+you are always surfacing the most popular hashtags, so can we only index hashtag that has more than 100 photos?
+your table would have all the data, but your index would be substantially smaller.
+so this is a classic case for partial indexes.
+for example, if you fire query something like this: create index or create index concurrently on Hashtags with some name where media underscore count greater than 100.
+this means that even if your table has a million rows, when it is creating an index on the hashtags table, it would only put the rows having media account greater than 100..
+so what they say is that notice how postgres had to go through 15 000 rows.
+now, when you check the query execution plan, you see that you only have to sort 169 rows from 15 000.
+they drop 269 rows and this clearly shows that even if now we fire a frequently High queries on postgres, it would still be able to handle the load from 15 000 to 169.
+right, and here we notice that how postgres only had to visit 169 rows, which is way, way, way faster.
+and just to end on this discussion, what they say is: let's say, today you are firing query and obviously, when you are firing query, you would have to fire something like this: select start from tags where name likes no percentage and media ground greater than equal to 100.
+because if you don't fire this, if you don't provide media account greater than equal to 100, it would not be able to use that index.
+because we created index with a particular filter, we would have to pass a filter in the query as well.
+right, so that is where, while firing this query, we would have to pass media account greater than equal to 100 so that your database can directly go and pick the index that it just created, which is a partial index.
+now, if today we are putting a check on 100, uh, we are putting a check on greater than equal to 100, what if tomorrow we change the logic and we would want 500 photos only?
+so then our indexes would not have to be changed because photos or hashtags having the photos count greater than 500 is a subset of hashtags.
+having photos greater than 100.
+this is such an interesting optimization that Instagram applied to get or to answer the query so efficiently.
+all I did was create an index with, with a subset of information, and that's it.

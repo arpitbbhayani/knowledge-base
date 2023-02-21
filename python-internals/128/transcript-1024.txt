@@ -1,0 +1,36 @@
+so in this video i'd like to talk about internals of is operator in python.
+with respect to c python implementation, it would check if the two objects, that the two operands- in our expression they- point to the same object in memory or not.
+uh, while exploring the internals of eds operator, we would stumble upon some really interesting, uh, some really interesting parts that c python took in order to implement it.
+uh, i have already made a video about python caching integers, on how python optimizes integer operation for smaller integers, because of which here we can see that even though i have declared two variables, a and b, since the value is same, it it, it internally points to the same object in memory.
+i'll use import disk, i'll do this dot disk and i'll pass in a is b, right, what it spits out?
+and then it did a return value, right, which makes sense because, uh, it has nothing else to do but just compare a and b with an is operator.
+so here, uh, this means that the entire logic, uh about how is operator is evaluated, is how python would have handled the instruction azo.
+but uh, it basically accessed the top two elements of the stack and stored it in right and the left operand.
+so the two elements popped from the stack are nothing but python objects, which is a and b, and is just checking if a is equal to b or not, right?
+we know that two pointers they give you true, when you are doing, let's say, if a and b are pointers or something you do, a equal to equal to b, it would give out if both, if the, if the address that the both are pointing to is same or not, right?
+it is doing left equal to equal to right while handling is up and storing it in res.
+there is something very interesting here: it is doing an xor operation with op arg right.
+let's come to it later, because what we definitely know that, when using is operator, it's more than enough to just do left equal to equal to right.
+so, according to us, in order to implement is operator, it would have been very straightforward to do left equal to equal to right, store it in res and if res is one, we return pi, true, if it is not written pi f, uh, we, we, we basically uh, use pi false and basically set it on top of the uh stack, right.
+so instead of, instead of popping the second value and adding another value to the stack, what c python is doing is: c python is accessing the top and then, with the evaluated result, it is setting the top right.
+that top of the stack will be set to either true or false, depending on what the value of rest is.
+so, left equal to equal to right, we return true, otherwise false.
+so if i have, uh, if my left equal to equal to right could be the one or zero, so if my a is actually b, then this expression left equal to ground will evaluate to one, then it is xor with oparg.
+so if oparg is actually 1, right, so then, and left equal equal to right, so it would be 1 xor 1, which is 0.
+this oparg is nothing but doing a, not of the operation right.
+so if my left equal to equal to right, x or one.
+so if let's say oprg is one, then one xor one is zero and zero xor one is 1 right, and similarly, if my operg is actually 0, then 1 x or 0 is 1, 0 x or 0 is 0.
+so i have no effect on my evaluation of left equal to right.
+basically this is how i actually dissected this thing out and just try to understand what oparg would be doing here.
+it generates the same set of instructions with is op, and then the argument is one right.
+so here what it does is: let's say my a is actually equal to, so my left equal equal to right is true and my opa rg is 1, so true is 1, 1 x or 1 is 0.
+so when my left equal equal to right is 1, xor 1 is 0.
+so c python developers are actually leveraging that and making things a little complex for a normal same developer like us to like, basically understand.
+but this is such an basically, this is such an interesting implementation of a seemingly simple thing, right, so they opt.
+right now, uh, that, basically, now that we understood the importance of operg, left, equal to right and how is an izop are implemented, what do we do next?
+basically, compilec is the file where all the logics, where all the logic about generating instruction set is being done right.
+so why are they not doing a compare op, which we already saw in the previous video, how they use basically comparably to compare less than equal to, greater than equal to and all of those things.
+so for a general comparison, like equal to, not equal to less than less than equal to another, these are doing just uh, setting cmp to that particular integer value.
+this dot is a greater than equal to b and if i do this, what we saw, that pi g e, what it should do, as per our logic, it should uh, add an instruction.
+so this is exactly how python actually generates the code for whenever you are giving any comparison operators, and this is exactly what happens behind the scenes- to generate a code for like greater than equal to, less than equal to or not.
+uh, one thing that i would leave for you guys to explore is what exactly add op underscore i does right, and while doing this, you would also stumble upon how to pass non-integer argument.

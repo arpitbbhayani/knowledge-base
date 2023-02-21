@@ -1,0 +1,36 @@
+so, given that, uh, as your current situation, your, your typical three-tier architecture would look something like this: you would have your users, which are talking to your monolithic apis, which are then uh, which in turn fires the query together to the database, gets the response and sends it back to the user- a very standard three-tier architecture that you will have, right.
+and to take more concrete example, let's say you are building an e-commerce app, right, and in this e-commerce app, what you need is you have an api that sends product details.
+so when you foray into mobile, you have now two types of clients to support your desktop web and your mobile app: right.
+but if you think about it, the information that we sent to desktop web was okay for us to render the entire page.
+so what would happen with that is if this, if you are using the same endpoint that you used for desktop web and your mobile app, you are sending a lot of extra information with it.
+so if we just want to ensure the great user experience with very low network bandwidth being consumed and being very efficient on your mobile device, you should be sending only the data that your mobile is definitely going to use to render the screen.
+you might want to have different set of responses depending on different types of client that are coming in a very and just to extend this problem, it's not just limited to mobile apps.
+this problem like, for example, you have a desktop app, your mobile app, but now let's say you would want to create an alexa plugin and you can do that if you want to have an alexa plugin- the kind of responses alexa would need is very different.
+it is not the stream format, like the json that you resent in the response of product details is not how alexa would understand what to communicate.
+monolith then then talks to db, get the data sent to the bff and bff forward set to the desktop client.
+monolith goes to database, gets the response sends to bff and which is then sent to user.
+for example, whatever information it got from the monolith or from the backend apis, it would filter out the things that it does not need to send to the corresponding type of client.
+so, desktop bff or mobile bf4, in general, your bff service would only take care of the presentation part of it.
+if i'd want to make something extra, call it to some another back-end micro service to get some information.
+so it needs to know, like every single bff decides, given an api request that is coming to it, what it needs to fetch, how it needs to fetch and what it needs to send in the response.
+uh, it purely works on the presentation layer of your data, right, might match extra information here or there, but that is not a business logic.
+mobile bff talks to monolith, gets this gigantic response and then decides to drop reviews, faqs and other stuff that it does not want to send to the mobile, right.
+it's very simple to keep your back ends very generic while having a bff layer that takes care of the presentation, depending on the client.
+right now what you need to do is the request from your back, request from your desktop web comes to a desktop bff.
+in order for desktop bff to gather that information that needs to be rendered, it would have to talk to your product detail service, seller service and review service to grab all the information and send it out to the user right.
+only the logic only has to be with the corresponding bff layer, right, so that's why it fits very beautiful in the micro services space architecture.
+like, for example, if tomorrow your android team says, or the mobile team says, hey, we also need this information.
+for example, you might not want to send a particular sensitive information due to any like your back end is generating that, but you would want to filter it out on your bff layer.
+so now you can filter out the things that you don't need hide sensitive information, then picking the right stack for their protocols for a client, and it's not just for client but even for backend, because you have a bff layer sitting in between.
+let's say you have a client that you have a legacy client that only understands xml, but your backend is sending response in json.
+your bff layer can do the transformation because for a particular type of client it only understands xml.
+for example, the attacks that are possible through mobile device are very different from attacks that are possible through web interface, right?
+so, depending on the client that you have, you might want to apply the corresponding checks onto your bff layer, and that makes it very easy.
+request comes to bff, bff fans it out, gets the response, gathers it and sends it back right.
+so bff can also act as a request aggregator, making your clients very lightweight: just one api call from them.
+you could see that mobile, desktop, multiple types of client.
+so most of the code across your bffs for different client would be very similar.
+first, when the interface are slightly different across clients, for example, where you have your, where your interface for your web is very different from your interface in your mobile app.
+it goes to back and fetches the generic information, transforms it into the format that alex understands and sends it out right.
+similarly, for supporting mobile device, it would go to the backend service, get the information, transform it or basically filter out the things that it doesn't need and send it to the mobile.
+hypothetical example: let's say your bank understands xml but every other client that you have- your mobile app, your desktop app, everything- understands json.

@@ -1,0 +1,43 @@
+uh, as per official c documentation of python, it suggests that the current implementation keeps an array of integer objects for all integers between minus 5 and 56.
+when you create an int in that range, as in the range minus 5 to 256, you just get back a reference to the existing object.
+this means that python is creating singleton instances of minor of all the integers in the range minus 5 to 256, right, really interesting.
+so instead of creating new objects every time, python is preallocating all the integers in the range minus 5 to 256, and whenever we need an integer in that range, instead of creating a new instance, it would give us an existing pre-allocated instance, right?
+uh, and in this one, what we'll be doing is we'll be going through c python source code, like always, and find out exactly how python does it, but before we do it, let's first ensure that what we see is actually right.
+the function is defined in long object dot h.
+so this function is basically trying to create a pylon object from a long variable.
+so from i well, which is of type long, it is trying to create a pylon object.
+so it checks, if my eye well, is actually a small end.
+it is basically allocating the new long object, right.
+it checks for minus n small negan's less than equal to i well, and, and i well, less than n small percents.
+it's not minus 5, but it's 5, while n small poisons is 257, and this is really well implemented.
+so instead of setting n small negan's to be equal to minus, my test set it as 5.
+and here it checks for minus n small negative, basically minus 5 less than equal to i.
+so minus 5 to 256 is where a small int macro would would.
+so if i am asking for an integer in the range minus 5 to 256, both inclusive, it would invoke this function get smallent.
+and, uh, it first asserts that it is small and that's okay, and then it invokes a function called pi long underscore, get small into underscore internal.
+so the magic would be happening in pylon underscore: get small and internal.
+and what this function is doing is it is computing the index, uh, given the value, it is computing index to be equal to my uh, to be equal to pi small negan's plus value.
+so the uh recall that pi small negan's was stored as was defined as 5 and not minus 5.
+we can directly do, uh, we can directly do pi, small, so basically pi and small negan's plus value.
+instead of doing minus 5 and then multiplying it by minus 1 to make it positive and then doing plus something, which is obviously much more computationally intensive, what we are actually, or what a python chord have actually done, is they have taken uh, pi, small negan's to be positive and just by and just, while comparing, they are prepending a negative sign.
+so now that we have the index, uh, it just goes through this small end array and it gets the object and it returns.
+so let's see how the small end array is defined.
+so yeah, indeed, small end is an area of pylon objects of length, pi and small negatives plus pi and small position.
+so basically, 5 plus 257 is how it has actually computed this thing.
+so the array is of size 262, within which it would store the the pylon objects from -5 to 256, both inclusive.
+so now let's see how small it is actually populated, because, uh, there has to be a place where it is actually initializing this thing.
+what it does is it says that the function name is pylon end, sorry, pi long init.
+so this looks like an initialization function of long module, and what it is doing is it is going through all values from 0 to n small negan's plus n small causes, basically all possible values that needs to be cached.
+so, uh, during this initialization it is indeed creating, uh, uh, it is indeed creating long objects for the range minus 5 to 256 and holding these objects for in the array from index 0 to 262, right?
+so next time when someone asks for it, it just computes the index, goes to that particular location, fetches the object and returns it, right?
+uh, where is it exactly storing the value in the pylon object?
+these are internals of how pylon object is implemented.
+you'll learn a lot about internals and how python actually implements long integers.
+so get small end is using uh is being used for pi long from u wind.
+we are trying to create a pylon object from an unsigned integer.
+so, uh, from the value long, long end, if you are trying to create a pylon object, at that time it is doing the small in check and then returning smalling.
+so primarily, every time we are trying to create a pylon object, we would be seeing this sort of check from pylon underscore, from size st, make sense.
+so any time we are creating a pylon object from anything, we are adding this check where we are checking if it is a small end.
+if it is a small end, then just return a get smaller, right, so use the existing reference instead of creating a new thing out of it.
+i've also done a really interesting benchmark- not really a benchmark, but more of a visualization- on how many object references are there for values from the range minus 5 to 256, so that we understand that, yeah, indeed, these objects are being used those many times and they require to be cached.
+so one main reason why python did caching of small integers: because we, because co-developers- actually observed that smaller indexes or smaller integer values are used quite a lot as compared to larger values, because they are used in indexing, they are used in some basic computations and what not.

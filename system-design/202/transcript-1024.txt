@@ -1,0 +1,34 @@
+so if you have hundreds of photos listed there you would want to fetch- you need to fetch those explicit images from the back end, right?
+so typically what happens is that any browser slash client that you are using that has a limit, that has a limit on how many maximum concurrent TCP connection that it can create to a particular domain.
+now, let's say you are rendering, that, you got 60 image URLs, right, and you are loading it in IMG tag.
+so if I assume that every uh, the time to fetch every photo or every thumbnail is exactly the same, it would happen: first six would take place, then second six would go in, then third six would go in, and so on and so forth, and finally, from 55 to 68 would be making the request and you'll be rendering the photo, right?
+in HTTP 2, a lot of things have changed and a lot of other approaches can be used to solve this exact same problem, right, okay.
+from this end point, the job of this endpoint is it would make a call to the server, server would get this image Parts, all of this image parts, and server would send you the actual image data in the response.
+so it's actually binary data, but the encoding that you are using is base64 encoded, which means it makes it safer for us to transmit it in HTTP response level.
+use it as a string if you would want to, right, and the response looks something like this: it's HTTP 1.1 200.
+so the idea here is that you requested four images: image one image to image 3, image 4, right, so here what you are returning back is: you are returning back for each of that image, you are returning the base 60 for encoded part of it.
+so in this one HTTP response you are sending four Images data, the actual image you are sending in a base 64 encoded form.
+now this image can then be used by your client to render it at that particular place, right.
+it goes to the storage, gets that image data right, gets it actual image, converts it into base64, it encodes it into base64 and then sends it back in this response.
+so to have your client understand that you would be sending response in chunks, you have to pass this response header called transfer hyphen- encoding- chunked- and the idea is the core idea behind transfer encoding chunk is like, for example, your server doesn't know how big the response is, right.
+it sends the content length header in the response itself so that your client also knows that these many bytes are coming my way.
+and because you have specified your transfer encoding as chunked, it means that in every response that your server is sending.
+so here it's not that your client is sending the request and server is sending the response.
+and now your server would be sending multiple responses to the client will say: how is it even possible?
+so the idea here is: your client send a get request with a lot of parts in it.
+it is creating a chunked response out of it and sending it to the client, right?
+so, for example, in the first chunk response it got like it made.
+let's say you requested for four image: i1, I2, I3, I4, right, and your server, when it got this request it made fourth, it created four threads and tried to fetch four images in parallel.
+then Server create another chunked response and send it over that exact same TCP connection to your client.
+and then server got i1 and I2, so it put both of them in that one response and send it back.
+so it would send an HTTP response having the null byte in it, marking that your chunk transfer is now done and now you can stop sending, or now your client can terminate the connection.
+so every single- uh, so basically every single language that you are using, it supports partial streaming of responses to the server, or twos, or to the client, right?
+similarly with golang, similarly with python using core routine, similarly with Java as well, every single server supports every single programming language supports a way to send chunk responses- right, because at the end it is just a TCP connection you can invoke send as many times as you want, but, depending on the framework that you are using, you need to see how to do partial streaming of responses right once these images are received on the client or these responses are received on the client side.
+if you're using apps, some minor things here there would change, but if, overall, the essence would remain the same- that you are sending requests in bulk, your server is fetching multiple images in parallel, as in when it is getting this image, it is creating this chunked response and sending it back to the client once all the images are sent.
+then your server sent General request or sorry, it sends a null response.
+right now, with this streaming that we just saw, what's happening is we are preventing head offline blocking, which means that even if I get request for 100 images, my server is not waiting to get response from 100 images.
+if it got response from 2, it would send two to the client.
+it would got response from 4, it would send four to the client, right.
+this way what happens is you are not waiting for all of them to be fetched from your S3 or from your storage, and then you compile one gigantic response and then send it back to the client.
+with this chunking, what is happening is, even though your server doesn't know what's what's going to be the total size of it, it does not have to buffer all the responses.
+whatever it has handy, it is sending it as one HTTP responds to the client, back to back, back to back, until all the things are done, and then your server sends a nothing right, amazing, amazing, amazing.

@@ -1,0 +1,36 @@
+thanks, so to get information about the peers, a node in a bit torrent talks to a central entity named tracker.
+so if, like, bittorrent can be implemented with a central entity called tracker or you, or it can go pure p2p with by using an overlay network, uh, that is implemented using kadamlia, right.
+so cademia is an implementation of a distributed hash table: hashtable, simple key value pairs- right, but if one node is not enough to handle a lot of data, what do we do?
+so we would have a lot of nodes in our network and they are all storing some bunch of key value pairs.
+let's say, i want to get a particular key value pair request can come to any node and that node needs to know who to talk to to reach to the node that holds the particular key value pair.
+right, instead of going deep into bittorrent part of it, we'll talk about this raw distributed hash table implementation, which you can leverage and extend across hundreds of use cases out there, right?
+okay, so every node or every data in this dht implementation is gets a unique 160 bit or 20 byte id.
+right, and this is where we need a way to define the distance metric.
+so there has to be a very smart way to define a distance metric that would help us tell: hey, for this particular key, out of this three n nodes, or out of these three nodes, node one is the closest one.
+in order to find a closest node, we need a distance metric that quantifies the closeness.
+so it satisfies all the three requirements that we wanted from our distance function, which is basically simple euclidean geometry, right?
+so when i have this, so in order to find which node owns the key ka, i have to take, i have to find distance from ka to n1, ka to n2, right.
+hey, these two are actually close to each other, right, so we can visualize the distance metric that we were talking about in a try.
+so instead of having the entire like, instead of you needing to travel entire 160 bit, just keep it at a shortest disambiguated path possible, right, and that's the idea.
+so with this, you, and also, if a particular sub tree does not have any node or any key placed in there, you don't even need to construct it.
+so, let's say, if you would want to fire, get key k5, and you fired this request to node n1.
+now node 1 needs to know where this request should be forwarded to, right?
+so somehow i need to know where to forward the request to right.
+and this is what the key problem that your routing needs to solve: that no matter which key is requested, it would always take you in the right direction and take you to the node that would store the corresponding key that you are looking for, right?
+so the entire sub tree that starts with one it needs to have- at least it needs to have- contact in at least one of the node in that gigantic subtree that starts with one right.
+uh, a contact with any one node in this sub tree is fine, right.
+then it has zero, one, 0, so, which means the sub tree that is left is 0, 1, 1, so it needs to have one contact in subtree that has prefix 0 1, 1.
+so this node might forward your request to nb, which is storing at one, one, zero one, because it is part of that subtree.
+so the responsibility of the node is to either give you the key value that you're looking for or give out the ipa test the machine where you can go to right.
+so here, because of the enforcement that we did, that every node needs to have a contact to at least one node in all the sub trees that it is not part of this means that we would always converge upon the node that we are looking for without ever digressing, and this is such a beautiful deterministic routing logic in a pure p2p network.
+okay, so now, given this, what we know, that each node would need to keep track of a small subset of nodes that it would talk to and it would put it in its routing table.
+so for each sub tree, for each subtree prefix that you are ensuring a connection to, what you need to do is, instead of having one node, you would store k nodes for that.
+so for each prefix, for each sub, for each node, for each subtree prefix, the k buckets is sorted by time: most recent at the tail, least listened at the head, right now.
+so, for example, if i am node n one and i never received a message from n a, if i receive that message then i would update my routing table with an a's information in it into the corresponding k bucket, right?
+this way, the routing table across the entire network keeps updated so long as there are messages flowing through the nodes.
+right, this is the find node implementation.
+right now, let's talk about storing of key value.
+so to store now- let's say you would want to store something like you would want to store a key value in this p2p network- you cannot now implementations would vary, right?
+for example, some use cases might say: hey, i would store this key value only at this one node, i would not store it at any other route.
+like your use case, your implementation, right, and this way, what you would see is that a key value pair is stored across all the nodes in your network, right, okay, so now the implementation.
+no matter if node goes down or something happens, you would still have your key value persisted across the network, right and again, the usage varies as per the use case.

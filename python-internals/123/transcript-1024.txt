@@ -1,0 +1,37 @@
+so, since we're talking about python, let me create a new string called the honest python- a shameless plug, i've added, but that's okay.
+if it is c python, it uses objects memory address, so you can treat the written value of id of a as the memory address where a resides, so memory address where a actually points to, so basically where the string resides.
+this is very interesting because now, even though we specifically initialized a as the honest python, b as honest python python, instead of allocating a separate memory space for the honest python as my second, well, honest python- it reused what a already pointed to, so it somehow identified that this string already exist and it needs to use the same reference.
+yeah, right, and that's, and this sort of optimization is called string interning.
+now, when you do a double equal to b python, instead of going through the strings one by one or uh, sorry, instead of going through characters one by one, it can first of all like immediately check if a and b point to the same address or not.
+going by the name it really looks like it's an implementation of cis dot enter right.
+this is the main function, uh, that is responsible for interning the strings, like: because in this, this thing, there is nothing else than this.
+so pi unicode in turn in place is the one that performs all the string and turning uh, let's check its implementation.
+and here what it is doing is it is checking if my pi unicode is actually interned or not.
+so this seems this is like that global table that we, that that help text, was talking about, where it's dumping all the intern string.
+it looks like they're closing on that so that global state is obviously unique, specific because string interning.
+so python dictionary has this function called set default.
+but if the key is not present in the dictionary, then it would take in the value that you have passed in as the argument to set default and set it in the dictionary, right, and obviously it would return the value that was set.
+so you are just using this four bytes of key and value space and not like storing entire string in the dictionary.
+so you are calling set default on state arrow intern, as in your global table, with key ss and value as s.
+what's really interesting about this is, since it, so it's basically returning the object that is set in the dictionary, right.
+so then it would return already set value, which is the first instance of the honest python right.
+so if t double equal to s, it implies string did not exist, as in, string was not in turn and we have to internet right else, as in if key, if t is not, if t is not equal to s, it implies string already interned.
+so if string is already in turn, then what i would have to do it is i would want to basically reuse the returned instance, because return instance is the first instance, right?
+so this is why the function accepts pointer to a pointer, not just accepts pointer to just in turn that particular string, but it accepts pointer to the pointer because it wants to make a change in where it is in the, in the variable that was passed in, because what we saw was, when we did id of b, it gave us the same address, right?
+this is where the honest python string for b, for the second statement that we have given it, identifies that it, that t is not equal to s, and over here it would do a set reference.
+let me just print out string and i'll do a pi unicode as utf and i'll pass in s.
+we are printing already in turn pi unicode as this and if this is not the case, as in my code, went over here and and obviously, while, uh, when it is already entered.
+so it would have set the first instance in the map, in the global table, and then it would have written so, which means in that same state s or sorry, in the same uh string object s, it needs to set in turn to be true.
+so now if i call make, i build this code, i call make and what i'll get is: let me just let it just build the entire object and the binary see it already started printing already in turn internal intent.
+but now, when i do be equal to the honest python, it says already in turn.
+it says already in turn it changed the reference and that printed this particular thing and it returned: got it.
+so something like changing the state of something of, of the my pi unicode object, which is s of dot intern to something.
+what it should be doing is it should be going into the state and should be checking if state dot interned is non-zero or not, right?
+okay, let's do this fun thing so that it would help you guys understand on how to like think about making changes.
+let me check for unicode repr function.
+so now, when any string is in turn, let me try it with the old one, the honest python.
+so this is how we have printed, like: isn't turned 1 or not, right?
+it did not intern the string the honest python with spaces.
+so that's the logic of how python is trying to do string interning right.
+and obviously now, if we were to change it like we would want it to, in turn every single thing, what we would do, we would just get rid of that check.
+so what i would want you guys to do it is explore the c python code base and find out what all strings are being interned, right.

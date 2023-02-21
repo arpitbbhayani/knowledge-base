@@ -1,0 +1,28 @@
+so today i want to introduce you folks, in case you are aware, to a very interesting class of databases called embedded databases.
+in this video we will go through like i'll be introducing you to the world of embedded databases, but, more importantly, we'll understand why do we need it and where can we use it.
+so this video would serve as an introduction to that and, more importantly, understand if you would want to ever use it, when, like, basically the kind of use cases for which you would pick it and how do you actually use it and what's the core idea behind it, right?
+you run a mysqld command on your local machine on a particular port, so that database, so the database boots up within that machine and then you connect to that machine using a certain port, like a very standard way.
+a very standard way to build system is this: you have a user, you have a bunch of api servers and then you have a database and all api servers connect to the database, right?
+now comes the class of databases that i would want to talk about today: embedded databases.
+so this particular case, like this particular kv store in which you are storing the profile that you just accessed from the db you are, you are basically caching it, you are putting it and it is contained within this profile service, right here.
+so if parent process dies off, your like no one will be able to talk to your database, right, and these databases- like one really, really solid case of databases is, for example, if, uh, this profile service, right, if i just extend this example and say that, hey, this profile service now would not want to store it in in-memory hash table, but maybe on the disk of the server, right?
+so then anytime a profile is get from the database, you would want to cache it on the local disk of that server.
+now what's your use case, you would be a given a profile id and the profile information you would want to store it onto your local storage and, upon and upon getting that same request for the same id, you check the local storage and get the information.
+basically, you need a way to build your own key value store on your local disk storage.
+when you start a django server, the default database it uses to create that migrations and whatnot is sqlite, right.
+so you would see a sqlitedb file created on your local machine when you start a avengers at a django server for the first time, without giving any any database correction string, so that that is an embedded database.
+so then you can like, just delete the file in your entire database is gone, right, so, and that's just confined within that one server, right, again embedded within that process.
+it's a very interesting concept that embedded databases, like they, solve really amazing use cases.
+so long as you are okay com it being confined to a space, right, you don't need a central server but a local sort of way to get and put and basically delete data, right, ember databases work very nice.
+so you would basically accept the right and put it onto your local machine and then have a separate process that takes it out of the local machine and puts it into your central storage, like if you have flow like this, how would you store that data on the local machine?
+you want, so they, that particular database would be very heavily optimized to accept as many rights as it can, so long as your machine resources are not choked up- and they, they are fabulous in handling that.
+if any sort of information that your website needs to put in browser exposes index db, so that you can use that right and that index db is a classic, classic, classic example of an embedded database confined within that space.
+another use case that, at scale you would say embedded database is very heavily used for is, let's say, if you would want to build, hypothetically, you'd want to build your own partitioned key value store, right.
+you have key value store embedded databases on each of their api servers.
+so it's like when you fire a put request, the put request act, the, the put request actually comes to your first db proxy where you say, hey, i want to put this key into this database.
+the data would reside here within that database, here within that key value store present on that local machine, right?
+i've worked on a very similar use case like this where used to have thousands of servers, each server running its own copy of a small embedded databases, accepting, uh, not really doing the rights.
+but it was more of a read-only use case where we just copied that small embedded database and we basically uh, that server was responsible to handle all the load for those specif those for those particular specific set of keys requests used to come to the server from that local embedded database is to read, so no remote reads very high rate performance onto our system.
+so that was a really amazing way to use embedded databases, so energized in a gist, if you would want to ever, ever, ever query a data right, which ca, which, if confined, which, if it is okay for you that that particular database is confined within a space.
+it's always better to use an embedded database, which gives you very nice, get put delete and if you're using sql, it gives you a raw sequel like interface to fire advanced queries, create small set of indexes on it and whatnot.
+so anytime you find such use cases, go for an embedded database that they are mind-blowing- mind-blowing, to be really honest, like in every database, is really solves for a niche.

@@ -1,0 +1,32 @@
+now what could happen is, if we are not handling collisions, the second value that is put in the in your array would replace the first one, which is bad because which makes your database or which makes your hash table lossy, which means if you inserted a particular key, then you are reinserting it.
+for example, if two keys are slaughtered in the same slot of an array, instead of one overwriting the other, we would use an auxiliary data structure in which we can accommodate both the keys hashed to the same slot right.
+so a small, just a quick uh gist of the idea is we would form a chain of keys that are hashed to the same slot right, for example, in index one.
+so, in case there is a collision, you are always adding the key to this linked list, right, and this is how chaining, like the idea of chaining, is right.
+so when we talk about when we want to chain and we are using linked list for it, there are three very important operations that we would need to, uh, that we would need to support: first of all, adding a new key to this linked list.
+you would need to check if the key is present in the hash table and for that key, if it is going and basically hashing to a same slot, which is hold by english, you need to check in the link list if the key is present or not, and remove a list when hash table operation comes in to remove a key, which means you also have to remove it from the link list, right?
+right, where each slot of the array holds a head pointer to the linked list.
+right, so that whenever a key is hashed to that location, it is added to the to this particular linked list.
+it would hold the actual linked list to when, because we have to support collisions, right.
+okay, and each slot and each uh and each slot of the array contains the head to the point of the link list, which looks like the, the standard definition of a struct.
+we can do that comparison because, let's say, if apple and and hash to the same location, we need to, and if someone says, hey, delete apple, you need to traverse to the link list and identify apple and then delete it.
+right, so you would need to keep the void pointer key and a struct node next so that you can form your linked list there, right.
+each head pointer of the linked list it points, it's, it's, it's basically set to null, which means there is nothing in it, right?
+let's say, put k1 comma v1 came in and let's say k1, hashed to index 2, so it would go to the index 2 and it would then your node, then your head pointer at index 2 of the array would start pointing to this new node, right?
+let's say it got hashed at index 0, so it would go and sit at index 0 at the head of the link list, right.
+hey, on index 2, the head that is already set, so k, so key k 3 comma v 3 would go and sit at the tail of the linked list after key k 1 comma v 1.
+we add it to the chain present at index i in the array right.
+so whenever you got a key to be added to the hash table, you would hash it to a particular slot, in that when you are adding it to the link list, you are directly adding it to the head.
+once you got the slot, you have to go through the link list, go to the end of it and then add the node.
+if you can keep a track of which node is the last, your ad insertion at the tail can also happen at order one right.
+for example, you are storing strings as a key right and let's say you have created 26 slots a to z.
+so a slot of the array would contain linked list of all the keys that starts with a right.
+if you want to have a lexicographical order, so then let's say you inserted and so it went and sit at the first place in the linked list.
+so if you would want to maintain some sort order whenever the collision happens, your insertion would need to, would need to be according to that right.
+so three possible implementations of inserting in the linked list: always add it to the head, or always add it to the tail, or, depending on uh, depending on the order you would be adding it to the link list.
+okay, now let's look at second operation, deleting a key.
+so one key thing to note over here: when you are implementing it with linked list, ensure that your pointers are handled and adjusted well, because this is a very common uh uh reason why segmentation faults or some error happens, like because it's very bug prone, right.
+so here what we do is, let's say, we would want to get a particular key from the hash table.
+so what we do, given a key, we pass it to the hash function, get an index, go to that particular slot in the array, start traversing through the linked list, node by node, until we find the node that holds our key right.
+what you can clearly see is, if you have a very large collision rate, right where one of the links is going out to be very big, it would affect our lookup times and date and hash tables are meant to be efficient at lookups, so you order when you reach to the slot, but after that you are doing this linear scan.
+for example, you can use a tree, a self-balancing binary tree, instead of a linked list.
+that's when you might want to go for a self-balancing binary tree instead of a linked list, and this is all about chaining.

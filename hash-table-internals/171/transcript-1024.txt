@@ -1,0 +1,31 @@
+so there is bound to have collisions and we know that as hash table gets filled, the performance would degrade.
+so if i am placing 20 elements in my hash table where my size of the array is 10, my load factor is 20 upon 10 is equal to 2, right?
+a table will never get full because with chaining, you are always adding the key that you are inserting in the new slot, or rather in the new node of a linked list, right, you are always creating a new node and putting it there.
+but obviously, when you add a large number of keys, even with chained hashing, your performance would start to degrade and you- and that would be worrisome for you- with open addressing you, with open addressing, you would eventually fill the table, because what you are doing is you have an array where you are trying to place a key.
+if that's what is occupied, you are finding the next free slot in your hash table and with time and with time, the entire hash table array that you have will be filled, right.
+so with chain hashing, uh, if i talk about the formula load factor, it can simply be put as the average number of elements that you are storing per linked list.
+so if alpha is a load factor, in case of your chained hash table, the time to resolve conflict would be a bigger one, plus alpha, right one to add the new node, and alpha, which is to traverse the list and resolve the conflict.
+if i plot that against your hits and misses for uh- linear probing and open and basically double hashing, what we see is an exponential rise in the number of probes required for us to find an empty slot or to do a key lookup right.
+right, linear probing performs very poorly as compared to double hashing, because with linear probing, you have a problem of clustered collisions and you will do far more lookups because of a poor hash function.
+but with double hashing you are using two hash functions, so its performance is a little better than what linear probing would give you, right?
+the number of probes required for you to do a key lookup or find an empty slot to insert, or find a key to delete it would increase exponentially, right?
+so this is very costly for a chained hashing because each probe requires you to do a random access of your memory, because your node can be allocated anywhere in the heap.
+it's better that if you, if you practice, or if you have a particular use case in mind that you are trying your hash table for, apply all sorts of probing techniques and tune it, benchmark it against the load and see which one performs the best.
+so if you are figuring out a hash table for your use case, or tuning or hash table for the best performance out there, or you are building your own hashtable, it is important to understand how good you did right, how good your implementation is or how good your tuning is.
+so how long does it take for you to do a key lookup as the load on your hash table increases.
+so if you are implementing an open addressing strategy for your hashtable con, hashtable collision resolution, you would see that as alpha tends to one, your performance start to degrade, because alpha tends to one implies the number of elements is almost equal to the number of slots of your array.
+to put it, you are not bounded by the slots of the hash table, so performance would not degrade.
+so linear probing would be slower than double hashing in almost all the cases because of clustered collisions.
+so with double hashing, because you are almost leveraging the entire hash table slots that you have, the number of probes per collision would be much shorter as compared to linear probing.
+so now, with this, whenever you are tuning your hash table, whenever, so you can keep those things in mind so that you don't do some random benchmarks to pick the best one for your implementation.
+right now, you, with this, you might see, you might think chain hashing looks much better than open addressing, doesn't it right because?
+open addressing uh is limited by the number of slots of your hash table.
+so looks like chain hashing is a very good approach, but it is not cash friendly, right?
+so if you are looking at a very high performance hash table, chain hashing might not be the best way to do so.
+because chain hashing is not cache friendly, because, again, you are jumping here and there in the in the memory, because a linked list note can be allocated anywhere.
+but when tables go large and the number of collisions increase, your chain hashing would start to suffer.
+this way, when you are traversing through the linked list, you are still iterating through the array, right, because they are contiguously allocated, given that you can leverage cpu cache, and that is such a beautiful optimization.
+okay, so this is a very interesting optimization on chain hashing to make it cache friendly.
+so that's one thing that you should take away from this discussion: that trade-offs, just like in system design, hash tables, implementation, when you have multiple algorithms, multiple strategies, probing techniques, everything is a trade-off, and which one would you pick, why and where you can only get it from a data driven approach, which is where you have to do a performance benchmarking and see how it performs.
+well, if you're ever interested in implementing a hash table, this would also help you in thinking how you would test if your algorithm or probing technique that you think is new performs well against the existing strategies right.
+so keep those things in mind and let's try to get the best performance out of our hash table implementations.

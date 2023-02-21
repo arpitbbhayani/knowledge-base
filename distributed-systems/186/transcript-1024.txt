@@ -1,0 +1,32 @@
+before we jump into this algorithm, let's talk about a concept called diameter of a network.
+so diameter of a network, with any topology, is basically the maximum distance between two nodes in a network.
+so flood max algorithm works with any network with any topology in it.
+hey, the network that we are part of has the diameter of three, because that's how they would know when to stop the lead reduction algorithm, right?
+that it selects, like the flood max algorithm, selects the load with the maximum uid to be the new leader, and the core idea is: we have to flood the network with the max uid.
+so what we do is the election happens across multiple rounds, right, and the number of rounds through which were like, for which this happens, is equal to the diameter of the network, which means the maximum distance between the two nodes.
+so the diameter of the network is three, the number of rounds in the election would be three.
+so it would take five rounds for the network to determine who is the new leader right now.
+so in each round, every single node of the network would keep a track of the maximum uid that it has seen so far, including its own.
+the idea is like, if every node of the network would keep a track of the maximum uid that it has seen, so it would receive something from the neighbors, the uid of the neighbors, and they would check: hey, like what is the max id that i have seen till this time?
+and what it would do is it would do the broadcast of this maximum uid that it has seen so far to its immediate neighbors right now, because it can be connected with any topologies, it's not just that one neighbor in the clockwise direction, any nodes that are connected to this node.
+so every node keeps track of the maximum uid that it has seen so far and it broadcast this max uid to the nodes connected to it.
+in each round, every node receives the max the, receives the max uid from each of its neighbor that they have seen so far and it would forward it to this node.
+basically, this node updates its max uid if it wants to and then it sends this information to its neighboring node.
+so this clearly see like we can clearly see that after, after the diameter number of rounds, which is the maximum distance between the two nodes in the network, every node in the network would have seen the maximum uid, right, because the maximum the node with the maximum uids message would take at max diameter number of rounds to reach to the farthest node, worst case, to the farthest node that could there be.
+and this is how your maximum uid will be propagated throughout the network: by literally flooding the network with this max uid messages and thus, after the diameter, number of rounds of this algorithm, what would happen if?
+if the node, like every node, will check, hey, what is the max uid that i have seen till this time, after diameter, number of rounds, if the node that has like, if the node with the max uid sees itself as the max that it has in so far, it knows that its uid is the largest, so it would be the leader if self uid is not equal to the max i have seen so far.
+so if, let's say, my node 3 sees maximum of 18 but its uid is 3, it knows that it is not a leader, it is a non leader.
+but if my node 18, which has the maximum uid, sees itself, which means that it has the maximum uid and it is the new leader of this network right now, this is how each node knows who is the leader and if it itself is a leader or not.
+uid that the node has seen so far, we cover all bases and every node in the network would know who is the leader and who, and if itself is leader or not.
+right now, if you do the complexity analysis, pretty straightforward: it takes order of diameter, number of rounds to elect the leader.
+so that becomes your time complexity right now, and in each round what have what is happening is, in each round, across each of the directed edges, we are sending the message.
+so the number of messages exchanged during this leader election is equal to order of diameter, number.
+right, so that is what your messaging complexity, because across each round we are sending messages across each of the network or each of the edge in the network.
+step one: what we can do is we can reduce the number of messages exchanged during the election by only sending, like a node can only send a message only if the maximum uid that it has seen changes.
+so, for example, if a node three is seeing seven, so it would broadcast the message that, hey, my max id that i have seen is seven now.
+it's like, oh, the max i've seen is seven, the new one that i'm getting is six, so i'll not broadcast anything to anyone, right?
+so this would significantly reduce the number of messages exchanged across the network because there is no like every round.
+you don't need to send the max uid that you have seen, because only when it changes to the broadcast, otherwise remains silent.
+you should not be sending the message of the you, of the max d that you are seeing from the node where it is coming from.
+right, it should not be sending in that direction because it's few time, because nine is already the max.
+so this is also an optimization through which you are not sending messages that would result into a discard from the other one, so reducing the number of messages exchanged, thus reducing the computational uh, thus reducing the communication complexity of this leader election algorithm, right?

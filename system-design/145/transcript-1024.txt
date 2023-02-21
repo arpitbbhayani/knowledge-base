@@ -1,0 +1,37 @@
+for example, if you kept a table t2 in this, or rather, uh, if you have one database which is, let's say, chart2, which handles table t1 and t4, and there is a lot of incoming load coming in for table t1, so what?
+so, before we directly jump into the moving part of it, what we definitely want to do is we would want to store meta information like, for example, what you'll have is, given that now, after you do vertical sharding, you'll have multiple databases handling multiple tables.
+for example, if your request is coming for authentication, you need to talk to authentication database servers, which has those authentication related tables.
+and this information should be very- it should be stored in a very secure way, not just from a security perspective, but more from the consistency perspective, where every single one of your api servers should get a consistent view of it right.
+so where do we store this meta configuration that, hey, these tables are stored in these databases so that my api server will have this information from this source, or this configuration that, hey, if i want to query on authentication table, let's say authentication users table, which database should i correct?
+it will get from this meta configuration and then it will connect to that particular database server to read the particular information and send it back to the user.
+this configuration will have to be changed so in the mapping that we stored that this table is present in this database.
+after we move the table, this configuration needs to be changed, that, hey, now this table is present in another database.
+and once it is changed, what we would want is we would want this information to be reactively sent to all api servers, which means that your your.
+otherwise, what would happen is you have changed the configuration, which means your table has moved from one database to another database, but what if your api server doesn't know about it?
+meta information like table t1 is present on database 1, table t2 is present on database 2- right, something around it would hold this information and if anyone changes the configuration on zookeeper, zookeeper will proactively send updates to all the three api servers.
+so zookeeper has something called as watch, so you can watch a particular configuration and if that configuration changes, the watch function on your api servers will be triggered and in that they can fetch and query and get the latest configuration and immediately that gets updated.
+so this way, instead of your api servers proactively polling, hey, is there any configuration change or not, we are making these things reactive.
+any configuration change happened in zookeeper, it would be proactively sent to all the three api servers.
+so zookeeper is not just acting as a configuration meta store, but it is also acting as someone who can proactively broadcast or proactively send updates to every api server which is corrected.
+the information will be proactively sent to api servers which can now then connect- now can start connecting to a more relevant database, right.
+now let's talk about how to actually move tables from one mysql server to here.
+it's a- it's a official utility that is provided by mysql with which you can literally dump the table into various format, like sql, csv, various format.
+it dumps the table into a simple sql file locally and what you can do is this file would also contain the position of the bin log.
+it would take the entire dump of the table and mark that: hey, in this bin log i've read till this position.
+and when you have this information there, you need to know that, hey, in my dump i have information till this point so that when you create a new database it can start reading after that position.
+so bin lock position is extremely important to be logged and which is where mysql dump, as a utility, comes in very handy.
+so you, so you basically took the dump of your database into a sql file and which also contains the bin lock position.
+now step number two: you took your dump dot sql file and load it into your db2.
+so now, after this step, you have db2 with that one table with that entire data up till the time when you took the snapshot, when you dumped it.
+your main database is still accepting the rights, so the new entries would keep on getting added in bin log.
+once we restore the table onto another database, let's say db2- what we have to do is we have to start a replication.
+this way, all the incoming rights that are happening on db1 will then start replicating onto dp2.
+this way, eventually my, the two, the two databases, db1 and db2, for that one table will come in sync.
+so what we do here is we know that if the replication lag between the two databases for that table is very low- let's say it's literal, literally 0.00001, something like that.
+we want to stop the incoming rights onto this database, onto this database for this table.
+api server then any new incoming request coming in for table two, for table t2, because you updated in zookeeper, zookeeper proactively send that information to api server.
+api server will now start connecting to db2 right.
+so for that small duration, for the small time window when you were renaming the table, updating the zookeeper and the updates reactively going to the api server, for that duration you will get table not found errors.
+so api server would know where authentication table lies in.
+so engineer then fires this thing, uh, moves the table, uh, like doing that mysql dump, restoring it in another place, starting the replication.
+as soon as the uh, the configuration is updated on zookeeper, the update is sent to all the api servers, the newer requests that come in will go to that corresponding database.

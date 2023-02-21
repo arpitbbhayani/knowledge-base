@@ -1,0 +1,38 @@
+thanks, so bittorrent is a peer-to-peer protocol that makes the distribution of large files easier, faster and efficient.
+first let's understand how we classically download files from the internet, right?
+so if more number of clients connect to it, the download speed would slow down, right?
+so in most cases you would see that, hey, when you check your internet connection, you let's say, see 100 mbps download speed, but only 60 mbps upload speed, right?
+for example, with bittorrent, the role of a network is to serve the files that you need.
+bittorrent has a central entity called a tracker and the peers participating in the network.
+so the we saw that that the download speed of a particular file is limited by the upload capacity of the sender, be it a server, beta, user, bit, what, not right?
+so this is where the idea is that, instead of downloading the file from one machine, what if i distribute this file across my network and i can connect to 50 different clients at the same time and download the same file together?
+second, upload: a load is distributed between peers, right, because now every peer might hold some fragment of the file and whoever wants it can the peer can send it out.
+the load of the upload is distributed across the network, right.
+then large number of downloaders would only put a little extra load on each of the server because it's very distributed.
+what would happen is, let's say, if i add large number of downloaders, it does not mean, like earlier, if there was just one server serving the download.
+but now, given that this is a big p2p network, what would happen is whoever wants to download, can talk to any peer at random to get the file chunk.
+this would make that, even if i had large number of downloaders, your servers the one who are sending the information.
+so what would happen is your files is typically split into chunks and they've been distributed over the network and you know that i want this chunk.
+so, to make it very concurrent, your you would not make connection to, like you would not just make connection to one peer to download the file.
+you'll get much faster download speed, and this is the beauty of bittorrent, right.
+so let me just walk you through a very simplified download flow, right with bittorrent.
+so what would happen is when a user wants to download a file, it sniffs around the network to find the peers having the pieces of it.
+so your user would first go to a tracker and say that, hey, i want this torrent or i want this file, your tracker would send in the peers that contains the file or that has some information about the file, right, so this machine, your view, would then directly connect to the peer and download the file.
+so, user wants the file and let's say that file has four chunks, right, so it would go to the tracker and say, hey, i want to download this file and this file has these four chunks.
+the user will talk to the corresponding peers and download the corresponding chunk, basic, concatenate on the local machine and you have the entire file ready with you.
+and this is how bittorrent makes your download super fast, because it is currently making connections to a lot of different machines downloading the file and concatenating it locally, right, okay, now let's take a look at nomenclatures and terminologies for that, because this would be the heart and soul of the entire discussion, of the entire series that we are going to have.
+so a file that you are putting it on the torrent network is split into pieces, right, and this space is the unit of transmission.
+it downloads the blocks of the particular piece and then it concatenates it locally and by concatenating all the pieces it would have the particular file, right.
+so pieces is what a server holds and to do the transfer, it transfers blocks out of it and then it says that, hey, now i own this particular piece, right?
+for example, if peer set like, let's say, a wants to download a particular file, i have five nodes: a, b, c, d, e.
+and if i, let's say a, wants to download a file, a sphere set as given to it by tracker, would be c and e, which means that if a wants a file, it can get from c and e, right.
+so that's the peer set of a particular party in the bittorrent network.
+seeder is something that holds or that has the file and it tries to seed it in the network so that any leecher in my network can get the file that it wants, right.
+so leecher is the state, and once a leacher downloads the complete file, it becomes a seeder right.
+so if a torrent only has one seeder, would be a classic server client download use case.
+and if your leeches are very like, like you have large number of leeches and fewer seeders, the download speed would take a hit right.
+whoever wants to download it can talk to them and get the files downloaded, so you'll have large number of seeders.
+you would see, in a torrent network when something is new and popular you will get very fast download speed.
+so because they are like 500, 500 mb files or the iso images are big enough, so to have faster download speed, people use bittorrent to download the os, to download the os image much faster.
+so you might want to patch the servers in your network and you can have a small bittorrent protocol whose idea is like you put the file in one and your server automatically distributes the file across every single machine and they can then run the patches.
+we'll dive deep into the how to actually implement it, what protocol it is, how to contact, tracker and download the file, and lot more in basically throughout this series, right?

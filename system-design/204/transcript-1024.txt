@@ -1,0 +1,32 @@
+this means that let's say you have your search service, which is powered by elasticsearch, and on elasticsearch cluster you have three nodes: right and inelastic search.
+let's say you index a document, the right goes to the primary replica or the primary node.
+now, this means that because the same index operation is going to happen there on the replica, which means that if I would want to scale up, I would also need to scale the CPU power of it, because obviously, indexing a document requires you to process the text, split it, put it into inverted index and whatnot.
+so when such things happen, this is typically what uh, uh, your uh, which is typically what Engineers do when there is an uneven distribution, they use the elasticsearch head plugin and then they do re-allotment of shards across physical data nodes and the data gets copied and the load gets distributed there, right.
+with elastic search that becomes a problem because spinning up elasticsearch node where it gets data copied and not what not- it takes a lot of, lot of lot of time to do that, plus rebalancing, remigration of data.
+a lot of things happen behind the scenes, which is why it makes Auto scaling really complicated when it comes to elastic search.
+so these were the three critical reasons why Yelp thought of: hey, we can't use elasticsearch, it's not performant, let's build our own search engine.
+search is actually a search engine built on top of leucine, so Lucin is the one that powers the actual inverted index and ranking and whatnot.
+so that is what elastic surgery so, which means every node of your elasticsearch cluster internally is actually running leucine.
+so what elasticsearch does is it is makes using leucine simple by exposing HTTP endpoints and distributed, because cluster Management on Lucin does not support that using is just single node search engine, right, elasticsearch makes it distributed.
+they kept losing as is and they replace elastics or, like the HTTP layer that elasticsearch provided, they use Lucin and they build their own HTT player on top of Lucy, which is what they are calling nrt search.
+so what happens is, let's say, you have a Lucy node and you have a primary and a replica in Lucin, if you want to do that.
+so because segments are immutable, whenever a write happens, whenever you update a segment or, sorry, whenever you create a new segment, a replica node can literally just pull this segment out because it is immutable.
+it can literally just pull this segment out in one shot and- sorry, pulling it would copy the segment from the primary node into the replica node and then replicant can start serving its request for that particular segment.
+so, which means that once the segment is created in the primary, you, like the replica node, can just make an API call or just access it, because it's a physical segment on the disk, and just copy it and basically copy it to its disk, making it much, much faster to do this.
+so that with this, what implies that if I want my replica to start serving the request, it does not have to do re-indexing of the document.
+so, which is why Yelp thought key lets like we need this feature, we'll write our own layer.
+obviously elasticsearch is also concurrent, but because the search happens on segment, because segment is the entity where your inverted index are stored in leucine, if you have three segments, I can make three parallel queries on three individual segments and then get my queried answer, or either get my search queries answer right.
+so these are the two features that uh, Yelp wanted to leverage of leucine, which elasticsearch abstracted right.
+so you would have a leucine index there and it just provides an HTTP interface, like basically making it simpler for you to talk to it, right?
+it takes a lot of time and typically the time is taken because when you learn, when you start a new node and you would want to set up the leucine on that or download those segments and keep it handy, what you would typically need to do is, let's say, whenever a write comes to primary, you write it to the disk.
+once a segment is created, you periodically back it up to S3 or your blob storage and then, when a new node boots up, that would download it from the S3 right and then, once the download is complete, it would start serving the request.
+so, which means if my primary node goes down, they just spin up another ec2 machine, which takes like 10 seconds, and then they just attach the same EBS volume there.
+so now here, what happens is when you are writing something to the primary, when the index is created, now this needs to be notified to replica so that it can pull the data right.
+similar to how it happens with elastic and elasticsearch, there is a duplication of operation on primary and replica with leucine.
+once the segment is created, segments are immutable, so replica can just copy the segment onto the server and start serving it, right?
+replica can start serving the request instead of doing re-indexing on two different machines, right?
+so this is really brilliant of the strategy, where they are actually using the core feature of losing that they always wanted to use in order to reduce the overhead of CPU or reindexing multiple times the same document, right?
+apart from this, for that search, which is nrt search, they also implemented a bunch of features that elasticsearch provides so that they come because they use elastic search.
+so we know that in leucine there are segments and search happens over segments, right, so the data is stored in segments, the inverted index are part of segments and search happens over segment.
+like you may not be searching across all the document because one of the segment took time.
+right, this nrd search is elasticsearch like thing.

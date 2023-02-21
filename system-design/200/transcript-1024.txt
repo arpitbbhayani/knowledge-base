@@ -1,0 +1,37 @@
+so notification systems are primarily or outbound Communications, for example smss, emails, push, web books and whatnot.
+now razor pay needs to send a the email about the, about the invoice, as the confirmation of the transaction, and it wants to send a post notification to B.
+now you'll think, hey, why would a company need to store the messages that I sent to the user in a database?
+the answer to this is very simple: given that it is transactional information, when a sent money to B, and if a is not receiving a message or a B is not receiving a message, that's a problem.
+now, to do this, to ensure that the message is definitely delivered to A and B, they have to keep a track of it in a database so that, in case there is a error in sending it, a scheduler can pick that up and do the retry.
+so that is where you would have a scheduler component whose job is to pick the message that needs to be retried and then reschedule it in sqs and so that it can be consumed again.
+one very interesting design decision that we saw is about persisting the outbound Communication in a database, so that, because here, uh, guaranteeing, or basically a guaranteed delivery, is essential, right?
+challenge number one: read: load on the database during Peak.
+because now, here, if you look at it, in order to send the notification, it would need a lot of information about the user, the transaction, the sender, email, SMS- sorry, email, phone numbers, Web book and whatnot.
+but at scale, even adding a read replica, even doing a lot of vertical scaling, might not be the best decision because it would not work right.
+you would think that, hey, when I'm getting a lot of messages to send, I'll just add more workers to that.
+but if you think about it, if you add more workers to that, what happens to your database?
+your workers would choke off and your database would be over by that problem.
+if you think about it, that your database needs to be very well provisioned, the problem with this comes in is that you would have to have a very heavily provisioned database.
+you are not making a cost efficient architecture, so that is problem with scaling.
+it comes to sqs: worker picks up, executor sends a notification and entries made in the database- dead, dead simple.
+but if you think about it, not all notifications are equal, because transactional information much more important than marketing pushes, because razor pay through their challenge, like they can also, like a business can also send notifications to their customers, like, maybe, reminder for payment and whatnot, right.
+for example, if I'm sending my transactional info, let's say if I'm sending a big marketing push, a big random that I'm sending here, please, like a, let's say, a happy New Year message to all the customers.
+now, when this is happening, you're like imagine Razer by sending this to 20 million people, but during that time, let's, a transactional message needs to be sent.
+so that is where one type of event, like making other Starve, is not a good design.
+API server needs to decide: hey, this is the type of message.
+hey, if it's a transactional, let me send it to b0, if it's a burst marketing message, let me send it to P2.
+you would always ensure that a transactional message is always picked up, is very efficiently picked up as soon as possible and is sent right.
+but if you think about it, you would also need a rate limiter, because now what could happen is that each queue, event and customer.
+to ensure that you are giving consistent performance, or rather consistent experience to all of your users, all of your customers, you need to ensure that, even if one of the cons, one of the customer, is abusing it- let's say, a customer sent notification and that, let's say, that customer has a million customers- hypothetical situation- and if that customer sent large number of messages, like a bulk happy New Year message.
+all of them, all the other messages sent by other customers are getting, they.
+if it is not, which means you are not directly dropping it- you will be putting it into a separate rate limited events queue and then you would be slowly processing it.
+so you are having three cues for three types of priority and a fourth queue for all the events that breached your rate limiting right.
+so now this data is the main the mySQL database in which the executor was updating it, the entry, the scheduler was reading from it to see if any messages needs to be redried.
+if I add large number of workers, let's say if I had 500 workers, if my database only handles 300 iops, like rather 300 concurrent connections, what would happen is, because it has limit of 300, I cannot scale my workouts more than 300..
+and this is what their high level architecture looks like, where you have your user, you have your API server, you have your rate emitter, rate limiter.
+all the notification events goes through rate limiter, rate limiter knows hey, where do I need to send it.
+it pushes a message to kindnesses and then it writes to mySQL.
+so in two hours your messages would definitely be consumed from kindnesses, right, and then your normal scheduler flow Remains the Same, so whether scheduler picks up from the MySQL and sees what, which messages needs to be retried, and it pushes them back to the sqs, and that's how this normal flow happens.
+so executor writes to kinosis: kinases rights to the database.
+so that is where you need to have this exhaustive tracking happening in the system so that you can take those calls, because your rate limiter also needs monitoring.
+or rather, let me be explicit how what percentage of messages were sent within one second, within two second, within three second, within four seconds, depending on what their SLA is right, if I think.

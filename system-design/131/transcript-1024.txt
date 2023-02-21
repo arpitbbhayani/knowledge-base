@@ -1,0 +1,41 @@
+so sharding and partitioning come in very handy when we want to scale our systems.
+in this video, we take a detailed look into how a database is scaled and evolved through different stages, what sharding and partitioning is, understand the difference between them, see at which stage should we introduce this complexity, and a few advantages and disadvantages of adopting them.
+a textbook definition of sharding says that it is a method of distributing the data across multiple machines, while partitioning is all about splitting the data.
+but before we understand what sharding and partitioning actually is and how we see them in real world, let's talk about how a database is actually scaled, because sharding and partitioning as concept are very tightly coupled with the database.
+now what happens is when you say you have this database server and you are putting it out into the production to serve the real traffic, and let's say what you are getting is you are getting 100 writes per second, which is a pretty decent traffic, and you are very happy about it.
+you have a bunch of api servers who talk to this database to get your things done: 100, word, 100 writes per second.
+this is where vertical scaling comes into the play, where you start small but as you see more traffic, more continuous traffic or more consistent traffic, you would want to scale up your database, which means you add, you give your database more cpu, more ram, more disk.
+you also saw that when the rights were increased, like: obviously your system is not just doing right, but it is also doing reads, like some use cases, like fetching a profile of a user and putting something into the database and then reading some more information, complex joints and whatnot.
+but now you have large number of reads, although you are supporting rights by scaling up your database to give you a helping hand.
+the data across both of these nodes is exact same and here, whenever the write happens on this master, it is propagated to this follower, right.
+so this is how you handled 200 writes per second: by vertically scaling up your machine and added a read replica to support large number of read requests coming in.
+you said, hey, like let me add more cpu, more ram, everything what it requires, because now my product is going viral, my business will take off, so let me scale up my database once again.
+so because vertical scaling has limit, you are capped at 1000 rights per second.
+but now, when you add one more server to that, but each server has limit of handling 1000 writes per second, but you want 1500.
+so this is a classic advantage of going into a horizontally scaled database and this is sharding.
+and basically this is where the concept of sharding and partitioning comes in handy, right?
+here we have actually partitioned the data across two shards so that 50 percent traffic goes over here, 50 traffic goes over here, and we are able to handle higher throughput.
+we added a shard to our database and we partitioned the data.
+so database server is sharded while the data is partitioned, right?
+so whenever people talk- although people talk about those two terms interchangeably- but shard is at a database level and partition is at a data level, right?
+so overall we always shard a database and partition the data.
+people use term interchangeably and partitioning is all about splitting the data.
+so a simple diagrammatic representation of this could be like something like this: i have this 100 gb data set split across five partitions and there are two shards over here.
+like, let's say, the request came in and you know that this data is part of partition b, so then the request would come in.
+you know that partition b lies on chart two, so you'll forward the request to database server, which is shard two, and within that it would hit that particular partition to get the data right.
+right, and that is the advantage of doing partitioning of the data.
+partitioning happens on the data part, right?
+you have right, and we will talk about partitioning in detail in the in some future video.
+but now let's take a holistic view on what partitioning and sharding together looks like.
+so let's say, when we talk about sharding and partitioning, yes and knows.
+a database server with no sharding and no partitioning is something that you do locally.
+but when you say that you have, you have not sharded, but you have partitioning of your data.
+maybe, let's say, multiple tables or multiple logical partitions of data that you are doing and keeping them in one database instance only.
+so when you do not have, when you have not sharded your database and but you have partitioned it, this is how it looks.
+and then let's say you have sharded but not partitioned.
+when you are sharing, which means you have two database servers but you are not partitioned, which means your data is not split, which means both the server has the same copy of data, this is classical case of read replica, where you have not partitioned the data.
+you partition the data and you kept it on two different servers so as to handle higher right throughput, right.
+so you would typically do sharding when you would want to handle large reads and writes.
+further, in case of read replica, if one of the database server goes down, you can very easily use this other database to continue serving the traffic.
+and in case of one of the database server getting hot or one partition getting hot, you would have to rebalance and move that partition into other data.
+i hope you now know the difference between sharding and partitioning, where to use, how databases evolved and how, in real world, we approach situations like this.

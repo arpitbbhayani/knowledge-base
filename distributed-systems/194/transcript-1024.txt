@@ -1,0 +1,43 @@
+this is a classic case of distributed transaction, when we are writing it in a transactional manner that either everyone succeeds or if even one of them aborts, everything about right.
+second assumption: that a process failure can happen, which means that while participating in a distributed transaction, this- like one of the node, or the leader or someone, something processes can crash.
+and at the end of your distributed transaction, you should ensure- or the algorithm, the protocol should ensure- that no two processes can decide on different values, which means that either everyone commits or everyone aborts.
+hey, five nodes would commit but four are aborting, right?
+so now let's jump into the two phase commit protocol and let's see how it tries to ensure- and in some cases does ensure- a distributed transaction.
+now this a could be the leader node or the coordinator node, having the largest uid something, something some way through which we know that this process is going to be the coordinator.
+in most cases it could be the first node that received the right request from the client.
+a node has to become the coordinator of this two-phase commit protocol.
+right now, this two-phase commit happens in two phases.
+here what we would do is all the nodes, if they can commit or abort, they send this value to a, given that a is your coordinator node, right?
+so i will be receiving messages from b, c and d setting if they can commit or not, right?
+in case it does not receive a message from any of the node, it can assume by default that that node is going to abort, right, okay?
+right, and the idea is pretty simple: if every node commits, then the decision is commit.
+so that the at the end of phase one, a has information about all the nodes, whether they are trying or whether they are, whether they can commit or they can abort.
+so, in totality, a would know if the overall decision is going to be commit or abort.
+a will broadcast this information, like basically this decision, to all the nodes in the network, right?
+they would know the decision from a, because a is sending the message to every one of them.
+first one where everyone sends its decision to the coordinator node.
+in the phase two, your coordinator sends the final decision that the entire cluster is taking to every single one of the node, as simple as it can be, right, okay, in case in case, if any node did not participate in round one due to any reason- maybe crash, maybe anything- they will be deciding on the decision sent by a.
+so, whatever a decides, because you did not participate, you have to live like it's classic election case where, even if you didn't vote the person who came into the power, you have to abide to that person because that person is the leader.
+right, okay, this is a classic case of two-phase commit.
+but now let's understand the failure scenarios in a network that implements two-phase commit protocol.
+case number one: where your coordinator node fails before initiating the first phase.
+let's say you got some right and you wanted to know whether my network is going to commit or abort.
+but a coordinator node, before even initiating the first phase, whether, when the other nodes are sending the, the coordinator node the information, their decision, right if it failed, which means that your consensus did not begin at all, so all good.
+the network automatically picks another coordinator through any leader election strategy, right, okay.
+so some nodes who send that state are blocked on the coordinator to respond.
+classic case: because your coordinator failed after initiating the first phase.
+which means if b and c send the decision to a, the coordinator, now b and c would be waiting perpetually to receive response from a that what's the final decision?
+so if your coordinator fails after initiating the phase one, the, everything comes to a halt because the, the nodes who send the messages to a.
+but it is a critical case where up until the time your nodes realize that the coordinator is down, everything comes to a grinding halt.
+case number three, where your two face commit comes to a halt when the participant crashes before sending its preference to the coordinator because coordinator cannot proceed.
+so your entire two-phase commit comes to a grinding halt up until all the nodes can send their local decisions to a problem.
+so if a participant crash at phase two, which means that they all let the coordinator know about the decision, now coordinator is sending the final decision to the participant.
+right, all the coordinators know the global decision, right, whether it had to commit or abort.
+so when here, when the participant comes back up, it does not know if it has to commit or abort.
+so that is where obviously all the participating nodes needs to somehow maintain this state persistent so that even after recovering from the crash they have that information.
+now things become extra interesting in the fifth case, where if coordinator and one participant die in phase two, so every node send its local decision to a.
+other nodes are not aware on what the decision was made by a because they are yet to receive the message from n.
+before that only a crashed, which means the decision of the coordinator is not known by anyone.
+so participant in itself needs to maintain the state if it received a message it crashed before or after and what not.
+but just to do a quick complexity analysis of this, we know that your two-phase commit happens for two rounds.
+that's not so critical as compared to the edge cases that we just saw, which is where we introduced a new protocol called a three phase commit, which will be taking a look in the next video, right.

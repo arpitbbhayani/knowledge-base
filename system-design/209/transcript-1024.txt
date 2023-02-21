@@ -1,0 +1,29 @@
+so during an emergency, every single second matters, which means that whenever a button is stopped, you have to do whatever you can to ensure that very quick actions are taken during such time.
+second, when that SOS button is tapped, the most critical thing is that every like it's not just that where the SOS button was tapped, but after the SOS button is tapped, the every single second, or every two, or basically twice a second- the location of the client needs to be continuously sent and monitored on the server, right?
+think about it- you might be in an emergency situation where you cannot talk on a phone, where, if, let's say, the information is sent, but you still need to send this to someone else.
+and, more importantly, that when you hit the SOS button and someone from the internal support team at Uber needs to be notified- like they, because they are the one who would be coordinating- so they also need to be notified so that they are coordinating that, hey, are you safe or not?
+right, okay, so now here, which is where the reverse geocoded address right is sent to local police Authority.
+right and now, while this is happening, we also know that when source button is pressed, the location needs to be continuously sent to their backend server so that Uber's internal staff or some of their services can keep an eye on it.
+now, when this information is sent, you just don't need to send lat long along with that because it's an emergency.
+now, rapid SOS is a B2B company that offers SOS Services, which means that they expose endpoints on which you send some data in some particular format and they send or they forward this data to the nearest local police Authority.
+so now you just invoke: whenever user presses an SOS button, the API call is made to your emergency service.
+emergency service, in turn, makes an API called to the rest, to the rapid SOS service, like there, the the corresponding provider, and they then send information to the local police Authority and ensure that it is taken care of.
+so this way you would want to make life simple for your end user, which is whether your reverse geocoding comes into action, right, okay, now here one very important design decision.
+that thing is that you have to send the notifications to internal support, emergency contact and Rapid SOS in parallel.
+so this is an important design, like very low level but very important design decision, where you are doing this in parallel, so sending notification to emergency contact or sending it to support or sending it to Rapid SOS, so that, even if one of the fields, even if one of these three fails, the other two are still succeeded and someone is notified about an emergency situation, right, which is what is more important than anything else at the moment.
+so, first of all, Kafka, to send a notification, or, sorry, to send an event- about an emergency and being consumed by multiple Services, let's say, emergency contact, rapid resource or something.
+right, which is where what you have to ensure over here is you can't just say: I can't do much like because it's customer support, or, uh, supporting customer during an emergency is most important for your customer safety is most important for Uber, which is where what we do is: if Kafka is down, we fall back on synchronous API.
+but, more importantly, when the SOS button is pressed, you have to continuously send locations every one or two seconds.
+now this address becomes extremely important for you to render the template on your mobile phone so that you can send it to emergency contact if you have to right.
+right so, which is where every single location that is being sent needs to be captured and stored somewhere so that it is rendered efficiently on the for the help of local police or for internal Looper staff to do the internal investigation.
+right so, which is where the location service, whenever user sends the location, it would be throwing it into Kafka and then it would be consumed by the emergency service, which is updating the location in the database, which can be later consumed by your but stuffer can be shared with the local police Authority.
+right so that is what you would do, with continuously streaming of location data through Kafka to emergency service, and so on and so forth.
+these are some very important design decisions that we are taking right, and the most important one- the most important one- is invoking the rapid SOS API.
+now, this is where, when you are creating an emergency, the first thing that it would do is invoke a rapid SOS API to ensure that and emergencies created and it in and it sends this data to the local police Authority right now.
+the location that has data we are sending no send to Rapid SOS, which can then continuously confirm or inform this information to the local police Authority right right now.
+this has to be continuously done in order to ensure that you are giving enough information to the local police authority to take necessary actions right.
+how we have to ensure a continuous streaming of location data being consumed by Kafka, sent to emergency service and stored at rapid SOS and your internal database to keep an eye on it.
+and this is how your design something like an SOS service.
+now, this is exactly what Uber did with their SOS service and this is- this is basically taken verbatim from that particular part right now.
+right, you can very clearly see multiple servers of support, multiple notifications, multiple instances of emergency service.
+right, and this is exactly how Uber has implemented their emergency service, and we see how critical some design decisions become, like reverse geocoding, why it is important, because you just can't send that law right.

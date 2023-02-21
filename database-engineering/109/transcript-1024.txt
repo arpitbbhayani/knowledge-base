@@ -1,0 +1,37 @@
+so let's say we have a users table and it has five columns: id, name, h, bio and total blocks.
+so every column or every attribute over here will take up some space onto the disk, which means that when that attribute or when this row needs to be serialized, every attribute gets its particular size or its particular set of bytes stored onto the disk, right?
+let's say we put it as 128 bytes, and total number of blocks- as in how many blocks has this user published- would be an integer.
+so here we saw: user table, five columns, 200 bytes to store one row onto the disk.
+so it would look something like this: let's say these are like dummy entries in my table: 1: name is a, age is 23, some bio, and then total number of blocks: 7.
+right, so let's say we are playing with this: six entries, and there are many more entries like this, totaling up to 100 rows.
+right now let's go through and understand how disk, how reads from the disk, actually happen.
+uh, like, it is split into 600 byte blocks, right, and whenever, like, let's say, i have this as a space and it is split into four blocks for now.
+so here, if i am requesting these bytes, what your disk io will do is it will go to the disk like it will hit the disk, read that particular block, load it in memory, read these bytes and then send it to the user right and basically send it for the further processing right.
+so we know that each record or each row of my users table is 200 bytes long.
+we know that a block size for this example is 600 bytes, right?
+which means that in each block- like if i am serializing this entire table, in each block i can contain three rows.
+so to represent 100, no, rather to store hundred rows on the disk, how many blocks would you require?
+we would require 100 by 3, it is 33.3, but we cannot, like the block is not divisible, so we need 34 blocks to store this entire table, this entire table onto the disk.
+this entire table onto the disk, stored serially as a, as a series of blocks, which is total number of blocks required is 34 right now.
+now let's say, if i am going through this table row by row, how much time would it require for us to read this entire table?
+it would find the byte offset, it would go on to the disk, read that block, keep in memory, extract the record and basically use it for further processing.
+so the amount of time that we would require to go through the entire table will be equal to the amount of time required for us to read those many number of blocks.
+so somehow your index will also be serialized and be stored onto the disk as blocks.
+how many bytes would it require for you to store one entry of this index, right?
+what i'll do is i'll go through this index, like, every entry, one by one, and i'll find all the entries whose age is equal to 23..
+how many disk blocks would i have to read to prepare this set of ids that i am interested in because i am going through the entire index?
+two discretes and i'll be break and i'll be reading the entire index, uh, filtering out all the values, like also.
+so the next phase would be: for all the relevant ids that i have collected after i trading through my index, i would want to read the corresponding records from the main table, right?
+so i would be reading the main the, the actual record from the main table of all the ids that i uh that i found to be relevant for h equal to 23, and i'm basically collecting it in the buffer and then sending it out to the user as an uh, as a response right now, here for the second phase of it, the amount of time that will require to fetch this, to fetch these records, uh, to fetch actual records from the id, would be equal to the number of disk blocks that we would have to read to answer this thing.
+so first space, iterating through the index, finding out relevant ids, reading the entire index, two blocks required.
+it would read that entire block in memory, extract that byte and then discard the block, like it is basically catching it, but let's say basically discarding the block.
+so i'm reading the second block from the disk in memory, finding out that record uh, adding it to the buffer and then discarding it.
+so to answer this query: how many disk blocks to get the actual record from the reference id?
+so to read the actual record, two disk blocks to read the index to find the relevant id is two disk blocks.
+so total number of, so total number of uh disk clocks that we read to answer this query with index, is equal to four blocks, right, and we know that, approximately hypothetically, we took that one disk block uh reading is equal to one second.
+so the total number of time that we would require to answer this query would be equal to 4 seconds, right, so 2 for index, 2 for record.
+if that is not index it, in worst case, it may lead to i, it may lead to sequential iteration across like a full table scan, to be honest, in worst case, worst case, right.
+that you are like here right now you are iterating on the complete index.
+like here you are iterating on the complete index to find out the relevant ids.
+otherwise, in this simple example only, you can just stop iterating once you cross 23, like you requested, for aging is equal to 23.
+what's the idea behind it, how disk reads happen in block center, right, okay, that's it from me.

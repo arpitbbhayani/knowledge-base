@@ -1,0 +1,37 @@
+in this video, we take an in-depth look into this deployment pattern called blue green deployment, understand why we need them, what problem it actually addresses, learn how they are actually implemented, talk about its benefits and challenges and conclude with some points to remember when we adopt this deployment pattern.
+for example, you would not want to copy your entire production database into your dev setup so that you have a very quality queue environment, because it would shoot up the cost.
+we would have it configured as either forwarded traffic to the blue setup, which is the old setup, or the green setup, which is the new setup.
+so the idea here is we create a separate fleet of instance, we deploy the new version of our code there, we validate those changes there and once we are okay, we would make that switch from old infra to new infra in one shot.
+no, because we have immediately triggered a deployment, like in- not in case of blue green, like, basically, blue green addresses this problem, but in a normal, classic rolling upgrade, if you would do, we would want to put the changes in the server and reboot it, right.
+so that's where blue green deployment comes in, where we say that, hey, i'll prepare a separate fleet of instances that is warm, all ready to serve traffic.
+so, like the how we discussed in the previous video with respect to the canary deployments, here also, what we would need is: you need a proxy seating in between, which can be an api gateway or a load balancer, right?
+we would have to ensure that that happens, then only we can go for the blue green deployment, because if the changes are not compatible and if you create a separate return, everything would be a mess.
+so green fleet is the new fleet, blue fleet is the old one, right?
+this way, your entire traffic gets switched in a fraction of a second from blue to green, from version one zero zero to version one zero one, okay.
+the green infrastructure that you just created is now turned blue, because that becomes the old one, right?
+so that's why it's called blue green deployment, right?
+hey, move all hundred percent of the traffic to blue setup, right.
+plus, you would not get any downtime, because now that you have prepared your fleet, uh, and you have provisioned it for the necessary load- because, like seven servers in old, seven servers in you, you are very well provisioned for that- making a flip will not cause any issue whatsoever, right?
+so now let's take a look at pros of having blue green deployment.
+so cold start problem is basically: does not, does not exist for these micro down times, right, so incoming traffic, because it is immediately flipped, no scope of downtime whatsoever in flight request can be served, and then the new request can be moved to the newer fleet- right.
+deployment duration is the time when it takes, like the time it takes for you to serve 100 of traffic from the new version of the code.
+so blue greens plus, even if you don't have that setup running, like the best cases, you have that blue setup already running and you are just flipping the traffic.
+but even if, in case, you don't have that because you have adopted blue green deployment, you would have those necessary scripts and automations to take your old artifact and create a fleet out of it.
+so your disaster recovery plan looks like a normal deployment and would happen very quickly, as we just saw right.
+this is a big advantage for a developer productivity because now, because you are creating a totally parallel infrastructure, whenever you are deploying the changes to this new fleet, the old traffic is not getting affected.
+so, so long as our infrastructure can take the load upon a 100 traffic flip, you can do deployments during day hours, like during, even during peak business time, right, although you are incurring a little extra cost of 2x or infrastructure, but that is okay if you would want to guarantee all of this.
+so let's say you did the deployment, you put it into the green, onto the green traffic, and then after some time things started crashing because your infrastructure is there.
+we literally have to have two parallel setup of our infrastructure, a blue and a green, the old and the new.
+so you are literally doubling your infrastructure cost by doing this, at least, if not at least during your deployment time, right?
+if you are not, then blue green deployment is not for you, right then?
+if you are not, then blue green deployment is not for you, right then?
+the second challenge that comes in with blue green deployment is what if your application is stateful?
+plus, when a write comes in the old setup, how would like, for example, you have only been blue- one db in green.
+when the right happens onto the blue, how would the green get that?
+now when you do the deployment, your old setup would start to fail, like if you ever roll back on the new setup would have.
+it takes times to- uh, it takes time to have a barrel setup for a blue green deployment.
+okay, so now i went to use blue green deployment.
+this is a critical point because what if, like when you, when you make a switch from blue to green, literally hundred percent of traffic will be coming to your green fleet.
+so you should be able to bear the cost of running towards of infrastructure, at least during the time of the deployment, and then you can go for a blue grid setup.
+if you can minimize, like minimizer time would be few hours, or rather one hour before the actual deployment happens, to do setup and validation, and all during the deployment you make the switch.
+those are the four points to remember whenever you are adopting a blue green deployment.

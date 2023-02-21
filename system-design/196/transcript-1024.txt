@@ -1,0 +1,38 @@
+right, and let's talk about how do we design a chatbot flow.
+this is a really solid insight because, if you think about it, when you are on a support screen, your chat bot is nothing but a decision tree which is taking you along a path, depending on some control variables that you have.
+right, so this is a classic decision tree that runs in the back end to power a chatbot.
+so if you are ever building your own chat bot, decision tree is the way to go, because in most cases you don't need fancy nlp, fancy bots, who talks different languages.
+normal decision tree would work just fine for most of your use cases, right, okay, so what they say is: at each step of the chatbot flow, we show the customer a list of valid child nodes and, as an option to proceed further simple.
+or do you want to talk to customer care executive?
+so building a chat bot is equal to just maintaining a good, or building a good decision tree and doing that state management right.
+thousands of conversations created by the customers who wanted to cancel their ongoing orders.
+so, because the heart and soul of your chat bot is a decision tree.
+it is very important to build a good decision tree.
+so, for example, if you are doing a cancellation of the order, a simple chatbot flow could be: ask the customer about the reason for cancellation.
+show the predicted time for delivery just in case, like, for example, customer is trying to cancel the order, but if the delivery time is in five minutes, you may just want to check: hey, please don't, please don't cancel it, your order will be there in five minutes.
+then ask the customer for a confirmation on the cancellation and then show details about refund that, hey, this is what you will get in refund, right?
+so this is a classic step by step on which you would have normal conversation with an employee, with a customer service representative, simulated through a chat bot.
+no fancy nlp, just normal decision tree iteration.
+they do not want to build a native express, although you want to give a seamless experience to your end user, but what webview does is webview just injects a website, a web page, in your mobile app.
+now, whatever information was there in the chat bot, which means whatever option the user selected- all of this information needs to be shared with the customer support executive.
+chatbot is powered through a decision tree.
+now chatbot uses decision tree and state management is done in any database.
+your chatbot service would be just maintaining the state in this particular database.
+then your customer support executive needs visibility on a lot of data, lot of data.
+for example, your customer support would need to see an admin screen or an agent dashboard through which he or she can see what last order that you made, what's the status of that delivery service, logistics and whatnot.
+so now your payment service needs to send data to this customer support service.
+then your order service needs to send data to this customer support service.
+this customer support service might need to invoke notification.
+for example, customer support says that, hey, you will be receiving an sms in two minutes, so they need to trigger some sms about some confirmation.
+more importantly, you need a fraud detection service because with chatbots in place, there is a very high chance of people committing frauds.
+so your fraud detection service needs extreme like needs to be there that is powering this entire chat bot and support system.
+so this is your entire support system, right?
+your chatbot, your customer support, everything.
+so a fraud detection service would get signals from a lot of other systems, for example payment system, for example order system, for example the chat that the user has made the chatbot state.
+is this customer trying to make a fraud over here, like if the order is not spilled, still the person is saying that order is spelled something like that, and soon they would be acting in sync to power this entire chatbot.
+right, and every system talks to each other so that, because there is a lot of exchange of information just to power this chatbot and- and this is exactly what these folks have talked about in this particular blog, where they have mentioned key components as webview, orchestrator, agent workbench, bot notification system, right- and when they talk about fraud detection, they talk about fraud modeling, in which they are using a machine learning model that takes several signals as input to define the fraud segment of all customers.
+so all of these systems- historical data, what not- they become as a signal input to your fraud processor so that they can do in a nursing way, they can do it, they can do it in synchronous way, depending on the scale, they can pick that up and build its system out, right, okay?
+their primary thing is chatbot service, but if that doesn't work due to any reason, they would fall back to normal third party agent chat, simple chat interface in which people are typing and they are responding, and that's a fallback, it's more of a backup.
+right, and one very interesting thing that they brought about is: which key metric would you put your focus on, given this state, like, given that you are building a chatbot, which key service or which key metric that you will be putting your focus on?
+it's not just chatbot, but it's just an entire support system, because they might have some services in java, some in nodejs, some in ror, apache, kafka, acting as a backbone where all the events and messages and whatnot are streaming- my sequel to hold this decision, tree transactional information, postgres- something similar- and redis.
+so this saves engineering cost, right, and this is how amazingly well they have designed that chatbot system.
