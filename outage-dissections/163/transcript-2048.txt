@@ -1,21 +1,18 @@
 so outrageous are inevitable, but we should design our architecture such that if a component is down, it should not lead to a complete outage.
 a partial outage affecting few services is fine, but a complete outage is catastrophic.
 in this video, we dissect yet another github outage, gather few interesting insights about that microservices architecture, spend some time discussing and understanding the importance of having a smaller blast radius and talk about a foolproof way of achieving that.
-but before we move forward, i'd like to talk to you about a course on system design that i have been running for over a year now.
-engineers from companies like google, microsoft, github, slack, facebook, tesla, yelp, flipkart, dream 11 and many, many, many more have taken this course and have some wonderful things to say.
-we cover topics ranging from real-time text communication for slack to designing our own toy load balancer, to quick buzzes, live text commentary to doing impressions counting at scale for any advertisement business.
-the first one is the live cohort discourse which you see on the left side, and the second one is the recorded course which you can see on the right side.
-the live code base course happens every two months and it will go on for eight weeks, while the recorded course contains the recordings from one of the past cohorts, as is.
 so, like always, we start with the incident report and sure it goes so what it says.
 by the way, most of the outages that i've seen of github are related to action service.
 but, yeah, some abnormal level of errors affecting action service.
 this incident resulted in the failure or delay of some cute jobs for a period of time.
 so, as you all know, action service of github is primarily powering the github actions in which, like whenever a commit happens, you have to trigger a workflow and all of that happens.
+so because of this incident, there was a failure or delay of some cute job for a period of time.
 and this is a very important point around designing an architecture.
 so that is where, whenever we are designing- uh, most of the architecture, think about: can we do it asynchronous way?
 we identified that the issue was caused by an infrastructure error in our sql database layer- again, something to do with database, the most brittle component in every single architecture out there.
 okay, the database failure impacted one of the core microservices that facilitates authentication and communication between action microservices.
 so what it says is something happened on the authentic on one micro services, or, sorry, on one micro service part of its actions microservice that handled authentication and communication.
+the first interesting thing that it tells us is that github actions- although most of the folks would model it as a singleton microservice that powers github actions, but internally github actions itself consists of multiple microservices.
 one of them that we saw in the previous outage was around github actions premium service runner, something around that, right.
 so there is not one micro service powering github actions.
 there are multiple components that power github actions all together and they all share a database.
@@ -27,7 +24,6 @@ so sharing a database looks like an empty pattern, and it is indeed, but a lot o
 so this is a very common way to do it and looks like github, if not all services had was sharing a database, but at least the synchronous dependency.
 the second key point that we talked about: that the service that got affected handled authentication right.
 why you think, uh, services or micro services would need authentication, like they're all part of your infrastructure.
-most companies, when they design architecture, it's always zero trust architecture, which means even if two services talk to each other, they would not trust.
 like: imagine you having a notification service.
 so that is where, in most cases, the way microservices are designed, the design with zero trust, right.
 they ensure that even when a service wants to communicate to any other service, that needs to be authenticated and authorized to do that.
@@ -43,20 +39,23 @@ it is not some magical thing that happens that automatically replica will be pro
 so there has to be someone who is monitoring if my database becomes unhealthy so that he can promote other node to become the master.
 in this case, the failure pattern was not recognized by the automated processes and telemetry did not show any issues with the database, resulting in a longer time to determine the root cause and complete mitigation efforts.
 so there is a classic case where your database is down, or but your butter telemetry is not showing it, and this is very common, very, no, not very common, but this is common.
+this is indeed common, where the automation that you may have written might not be capable of detecting this failure, because it might be trained on some particular patterns, but not on this pattern, and it might not.
+it might be very possible that the entire database is not down, only a fragment of it is done, or some particular kind of tables are locked, or not everything, uh, or it is not a very obvious outage, outage on the database, right?
 so here the orchestrator was not able to identify that the master was stopped, so failover did not happen.
 because failover did not happen and because the telemetry also did not show that the database was having an impact- and very common this kind of thing- because it could not show something's wrong with into the database.
 how would engineer even come to know gary databases down right?
 because the first thing when an outage happens, people look at telemetry.
+when they look at elementary, they eric the database is doing fine, let me debug at other place.
 the database was done but the telemetry was not showing it right.
 they did not specified in the necessary report, but there would be two possible ways to do it right.
 promote the replica to be the new master and reconfigure your database very easy.
 reboot rights would fail, but in any case it is failing because there is an outage, so that's fine.
-but in case you would want to dive deeper into other ways of doing it, i've discussed a few more approaches in other live section videos.
 he uh, the telemetry did not show any issue and the database resulted in the longer time time uh on determine the root cause.
 okay, to help avoid this class of failures in the future, we are updating the automation process in a sql database layer to improve error detection and failover.
 everyone says this and this is something which becomes a step zero after the, after the issue is mitigated, to ensure that you do not see the outage because of the same reason again, and that is a very important thing to do anytime when you face an outage, right?
 so, as part of the long-term strategy to ensure that the artist doesn't happen for the same reason, they would need to do is, uh, understand this failure better, right?
 first of all, they have to detect the failure, because this time, database was down but they were not able to figure it out.
+so they need better failure detection.
 second, they need better automated failover where they, when they proactively know that database is down very quickly, they should be able to failover.
 so, going through or re-auditing the scripts, re-auditing the authentic uh, the automation is very important to ensure that if similar thing happens in the future, it is not, it does not take a relatively longer time to debug it.
 furthermore, we are continuing to invest in localizing failures to minimize the scope of impact resulting from infrastructure errors.
@@ -78,7 +77,10 @@ so try to model the communication between your services asynchronously, as in us
 right things that can be done in an asynchronous way.
 try to model it to do it in an asynchronous way, keep them loosely coupled right, and it totally depends on your use case.
 it is very dependent on your use case, how you are modeling it, but this should be your, your thing, that you do on day zero, right?
+if you are going for a micro services arc, uh, always think: are these services loosely coupled?
 can i broker, basically, can i break it down into multiple smaller services such that if one of them goes down, i would have a smaller blast areas?
+when you are communicating to any service, think about what if that service is down?
+how are you handling, how are you gracefully handling the failure on this service?
 but in most cases, if you think about this one point, can i do this communication in asynchronous way would automatically make it loosely coupled right.
 so think about this whenever modeling any architecture modeling and inter-service communication.
 if you start with this, you would automatically start to design loosely coupled micro services which inherently would have a very small blast radius, and when it has a smaller blast radius, you would always see partial outages, not mega outages like this.

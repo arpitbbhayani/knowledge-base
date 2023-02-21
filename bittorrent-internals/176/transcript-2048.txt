@@ -1,17 +1,14 @@
 bittorrent is super popular when it comes to sharing and distributing large files over the network, but what is the engineering behind it?
 in this series, we will dive deep into the world of bittorrent and understand various algorithms that power it.
 in this first video of this bittorrent internal series, we take a look at what is a p2p network, what is bittorrent, the core idea behind it, how it makes download super fast, and conclude with some terminologies that would acquaint us to do a deep dive later.
-but before we move forward, i'd like to talk to you about a course on system design that i have been running for over a year now.
-engineers from companies like google, microsoft, github, slack, facebook, tesla, yelp, flipkart, dream 11 and many, many, many more have taken this course and have some wonderful things to say.
-the first one is the live cohort discourse which you see on the left side, and the second one is the recorded course, which you can see on the right side.
 thanks, so bittorrent is a peer-to-peer protocol that makes the distribution of large files easier, faster and efficient.
 first let's understand how we classically download files from the internet, right?
 and why do we even need something like bittorrent?
 so your client request a file from the server.
 server has the file and it responds: right, pretty simple downflow.
-but things become very interesting when your download size is a little larger, for example 300 mb.
 let's say, if you want to download a latest version of and debian os or ubuntu.
 so downloading that one big file from one server gets a little tricky and plus it gets a very uh it it becomes very slow.
+so why server has a very limited bandwidth, right?
 so if more number of clients connect to it, the download speed would slow down, right?
 second, the speed of the data transfer is limited by the upload capacity of the server.
 so in most cases you would see that, hey, when you check your internet connection, you let's say, see 100 mbps download speed, but only 60 mbps upload speed, right?
@@ -19,6 +16,7 @@ so let's say we're trying to download a file.
 so, for example, a wants to download a file from b.
 and this is the core problem that bittorrent uh tries to address, right?
 so in peer-to-peer network, almost like, every device can connect to every other device.
+and when i say robustness, it means that even if a few nodes crash or are removed from the network, your network is still serving the use case it needs to, so your system doesn't go down.
 for example, with bittorrent, the role of a network is to serve the files that you need.
 even if a couple of machines are down, other machines would have those files and they would share it with the user that wants it, right.
 if your network is stable enough, right, okay.
@@ -41,6 +39,7 @@ then large number of downloaders would only put a little extra load on each of t
 what would happen is, let's say, if i add large number of downloaders, it does not mean, like earlier, if there was just one server serving the download.
 but now, given that this is a big p2p network, what would happen is whoever wants to download, can talk to any peer at random to get the file chunk.
 this would make that, even if i had large number of downloaders, your servers the one who are sending the information.
+they are not over button because the load is evenly distributed across the network.
 so what would happen is your files is typically split into chunks and they've been distributed over the network and you know that i want this chunk.
 i can go to this pair and get this chunk right and the this data is also evenly distributed.
 so, to make it very concurrent, your you would not make connection to, like you would not just make connection to one peer to download the file.
@@ -55,9 +54,12 @@ the user will talk to the corresponding peers and download the corresponding chu
 and this is how bittorrent makes your download super fast, because it is currently making connections to a lot of different machines downloading the file and concatenating it locally, right, okay, now let's take a look at nomenclatures and terminologies for that, because this would be the heart and soul of the entire discussion, of the entire series that we are going to have.
 so a file that you are putting it on the torrent network is split into pieces, right, and this space is the unit of transmission.
 let's say 16 mbps, right, so each a server can serve a piece.
+so a 16 mb piste is split into 1016 kb blocks, right, and this 16 kb blocks that you have is what you will transfer.
+the is the unit of information that a server holds, but to do a patient data transfer.
 it downloads the blocks of the particular piece and then it concatenates it locally and by concatenating all the pieces it would have the particular file, right.
 so pieces is what a server holds and to do the transfer, it transfers blocks out of it and then it says that, hey, now i own this particular piece, right?
 so for a server to hold a piece it needs to have all the blocks of that particular piece.
+second, is called as a peer set.
 for example, if peer set like, let's say, a wants to download a particular file, i have five nodes: a, b, c, d, e.
 and if i, let's say a, wants to download a file, a sphere set as given to it by tracker, would be c and e, which means that if a wants a file, it can get from c and e, right.
 or if a wants to send a file, it could send to c and e, right.

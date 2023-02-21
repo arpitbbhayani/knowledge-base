@@ -1,18 +1,11 @@
 so sets are amazing, but how are they implemented?
 in this 10th video of this hashtable internal series, we take an in-depth look into the implementation of sets using hash tables, popularly called as hash sets.
 we'll go into the implementation details and performance tuning of sets to see how they are built: on top of hash tables having chaining and on hash tables having open addressing.
-but before we move forward, i'd like to talk to you about a course on system design that i have been running for over a year now.
-engineers from companies like google, microsoft, github, slack, facebook, tesla, yelp, flipkart, dream 11 and many, many, many more have taken this course and have some wonderful things to say.
-we cover topics ranging from real-time text communication for slack to designing our own toy load balancer to quick buzzes, live text commentary to doing impressions, counting at scale for any advertisement business.
-in all we would cover roughly 28 questions and the detailed curriculum, uh split week by week, can be found on the course page, which is linked in the description down below.
-so if you're looking to learn system design from the first principles, you will love this course.
-the first one is the live cohort business which you see on the left side, and the second one is the recorded course which you can see on the right side.
-the live cover based course happens every two months and it will go on for eight weeks, while the recorded course contains the recordings from one of the past cohorts, as is.
-if you are in a hurry and want to binge learn system design, i would highly recommend you going for the recorded one.
-i put the link of the course in the description down below.
-so if you are interested to learn system design, go for it.
 thanks.
+so set is an amazing data structure that keeps track of everything unique.
+it powers operation like union intersection and set difference, but the core idea is that it would try to keep everything unique in the set.
 for example, if i'm trying to put apple ball, cat and dog in my headset, if i'm trying to insert another apple string in this asset, it will discard it right.
+so at the end, your set would only hold everything unique.
 now how do we implement this with hash table?
 so one key thing to note over here: that your the keys that we are putting in in the set.
 for example, i want to store english words in my set, but the hash table understands integers right because using integers, it is trying to find the perfect slot and place it there right.
@@ -26,6 +19,7 @@ for example, let's say cat and dog hash to the same location.
 right now, when i'm looking for, let's say, dog, i would have to go to the hash table- and actually i'll, i've like in almost order when i've reached to that array index.
 but then i have to do explicitly key check that, hey, is this key really cat or is this key really dog?
 what i'm looking for, right, and this, this comparison, is really important.
+and this is expensive also because it depends on the application context.
 so if you are passing a string, you have to do string matching or we have to do string eq, we have to do a string equality check in order to see if the key is exactly cat or doc.
 so even after you reach to that location, you would have to do a key comparison to find out if your key is the one that you are looking for, right?
 now, what do we need to store in the hash table?
@@ -33,6 +27,7 @@ right up until now, in the hash like, what we are trying to store is, we are try
 so now, what do we have to store in the hash table?
 actual hash table would be key.
 like, let's say, if i'm implementing it in c, i would store a white star so that i can put it.
+and apart from that, i should also have a hash key, which is: when i pass this key through the hash function, i get a 0 to 2 risk to power 32 hash.
 i need to store that hash key over here as well.
 because computation of hash function- uh sorry, computation of hash from a key is very expensive on the cpu.
 you do not want to recompute it again and again, so that is where you might, or you would need to have an integer 32, or you're to have a 32-bit integer which you are storing the hash key that you have computed, so that you save time by not doing recomputation and just keeping it handy for you to do a quick check.
@@ -44,6 +39,7 @@ i have to do that string equality check, which is where, because we are acceptin
 so, as part of your constructor, as part of setting up your hash table, you need to accept a generic key comparator function whose job would be given to: given two keys, it would tell if those two keys are same or not, and, because this depends on the application context, its responsibility, while setting up the hash table, to provide this key comparator function.
 okay, so that our hash set implementation becomes generic enough, right, okay?
 second, second implementation detail: when we delete a key from the hash table, it may be our responsibility to clean them up, right?
+so, for example, if you're, if you're building hash set or a hash table on, uh, a language that does manual memory management, it might be possible that, hey, our hash table is the last reference of the particular key, or our hash set is the last reference of our particular key.
 so then, when we delete that key, it might be responsibility of our hash table to delete the reference as well.
 so an optional thing that we can take as an input is a key destructor function.
 so whenever we are deleting a key, we would invoke the key destructor function that is provided to us during the initialization for that particular key so that we can do free and other pointer changes if we would need to.
@@ -65,7 +61,9 @@ so if you are looking for that, you can very quickly do an insert by prepending 
 second, if you just want to have unique keys, then what we need to do- and that's what set does- if you just want to have unique keys, then you have to always check and insert.
 so before inserting you need to check if the key exists.
 but you have to keep in mind that this would make your insert a little more expensive than what it needs to be.
+so up to you on your implementation, how you are trying to drive that.
 right now let's take a look at implementation of hash set with hash table having open addressing.
+so, open addressing: we don't use an auxiliary space, we leverage the existing free slots from your, from the array that we have.
 so your headset would, overall, have array, number of keys, number of activities that it has, the number of slots that are used, key comparator function and key destructor function.
 very similar to what we had in a hash table.
 uh, hashtag implementation with chained hash tables.
@@ -75,13 +73,20 @@ we need to have two explicit counters on the total number of active keys that ar
 right, okay, now each struct or each element of this add a would be a struct, say slot, which holds four information: first, is empty, which tells if the particular slot is empty or not.
 second, is deleted, which would tell if the slot is soft deleted or not.
 third, an int 32 hash key.
+fourth, an avoid start application key.
 right, again, very similar structure- hash key, the storage and void star key, just to ensure that we can accept any particular type.
+okay, time for implementation detail.
+okay, time for implementation detail.
 so during lookup- insert and delete- when we find a matching hash key, we need to explicitly compare the keys to check for its existence.
 right, we have to do that because two application keys can collide to the simplification.
 just comparing hash keys wouldn't work.
+that's why comparator function is very, very, very important.
 right, and the final implementation detail is: your destructor should only be invoked when we are hard deleting the key, given that in open addressing, whenever we delete a key we are doing a soft delete and then during resize we are doing hard delete.
 so destructor function needs to be invoked only when we are doing hard delete of the key, otherwise dangling pointer, illegal reference and whatnot will crop up.
 so always when you are doing resizing, then you trigger a hard delete, otherwise let the entry be soft deleted so your resize might get a little more expensive, given that we are also invoking the destructor function back then, but it is worth it.
+so that's it about implementation of.
+has said, we went into those micro details of it and the implementation is pretty straight forward.
 given that we understand the hash table, the implementation is straightforward.
 but i wanted to highlight some really interesting uh micro nuances that we would have to think about when we are implementing hash sets using hash tables.
+so this was the 10th video in the hashtable internal series and i'll see you in the next one.
 thanks, [Music] you.

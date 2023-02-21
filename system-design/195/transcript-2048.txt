@@ -2,22 +2,7 @@ Instagram has millions of hashtags and millions of people tag their photos every
 Instagram allows us to search for a hashtag.
 in this video, we will take a detailed look into how Instagram efficiently searches for hashtags and serves them ordered by count.
 while doing so, we will dive deep into a super interesting database optimization called partial indexes.
-but before we move forward, I'd like to talk to you about a course on system design that I have been running for over a year now.
-the course is a cohort based course, which means I won't be rambling a solution and it will not be a monologue.
-instead, a small focus group of 50- 60 Engineers every cohort will be brainstorming systems and designing it together.
-this way, we build a solid system and learn from each other's experiences.
-the course to date is Android by 600 plus Engineers spending, nine cohorts and 10 countries.
-Engineers from companies like Google, Microsoft, GitHub, slack, Facebook, Tesla, Yelp, Flipkart, dream 11 and many, many more have taken this course and have some wonderful things to say.
-the coolest part about the course is the depth we go into and the breadth we cover.
-we cover topics: energy, from real-time text communication for slack to designing our own toy load balancer, to clickbusters live text commentary to doing impressions counting at scale for any advertisement business.
-in all we would cover roughly 28 questions and the detailed curriculum, uh split week by week, can be found on the course page, which is linked in the description down below.
-so if you are looking to learn system design from the first principles, you will love this course.
-the first one is the live cohort, viscose, which you see on the left side, and the second one is the recorded course, which you can see on the right side.
-the Live code base course happens every two months and it will go on for eight weeks, while the recorded course contains the recordings from one of the past cohorts, as is.
-if you are in a hurry and want to bench learn system design, I would highly recommend you going for the recorded one.
-otherwise, the Live code is where you can participate and discuss things live with me and the entire cohort and amplify your learnings.
-I put the link of the course in the description down below, so if you are interested to learn system design, go for it.
-check out the link in the description down below, and I hope to see you in my next card.
+see you in my next card.
 so, to understand this use case, let's jump right into the Instagrams engineering blog, and here's what they say.
 as we scaled Instagram to an Ever growing number of active users, postgres has continued to be our solid foundation.
 this means that the raw transactional DB that they are using is postgres and they rely very heavily on it for user created data.
@@ -27,11 +12,15 @@ okay, so what they would be having is they would be having a table for hashtags,
 against each hashtag, they would be having something called as a media account in which they would be storing the total number of photos, plus videos, plus reels, everything that they have, every kind of media that they have.
 they would be storing the count over here, right, so for each hashtag, they would be storing the count of the media that they have.
 right and now, while searching.
+so what they are saying is when you would want to search on through the search box.
 if you search for, let's say, snow hashtag, start with snow, you would want to surface the top hashtags having the most number of media like, ordered by the most number of media that it holds right now.
 this needs to be served efficiently through postgres.
+now here, why are they not using elasticsearch?
 obviously they can, but what they said is they use elasticsearch for advanced use cases, and this is a pretty trivial use case for which they would want to rely on postgres.
 but even if they don't use elastic surgery, if they use elastic search, the optimization that we'll be talking about is insanely good and you should be knowing about it for sure, right?
+okay, so back to the blog.
 what they say is, if you find yourself frequently filtering your queries by a particular characteristic and the characteristic is present in minority of your rows, partial indexes might be a big win.
+now, this is very interesting.
 #filtering is a very classic use case where you are typing something, you take that term.
 let's say you are typing slow, you take the snow and you would want to find hashtag that starts with snow.
 so you are trying to filter out the rows from the table with a particular characteristic which is prefix, and this is present in minority of Errors.
@@ -50,13 +39,22 @@ you would want to surface the top 10.
 that starts with that particular prefix, right?
 so when Instagram executed this and they saw the query execution plan, they saw that it has to do a sorting of 15455 rows, which is high given the frequency of a query like this.
 this puts an unnecessary load on the database, right then?
+which is what they clearly pointed out.
 notice how postgres had to sort through 15 000 rows.
+and, just to be very clear, how did I get to this number?
 because in any database, in any relational database, if you type, explain, analyze, it gives you the query execution plan.
 so they fired this query, got the query execution plan and they got that they have to sort 15445 rows because those are the rows that matched and they would want to sort on that, and sorting is a very expensive operation, right?
+okay, so that's the problem.
+now, what do we do to optimize this?
+now, to optimize this, you should not just go and directly add caching to optimize it.
+that's a very naive way to do it, to be honest.
+so can we do something better?
+so here we analyze the pattern first.
 so hashtags in general exhibit a long tail pattern.
 what exactly is long tail plate a pattern?
 it means that fewer hashtags will have large number of photos, while large number of hashtags would have fewer photos, which is very clear because there would be few tags which are extremely popular, While most of the tags are having 5, 10, 1500, 500 photos like this.
 so the idea here is, given that your hashtags exhibit a long tail pattern, instead of going through all the hashtag, can we only go through the hashtag that are popular enough?
+if we ask this question, because what are the chances?
 because you are already based surfing the the Hashtags with the most photos, basically in the descending order, for any prefix you would want to serve.
 you are always surfacing the most popular hashtags, so can we only index hashtag that has more than 100 photos?
 this was substantially reduced the size of the index.
@@ -91,3 +89,6 @@ right, and that is it for this one.
 so if you guys like this video, give this video a thumbs up.
 if you guys like the channel, give this channel a sub.
 I post three in-depth engineering videos every week and I'll see in the next one.
+[Music].
+thank you.
+thank you.
