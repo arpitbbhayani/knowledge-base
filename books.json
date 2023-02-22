@@ -1,5 +1,61 @@
 [
   {
+    "id": 19,
+    "title": "Unlocking Hypergrowth",
+    "highlights": null,
+    "url": "https://amzn.to/3IkdG49",
+    "topic": "Business and Leadership",
+    "status": "DONE"
+  },
+  {
+    "id": 18,
+    "title": "Blitzscaling: The Lightning-Fast Path to Building Massively",
+    "highlights": null,
+    "url": "https://amzn.to/3kdjp3T",
+    "topic": "Business and Leadership",
+    "status": "READING"
+  },
+  {
+    "id": 17,
+    "title": "The courage to be disliked",
+    "highlights": null,
+    "url": "https://amzn.to/3YU4dYr",
+    "topic": "Self-help Meta",
+    "status": "DONE"
+  },
+  {
+    "id": 16,
+    "title": "Think Again: The Power of Knowing What You Don't Know",
+    "highlights": null,
+    "url": "https://amzn.to/3Ktx1lW",
+    "topic": "Self-help Meta",
+    "status": "DONE"
+  },
+  {
+    "id": 15,
+    "title": "Deep Work",
+    "highlights": null,
+    "url": "https://amzn.to/3kcuTVi",
+    "topic": "Self-help Meta",
+    "status": "DONE"
+  },
+  {
+    "id": 14,
+    "title": "Atomic Habits",
+    "highlights": null,
+    "url": "https://amzn.to/3khnxjh",
+    "topic": "Self-help Meta",
+    "status": "DONE"
+  },
+  {
+    "id": 13,
+    "title": "The Psychology of Money",
+    "highlights": null,
+    "url": "https://amzn.to/3EsE6j3",
+    "topic": "Others",
+    "status": "DONE"
+  },
+  {
     "id": 12,
     "title": "Zero to One: Notes on Start Ups",
     "highlights": null,
