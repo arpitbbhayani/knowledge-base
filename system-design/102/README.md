@@ -32,7 +32,7 @@ Although we talked about the Payments service here, this approach of implementin
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Implementing Idempotence in a Payments Microservice](https://i.ytimg.com/vi/m6DtqSb1BDM/mqdefault.jpg)](https://www.youtube.com/watch?v=m6DtqSb1BDM)
 

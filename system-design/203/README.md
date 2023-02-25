@@ -49,7 +49,7 @@ Giphy uses Surrogate Keys (tags) while caching endpoints on CDN. It helps in sma
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![How Giphy uses CDN to serve a billion GIFs every day](https://i.ytimg.com/vi/-bo7oVejgRM/mqdefault.jpg)](https://www.youtube.com/watch?v=-bo7oVejgRM)
 

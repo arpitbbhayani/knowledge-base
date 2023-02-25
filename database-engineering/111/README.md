@@ -3,7 +3,7 @@
 
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![5 million + random rows in less than 100 seconds using SQL](https://i.ytimg.com/vi/x1XmcuosZNk/mqdefault.jpg)](https://www.youtube.com/watch?v=x1XmcuosZNk)
 

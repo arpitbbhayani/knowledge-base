@@ -45,7 +45,7 @@ Such abilities would help us reduce outage times and prevent cascading failures 
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Why should we have a standard way of building Microservices?](https://i.ytimg.com/vi/0q61wIUmVDY/mqdefault.jpg)](https://www.youtube.com/watch?v=0q61wIUmVDY)
 

@@ -67,7 +67,7 @@ Thus, each team can define its own set of derived tables using just a SQL query,
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Overview of Discord's data platform that daily processes petabytes of data and trillion points](https://i.ytimg.com/vi/yGpEzO32lU4/mqdefault.jpg)](https://www.youtube.com/watch?v=yGpEzO32lU4)
 

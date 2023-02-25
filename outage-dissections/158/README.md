@@ -39,7 +39,7 @@ To ensure the outage would not happen due to the same reason, the Config Generat
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Dissecting GitHub Outage - Downtime due to Rate Limiter](https://i.ytimg.com/vi/VPZo8cO1HbI/mqdefault.jpg)](https://www.youtube.com/watch?v=VPZo8cO1HbI)
 

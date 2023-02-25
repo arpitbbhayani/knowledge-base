@@ -3,7 +3,7 @@ Understanding Database Isolation Levels with hands-on examples
 
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Understanding Database Isolation Levels with hands-on examples](https://i.ytimg.com/vi/-Wcdl12ac5w/mqdefault.jpg)](https://www.youtube.com/watch?v=-Wcdl12ac5w)
 

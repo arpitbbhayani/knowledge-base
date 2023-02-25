@@ -52,7 +52,7 @@ Note: To understand why we do it at load factor = 1/8, please refer to the video
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Why are Hash Tables always doubled?](https://i.ytimg.com/vi/zt1E0akArqQ/mqdefault.jpg)](https://www.youtube.com/watch?v=zt1E0akArqQ)
 

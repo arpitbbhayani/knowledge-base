@@ -48,7 +48,7 @@ Vertical Partitioning is a long-term fix for this problem. The idea is to create
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Dissecting GitHub Outage - Downtime due to ALTER TABLE](https://i.ytimg.com/vi/82Xywy74kfE/mqdefault.jpg)](https://www.youtube.com/watch?v=82Xywy74kfE)
 

@@ -49,7 +49,7 @@ For example, if the business priority is profitability we should not have over-p
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Things to remember while building Microservices](https://i.ytimg.com/vi/xbtE9IF4yRc/mqdefault.jpg)](https://www.youtube.com/watch?v=xbtE9IF4yRc)
 

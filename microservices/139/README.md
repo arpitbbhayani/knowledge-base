@@ -42,7 +42,7 @@ For example, sending OTP during login is best modeled synchronous instead of doi
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Designing Workflows in Microservices - Orchestration vs Choreography](https://i.ytimg.com/vi/HiwOx-W1TIA/mqdefault.jpg)](https://www.youtube.com/watch?v=HiwOx-W1TIA)
 

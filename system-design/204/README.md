@@ -75,7 +75,7 @@ The initial percentage was 5%, eventually increasing it to 100% and then pluggin
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![The architecture of Yelp's in-house Search Engine - nrtSearch](https://i.ytimg.com/vi/i8MweKYoG1U/mqdefault.jpg)](https://www.youtube.com/watch?v=i8MweKYoG1U)
 

@@ -45,7 +45,7 @@ All the messages that client tried to write to Kafka failed, but they were persi
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Dissecting GitHub Outage - Multiple Leaders in Zookeeper Cluster](https://i.ytimg.com/vi/bycFzB6yrK0/mqdefault.jpg)](https://www.youtube.com/watch?v=bycFzB6yrK0)
 

@@ -58,7 +58,7 @@ When a node receives a message from any other node, it makes an entry in its rou
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Kademlia - a Distributed Hash Table implementation to power the overlay network of BitTorrent](https://i.ytimg.com/vi/_kCHOpINA5g/mqdefault.jpg)](https://www.youtube.com/watch?v=_kCHOpINA5g)
 

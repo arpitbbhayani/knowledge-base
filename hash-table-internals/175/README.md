@@ -71,7 +71,7 @@ During insert, lookup, and delete when we find the matching hash, and explicitly
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Implementing Hash Maps with Hash Tables](https://i.ytimg.com/vi/VCMO2X6EoK0/mqdefault.jpg)](https://www.youtube.com/watch?v=VCMO2X6EoK0)
 

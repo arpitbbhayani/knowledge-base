@@ -3,7 +3,7 @@ How python optimizes strings using String Interning?
 
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![How python optimizes strings using String Interning?](https://i.ytimg.com/vi/QpGK69LzfpY/mqdefault.jpg)](https://www.youtube.com/watch?v=QpGK69LzfpY)
 

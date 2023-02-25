@@ -38,7 +38,7 @@ Again, it is pure speculation given we do not have any insider information nor t
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Dissecting GitHub Outage - Repository Creation Failed](https://i.ytimg.com/vi/48YZzGi7QMk/mqdefault.jpg)](https://www.youtube.com/watch?v=48YZzGi7QMk)
 

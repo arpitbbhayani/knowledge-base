@@ -54,7 +54,7 @@ For the next 10 seconds, it unchokes the first 4 peers ordered by the sorting cr
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![The Choke Algorithm that powers BitTorrent](https://i.ytimg.com/vi/iognYJRzCE8/mqdefault.jpg)](https://www.youtube.com/watch?v=iognYJRzCE8)
 

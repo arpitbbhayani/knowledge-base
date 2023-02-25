@@ -54,7 +54,7 @@ The deployment flow
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![An in-depth introduction to Blue Green Deployments](https://i.ytimg.com/vi/W6HANd8c9t4/mqdefault.jpg)](https://www.youtube.com/watch?v=W6HANd8c9t4)
 

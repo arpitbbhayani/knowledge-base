@@ -3,7 +3,7 @@ How "is" operator is implemented in python?
 
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![How "is" operator is implemented in python?](https://i.ytimg.com/vi/Q8luYnxiFFE/mqdefault.jpg)](https://www.youtube.com/watch?v=Q8luYnxiFFE)
 

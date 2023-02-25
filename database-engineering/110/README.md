@@ -24,7 +24,7 @@ Before jumping to the potential short-term and long-term solutions, ensure you m
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![How to handle database outages?](https://i.ytimg.com/vi/UT_TVldzA64/mqdefault.jpg)](https://www.youtube.com/watch?v=UT_TVldzA64)
 

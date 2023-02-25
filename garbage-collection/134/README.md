@@ -38,7 +38,7 @@ The nodes left unmarked are the garbage and hence in the sweep phase, the GC ite
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Mark and Sweep Garbage Collection Algorithm](https://i.ytimg.com/vi/4qLf0FJMyf0/mqdefault.jpg)](https://www.youtube.com/watch?v=4qLf0FJMyf0)
 

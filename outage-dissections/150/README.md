@@ -44,7 +44,7 @@ Keep an inventory of the queries we fire and the indexes it uses during executio
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Dissecting GitHub Outage Downtime due to creating an Index](https://i.ytimg.com/vi/df2QgLW0QC4/mqdefault.jpg)](https://www.youtube.com/watch?v=df2QgLW0QC4)
 

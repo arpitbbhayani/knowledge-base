@@ -30,7 +30,7 @@ So long as a microservice adheres to the API contract, the team that owns it can
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Advantages of adopting a microservices-based architecture](https://i.ytimg.com/vi/JPj6mhVLQN0/mqdefault.jpg)](https://www.youtube.com/watch?v=JPj6mhVLQN0)
 

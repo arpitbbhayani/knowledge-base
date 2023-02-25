@@ -42,7 +42,7 @@ The Two-Phase Commit looks super-simple but it has a major flaw in the failure s
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Two Phase Commit to power Distributed Transactions in a Distributed System](https://i.ytimg.com/vi/sZVCpjuVUL8/mqdefault.jpg)](https://www.youtube.com/watch?v=sZVCpjuVUL8)
 

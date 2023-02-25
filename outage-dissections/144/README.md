@@ -46,7 +46,7 @@ The above query when executed iterates through all the rows of the table for a p
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Dissecting GitHub Outage: Downtime due to an Edge Case](https://i.ytimg.com/vi/iqapVyfoFqc/mqdefault.jpg)](https://www.youtube.com/watch?v=iqapVyfoFqc)
 

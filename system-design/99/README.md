@@ -3,7 +3,7 @@ Designing Notifications Service for Instagram
 
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Designing Notifications Service for Instagram](https://i.ytimg.com/vi/kIP8L-CSl2Y/mqdefault.jpg)](https://www.youtube.com/watch?v=kIP8L-CSl2Y)
 

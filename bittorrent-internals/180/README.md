@@ -57,7 +57,7 @@ The peers respond with the block and this completes the download faster.
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![The Piece Selection algorithm that makes BitTorrent fault tolerant](https://i.ytimg.com/vi/QSeex0YxReY/mqdefault.jpg)](https://www.youtube.com/watch?v=QSeex0YxReY)
 

@@ -3,7 +3,7 @@ Scaling Taxonomy Service and Database
 
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Scaling Taxonomy Service and Database](https://i.ytimg.com/vi/dTPh3KcKPYo/mqdefault.jpg)](https://www.youtube.com/watch?v=dTPh3KcKPYo)
 

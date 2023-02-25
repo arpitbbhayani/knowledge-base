@@ -45,7 +45,7 @@ With this full revert, the master node stopped crashing and things become normal
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![GitHub Outage  - How databases are managed in production](https://i.ytimg.com/vi/4mVJQJbw6Vw/mqdefault.jpg)](https://www.youtube.com/watch?v=4mVJQJbw6Vw)
 

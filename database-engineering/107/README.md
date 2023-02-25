@@ -27,7 +27,7 @@ The core idea: When we need to store and query data that could be confined withi
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![What are Embedded Databases?](https://i.ytimg.com/vi/xELqRiovEcI/mqdefault.jpg)](https://www.youtube.com/watch?v=xELqRiovEcI)
 

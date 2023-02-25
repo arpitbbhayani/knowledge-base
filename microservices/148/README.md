@@ -54,7 +54,7 @@ Having a database per service bloats up our infra and we would need to build exp
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Database per Service Pattern in Microservices](https://i.ytimg.com/vi/la2q1vFA5q0/mqdefault.jpg)](https://www.youtube.com/watch?v=la2q1vFA5q0)
 

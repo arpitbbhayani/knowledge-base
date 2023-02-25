@@ -55,7 +55,7 @@ It is possible to have more partitions and fewer shards and in that case, each s
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Database Sharding and Partitioning](https://i.ytimg.com/vi/wXvljefXyEo/mqdefault.jpg)](https://www.youtube.com/watch?v=wXvljefXyEo)
 

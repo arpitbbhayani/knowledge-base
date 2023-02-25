@@ -57,7 +57,7 @@ A separate orchestrator computes the number of workers required to consume the i
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![How @twitter keeps its Search systems up and stable at scale](https://i.ytimg.com/vi/dOyCq_mMtdI/mqdefault.jpg)](https://www.youtube.com/watch?v=dOyCq_mMtdI)
 

@@ -59,7 +59,7 @@ The information is then used to formulate an Elasticsearch Query to get the sear
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![How Zomato improved its search by identifying intent through NLP](https://i.ytimg.com/vi/JL9x9N6YSUc/mqdefault.jpg)](https://www.youtube.com/watch?v=JL9x9N6YSUc)
 

@@ -51,7 +51,7 @@ The above query required it to sort only 169 rows, completing its evaluation sup
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![How Instagram efficiently serves HashTags ordered by count](https://i.ytimg.com/vi/CA2_0ZhVW2g/mqdefault.jpg)](https://www.youtube.com/watch?v=CA2_0ZhVW2g)
 

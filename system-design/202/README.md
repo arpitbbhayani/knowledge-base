@@ -48,7 +48,7 @@ Once it has completed sending the response for all the images, it sends the term
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![How Dropbox efficiently serves and renders a large number of thumbnails](https://i.ytimg.com/vi/FczWm6kx0Kg/mqdefault.jpg)](https://www.youtube.com/watch?v=FczWm6kx0Kg)
 

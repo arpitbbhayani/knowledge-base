@@ -45,7 +45,7 @@ Double hashing is not cache-friendly, as it requires us to hop across the hash t
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Double Hashing for Conflict Resolution in Hash Tables](https://i.ytimg.com/vi/wV4K6fo0T58/mqdefault.jpg)](https://www.youtube.com/watch?v=wV4K6fo0T58)
 

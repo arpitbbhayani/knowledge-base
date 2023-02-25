@@ -37,7 +37,7 @@ Thus, this two-step implementation allows for near-constant time insertions, upd
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Internal Structure of a Hash Table](https://i.ytimg.com/vi/jjW8w8ED3Ns/mqdefault.jpg)](https://www.youtube.com/watch?v=jjW8w8ED3Ns)
 

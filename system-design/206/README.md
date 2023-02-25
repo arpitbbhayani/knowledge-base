@@ -138,7 +138,7 @@ This design is taken from @Airbnb's Engineering Blog and it is linked in the des
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![How Airbnb designed and scaled its central authorization system - Himeji](https://i.ytimg.com/vi/5FIPtC3xJSQ/mqdefault.jpg)](https://www.youtube.com/watch?v=5FIPtC3xJSQ)
 

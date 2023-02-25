@@ -32,7 +32,7 @@ For example, re-auditing all the INT32 columns and moving them to INT64 to ensur
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![So, the outage is mitigated, now what?](https://i.ytimg.com/vi/LeT_s-UFw-U/mqdefault.jpg)](https://www.youtube.com/watch?v=LeT_s-UFw-U)
 

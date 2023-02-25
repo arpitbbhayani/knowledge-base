@@ -48,7 +48,7 @@ Each node participates in the election and sends messages across the entire ring
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![LCR algorithm for Leader Election in Distributed Systems](https://i.ytimg.com/vi/NDBJr37dBzc/mqdefault.jpg)](https://www.youtube.com/watch?v=NDBJr37dBzc)
 

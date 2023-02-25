@@ -48,7 +48,7 @@ The message sent across during the election contains `<uid, hops, direction>`. I
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![HS algorithm for Leader Election in Distributed Systems](https://i.ytimg.com/vi/inzQQm-kXCo/mqdefault.jpg)](https://www.youtube.com/watch?v=inzQQm-kXCo)
 

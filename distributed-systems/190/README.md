@@ -45,7 +45,7 @@ In the real world, hence we do not assume a completely unreliable network. Inste
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Unsolvable Distributed Consensus and The Two Generals' Problem](https://i.ytimg.com/vi/DnOlqghKJMY/mqdefault.jpg)](https://www.youtube.com/watch?v=DnOlqghKJMY)
 

@@ -42,7 +42,7 @@ To optimally perform a key lookup, when the collisions are high, we can use a se
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Conflict Resolution in Hash Tables with Chaining](https://i.ytimg.com/vi/9rb8oILi4lU/mqdefault.jpg)](https://www.youtube.com/watch?v=9rb8oILi4lU)
 

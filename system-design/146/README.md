@@ -51,7 +51,7 @@ Say, we have 4 servers with version 1 of our code so in order to deploy the chan
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![An in-depth introduction to Rolling Deployments](https://i.ytimg.com/vi/9kjUG_yvVqM/mqdefault.jpg)](https://www.youtube.com/watch?v=9kjUG_yvVqM)
 

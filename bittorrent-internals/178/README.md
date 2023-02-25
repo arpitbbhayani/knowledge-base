@@ -41,7 +41,7 @@ A leecher, after completing the download of the entire file, becomes the seeder 
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Overview of the BitTorrent architecture](https://i.ytimg.com/vi/shVvFVFiZcs/mqdefault.jpg)](https://www.youtube.com/watch?v=shVvFVFiZcs)
 

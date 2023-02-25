@@ -46,7 +46,7 @@ To keep the movement to a bare minimum during scaling, Booking.com chose Consist
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![How Booking com designed and scaled their highly available and performant User Review System](https://i.ytimg.com/vi/BFyWl9MNDjY/mqdefault.jpg)](https://www.youtube.com/watch?v=BFyWl9MNDjY)
 

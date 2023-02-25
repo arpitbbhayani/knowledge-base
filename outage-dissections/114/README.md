@@ -26,7 +26,7 @@ Rollback as soon as possible.
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Dissecting Google Maps Outage: Bad Rollout and Cascading Failures](https://i.ytimg.com/vi/6oJaZbQKnJE/mqdefault.jpg)](https://www.youtube.com/watch?v=6oJaZbQKnJE)
 

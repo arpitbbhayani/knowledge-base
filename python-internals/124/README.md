@@ -3,7 +3,7 @@ How python implements chained comparison operators?
 
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![How python implements chained comparison operators?](https://i.ytimg.com/vi/zz2Lu5ht_jA/mqdefault.jpg)](https://www.youtube.com/watch?v=zz2Lu5ht_jA)
 

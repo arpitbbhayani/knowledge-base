@@ -48,7 +48,7 @@ It took them 4 hours to set up replicas and 1 hour to re-configure the cluster h
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Dissecting GitHub Outage - Master failover failed](https://i.ytimg.com/vi/ZirBDq1JwpY/mqdefault.jpg)](https://www.youtube.com/watch?v=ZirBDq1JwpY)
 

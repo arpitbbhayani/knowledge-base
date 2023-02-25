@@ -3,7 +3,7 @@ How python optimizes integers?
 
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![How python optimizes integers?](https://i.ytimg.com/vi/6mhXGEXRXG0/mqdefault.jpg)](https://www.youtube.com/watch?v=6mhXGEXRXG0)
 

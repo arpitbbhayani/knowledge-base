@@ -3,7 +3,7 @@ Dissecting Spotify's Global Outage - March 8, 2022
 
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Dissecting Spotify's Global Outage - March 8, 2022](https://i.ytimg.com/vi/h5hXivWws7k/mqdefault.jpg)](https://www.youtube.com/watch?v=h5hXivWws7k)
 

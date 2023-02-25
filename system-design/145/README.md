@@ -52,7 +52,7 @@ This is how you can implement vertical sharding.
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Implementing Vertical Sharding](https://i.ytimg.com/vi/9iAJjtvBwyI/mqdefault.jpg)](https://www.youtube.com/watch?v=9iAJjtvBwyI)
 

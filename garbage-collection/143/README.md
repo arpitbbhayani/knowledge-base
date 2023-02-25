@@ -57,7 +57,7 @@ Mark and Sweep GC does not exhibit spatial locality given we we do a DFS on obje
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Why caching would not speed up Mark-and-Sweep GC?](https://i.ytimg.com/vi/LkympMbgmCo/mqdefault.jpg)](https://www.youtube.com/watch?v=LkympMbgmCo)
 

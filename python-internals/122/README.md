@@ -3,7 +3,7 @@ Changing python grammar to support standalone walrus assignments
 
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Changing python grammar to support standalone walrus assignments](https://i.ytimg.com/vi/rWb7VYz1q1U/mqdefault.jpg)](https://www.youtube.com/watch?v=rWb7VYz1q1U)
 

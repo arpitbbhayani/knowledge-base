@@ -39,7 +39,7 @@ Hence, to reduce human error, and make the process more reliable and performant 
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Why do programming languages need automatic garbage collection?](https://i.ytimg.com/vi/jcMxuLZCcqU/mqdefault.jpg)](https://www.youtube.com/watch?v=jcMxuLZCcqU)
 

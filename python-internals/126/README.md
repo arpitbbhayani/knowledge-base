@@ -3,7 +3,7 @@ How python compares a float and an int objects?
 
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![How python compares a float and an int objects?](https://i.ytimg.com/vi/u4tfIy--4GM/mqdefault.jpg)](https://www.youtube.com/watch?v=u4tfIy--4GM)
 

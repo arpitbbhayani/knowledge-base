@@ -106,7 +106,7 @@ This is exactly what Gojek does. The link to their blog is in the description of
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![How Gojek masks and keeps users' phone numbers secure at scale?](https://i.ytimg.com/vi/nEEaSZZ8R4I/mqdefault.jpg)](https://www.youtube.com/watch?v=nEEaSZZ8R4I)
 

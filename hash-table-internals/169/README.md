@@ -47,7 +47,7 @@ The locality of reference is not as high as Linear Probing, but it is decent eno
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Quadratic Probing for Conflict Resolution in Hash Tables](https://i.ytimg.com/vi/F-8pWiJv8ik/mqdefault.jpg)](https://www.youtube.com/watch?v=F-8pWiJv8ik)
 

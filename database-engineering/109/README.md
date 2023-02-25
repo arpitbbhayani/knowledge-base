@@ -25,7 +25,7 @@ Note: This is a very crude example of how fetch happens with indexes; there are 
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![How do indexes make databases read faster?](https://i.ytimg.com/vi/3G293is403I/mqdefault.jpg)](https://www.youtube.com/watch?v=3G293is403I)
 

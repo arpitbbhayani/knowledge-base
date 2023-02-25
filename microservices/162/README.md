@@ -46,7 +46,7 @@ We should adopt BFF when
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![BFF - Backend for Frontend - Pattern in Microservices](https://i.ytimg.com/vi/GCx0aouuEkU/mqdefault.jpg)](https://www.youtube.com/watch?v=GCx0aouuEkU)
 

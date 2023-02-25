@@ -63,7 +63,7 @@ A huge amount of data, through the data pipelines, will be ingested into Solr an
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![How Flipkart made their type ahead search hyper personalized](https://i.ytimg.com/vi/NcNCty7_3kc/mqdefault.jpg)](https://www.youtube.com/watch?v=NcNCty7_3kc)
 

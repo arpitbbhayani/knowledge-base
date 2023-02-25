@@ -62,7 +62,7 @@ Managing dependencies across services is tough and it leads to a slowdown. The 3
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![10 Challenges in Adopting and Implementing Microservices](https://i.ytimg.com/vi/yTSq6hJFmUg/mqdefault.jpg)](https://www.youtube.com/watch?v=yTSq6hJFmUg)
 

@@ -3,7 +3,7 @@ Series Introduction: The Honest Python
 
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Series Introduction: The Honest Python](https://i.ytimg.com/vi/E-3J8X5DulY/mqdefault.jpg)](https://www.youtube.com/watch?v=E-3J8X5DulY)
 

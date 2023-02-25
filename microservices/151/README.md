@@ -47,7 +47,7 @@ This would create a hierarchical dependency between services solved through mult
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![API Composition Pattern in Microservices](https://i.ytimg.com/vi/5pYLlYsy6fQ/mqdefault.jpg)](https://www.youtube.com/watch?v=5pYLlYsy6fQ)
 

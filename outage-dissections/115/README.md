@@ -43,7 +43,7 @@ Now to restore the intermingled rows of a customer, the entire backup needs to b
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![An engineering deep-dive into Atlassian's Mega Outage of April 2022](https://i.ytimg.com/vi/xa-hMF8gku0/mqdefault.jpg)](https://www.youtube.com/watch?v=xa-hMF8gku0)
 

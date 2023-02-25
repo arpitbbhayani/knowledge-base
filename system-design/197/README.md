@@ -45,7 +45,7 @@ This export is then consumed by the services for offline processing.
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![The Architecture of Airbnb's Knowledge Graph](https://i.ytimg.com/vi/7xKgQmqkfD0/mqdefault.jpg)](https://www.youtube.com/watch?v=7xKgQmqkfD0)
 

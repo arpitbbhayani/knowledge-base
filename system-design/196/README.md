@@ -32,7 +32,7 @@ A metric that Swiggy chases is Bot Efficacy which is nothing but the percentage 
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![How Swiggy designed and scaled its chatbot](https://i.ytimg.com/vi/W8LDyEOPaPY/mqdefault.jpg)](https://www.youtube.com/watch?v=W8LDyEOPaPY)
 

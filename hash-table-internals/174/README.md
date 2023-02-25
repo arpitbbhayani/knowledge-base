@@ -64,7 +64,7 @@ During insert, lookup, and delete when we find the matching hash, we need to exp
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Implementing Hash Sets with Hash Tables](https://i.ytimg.com/vi/CcoMvgIdrD8/mqdefault.jpg)](https://www.youtube.com/watch?v=CcoMvgIdrD8)
 

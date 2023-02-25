@@ -3,7 +3,7 @@ How id() function is implemented in python?
 
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![How id() function is implemented in python?](https://i.ytimg.com/vi/IGLnxdmJu2c/mqdefault.jpg)](https://www.youtube.com/watch?v=IGLnxdmJu2c)
 

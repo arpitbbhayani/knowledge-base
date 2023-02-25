@@ -48,7 +48,7 @@ RPC can use any transport protocol for communication - Raw TCP, UDP, HTTP 1.1, o
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Introduction to RPC - Remote Procedure Calls](https://i.ytimg.com/vi/eRndYq8iTio/mqdefault.jpg)](https://www.youtube.com/watch?v=eRndYq8iTio)
 

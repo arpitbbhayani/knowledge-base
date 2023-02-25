@@ -45,7 +45,7 @@ This would make the linked list leverage the CPU cache well and ensure our itera
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Getting the best performance from the Hash Table](https://i.ytimg.com/vi/oD2yaTtu69w/mqdefault.jpg)](https://www.youtube.com/watch?v=oD2yaTtu69w)
 

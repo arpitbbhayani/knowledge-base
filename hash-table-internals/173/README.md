@@ -69,7 +69,7 @@ Similar to the insert phase, we would skip the deleted keys and re-insert only t
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Implementing Resize of a Hash Table](https://i.ytimg.com/vi/mmPwVBm-8n0/mqdefault.jpg)](https://www.youtube.com/watch?v=mmPwVBm-8n0)
 

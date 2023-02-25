@@ -48,7 +48,7 @@ Most GC are efficient in cleaning up a small chunk of memory, but a scalable GC 
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![How to pick a garbage collector?](https://i.ytimg.com/vi/IojMqbegejk/mqdefault.jpg)](https://www.youtube.com/watch?v=IojMqbegejk)
 

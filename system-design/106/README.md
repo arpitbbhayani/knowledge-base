@@ -45,7 +45,7 @@ Hard deleting from a database is an expensive operation. If we are deleting a hu
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Why, where, and when should we throttle or rate limit?](https://i.ytimg.com/vi/CW4gVlU0xtU/mqdefault.jpg)](https://www.youtube.com/watch?v=CW4gVlU0xtU)
 

@@ -53,7 +53,7 @@ Once we have enough confidence in the newer setup, we increase the roll-out frac
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![An in-depth introduction to Canary Deployments](https://i.ytimg.com/vi/nnseeKxovaM/mqdefault.jpg)](https://www.youtube.com/watch?v=nnseeKxovaM)
 

@@ -50,7 +50,7 @@ The algorithm will terminate when the leader of the component is trying to find 
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Minimum Spanning Tree in Distributed Systems - GHS Algorithm - and its Applications](https://i.ytimg.com/vi/c5t1rP6CvNs/mqdefault.jpg)](https://www.youtube.com/watch?v=c5t1rP6CvNs)
 

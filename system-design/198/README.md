@@ -39,7 +39,7 @@ The coordinator/proxy node aggregates the response and sends it back to the clie
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![The Architecture of Pinterest's Time Series Database - Goku](https://i.ytimg.com/vi/tZPTpa3JcKA/mqdefault.jpg)](https://www.youtube.com/watch?v=tZPTpa3JcKA)
 

@@ -28,7 +28,7 @@ Hence it is not favorable for heterogeneous components to be part of the same se
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![How to scope a microservice?](https://i.ytimg.com/vi/nfkdKHcKxbE/mqdefault.jpg)](https://www.youtube.com/watch?v=nfkdKHcKxbE)
 

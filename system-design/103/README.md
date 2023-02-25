@@ -23,7 +23,7 @@ The search endpoint of ElasticSearch is a GET endpoint where the complex search 
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Sending payload in an HTTP GET request](https://i.ytimg.com/vi/8S4k7k_f9Sk/mqdefault.jpg)](https://www.youtube.com/watch?v=8S4k7k_f9Sk)
 

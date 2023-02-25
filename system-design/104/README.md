@@ -3,7 +3,7 @@ End-to-end Message Encryption
 
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![End-to-end Message Encryption](https://i.ytimg.com/vi/m_7xSIhxZL8/mqdefault.jpg)](https://www.youtube.com/watch?v=m_7xSIhxZL8)
 

@@ -39,7 +39,7 @@ If the minimum UID is a large integer, then the algorithm will take a longer tim
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![TimeSlice algorithm for Leader Election in Distributed Systems](https://i.ytimg.com/vi/mcKLQVmCsG4/mqdefault.jpg)](https://www.youtube.com/watch?v=mcKLQVmCsG4)
 

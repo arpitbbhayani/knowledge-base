@@ -44,7 +44,7 @@ A common approach to getting this loose coupling is by powering inter-service co
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Control an outage by localizing the failures](https://i.ytimg.com/vi/Of3FS2qDM28/mqdefault.jpg)](https://www.youtube.com/watch?v=Of3FS2qDM28)
 

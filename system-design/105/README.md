@@ -43,7 +43,7 @@ For example:
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![How to approach System Design?](https://i.ytimg.com/vi/1r9bPisYaOQ/mqdefault.jpg)](https://www.youtube.com/watch?v=1r9bPisYaOQ)
 

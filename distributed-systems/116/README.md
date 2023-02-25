@@ -37,7 +37,7 @@ Thus, in any case, an end-user will never experience a moment where we say that 
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Implementing Distributed Transactions using Two Phase Commit Protocol](https://i.ytimg.com/vi/oMhESvU87jM/mqdefault.jpg)](https://www.youtube.com/watch?v=oMhESvU87jM)
 

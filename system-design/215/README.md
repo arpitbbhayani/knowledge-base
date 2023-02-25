@@ -3,7 +3,7 @@ Designing Idempotent API Endpoints for Payments at Stripe
 
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Designing Idempotent API Endpoints for Payments at Stripe](https://i.ytimg.com/vi/J2IcD9FZvZU/mqdefault.jpg)](https://www.youtube.com/watch?v=J2IcD9FZvZU)
 

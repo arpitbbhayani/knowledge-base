@@ -42,7 +42,7 @@ Dictionaries are encoded as `d<key1><value1><key2><value2>e`. Hence, a dictionar
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Understanding the Torrent File Format and Bencoding](https://i.ytimg.com/vi/tHT94dSMwKw/mqdefault.jpg)](https://www.youtube.com/watch?v=tHT94dSMwKw)
 

@@ -30,7 +30,7 @@ The order is placed only after the food item, and the delivery agent is assigned
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Distributed Transactions: Two-Phase Commit Protocol](https://i.ytimg.com/vi/7FgU1D4EnpQ/mqdefault.jpg)](https://www.youtube.com/watch?v=7FgU1D4EnpQ)
 

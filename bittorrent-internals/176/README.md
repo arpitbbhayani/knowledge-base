@@ -62,7 +62,7 @@ The new and popular files will have a lot of seeders and hence a new node joinin
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Introduction to BitTorrent and the problem it beautifully solves](https://i.ytimg.com/vi/v7cR0ZolaUA/mqdefault.jpg)](https://www.youtube.com/watch?v=v7cR0ZolaUA)
 

@@ -35,7 +35,7 @@ Another optimization to reduce the communication is to NOT send the Max UID in t
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![FloodMax algorithm for Leader Election in Distributed Systems](https://i.ytimg.com/vi/4aeFQpuww4E/mqdefault.jpg)](https://www.youtube.com/watch?v=4aeFQpuww4E)
 

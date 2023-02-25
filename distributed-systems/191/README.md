@@ -36,7 +36,7 @@ So long as we have a total ordering of the values, we can define our own decisio
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![FloodSet Algorithm - Distributed Consensus even when processes crash](https://i.ytimg.com/vi/uS19mAa_tFA/mqdefault.jpg)](https://www.youtube.com/watch?v=uS19mAa_tFA)
 

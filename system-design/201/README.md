@@ -44,7 +44,7 @@ This way, we maintain the aggregated favorite count for each restaurant in near-
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Aggregating DynamoDB data in realtime to list restaurants at Deliveroo](https://i.ytimg.com/vi/VNvTEin2liY/mqdefault.jpg)](https://www.youtube.com/watch?v=VNvTEin2liY)
 

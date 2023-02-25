@@ -58,7 +58,7 @@ Given that the emergency service deals with events that are urgent, important, a
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Designing Uber's highly available Emergency SOS Service](https://i.ytimg.com/vi/gpzGpPiRoCo/mqdefault.jpg)](https://www.youtube.com/watch?v=gpzGpPiRoCo)
 

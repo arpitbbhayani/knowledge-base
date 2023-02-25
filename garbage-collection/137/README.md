@@ -46,7 +46,7 @@ This method of garbage collection is called "on-the-fly" which runs concurrently
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Tricolor Abstraction to build concurrent Garbage Collectors](https://i.ytimg.com/vi/lhrRwjVPXPo/mqdefault.jpg)](https://www.youtube.com/watch?v=lhrRwjVPXPo)
 

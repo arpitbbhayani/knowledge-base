@@ -3,7 +3,7 @@ How @ShopifyEngineering avoids hot shards by moving data across databases withou
 
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![How @ShopifyEngineering avoids hot shards by moving data across databases without any downtime](https://i.ytimg.com/vi/7v-wrJjcg4k/mqdefault.jpg)](https://www.youtube.com/watch?v=7v-wrJjcg4k)
 

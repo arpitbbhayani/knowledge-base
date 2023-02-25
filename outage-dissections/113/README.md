@@ -30,7 +30,7 @@ Although mitigation is great, it is better to place a monitoring system that rai
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Dissecting GitHub Outage: ID column reaching the max value 2147483647](https://i.ytimg.com/vi/ZFRAFTn0cQ0/mqdefault.jpg)](https://www.youtube.com/watch?v=ZFRAFTn0cQ0)
 

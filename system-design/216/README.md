@@ -3,7 +3,7 @@ Thundering Herd Problem and How not to do API retries
 
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Thundering Herd Problem and How not to do API retries](https://i.ytimg.com/vi/8sTuCPh3s0s/mqdefault.jpg)](https://www.youtube.com/watch?v=8sTuCPh3s0s)
 

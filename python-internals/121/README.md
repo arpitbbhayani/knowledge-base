@@ -3,7 +3,7 @@ Setting up cpython locally and making your first change
 
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Setting up cpython locally and making your first change](https://i.ytimg.com/vi/k5isLG6vqss/mqdefault.jpg)](https://www.youtube.com/watch?v=k5isLG6vqss)
 

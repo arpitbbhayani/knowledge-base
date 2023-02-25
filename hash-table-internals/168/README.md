@@ -55,7 +55,7 @@ Hence, it is important to pick a good hash function, like Murmur Hash, to ensure
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Linear Probing for Conflict Resolution in Hash Tables](https://i.ytimg.com/vi/5QKAXG25hig/mqdefault.jpg)](https://www.youtube.com/watch?v=5QKAXG25hig)
 

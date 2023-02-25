@@ -65,7 +65,7 @@ Use serverless and invoke the function every time a message is pushed on the bro
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Introduction to Serverless Computing and Architecture](https://i.ytimg.com/vi/oiZH5U_a0pg/mqdefault.jpg)](https://www.youtube.com/watch?v=oiZH5U_a0pg)
 

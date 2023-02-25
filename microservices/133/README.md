@@ -47,7 +47,7 @@ Sharing the database is also seen where it is inconvenient to have a middleman f
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Shared Database Pattern in Microservices](https://i.ytimg.com/vi/tV11trlimLk/mqdefault.jpg)](https://www.youtube.com/watch?v=tV11trlimLk)
 

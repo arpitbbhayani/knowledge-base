@@ -3,7 +3,7 @@ Why do databases store data in B+ trees?
 
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Why do databases store data in B+ trees?](https://i.ytimg.com/vi/09E-tVAUqQw/mqdefault.jpg)](https://www.youtube.com/watch?v=09E-tVAUqQw)
 

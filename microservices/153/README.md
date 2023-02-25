@@ -52,7 +52,7 @@ Migrating from monolith to microservices is a slow process and to start you woul
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![What are Microservices?](https://i.ytimg.com/vi/qoAox0FGzRQ/mqdefault.jpg)](https://www.youtube.com/watch?v=qoAox0FGzRQ)
 

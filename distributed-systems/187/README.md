@@ -54,7 +54,7 @@ After constructing the BFS Spanning Tree, we can use this constructed path to
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Synchronous Breadth First Search Algorithm to power broadcast in Distributed Systems](https://i.ytimg.com/vi/PTlYBBqAYXA/mqdefault.jpg)](https://www.youtube.com/watch?v=PTlYBBqAYXA)
 

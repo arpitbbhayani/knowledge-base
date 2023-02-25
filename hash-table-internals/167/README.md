@@ -50,7 +50,7 @@ Since we are not having any auxiliary data structure, a major limitation of Open
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Conflict Resolution in Hash Tables with Open Addressing](https://i.ytimg.com/vi/6_yFb7icd_c/mqdefault.jpg)](https://www.youtube.com/watch?v=6_yFb7icd_c)
 

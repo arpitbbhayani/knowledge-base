@@ -44,7 +44,7 @@ Hence, gathering exponential information is the key to resolving Byzantine agree
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Exponential Information Gathering (EIG) Algorithm for Byzantine Agreement](https://i.ytimg.com/vi/pi3YA3m1ffw/mqdefault.jpg)](https://www.youtube.com/watch?v=pi3YA3m1ffw)
 

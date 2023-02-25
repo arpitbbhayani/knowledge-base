@@ -49,7 +49,7 @@ To ensure we are maintaining our SLA, we have to exhaustively monitor the entire
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![How Razorpay scaled their notification system](https://i.ytimg.com/vi/DQwlmTvs6xA/mqdefault.jpg)](https://www.youtube.com/watch?v=DQwlmTvs6xA)
 

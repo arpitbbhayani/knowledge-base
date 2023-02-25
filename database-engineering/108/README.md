@@ -37,7 +37,7 @@ WAL also needs to ensure that any operation flushed in the log is not corrupted 
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![How does the database guarantee reliability using write-ahead logging?](https://i.ytimg.com/vi/wI4hKwl1Cn4/mqdefault.jpg)](https://www.youtube.com/watch?v=wI4hKwl1Cn4)
 

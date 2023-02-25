@@ -3,7 +3,7 @@ Designing Taxonomy on SQL
 
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Designing Taxonomy on SQL](https://i.ytimg.com/vi/4_jlmX_oB94/mqdefault.jpg)](https://www.youtube.com/watch?v=4_jlmX_oB94)
 

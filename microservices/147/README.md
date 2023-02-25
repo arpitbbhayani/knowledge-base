@@ -56,7 +56,7 @@ One very important reason why HTTP is so commonly used in implementation is the 
 <hr />
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![Everything you need to know about REST](https://i.ytimg.com/vi/uFGJVQvR59A/mqdefault.jpg)](https://www.youtube.com/watch?v=uFGJVQvR59A)
 

@@ -3,7 +3,7 @@ How Slack efficiently classifies emails at scale with an eventually consistent s
 
 
 
-<p>Here's the video of my explaining this in-depth 👇‍ do check it out</p>
+<p>Here's the video of me explaining this in-depth 👇‍</p>
 
 [![How Slack efficiently classifies emails at scale with an eventually consistent system](https://i.ytimg.com/vi/BwxU9EnCFXA/mqdefault.jpg)](https://www.youtube.com/watch?v=BwxU9EnCFXA)
 
