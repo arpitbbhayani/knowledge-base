@@ -1,5 +1,13 @@
 [
   {
+    "id": 24,
+    "title": "Java Concurrency in Practice",
+    "highlights": null,
+    "url": "https://amzn.to/3lWBXFN",
+    "topic": "Programming and Implementation",
+    "status": "DONE"
+  },
+  {
     "id": 23,
     "title": "Clean Code",
     "highlights": null,
