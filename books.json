@@ -1,5 +1,21 @@
 [
   {
+    "id": 23,
+    "title": "Clean Code",
+    "highlights": null,
+    "url": "https://amzn.to/3IRXwjT",
+    "topic": "Programming and Implementation",
+    "status": "DONE"
+  },
+  {
+    "id": 22,
+    "title": "Code Complete",
+    "highlights": null,
+    "url": "https://amzn.to/3IXSKBD",
+    "topic": "Programming and Implementation",
+    "status": "DONE"
+  },
+  {
     "id": 21,
     "title": "Spark in Action",
     "highlights": null,
