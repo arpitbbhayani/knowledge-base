@@ -5,8 +5,8 @@
     "name": "Backend System Design",
     "one_liner": null,
     "youtube_playlist_id": "PLsdq-3Z1EPT27BuTnJ_trF7BsaTpYLqst",
-    "bgcolor": "#D3D3D3",
-    "themecolor": "#777777",
+    "bgcolor": "#FFE7E7",
+    "themecolor": "#f00",
     "course_url": null
   },
   {
@@ -15,8 +15,8 @@
     "name": "Database Engineering",
     "one_liner": null,
     "youtube_playlist_id": "PLsdq-3Z1EPT2C-Da7Jscr7NptGcIZgQ2l",
-    "bgcolor": "#E8E8E8",
-    "themecolor": "#4D4D4D",
+    "bgcolor": "#E7ECFF",
+    "themecolor": "#5677f5",
     "course_url": null
   },
   {
@@ -25,8 +25,8 @@
     "name": "Outage Dissections",
     "one_liner": null,
     "youtube_playlist_id": "PLsdq-3Z1EPT3_Z97svMs6S2y7tv1PcUmc",
-    "bgcolor": "#B0B0B0",
-    "themecolor": "#C3C3C3",
+    "bgcolor": "#FFF1E7",
+    "themecolor": "#FF8229",
     "course_url": null
   },
   {
@@ -35,8 +35,8 @@
     "name": "Distributed Systems",
     "one_liner": null,
     "youtube_playlist_id": "PLsdq-3Z1EPT1wfRQo2xrrst2SGremT_qd",
-    "bgcolor": "#C7C7C7",
-    "themecolor": "#939393",
+    "bgcolor": "#DDF0FF",
+    "themecolor": "#1798FF",
     "course_url": null
   },
   {
@@ -45,8 +45,8 @@
     "name": "Python Internals",
     "one_liner": null,
     "youtube_playlist_id": "PLsdq-3Z1EPT12HU6v00VlcZ18ckWRGxXU",
-    "bgcolor": "#CBCBCB",
-    "themecolor": "#8A8A8A",
+    "bgcolor": "#DDFFF1",
+    "themecolor": "#00A662",
     "course_url": null
   },
   {
@@ -55,8 +55,8 @@
     "name": "Garbage Collection",
     "one_liner": null,
     "youtube_playlist_id": "PLsdq-3Z1EPT3MvruOP09U1bWmcjxLIMwR",
-    "bgcolor": "#E0E0E0",
-    "themecolor": "#5E5E5E",
+    "bgcolor": "#F0E6FF",
+    "themecolor": "#A66AFF",
     "course_url": null
   },
   {
@@ -65,8 +65,8 @@
     "name": "Designing \u03bc-services",
     "one_liner": null,
     "youtube_playlist_id": "PLsdq-3Z1EPT0ug8eizS71G6LZb6-4FAFt",
-    "bgcolor": "#ACACAC",
-    "themecolor": "#CCCCCC",
+    "bgcolor": "#FFFAE6",
+    "themecolor": "#CAA200",
     "course_url": "https://courses.arpitbhayani.me/designing-microservices/"
   },
   {
@@ -75,8 +75,8 @@
     "name": "Advanced Algorithms",
     "one_liner": null,
     "youtube_playlist_id": null,
-    "bgcolor": "#D8D8D8",
-    "themecolor": "#6F6F6F",
+    "bgcolor": "#FFE7F3",
+    "themecolor": "#ff007f",
     "course_url": null
   },
   {
@@ -85,8 +85,8 @@
     "name": "Hash Table Internals",
     "one_liner": null,
     "youtube_playlist_id": "PLsdq-3Z1EPT2UnueESBLReaVSLIo_BuAc",
-    "bgcolor": "#EDEDED",
-    "themecolor": "#444444",
+    "bgcolor": "#FBE0E0",
+    "themecolor": "#FF4B42",
     "course_url": "https://courses.arpitbhayani.me/hash-table-internals/"
   },
   {
@@ -95,8 +95,8 @@
     "name": "BitTorrent Internals",
     "one_liner": null,
     "youtube_playlist_id": "PLsdq-3Z1EPT1rNeq2GXpnivaWINnOaCd0",
-    "bgcolor": "#C3C3C3",
-    "themecolor": "#9D9D9D",
+    "bgcolor": "#FFF1DB",
+    "themecolor": "#E1A547",
     "course_url": "https://courses.arpitbhayani.me/bittorrent-internals/"
   },
   {
@@ -105,8 +105,8 @@
     "name": "Concurrency in Depth",
     "one_liner": null,
     "youtube_playlist_id": "PLsdq-3Z1EPT3VjDhjMb5yBsgn0wn2-fjp",
-    "bgcolor": "#A8A8A8",
-    "themecolor": "#D6D6D6",
+    "bgcolor": "#C7EFFF",
+    "themecolor": "#2390BB",
     "course_url": null
   },
   {
@@ -115,8 +115,8 @@
     "name": "Career Growth",
     "one_liner": null,
     "youtube_playlist_id": "PLsdq-3Z1EPT15VMuZHxuiyXUZSh0VLfT4",
-    "bgcolor": "#E4E4E4",
-    "themecolor": "#555555",
+    "bgcolor": "#CAFFD8",
+    "themecolor": "#23BB49",
     "course_url": null
   },
   {
@@ -125,8 +125,8 @@
     "name": "Productivity",
     "one_liner": null,
     "youtube_playlist_id": "PLsdq-3Z1EPT2oAX8vR47xiPu0TJaGQIo4",
-    "bgcolor": "#F1F1F1",
-    "themecolor": "#3C3C3C",
+    "bgcolor": "#FFE5D2",
+    "themecolor": "#FF6C00",
     "course_url": null
   }
 ]

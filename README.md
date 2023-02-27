@@ -11,7 +11,7 @@ Thank you for visiting my knowledge base. This repository contains everything im
 Hey 🙌‍, I am Arpit Bhayani, a CS Engineer, an Educator, and a Polymath.
 
 I run a YouTube channel by the name [Asli Engineering](asliengineering.com) (translation: Real Engineering) on which I publish in-depth engineering videos on topics ranging from System Design,
-Distributed Systems, Python Internals, and anything that amuses me in tech. To date, I have published **120** videos covering **13** topics.
+Distributed Systems, Python Internals, and anything that amuses me in tech. To date, I have published **121** videos covering **13** topics.
 
 I also run a [course on System Design](https://arpitbhayani.me/masterclass) in which I teach the concepts of designing massively scalable systems using the First Principle Thinking. The course has been trusted by prople working in someo of the top companies of the world like Google, Amazon, Facebook, Microsoft, GoJek, and so many more. You can find the details about the course and curriculum at [arpitbhayani.me/masterclass](https://arpitbhayani.me/masterclass).
 
@@ -34,9 +34,9 @@ Topics I like to talk about are
 5 recent videos I published on [YouTube](https://www.youtube.com/c/ArpitBhayani)
 
  - [Understanding Database Isolation Levels with hands-on examples](https://youtube.com/watch?v=-Wcdl12ac5w)
+ - [Building my second brain and becoming 10x productive as a software engineer](https://youtube.com/watch?v=47ARX-6srGk)
  - [Why do databases store data in B+ trees?](https://youtube.com/watch?v=09E-tVAUqQw)
  - [Thundering Herd Problem and How not to do API retries](https://youtube.com/watch?v=8sTuCPh3s0s)
  - [Designing Idempotent API Endpoints for Payments at Stripe](https://youtube.com/watch?v=J2IcD9FZvZU)
- - [How Slack efficiently classifies emails at scale with an eventually consistent system](https://youtube.com/watch?v=BwxU9EnCFXA)
 
 You can find more about me on my website [arpitbhayani.me](arpitbhayani.me).
