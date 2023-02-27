@@ -11,7 +11,7 @@ Thank you for visiting my knowledge base. This repository contains everything im
 Hey 🙌‍, I am Arpit Bhayani, a CS Engineer, an Educator, and a Polymath.
 
 I run a YouTube channel by the name [Asli Engineering](asliengineering.com) (translation: Real Engineering) on which I publish in-depth engineering videos on topics ranging from System Design,
-Distributed Systems, Python Internals, and anything that amuses me in tech. To date, I have published **120** videos covering **10** topics.
+Distributed Systems, Python Internals, and anything that amuses me in tech. To date, I have published **120** videos covering **13** topics.
 
 I also run a [course on System Design](https://arpitbhayani.me/masterclass) in which I teach the concepts of designing massively scalable systems using the First Principle Thinking. The course has been trusted by prople working in someo of the top companies of the world like Google, Amazon, Facebook, Microsoft, GoJek, and so many more. You can find the details about the course and curriculum at [arpitbhayani.me/masterclass](https://arpitbhayani.me/masterclass).
 
@@ -27,6 +27,9 @@ Topics I like to talk about are
  - [Advanced Algorithms](https://arpitbhayani.me/advanced-algorithms)
  - [Hash Table Internals](https://arpitbhayani.me/hash-table-internals)
  - [BitTorrent Internals](https://arpitbhayani.me/bittorrent-internals)
+ - [Concurrency in Depth](https://arpitbhayani.me/concurrency)
+ - [Career Growth](https://arpitbhayani.me/career)
+ - [Productivity](https://arpitbhayani.me/productivity)
 
 5 recent videos I published on [YouTube](https://www.youtube.com/c/ArpitBhayani)
 

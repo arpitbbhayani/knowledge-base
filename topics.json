@@ -98,5 +98,35 @@
     "bgcolor": "#FFF1DB",
     "themecolor": "#E1A547",
     "course_url": "https://courses.arpitbhayani.me/bittorrent-internals/"
+  },
+  {
+    "id": 11,
+    "uid": "concurrency",
+    "name": "Concurrency in Depth",
+    "one_liner": null,
+    "youtube_playlist_id": "PLsdq-3Z1EPT3VjDhjMb5yBsgn0wn2-fjp",
+    "bgcolor": "#FFFFFF",
+    "themecolor": "#FFFFFF",
+    "course_url": null
+  },
+  {
+    "id": 12,
+    "uid": "career",
+    "name": "Career Growth",
+    "one_liner": null,
+    "youtube_playlist_id": "PLsdq-3Z1EPT15VMuZHxuiyXUZSh0VLfT4",
+    "bgcolor": "#000000",
+    "themecolor": "#000000",
+    "course_url": null
+  },
+  {
+    "id": 13,
+    "uid": "productivity",
+    "name": "Productivity",
+    "one_liner": null,
+    "youtube_playlist_id": "PLsdq-3Z1EPT2oAX8vR47xiPu0TJaGQIo4",
+    "bgcolor": "#F00",
+    "themecolor": "#F00",
+    "course_url": null
   }
 ]
