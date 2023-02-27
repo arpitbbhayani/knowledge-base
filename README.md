@@ -28,7 +28,7 @@ Topics I like to talk about are
  - [Hash Table Internals](https://arpitbhayani.me/hash-table-internals)
  - [BitTorrent Internals](https://arpitbhayani.me/bittorrent-internals)
  - [Concurrency in Depth](https://arpitbhayani.me/concurrency)
- - [Career Growth and Acceleration](https://arpitbhayani.me/career)
+ - [Career Growth](https://arpitbhayani.me/career)
  - [Productivity and Growth](https://arpitbhayani.me/productivity)
 
 5 recent videos I published on [YouTube](https://www.youtube.com/c/ArpitBhayani)
