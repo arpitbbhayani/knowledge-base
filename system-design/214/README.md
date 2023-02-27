@@ -7,10 +7,6 @@ How Slack efficiently classifies emails at scale with an eventually consistent s
 
 [![How Slack efficiently classifies emails at scale with an eventually consistent system](https://i.ytimg.com/vi/BwxU9EnCFXA/mqdefault.jpg)](https://www.youtube.com/watch?v=BwxU9EnCFXA)
 
-https://www.youtube.com/channel/UC_b1GUJv_2QiMP4BxC9-Dxg/join
-
-Learn System Design: https://arpitbhayani.me/masterclass
-
 Almost all engineers start working on a feature thinking it is a simple and a no-brainer but when we start thinking of the implementation details we realize how complicated things actually are.
 
 In this video, we go deep into Email Classification Service at Slack whose sole job is to classify an email as internal or external. The feature seems a cakewalk but when we start jotting down the implementation specifics, things turn out a little more complicated than what we anticipated.

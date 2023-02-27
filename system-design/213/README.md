@@ -7,10 +7,6 @@ How @ShopifyEngineering avoids hot shards by moving data across databases withou
 
 [![How @ShopifyEngineering avoids hot shards by moving data across databases without any downtime](https://i.ytimg.com/vi/7v-wrJjcg4k/mqdefault.jpg)](https://www.youtube.com/watch?v=7v-wrJjcg4k)
 
-https://www.youtube.com/channel/UC_b1GUJv_2QiMP4BxC9-Dxg/join
-
-Learn System Design: https://arpitbhayani.me/masterclass
-
 A truly scalable system is one that can be scaled horizontally. A database is typically scaled by splitting the data across multiple shards. But what happens when a particular shard becomes hot due to excessive load hitting it, while others are underutilized? A classic way to address this is by moving a fragment of data from one node to another. But how?
 
 In this video, we look at how Shopify re-balances the shard by moving a fragment of data from one database to another without incurring any downtime.

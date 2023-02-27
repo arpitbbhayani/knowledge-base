@@ -7,9 +7,6 @@ Building my second brain and becoming 10x productive as a software engineer
 
 [![Building my second brain and becoming 10x productive as a software engineer](https://i.ytimg.com/vi/47ARX-6srGk/mqdefault.jpg)](https://www.youtube.com/watch?v=47ARX-6srGk)
 
-Join this channel to get access to the perks:
-https://www.youtube.com/channel/UC_b1GUJv_2QiMP4BxC9-Dxg/join
-
 It has been 8 years since I have exhaustively started taking notes, and to date, I have more than 30000 notes holding the things I learned.
 
 For me, taking notes is one of the most important steps of learning as it helps me make my understanding concert. I have a habit read papers, books, articles, and blogs and all of this flows into my second brain. In this video, I will share my entire process of note-taking and building my second brain.

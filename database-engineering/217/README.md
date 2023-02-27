@@ -7,9 +7,6 @@ Why do databases store data in B+ trees?
 
 [![Why do databases store data in B+ trees?](https://i.ytimg.com/vi/09E-tVAUqQw/mqdefault.jpg)](https://www.youtube.com/watch?v=09E-tVAUqQw)
 
-Join this channel to get access to the perks:
-https://www.youtube.com/channel/UC_b1GUJv_2QiMP4BxC9-Dxg/join
-
 We all know databases store their data in B+ trees, but why and how?
 
 In this video, we answer this very question and go through the evolution of storage from a naive way to an optimized B+ tree. We will talk about why there was a need to use B+ trees, how table data is stored in B+ trees, and how is this tree serialized and stored on the disk.
