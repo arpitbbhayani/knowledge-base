@@ -1,0 +1,28 @@
+[
+  {
+    "id": 224,
+    "topic": {
+      "id": 0,
+      "uid": "concurrency",
+      "name": "Concurrency in Depth",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT3VjDhjMb5yBsgn0wn2-fjp",
+      "bgcolor": "#C7EFFF",
+      "themecolor": "#2390BB",
+      "course_url": null
+    },
+    "yt_video_id": "2PjlaUnrAMQ",
+    "title": "Writing efficient and fair multi threaded programs with hands on examples",
+    "description": "System Design for Experienced Engineers: https://arpitbhayani.me/masterclass\nBecome a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join\nRedis Internals: https://arpitbhayani.me/redis\n\nWriting a multi-threaded program is easy, but writing an efficient multithreaded program is difficult. In this video, we take a look at a hands-on example to understand how to write good multi-threaded programs that are not only fast but also efficient and optimal.",
+    "img": "https://i.ytimg.com/vi/2PjlaUnrAMQ/mqdefault.jpg",
+    "gif": null,
+    "duration": "19:26",
+    "view_count": 0,
+    "like_count": 18,
+    "comment_count": 11,
+    "released_at": "2023-02-27",
+    "gist": "",
+    "notes_gd": "",
+    "slug": "writing-efficient-and-fair-multi-threaded-programs-with-hands-on-examples"
+  }
+]

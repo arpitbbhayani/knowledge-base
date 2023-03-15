@@ -59,6 +59,10 @@ It is possible to have more partitions and fewer shards and in that case, each s
 
 [![Database Sharding and Partitioning](https://i.ytimg.com/vi/wXvljefXyEo/mqdefault.jpg)](https://www.youtube.com/watch?v=wXvljefXyEo)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Sharding and partitioning come in very handy when we want to scale our systems. These concepts operate on the database and help us improve the overall throughput and availability of the system.
 
 In this video, we take a detailed look into how a database is scaled and evolved through different stages, what sharding and partitioning are, understand the difference between them, see at which stage should we introduce this complexity, and a few advantages and disadvantages of adopting them.

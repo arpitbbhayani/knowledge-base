@@ -53,6 +53,10 @@ For example, if the business priority is profitability we should not have over-p
 
 [![Things to remember while building Microservices](https://i.ytimg.com/vi/xbtE9IF4yRc/mqdefault.jpg)](https://www.youtube.com/watch?v=xbtE9IF4yRc)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 An engineer working on Microservices should not only just focus on engineering; there are so many other aspects to look at that holds the potential to create massive impact. To be honest, Building microservices is much more than an engineering problem to solve. There are many pitfalls to avoid and decisions to make and build a solid functional high-performing team in the process.
 
 In this video, we look at some engineering and non-engineering things to remember while building Microservices, like it is a massive Growth Opportunity, everyone should be okay with architecture evolution, the importance of periodically addressing Technical Debt, and striking the right balance to keep engineering and business aligned to the same strategic goals.

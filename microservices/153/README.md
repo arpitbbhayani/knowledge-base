@@ -56,6 +56,10 @@ Migrating from monolith to microservices is a slow process and to start you woul
 
 [![What are Microservices?](https://i.ytimg.com/vi/qoAox0FGzRQ/mqdefault.jpg)](https://www.youtube.com/watch?v=qoAox0FGzRQ)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Everyone is doing Microservices, but what are they after all? From a distance, it looks like a function put over the network. Is it really just that? There are so many things to explore about microservices, so let me introduce you to this world today.
 
 In this video, we talk about what are microservices, understand how it starts with a simple monolith and eventually evolve into microservices, look at their key characteristics, understand their advantages, and conclude with some anti-patterns that we all should keep in mind to ensure we do not do it wrong.

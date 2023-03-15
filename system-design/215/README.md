@@ -7,13 +7,17 @@ Designing Idempotent API Endpoints for Payments at Stripe
 
 [![Designing Idempotent API Endpoints for Payments at Stripe](https://i.ytimg.com/vi/J2IcD9FZvZU/mqdefault.jpg)](https://www.youtube.com/watch?v=J2IcD9FZvZU)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Say, you are writing a payment service and you wrote an API that transfers money from one account to another. Because of a network glitch, the client retried the API call, and this led to the deduction of money twice. To handle this situation we need our APIs to be Idempotent.
 
 In this video, we take a look at what idempotent APIs are, how to write them, and how they form the heart and crux of any payment service.
 
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
- - [Download the notes]()
+ - [Download the notes](https://drive.google.com/file/d/12mM4QJvkgVdFn7CKSLshQuzBlbEn0kQU/view?usp=share_link)
  - Listen to this on the go on [Spotify](https://open.spotify.com/show/7qMoamm2iZQrsPVm6IQLoD)
 
 # Arpit's System Design Masterclass

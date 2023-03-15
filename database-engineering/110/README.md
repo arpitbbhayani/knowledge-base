@@ -28,6 +28,10 @@ Before jumping to the potential short-term and long-term solutions, ensure you m
 
 [![How to handle database outages?](https://i.ytimg.com/vi/UT_TVldzA64/mqdefault.jpg)](https://www.youtube.com/watch?v=UT_TVldzA64)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 In this video, we talk about why a database goes down, what happens when the database is down, a few short-term solutions to minimize the downtime, and a few long-term solutions that you should be doing to ensure that your database does not go down again.
 
 Outline:

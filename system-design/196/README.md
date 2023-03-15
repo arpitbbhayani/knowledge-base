@@ -36,6 +36,10 @@ A metric that Swiggy chases is Bot Efficacy which is nothing but the percentage 
 
 [![How Swiggy designed and scaled its chatbot](https://i.ytimg.com/vi/W8LDyEOPaPY/mqdefault.jpg)](https://www.youtube.com/watch?v=W8LDyEOPaPY)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 We all love food but are lazy to go to a restaurant and pick it ourselves and this gave rise to Food Delivery Startups like Swiggy and Zomato. Chatbots are essential for them as they resolve most of the complaints that customers have without spending a lot of money on customer service representatives.
 
 In this video, we take a look at how Swiggy designed their chatbots to achieve business efficiency at scale; and dive deep into their tech architecture and key components that we need to consider while designing it.

@@ -63,6 +63,10 @@ The information is then used to formulate an Elasticsearch Query to get the sear
 
 [![How Zomato improved its search by identifying intent through NLP](https://i.ytimg.com/vi/JL9x9N6YSUc/mqdefault.jpg)](https://www.youtube.com/watch?v=JL9x9N6YSUc)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Search is one of the most important services, especially for Food Aggregators like Zomato. An interesting challenge comes when the search query is not homogeneous, instead it contains multiple entities.
 
 For example, "Best Dominos Pizza Near Me". This query contains a restaurant, a dish, and a location. Getting relevant information from the search engine from this query is an interesting problem to solve.

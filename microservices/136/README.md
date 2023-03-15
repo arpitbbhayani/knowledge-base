@@ -67,6 +67,10 @@ Async communication is most commonly implemented using a message broker like Rab
 
 [![Synchronous and Asynchronous Communication between Microservices](https://i.ytimg.com/vi/ewUw0sUxHI4/mqdefault.jpg)](https://www.youtube.com/watch?v=ewUw0sUxHI4)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 How should two microservices talk to each other? Picking the right communication pattern is super-important as a good decision will ensure a great user experience and scalability while a bad one will ruin the party.
 
 There are overall two categories of communication: Synchronous and Asynchronous; In this video, we in-depth discuss what synchronous communication is and how it is done, what asynchronous communication is and how it is done, the advantages and disadvantages of both of them, and most importantly understand how to decide which one to opt for with some real-world examples.

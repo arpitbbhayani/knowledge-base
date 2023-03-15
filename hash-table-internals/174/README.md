@@ -68,6 +68,10 @@ During insert, lookup, and delete when we find the matching hash, we need to exp
 
 [![Implementing Hash Sets with Hash Tables](https://i.ytimg.com/vi/CcoMvgIdrD8/mqdefault.jpg)](https://www.youtube.com/watch?v=CcoMvgIdrD8)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Sets are amazing, but how are they implemented?
 
 In this 10th video of this Hash Table Internals series, we take an in-depth look into the implementation of Sets using Hash Tables, popularly called Hash Sets.

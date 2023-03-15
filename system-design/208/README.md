@@ -50,6 +50,10 @@ To keep the movement to a bare minimum during scaling, Booking.com chose Consist
 
 [![How Booking com designed and scaled their highly available and performant User Review System](https://i.ytimg.com/vi/BFyWl9MNDjY/mqdefault.jpg)](https://www.youtube.com/watch?v=BFyWl9MNDjY)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Designing a highly available and performant service is really difficult but booking.com does it really well. The rating and review service is one of the most critical services for Booking and in this video, we dive deep into how they designed and scaled it to ensure they seamlessly handle peak traffic of more than 10,000 requests per second.
 
 You can also

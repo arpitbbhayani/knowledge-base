@@ -61,6 +61,10 @@ Mark and Sweep GC does not exhibit spatial locality given we we do a DFS on obje
 
 [![Why caching would not speed up Mark-and-Sweep GC?](https://i.ytimg.com/vi/LkympMbgmCo/mqdefault.jpg)](https://www.youtube.com/watch?v=LkympMbgmCo)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 So, caching doesn't always work!
 
 What would happen if we apply caching to speed up our Mark and Sweep Gargabge collector? Will it improve its performance?

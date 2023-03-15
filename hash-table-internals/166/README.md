@@ -46,6 +46,10 @@ To optimally perform a key lookup, when the collisions are high, we can use a se
 
 [![Conflict Resolution in Hash Tables with Chaining](https://i.ytimg.com/vi/9rb8oILi4lU/mqdefault.jpg)](https://www.youtube.com/watch?v=9rb8oILi4lU)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Collisions happen in Hash Tables as we are trying to map a huge space of application keys in a small array. But there are ways to solve it and one of the most common ways is called Chaining.
 
 In this video, we go in-depth about collisions in Hash Tables, resolve them through chaining, explore some really granular details that would help us squeeze the best performance out of our implementation, and most importantly look at a different data structure to implement it.

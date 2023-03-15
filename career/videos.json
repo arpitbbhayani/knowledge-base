@@ -1,0 +1,54 @@
+[
+  {
+    "id": 221,
+    "topic": {
+      "id": 0,
+      "uid": "career",
+      "name": "Career Growth",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT15VMuZHxuiyXUZSh0VLfT4",
+      "bgcolor": "#CAFFD8",
+      "themecolor": "#23BB49",
+      "course_url": null
+    },
+    "yt_video_id": "NJjJctW-K0g",
+    "title": "How to get a promotion and become a Staff Engineer at FAANG",
+    "description": "System Design for Experienced Engineers: https://arpitbhayani.me/masterclass\nBecome a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join\nRedis Internals: https://arpitbhayani.me/redis\n\nBecoming a staff or a principal engineer at a big company like Google. Microsoft, Amazon, and uber is a massive milestone as it requires significant depth, breadth, and impact. It is like a great barrier and only a few engineers cross it.\n\nFrom my experience, I share 5 key things that are required to get promoted and become a staff engineer at a big organization.",
+    "img": "https://i.ytimg.com/vi/NJjJctW-K0g/mqdefault.jpg",
+    "gif": null,
+    "duration": "8:11",
+    "view_count": 7714,
+    "like_count": 268,
+    "comment_count": 24,
+    "released_at": "2023-03-04",
+    "gist": "",
+    "notes_gd": "",
+    "slug": "how-to-get-a-promotion-and-become-a-staff-engineer-at-faang"
+  },
+  {
+    "id": 222,
+    "topic": {
+      "id": 0,
+      "uid": "career",
+      "name": "Career Growth",
+      "one_liner": null,
+      "youtube_playlist_id": "PLsdq-3Z1EPT15VMuZHxuiyXUZSh0VLfT4",
+      "bgcolor": "#CAFFD8",
+      "themecolor": "#23BB49",
+      "course_url": null
+    },
+    "yt_video_id": "pXZFZQrg3_Q",
+    "title": "Career Growth and Acceleration for Software Engineers - Live QnA 001",
+    "description": "Join this channel to get access to the perks:\nhttps://www.youtube.com/channel/UC_b1GUJv_2QiMP4BxC9-Dxg/join\n\nDrop your questions related to career growth and acceleration: https://forms.gle/ER5EFfrXvesRRTkk8",
+    "img": "https://i.ytimg.com/vi/pXZFZQrg3_Q/mqdefault.jpg",
+    "gif": null,
+    "duration": "49:13",
+    "view_count": 5104,
+    "like_count": 317,
+    "comment_count": 30,
+    "released_at": "2023-03-03",
+    "gist": "",
+    "notes_gd": "",
+    "slug": "career-growth-and-acceleration-for-software-engineers-live-qna-001"
+  }
+]

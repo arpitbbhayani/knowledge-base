@@ -7,6 +7,10 @@ Designing Notifications Service for Instagram
 
 [![Designing Notifications Service for Instagram](https://i.ytimg.com/vi/kIP8L-CSl2Y/mqdefault.jpg)](https://www.youtube.com/watch?v=kIP8L-CSl2Y)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 This video is a snippet from my System Design Masterclass and in it, we are discussing How Instagram Scales its notification systems. The primary challenge of such a system is doing a real fast fanout and we discuss how to do this very efficiently.
 
 You can also

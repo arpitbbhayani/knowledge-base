@@ -1,0 +1,111 @@
+So, phantom read is a very common problem when it comes to database transaction.
+It's especially occurs when a transaction isolation level is set to read-competed.
+Now, I have a very detailed video on the transaction isolation levels where I have explained all four of them with examples.
+Now, here what we'll do is I'll give you a brief about what read-competed isolation level is.
+So, phantom read problem is we'll take a very practical example to see how it leads to inconsistency.
+And the way to solve it is change isolation level.
+That's the- that's the way it keeps- because this problem will occur.
+If you are using a particular transaction isolation level, phantom read will occur.
+So, which means if you would want to protect yourself from this problem, you would have to either change your isolation level or use different kind of locking mechanism.
+In any case, it is always recommend that if this is something that you cannot bear, change the isolation level that you are operating on.
+We'll have a very detailed example of understanding what phantom read problem is.
+So, in order for us to understand, we'll go through a particular schema and mimic a situation over here.
+So, let's say we have a social media website in which you have your user's table, use your user's table in which you have ID and name.
+You have post table in which you are storing all the post made by the user in which you have your post ID 1, 2, 3, 4 made by user ID 1.
+And what you are doing is you are having a user's stat stable in which you are storing for this user made in all these many posts.
+Now, what we are doing is- and by the way, first of all, in real world use case, why do you need a table like this so that you can very quickly render the profile of the user?
+Not every time you need to compute a total number of posts made by the user, given that you have count already handy, you can just start rendering the profile of the user.
+So, whenever given that we have architecture like this or flow out of the schemas like this, whenever a user publishes a particular post, we need to do three things.
+First, we have to make an entry into the post table.
+That hey, a new post is published by a particular user.
+Second, you have to update the user's stat stable and do a countless plus tail.
+So, just as a hypothetical situation, let's say whenever a user publishes the post in the response that you are getting, in the response that you are getting, you need to render all the posts made by that particular user.
+So, you need to do a select star of all the posts made by a user and send it in the response.
+So, now doing all these three in one transaction is essential, otherwise you would have inconsistencies.
+So, given that you do all these three in one transaction, if your transaction acceleration level is set to read committed, there would come a problem of random reads which we will talk about in a couple of minutes.
+I will walk you through the schema, we will see where the problem lies and we will understand why it happened and when it happens.
+So, you can describe tables, you can see, describe tables, ISO levels, tables does not, oh, sorry, it's show tables, my bad.
+Show tables in which you see post user stats and users with the exact same schema that we discussed.
+So, if I just show you select star from users, you see one user, select star from post, you would see three posts over there and select star from user stats.
+You would see user ID1 has three total posts.
+Now, what we will do is we will first set, we will first, now that we have our data setup, what we will do is we will set the isolation level and then we will mimic the part where the new post is getting published.
+And we have to do those three things in a transaction.
+Now, what we will see, the, now we will go in depth of understanding what the random rate problem, how it occurs and what it leads to.
+So, even that we have everything set, what I will first do is I will set my auto commit to zero, even if you do not do that, it's okay, but it's safe to do it.
+Then we will set the isolation level to read committed.
+So what we see over here is set session, transaction isolation level read committed, which is what we would want because that's where this particular problem occurs.
+Just to confirm, we see the transaction isolation level indeed being changed to read committed.
+So, now what we do is now assume that I have two different APIs are being called where this new post like two posts are getting published by a user at the almost very same instant of time.
+And to do any reason, let me be API call maybe something something they are being happening.
+Now, you can change a use case and you could see this happening at tons of other places.
+So, what we'll do is we'll mimic this very same thing and we will start a transaction.
+So, this is the first time we see that the user is getting initiated in my database nearly around the same time.
+So first user, when we know that what we do when user is publishing the post, what we are doing first is we are making an entry in the database.
+Transaction one is inserting a post.
+It just inserted a post over here.
+So, post ID for user ID one.
+So, for post, so you made one entry over here.
+Then what you would want to do is you would have to update the stats table.
+Now, when we are doing, we are updating the stats table such that we are firing up very this.
+You update user stats set total post equal to output of select count ID from post where user ID equal to one.
+So, you are counting the number of post that a user has and you are setting in the user stats table that particular value.
+So, if I set it, it says one row affected row smash one changed one.
+So, if I fire select star from user stats where user ID equal to one, we would get total post equal to four.
+But what we did is we changed the count in this transaction and entering the post table is created.
+Count is getting updated there.
+So, this is my transaction one.
+Now what we are doing is my transaction T2, let's say another post is getting published.
+Two post getting published for the same user at the same time.
+So, now, hypothetically what we are doing is we are inserting a value 5 comma 1.
+I mean, real well, it would be auto increment, but I am just mimicking it explicitly over here.
+So, inserting to post values 5 comma 1.
+So, transaction has begun there.
+So, transaction has begun there.
+So, another post has come in.
+I have updated this till this point.
+Now my inserting to post has happened over here.
+It says one row affected.
+Neither transaction two has committed up until now.
+Neither transaction two has committed up until now.
+But insertion has happened.
+Here, user stats row has also been updated.
+Second transaction came in and it inserted a value.
+Nothing has been committed up until now.
+Nothing has been committed up until now.
+Let's say, your transaction T2 got a lot of things there and it basically did whatever it had to update and it did commit.
+As soon as it committed the value, now see what happens.
+It committed the value C O W M I T O M I W.
+It needs to be this commit transaction T2 committed.
+So, transaction T2 inserted a row in the table post and it committed.
+Because my transaction isolation level is read committed.
+If I read over here select star from post where id or not id where user id is equal to 1.
+Now because my transaction isolation level is read committed when I do this, I would get five rows.
+So, what has happened is out of nowhere because other transaction entered the row.
+Here what I am getting is I am getting one phantom row that I read.
+So now when my API would respond, it would respond with five rows.
+But in the user stats table, when I commit this, my user stats table would have four.
+So, what I am sending in the response is five rows but in the backend the count is stored as four.
+But you see this problem that you are storing the count as four but you are returning five rows over here because one row out of nowhere just prung up.
+Just came into existence which is what this phantom row problem is all about.
+Because while this transaction one was running, your transaction T2 came and it inserted a few rows.
+So, when the transaction read those things again, it got something new which didn't exist.
+This is where this is exactly what the phantom read problem is that because you are reading the committed value always.
+Always you are reading the committable because your transaction has a relation level is read committed.
+It is possible for you to have this phantom read problem where new data, new row just prunks up out of nowhere in your transactions code because you just said you just counted this thing you got four which is what you are committing but what you are returning is actually five rows which is inconsistent data.
+Over time this would not like you need to write code to ensure that your eventually your data becomes consistent but that's a different problem.
+But here you see this phantom problem in action where what you are saving is four but what you are returning is five rows.
+So this is where the problem would be where when you are reading it you are sending five rows so in the UI if you are entering it you will see five rows but at the top you will say total was equal to four.
+That's the bad user experience we are talking about.
+That's the phantom read problem we are talking about.
+And this is what phantom read problem is.
+Ways to solve this phantom read problem is locking reads second.
+It's about changing the isolation level where you have this kind of correctness that you that's extremely essential for you then you don't set an isolation level to read committed.
+You set it to repeatable read repeatable read does not lead to phantom reads at all.
+So this are the two ways to solve the phantom reads problem depending on storage engines that is that my SQL postgres in ODB, my is what not they have different guarantees.
+So whichever database you are using go through the documentation and see how they address or how they recommend you to address the phantom read problem.
+But this is what I wanted to showcase that what phantom read problem is and how it can lead to inconsistent scene user experience and inverse case data if you don't handle it.
+So which is where before you tune your database and change some critical parameters like this always understand how it could affect you or your business logic or your business.
+I hope you found it interesting.
+The world of database is really interesting.
+I would come up with more more more videos on database engineering.
+Thanks a lot.

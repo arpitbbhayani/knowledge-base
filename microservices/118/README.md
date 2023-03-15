@@ -26,6 +26,10 @@ There are 5 approaches to handling timeouts.
 
 [![Handling timeouts in a microservice architecture](https://i.ytimg.com/vi/Hxja4crycBg/mqdefault.jpg)](https://www.youtube.com/watch?v=Hxja4crycBg)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Handling timeout well is extremely critical as it makes your distributed system robust and ensures you provide a consistent user experience by adhering to SLA guarantees. In this video, we discover how a synchronous dependency on a microservice leads to long delays becoming a big problem, understand how timeout addresses the concern, and discuss 5 approaches to handle service timeouts.
 
 Outline:

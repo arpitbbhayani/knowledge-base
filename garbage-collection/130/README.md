@@ -43,6 +43,10 @@ Hence, to reduce human error, and make the process more reliable and performant 
 
 [![Why do programming languages need automatic garbage collection?](https://i.ytimg.com/vi/jcMxuLZCcqU/mqdefault.jpg)](https://www.youtube.com/watch?v=jcMxuLZCcqU)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 We know how important Garbage Collection is for any programming language. So, today we explore why programming languages need automatic garbage collection in the first place?
 
 In this video, we understand - the basics of memory management, the need to allocate objects on the heap, the constructs of explicit deallocation, what happens when we do not do our garbage collection well, and why we need automatic garbage collection.

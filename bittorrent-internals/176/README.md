@@ -66,6 +66,10 @@ The new and popular files will have a lot of seeders and hence a new node joinin
 
 [![Introduction to BitTorrent and the problem it beautifully solves](https://i.ytimg.com/vi/v7cR0ZolaUA/mqdefault.jpg)](https://www.youtube.com/watch?v=v7cR0ZolaUA)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 BitTorrent is super popular when it comes to sharing and distributing large files over the network. But what is the engineering behind it? In this series, we will dive deep into BitTorrent, and understand various algorithms that power it. Along the way, we would also try to write our own torrent client to get a deeper understanding.
 
 In this 1st video of this series, we take a look at what are peer-to-peer networks, what is bit torrent, the core idea behind it, and how it makes downloads super-fast, and conclude with some terminologies that would acquaint us to do a deep dive later.

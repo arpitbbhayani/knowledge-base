@@ -41,6 +41,10 @@ WAL also needs to ensure that any operation flushed in the log is not corrupted 
 
 [![How does the database guarantee reliability using write-ahead logging?](https://i.ytimg.com/vi/wI4hKwl1Cn4/mqdefault.jpg)](https://www.youtube.com/watch?v=wI4hKwl1Cn4)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Any persistent database needs to guarantee reliability. No matter how big or small the changes are, they should survive any reboots, OS, or hardware crashes once they are committed. All the persistent databases use a write-ahead logging technique to guarantee such reliability while not affecting the performance.
 
 In this video, we talk about write-ahead logging, how it ensures reliability, a few solid advantages of using it, one of them being a massive database performance boost, and how the log files are structured on the disk.

@@ -52,6 +52,10 @@ Most GC are efficient in cleaning up a small chunk of memory, but a scalable GC 
 
 [![How to pick a garbage collector?](https://i.ytimg.com/vi/IojMqbegejk/mqdefault.jpg)](https://www.youtube.com/watch?v=IojMqbegejk)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 "Best" Garbage Collector is a myth.
 
 If you are building your Garbage Collector or trying to pick the best for your use case, 7 parameters would help you objectively make the decision. These parameters define a Garbage Collector and determine its performance.

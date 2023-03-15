@@ -51,6 +51,10 @@ This would create a hierarchical dependency between services solved through mult
 
 [![API Composition Pattern in Microservices](https://i.ytimg.com/vi/5pYLlYsy6fQ/mqdefault.jpg)](https://www.youtube.com/watch?v=5pYLlYsy6fQ)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Say, we have very happily created 6/7 microservices and everything is going well. Now for a new usecase that is introduced in the product, we have to talk to not one but 3 services together to compile a response. So, what is a good way of implementing and supporting this kind of request? A high-level pattern that helps us do it is called API Composition.
 
 In this video, let's in-depth talk about this super simple pattern to query Microservices, see what it is, how to implement it, understand how it not only helps in improving end user experience, and conclude by going through the advantages and disadvantages of adopting it.

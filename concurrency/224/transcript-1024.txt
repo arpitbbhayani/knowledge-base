@@ -1,0 +1,42 @@
+Just adding threads obviously makes our program go faster, but is this the best that we can get out of our code?
+So in this video, what I would like to talk about is how to write good multi-thread programs?
+What does what do I mean when I say good multi-thread program?
+It means a program that uses multiple threads and is correct, which means that no matter what, there would not be race condition or there would not be any inconsistency data, which is, which typically happens when you have a shared-grower variable across multiple threads, and you're ensuring optimality, which means this is the best that you can do to get the performance out of your system.
+I'll give you an example of a sense of how to write good multi-thread program.
+Okay, so in order to ensure the correctness of our code, especially when we are writing multi-thread program, is by using locking, because it is very much possible that you have a globally shared variable across two threads both trying to update the value and both losing the correctness of it.
+So that is what we'll not talk about that in depth, what we are more interested in talking about the fairness of our code, in order to ensure optimality.
+Because we don't want, let's say if my program runs on 10 threads, and if one of the threads is not doing a lot of work, while other thread is overburdened, it means that there is no fair allocation across my threads.
+I don't want that to happen, because if there is one thread sitting idle, but other thread is grinding it out, my overall execution time is lendened, then we don't want that, right?
+We'll just count the prime numbers, we don't want to print all of them.
+We'll count the prime numbers from 1 to 100, 1 to 100 million, and we see how three approaches would shape the execution, and how it would become better every time we go about it, right?
+We'll start with the sequential approach to do it, when I ran the last time, it took three minutes, 49 seconds, but when I run it, this time it might go a little beyond that, given that there is a lot of additional software running at this moment on my machine, right?
+Okay, so let me, while I explain, while I walk you through the code, let me quickly just run the program once, so that the execution keeps happening while I give you a walkthrough.
+Okay, so I've code by program to run.
+Now, I'll just give you a code walkthrough so that you understand where we are because this code remains fairly similar, the core logic of it, what changes is just the threading part of it, right?
+In order to check if the number is prime or not, I'm iterating from 3 till the square root of that number.
+A standard way to check if the number is prime or not.
+Pretty basic, still mildly optimal logic to check for the prime number.
+Okay, so we have this function, which does this and key thing to note that check prime does not return anything.
+And at the end, I'm just printing checking till 100 million, found these many prime numbers and the program took so much of time.
+Checking till 100 million, found 5, 7, 6, 1, 4, 5, 5 prime numbers and it took 3 minutes 55 seconds.
+So now while this program is running, let me walk you through other approach where what we do is we add threads to the program.
+In order to understand what we are doing, let me give you a very basic walkthrough of what's happening.
+A very basic way to multi thread or to parallelize the workload is instead of checking for one number every time.
+And when we run when the last time I ran the code, it took just 42 seconds.
+And with respect to the execution logic, what changes is depending on the number of threads, the concurrency here at the top, we have defined concurrency to be 10, which means we want to create 10th.
+So here what we are doing is through this logic, we are creating 10th threads, each taking care of one batch of my 100 million.
+It would just for each number in that batch, it would check if it is prime or not.
+And once it is done, once it is done checking for all the numbers in that batch, it would print the time taken for this thread, handling this range, it completed in some time.
+But if we look, each thread is taking different amount of time to complete the execution of its batch.
+But each thread completed its execution in not equal amount of time, which means thread zero had very less amount of work.
+Whenever they are done processing, they pick the next number and check if it is prime or not.
+Other thread comes, picks an x number, check if it is prime or not.
+That means that each of the thread would be busy until I exhaust my complete range of 100 million.
+If I run it, the 07th one, which is the fair way to write the code, it would look something like this.
+Whatever the current number is does a plus one and checks if it is prime or not.
+It picks the current number, increments it and checks that number to be prime or not.
+Second thread comes, picks the number checks if it is prime or not.
+Third thread and once first thread is done, it would go and check the next number if it is prime or not.
+Every thread is continuously working, ensuring that I eventually count the total number of prime numbers from 1 to 100 million, not missing any.
+And this is how we write good multi threaded code.
+I hope you now you see the impact of doing that performance improvement, impact of writing good multi threaded code, ensuring everyone does nearly the equal amount of work.

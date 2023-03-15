@@ -32,6 +32,10 @@ Hence it is not favorable for heterogeneous components to be part of the same se
 
 [![How to scope a microservice?](https://i.ytimg.com/vi/nfkdKHcKxbE/mqdefault.jpg)](https://www.youtube.com/watch?v=nfkdKHcKxbE)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Microservices are extremely tempting and you will always feel like writing a new service for every problem at hand. You might build a service with very fine-grained responsibilities or you can build one that covers a big spectrum. So, what is the best approach? How should you decide?
 
 In this video, we talk about ways to model and scope a microservice such that the architecture remains robust and flexible; and to achieve this we use the two key guiding concepts - Loose Coupling and High Cohesion.

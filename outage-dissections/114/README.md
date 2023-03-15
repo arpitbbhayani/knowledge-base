@@ -30,6 +30,10 @@ Rollback as soon as possible.
 
 [![Dissecting Google Maps Outage: Bad Rollout and Cascading Failures](https://i.ytimg.com/vi/6oJaZbQKnJE/mqdefault.jpg)](https://www.youtube.com/watch?v=6oJaZbQKnJE)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Google Maps had a global outage on 18th March 2022, during which the end-users were not able to use Directions, Navigation, or Google Maps in general. The outage happened because of a bad rollout, and it lasted more than 2 hours 30 minutes. During the outage, users complained to have seen Gray tiles implying that the map/direction was neither getting initialized nor working.
 
 In this video, we dissect the Google Maps outage and understand what actually happened, how they mitigated it, and, more importantly, understand ways to prevent such an outage and build a robust way of handling cascading failures.

@@ -53,6 +53,10 @@ To ensure we are maintaining our SLA, we have to exhaustively monitor the entire
 
 [![How Razorpay scaled their notification system](https://i.ytimg.com/vi/DQwlmTvs6xA/mqdefault.jpg)](https://www.youtube.com/watch?v=DQwlmTvs6xA)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Notifications are extremely crucial for Fintech companies as it is a way to notify a user about an incoming transaction. Hence it becomes extremely important for companies like Razorpay to ensure that notification is delivered to a user within a certain amount of time.
 
 In this video, we take a detailed look into how Razorpay scaled their notifications systems, and look at their high-level architecture and key design decisions they made along the way to ensure they always meet the SLA.

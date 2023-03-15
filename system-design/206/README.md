@@ -142,6 +142,10 @@ This design is taken from @Airbnb's Engineering Blog and it is linked in the des
 
 [![How Airbnb designed and scaled its central authorization system - Himeji](https://i.ytimg.com/vi/5FIPtC3xJSQ/mqdefault.jpg)](https://www.youtube.com/watch?v=5FIPtC3xJSQ)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Authorization plays a critical role in ensuring that the platform is not abused. For example, Instagram ensures that if an account is made private, only the people allowed can see the posts from it. Such granular fine-grained access control requires a very robust and flexible authorization system.
 
 In this video, we dive deep into how Airbnb achieves this through its in-house service named Himeji and explore its architecture and key design decisions that ensure robustness, extensibility, availability, and ability to scale to millions of users.

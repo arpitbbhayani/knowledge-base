@@ -56,6 +56,10 @@ Note: To understand why we do it at load factor = 1/8, please refer to the video
 
 [![Why are Hash Tables always doubled?](https://i.ytimg.com/vi/zt1E0akArqQ/mqdefault.jpg)](https://www.youtube.com/watch?v=zt1E0akArqQ)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Why are the underlying arrays of the hash tables always a power of 2? When we trigger a resize why are Hash Tables always doubled? like 2, 4, 8, 16, 32? What is the reason behind it?
 
 In this 8th video of the Hash Table Internals series, we answer some super-cool questions and go in-depth on Hash Table resizing. We understand why we do it, how we do it, why hash tables are always doubled upon resize, why they are always sized as a power of 2, and conclude with an understanding of how and when we shrink them.

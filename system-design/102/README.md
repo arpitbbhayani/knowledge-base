@@ -36,6 +36,10 @@ Although we talked about the Payments service here, this approach of implementin
 
 [![Implementing Idempotence in a Payments Microservice](https://i.ytimg.com/vi/m6DtqSb1BDM/mqdefault.jpg)](https://www.youtube.com/watch?v=m6DtqSb1BDM)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Idempotence is an extremely critical property that we must consider while implementing an API or designing a microservice. The situation becomes even more critical when the money is involved - ensuring no matter how many times the user or internal service retries, the amount is transferred just once between the two users in one transaction.
 
 This video looks at idempotence, why there is even a need for it, and, more importantly, one common implementation approach commonly observed in payments services.

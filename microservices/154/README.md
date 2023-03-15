@@ -66,6 +66,10 @@ Managing dependencies across services is tough and it leads to a slowdown. The 3
 
 [![10 Challenges in Adopting and Implementing Microservices](https://i.ytimg.com/vi/yTSq6hJFmUg/mqdefault.jpg)](https://www.youtube.com/watch?v=yTSq6hJFmUg)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 We always hear great things about Microservices. But, every few months every senior engineer gets a feeling, can we not go back to a simpler time and have monolithic architecture again?
 
 In this video, let's understand the 10 challenges that come with adopting microservices. Today, we would spend time talking about both engineering or tech challenges and organizational challenges that we all should be aware of and address while we adopt microservices.

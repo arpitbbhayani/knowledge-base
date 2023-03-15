@@ -42,6 +42,10 @@ The nodes left unmarked are the garbage and hence in the sweep phase, the GC ite
 
 [![Mark and Sweep Garbage Collection Algorithm](https://i.ytimg.com/vi/4qLf0FJMyf0/mqdefault.jpg)](https://www.youtube.com/watch?v=4qLf0FJMyf0)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Garbage Collection has to be one of the most interesting topics of discussion out there. In the previous videos, we took a look at why programming languages need an automatic garbage collection and what are the key metrics and characteristics we look at while picking one.
 
 In this video, we take a detailed look into one of the most common GC algorithms out there called Mark-and-Sweep. We will talk about the two key phases of the algorithms, also dive into the important details and nuances of it, and take a look at two super-interesting optimizations that would algorithm a massive boost to the performance.

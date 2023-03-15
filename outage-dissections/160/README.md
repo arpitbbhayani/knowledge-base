@@ -49,6 +49,10 @@ With this full revert, the master node stopped crashing and things become normal
 
 [![GitHub Outage  - How databases are managed in production](https://i.ytimg.com/vi/4mVJQJbw6Vw/mqdefault.jpg)](https://www.youtube.com/watch?v=4mVJQJbw6Vw)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 So, how are databases managed in production? When the master goes down, how a replica is chosen and promoted to be the new master? Is this a manual step or something that can be automated?
 
 In this video, we dissect yet another GitHub outage and apart from understanding what happened, we would spend a significant amount of time learning how databases are managed in production, and the kind of tools companies use to ensure optimal DB performance and High Availability.

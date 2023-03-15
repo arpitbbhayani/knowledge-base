@@ -41,6 +41,10 @@ Thus, in any case, an end-user will never experience a moment where we say that 
 
 [![Implementing Distributed Transactions using Two Phase Commit Protocol](https://i.ytimg.com/vi/oMhESvU87jM/mqdefault.jpg)](https://www.youtube.com/watch?v=oMhESvU87jM)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Previously, we built a theoretical foundation of Distributed Transaction using the Two-Phase Commit protocol. In this video, we implement the Distributed Transaction locally and mimic the food delivery system locally. While implementing we understand how to make the individual operations atomic and the entire distributed transaction atomic. We address resource contention while guaranteeing a consistent user experience.
 
 Outline:

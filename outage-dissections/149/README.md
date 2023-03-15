@@ -42,6 +42,10 @@ Again, it is pure speculation given we do not have any insider information nor t
 
 [![Dissecting GitHub Outage - Repository Creation Failed](https://i.ytimg.com/vi/48YZzGi7QMk/mqdefault.jpg)](https://www.youtube.com/watch?v=48YZzGi7QMk)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Imagine you trying to create a new GitHub repository and it call is failing, failing for 53 minutes. This happened with GitHub in April 2021 when for 53 minutes people were unable to create any new repositories. Upon investigation, they found out that the root was scanning secrets. Two seemingly different usecases took down one of the most important APIs.
 
 This has to be one of the most amusing outages that I have seen in recent times.  In this video, we dissect this outage, understand the root cause of it, look at the importance of secret scanning, and conclude with an understanding of their mitigation process.

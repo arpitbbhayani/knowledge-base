@@ -52,6 +52,10 @@ It took them 4 hours to set up replicas and 1 hour to re-configure the cluster h
 
 [![Dissecting GitHub Outage - Master failover failed](https://i.ytimg.com/vi/ZirBDq1JwpY/mqdefault.jpg)](https://www.youtube.com/watch?v=ZirBDq1JwpY)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Companies announce their planned maintenance, what happens during that? Could something go wrong while running maintenance?
 
 GitHub team was switching their Master databases from one node to another; while doing this something went wrong and the new database crashed. This led to data divergence and a production incident that lasted over 5 hours.

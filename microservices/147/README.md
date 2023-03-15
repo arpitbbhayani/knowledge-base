@@ -60,6 +60,10 @@ One very important reason why HTTP is so commonly used in implementation is the 
 
 [![Everything you need to know about REST](https://i.ytimg.com/vi/uFGJVQvR59A/mqdefault.jpg)](https://www.youtube.com/watch?v=uFGJVQvR59A)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 REST is how browsers talk to our servers. 99.99% of all your API requests that originates from your browser and go to your API servers are REST. So, what is REST? How is it different from HTTP? Is it a protocol or what? There are so many unanswered questions like this.
 
 In this video, we in-depth talk about REST, understand the foundations of it, see how and why it gels so well with HTTP, find out why everyone is using it, and conclude by going through the downsides of using REST over HTTP.

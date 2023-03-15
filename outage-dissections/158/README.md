@@ -43,6 +43,10 @@ To ensure the outage would not happen due to the same reason, the Config Generat
 
 [![Dissecting GitHub Outage - Downtime due to Rate Limiter](https://i.ytimg.com/vi/VPZo8cO1HbI/mqdefault.jpg)](https://www.youtube.com/watch?v=VPZo8cO1HbI)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Rate limiters are supposed to avoid downtimes, but have you ever heard that a rate limiter caused a downtime? This happened with GitHub, where a big chunk of their users saw elevated error rates.
 
 In this quick incident dissection, let's take a look at a high-level overview of how GitHub does their A/B experiments, how a low-level decision led to this incident for a large chunk of users, and conclude with some key things we all should learn from this outage.

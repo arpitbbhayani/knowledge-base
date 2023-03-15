@@ -50,6 +50,10 @@ This method of garbage collection is called "on-the-fly" which runs concurrently
 
 [![Tricolor Abstraction to build concurrent Garbage Collectors](https://i.ytimg.com/vi/lhrRwjVPXPo/mqdefault.jpg)](https://www.youtube.com/watch?v=lhrRwjVPXPo)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 A basic Mark-and-Sweep garbage collection algorithm operates in Stop-the-World mode, which means the program execution pauses while the GC runs. So, can we write a GC that runs concurrently with the program and does not need to always stop the world?
 
 In this video, we take a look into something foundational called the Tricolour Invariant that enables us to build concurrent garbage collectors with low pause times. The concept we discuss is something that was contributed by Dijkstra, famously known for his Shortest Path algorithm.

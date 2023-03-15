@@ -49,6 +49,10 @@ Double hashing is not cache-friendly, as it requires us to hop across the hash t
 
 [![Double Hashing for Conflict Resolution in Hash Tables](https://i.ytimg.com/vi/wV4K6fo0T58/mqdefault.jpg)](https://www.youtube.com/watch?v=wV4K6fo0T58)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 In previous videos, we talked about Linear Probing, and how good it is, but we learned that it suffers from clustered collisions; then we spoke about quadratic probing and saw how it addresses the issue of clustered collisions, but can we do better?
 
 In this 6th video of the Hash Table Internals series, we talk about the final technique of conflict resolution called Double Hashing; understand how it addresses a big concern with clustered collisions, learn about a few things that would help us choose a good hash function, and conclude by looking at the advantages of using double hashing as a probing technique.

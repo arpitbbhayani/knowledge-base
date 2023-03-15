@@ -41,6 +41,10 @@ Thus, this two-step implementation allows for near-constant time insertions, upd
 
 [![Internal Structure of a Hash Table](https://i.ytimg.com/vi/jjW8w8ED3Ns/mqdefault.jpg)](https://www.youtube.com/watch?v=jjW8w8ED3Ns)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 One of the most common data structures that we all use every single day is Hash Table. Every language has its own implementation and nomenclature for it. Python calls it dictionary, while Java calls it Hash Map. But the core idea remains the same: it holds pairs of keys and values and supports insertions, updation, and lookups in constant time.
 
 But how are they implemented? What is its internal structure? In this video, we talk about what are hash tables, how are they structured internally, and lay a foundation to understand their constant-time implementation.

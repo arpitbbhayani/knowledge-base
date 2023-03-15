@@ -54,6 +54,10 @@ Since we are not having any auxiliary data structure, a major limitation of Open
 
 [![Conflict Resolution in Hash Tables with Open Addressing](https://i.ytimg.com/vi/6_yFb7icd_c/mqdefault.jpg)](https://www.youtube.com/watch?v=6_yFb7icd_c)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Although chaining is a popular way of handling Hash Table Collisions, there is a very interesting way of achieving the same and it is called Open Addressing. The key highlight of Open Addressing is that it does not require any additional data structure to hold the collided keys, making them space efficient.
 
 In this video, we look at Open Addressing, the core idea behind it, lay the foundation for probing functions and understand how the implementation of our core Hash Table functions changes with this scheme in place.

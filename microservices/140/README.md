@@ -52,6 +52,10 @@ RPC can use any transport protocol for communication - Raw TCP, UDP, HTTP 1.1, o
 
 [![Introduction to RPC - Remote Procedure Calls](https://i.ytimg.com/vi/eRndYq8iTio/mqdefault.jpg)](https://www.youtube.com/watch?v=eRndYq8iTio)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 One of the most interesting things that revived itself after a decade is Remote Procedure Calls, fondly called as RPCs; and they are widely adopted to do inter-service communication over the network.
 
 The core highlight that sets RPCs apart is that they are designed to make the network call look just like a local function call. It does this by abstracting out all the complexities like serialization, deserialization, and transport.

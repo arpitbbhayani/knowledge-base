@@ -62,6 +62,10 @@ Given that the emergency service deals with events that are urgent, important, a
 
 [![Designing Uber's highly available Emergency SOS Service](https://i.ytimg.com/vi/gpzGpPiRoCo/mqdefault.jpg)](https://www.youtube.com/watch?v=gpzGpPiRoCo)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 An emergency button in a ride-hailing app like Uber can be life-saving but what happens when you click it? What kind of information does it capture? how does it notify the nearest police station?
 
 In this video, we dive deep into the architecture of Uber's emergency SOS service and look at key design decisions that make it so reliable and highly available.

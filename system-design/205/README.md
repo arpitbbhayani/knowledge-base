@@ -110,6 +110,10 @@ This is exactly what Gojek does. The link to their blog is in the description of
 
 [![How Gojek masks and keeps users' phone numbers secure at scale?](https://i.ytimg.com/vi/nEEaSZZ8R4I/mqdefault.jpg)](https://www.youtube.com/watch?v=nEEaSZZ8R4I)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Do hyperlocal companies like Uber, Ola, Swiggy, Gojek, Zomato, etc share our phone numbers with the delivery people or theirs with us? If they do then that would be a massive breach of privacy. Hence, they have a system in place that instead of sharing the actual phone numbers, share a masked version of it.
 
 In this video, we talk about how these hyper-local companies work with telecom operators to generate virtual phone numbers and keep our privacy intact.

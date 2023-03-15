@@ -49,6 +49,10 @@ Hard deleting from a database is an expensive operation. If we are deleting a hu
 
 [![Why, where, and when should we throttle or rate limit?](https://i.ytimg.com/vi/CW4gVlU0xtU/mqdefault.jpg)](https://www.youtube.com/watch?v=CW4gVlU0xtU)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 It is a common belief that a rate limiter is always external and is designed to prevent our systems from being abused by the external world, but this is not true. In this video, we understand what throttling is, why we need it in the first place and 5 use cases where external and internal rate limiters are super useful.
 
 Outline:

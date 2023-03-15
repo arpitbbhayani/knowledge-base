@@ -52,6 +52,10 @@ Once it has completed sending the response for all the images, it sends the term
 
 [![How Dropbox efficiently serves and renders a large number of thumbnails](https://i.ytimg.com/vi/FczWm6kx0Kg/mqdefault.jpg)](https://www.youtube.com/watch?v=FczWm6kx0Kg)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 A classic challenge that comes while building Instagram or Google Photos is about quickly and efficiently serving and rendering a large number of thumbnails.
 
 In this video, we take a look at an ultimate hack that Dropbox used to very efficiently serve a large number of preview thumbnails by streaming the response from the servers using Chunked Transfer Encoding.

@@ -49,6 +49,10 @@ This would make the linked list leverage the CPU cache well and ensure our itera
 
 [![Getting the best performance from the Hash Table](https://i.ytimg.com/vi/oD2yaTtu69w/mqdefault.jpg)](https://www.youtube.com/watch?v=oD2yaTtu69w)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 In the previous 6 videos, we talked about the internals of Hash Table, ways to implement them, and how to gracefully handle collisions.
 
 In this video, we put our focus on performance and would look at how to quantify the load on the hash table, the impact of chaining and open addressing on perf, understanding the performance gains and losses for each strategy, and conclude with very interesting performance optimization.

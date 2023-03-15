@@ -52,6 +52,10 @@ Shopify moves shops from one pod to another to balance shards. Shopify uses an i
 
 [![How @ShopifyEngineering avoids hot shards by moving data across databases without any downtime](https://i.ytimg.com/vi/7v-wrJjcg4k/mqdefault.jpg)](https://www.youtube.com/watch?v=7v-wrJjcg4k)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 A truly scalable system is one that can be scaled horizontally. A database is typically scaled by splitting the data across multiple shards. But what happens when a particular shard becomes hot due to excessive load hitting it, while others are underutilized? A classic way to address this is by moving a fragment of data from one node to another. But how?
 
 In this video, we look at how Shopify re-balances the shard by moving a fragment of data from one database to another without incurring any downtime.

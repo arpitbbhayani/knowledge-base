@@ -79,6 +79,10 @@ The initial percentage was 5%, eventually increasing it to 100% and then pluggin
 
 [![The architecture of Yelp's in-house Search Engine - nrtSearch](https://i.ytimg.com/vi/i8MweKYoG1U/mqdefault.jpg)](https://www.youtube.com/watch?v=i8MweKYoG1U)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Elasticsearch is a great search engine, but Yelp was not happy with its performance, so they built their own HTTP layer on top of Lucene. In this video, we take an in-depth look into the architecture and critical decisions Yelp took while building its own search engine on top of Lucene.
 
 You can also

@@ -75,6 +75,10 @@ During insert, lookup, and delete when we find the matching hash, and explicitly
 
 [![Implementing Hash Maps with Hash Tables](https://i.ytimg.com/vi/VCMO2X6EoK0/mqdefault.jpg)](https://www.youtube.com/watch?v=VCMO2X6EoK0)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Maps and Dictionaries are amazing, but how are they implemented?
 
 In this 11th video of this Hash Table Internals series, we take an in-depth look into the implementation of Maps using Hash Tables, popularly called Hash Maps.

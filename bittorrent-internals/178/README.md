@@ -45,6 +45,10 @@ A leecher, after completing the download of the entire file, becomes the seeder 
 
 [![Overview of the BitTorrent architecture](https://i.ytimg.com/vi/shVvFVFiZcs/mqdefault.jpg)](https://www.youtube.com/watch?v=shVvFVFiZcs)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 BitTorrent is superb, but what does its architecture look like?
 
 In this 3rd video of the BitTorrent internals series, we take an in-depth look into its architecture and understand different components in it like - Tracker, Seeders, and Leechers, and learn how they work together to be this amazing file distribution network.

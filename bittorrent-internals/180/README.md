@@ -61,6 +61,10 @@ The peers respond with the block and this completes the download faster.
 
 [![The Piece Selection algorithm that makes BitTorrent fault tolerant](https://i.ytimg.com/vi/QSeex0YxReY/mqdefault.jpg)](https://www.youtube.com/watch?v=QSeex0YxReY)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Performance of the BitTorrent network relies heavily on the order in which the pieces are requested by the peers.
 
 In this 5th video of the BitTorrent Internals series, we take a look at the piece selection algorithm BitTorrent uses and learn how it makes the network fault-tolerant while ensuring a fast download rate across the network.

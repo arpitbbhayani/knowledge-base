@@ -52,6 +52,10 @@ Vertical Partitioning is a long-term fix for this problem. The idea is to create
 
 [![Dissecting GitHub Outage - Downtime due to ALTER TABLE](https://i.ytimg.com/vi/82Xywy74kfE/mqdefault.jpg)](https://www.youtube.com/watch?v=82Xywy74kfE)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Can an ALTER TABLE command take down your production? 🤯
 
 GitHub had a major outage and it all started with a schema migration. The outage affected their core services like GitHub actions, API requests, pull requests, and many more. Today, we dissect this outage and do an intense deep dive to extract 5 amazing insights. We also see how they very smartly mitigated the outage along with a potential long-term fix. 

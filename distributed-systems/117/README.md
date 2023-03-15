@@ -34,6 +34,10 @@ The order is placed only after the food item, and the delivery agent is assigned
 
 [![Distributed Transactions: Two-Phase Commit Protocol](https://i.ytimg.com/vi/7FgU1D4EnpQ/mqdefault.jpg)](https://www.youtube.com/watch?v=7FgU1D4EnpQ)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Distributed Transactions are tough and intimidating. It is hard to guarantee atomicity across microservices given the network delays, resource contention, and unreliable services.
 
 In this video, we discuss and take a detailed look into Distributed Transactions, understand why they are needed with a real-world example of Zomato's 10-minute food delivery, and build our understanding of the workings of the Two-Phase Commit protocol.

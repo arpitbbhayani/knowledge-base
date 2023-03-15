@@ -50,6 +50,10 @@ The above query when executed iterates through all the rows of the table for a p
 
 [![Dissecting GitHub Outage: Downtime due to an Edge Case](https://i.ytimg.com/vi/iqapVyfoFqc/mqdefault.jpg)](https://www.youtube.com/watch?v=iqapVyfoFqc)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 In August 2021, GitHub experienced an outage where their MySQL Master database went into a degraded state. Upon investigation, they found out it was due to an edge case. So, how can an edge case take down a database?
 
 In this video, we understand what happened, take a fictional example of how an edge case can put extra load on the database, and conclude with an exciting way to make our SQL queries fool-proof.

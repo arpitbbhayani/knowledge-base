@@ -73,6 +73,10 @@ Similar to the insert phase, we would skip the deleted keys and re-insert only t
 
 [![Implementing Resize of a Hash Table](https://i.ytimg.com/vi/mmPwVBm-8n0/mqdefault.jpg)](https://www.youtube.com/watch?v=mmPwVBm-8n0)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 So, the Hash Table needs to be resized in order to maintain consistent performance, but how exactly?
 
 In this 9th Video of the Hash Table Internals series, we go into the implementation details of resize operation and talk about, where and when in the code should we trigger resize, 2 ways to implement resize while using Chained Hashing, and things to remember while resizing a Hash Table that uses open addressing.

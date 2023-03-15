@@ -34,6 +34,10 @@ Although mitigation is great, it is better to place a monitoring system that rai
 
 [![Dissecting GitHub Outage: ID column reaching the max value 2147483647](https://i.ytimg.com/vi/ZFRAFTn0cQ0/mqdefault.jpg)](https://www.youtube.com/watch?v=ZFRAFTn0cQ0)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 GitHub experience an outage on 5th May 2020 on a few of their internal services and it happened because a table had an auto-incrementing integer ID and the column reached its maximum value possible 2147483647. In this video, we dissect what happened, mimic the situation locally and see what could have happened, and look at possible ways to mitigate and prevent a situation like this.
 
 Outline:

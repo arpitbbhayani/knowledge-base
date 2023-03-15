@@ -71,6 +71,10 @@ Thus, each team can define its own set of derived tables using just a SQL query,
 
 [![Overview of Discord's data platform that daily processes petabytes of data and trillion points](https://i.ytimg.com/vi/yGpEzO32lU4/mqdefault.jpg)](https://www.youtube.com/watch?v=yGpEzO32lU4)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 When a company scales, they adopt microservices and each service typically gets its own independent database. With data being distributed across so many databases, there emerges a need to unify them to extract deep product insights, make strategic business decisions, and train ML, models.
 
 In this video, we take a super-detailed look into how Discord built its unified Data Platform that processes trillions of data points and petabytes of data every single day.

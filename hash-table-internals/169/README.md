@@ -51,6 +51,10 @@ The locality of reference is not as high as Linear Probing, but it is decent eno
 
 [![Quadratic Probing for Conflict Resolution in Hash Tables](https://i.ytimg.com/vi/F-8pWiJv8ik/mqdefault.jpg)](https://www.youtube.com/watch?v=F-8pWiJv8ik)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 In the previous video, we looked at Linear Probing as a way to handle Hash Table collisions, but is that the only way? or Can we do better? In this video, we take a look at Quadratic Probing as an alternative to Linear Probing.
 
 We spend time understanding what Quadratic Probing is, and how it is better than the Linear counterpart.

@@ -49,6 +49,10 @@ This export is then consumed by the services for offline processing.
 
 [![The Architecture of Airbnb's Knowledge Graph](https://i.ytimg.com/vi/7xKgQmqkfD0/mqdefault.jpg)](https://www.youtube.com/watch?v=7xKgQmqkfD0)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 When a product is catering to a large audience, providing contextual information becomes important and at the scale of Airbnb, it becomes non-optional. Hence the engineering team at Airbnb collated all the data and structured it into a Knowledge Graph that today powers its Search, Discovery, and Trip Planner services.
 
 In this video, we take a detailed look into how Airbnb designed its Knowledge Graph, some key components of it, and some key decisions it took while architecting it.

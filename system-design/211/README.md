@@ -61,6 +61,10 @@ A separate orchestrator computes the number of workers required to consume the i
 
 [![How @twitter keeps its Search systems up and stable at scale](https://i.ytimg.com/vi/dOyCq_mMtdI/mqdefault.jpg)](https://www.youtube.com/watch?v=dOyCq_mMtdI)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Search is one of the most important services for any product and at the Twitter scale, it becomes ultra important. But what does it take to maintain Search at scale, how can we ensure that the search service continues to function no matter what kind of load hits the service?
 
 In this video, we dive deep into how Twitter built tooling around their Elasticsearch that helps handle massive surges in the search traffic, do real-time ingestion, and 100s of terabytes of back-fill.

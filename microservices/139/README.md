@@ -46,6 +46,10 @@ For example, sending OTP during login is best modeled synchronous instead of doi
 
 [![Designing Workflows in Microservices - Orchestration vs Choreography](https://i.ytimg.com/vi/HiwOx-W1TIA/mqdefault.jpg)](https://www.youtube.com/watch?v=HiwOx-W1TIA)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 In a microservices architecture there will always arise a need to design workflows; for example: when on an e-commerce website someone places an order, we need to send an email confirmation to the user, notify the seller to keep the shipment ready, and also assign a logistic delivery partner so that the package is delivered to the user.
 
 Modeling these workflows is a challenge as it requires multiple microservices to coordinate. So, how can we implement them? There are two high-level architecture patterns to implement workflows, and they are - Orchestration and Choreography. In this video, we take a detailed look into the two patterns and see what they are, how they are implemented, and which one to use when?

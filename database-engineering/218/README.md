@@ -7,6 +7,10 @@ Understanding Database Isolation Levels with hands-on examples
 
 [![Understanding Database Isolation Levels with hands-on examples](https://i.ytimg.com/vi/-Wcdl12ac5w/mqdefault.jpg)](https://www.youtube.com/watch?v=-Wcdl12ac5w)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 The I in ACID stands for Isolation and determines the transparency between different transactions executed at the same time. The way to tune this transparency is through isolation levels. In this video, we take an in-depth look into database isolation levels and understand them with examples.
 
 Understanding Read Committed, Read Uncommitted, Repeatable Reads, and Serializable Isolation Levels.

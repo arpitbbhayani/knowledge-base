@@ -50,6 +50,10 @@ We should adopt BFF when
 
 [![BFF - Backend for Frontend - Pattern in Microservices](https://i.ytimg.com/vi/GCx0aouuEkU/mqdefault.jpg)](https://www.youtube.com/watch?v=GCx0aouuEkU)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 As your application evolves, supporting multiple types of clients like Desktop, Mobile apps, etc becomes tricky. The backend becomes complicated, and you start applying a  lot of hacks to serve them properly.
 
 In this video, we take a look at an interesting high-level architectural pattern in microservices, that solves this exact problem, called Backend For Frontend, fondly called BFF. We would see in detail what this pattern is all about, where it is used, how to implement it, look at its advantages and disadvantages, and conclude by building an understanding of when to use it.

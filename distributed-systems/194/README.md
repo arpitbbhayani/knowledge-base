@@ -46,6 +46,10 @@ The Two-Phase Commit looks super-simple but it has a major flaw in the failure s
 
 [![Two Phase Commit to power Distributed Transactions in a Distributed System](https://i.ytimg.com/vi/sZVCpjuVUL8/mqdefault.jpg)](https://www.youtube.com/watch?v=sZVCpjuVUL8)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Distributed Transactions are the heart and soul of Distributed Systems and getting all the participating nodes to agree to commit or abort is not an easy job.
 
 In this video, we talk about the Two-Phase Commit protocol that takes baby steps to ensure that we can get all the nodes to commit or abort a distributed transaction and never let the data go into an inconsistent state.

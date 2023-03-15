@@ -48,6 +48,10 @@ A common approach to getting this loose coupling is by powering inter-service co
 
 [![Control an outage by localizing the failures](https://i.ytimg.com/vi/Of3FS2qDM28/mqdefault.jpg)](https://www.youtube.com/watch?v=Of3FS2qDM28)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Outages are inevitable; but we should design our architecture such that if a component is down, it should not lead to a complete outage. It is easy to say this, but hard to implement.
 
 In this video, we dissect yet another GitHub outage, gather a few interesting insights about their Microservices architecture, and spend some time discussing and understanding the importance of having a smaller blast radius and a fool-proof way of achieving that.

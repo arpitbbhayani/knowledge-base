@@ -49,6 +49,10 @@ All the messages that client tried to write to Kafka failed, but they were persi
 
 [![Dissecting GitHub Outage - Multiple Leaders in Zookeeper Cluster](https://i.ytimg.com/vi/bycFzB6yrK0/mqdefault.jpg)](https://www.youtube.com/watch?v=bycFzB6yrK0)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Distributed Systems are prone to problems that seem very obscure. GitHub had an outage because a set of nodes in the Zookeeper cluster ran an election and elected a second leader. How obscure is that?
 
 In this video, we dissect a GitHub outage that would tell us how weird is the world of Distributed Systems. We also talk about Zookeeper and its importance for managing a Kafka cluster. We see what happened during the outage, and how GitHub was able to mitigate it with ZERO data loss and a brilliant fallback strategy.

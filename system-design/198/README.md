@@ -43,6 +43,10 @@ The coordinator/proxy node aggregates the response and sends it back to the clie
 
 [![The Architecture of Pinterest's Time Series Database - Goku](https://i.ytimg.com/vi/tZPTpa3JcKA/mqdefault.jpg)](https://www.youtube.com/watch?v=tZPTpa3JcKA)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 It is extremely critical to continuously monitor the health of the services and infrastructure. We use Time Series Databases to hold the key vitals like CPU, RAM, Disk, Requests, Network IO, etc. Pinterest generates millions of data points every second and the existing Time Series Databases were not performant enough to meet their needs, hence they built one in-house.
 
 In this video, we take a detailed look into the architecture and key design decisions that Pinterest took while designing their own in-house time series database named Goku.

@@ -39,6 +39,10 @@ The clients upon receiving any piece do an MD5 verification and our dummy data w
 
 [![Exploiting and stealing from the BitTorrent network](https://i.ytimg.com/vi/nYtAzzH-twM/mqdefault.jpg)](https://www.youtube.com/watch?v=nYtAzzH-twM)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Stealing is bad, but in a P2P network, it is a cakewalk.
 
 In this 7th video of the BitTorrent Internals series, we take a detailed look into various challenges that comes with a P2P network and dive deep into engineering hacks that could help us download our torrent faster and cheaper.

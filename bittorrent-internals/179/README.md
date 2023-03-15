@@ -58,6 +58,10 @@ For the next 10 seconds, it unchokes the first 4 peers ordered by the sorting cr
 
 [![The Choke Algorithm that powers BitTorrent](https://i.ytimg.com/vi/iognYJRzCE8/mqdefault.jpg)](https://www.youtube.com/watch?v=iognYJRzCE8)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 One of the most important algorithm that powers BitTorrent is The Choke Algorithm
 
 In this 4th video of the BitTorrent Internals series, we go deep and understand what the choke algorithm is, how it works, and most importantly how, without having a central authority, it ensures that no one abuses the P2P network.

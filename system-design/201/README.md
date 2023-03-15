@@ -48,6 +48,10 @@ This way, we maintain the aggregated favorite count for each restaurant in near-
 
 [![Aggregating DynamoDB data in realtime to list restaurants at Deliveroo](https://i.ytimg.com/vi/VNvTEin2liY/mqdefault.jpg)](https://www.youtube.com/watch?v=VNvTEin2liY)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 DynamoDB is an extremely powerful, scalable, and fast KV store but it lacks Aggregations.
 
 In this video, we design a usecase that is very common for food delivery startups like Deliveroo and Swiggy that would require us to do real-time aggregation of the DynamoDB data in an extremely cost-efficient way.

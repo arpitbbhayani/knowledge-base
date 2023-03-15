@@ -46,6 +46,10 @@ In conclusion, Grab's order platform is an example of a complex system that bala
 
 [![The architecture of Grab's data layer that serves millions of orders every day](https://i.ytimg.com/vi/KeV4erIm47o/mqdefault.jpg)](https://www.youtube.com/watch?v=KeV4erIm47o)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Grab processes millions of Food and Mart orders every single day, and the most critical, but brittle part of the infrastructure is the database. Given how critical orders are to Grab, they have to ensure very high availability of the database while ensuring a very fast query time. So, how do they achieve this?
 
 In this video, we take a look at the high-level architecture of the data layer of Grab's Order Platform and see the practices they follow to ensure high availability, stability, and performance at scale.

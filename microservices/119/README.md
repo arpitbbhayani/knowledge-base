@@ -34,6 +34,10 @@ So long as a microservice adheres to the API contract, the team that owns it can
 
 [![Advantages of adopting a microservices-based architecture](https://i.ytimg.com/vi/JPj6mhVLQN0/mqdefault.jpg)](https://www.youtube.com/watch?v=JPj6mhVLQN0)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Microservices are great, and the overall microservices-based architecture has some key advantages. In this video, we talk about what are microservices, the key advantages of using a microservices-based architecture, and understand how to fence service and define its set of responsibilities.
 
 Outline:

@@ -56,6 +56,10 @@ This is how you can implement vertical sharding.
 
 [![Implementing Vertical Sharding](https://i.ytimg.com/vi/9iAJjtvBwyI/mqdefault.jpg)](https://www.youtube.com/watch?v=9iAJjtvBwyI)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Sharding is super-important when you want to handle the traffic that cannot be handled through one server. Sharding comes in two flavors - Horizontal and Vertical. In horizontal sharding, we split the table by rows and keep them on separate servers. In vertical sharding, we distribute the tables across multiple database servers.
 
 For example, keeping all the payments-related tables in one database server, and all the auth-related tables in another. Vertical sharding comes in super handy when we are moving from monolith to microservices. All this sounds simple yet awesome theoretically, but would we actually implement it?

@@ -29,6 +29,10 @@ Note: This is a very crude example of how fetch happens with indexes; there are 
 
 [![How do indexes make databases read faster?](https://i.ytimg.com/vi/3G293is403I/mqdefault.jpg)](https://www.youtube.com/watch?v=3G293is403I)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 In this video, we discuss how indexes make a database operate faster. While discussing that, we dive deep into how the data is read from the disk, how indexes are structured, serialized, and stored on the disk, and finally, how exactly data is quickly read using the right set of indexes.
 
 Outline:

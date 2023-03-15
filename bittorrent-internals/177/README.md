@@ -46,6 +46,10 @@ Dictionaries are encoded as `d<key1><value1><key2><value2>e`. Hence, a dictionar
 
 [![Understanding the Torrent File Format and Bencoding](https://i.ytimg.com/vi/tHT94dSMwKw/mqdefault.jpg)](https://www.youtube.com/watch?v=tHT94dSMwKw)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 To download or upload any file from the Torrent network, we need a .torrent file. But what exactly is this file?
 
 In this 2nd video of the BitTorrent Internals series, we take a detailed look into the .torrent file and understand its lifecycle, what information it holds, and the encoding it uses to structure the data.

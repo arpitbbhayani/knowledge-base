@@ -53,6 +53,10 @@ Giphy uses Surrogate Keys (tags) while caching endpoints on CDN. It helps in sma
 
 [![How Giphy uses CDN to serve a billion GIFs every day](https://i.ytimg.com/vi/-bo7oVejgRM/mqdefault.jpg)](https://www.youtube.com/watch?v=-bo7oVejgRM)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Giphy is the world's most popular GIF website and it serves 10 billion media content every single day, and we can guess it would be using CDN to do that, but is that it?
 
 In this video, we dive deep into how Giphy uses different features of CDNs to solve different kinds of problems; and while going through it we will also look at a super-interesting internal implementation detail of CDN.

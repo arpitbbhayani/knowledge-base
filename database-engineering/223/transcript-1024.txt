@@ -1,0 +1,34 @@
+So, to very similar data types present in most databases be relational or non-relational that we use to store data times is data time and time stamp in this video.
+I'd like to walk you through on the difference between these two data types and it would help you make a decision on which one to use when because it's very common that hey, you think, hey, let me store everything in data but in some cases data time is not good.
+In other cases, you might say hey, let's just store, apoc everywhere and let's just go with time stamp on an integer that has its own disadvantages as well.
+And because it stores date time, it starts from the first second.
+Database stores the time stamp as a pop, which means number of seconds elapsed since 1st January 1970.
+So, you'd say hey, but if it is storing as an integer, why it is called as time stamp or rather why there is a separated type called time stamp?
+Because it's for your database to know that hey, the value that is being stored over here, it is an epoch time stamp, which means that when you are retrieving, like if you are using on the client side, use it as a date time.
+Although I'm storing an integer, treat this as a date time, which would treat this as a time stamp and then convert it to date time and have some operations on top of it, whatever they want to do.
+Now, the interesting part over here is because we are storing the number of seconds, elapsed since 1st January 1970 as an integer, it has a limit.
+So, now here you can see that, hey, if your use case needs you to store date time, which goes beyond 2, 0th, 3, 8, you cannot use timestamp.
+For example, an 8 byte integer, it might store, like the timestamp might modify in later versions of databases.
+But you see the drill, that hey, if your use case, if your current use case requires you to store a date time, which is far away in the future.
+Now, obviously, this is not part of your native storage, which means that when we say that hey, my date time takes up five bytes to store the data, it does not count the amount of bytes required to store the fractional seconds part of it.
+So, go through that documentation to understand how they are doing it, but this is little specific to my SQL, but you would open up your mind around how date times and time stamp actually, because that concepts remain fairly similar across all databases.
+So, if let's say you don't want any, you don't want to store fractional seconds at all, so it takes up 0 bytes.
+This way, your core storage for date time is five bytes, time stamp is four bytes, but depending on how much of a precision you require on the fractional side, you can, it takes up that much of extra space, right?
+So, this is my SQL specific, where the date time object takes up five bytes, while time stamp object takes up four bytes, and it sources as an integer, right?
+Let's go deeper into understanding what date time actually does, how it stores and when to use it.
+So, date time, typically, you would use date time when you are storing something which is use case specific.
+So, when you want those native features to work with date time, your database already gives you those tools.
+When you would want to leverage that, it is better that you store your, you type your column as date time instead of a time stamp, or even a native integer, right?
+Now, what this tells us is just why, because time stamp requires four bytes, but it gives you only till 2038, by just adding that one extra byte and storing it in date time gives you this massive range, much longer than what time stamp is giving you.
+So, this way, when you know that you are storing a huge amount of range, or your data that you would be storing will be might cover this even 1000 here, or even beyond 2038, you have to go with date time, right?
+In case of tilesync, you cannot, because it's a system integer, this is number of seconds, you cannot do that calculation and see, oh, which date is this?
+Okay, given this, when should we use time stamp?
+Time stamps are stored as integers in your database.
+Now, which means that whenever you pass date time in your, when you want to store it as time stamp, your database does this implicit conversion from your native time zone to UTC, before storing, and when you retrieve it, converts it into the time zone that is requested by the query and send it back.
+Always remember this, because all the time stamp is the static unit in time, that is there, which is stored in UTC, consider this fact that, depending on which one is reading your data, which connection, what time zone is set in that, it would affect it.
+Okay, but we can think of time stamps as very lightweight, very is a strong word, because it just one byte better than date time.
+Okay, given that what we are storing in time stamp, is the number of seconds elapsed in a very simple format, which is integer.
+So, your data is going to process things having time stamp much faster than what it can do with date time.
+And this is what are the core differences between date time and time stamp.
+So, just to give you a just use date time when you're storing something user specific, which is time zone sensitive, and time stamp when you just want to record an event.
+In most cases, date time gives you this very nice convenience of, hey, it does not matter which programming language I use, it would convert it into the date time object, and I can just start using it.

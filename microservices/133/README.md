@@ -51,6 +51,10 @@ Sharing the database is also seen where it is inconvenient to have a middleman f
 
 [![Shared Database Pattern in Microservices](https://i.ytimg.com/vi/tV11trlimLk/mqdefault.jpg)](https://www.youtube.com/watch?v=tV11trlimLk)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Microservices need to communicate with each other. Communication between them is always about getting or updating data that is owned by the other service. What if a service gets direct access to all the data it wants? This is the simplest way for the microservices to communicate with each other, and this pattern is called Sharing the Database. The core idea here is to let anyone who needs the data from a service or wants to update something, can directly talk to its database - no middlemen needed.
 
 Although most people think it is the wrong way of communication, we should not discard it completely. In this video, we talk about what this architecture pattern is, the 4 challenges associated with it, see ways to mitigate them, and understand when and where it could be beneficial for us to share the database rather than going through a middleman.

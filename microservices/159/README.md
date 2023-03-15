@@ -57,6 +57,10 @@ It is always safe to hide the internal implementation details and expose a stric
 
 [![Best practices that make microservices integration easy](https://i.ytimg.com/vi/Wby0d9Li5Hw/mqdefault.jpg)](https://www.youtube.com/watch?v=Wby0d9Li5Hw)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Running microservices in isolation does not make any sense. To get something done, multiple microservices need to talk to each other and put a task to completion. This requires the services to interface with each other.
 
 How would the services interface and integrate? is there a common way to do it?

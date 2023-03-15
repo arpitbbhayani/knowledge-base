@@ -67,6 +67,10 @@ A huge amount of data, through the data pipelines, will be ingested into Solr an
 
 [![How Flipkart made their type ahead search hyper personalized](https://i.ytimg.com/vi/NcNCty7_3kc/mqdefault.jpg)](https://www.youtube.com/watch?v=NcNCty7_3kc)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Search is one of the most used features in any e-commerce and to give a better user experience it is almost customary to provide type-ahead search suggestions.
 
 In this video, we will talk about how Flipkart made their type-ahead search hyper-personalized and dive deep into their high-level architecture and key design decisions that make it extra special.

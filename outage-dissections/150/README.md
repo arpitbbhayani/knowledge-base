@@ -48,6 +48,10 @@ Keep an inventory of the queries we fire and the indexes it uses during executio
 
 [![Dissecting GitHub Outage Downtime due to creating an Index](https://i.ytimg.com/vi/df2QgLW0QC4/mqdefault.jpg)](https://www.youtube.com/watch?v=df2QgLW0QC4)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 GitHub wanted to optimize their SQL query performance, and they had to reverse a database index. Instead of getting a performance boost, thy incurred a downtime of more than 60 minutes. Imagine the state of the team who wanted to do good, but were stuck in this fix.
 
 This outage gives us a super-in-depth insight into MySQL and its indexing structure. It is indeed fascinating to see the kind of optimizations engineers have to make while operating at scale.

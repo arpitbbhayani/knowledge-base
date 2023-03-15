@@ -49,6 +49,10 @@ Such abilities would help us reduce outage times and prevent cascading failures 
 
 [![Why should we have a standard way of building Microservices?](https://i.ytimg.com/vi/0q61wIUmVDY/mqdefault.jpg)](https://www.youtube.com/watch?v=0q61wIUmVDY)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 We all love creating microservices, but what if every team creates its own microservice uniquely and uses its own conventions? it would create massive chaos of practices, protocols, frameworks, and conventions.
 
 This propels us to have some standardization on how we build a microservice and hence in this video, we talk about, why it is essential to standardize some aspects of a microservice, how enforcing a few practices helps us in the long run, and, look at the 3 most essential verticals that you should definitely standardize while adopting microservices.

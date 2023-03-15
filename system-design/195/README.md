@@ -55,6 +55,10 @@ The above query required it to sort only 169 rows, completing its evaluation sup
 
 [![How Instagram efficiently serves HashTags ordered by count](https://i.ytimg.com/vi/CA2_0ZhVW2g/mqdefault.jpg)](https://www.youtube.com/watch?v=CA2_0ZhVW2g)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Instagram has millions of HashTags and millions of people tag their photos every single day. To discover, Instagram allows us to search for a Hash Tag.
 
 In this video, we will take a detailed look into how Instagram efficiently searches for HashTags and serves them ordered by count; while doing so we will dive deep into a super-interesting Database optimization called Partial Indexes.

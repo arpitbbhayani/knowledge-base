@@ -7,6 +7,10 @@ Thundering Herd Problem and How not to do API retries
 
 [![Thundering Herd Problem and How not to do API retries](https://i.ytimg.com/vi/8sTuCPh3s0s/mqdefault.jpg)](https://www.youtube.com/watch?v=8sTuCPh3s0s)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 When the network is unreliable the clients retry the APIs to ensure completion. This approach works when there are fewer clients; but what happens when there are millions of them?
 
 They all will keep on bombarding the server with their requests and this problem is called the Thundering Herd problem and in this video, we understand what this problem is, why it occurs, and how to solve it.

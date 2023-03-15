@@ -36,6 +36,10 @@ For example, re-auditing all the INT32 columns and moving them to INT64 to ensur
 
 [![So, the outage is mitigated, now what?](https://i.ytimg.com/vi/LeT_s-UFw-U/mqdefault.jpg)](https://www.youtube.com/watch?v=LeT_s-UFw-U)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Outages happen and in such a tense situation, the main priority is to get the system back up, but is that it? Is everything done when the service is up and running?
 
 So today let's spend some time talking about the aftermath of an outage. There are many things to take care of once the outage is mitigated and in this video, we dissect a GitHub outage, understand what happened, and look at a set of common practices that we follow to ensure closure.

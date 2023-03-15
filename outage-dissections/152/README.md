@@ -38,6 +38,10 @@ This incident shows that no matter how big the company gets and how prepared are
 
 [![Dissecting GitHub Outage - Downtime they thought was avoided](https://i.ytimg.com/vi/9GHh_U-ud9U/mqdefault.jpg)](https://www.youtube.com/watch?v=9GHh_U-ud9U)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Has it ever happened to you that you anticipated that something would go wrong, you pro-actively fixed it, but it still went wrong? This exact thing happened to GitHub on March 1, 2021, in a situation for which they were prepared for 6 months. This is a very amusing incident as it teaches us a lot about the blind spots that exist in every system out there.
 
 In this video, we talk about an outage that GitHub faced with their Actions service. and take an in-depth look into what happened, why it actually happened, and what GitHub did to prepare for this very situation, but it still went wrong.

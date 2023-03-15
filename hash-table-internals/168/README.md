@@ -59,6 +59,10 @@ Hence, it is important to pick a good hash function, like Murmur Hash, to ensure
 
 [![Linear Probing for Conflict Resolution in Hash Tables](https://i.ytimg.com/vi/5QKAXG25hig/mqdefault.jpg)](https://www.youtube.com/watch?v=5QKAXG25hig)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Linear Probing is one of the simplest and the most intuitive ways to handle Hash Table collisions, and it is based on a technique called Open Addressing.
 
 In the video, the fourth of this Hash Table Internals series, we take a detailed look into Linear Probing, understand what it is, how Hash Table operations happen with Linear Probing, learn why it is so simple yet so efficient, and conclude with looking at 2 challenges that come with adopting it.

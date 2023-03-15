@@ -58,6 +58,10 @@ Having a database per service bloats up our infra and we would need to build exp
 
 [![Database per Service Pattern in Microservices](https://i.ytimg.com/vi/la2q1vFA5q0/mqdefault.jpg)](https://www.youtube.com/watch?v=la2q1vFA5q0)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Microservices should be loosely coupled and autonomous so that they can take their own decision and be as performant as they can be. A high-level architecture pattern that allows us to achieve this is the database-per-service pattern in which each microservice owns its database and take independent decisions about it.
 
 In this video, we quickly talk about the database-per-service architecture pattern, look at how it helps in modeling massive systems, understand the advantages of adopting it, and conclude by going through some drawbacks of this architecture pattern.

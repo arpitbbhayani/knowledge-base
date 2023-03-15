@@ -62,6 +62,10 @@ When a node receives a message from any other node, it makes an entry in its rou
 
 [![Kademlia - a Distributed Hash Table implementation to power the overlay network of BitTorrent](https://i.ytimg.com/vi/_kCHOpINA5g/mqdefault.jpg)](https://www.youtube.com/watch?v=_kCHOpINA5g)
 
+System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
+Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
+Redis Internals: https://arpitbhayani.me/redis
+
 Kademlia is a Distributed Hash Table implementation and it is used as an overlay network for BitTorrent. Instead of talking about micro-details and how it is used in BitTorrent, today we spend time understanding Kademlia in depth.
 
 In this video, we take a super detailed look into Distributed Hash Table implementation and we would see how it can power the routing of requests without having any central authority. We look at how data and nodes are represented, how it leverages XOR as a distance function, and how it always converges to the node we are looking for.
