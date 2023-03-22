@@ -1,23 +1,28 @@
-Thundering Herd Problem and How not to do API retries
+Ep 4 - Career Growth, Soft Skills, and Life Lessons for Software Engineers with Shashank Kansal
 ===
 
 
 
 <p>Here's the video of me explaining this in-depth 👇‍</p>
 
-[![Thundering Herd Problem and How not to do API retries](https://i.ytimg.com/vi/8sTuCPh3s0s/mqdefault.jpg)](https://www.youtube.com/watch?v=8sTuCPh3s0s)
+[![Ep 4 - Career Growth, Soft Skills, and Life Lessons for Software Engineers with Shashank Kansal](https://i.ytimg.com/vi/jU-4FKh0NXI/mqdefault.jpg)](https://www.youtube.com/watch?v=jU-4FKh0NXI)
 
 System Design for Experienced Engineers: https://arpitbhayani.me/masterclass
 Become a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join
 Redis Internals: https://arpitbhayani.me/redis
 
-When the network is unreliable the clients retry the APIs to ensure completion. This approach works when there are fewer clients; but what happens when there are millions of them?
+Engineers are supposed to be great at engineering but to have a thriving career and make an impact having only hardcore tech skills is not enough. Soft skills play an even more important role; soft skills are just not about speaking well or writing good emails, but they go well beyond that
 
-They all will keep on bombarding the server with their requests and this problem is called the Thundering Herd problem and in this video, we understand what this problem is, why it occurs, and how to solve it.
+To discuss this in detail we have with us Shashank who is an 8x successful founder and currently running his own venture fund and an active investor in HealthTech, EdTech, eCommerce, and Mobility startups
+
+Connect with Shashank
+
+- https://www.linkedin.com/in/shashankkansal/
+- https://twitter.com/SKansal
 
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
- - [Download the notes](https://drive.google.com/file/d/1YeEfBgoVpFBVjVJqd2v9sRK3owBLaTpc/view?usp=share_link)
+ - [Download the notes]()
  - Listen to this on the go on [Spotify](https://open.spotify.com/show/7qMoamm2iZQrsPVm6IQLoD)
 
 # Arpit's System Design Masterclass
