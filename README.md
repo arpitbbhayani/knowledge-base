@@ -6,7 +6,7 @@ Thank you for visiting my knowledge base. This repository contains everything im
 
 ## Something about me
 
-<img width="256px" src="https://arpitbhayani.me/static/img/arpit.jpg" />
+<img width="256px" src="https://edge.arpitbhayani.me/img/arpit.jpg" />
 
 Hey 🙌‍, I am Arpit Bhayani, a CS Engineer, an Educator, and a Polymath.
 

@@ -107,7 +107,7 @@ The program will have a blend of Live Classes happening on Weekends, and 1:1 Men
 
 ## Hi, I'm Arpit Bhayani 👋
 
-<img width="256px" src="https://arpitbhayani.me/static/img/arpit.jpg" />
+<img width="256px" src="https://edge.arpitbhayani.me/img/arpit.jpg" />
 
 In my last **~10** years of experience, I have worked at **D. E. Shaw**, **Practo**, **Amazon**, and **Unacademy**; and have built systems, services, and platforms that scaled to billions.
 
