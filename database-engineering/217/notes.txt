@@ -1,0 +1,9 @@
+Why databases use B+ Trees
+
+databases B trees to hold data? Why use SQL Databases are known to use B trees hold the data to non-relational databases even * leverage them to store data!" let's start simple say our table records are stored in one file sequentially roul -> doc mmmu o(n) o(n) o(n) : : : Insert Update Find One cannot efficientlyinsent can override within Linear scan in the middle the same width Range Queries Possible only when mmmu roves are ordered by it o(n) : : Delete create a new file withoutthat entry/row
+
+oln) too much!! complexity for every operation is far So, can we do them in ollogn)? B + Trees Rows or documents of a table are clubbed in B+ free nodes eg:if1 B+tree node is 4KB big rouldocumentsize is 40B ...... and then each node will hold max voo rows size * of B+ tree node disk block size in disk read we read I node = 100 rows one Thus, one table is just a collection Bree nodes on the disk ...... ....... [ 1234 301302 303304 ........ > ...... 101 102 103 104 201202 203204 Table is always arranged by its primary key and hence. the Bree nodes (leaf) are connected accordingly
+
+
+
+Table B+Tree node as Every Bree stoned disk standard Bt tree is serialized and on operations apply. 1/201301 Non-leaf nodes hold routing info V W -! 1101 301 401 501 201 V W V v ~ I & > > ) 123 101 201202 301 901902... 501 leaf nodes are leaf nodes hold linked so as to enable the actual rows linear traversal Find One By ID the rootnode, reach the Traverse from leaf, read the leaf, and extract no Read each node from disk, understand, and act InsertFind (owldoc fits, flush a leaf node where value update, and Update Find leaf thatholds the now, read block, update, and flush Delete Find leaf thatholds the row, read block, remove, and flush Range 1100,600) eg.id in Find leaf thatholds now 100, traverse linearly reach 600. until now you
