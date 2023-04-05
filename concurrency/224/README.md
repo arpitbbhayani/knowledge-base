@@ -15,7 +15,7 @@ Writing a multi-threaded program is easy, but writing an efficient multithreaded
 
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
- - [Download the notes]()
+ - [Download the notes](https://drive.google.com/file/d/1inBtu78zfjMMooxUfRZsajWsUqovFTyO/view?usp=share_link)
  - Listen to this on the go on [Spotify](https://open.spotify.com/show/7qMoamm2iZQrsPVm6IQLoD)
 
 # Arpit's System Design Masterclass

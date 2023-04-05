@@ -1,0 +1,5 @@
+Writing Good Multi-threaded Programs
+
+writing good multi-threaded programs Writing concument programs is easy, but things become tricky when we have to and ensure connectness optimality Ensuring correctness:locking and atomic instructions Ensuring optimality:fairness, efficientlogic counting prime numbers till 200 million (3 min 49 sec) 2. Sequential approach For each number, check ifitis divisible by any ofits peer 2. Add threads (42 seconds) womillion 10 threads, each handling an equal range of we did speed up, but was it fair? R be checked 2. Smaller numbers can quickly I to squareroot(n) > 2. more prime numbers in the smaller mange some * threads finish early and waitfor others to complete
+
+(35seconds) 3. Threading with fairness 10 threads, each thread picks up the next unprocessed number checks it and if is prime global variable current Num E each thread correctness loop until ~ all num 2. increment current Num atomically processed 2 check prime threads and at the time all * nearly same maximizing -- and do work nearly the same optimality
