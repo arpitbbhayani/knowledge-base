@@ -1,5 +1,14 @@
 [
   {
+    "id": 32,
+    "title": "A Relational Model of Data for Large Shared Data Banks",
+    "highlights": null,
+    "link": "",
+    "status": "DONE",
+    "topic": "Database Design",
+    "annotated_pdf": "https://drive.google.com/file/d/1_27sKT2kzGCuAL9hEldGO26p_qOhvhS6/view?usp=share_link"
+  },
+  {
     "id": 31,
     "title": "Improving Language Understanding by Generative Pre-Training",
     "highlights": null,
