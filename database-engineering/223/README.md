@@ -15,7 +15,7 @@ Datetime and Timestamps are the two most common ways to store data time in any d
 
 You can also
  - Subscribe to the YT Channel [Asli Engineering](https://youtube.com/c/ArpitBhayani)
- - [Download the notes]()
+ - [Download the notes](https://drive.google.com/file/d/1C_0_RVztiRfRkE8WXwFzYbdGjX2MLkaV/view?usp=share_link)
  - Listen to this on the go on [Spotify](https://open.spotify.com/show/7qMoamm2iZQrsPVm6IQLoD)
 
 # Arpit's System Design Masterclass

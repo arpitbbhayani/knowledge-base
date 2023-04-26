@@ -119,14 +119,14 @@
     "title": "Datetime vs Timestamp datatype in databases - Which one is better and when?",
     "description": "System Design for Experienced Engineers: https://arpitbhayani.me/masterclass\nBecome a member for exclusive in-depth videos: https://www.youtube.com/c/ArpitBhayani/join\nRedis Internals: https://arpitbhayani.me/redis\n\nDatetime and Timestamps are the two most common ways to store data time in any database, but which one should we use and when? In this video, we answer this question, understand some of its internals, and cover the pointers that make it easy for us to decide.",
     "img": "https://i.ytimg.com/vi/zrl_odkY5tI/mqdefault.jpg",
-    "gif": null,
+    "gif": "https://media.giphy.com/media/4QX6y0fQT7yVO/giphy.gif",
     "duration": "13:10",
     "view_count": 5153,
     "like_count": 195,
     "comment_count": 12,
     "released_at": "2023-02-27",
     "gist": "",
-    "notes_gd": "",
+    "notes_gd": "https://drive.google.com/file/d/1C_0_RVztiRfRkE8WXwFzYbdGjX2MLkaV/view?usp=share_link",
     "slug": "datetime-vs-timestamp-datatype-in-databases-which-one-is-better-and-when"
   },
   {
