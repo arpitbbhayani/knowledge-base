@@ -35,7 +35,7 @@ Most databases have in-built functions to operate on `DATETIME` data, so if your
 
 The `TIMESTAMP` data type is ideal for recording timestamps related to events that happen on your system, such as transaction times, which require efficient storage but no specific timezone specific operation.
 
-`TIMESTAMP` is 1 byte lighter than datetime, making it faster to process. In addition, `TIMESTAMP` also have an extra advantage when it comes to time zone handling, as MySQL, or any database, automatically converts timestamps to the UTC timezone and converts them back to the client's time zone on retrieval, whereas `DATETIME` data type does not support automatic timezone conversion unless specified.
+`TIMESTAMP` is 1 byte lighter than datetime, making it faster to process. In addition, `TIMESTAMP` also has an extra advantage when it comes to time zone handling, as MySQL, or any database, automatically converts timestamps to the UTC timezone and converts them back to the client's time zone on retrieval, whereas `DATETIME` data type does not support automatic timezone conversion unless specified.
 
 ## Conclusion
 
