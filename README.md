@@ -39,4 +39,4 @@ Topics I like to talk about are
  - [Why most TCP servers are multi threaded and how to build one from scratch](https://youtube.com/watch?v=f9gUFy-9uCM)
  - [Ep 4 - Career Growth, Soft Skills, and Life Lessons for Software Engineers with Shashank Kansal](https://youtube.com/watch?v=jU-4FKh0NXI)
 
-You can find more about me on my website [arpitbhayani.me](arpitbhayani.me).
+You can find more about me on my website [arpitbhayani.me](https://arpitbhayani.me).
